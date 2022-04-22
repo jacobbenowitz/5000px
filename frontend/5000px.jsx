@@ -5,7 +5,22 @@ import { login } from './actions/session/session_actions';
 import Root from './components/root'
 
 document.addEventListener("DOMContentLoaded", () => {
-  const store = configureStore();
+  let store;
+  // check if we need to bootstrap a logged in user
+  if (window.currentUser) {
+    const preloadedState = {
+      entities: {
+        users: {
+          [window.currentUser.id]: window.currentUser
+        }
+      },
+      session: { id: window.currentUser.id }
+    };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = configureStore();
+  };
   
   // BEGIN TESTING
   window.getState = store.getState;

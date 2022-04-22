@@ -7,11 +7,11 @@ export default class NavHeader extends React.Component {
   }
 
   render() {
-    const {user, logout} = this.props;
+    const {currentUser, logout} = this.props;
 
-    const greeting = user ? (
+    const greeting = currentUser ? (
       <>
-        <li>Welcome {user.username}!</li>
+        <li>Welcome {currentUser.username}!</li>
         <li>
           <button onClick={logout}>Logout</button>
         </li>

@@ -5,7 +5,7 @@ import NavHeader from "./nav_header";
 const mapStateToProps = (state) => {
   const user = state.entities.users[state.session.id]
   return ({
-    currentUser: { user }
+    currentUser: user
   })
 };
 
