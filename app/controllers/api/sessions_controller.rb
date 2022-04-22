@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
       params[:user][:username], params[:user][:password])
     if @user
       login!(@user)
-      # redirect_to ...
+      render 'api/users/show'
     else
       render json: ['Invalid username or password combination'], status: 401
     end

@@ -16,8 +16,7 @@ const login = user => (
 
 const logout = () => (
   $.ajax({
-    method: 'DEELTE',
+    method: 'DELETE',
     url: 'api/session'
   })
 )
-
