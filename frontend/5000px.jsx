@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import configureStore from '../frontend/store/store'
+import Root from './components/root'
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("root");
   const store = configureStore();
-
+  
   // BEGIN TESTING
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   // END TESTING
-
-  ReactDOM.render(<h1>Hello World!</h1>, root)
+  
+  const root = document.getElementById("root");
+  ReactDOM.render(<Root store={store} />, root)
 })
