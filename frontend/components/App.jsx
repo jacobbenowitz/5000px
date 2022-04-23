@@ -13,9 +13,8 @@ import SignupFormContainer from "./session/signup_form_container";
 import LandingPageContainer from "./landing/landing_page_container";
 
 const App = () => (
-  <div>
+  <div className="grid-12-col">
     <header>
-      <h1>5000px</h1>
       <NavHeaderContainer />
     </header>
     <Switch>

@@ -1,0 +1,39 @@
+
+
+/* layouts */
+
+.center-simple {
+  display: grid;
+  place-items: center;
+}
+
+.grid-12-col {
+  height: inherit;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.center-span-5 {
+  grid-column: 5 / span 4;
+}
+
+.grid-4-col {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 14px;
+  justify-content: center;
+}
+
+.grid-2-row {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: end;
+}
+
+.grid-2-col {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0px;
+}
