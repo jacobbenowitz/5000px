@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default class SessionForm extends React.Component {
+export default class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,8 +26,8 @@ export default class SessionForm extends React.Component {
   render() {
 
     return (
-      <div id="session-form">
-        <h2>Log in</h2>
+      <div id="login-form">
+        <h2>Log in to 5000px</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Username
             <input
