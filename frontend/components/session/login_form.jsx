@@ -26,25 +26,36 @@ export default class LoginForm extends React.Component {
   render() {
 
     return (
-      <div id="login-form">
-        <h2>Log in to 5000px</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-            />
-          </label>
-          <label>Password
-            <input
-              type="password"
-              onChange={this.update('password')}
-            />
-          </label>
-          <button type="submit">Log in</button>
-          <span>Don't have an account? <Link to={'/signup'}>Sign up</Link></span>
-        </form>
+      <div className="session center-simple">
+        <div id="session-form">
+          <h3>Log in to 5000px</h3>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-input">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                value={this.state.username}
+                onChange={this.update('username')}
+                className="text-input"
+              />
+            </div>
+            <div className="form-input">
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                onChange={this.update('password')}
+                className="text-input"
+              />
+            </div>
+            <button type="submit" className="login">Log in</button>
+            <span className="alt-session-link">
+              <p>Don't have an account?</p>
+              <Link to={'/signup'}>Sign up</Link>
+            </span>
+          </form>
+        </div>
       </div>
     )
   }

@@ -20,3 +20,23 @@
   box-sizing: border-box;
   border-radius: 30px;
 }
+
+/* session */
+
+.login, .signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+
+  position: static;
+  width: 100%;
+  height: 48px;
+  left: calc(50% - 342px/2);
+  top: 166px;
+
+  background: #316ECA;
+  border-radius: 30px;
+  color: white;
+}

@@ -18,6 +18,10 @@ class User < ApplicationRecord
   validates :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_one :profile,
+    foreign_key: :user_id,
+    class_name: :Profile
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user

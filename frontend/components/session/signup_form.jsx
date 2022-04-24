@@ -26,32 +26,46 @@ export default class SignupForm extends React.Component {
 
   render() {
     return (
-      <div id="new-user-form">
-        <h2>Create an account</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
+      <div className="session center-simple">
+        <div id="session-form">
+          <h3>Create an account</h3>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-input">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                className="text-input"
+                value={this.state.username}
+                onChange={this.update('username')}
+              />
+            </div>
+            <div className="form-input">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                className="text-input"
+                value={this.state.email}
+                onChange={this.update('email')}
             />
-          </label>
-          <label>Email
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update('email')}
-            />
-          </label>
-          <label>Password
-            <input
-              type="password"
-              onChange={this.update('password')}
-            />
-          </label>
-          <button type="submit">Create account</button>
-          <span>Already got an account? <Link to={'/login'}>Log in</Link></span>
-        </form>
+            </div>
+            <div className="form-input">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                className="text-input"
+                onChange={this.update('password')}
+              />
+            </div>
+            <button className="signup" type="submit">Create account</button>
+            <span className="alt-session-link">
+              <p>Already got an account?</p>
+              <Link to={'/login'}>Log in</Link>
+            </span>
+          </form>
+        </div>
       </div>
     )
   }
