@@ -1,0 +1,17 @@
+/* .error-modal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 23px;
+
+  position: relative;
+  top: 125px;
+  min-width: 500px;
+  min-height: 70px;
+
+  background: #222222;
+} */
+
+.error-list {
+  color: #EB5750;
+}

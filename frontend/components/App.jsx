@@ -12,6 +12,7 @@ import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from "./session/signup_form_container";
 import NewProfileFormContainer from "./profile/new_profile_form_container";
 import LandingPageContainer from "./landing/landing_page_container";
+import LandingPage from "./landing/landing_page";
 
 const App = () => (
   <div className="grid-12-col">
@@ -22,7 +23,7 @@ const App = () => (
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <Route path="/profiles/settings" component={NewProfileFormContainer} />
-      {/* <Route path="/" component={LandingPageContainer}/> */}
+      <Route path="/" component={LandingPage}/>
 
     </Switch>
   </div>

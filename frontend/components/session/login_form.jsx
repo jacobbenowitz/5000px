@@ -38,7 +38,6 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-
     return (
       <div className="session center-simple">
         <div id="session-form">

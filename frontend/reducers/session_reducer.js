@@ -1,7 +1,6 @@
 import {
   RECEIVE_CURRENT_USER,
   LOGOUT_CURRENT_USER,
-  RECEIVE_ERRORS
 } from '../actions/session/session_actions';
 
 const _nullSession = {
@@ -13,9 +12,7 @@ const sessionReducer = (initialState = _nullSession, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      let nextState = Object.assign({}, initialState);
-      nextState.id = action.user.id
-      return nextState;
+      return { id: action.currentUser.id };
     case LOGOUT_CURRENT_USER:
       return _nullSession;
     default:

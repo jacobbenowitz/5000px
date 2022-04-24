@@ -67,3 +67,63 @@ input {
 input:focus {
   border: 2px solid #316ECA;
 }
+
+.sign-up-large {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+
+  padding: 0 24px 0 24px;
+  height: 56px;
+  width: 180px;
+  left: 20px;
+  top: 190px;
+
+  /* white */
+
+  background: #FFFFFF;
+  border-radius: 100px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+.sign-up-large:hover {
+  background-color: #EEEFF2;
+  color: #222222;
+}
+
+.sign-up-large:focus {
+  background-color: #FFFFFF;
+  color: #316ECA;
+}
+
+.landing-large-button {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+
+  position: static;
+  width: 255px;
+  height: 55px;
+  left: 438.5px;
+  top: 96px;
+
+  /* darkest-grey */
+
+  background: #222222;
+  border-radius: 30px;
+}
+
+.landing-large-button:hover {
+  background-color: #363636;
+}
+
+.landing-large-button:focus {
+  background-color: #316ECA;
+}

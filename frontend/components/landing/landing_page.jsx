@@ -1,15 +1,19 @@
-
-const heroH1 = ""
+import React from "react";
+import { Link } from "react-router-dom";
+import { Hero } from "./hero";
+import { DemoInfo } from "./demo_info";
+import { EditorsChoiceLanding } from "./editors_choice";
 
 const LandingPage = props => {
 
   return (
-    <div id='hero-container' >
-      <div id='hero-content'>
-        <div id='content'>
-          <h1></h1>
-        </div>
-      </div>
+    <div id="landing-page">
+      { Hero }
+      { DemoInfo }
+      { EditorsChoiceLanding }
     </div>
+
   )
 }
+
+export default LandingPage;
