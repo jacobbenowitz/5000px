@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default class NavHeader extends React.Component {
   constructor(props) {
@@ -19,10 +19,10 @@ export default class NavHeader extends React.Component {
     ) : (
         <>
           <li>
-            <Link to={'/login'}>Log in</Link>
+            <NavLink to={'/login'}>Log in</NavLink>
           </li>
           <li>
-            <Link to={'/signup'} className="sign-up">Sign up</Link>
+            <NavLink to={'/signup'} className="sign-up">Sign up</NavLink>
           </li>
         </>
     )
@@ -35,9 +35,9 @@ export default class NavHeader extends React.Component {
           </Link>
         </div>
         <div className="nav-links">
-          <Link to={'#'}>Discover</Link>
-          <Link to={'#'}>Popular photos</Link>
-          <Link to={'#'}>Editor's choice</Link>
+          <NavLink to={'#'}>Discover</NavLink>
+          <NavLink to={'#'}>Popular photos</NavLink>
+          <NavLink to={'#'}>Editor's choice</NavLink>
         </div>
         <ul id="greeting">
           {greeting}

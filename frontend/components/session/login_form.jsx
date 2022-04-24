@@ -23,6 +23,20 @@ export default class LoginForm extends React.Component {
     }
   }
 
+  renderErrors() {
+    return (
+      <div className="error-modal">
+        <ul className="error-list">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}> 
+              {error}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
   render() {
 
     return (
@@ -30,6 +44,7 @@ export default class LoginForm extends React.Component {
         <div id="session-form">
           <h3>Log in to 5000px</h3>
           <form onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
             <div className="form-input">
               <label htmlFor="username">Username</label>
               <input

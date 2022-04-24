@@ -5,13 +5,12 @@ const Demo = {
   // ensure no currentUser, if so log out
   // disable buttons on page
 
-
   async demoSignupForm() {
     // create variables for inputs and submit
     const username = document.getElementById('username-signup');
     const email = document.getElementById('email-signup');
     const password = document.getElementById('password-signup');
-    const submit = document.getElementById('submit-signup');
+    const submit = document.getElementById('hidden-demo');
 
     function getRandomInt(min, max) {
       min = Math.ceil(min);

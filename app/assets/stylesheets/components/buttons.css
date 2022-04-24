@@ -59,3 +59,11 @@
   background: #316ECA;
   border-radius: 30px;
 }
+
+input {
+  border: 2px solid transparent;
+}
+
+input:focus {
+  border: 2px solid #316ECA;
+}

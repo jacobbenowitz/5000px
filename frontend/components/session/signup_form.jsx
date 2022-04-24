@@ -10,15 +10,18 @@ export default class SignupForm extends React.Component {
       email: "",
       password: ""
     }
+    this.bindHandlers()
+  }
+
+  bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoLogin = this.demoLogin.bind(this);
+    this.demoSignup = this.demoSignup.bind(this)
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
-    const user = Object.assign({}, this.state)
-    this.props.processForm(user)
+    const user = Object.assign({}, this.state);
+    this.props.processForm(user);
   }
 
   update = type => {
@@ -27,9 +30,33 @@ export default class SignupForm extends React.Component {
     }
   }
 
-  demoLogin(e) {
+  demoScript(e) {
     e.preventDefault();
     Demo.demoSignupForm();
+  }
+
+  demoSignup = (e) => {
+    e.preventDefault();
+    const user = {
+      username: 'Guest',
+      email: 'guest@gmail.com',
+      password: 'password'
+    }
+    this.props.processForm(user);
+  }
+
+  renderErrors() {
+    return (
+      <div className="error-modal">
+        <ul className="error-list">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}> 
+              {error}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
   }
 
   render() {
@@ -38,6 +65,7 @@ export default class SignupForm extends React.Component {
         <div id="session-form">
           <h3>Create an account</h3>
           <form onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
             <div className="form-input">
               <label htmlFor="username-signup">Username</label>
               <input
@@ -74,14 +102,21 @@ export default class SignupForm extends React.Component {
             
             <button className="demo_button"
               id="demo-signup"
-              onClick={this.demoLogin}
-            >Demo login</button>
-            
+              onClick={this.demoScript}
+            >Demo account</button>
+
             <span className="alt-session-link">
               <p>Already got an account?</p>
               <Link to={'/login'}>Log in</Link>
             </span>
+
           </form>
+
+            <button
+              onClick={this.demoSignup}
+              id="hidden-demo">Demo only
+            </button>
+          
         </div>
       </div>
     )

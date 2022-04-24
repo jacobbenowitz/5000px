@@ -3,14 +3,12 @@ import {
   RECEIVE_ERRORS
 } from '../actions/session/session_actions';
 
-const _clearErrors = []
-
-const sessionErrorsReducer = (initialState = _clearErrors, action) => {
+const sessionErrorsReducer = (initialState = [], action) => {
   Object.freeze(initialState);
-  let nextState = Object.assign({}, initialState);
+
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign({}, _clearErrors)
+      return [];
     case RECEIVE_ERRORS:
       return action.errors;
     default:
