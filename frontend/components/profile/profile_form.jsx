@@ -13,7 +13,7 @@ export default class ProfileForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleSubmit(this.state);
+    this.props.submitForm(this.state);
   }
   
   update = field => {
@@ -87,23 +87,23 @@ export default class ProfileForm extends React.Component {
               />
               </div>
               
-            <div className="form-input">
+            <div className="form-input" onChange={this.update('gender')}>
               <label htmlFor="gender-radio-group">Gender</label>
               <div id="gender-radio-group">
                 <input type="radio" 
                   value="Male" 
                   name="gender"
-                />
+                /> Male
                 
                 <input type="radio" 
                   value="Female" 
                   name="gender"
-                />
+                /> Female
                 
                 <input type="radio"
                   value="Not specified"
                   name="gender"
-                />
+                /> Not specified
               </div>
             </div>
 
@@ -129,9 +129,7 @@ export default class ProfileForm extends React.Component {
               />
             </div>
             <button type="submit"
-              className="save-profile"
-              value="Save changes"
-            />
+              className="save-profile">Save changes</button>
           </form>
         </div>
       </div>

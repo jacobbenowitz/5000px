@@ -1,8 +1,12 @@
+require("babel-core/register");
+require("babel-polyfill");
+
 import React from 'react';
-import ReactDOM from 'react-dom'
-import configureStore from '../frontend/store/store'
+import ReactDOM from 'react-dom';
+import configureStore from '../frontend/store/store';
 import { createProfile } from './actions/profile/profile_actions';
-import Root from './components/root'
+import Root from './components/root';
+
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;

@@ -30,6 +30,10 @@ header {
   min-width: 16px;
 }
 
+#primary-logo:hover {
+  fill: #316ECA;
+}
+
 .nav-links {
   display: flex;
   flex: 1 1 0%;

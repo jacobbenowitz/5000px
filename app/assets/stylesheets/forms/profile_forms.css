@@ -1,0 +1,41 @@
+.profile-settings {
+  grid-column: 1 / span 12;
+  height: 100vh;
+  background-color: #F7F8FA;
+}
+
+#profile-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 100%;
+  align-items: center;
+}
+
+#profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+
+  position: absolute;
+  width: 402px;
+  height: min-content;
+  left: calc(50% - 402px/2);
+  top: calc(50% - 591px/2);
+
+  background: #FFFFFF;
+  /* light-grey */
+
+  border: 1px solid #EEEFF2;
+  box-sizing: border-box;
+}
+
+#session-form > .form-title {
+  padding-bottom: 15px;
+}
+
+#gender-radio-group {
+  display: flex;
+}
