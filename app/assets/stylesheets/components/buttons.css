@@ -40,3 +40,20 @@
   border-radius: 30px;
   color: white;
 }
+
+.save-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 30px;
+
+  position: static;
+  /* width: 167px; */
+  height: 32px;
+  left: 165px;
+  top: 23px;
+
+  background: #316ECA;
+  border-radius: 30px;
+}
