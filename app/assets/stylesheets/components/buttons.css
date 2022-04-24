@@ -106,13 +106,14 @@ input:focus {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  padding: 0 32px 0 32px;
 
-  position: static;
-  width: 255px;
+  /* position: static; */
+  width: auto;
   height: 55px;
-  left: 438.5px;
-  top: 96px;
+  font-size: 24px;
+  line-height: 64px;
+  font-weight: 600;
 
   /* darkest-grey */
 
@@ -122,6 +123,7 @@ input:focus {
 
 .landing-large-button:hover {
   background-color: #363636;
+  color: white;
 }
 
 .landing-large-button:focus {

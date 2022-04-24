@@ -36,22 +36,23 @@ export const EditorsChoiceLanding = (
         <span>Our editors are always on the lookout for jaw dropping content for you to discover and stay inspired. Check back weekly to see what’s new.</span>
         <Link to={'/editors'} className="landing-large-button">View Editor's Choice</Link>
       </div>
+      
+      <div className="image-gallery-2-row">
+        <div className="gallery-4-row">
+          <div id="ld-gal-img-1" className="landing-gallery-image-item"></div>
+          <div id="ld-gal-img-2" className="landing-gallery-image-item"></div>
+          <div id="ld-gal-img-3" className="landing-gallery-image-item"></div>
+          <div id="ld-gal-img-4" className="landing-gallery-image-item"></div>
+        </div>
+        <div className="gallery-4-row">
+          <div id="ld-gal-img-5" className="landing-gallery-image-item"></div>
+          <div id="ld-gal-img-6" className="landing-gallery-image-item"></div>
+          <div id="ld-gal-img-7" className="landing-gallery-image-item"></div>
+          <div id="ld-gal-img-8" className="landing-gallery-image-item"></div>
+        </div>
+      </div>
     </div>
 
-    <div id="image-gallery-2-row">
-      <div className="gallery-4-row">
-        <div className="gallery-image-item"></div>
-        <div className="gallery-image-item"></div>
-        <div className="gallery-image-item"></div>
-        <div className="gallery-image-item"></div>
-      </div>
-      <div className="gallery-4-row">
-        <div className="gallery-image-item"></div>
-        <div className="gallery-image-item"></div>
-        <div className="gallery-image-item"></div>
-        <div className="gallery-image-item"></div>
-      </div>
-    </div>
 
   </div>
 )
