@@ -39,7 +39,7 @@ export default class NavHeader extends React.Component {
       <>
         <div id="user-links">
           {/* <button onClick={logout}>Logout</button> */}
-          <div id="user-avatar" onClick={buildModal('userLinks')}>
+          <div id="user-avatar" onClick={this.buildModal('userLinks')}>
             <span>{initials}</span>
           </div>
           {/* <NavModal></NavModal> */}
