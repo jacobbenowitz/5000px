@@ -48,16 +48,27 @@ header {
   cursor: pointer;
 }
 
-#greeting {
+#user-links {
   display: flex;
   justify-content: flex-end;
-  flex: 1 1 0%;
   flex-flow: row wrap;
   align-items: center;
-  max-height: 30px;
   overflow: hidden;
 }
 
-#greeting li {
+#user-links-container li {
   margin-right: 24px;
 }
+
+#user-avatar {
+  background-color: #454578;
+  color: white;
+  border-radius: 100px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+

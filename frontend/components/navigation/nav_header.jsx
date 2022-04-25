@@ -1,20 +1,57 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import NavModal from "./nav_modal"
+
+const discoverLinks = [
+  { title: 'Popular photos', url: '/popular' },
+  { title: 'Upcoming photos', url: '/upcoming' },
+  { title: 'Fresh photos', url: '/fresh' },
+  { title: 'Editors Choice', url: '/editors-choice' }
+]
+
+const userLinks = [
+  { title: 'Profile', url: '/profile' },
+  { title: 'Galleries', url: '/galleries' },
+  { title: 'Liked photos', url: '/likes' },
+  { title: 'Settings', url: '/profiles/settings' },
+  { title: 'Logout', url: '/' }
+]
 
 export default class NavHeader extends React.Component {
   constructor(props) {
     super(props)
   }
 
+  buildModal = type => {
+    return e => {
+      e.preventDefault();
+      
+    }
+
+  }
+
+
   render() {
     const {currentUser, logout} = this.props;
-
-    const greeting = currentUser ? (
+    const initials = currentUser.username.slice(0, 2).toUpperCase();
+    console.log(initials)
+    const userLinks = currentUser ? (
       <>
-        <li>Welcome {currentUser.username}!</li>
-        <li>
-          <button onClick={logout}>Logout</button>
-        </li>
+        <div id="user-links">
+          {/* <button onClick={logout}>Logout</button> */}
+          <div id="user-avatar" onClick={buildModal('userLinks')}>
+            <span>{initials}</span>
+          </div>
+          {/* <NavModal></NavModal> */}
+          <Link to={'/'} className="upload-button">
+            <div id="upload-button-content">
+              <svg id="upload-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.07192 9.19719L0.25836 8.40442C-0.08612 8.06874 -0.08612 7.52595 0.25836 7.19384L7.37884 0.251758C7.72332 -0.0839192 8.28035 -0.0839192 8.62116 0.251758L15.7416 7.19027C16.0861 7.52595 16.0861 8.06874 15.7416 8.40085L14.9281 9.19362C14.5799 9.53286 14.0119 9.52572 13.6711 9.17933L9.46771 4.87981V15.143C9.46771 15.6179 9.07558 16 8.58818 16H7.41548C6.92808 16 6.53596 15.6179 6.53596 15.143V4.87981L2.32891 9.1829C1.98809 9.53286 1.42006 9.54001 1.07192 9.19719V9.19719Z" fill="#222222"/>
+              </svg>
+              <span>Upload</span>
+            </div>
+          </Link>
+        </div>
       </>
     ) : (
         <>
@@ -39,9 +76,7 @@ export default class NavHeader extends React.Component {
           <NavLink to={'#'}>Popular photos</NavLink>
           <NavLink to={'#'}>Editor's choice</NavLink>
         </div>
-        <ul id="greeting">
-          {greeting}
-        </ul>
+        {userLinks}
       </div>
     );
   };

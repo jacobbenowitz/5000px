@@ -1,0 +1,35 @@
+footer {
+  grid-column: 1 / span 12;
+  padding: 32px 68px 0 68px;
+}
+
+#navFooter {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+#footer-top {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+}
+
+#footer-top h5, #footer-top a {
+  color: rgb(109, 115, 120);
+}
+
+#footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2rem 0 1rem 0;
+  border-top: 1px solid #c6c8cc;
+}
+
+.footer-link-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-link-list a {
+  margin-bottom: 16px;
+}

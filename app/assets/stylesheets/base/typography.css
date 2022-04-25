@@ -32,6 +32,13 @@ h4 {
   margin-bottom: 0.8em;
 }
 
+h5 {
+  font-size: 21px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
 a {
   font-size: 16px;
 }
