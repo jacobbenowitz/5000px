@@ -23,8 +23,7 @@ const mapStateToProps = ({ errors }) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  processForm: user => dispatch(signup(user)),
-  createProfile: emptyProfile => dispatch(createProfile(emptyProfile))
+  processForm: user => dispatch(signup(user))
 
 });
 

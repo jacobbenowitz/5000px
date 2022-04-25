@@ -5,16 +5,9 @@ import ProfileForm from "./profile_form";
 
 const mapStateToProps = state => {
   const user = state.entities.users[state.session.id];
-  const username = user.username;
-  const email = user.email;
   const userId = user.id;
   
   return {
-    currentUser: user,
-    user: {
-      username: username,
-      email: email,
-    },
     profile: {
       first_name: '',
       last_name: '',
@@ -30,8 +23,7 @@ const mapStateToProps = state => {
       about: '',
       gender: '',
       user_id: userId
-    },
-    formType: 'Create profile'
+    }
   }
 }
 

@@ -5,17 +5,11 @@ import ProfileForm from "./profile_form";
 
 const mapStateToProps = state => {
   const user = state.entities.users[state.session.id];
-  const username = user.username;
-  const email = user.email;
+  debugger
   const userId = user.id;
-  const errors = state.errors.profiles
+  const errors = state.errors.profiles;
   
   return {
-    currentUser: user,
-    user: {
-      username: username,
-      email: email,
-    },
     profile: {
       first_name: '',
       last_name: '',

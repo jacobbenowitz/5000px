@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Demo from "../../demo/demo_user_signup"
+import Demo from "../../demo/demo_user_signup";
+
+const submitPromise = milliseconds => {
+  return new Promise(resolve => 
+  qsetTimeout(resolve, milliseconds))
+}
 
 export default class SignupForm extends React.Component {
   constructor(props) {
@@ -15,13 +20,23 @@ export default class SignupForm extends React.Component {
 
   bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoSignup = this.demoSignup.bind(this)
+    this.demoSignup = this.demoSignup.bind(this);
+    this.redirectCreateProfile = this.redirectCreateProfile.bind(this);
+
+  }
+
+  redirectCreateProfile() {
+    this.props.history.push('/profiles/new');
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    
+    submitPromise(300)
+      .then(this.props.processForm(user))
+      .then(this.redirectCreateProfile())
+    
     // TODO: create empty profile, but need user id inside of emptyProfile!
     // can we chain a .then(createProfile) on the session signup thunk action?
     // this.props.createProfile(this.props.emptyProfile);

@@ -11,9 +11,10 @@ export default class ProfileForm extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.currentUser.id;
-    // debugger
-    this.props.fetchUser(id);
+    // FETCH USER NOT WORKING... IS IT NEEDED?
+    // const id = this.props.profile.user_id;
+    // // debugger
+    // this.props.fetchUser(id);
   }
 
   /// SEPERATE USERNAME and EMAIL from profile = done

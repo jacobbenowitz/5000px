@@ -11,7 +11,7 @@ import NavHeaderContainer from './navigation/nav_header_container';
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from "./session/signup_form_container";
 import NewProfileFormContainer from "./profile/new_profile_form_container";
-import LandingPageContainer from "./landing/landing_page_container";
+import EditProfileFormContainer from "./profile/edit_profile_form_container";
 import LandingPage from "./landing/landing_page";
 import NavFooter from "./navigation/nav_footer";
 
@@ -23,8 +23,10 @@ const App = () => (
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <Route path="/profiles/settings" component={NewProfileFormContainer} />
-      <Route path="/" component={LandingPage}/>
+      <Route path="/profiles/new" component={NewProfileFormContainer} />
+      <Route path="/profiles/settings" component={EditProfileFormContainer} />
+      <Route path="/" component={LandingPage} />
+      {/* add user auth: ProtectedRoute */}
     </Switch>
     <footer>
       <NavFooter />
