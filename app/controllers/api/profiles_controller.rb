@@ -10,8 +10,19 @@ class Api::ProfilesController < ApplicationController
     end
   end
 
-  # def show
-  # end
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
+  def update
+    @profile = Profile.find_by(id: params[:id])
+
+    if @profile.update(profile_params)
+      render :show
+    else
+      render json: @profile.errors.full_messages, status 422
+    end
+  end
 
   
   private

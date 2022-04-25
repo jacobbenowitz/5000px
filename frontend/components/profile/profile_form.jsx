@@ -3,12 +3,17 @@ import React from "react";
 export default class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.profile;
+    this.state = {
+      profile: this.props.profile,
+      user: this.props.user
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser.id);
+    const id = this.props.currentUser.id;
+    debugger
+    this.props.fetchUser(id);
   }
 
   /// SEPERATE USERNAME and EMAIL from profile
@@ -19,7 +24,7 @@ export default class ProfileForm extends React.Component {
     // check if user has a profile
     // if yes, then update(this.state)
     // if no, then create(this.state)
-    this.props.submitForm(this.state);
+    this.props.submitForm(this.state.profile);
   }
   
   update = field => {
@@ -29,7 +34,7 @@ export default class ProfileForm extends React.Component {
   };
 
   render() {
-    const { profile, formType } = this.props;
+    const { profile, user} = this.props;
 
     return (
       <div className="profile-settings center-simple">
@@ -38,27 +43,6 @@ export default class ProfileForm extends React.Component {
           <span className="right-align">* is required</span>
 
           <form onSubmit={this.handleSubmit}>
-            <div className="form-input">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                id="username"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="text-input"
-              />
-            </div>
-            
-            <div className="form-input">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="text-input"
-              />
-            </div>
               
             <div className="form-input">
               <label htmlFor="first-name">First name</label>

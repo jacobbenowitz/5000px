@@ -3,7 +3,7 @@
   height: 600px;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  background-image: url('/app/assets/images/placeholder-image.png');
+  /* background-image: url('/app/assets/images/placeholder-image.png'); */
   background-color: #707070;
   background-position: center;
   background-repeat: no-repeat;

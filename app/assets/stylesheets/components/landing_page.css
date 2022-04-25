@@ -3,7 +3,7 @@
   display: grid;
   place-items: center;
   height: 400px;
-  background-image: url('/app/assets/images/placeholder-image.png');
+  /* background-image: url('/app/assets/images/placeholder-image.png'); */
   background-color: #707070;
   background-position: center;
   background-repeat: no-repeat;
