@@ -28,7 +28,7 @@ export default class NavHeader extends React.Component {
       </div>
     ) : (
         <div id="user-links">
-          <li>
+          <li id="login-link">
             <NavLink to={'/login'}>Log in</NavLink>
           </li>
           <li>

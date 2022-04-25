@@ -57,7 +57,7 @@ header {
   overflow: hidden;
 }
 
-#user-avatar {
+#user-avatar, #login-link {
   margin-right: 24px;
 }
 

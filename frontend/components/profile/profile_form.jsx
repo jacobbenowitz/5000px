@@ -12,7 +12,7 @@ export default class ProfileForm extends React.Component {
 
   componentDidMount() {
     const id = this.props.currentUser.id;
-    debugger
+    // debugger
     this.props.fetchUser(id);
   }
 
@@ -28,8 +28,12 @@ export default class ProfileForm extends React.Component {
   }
   
   update = field => {
+    // how to setState for segment of state?
     return e => this.setState(
-      { [field]: e.target.value }
+      {
+        profile:
+          { [field]: e.target.value }
+      }
     )
   };
 
@@ -43,13 +47,34 @@ export default class ProfileForm extends React.Component {
           <span className="right-align">* is required</span>
 
           <form onSubmit={this.handleSubmit}>
+            <div className="form-input">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                value={this.state.user.username}
+                onChange={this.update('username')}
+                className="text-input"
+              />
+            </div>
+            
+            <div className="form-input">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={this.state.user.email}
+                onChange={this.update('email')}
+                className="text-input"
+              />
+            </div>
               
             <div className="form-input">
               <label htmlFor="first-name">First name</label>
               <input
                 type="text"
                 id="first-name"
-                value={this.state.first_name}
+                value={this.state.profile.first_name}
                 onChange={this.update('first_name')}
                 className="text-input"
               />
@@ -60,7 +85,7 @@ export default class ProfileForm extends React.Component {
               <input
                 type="text"
                 id="last-name"
-                value={this.state.last_name}
+                value={this.state.profile.last_name}
                 onChange={this.update('last_name')}
                 className="text-input"
               />
@@ -71,7 +96,7 @@ export default class ProfileForm extends React.Component {
               <input
                 type="date"
                 id="birthday"
-                value={this.state.birthday}
+                value={this.state.profile.birthday}
                 onChange={this.update('birthday')}
                 className="date-input"
               />
@@ -109,7 +134,7 @@ export default class ProfileForm extends React.Component {
               <input
                 type="text"
                 id="cameras"
-                value={this.state.cameras}
+                value={this.state.profile.cameras}
                 onChange={this.update('cameras')}
                 className="text-input"
               />
@@ -120,7 +145,7 @@ export default class ProfileForm extends React.Component {
               <input
                 type="text"
                 id="lenses"
-                value={this.state.lenses}
+                value={this.state.profile.lenses}
                 onChange={this.update('lenses')}
                 className="text-input"
               />

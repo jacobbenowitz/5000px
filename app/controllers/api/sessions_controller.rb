@@ -1,8 +1,5 @@
 class Api::SessionsController < ApplicationController
 
-  # def new
-  #   render :new
-  # end
 
   # login
   def create

@@ -20,8 +20,9 @@ class Api::ProfilesController < ApplicationController
     if @profile.update(profile_params)
       render :show
     else
-      render json: @profile.errors.full_messages, status 422
+      render json: @profile.errors.full_messages, status: 422
     end
+
   end
 
   

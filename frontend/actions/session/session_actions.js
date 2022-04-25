@@ -44,6 +44,6 @@ export const logout = () => dispatch => (
 )
 
 export const fetchCurrentUser = userId => dispatch => (
-  SessionApiUtil.fetchUser().then(user =>
+  SessionApiUtil.fetchUser(userId).then(user =>
     dispatch(receiveCurrentUser(user)))
 )
