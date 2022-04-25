@@ -37,5 +37,20 @@
 }
 
 #gender-radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.radio-item {
   display: flex;
+  align-items: center;
+}
+
+.radio-item > input {
+  margin-right: 0.5rem;
+}
+
+.radio-item > label {
+  white-space: nowrap;
 }

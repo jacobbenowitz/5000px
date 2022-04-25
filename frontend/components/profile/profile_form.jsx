@@ -11,8 +11,14 @@ export default class ProfileForm extends React.Component {
     this.props.fetchUser(this.props.currentUser.id);
   }
 
+  /// SEPERATE USERNAME and EMAIL from profile
+  // -> tabs with separate form!!
+  
   handleSubmit(e) {
     e.preventDefault();
+    // check if user has a profile
+    // if yes, then update(this.state)
+    // if no, then create(this.state)
     this.props.submitForm(this.state);
   }
   
@@ -90,20 +96,27 @@ export default class ProfileForm extends React.Component {
             <div className="form-input" onChange={this.update('gender')}>
               <label htmlFor="gender-radio-group">Gender</label>
               <div id="gender-radio-group">
-                <input type="radio" 
-                  value="Male" 
-                  name="gender"
-                /> Male
-                
-                <input type="radio" 
-                  value="Female" 
-                  name="gender"
-                /> Female
-                
-                <input type="radio"
-                  value="Not specified"
-                  name="gender"
-                /> Not specified
+                <div className="radio-item">
+                  <input type="radio" 
+                    value="Male" 
+                    name="gender[male]"
+                    />
+                    <label htmlFor="gender[male]">Male</label>
+                </div>
+                <div className="radio-item">
+                  <input type="radio" 
+                    value="Female" 
+                    name="gender[female]"
+                  />
+                  <label htmlFor="gender[female]">Female</label>
+                </div>
+                <div className="radio-item">
+                  <input type="radio"
+                    value="Not specified"
+                    name="gender[not-specified]"
+                  />
+                  <label htmlFor="gender[not-specified]">Not specified</label>
+                </div>
               </div>
             </div>
 

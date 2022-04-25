@@ -21,7 +21,6 @@ export const updateProfile = profile => (
   })
 );
 
-
 export const deleteProfile = profileId => (
   $.ajax({
     method: 'DELETE',
