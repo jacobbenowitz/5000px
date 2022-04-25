@@ -1,21 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import NavModal from "./nav_modal"
-
-const discoverLinks = [
-  { title: 'Popular photos', url: '/popular' },
-  { title: 'Upcoming photos', url: '/upcoming' },
-  { title: 'Fresh photos', url: '/fresh' },
-  { title: 'Editors Choice', url: '/editors-choice' }
-]
-
-const userLinks = [
-  { title: 'Profile', url: '/profile' },
-  { title: 'Galleries', url: '/galleries' },
-  { title: 'Liked photos', url: '/likes' },
-  { title: 'Settings', url: '/profiles/settings' },
-  { title: 'Logout', url: '/' }
-]
+import NavLinkItem from "./nav_link_item";
 
 export default class NavHeader extends React.Component {
   constructor(props) {
@@ -34,7 +19,6 @@ export default class NavHeader extends React.Component {
   render() {
     const {currentUser, logout} = this.props;
     const initials = currentUser.username.slice(0, 2).toUpperCase();
-    console.log(initials)
     const userLinks = currentUser ? (
       <>
         <div id="user-links">
@@ -42,7 +26,6 @@ export default class NavHeader extends React.Component {
           <div id="user-avatar" onClick={this.buildModal('userLinks')}>
             <span>{initials}</span>
           </div>
-          {/* <NavModal></NavModal> */}
           <Link to={'/'} className="upload-button">
             <div id="upload-button-content">
               <svg id="upload-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,9 +55,7 @@ export default class NavHeader extends React.Component {
           </Link>
         </div>
         <div className="nav-links">
-          <NavLink to={'#'}>Discover</NavLink>
-          <NavLink to={'#'}>Popular photos</NavLink>
-          <NavLink to={'#'}>Editor's choice</NavLink>
+          <NavLinkItem />
         </div>
         {userLinks}
       </div>

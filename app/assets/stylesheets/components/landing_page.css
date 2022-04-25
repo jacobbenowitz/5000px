@@ -84,4 +84,5 @@
 
 #landing-page {
   overflow: hidden;
+  z-index: 1;
 }

@@ -6,6 +6,7 @@ header {
   position: sticky;
   background-color: white;
   top: 0;
+  z-index: 5;
 }
 
 #nav-header {
@@ -43,7 +44,7 @@ header {
   overflow: hidden;
 }
 
-.nav-links a {
+.nav-links > a {
   margin-left: 24px;
   cursor: pointer;
 }

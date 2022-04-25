@@ -1,0 +1,50 @@
+
+.nav-modal-container.modal-off {
+  visibility: hidden;
+}
+
+.nav-modal-container:hover {
+  visibility: visible;
+}
+
+.nav-modal-container {
+  visibility: visible;
+  position: fixed;
+  top: 62px;
+  left: 200px;
+  left: 162px;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 0.7rem;
+  border-radius: 8px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px -2px 1px);
+  background-color: white;
+}
+
+.modal-list-item {
+  background-color: white;
+  display: flex;
+  padding: 6px;
+}
+
+.modal-list-item:hover {
+  background-color: #316ECA;
+}
+.modal-list-item:hover a {
+  color: white;
+}
+
+.nav-modal-container::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(255, 255, 255);
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px -2px 1px);
+}
