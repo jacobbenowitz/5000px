@@ -57,7 +57,7 @@ header {
   overflow: hidden;
 }
 
-#user-links-container li {
+#user-links li:first-child {
   margin-right: 24px;
 }
 

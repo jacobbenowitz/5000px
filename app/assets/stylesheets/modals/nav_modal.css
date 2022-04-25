@@ -10,9 +10,6 @@
 .nav-modal-container {
   visibility: visible;
   position: fixed;
-  top: 62px;
-  left: 200px;
-  left: 162px;
   z-index: 20;
 
   display: flex;
@@ -47,4 +44,14 @@
   border-right: 10px solid transparent;
   border-bottom: 10px solid rgb(255, 255, 255);
   filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px -2px 1px);
+}
+
+#discover-modal {
+  top: 62px;
+  left: 162px;
+}
+
+#user-modal {
+  top: 62px;
+  right: 135px;
 }

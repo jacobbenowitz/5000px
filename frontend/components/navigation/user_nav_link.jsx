@@ -1,9 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import DiscoverNavModal from "./discover_nav_modal";
+import UserNavModalContainer from "./user_nav_modal_container";
 
 
-export default class NavLinkItem extends React.Component {
+export default class UserNavLinkItem extends React.Component {
 
   constructor(props) {
     super(props);
@@ -12,7 +11,6 @@ export default class NavLinkItem extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
-    // this.handleClick = this, handleClick.bind(this);
   }
 
   handleClick(e) {
@@ -27,12 +25,11 @@ export default class NavLinkItem extends React.Component {
 
     return (
       <>
-        <NavLink
-          to={'/discover'}
-          onClick={this.handleClick}
-        >Discover</NavLink>
-        <DiscoverNavModal
-          klass={modalClass} />
+        <div id="user-avatar"
+          onClick={this.handleClick}>
+        <span>{this.props.initials}</span>
+        </div>
+          <UserNavModalContainer klass={modalClass}/>
       </>
     )
       
