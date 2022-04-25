@@ -1,6 +1,5 @@
 import * as ProfileApiUtil from '../../util/profile_api_util';
 
-
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'; // profile
 export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS'; // [errors]
 export const REMOVE_PROFILE = 'REMOVE_PROFILE';

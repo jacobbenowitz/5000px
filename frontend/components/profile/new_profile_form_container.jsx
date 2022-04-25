@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { createProfile } from "../../actions/profile/profile_actions";
+import { createProfile, fetchProfile, updateProfile } from "../../actions/profile/profile_actions";
 import { fetchCurrentUser } from "../../actions/session/session_actions"
 import ProfileForm from "./profile_form";
 
@@ -8,6 +8,7 @@ const mapStateToProps = state => {
   const username = user.username;
   const email = user.email;
   const userId = user.id;
+  const errors = state.errors.profiles
   
   return {
     currentUser: user,
@@ -28,10 +29,10 @@ const mapStateToProps = state => {
       city: '',
       country: '',
       about: '',
-      gender: '',
+      gender: 'Not specified',
       user_id: userId
     },
-    formType: 'Create profile'
+    errors: errors
   }
 }
 

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { createProfile } from "../../actions/profile/profile_actions";
+import { updateProfile } from "../../actions/profile/profile_actions";
 import { fetchCurrentUser } from "../../actions/session/session_actions"
 import ProfileForm from "./profile_form";
 
@@ -36,7 +36,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  submitForm: profile => dispatch(createProfile(profile)),
+  submitForm: profile => dispatch(updateProfile(profile)),
   fetchUser: userId => dispatch(fetchCurrentUser(userId))
 })
 

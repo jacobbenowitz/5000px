@@ -1,22 +1,21 @@
 import {
   RECEIVE_PROFILE,
-  REMOVE_PROFILE
+  RECEIVE_PROFILE_ERRORS,
 } from '../actions/profile/profile_actions';
 
 
-const profilesReducer = (initialState = {}, action) => {
+const profilesErrorReducer = (initialState = [], action) => {
   Object.freeze(initialState);
   let nextState = Object.assign({}, initialState);
 
   switch (action.type) {
     case RECEIVE_PROFILE:
-      return { [action.profile.id]: action.profile };
-    case REMOVE_PROFILE:
-      delete nextState[action.profileId];
-      return nextState;
+      return [];
+    case RECEIVE_PROFILE_ERRORS:
+      return Object.values(action.errors);
     default:
       return initialState;
   }
 }
 
-export default profilesReducer;
+export default profilesErrorReducer;

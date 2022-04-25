@@ -22,6 +22,9 @@ export default class SignupForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+    // TODO: create empty profile, but need user id inside of emptyProfile!
+    // can we chain a .then(createProfile) on the session signup thunk action?
+    // this.props.createProfile(this.props.emptyProfile);
   }
 
   update = type => {
