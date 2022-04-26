@@ -32,7 +32,7 @@ profile_1 = {
   country: 'United States',
   about: 'My little bio is amazing',
   gender: 'Male',
-  user_id: "#{user_1_saved.id}"
+  user_id: user_1_saved.id
 }
 
 Profile.create(profile_1)
