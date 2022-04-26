@@ -4,11 +4,12 @@ import { fetchCurrentUser } from "../../actions/session/session_actions";
 import NewProfileForm from "./new_profile_form";
 import {getTodaysDate} from "../../util/todays_date_util";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const userId = state.session.id;
-  const errors = state.errors.profiles
-  debugger
-  return {
+  const errors = state.errors.profiles;
+  
+  // review nested profile
+  const profile = {
     profile: {
       first_name: '',
       last_name: '',
@@ -26,7 +27,11 @@ const mapStateToProps = state => {
       user_id: userId
     },
     errors: errors
-  }
+  };
+
+  debugger
+
+  return profile;
 }
 
 const mapDispatchToProps = dispatch => ({

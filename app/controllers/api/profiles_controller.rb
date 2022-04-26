@@ -2,10 +2,12 @@ class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-
+    debugger
     if @profile.save
+      debugger
       render :show
     else
+      debugger
       render json: @profile.errors.full_messages, status: 401
     end
   end

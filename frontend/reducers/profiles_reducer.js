@@ -10,6 +10,7 @@ const profilesReducer = (initialState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PROFILE:
+      debugger
       return Object.assign({}, nextState, { [action.profile.id]: action.profile });
     case REMOVE_PROFILE:
       delete nextState[action.profileId];

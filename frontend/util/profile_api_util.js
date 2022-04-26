@@ -12,13 +12,14 @@ export const fetchProfile = profileId => (
   })
 );
 
-export const createProfile = profile => (
-  $.ajax({
+export const createProfile = profile => {
+  debugger
+  return $.ajax({
     method: 'POST',
     url: '/api/profiles',
     data: { profile }
   })
-);
+};
 
 export const updateProfile = profile => (
   $.ajax({

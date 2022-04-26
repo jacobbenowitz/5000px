@@ -5,16 +5,16 @@ export default class NewProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.profile;
-    debugger
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
+    debugger
   }
 
   // -> tabs with separate form!! = NOT done
   
   handleSubmit(e) {
     e.preventDefault();
-    
+    debugger
     this.props.submitForm(this.state);
     this.redirectHome();
   }
