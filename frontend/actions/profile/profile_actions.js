@@ -1,13 +1,19 @@
 import * as ProfileApiUtil from '../../util/profile_api_util';
 
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'; // profile
+export const RECEIVE_PROFILES = 'RECEIVE_PROFILES'; // [profiles]
 export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS'; // [errors]
-export const REMOVE_PROFILE = 'REMOVE_PROFILE';
+export const REMOVE_PROFILE = 'REMOVE_PROFILE'; // profileId
 
 // regular action creators
 const receiveProfile = profile => ({
   type: RECEIVE_PROFILE,
   profile
+})
+
+const receiveProfiles = profiles => ({
+  type: RECEIVE_PROFILES,
+  profiles
 })
 
 const receiveProfileErrors = errors => ({
@@ -21,10 +27,14 @@ const removeProfile = profileId => ({
 })
 
 // thunk action creators
+export const fetchProfiles = () => dispatch => {
+  ProfileApiUtil.fetchProfiles().then(profiles =>
+    dispatch(receiveProfile(profiles))
+  )
+}
 
-// fetch profile using userId
-export const fetchProfile = userId => dispatch => {
-  ProfileApiUtil.fetchProfile(userId).then(profile =>
+export const fetchProfile = profileId => dispatch => {
+  ProfileApiUtil.fetchProfile(profileId).then(profile =>
     dispatch(receiveProfile(profile))
   )
 }

@@ -1,15 +1,22 @@
+export const fetchProfiles = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/profiles'
+  })
+)
+
+export const fetchProfile = profileId => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/profiles/${profileId}`
+  })
+);
+
 export const createProfile = profile => (
   $.ajax({
     method: 'POST',
     url: '/api/profiles',
     data: { profile }
-  })
-);
-
-export const fetchProfile = userId => (
-  $.ajax({
-    method: 'GET',
-    url: `/api/profiles/${userId}`
   })
 );
 

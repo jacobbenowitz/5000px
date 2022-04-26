@@ -11,7 +11,7 @@ export default class EditProfileForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.props.currentUser)
+    this.props.fetchProfile(this.props.profile.id)
   }
 
   // -> tabs with separate form!! = NOT done
@@ -48,7 +48,6 @@ export default class EditProfileForm extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
@@ -79,7 +78,7 @@ export default class EditProfileForm extends React.Component {
               />
               </div>
               
-            <div className="form-input">
+            {/* <div className="form-input">
               <label htmlFor="birthday">Birthday</label>
               <input
                 type="date"
@@ -88,7 +87,7 @@ export default class EditProfileForm extends React.Component {
                 onChange={this.update('birthday')}
                 className="date-input"
               />
-            </div>
+            </div> */}
             
             <div className="form-input" onChange={this.update('gender')}>
               <label htmlFor="gender-radio-group">Gender</label>

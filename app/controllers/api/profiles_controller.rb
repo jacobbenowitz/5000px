@@ -11,9 +11,11 @@ class Api::ProfilesController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
+    # user = User.find(params[:id])
     # use activeRecord associataion to get profile
-    @profile = user.profile 
+    # @profile = user.profile 
+
+    @profile = Profile.find_by(id: params[:id])
   end
 
   def update

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default class ProfileForm extends React.Component {
+export default class NewProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.profile;
-
+    debugger
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
   }
@@ -14,6 +14,7 @@ export default class ProfileForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    
     this.props.submitForm(this.state);
     this.redirectHome();
   }
@@ -75,7 +76,7 @@ export default class ProfileForm extends React.Component {
               />
               </div>
               
-            <div className="form-input">
+            {/* <div className="form-input">
               <label htmlFor="birthday">Birthday</label>
               <input
                 type="date"
@@ -84,7 +85,7 @@ export default class ProfileForm extends React.Component {
                 onChange={this.update('birthday')}
                 className="date-input"
               />
-            </div>
+            </div> */}
             
             <div className="form-input" onChange={this.update('gender')}>
               <label htmlFor="gender-radio-group">Gender</label>
@@ -138,7 +139,7 @@ export default class ProfileForm extends React.Component {
             <button type="submit"
               className="save-profile">Save changes</button>
             <button type="submit"
-              className="continue">or continue</button>
+              className="continue-profile-form">or continue</button>
           </form>
         </div>
       </div>

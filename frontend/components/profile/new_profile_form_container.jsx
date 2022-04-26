@@ -1,14 +1,13 @@
 import { connect } from "react-redux";
-import { createProfile, fetchProfile, updateProfile } from "../../actions/profile/profile_actions";
-import { fetchCurrentUser } from "../../actions/session/session_actions"
-import ProfileForm from "./profile_form";
+import { createProfile } from "../../actions/profile/profile_actions";
+import { fetchCurrentUser } from "../../actions/session/session_actions";
+import NewProfileForm from "./new_profile_form";
+import {getTodaysDate} from "../../util/todays_date_util";
 
 const mapStateToProps = state => {
-  const user = state.entities.users[state.session.id];
+  const userId = state.session.id;
+  const errors = state.errors.profiles
   debugger
-  const userId = user.id;
-  const errors = state.errors.profiles;
-  
   return {
     profile: {
       first_name: '',
@@ -19,6 +18,7 @@ const mapStateToProps = state => {
       instagram_url: '',
       lenses: '',
       cameras: '',
+      // birthday: getTodaysDate(),
       city: '',
       country: '',
       about: '',
@@ -30,8 +30,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  submitForm: profile => dispatch(createProfile(profile)),
-  fetchUser: userId => dispatch(fetchCurrentUser(userId))
+  submitForm: profile => dispatch(createProfile(profile))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm)
+export default connect(mapStateToProps, mapDispatchToProps)(NewProfileForm)

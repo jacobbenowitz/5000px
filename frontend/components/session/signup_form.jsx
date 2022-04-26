@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Demo from "../../demo/demo_user_signup";
 
-const submitPromise = milliseconds => {
+const submitPromise = (milliseconds) => {
   return new Promise(resolve => 
   setTimeout(resolve, milliseconds))
 }
