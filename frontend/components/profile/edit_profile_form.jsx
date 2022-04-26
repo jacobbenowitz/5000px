@@ -5,13 +5,13 @@ export default class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.profile;
-
+    debugger
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.redirectHome = this.redirectHome.bind(this);
+    // this.redirectHome = this.redirectHome.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.state.user.id)
+    this.props.fetchProfile(this.props.currentUser)
   }
 
   // -> tabs with separate form!! = NOT done
@@ -22,9 +22,9 @@ export default class EditProfileForm extends React.Component {
     this.redirectHome();
   }
 
-  redirectHome() {
-    this.props.history.push('/')
-  }
+  // redirectHome() {
+  //   this.props.history.push('/')
+  // }
   
   update = field => {
     // how to setState for segment of state?
@@ -48,7 +48,7 @@ export default class EditProfileForm extends React.Component {
   }
 
   render() {
-
+    debugger
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
@@ -141,8 +141,6 @@ export default class EditProfileForm extends React.Component {
             </div>
             <button type="submit"
               className="save-profile">Save changes</button>
-            <button type="submit"
-              className="continue">or continue</button>
           </form>
         </div>
       </div>

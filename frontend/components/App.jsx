@@ -23,8 +23,8 @@ const App = () => (
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <Route path="/profiles/new" component={NewProfileFormContainer} />
-      <Route path="/profiles/settings" component={EditProfileFormContainer} />
+      <Route path="/profile/new" component={NewProfileFormContainer} />
+      <Route path="/profile/edit/:profileId" component={EditProfileFormContainer} />
       <Route path="/" component={LandingPage} />
       {/* add user auth: ProtectedRoute */}
     </Switch>

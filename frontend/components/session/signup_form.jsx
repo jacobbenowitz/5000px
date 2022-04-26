@@ -26,7 +26,7 @@ export default class SignupForm extends React.Component {
   }
 
   redirectCreateProfile() {
-    this.props.history.push('/profiles/new');
+    this.props.history.push('/profile/new');
   }
 
   handleSubmit(e) {

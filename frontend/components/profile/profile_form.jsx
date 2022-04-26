@@ -10,12 +10,6 @@ export default class ProfileForm extends React.Component {
     this.redirectHome = this.redirectHome.bind(this);
   }
 
-  componentDidMount() {
-    // FETCH USER NOT WORKING... IS IT NEEDED?
-    const userId = this.props.user.id;
-    this.props.fetchProfile(userId);
-  }
-
   // -> tabs with separate form!! = NOT done
   
   handleSubmit(e) {

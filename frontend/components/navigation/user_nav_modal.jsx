@@ -6,7 +6,7 @@ const userLinks = [
   { title: 'Profile', url: '/profile' },
   { title: 'Galleries', url: '/galleries' },
   { title: 'Liked photos', url: '/likes' },
-  { title: 'Settings', url: '/profiles/settings' },
+  ,
 ]
 
 const logoutLink = {
@@ -17,6 +17,12 @@ const logoutLink = {
 export default class UserNavModal extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    // need to fetch profile id for current user
+    // then push correct link to userLinks array
+    // { title: 'Settings', url: '/profile/edit/:profileId' }
   }
   
   render() {

@@ -4,7 +4,7 @@ require("babel-polyfill");
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from '../frontend/store/store';
-import { createProfile } from './actions/profile/profile_actions';
+import { createProfile, fetchProfile } from './actions/profile/profile_actions';
 import Root from './components/root';
 
 
@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
           [window.currentUser.id]: window.currentUser
         }
       },
-      session: { id: window.currentUser.id }
+      session: {
+        id: window.currentUser.id,
+        profile: window.currentUser.profile.id
+      }
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
@@ -30,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.createProfile = createProfile;
+  window.fetchProfile = fetchProfile;
   // END TESTING
   
   const root = document.getElementById("root");

@@ -21,6 +21,8 @@ const removeProfile = profileId => ({
 })
 
 // thunk action creators
+
+// fetch profile using userId
 export const fetchProfile = userId => dispatch => {
   ProfileApiUtil.fetchProfile(userId).then(profile =>
     dispatch(receiveProfile(profile))

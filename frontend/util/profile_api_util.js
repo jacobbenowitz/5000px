@@ -6,10 +6,10 @@ export const createProfile = profile => (
   })
 );
 
-export const fetchProfile = profileId => (
+export const fetchProfile = userId => (
   $.ajax({
     method: 'GET',
-    url: `/api/profiles/${profileId}`
+    url: `/api/profiles/${userId}`
   })
 );
 

@@ -1,29 +1,14 @@
 import { connect } from "react-redux";
 import { updateProfile, fetchProfile } from "../../actions/profile/profile_actions";
-import ProfileForm from "./profile_form";
+import EditProfileForm from "./edit_profile_form";
 
-const mapStateToProps = state => {
-  const user = state.entities.users[state.session.id];
-  const userId = user.id;
-  
+const mapStateToProps = (state, ownProps) => {
+  const currentUser = state.session.id;
+  // debugger
   return {
-    profile: {
-      first_name: '',
-      last_name: '',
-      profile_avatar: '',
-      profile_banner: '',
-      website_url: '',
-      instagram_url: '',
-      lenses: '',
-      cameras: '',
-      birthday: '',
-      city: '',
-      country: '',
-      about: '',
-      gender: '',
-      user_id: userId
-    },
-    user: user
+    profile: state.entities.users[currentUser].profile,
+    currentUser: currentUser,
+    errors: state.errors.profiles
   }
 }
 
@@ -32,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
   fetchProfile: userId => dispatch(fetchProfile(userId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfileForm)
