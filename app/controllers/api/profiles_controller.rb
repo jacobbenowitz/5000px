@@ -11,7 +11,8 @@ class Api::ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    user = User.find(params[:user_id])
+    @profile = user.profile
   end
 
   def update

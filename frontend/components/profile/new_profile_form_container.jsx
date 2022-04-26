@@ -5,7 +5,7 @@ import ProfileForm from "./profile_form";
 
 const mapStateToProps = state => {
   const user = state.entities.users[state.session.id];
-  debugger
+  // debugger
   const userId = user.id;
   const errors = state.errors.profiles;
   

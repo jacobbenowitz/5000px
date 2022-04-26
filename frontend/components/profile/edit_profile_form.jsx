@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default class ProfileForm extends React.Component {
+export default class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.profile;
@@ -11,9 +11,7 @@ export default class ProfileForm extends React.Component {
   }
 
   componentDidMount() {
-    // FETCH USER NOT WORKING... IS IT NEEDED?
-    const userId = this.props.user.id;
-    this.props.fetchProfile(userId);
+    this.props.fetchProfile(this.state.user.id)
   }
 
   // -> tabs with separate form!! = NOT done

@@ -4,7 +4,7 @@ import Demo from "../../demo/demo_user_signup";
 
 const submitPromise = milliseconds => {
   return new Promise(resolve => 
-  qsetTimeout(resolve, milliseconds))
+  setTimeout(resolve, milliseconds))
 }
 
 export default class SignupForm extends React.Component {
@@ -32,7 +32,7 @@ export default class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    
+
     submitPromise(300)
       .then(this.props.processForm(user))
       .then(this.redirectCreateProfile())
