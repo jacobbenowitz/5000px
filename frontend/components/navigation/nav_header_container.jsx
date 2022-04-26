@@ -3,10 +3,15 @@ import { logout } from "../../actions/session/session_actions";
 import NavHeader from "./nav_header";
 
 const mapStateToProps = (state) => {
-  const user = state.entities.users[state.session.id]
-  return ({
-    currentUser: user
-  })
+  const user = state.entities.users[state.session.id];
+  const profile = state.entities.profiles[state.session.profile];
+  
+  const navProps = {
+    currentUser: user,
+    profile: profile
+  };
+
+  return navProps;
 };
 
 const mapDispatchToProps = dispatch => ({

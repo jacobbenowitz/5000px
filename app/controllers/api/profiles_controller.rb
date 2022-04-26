@@ -2,22 +2,24 @@ class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    debugger
+    # debugger
     if @profile.save
-      debugger
+      # debugger
       render :show
     else
-      debugger
+      # debugger
       render json: @profile.errors.full_messages, status: 401
     end
   end
 
   def show
-    # user = User.find(params[:id])
-    # use activeRecord associataion to get profile
-    # @profile = user.profile 
+    @profile = Profile.find(params[:id])
+    render :show
 
-    @profile = Profile.find_by(id: params[:id])
+    # if @profile
+    # else
+    #   render json: @profile.errors.full_messages, status: 422
+    # end
   end
 
   def update

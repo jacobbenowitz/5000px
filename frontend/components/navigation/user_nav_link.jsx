@@ -29,7 +29,9 @@ export default class UserNavLinkItem extends React.Component {
           onClick={this.handleClick}>
         <span>{this.props.initials}</span>
         </div>
-          <UserNavModalContainer klass={modalClass}/>
+        <UserNavModalContainer
+          klass={modalClass}
+          handleClick={this.handleClick} />
       </>
     )
       

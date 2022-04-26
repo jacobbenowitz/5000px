@@ -40,7 +40,7 @@ export const fetchProfile = profileId => dispatch => {
 }
 
 export const createProfile = profile => dispatch => {
-  debugger
+  // debugger
   ProfileApiUtil.createProfile(profile).then(profile =>
     dispatch(receiveProfile(profile))
   ), error => (

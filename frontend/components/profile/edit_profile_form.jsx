@@ -5,9 +5,7 @@ export default class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.profile;
-    debugger
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.redirectHome = this.redirectHome.bind(this);
   }
 
   componentDidMount() {
@@ -19,12 +17,7 @@ export default class EditProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.submitForm(this.state);
-    this.redirectHome();
   }
-
-  // redirectHome() {
-  //   this.props.history.push('/')
-  // }
   
   update = field => {
     // how to setState for segment of state?

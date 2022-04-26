@@ -6,30 +6,21 @@ const userLinks = [
   { title: 'Profile', url: '/profile' },
   { title: 'Galleries', url: '/galleries' },
   { title: 'Liked photos', url: '/likes' },
-  ,
+  { title: 'Settings', url: '/profile/edit' }
 ]
-
-const logoutLink = {
-  title: 'Logout',
-  url: '/'
-}
 
 export default class UserNavModal extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    // need to fetch profile id for current user
-    // then push correct link to userLinks array
-    // { title: 'Settings', url: '/profile/edit/:profileId' }
   }
   
   render() {
     const klass = this.props.klass;
     return (
       <div id="user-modal"
-        className={"nav-modal-container" + klass}>
+        className={"nav-modal-container" + klass}
+        onClick={this.props.handleClick}
+      >
         <ul>
           {userLinks.map((link, index) => {
             return (
@@ -38,7 +29,7 @@ export default class UserNavModal extends React.Component {
           })}
           <li className="modal-list-item">
             <Link
-              to={'#'}
+              to={'/'}
               onClick={this.props.logout}>Logout</Link>
           </li>
         </ul>

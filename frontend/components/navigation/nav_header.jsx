@@ -8,6 +8,9 @@ export default class NavHeader extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    // fetch profile avatar and anything else needed
+  }
 
   render() {
     const { currentUser } = this.props;

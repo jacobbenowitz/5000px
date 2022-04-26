@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
     errors: errors
   };
 
-  debugger
+  // debugger
 
   return profile;
 }
