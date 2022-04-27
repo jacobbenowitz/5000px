@@ -9,6 +9,7 @@
 
 User.destroy_all
 Profile.destroy_all
+Photo.destroy_all
 
 user_1 = {
   username: 'tester',
@@ -37,3 +38,10 @@ profile_1 = {
 
 Profile.create(profile_1)
 
+# images
+
+hero_photo = {
+  title: "landing_hero"
+}
+
+hero = Photo.create(hero_photo)
