@@ -1,8 +1,8 @@
 class ImagesController < ApplicationController
 
   def index
-    # render :show_home_feed_images
-    render :multiple_images_form
+    render :show_home_feed_images
+    # render :multiple_images_form
   end
 
   def show 
