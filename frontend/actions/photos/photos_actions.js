@@ -1,7 +1,7 @@
-import * as PhotoApiUtl from '../../util/photo_api_util';
+import * as PhotoApiUtil from '../../util/photo_api_util';
 
-export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
-export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS';
+export const RECEIVE_PHOTO = 'RECEIVE_PHOTO'; // photo
+export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS'; // [photos]
 
 // actions
 const receivePhoto = photo => ({
@@ -15,13 +15,12 @@ const receivePhotos = photos => ({
 })
 
 // thunk actions
-export const fetchPhoto = photoId => dispatch => {
-  return PhotoApiUtl.fetchPhoto(photoId).then(photo =>
+export const fetchPhoto = photoId => dispatch => (
+  PhotoApiUtil.fetchPhoto(photoId).then(photo =>
     dispatch(receivePhoto(photo)))
-}
+)
 
-export const fetchPhotos = () => dispatch => {
-  return PhotoApiUtl.fetchPhotos().then(photos =>
+export const fetchPhotos = () => dispatch => (
+  PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
-}
-
+)

@@ -14,6 +14,7 @@ import NewProfileFormContainer from "./profile/new_profile_form_container";
 import EditProfileFormContainer from "./profile/edit_profile_form_container";
 import LandingPage from "./landing/landing_page";
 import NavFooter from "./navigation/nav_footer";
+import PhotosIndexContainer from "./photos/photos_index_container";
 
 const App = () => (
   <div className="grid-12-col">
@@ -26,6 +27,7 @@ const App = () => (
       <Route path="/profile/new" component={NewProfileFormContainer} />
       <Route path="/profile/edit" component={EditProfileFormContainer} />
       <Route path="/profile/edit/:profileId" component={EditProfileFormContainer} />
+      <Route path="/photos/index" component={PhotosIndexContainer} />
       <Route path="/" component={LandingPage} />
       {/* add user auth: ProtectedRoute */}
     </Switch>

@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class Api::PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
 
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = Photo.find_by(id: params[:id])
     render :show
   end
 

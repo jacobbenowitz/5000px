@@ -41,7 +41,20 @@ Profile.create(profile_1)
 # images
 
 hero_photo = {
-  title: "landing_hero"
+  title: "landing_hero",
+  user_id: user_1_saved.id
 }
 
 hero = Photo.create(hero_photo)
+
+hero.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/landing_page/home_hero_opti.jpg'), filename: 'home-hero-opti.jpg')
+
+landing_photo_1 = {
+  title: "Brooklyn Bridge Vibes",
+  description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
+  user_id: user_1_saved.id
+}
+
+landing_1 = Photo.create(landing_photo_1)
+
+landing_1.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/photos/2000px/brooklyn-bridge.jpg'), filename: 'brooklyn-bridge.jpg')

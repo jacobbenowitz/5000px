@@ -7,13 +7,15 @@ const photosReducer = (initialState = {}, action) => {
   Object.freeze(initialState);
   let nextState = Object.assign({}, initialState);
 
+  debugger
+
   switch (action.type) {
     case RECEIVE_PHOTOS:
       return action.photos;
     case RECEIVE_PHOTO:
       return Object.assign(
         {}, nextState,
-        { [action.currentUser.id]: action.currentUser }
+        { [action.photo.id]: action.photo }
       );
     default:
       return initialState;
@@ -21,3 +23,4 @@ const photosReducer = (initialState = {}, action) => {
 }
 
 export default photosReducer;
+

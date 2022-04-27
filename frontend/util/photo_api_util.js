@@ -1,15 +1,17 @@
 export const fetchPhoto = photoId => {
-  return $.ajax({
+  return ($.ajax({
     method: 'GET',
     url: `/api/photos/${photoId}`
   })
+  )
 }
 
-
 export const fetchPhotos = () => {
-  return $.ajax({
+  debugger
+  return ($.ajax({
     method: 'GET',
     url: '/api/photos'
   })
+  )
 }
 
