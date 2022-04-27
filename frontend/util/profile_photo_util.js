@@ -1,8 +1,8 @@
-export const fetchProfilePhoto = profilePhotoId => {
+export const fetchProfilePhoto = profileId => {
   return (
     $.ajax({
       method: 'GET',
-      url: `/api/profile_photos/${profilePhotoId}`
+      url: `/api/profile_photos/${profileId}`
     })
   )
 }

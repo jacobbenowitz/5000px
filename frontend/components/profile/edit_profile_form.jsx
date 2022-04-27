@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProfilePhotoFormContainer from "../photos/profile_photo_form_container";
+import ProfileAvatarContainer from "./profile_avatar_container"
 
 export default class EditProfileForm extends React.Component {
   constructor(props) {
@@ -47,6 +48,7 @@ export default class EditProfileForm extends React.Component {
       <div className="profile-settings center-simple">
         <div id="profile-form">
           <div id="profile-photo-form">
+            <ProfileAvatarContainer />
             <ProfilePhotoFormContainer></ProfilePhotoFormContainer>
           </div>
 

@@ -1,9 +1,18 @@
 import React from "react";
 
-export const ProfileAvatar = props => {
+export default class ProfileAvatar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <img src={ }/>
+  componentDidMount() {
+    this.props.fetchProfilePhoto(this.props.profileId)
+  }
+
+  render() {
+    // debugger
+    return(
+    <img src = {this.props.avatar }/>
   )
-
+  }
 }
