@@ -7,6 +7,7 @@ class Api::ProfilePhotosController < ApplicationController
       render json: {message: "Successfully uploaded"}
     else
       render json: profile_photo.errors.full_messages
+    end
   end
 
 

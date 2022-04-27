@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { uploadPhoto } from "../../actions/photos/photos_actions"
+import { uploadProfilePhoto } from "../../actions/photos/profile_photos_actions";
 import ProfilePhotoForm from "./profile_photo_form"
 
 const mapStateToProps = state => {
@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    uploadPhoto: formData => dispatch(uploadPhoto(formData))
+    uploadProfilePhoto: formData => dispatch(uploadProfilePhoto(formData))
   }
 }
 

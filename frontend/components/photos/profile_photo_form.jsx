@@ -4,7 +4,8 @@ export default class ProfilePhotoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: 'profilePhoto',
+      // type = profile_avatar or profile_banner from db
+      type: 'profile_avatar',
       photoFile: null,
       photoUrl: null
     };
@@ -15,11 +16,12 @@ export default class ProfilePhotoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
+    formData.append('type', this.state.type);
     // only append the file if it exists in state
     if (this.state.photoFile) {
       formData.append('profile_photo[photo]', this.state.photoFile);
     }
-    this.props.uploadPhoto(formData);
+    this.props.uploadProfilePhoto(formData);
   }
 
   handleFile(e) {
