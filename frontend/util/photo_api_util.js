@@ -7,7 +7,6 @@ export const fetchPhoto = photoId => {
 }
 
 export const fetchPhotos = () => {
-  debugger
   return ($.ajax({
     method: 'GET',
     url: '/api/photos'

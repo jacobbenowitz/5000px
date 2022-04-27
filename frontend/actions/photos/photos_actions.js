@@ -10,7 +10,6 @@ const receivePhoto = photo => ({
 })
 
 const receivePhotos = photos => {
-  debugger
   return {
     type: RECEIVE_PHOTOS,
     photos
@@ -23,7 +22,6 @@ export const fetchPhoto = photoId => dispatch => {
 }
 
 export const fetchPhotos = () => dispatch => {
-  // debugger
   return PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
 }
