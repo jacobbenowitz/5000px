@@ -1,9 +1,10 @@
 import React from "react";
 
-export default class PhotoUploadForm extends React.Component {
+export default class ProfilePhotoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      type: 'profilePhoto',
       photoFile: null,
       photoUrl: null
     };
@@ -16,11 +17,9 @@ export default class PhotoUploadForm extends React.Component {
     const formData = new FormData();
     // only append the file if it exists in state
     if (this.state.photoFile) {
-      formData.append('profile[profile_photo]', this.state.photoFile);
+      formData.append('profile_photo[photo]', this.state.photoFile);
     }
-    // TESTING AJAX
-    !!!!!
-    // END TESTING -> Create actions and container, pass func as props
+    this.props.uploadPhoto(formData);
   }
 
   handleFile(e) {
