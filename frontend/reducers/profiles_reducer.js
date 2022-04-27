@@ -1,4 +1,4 @@
-import { RECEIVE_PROFILE_PHOTO } from '../actions/photos/profile_photos_actions';
+import { RECEIVE_NEW_PROFILE_PHOTO, RECEIVE_PROFILE_PHOTO } from '../actions/photos/profile_photos_actions';
 import {
   RECEIVE_PROFILE,
   REMOVE_PROFILE
@@ -22,7 +22,6 @@ const profilesReducer = (initialState = {}, action) => {
       let type = action.type;
       let photoKey = profile.type;
       debugger
-
       return Object.assign({}, nextState,
         {
           [profileId]: {
@@ -30,6 +29,10 @@ const profilesReducer = (initialState = {}, action) => {
           }
         }
       )
+    case RECEIVE_NEW_PROFILE_PHOTO:
+      nextState[action.response.profileId]['profile_avatar']
+        = action.response.id
+      return nextState;
     default:
       return initialState;
   }

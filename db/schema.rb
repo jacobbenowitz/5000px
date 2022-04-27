@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_27_192601) do
+ActiveRecord::Schema.define(version: 2022_04_27_211941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,6 @@ ActiveRecord::Schema.define(version: 2022_04_27_192601) do
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "profile_avatar"
-    t.string "profile_banner"
     t.string "website_url"
     t.string "instagram_url"
     t.string "lenses"
@@ -68,6 +66,10 @@ ActiveRecord::Schema.define(version: 2022_04_27_192601) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.integer "profile_avatar"
+    t.integer "profile_banner"
+    t.index ["profile_avatar"], name: "index_profiles_on_profile_avatar"
+    t.index ["profile_banner"], name: "index_profiles_on_profile_banner"
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 

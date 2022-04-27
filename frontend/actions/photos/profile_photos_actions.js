@@ -1,6 +1,7 @@
 import * as ProfilePhotoActions from '../../util/profile_photo_util'
 
 export const RECEIVE_PROFILE_PHOTO = 'RECEIVE_PROFILE_PHOTO'; // photo
+export const RECEIVE_NEW_PROFILE_PHOTO = 'RECEIVE_NEW_PROFILE_PHOTO'; // photo
 
 // actions
 const receiveProfilePhoto = photo => ({
@@ -8,6 +9,10 @@ const receiveProfilePhoto = photo => ({
   photo
 })
 
+const receiveNewProfilePhoto = response => ({
+  type: RECEIVE_NEW_PROFILE_PHOTO,
+  response
+})
 
 // thunk actions
 export const fetchProfilePhoto = profilePhotoId => dispatch => {
@@ -18,13 +23,10 @@ export const fetchProfilePhoto = profilePhotoId => dispatch => {
 export const uploadProfilePhoto = formData => dispatch => {
   return (
     ProfilePhotoActions.uploadProfilePhoto(formData).then(
-      // success callback
       // TODO: render success
-      response => console.log(response.message),
-      response => dispatch(receiveProfilePhoto(response.responseJSON))
+      response => dispatch(receiveNewProfilePhoto(response)) // send id to reducer
+      // response => console.log(response.message),  // success callback
     )
-    // .then(photo => dispatch(receiveProfilePhoto(photo)))
-    // photo is UNDEFINED
   )
 
 }

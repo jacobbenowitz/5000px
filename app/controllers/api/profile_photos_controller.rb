@@ -4,7 +4,11 @@ class Api::ProfilePhotosController < ApplicationController
     profile_photo = ProfilePhoto.new(profile_photo_params)
     debugger
     if profile_photo.save
-      render json: {message: "Successfully uploaded"}
+      render json: {
+        message: "Successfully uploaded", 
+        id: profile_photo.id,
+        profileId: profile_photo.profile_id
+      }
     else
       render json: profile_photo.errors.full_messages
     end

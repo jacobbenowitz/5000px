@@ -23,7 +23,13 @@ export default class ProfilePhotoForm extends React.Component {
     if (this.state.photoFile) {
       formData.append(`profile_photo[${this.state.photo_type}]`, this.state.photoFile);
     }
-    this.props.uploadProfilePhoto(formData);
+    this.props.uploadProfilePhoto(formData)
+      .then(() => {
+        this.setState({
+          photoFile: null,
+          photoUrl: null
+        })
+      })
   }
 
   handleFile(e) {
@@ -44,6 +50,8 @@ export default class ProfilePhotoForm extends React.Component {
 
 
   render() {
+
+    // const profilePhoto = this.
     
     const preview = this.state.photoUrl ?
       <img src={this.state.photoUrl} /> : null;
