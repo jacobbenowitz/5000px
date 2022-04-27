@@ -9,18 +9,21 @@ const receivePhoto = photo => ({
   photo
 })
 
-const receivePhotos = photos => ({
-  type: RECEIVE_PHOTOS,
-  photos
-})
-
+const receivePhotos = photos => {
+  debugger
+  return {
+    type: RECEIVE_PHOTOS,
+    photos
+  }
+}
 // thunk actions
-export const fetchPhoto = photoId => dispatch => (
-  PhotoApiUtil.fetchPhoto(photoId).then(photo =>
+export const fetchPhoto = photoId => dispatch => {
+  return PhotoApiUtil.fetchPhoto(photoId).then(photo =>
     dispatch(receivePhoto(photo)))
-)
+}
 
-export const fetchPhotos = () => dispatch => (
-  PhotoApiUtil.fetchPhotos().then(photos =>
+export const fetchPhotos = () => dispatch => {
+  // debugger
+  return PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
-)
+}
