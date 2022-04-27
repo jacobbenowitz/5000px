@@ -19,7 +19,7 @@ class Api::ProfilePhotosController < ApplicationController
   private
 
   def profile_photo_params
-    params.require(:profile_photo).permit(:photo, :profile_id, :type)
+    params.require(:profile_photo).permit(:profile_avatar, :profile_banner, :profile_id, :photo_type)
   end
 
 end

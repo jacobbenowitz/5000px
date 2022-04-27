@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_27_185907) do
+ActiveRecord::Schema.define(version: 2022_04_27_192601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_04_27_185907) do
   end
 
   create_table "profile_photos", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "photo_type", null: false
     t.integer "profile_id", null: false
     t.index ["profile_id"], name: "index_profile_photos_on_profile_id"
   end

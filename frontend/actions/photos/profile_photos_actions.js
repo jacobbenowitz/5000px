@@ -21,9 +21,10 @@ export const uploadProfilePhoto = formData => dispatch => {
       // success callback
       // TODO: render success
       response => console.log(response.message),
-      response => (console.log(response.responseJSON))
-    ).then(photo => dispatch(receiveProfilePhoto(photo)))
-    // will this work?
+      response => dispatch(receiveProfilePhoto(response.responseJSON))
+    )
+    // .then(photo => dispatch(receiveProfilePhoto(photo)))
+    // photo is UNDEFINED
   )
 
 }

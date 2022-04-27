@@ -7,7 +7,6 @@ export default class EditProfileForm extends React.Component {
     super(props);
     this.state = props.profile;
     this.handleSubmit = this.handleSubmit.bind(this);
-    debugger
   }
 
   componentDidMount() {
@@ -43,7 +42,7 @@ export default class EditProfileForm extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
