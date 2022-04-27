@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 export default class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.profile;
+    this.state = props.profile;
     this.handleSubmit = this.handleSubmit.bind(this);
+    debugger
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.props.profile.id)
+    this.props.fetchProfile(this.props.profile.id);
   }
 
   // -> tabs with separate form!! = NOT done
@@ -41,6 +42,7 @@ export default class EditProfileForm extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">

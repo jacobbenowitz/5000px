@@ -14,3 +14,12 @@ export const fetchPhotos = () => {
   )
 }
 
+export const uploadPhoto = formData => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/photos',
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+}

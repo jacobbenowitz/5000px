@@ -25,3 +25,15 @@ export const fetchPhotos = () => dispatch => {
   return PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
 }
+
+
+export const uploadPhoto = formData => dispatch => {
+  return PhotoApiUtil.uploadPhoto(formData).then(
+    // success callback
+    // TODO: render success
+    response => console.log(response.message),
+    response => (
+      console.log(response.responseJSON)
+    )
+  )
+}

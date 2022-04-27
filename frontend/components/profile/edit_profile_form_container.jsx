@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     profile: state.entities.profiles[profileId],
     errors: state.errors.profiles
   }
-
   return profileProps;
 }
 
