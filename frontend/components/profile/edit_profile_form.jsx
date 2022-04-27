@@ -44,8 +44,9 @@ export default class EditProfileForm extends React.Component {
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
-          <span className="form-title">My Account</span>
-          <span className="right-align">* is required</span>
+          <div className="profile-form-title">
+            <span>My Account</span>
+          </div>
 
           <form onSubmit={this.handleSubmit}>
               
@@ -61,7 +62,7 @@ export default class EditProfileForm extends React.Component {
             </div>
               
             <div className="form-input">
-              <label htmlFor="first-name">Last name</label>
+              <label htmlFor="last-name">Last name</label>
               <input
                 type="text"
                 id="last-name"
@@ -69,7 +70,28 @@ export default class EditProfileForm extends React.Component {
                 onChange={this.update('last_name')}
                 className="text-input"
               />
-              </div>
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="first-name">About</label>
+              <textarea
+                id="about"
+                value={this.state.about}
+                onChange={this.update('about')}
+                className="textarea-input"
+              />
+            </div>
+            
+            <div className="form-input">
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                id="city"
+                value={this.state.city}
+                onChange={this.update('city')}
+                className="text-input"
+              />
+            </div>
               
             {/* <div className="form-input">
               <label htmlFor="birthday">Birthday</label>
@@ -83,9 +105,10 @@ export default class EditProfileForm extends React.Component {
             </div> */}
             
             <div className="form-input" onChange={this.update('gender')}>
-              <label htmlFor="gender-radio-group">Gender</label>
+              <label className="radio-title"
+                htmlFor="gender-radio-group">Gender</label>
 
-              <div id="gender-radio-group">
+              <div id="gender-radio-group" className="radio-group">
                 <div className="radio-item">
                   <label>
                     <input type="radio" value="Male"

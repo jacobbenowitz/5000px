@@ -65,7 +65,7 @@ input {
 }
 
 input:focus {
-  border: 2px solid #316ECA;
+  border: 1px solid #316ECA;
 }
 
 .sign-up-large {

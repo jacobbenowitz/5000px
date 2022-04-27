@@ -6,7 +6,7 @@
   height: 40px;
   width: 100%;
   background: #FFFFFF;
-  border: 0.5px solid #D7D8DB;
+  border: 1px solid #D7D8DB;
   border-radius: 3px;
   margin: 4px 0px;
 }
@@ -20,3 +20,13 @@
   margin-bottom: 15px;
 }
 
+.radio-group {
+  padding: 12px 11px;
+}
+
+.form-input > label {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(109, 115, 120);
+  margin-bottom: 4px;
+}

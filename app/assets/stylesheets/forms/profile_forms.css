@@ -22,8 +22,6 @@
   position: absolute;
   width: 402px;
   height: min-content;
-  left: calc(50% - 402px/2);
-  top: calc(50% - 591px/2);
 
   background: #FFFFFF;
   /* light-grey */
@@ -54,3 +52,31 @@
 .radio-item > label {
   white-space: nowrap;
 }
+
+/* .profile-form-subtitle {
+
+} */
+
+.profile-form-title {
+  margin-bottom: 32px;
+  display: flex;
+  width: 100%;
+}
+.profile-form-title > span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  line-height: 24px;
+}
+
+#about {
+  width: 100%;
+  height: 150px;
+  padding: 12px 11px;
+    margin: 4px 0px;
+  box-sizing: border-box;
+  border: 1px solid #D7D8DB;
+  border-radius: 3px;
+  resize: none;
+}
+

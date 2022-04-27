@@ -1,0 +1,3 @@
+<% @images.home_feed_images.each do |img| %>
+  <%= image_tag img.service.end(:object_for, img.key).public_url, class:'home-feed-image' %>
+<% end %>
