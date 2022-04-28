@@ -32,10 +32,13 @@ export default class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-
-    submitPromise(300)
-      .then(this.props.processForm(user))
-      .then(this.redirectCreateProfile())
+    if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
+      console.log('need to catch empty fields')
+    } else {
+      submitPromise(300)
+        .then(this.props.processForm(user))
+        .then(this.redirectCreateProfile())
+    }
     
     // TODO: create empty profile, but need user id inside of emptyProfile!
     // can we chain a .then(createProfile) on the session signup thunk action?

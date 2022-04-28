@@ -42,6 +42,14 @@
   color: white;
 }
 
+.login:hover, .signup:hover, .demo_button:hover {
+  background-color: #2986F7;
+}
+
+.login:focus, .signup:focus, .demo_button:focus {
+  background-color: #2B5FA8;
+}
+
 .save-profile {
   color: white;
   display: flex;

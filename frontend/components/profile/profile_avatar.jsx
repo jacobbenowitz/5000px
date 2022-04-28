@@ -5,11 +5,12 @@ export default class ProfileAvatar extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    if (this.props.profileId) {
-      this.props.fetchProfilePhoto(this.props.profileId)
-    }
-  }
+  // TEST: Removed bc url should be in db now, no need to fetch by id
+  // componentDidMount() {
+  //   if (this.props.profileId) {
+  //     this.props.fetchProfilePhoto(this.props.profileId)
+  //   }
+  // }
 
   render() {
     debugger
