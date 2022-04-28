@@ -23,7 +23,7 @@ const profilesReducer = (initialState = {}, action) => {
         = action.response.id
       return nextState;
     case RECEIVE_PROFILE_PHOTO:
-      // debugger
+      debugger
       nextState[action.photo.profile_id].profile_avatar = action.photo.photoUrl
       return nextState;
     default:

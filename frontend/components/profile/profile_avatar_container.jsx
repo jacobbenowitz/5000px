@@ -4,7 +4,7 @@ import ProfileAvatar from "./profile_avatar"
 
 const mapStateToProps = state => {
   const profileId = state.session.profile
-  // debugger
+  debugger
   return {
     avatar: state.entities.profiles[profileId].profile_avatar
   }

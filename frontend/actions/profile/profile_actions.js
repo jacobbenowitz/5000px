@@ -1,30 +1,38 @@
 import * as ProfileApiUtil from '../../util/profile_api_util';
 
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'; // profile
+export const RECEIVE_CURRENT_PROFILE = 'RECEIVE_CURRENT_PROFILE'; // profile
 export const RECEIVE_PROFILES = 'RECEIVE_PROFILES'; // [profiles]
 export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS'; // [errors]
 export const REMOVE_PROFILE = 'REMOVE_PROFILE'; // profileId
 
 // regular action creators
-const receiveProfile = profile => {
-  // debugger
+export const receiveProfile = profile => {
+  debugger
   return {
     type: RECEIVE_PROFILE,
     profile
   }
 }
+export const receiveCurrentProfile = profile => {
+  debugger
+  return {
+    type: RECEIVE_CURRENT_PROFILE,
+    profile
+  }
+}
 
-const receiveProfiles = profiles => ({
+export const receiveProfiles = profiles => ({
   type: RECEIVE_PROFILES,
   profiles
 })
 
-const receiveProfileErrors = errors => ({
+export const receiveProfileErrors = errors => ({
   type: RECEIVE_PROFILE_ERRORS,
   errors
 })
 
-const removeProfile = profileId => ({
+export const removeProfile = profileId => ({
   type: REMOVE_PROFILE,
   profileId
 })
@@ -37,13 +45,14 @@ export const fetchProfiles = () => dispatch => {
 }
 
 export const fetchProfile = profileId => dispatch => {
-  ProfileApiUtil.fetchProfile(profileId).then(profile =>
+  debugger
+  return ProfileApiUtil.fetchProfile(profileId).then(profile =>
     dispatch(receiveProfile(profile))
   )
 }
 
 export const createProfile = profile => dispatch => {
-  // debugger
+  debugger
   ProfileApiUtil.createProfile(profile).then(profile =>
     dispatch(receiveProfile(profile))
   ), error => (
@@ -52,7 +61,8 @@ export const createProfile = profile => dispatch => {
 }
 
 export const updateProfile = profile => dispatch => {
-  ProfileApiUtil.updateProfile(profile).then(profile =>
+  debugger
+  return ProfileApiUtil.updateProfile(profile).then(profile =>
     dispatch(receiveProfile(profile))
   ), error => (
     dispatch(receiveProfileErrors(error.responseJSON))
