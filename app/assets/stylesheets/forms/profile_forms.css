@@ -78,15 +78,31 @@
 } */
 
 .profile-form-title {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   display: flex;
+  flex-flow: column wrap;
   width: 100%;
 }
-.profile-form-title > span {
+.profile-title-copy {
   font-size: 18px;
   font-weight: 700;
   color: #222;
   line-height: 24px;
+}
+
+.profile-form-instructions {
+  font-size: 16px;
+  font-weight: 400;
+  color: #222222;
+  margin-top: 0.5rem;
+}
+
+.skip-profile-form {
+  color: #2B5FA8;
+}
+
+.skip-profile-form:hover {
+  color: #316ECA
 }
 
 #about {

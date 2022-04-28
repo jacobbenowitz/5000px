@@ -1,30 +1,75 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ProfilePhotoFormContainer from "../photos/profile_photo_form_container";
+import ProfileAvatarContainer from "./profile_avatar_container"
+
 
 export default class NewProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.profile;
+    this.state = {
+      first_name: '',
+      last_name: '',
+      profile_avatar: '',
+      profile_banner: '',
+      website_url: '',
+      instagram_url: '',
+      lenses: '',
+      cameras: '',
+      birthday: '',
+      city: '',
+      country: '',
+      about: '',
+      gender: 'Not specified',
+      user_id: null
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
     debugger
   }
 
-  // -> tabs with separate form!! = NOT done
+  // -> tabs with separate form!! = NOT done'
+
+  
+
+  componentDidUpdate() {
+    // debugger
+    // we hit this debugger when the props changed in the container
+    
+    ////// CANNOT SET STATE IN UPDATE, FOREVER LOOP
+
+    // this.setState({
+    //   user_id: this.props.userId
+    // })
+    // so in here, let's get the userId and setState
+  }
   
   handleSubmit(e) {
     e.preventDefault();
+    // debugger
+
+    // DIDN'T WORK 
+    // this.setState({
+    //   user_id: this.props.userId
+    // })
+
+    const formData = Object.assign({}, this.state,
+        { user_id: this.props.userId} )
+    
     debugger
 
+    this.props.submitForm(formData)
+    this.redirectHome();
+
     // TEMP BUG FIX
-    if (this.state.user_id === null) {
-      let nextState = Object.assign({}, this.state, {user_id: this.props.profile.user_id})
-      this.setState(nextState)
-      this.props.submitForm(this.state);
-    } else {
-      this.props.submitForm(this.state);
-      this.redirectHome();
-    }
+    // if (this.state.user_id === null) {
+    //   let formData = Object.assign({}, this.state,
+    //     { user_id: this.props.profile.user_id } )
+    //   this.props.submitForm(formData);
+    // } else {
+    //   this.props.submitForm(this.state);
+    //   this.redirectHome();
+    // }
   }
 
   redirectHome() {
@@ -57,8 +102,15 @@ export default class NewProfileForm extends React.Component {
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
-          <span className="form-title">My Account</span>
-          <span className="right-align">* is required</span>
+          <div id="profile-photo-form">
+            {/* <ProfileAvatarContainer />
+            <ProfilePhotoFormContainer></ProfilePhotoFormContainer> */}
+          </div>
+
+          <div className="profile-form-title">
+            <span className="profile-title-copy">My Account</span>
+            <span className="profile-form-instructions">Create your profile <a onClick={this.handleSubmit} className="skip-profile-form" href="#">or skip</a></span>
+          </div>
 
           <form onSubmit={this.handleSubmit}>
               
@@ -74,7 +126,7 @@ export default class NewProfileForm extends React.Component {
             </div>
               
             <div className="form-input">
-              <label htmlFor="first-name">Last name</label>
+              <label htmlFor="last-name">Last name</label>
               <input
                 type="text"
                 id="last-name"
@@ -82,9 +134,30 @@ export default class NewProfileForm extends React.Component {
                 onChange={this.update('last_name')}
                 className="text-input"
               />
-              </div>
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="first-name">About</label>
+              <textarea
+                id="about"
+                value={this.state.about}
+                onChange={this.update('about')}
+                className="textarea-input"
+              />
+            </div>
+            
+            <div className="form-input">
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                id="city"
+                value={this.state.city}
+                onChange={this.update('city')}
+                className="text-input"
+              />
+            </div>
               
-            {/* <div className="form-input">
+            <div className="form-input">
               <label htmlFor="birthday">Birthday</label>
               <input
                 type="date"
@@ -93,29 +166,37 @@ export default class NewProfileForm extends React.Component {
                 onChange={this.update('birthday')}
                 className="date-input"
               />
-            </div> */}
+            </div>
             
-            <div className="form-input" onChange={this.update('gender')}>
-              <label htmlFor="gender-radio-group">Gender</label>
+            <div className="form-input" >
+              <label className="radio-title"
+                htmlFor="gender-radio-group">Gender</label>
 
-              <div id="gender-radio-group">
+              <div id="gender-radio-group" className="radio-group">
                 <div className="radio-item">
                   <label>
-                    <input type="radio" value="Male"
+                    <input
+                      onChange={this.update('gender')}
+                      type="radio" value="Male"
                       name="gender" /> Male
                   </label>
                 </div>
 
                 <div className="radio-item">
                   <label>
-                    <input type="radio" value="Female"
+                    <input
+                      onChange={this.update('gender')}
+                      type="radio" value="Female"
                       name="gender" /> Female
                   </label>
                 </div>
 
                 <div className="radio-item">
                   <label>
-                    <input type="radio" value="Not specified"
+                    <input
+                      onChange={this.update('gender')}
+                      defaultChecked
+                      type="radio" value="Not specified"
                       name="gender" /> Not specified
                   </label>
                 </div>
@@ -146,8 +227,6 @@ export default class NewProfileForm extends React.Component {
             </div>
             <button type="submit"
               className="save-profile">Save changes</button>
-            <button type="submit"
-              className="continue-profile-form">or continue</button>
           </form>
         </div>
       </div>
