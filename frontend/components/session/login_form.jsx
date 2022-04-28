@@ -13,9 +13,10 @@ export default class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state)
-    this.props.processForm(user)
-      // .then(this.props.fetchProfile(user))
+    if (this.props.errors.length === 0) {
+      const user = Object.assign({}, this.state)
+      this.props.processForm(user)
+    }
   }
 
   update = type => {

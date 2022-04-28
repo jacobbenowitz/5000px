@@ -28,11 +28,51 @@ export default class NewProfileForm extends React.Component {
     // debugger
   }
 
+  componentDidMount() {
+
+    window.addEventListener('beforeunload', (event) => {
+      event.preventDefault();
+      event.returnValue = "Don't leave without saving your profile!";
+    });
+    
+    const skip = document.querySelector('.skip-profile-form');
+    const submit = document.querySelector('.save-profile');
+    const links = document.querySelectorAll('a');
+
+    [...links].forEach((link) => {
+      if (link !== skip && link !== submit) {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          return confirm("Don't leave without saving your profile!");
+        })
+      }
+    });
+
+
+  }
+
   // -> tabs with separate form!! = NOT done'
 
   
   handleSubmit(e) {
     e.preventDefault();
+
+    const skip = document.querySelector('.skip-profile-form');
+    const submit = document.querySelector('.save-profile');
+    const links = document.querySelectorAll('a');
+
+    [...links].forEach((link) => {
+      if (link !== skip && link !== submit) {
+        link.removeEventListener('click', (event) => {
+          event.preventDefault();
+          return confirm("Don't leave without saving your profile!");
+        })
+      }
+    });
+    window.removeEventListener('beforeunload', (event) => {
+      event.preventDefault();
+      event.returnValue = "Don't leave without saving your profile!";
+    });
 
     const formData = Object.assign({}, this.state,
       { user_id: this.props.userId} )
