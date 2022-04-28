@@ -13,8 +13,8 @@ export default class ProfileAvatar extends React.Component {
   }
 
   render() {
-    debugger
-    
+    // debugger
+
     return (
       <img src = {this.props.avatar }/>
     )

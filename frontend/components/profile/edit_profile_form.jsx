@@ -15,7 +15,7 @@ export default class EditProfileForm extends React.Component {
   componentDidMount() {
     this.props.fetchProfile(this.props.profile.id);
     this.setState(this.props.profile);
-    debugger
+    // debugger
   }
 
   // -> tabs with separate form!! = NOT done
