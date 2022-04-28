@@ -8,22 +8,6 @@ export default class EditProfileForm extends React.Component {
     super(props);
     // this.state = props.profile;
     this.state = {
-      profile: {
-        first_name: '',
-        last_name: '',
-        profile_avatar: '',
-        profile_banner: '',
-        website_url: '',
-        instagram_url: '',
-        lenses: '',
-        cameras: '',
-        birthday: '',
-        city: '',
-        country: '',
-        about: '',
-        gender: '',
-        user_id: ''
-      }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,7 +15,7 @@ export default class EditProfileForm extends React.Component {
   componentDidMount() {
     this.props.fetchProfile(this.props.profile.id);
     this.setState(this.props.profile);
-    // debugger
+    debugger
   }
 
   // -> tabs with separate form!! = NOT done
@@ -63,7 +47,8 @@ export default class EditProfileForm extends React.Component {
   }
 
   render() {
-    // debugger
+    let userGender = this.state.gender;
+
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
@@ -132,28 +117,37 @@ export default class EditProfileForm extends React.Component {
               />
             </div>
             
-            <div className="form-input" onChange={this.update('gender')}>
+            <div className="form-input" >
               <label className="radio-title"
                 htmlFor="gender-radio-group">Gender</label>
 
               <div id="gender-radio-group" className="radio-group">
                 <div className="radio-item">
                   <label>
-                    <input type="radio" value="Male"
+                    <input
+                      onChange={this.update('gender')}
+                      checked={userGender === 'Male' ? true : false}
+                      type="radio" value="Male"
                       name="gender" /> Male
                   </label>
                 </div>
 
                 <div className="radio-item">
                   <label>
-                    <input type="radio" value="Female"
+                    <input
+                      onChange={this.update('gender')}
+                      checked={userGender === 'Female' ? true : false}
+                      type="radio" value="Female"
                       name="gender" /> Female
                   </label>
                 </div>
 
                 <div className="radio-item">
                   <label>
-                    <input type="radio" value="Not specified"
+                    <input
+                      onChange={this.update('gender')}
+                      checked={userGender === "Not specified" ? true : false}
+                      type="radio" value="Not specified"
                       name="gender" /> Not specified
                   </label>
                 </div>

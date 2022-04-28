@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
       instagram_url: '',
       lenses: '',
       cameras: '',
-      // birthday: getTodaysDate(),
+      birthday: '',
       city: '',
       country: '',
       about: '',
