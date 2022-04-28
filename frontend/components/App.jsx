@@ -12,7 +12,7 @@ import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from "./session/signup_form_container";
 import NewProfileFormContainer from "./profile/new_profile_form_container";
 import EditProfileFormContainer from "./profile/edit_profile_form_container";
-import LandingPage from "./landing/landing_page";
+import {LandingPage} from "./landing/landing_page";
 import NavFooter from "./navigation/nav_footer";
 import PhotosIndexContainer from "./photos/photos_index_container";
 

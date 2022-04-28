@@ -5,17 +5,15 @@ import { DemoInfo } from "./demo_info";
 import { EditorsChoiceLanding } from "./editors_choice";
 import SimpleCTA from "./simple_cta_section";
 
-const LandingPage = props => {
+export const LandingPage = props => {
 
   return (
     <div id="landing-page">
       { Hero }
       { DemoInfo }
       {EditorsChoiceLanding}
-      <SimpleCTA props={props} />
+      <SimpleCTA key={'cta-landing'} props={props} />
     </div>
 
   )
 }
-
-export default LandingPage;
