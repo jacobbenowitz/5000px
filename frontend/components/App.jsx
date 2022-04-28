@@ -29,7 +29,6 @@ const App = () => (
       <Route path="/profile/edit/:profileId" component={EditProfileFormContainer} />
       <Route path="/photos/index" component={PhotosIndexContainer} />
       <Route path="/" component={LandingPage} />
-      {/* add user auth: ProtectedRoute */}
     </Switch>
     <footer>
       <NavFooter />

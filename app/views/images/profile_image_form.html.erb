@@ -1,5 +1,0 @@
-<%= form_for @images do |f| %>
-  <%= f.label :user_profile_image %>
-  <%= f.file_field :user_profile_image, accept: 'image/png, image/gif, image/jpeg, image/jpg', class:"image-form-control" %>
-  <br>
-<%= f.submit "Upload Profile Image", class:"button photo-upload-button", onClick:"loader();"  %>
