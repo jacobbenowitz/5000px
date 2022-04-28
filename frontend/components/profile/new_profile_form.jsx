@@ -31,45 +31,16 @@ export default class NewProfileForm extends React.Component {
   // -> tabs with separate form!! = NOT done'
 
   
-
-  componentDidUpdate() {
-    // debugger
-    // we hit this debugger when the props changed in the container
-    
-    ////// CANNOT SET STATE IN UPDATE, FOREVER LOOP
-
-    // this.setState({
-    //   user_id: this.props.userId
-    // })
-    // so in here, let's get the userId and setState
-  }
-  
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
-
-    // DIDN'T WORK 
-    // this.setState({
-    //   user_id: this.props.userId
-    // })
 
     const formData = Object.assign({}, this.state,
-        { user_id: this.props.userId} )
+      { user_id: this.props.userId} )
     
     debugger
 
     this.props.submitForm(formData)
     this.redirectHome();
-
-    // TEMP BUG FIX
-    // if (this.state.user_id === null) {
-    //   let formData = Object.assign({}, this.state,
-    //     { user_id: this.props.profile.user_id } )
-    //   this.props.submitForm(formData);
-    // } else {
-    //   this.props.submitForm(this.state);
-    //   this.redirectHome();
-    // }
   }
 
   redirectHome() {
