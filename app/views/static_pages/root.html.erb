@@ -5,12 +5,14 @@
       user: current_user).html_safe %>
   </script>
 
-  <script type="text/javascript"> 
-    window.currentProfile = <%= 
-      render( "/api/profiles/profile.json.jbuilder",
-      profile: current_user.profile).html_safe %>
-  </script>
-
+   <%# # if current_user.profile  %>
+    <script type="text/javascript"> 
+      window.currentProfile = <%= 
+        render( "/api/profiles/profile.json.jbuilder",
+        profile: current_user.profile).html_safe %>
+    </script>
+  <%# <% end %>
+  
 <% end %>
 
 <div id="root">React is broken, bruh!</div>

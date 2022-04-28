@@ -13,6 +13,7 @@ export const fetchProfile = profileId => (
 );
 
 export const createProfile = profile => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/profiles',

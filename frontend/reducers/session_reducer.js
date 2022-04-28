@@ -15,8 +15,6 @@ const sessionReducer = (initialState = _nullSession, action) => {
       let nextState = Object.assign(
         {}, initialState, { id: action.currentUser.id })
       return nextState;
-    // case RECEIVE_CURRENT_PROFILE
-    // return { profile: action.profile.id }
     case LOGOUT_CURRENT_USER:
       return _nullSession;
     default:

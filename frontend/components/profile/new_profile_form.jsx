@@ -7,16 +7,24 @@ export default class NewProfileForm extends React.Component {
     this.state = this.props.profile;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
-    // debugger
+    debugger
   }
 
   // -> tabs with separate form!! = NOT done
   
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
-    this.props.submitForm(this.state);
-    this.redirectHome();
+    debugger
+
+    // TEMP BUG FIX
+    if (this.state.user_id === null) {
+      let nextState = Object.assign({}, this.state, {user_id: this.props.profile.user_id})
+      this.setState(nextState)
+      this.props.submitForm(this.state);
+    } else {
+      this.props.submitForm(this.state);
+      this.redirectHome();
+    }
   }
 
   redirectHome() {

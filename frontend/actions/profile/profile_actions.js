@@ -6,10 +6,13 @@ export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS'; // [errors]
 export const REMOVE_PROFILE = 'REMOVE_PROFILE'; // profileId
 
 // regular action creators
-const receiveProfile = profile => ({
-  type: RECEIVE_PROFILE,
-  profile
-})
+const receiveProfile = profile => {
+  debugger
+  return {
+    type: RECEIVE_PROFILE,
+    profile
+  }
+}
 
 const receiveProfiles = profiles => ({
   type: RECEIVE_PROFILES,
