@@ -11,22 +11,32 @@ User.destroy_all
 Profile.destroy_all
 Photo.destroy_all
 
+default_avatar = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp"
+default_banner = "https://my5000px-static.s3.amazonaws.com/nature-cover-guest.jpg"
+
 user_1 = {
   username: 'tester',
   email: 'tester@mail.com',
   password: 'password'
 }
 
+guest = {
+  username: 'Guest',
+  email: 'guest@gmail.com',
+  password: 'password'
+}
+
 user_1_saved = User.create(user_1)
+guest_saved = User.create(guest)
 
 profile_1 = {
   first_name: 'John',
   last_name: 'Doe',
-  profile_avatar: '',
-  profile_banner: '',
+  profile_avatar: default_avatar,
+  profile_banner: default_banner,
   website_url: '',
   instagram_url: '',
-  lenses: '50mm 1.8/f',
+  lenses: '50mm f/1.8',
   cameras: 'GH5',
   birthday: '01/01/2000',
   city: 'Brooklyn',
@@ -36,25 +46,45 @@ profile_1 = {
   user_id: user_1_saved.id
 }
 
+profile_guest = {
+  first_name: 'Jane',
+  last_name: 'Smith',
+  profile_avatar: default_avatar,
+  profile_banner: default_banner,
+  website_url: 'https://www.jacobbenowitz.com',
+  instagram_url: 'https://www.instagram.com/',
+  lenses: 'EF 70-200mm f/4.0',
+  cameras: 'Cannon EOS 5DS',
+  birthday: '01/01/2000',
+  city: 'Dobbs Ferry',
+  country: 'United States',
+  about: 'nature photographer with a passion for hiking',
+  gender: 'Female',
+  user_id: guest_saved.id
+}
+
 Profile.create(profile_1)
+Profile.create(profile_guest)
+
+
 
 # images
 
-hero_photo = {
-  title: "landing_hero",
-  user_id: user_1_saved.id
-}
+# hero_photo = {
+#   title: "landing_hero",
+#   user_id: guest_saved.id
+# }
 
-hero = Photo.create(hero_photo)
+# hero = Photo.create(hero_photo)
 
-hero.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/landing_page/home_hero_opti.jpg'), filename: 'home-hero-opti.jpg')
+# hero.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/landing_page/home_hero_opti.jpg'), filename: 'home-hero-opti.jpg')
 
-landing_photo_1 = {
-  title: "Brooklyn Bridge Vibes",
-  description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
-  user_id: user_1_saved.id
-}
+# landing_photo_1 = {
+#   title: "Brooklyn Bridge Vibes",
+#   description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
+#   user_id: user_1_saved.id
+# }
 
-landing_1 = Photo.create(landing_photo_1)
+# landing_1 = Photo.create(landing_photo_1)
 
-landing_1.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/photos/2000px/brooklyn-bridge.jpg'), filename: 'brooklyn-bridge.jpg')
+# landing_1.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/photos/2000px/brooklyn-bridge.jpg'), filename: 'brooklyn-bridge.jpg')

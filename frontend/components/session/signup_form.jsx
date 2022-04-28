@@ -57,10 +57,9 @@ export default class SignupForm extends React.Component {
     e.preventDefault();
     const user = {
       username: 'Guest',
-      email: 'guest@gmail.com',
       password: 'password'
     }
-    this.props.processForm(user);
+    this.props.loginGuest(user);
   }
 
   renderErrors() {

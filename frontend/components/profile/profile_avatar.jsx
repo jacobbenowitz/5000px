@@ -6,13 +6,16 @@ export default class ProfileAvatar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfilePhoto(this.props.profileId)
+    if (this.props.profileId) {
+      this.props.fetchProfilePhoto(this.props.profileId)
+    }
   }
 
   render() {
-    // debugger
-    return(
-    <img src = {this.props.avatar }/>
-  )
+    debugger
+    // if (this.props.pro)
+    return (
+      <img src = {this.props.avatar }/>
+    )
   }
 }
