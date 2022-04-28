@@ -54,13 +54,13 @@ export default class ProfilePhotoForm extends React.Component {
     // const profilePhoto = this.
     
     const preview = this.state.photoUrl ?
-      <img src={this.state.photoUrl} /> : null;
+      <img className="profile-avatar" src={this.state.photoUrl} /> : null;
     
     return (
       <form onSubmit={this.handleSubmit}>
 
-        <div className="form-input">
-          <label htmlFor="profile-file-upload">Upload file</label>
+        <div className="profile-image-form">
+          <label htmlFor="profile-form-label">Upload file</label>
           <input type="file" name="profile-file-upload"
             className="profile-upload-input"
             onChange={this.handleFile} />

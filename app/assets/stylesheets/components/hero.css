@@ -3,8 +3,9 @@
   height: 600px;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  /* background-image: url('/app/assets/images/placeholder-image.png'); */
-  background-color: #707070;
+  background: url('https://my5000px-static.s3.amazonaws.com/home_hero_opti.jpg') rgba(26, 26, 26, 0.3);
+  background-size:cover;
+  background-blend-mode: multiply;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

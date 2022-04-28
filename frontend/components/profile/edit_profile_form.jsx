@@ -6,12 +6,32 @@ import ProfileAvatarContainer from "./profile_avatar_container"
 export default class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.profile;
+    // this.state = props.profile;
+    this.state = {
+      profile: {
+        first_name: '',
+        last_name: '',
+        profile_avatar: '',
+        profile_banner: '',
+        website_url: '',
+        instagram_url: '',
+        lenses: '',
+        cameras: '',
+        birthday: '',
+        city: '',
+        country: '',
+        about: '',
+        gender: '',
+        user_id: ''
+      }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  
   componentDidMount() {
     this.props.fetchProfile(this.props.profile.id);
+    this.setState(this.props.profile);
+    // debugger
   }
 
   // -> tabs with separate form!! = NOT done
@@ -101,7 +121,7 @@ export default class EditProfileForm extends React.Component {
               />
             </div>
               
-            {/* <div className="form-input">
+            <div className="form-input">
               <label htmlFor="birthday">Birthday</label>
               <input
                 type="date"
@@ -110,7 +130,7 @@ export default class EditProfileForm extends React.Component {
                 onChange={this.update('birthday')}
                 className="date-input"
               />
-            </div> */}
+            </div>
             
             <div className="form-input" onChange={this.update('gender')}>
               <label className="radio-title"

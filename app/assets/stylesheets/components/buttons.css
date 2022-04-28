@@ -66,6 +66,7 @@ input {
 
 input:focus {
   border: 1px solid #316ECA;
+  background-color: #fdfdfd;
 }
 
 .sign-up-large {
@@ -83,6 +84,7 @@ input:focus {
 
   /* white */
 
+  color: #222222;
   background: #FFFFFF;
   border-radius: 100px;
   font-size: 24px;
@@ -157,4 +159,44 @@ input:focus {
 
 #upload-icon {
   padding-right: 6px;
+}
+
+.demo-sign-up-large {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+
+  padding: 0 24px 0 24px;
+  height: 56px;
+  width: 180px;
+  left: 20px;
+  top: 190px;
+
+  border: 2px solid transparent;
+
+  /* white */
+  color: rgb(69, 69, 124);
+  background: #FFFFFF;
+  border-radius: 100px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 14px;
+  -webkit-box-shadow:0px 0px 20px 0px rgba(45,255,196,0.79);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(45,255,196,0.79);
+  box-shadow: 0px 0px 20px 0px rgba(45,255,196,0.79);
+}
+
+.demo-sign-up-large:hover {
+  border: 2px solid #B05C87;
+  color: #B05C87;
+  -webkit-box-shadow:0px 0px 20px 0px #B05C87;
+  -moz-box-shadow: 0px 0px 20px 0px #B05C87;
+  box-shadow: 0px 0px 20px 0px #B05C87;
+}
+
+.demo-sign-up-large:focus {
+  background-color: rgb(69, 69, 124);
+  color: #FFFFFF;
 }

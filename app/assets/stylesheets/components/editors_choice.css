@@ -1,0 +1,16 @@
+.landing-image-header {
+  background-image: url('https://my5000px-static.s3.amazonaws.com/2000px/brooklyn-bridge.jpg');
+  background-size:cover;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#editors-gallery {
+  padding: 0 64px 24px 64px;
+}
+
+.landing-gallery-header span {
+  text-align: center;
+}

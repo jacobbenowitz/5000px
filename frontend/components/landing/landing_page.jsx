@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Hero } from "./hero";
 import { DemoInfo } from "./demo_info";
 import { EditorsChoiceLanding } from "./editors_choice";
+import SimpleCTA from "./simple_cta_section";
 
 const LandingPage = props => {
 
@@ -10,7 +11,8 @@ const LandingPage = props => {
     <div id="landing-page">
       { Hero }
       { DemoInfo }
-      { EditorsChoiceLanding }
+      {EditorsChoiceLanding}
+      <SimpleCTA props={props} />
     </div>
 
   )

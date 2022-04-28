@@ -2,7 +2,7 @@ class Api::ProfilePhotosController < ApplicationController
 
   def create
     profile_photo = ProfilePhoto.new(profile_photo_params)
-    debugger
+    # debugger
     if profile_photo.save
       render json: {
         message: "Successfully uploaded", 

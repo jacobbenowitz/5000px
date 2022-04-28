@@ -17,7 +17,7 @@ export default class PhotoUploadForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    debugger
+    // debugger
 
     const formData = new FormData();
     formData.append('photo[title]', this.state.title);
@@ -47,7 +47,7 @@ export default class PhotoUploadForm extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
 
-    debugger
+    // debugger
 
     fileReader.onloadend = () => {
       this.setState({
