@@ -23,31 +23,38 @@ export default class NewProfileForm extends React.Component {
       gender: 'Not specified',
       user_id: null
     };
+    // debugger
+    this.bindHandlers();
+  }
+  
+  bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
-    // debugger
+  }
+
+  beforeUnloadListener = event => {
+    event.preventDefault();
+    event.returnValue = "Don't leave without saving your profile!";
+  }
+
+  clickPreventListener(event){
+    event.preventDefault();
+    return confirm("Don't leave without saving your profile!");
   }
 
   componentDidMount() {
-
-    window.addEventListener('beforeunload', (event) => {
-      event.preventDefault();
-      event.returnValue = "Don't leave without saving your profile!";
-    });
+    window.addEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
     
     const skip = document.querySelector('.skip-profile-form');
     const submit = document.querySelector('.save-profile');
+    
     const links = document.querySelectorAll('a');
 
     [...links].forEach((link) => {
       if (link !== skip && link !== submit) {
-        link.addEventListener('click', (event) => {
-          event.preventDefault();
-          return confirm("Don't leave without saving your profile!");
-        })
+        link.addEventListener('click', this.clickPreventListener)
       }
     });
-
 
   }
 
@@ -63,16 +70,11 @@ export default class NewProfileForm extends React.Component {
 
     [...links].forEach((link) => {
       if (link !== skip && link !== submit) {
-        link.removeEventListener('click', (event) => {
-          event.preventDefault();
-          return confirm("Don't leave without saving your profile!");
-        })
+        link.removeEventListener('click', this.clickPreventListener)
       }
     });
-    window.removeEventListener('beforeunload', (event) => {
-      event.preventDefault();
-      event.returnValue = "Don't leave without saving your profile!";
-    });
+
+    window.removeEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
 
     const formData = Object.assign({}, this.state,
       { user_id: this.props.userId} )
