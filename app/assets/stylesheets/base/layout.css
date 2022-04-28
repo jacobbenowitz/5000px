@@ -41,3 +41,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+#bottom-footer-links {
+  display: flex;
+  justify-content: flex-end;
+}
+#bottom-footer-links a {
+  margin-left: 10px;
+}

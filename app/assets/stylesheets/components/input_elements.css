@@ -1,4 +1,4 @@
-.text-input {
+.text-input, .date-input {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -18,6 +18,10 @@
   padding: 0px;
   width: 100%;
   margin-bottom: 15px;
+}
+
+.date-input {
+  height: fit-content;
 }
 
 .radio-group {

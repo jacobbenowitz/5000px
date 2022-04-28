@@ -5,20 +5,25 @@
   overflow: hidden;
 }
 
-#profile-form form {
+.main-avatar-form {
+  /* visibility: hidden; */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
+  padding: 12px;
+  align-items: flex-end;
   width: 100%;
   align-items: center;
 }
 
 #profile-photo-form {
-  /* visibility: hidden; */
-  position: absolute;
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  /* position: absolute;
   top: -40px;
-  right: -82px;
+  right: -82px; */
 }
 
 #profile-photo-form img {
@@ -96,7 +101,7 @@
 }
 .profile-image-form {
   display: grid;
-  grid-template-rows: 1fr 1fr fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .profile-form-label {
