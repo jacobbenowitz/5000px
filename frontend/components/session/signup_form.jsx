@@ -35,9 +35,9 @@ export default class SignupForm extends React.Component {
     if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
       console.log('need to catch empty fields')
     } else {
-      submitPromise(300)
-        .then(this.props.processForm(user))
-        .then(this.redirectCreateProfile())
+      this.props.processForm(user)
+        .then(submitPromise(300)).then(
+          this.redirectCreateProfile())
     }
     
     // TODO: create empty profile, but need user id inside of emptyProfile!

@@ -14,11 +14,12 @@ export default class NavHeader extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    const initials = currentUser ? currentUser.username.slice(0, 2).toUpperCase() : "";
+    // const initials = currentUser ? currentUser.username.slice(0, 2).toUpperCase() : "";
 
     const userLinks = currentUser ? (
       <div id="user-links">
-        <UserNavLink initials={initials} />
+        {/* <UserNavLink initials={initials} /> */}
+        <UserNavLink />
 
         <Link to={'/'} className="upload-button">
           <div id="upload-button-content">

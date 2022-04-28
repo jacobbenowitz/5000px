@@ -8,11 +8,11 @@ const mapStateToProps = (state, ownProps) => {
   const userId = state.session.id;
   const errors = state.errors.profiles;
 
-  // debugger
+  debugger
 
   return {
-    errors: errors,
-    userId: userId
+    errors: state.errors.profiles,
+    userId: state.session.id
   };
 }
 

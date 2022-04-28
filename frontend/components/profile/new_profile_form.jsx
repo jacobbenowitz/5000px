@@ -37,6 +37,10 @@ export default class NewProfileForm extends React.Component {
     event.returnValue = "Don't leave without saving your profile!";
   }
 
+  componentDidUpdate() {
+    this.state.user_id = this.props.userId;
+  }
+
   clickPreventListener(event){
     event.preventDefault();
     return confirm("Don't leave without saving your profile!");
@@ -80,9 +84,11 @@ export default class NewProfileForm extends React.Component {
       { user_id: this.props.userId} )
     
     // debugger
-
-    this.props.submitForm(formData)
-    this.redirectHome();
+    debugger
+    if (this.props.userId !== null) {
+      this.props.submitForm(formData)
+      this.redirectHome();
+    }
   }
 
   redirectHome() {
