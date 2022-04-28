@@ -25,7 +25,7 @@ export default class NewProfileForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
-    debugger
+    // debugger
   }
 
   // -> tabs with separate form!! = NOT done'
@@ -37,7 +37,7 @@ export default class NewProfileForm extends React.Component {
     const formData = Object.assign({}, this.state,
       { user_id: this.props.userId} )
     
-    debugger
+    // debugger
 
     this.props.submitForm(formData)
     this.redirectHome();

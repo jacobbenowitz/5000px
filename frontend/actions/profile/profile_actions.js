@@ -7,7 +7,7 @@ export const REMOVE_PROFILE = 'REMOVE_PROFILE'; // profileId
 
 // regular action creators
 const receiveProfile = profile => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_PROFILE,
     profile
