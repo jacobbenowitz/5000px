@@ -1,3 +1,57 @@
+.file-upload-input::-webkit-file-upload-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  visibility: hidden;
+}
+
+.file-upload-input::before {
+  content: "Select photo";
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+  background: #316ECA;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.file-upload-input:hover::before {
+  background: #2986F7;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: #0069ed;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover, button:focus {
+  background: #0053ba;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+
 .sign-up {
   font-weight: 600;
   /* Auto layout */

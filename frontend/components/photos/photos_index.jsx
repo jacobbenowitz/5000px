@@ -1,5 +1,4 @@
 import React from "react";
-import PhotoUploadForm from "./photo_upload_form";
 
 export default class PhotosIndex extends React.Component {
   
@@ -31,7 +30,6 @@ export default class PhotosIndex extends React.Component {
               )
             })}
           </ul>
-          <PhotoUploadForm />
         </div>
       )
     }

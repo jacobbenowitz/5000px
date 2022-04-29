@@ -11,7 +11,7 @@ export default class PhotoUploadForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFile = this.handleFile.bind(this)
-    // this.handleInput = this.handleInput.bind(this)
+    this.showDetailForm = this.showDetailForm.bind(this)
   }
 
   handleSubmit(e) {
@@ -26,21 +26,6 @@ export default class PhotoUploadForm extends React.Component {
     if (this.state.photoFile) {
       formData.append('photo[photo]', this.state.photoFile);
     }
-    // TESTING AJAX
-    $.ajax({
-      method: 'POST',
-      url: '/api/photos',
-      data: formData,
-      contentType: false,
-      processData: false
-    }).then(
-      // success callback
-      response => console.log(response.message),
-      response => (
-        console.log(response.responseJSON)
-      )
-    )
-    // END TESTING -> Create actions and container, pass func as props
   }
 
   handleFile(e) {
@@ -53,6 +38,8 @@ export default class PhotoUploadForm extends React.Component {
       this.setState({
         photoFile: file,
         photoUrl: fileReader.result
+      }, () => {
+        this.showDetailForm();
       })
     };
 
@@ -63,10 +50,18 @@ export default class PhotoUploadForm extends React.Component {
 
   handleInput = (type) => {
     return e => {
+      debugger
       this.setState(
-        { [type]: e.target.value }
-      )
+        { [type]: e.target.value })
+      }
     }
+    
+  showDetailForm() {
+    const photoUploadStep1 = document.getElementById('photo-upload-step-1');
+    photoUploadStep1.classList.toggle('hidden');
+
+    const imageUploadStep2 = document.getElementById('image-upload-step-2');
+    imageUploadStep2.classList.toggle('hidden');
   }
 
 
@@ -76,34 +71,62 @@ export default class PhotoUploadForm extends React.Component {
       <img src={this.state.photoUrl} /> : null;
     
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-input">
-          <label htmlFor="photo-title">Title</label>
-          <input type="text" name="photo-title"
-            className="text-input" onChange={this.handleInput('title')}/>
+      <div className="photo-upload-main">
+        <div className="page-top-banner">
+          <span>Upload</span>
         </div>
 
-        <div className="form-input">
-          <label htmlFor="photo-description">Description</label>
-          <input type="text" name="photo-description"
-            className="text-input" onChange={this.handleInput('description')} />
+        <div id="photo-upload-step-1">
+          <div id="upload-title-box" >
+            <h4>Upload photos</h4>
+              <div className="upload-input">
+                <input type="file" name="file-upload"
+                  className="file-upload-input"
+                  onChange={this.handleFile} />
+              </div>
+            <span>Or drag and drop photos anywhere on this page</span>
+            <div className="photo-requirements">
+              <strong>Photo requirements</strong>
+              <span>.png, .jpg, .jpeg only</span>
+              <span>Maximum file size is 200MP/megapixels</span>
+              <span>No NSFW content</span>
+            </div>
+          </div>
         </div>
 
-        <div className="form-input">
-          <label htmlFor="file-upload">Upload file</label>
-          <input type="file" name="file-upload"
-            className="file-upload-input"
-            onChange={this.handleFile} />
+        <div id="image-upload-step-2" className="hidden">
+
+          <div id="image-preview-container">
+            <div className="image-preview">
+              {preview}
+            </div>
+          </div>
+
+          <div id="upload-form-container">
+            <form className="photo-upload-form" onSubmit={this.handleSubmit}>
+
+              <div className="form-input">
+                <label htmlFor="photo-title">Title</label>
+                <input type="text" name="photo-title"
+                  className="text-input" onChange={this.handleInput('title')}/>
+              </div>
+
+              <div className="form-input">
+                <label htmlFor="photo-description">Description</label>
+                <input type="text" name="photo-description"
+                  className="text-input" onChange={this.handleInput('description')} />
+              </div>
+
+              <button className="upload-photo-button"
+                type="submit">Upload photo</button>
+              
+            </form>
+          </div>
+
         </div>
 
-        <div className="image-preview">
-          {preview}
-        </div>
 
-        <button className="upload-photo-button"
-          type="submit">Upload photo</button>
-        
-      </form>
+      </div>
     )
   }
 

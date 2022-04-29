@@ -20,7 +20,7 @@
   top: calc(50% - 591px/2);
 
   background: #FFFFFF;
-  /* light-grey */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 
   border: 1px solid #EEEFF2;
   box-sizing: border-box;

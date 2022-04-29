@@ -15,6 +15,7 @@ import EditProfileFormContainer from "./profile/edit_profile_form_container";
 import LandingPage from "./landing/landing_page";
 import NavFooter from "./navigation/nav_footer";
 import PhotosIndexContainer from "./photos/photos_index_container";
+import PhotoFormContainer from "./photos/photo_form_container";
 
 const App = () => (
   <div className="grid-12-col">
@@ -22,13 +23,14 @@ const App = () => (
       <NavHeaderContainer />
     </header>
     <Switch>
-      <AuthRoute path="/login" component={LoginFormContainer} />
-      <AuthRoute path="/signup" component={SignupFormContainer} />
-      <Route path="/profile/new" component={NewProfileFormContainer} />
-      <Route path="/profile/edit" component={EditProfileFormContainer} />
-      <Route path="/profile/edit/:profileId" component={EditProfileFormContainer} />
-      <Route path="/photos/index" component={PhotosIndexContainer} />
-      <Route path="/" component={LandingPage} />
+      <AuthRoute path={"/login"} component={LoginFormContainer} />
+      <AuthRoute path={"/signup"} component={SignupFormContainer} />
+      <Route path={"/profile/new"} component={NewProfileFormContainer} />
+      <Route path={"/profile/edit"} component={EditProfileFormContainer} />
+      <Route path={"/profile/edit/:profileId"} component={EditProfileFormContainer} />
+      <Route path={"/photos/upload"} component={PhotoFormContainer} />
+      <Route path={"/photos/index"} component={PhotosIndexContainer} />
+      <Route path={"/"} component={LandingPage} />
     </Switch>
     <footer>
       <NavFooter />
