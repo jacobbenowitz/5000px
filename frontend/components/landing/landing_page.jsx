@@ -11,7 +11,7 @@ export const LandingPage = props => {
     <div id="landing-page">
       { Hero }
       { DemoInfo }
-      {EditorsChoiceLanding}
+      { EditorsChoiceLanding }
       <SimpleCTA key={'cta-landing'} props={props} />
     </div>
 
