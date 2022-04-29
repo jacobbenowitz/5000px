@@ -1,22 +1,23 @@
 export const fetchProfiles = () => (
   $.ajax({
     method: 'GET',
-    url: '/api/profiles'
+    url: 'api/profiles'
   })
 )
 
-export const fetchProfile = profileId => (
-  $.ajax({
+export const fetchProfile = profileId => {
+  debugger
+  return $.ajax({
     method: 'GET',
-    url: `/api/profiles/${profileId}`
+    url: `api/profiles/${profileId}`
   })
-);
+}
 
 export const createProfile = profile => {
   debugger
   return $.ajax({
     method: 'POST',
-    url: '/api/profiles',
+    url: 'api/profiles',
     data: { profile }
   })
 };
@@ -24,7 +25,7 @@ export const createProfile = profile => {
 export const updateProfile = profile => (
   $.ajax({
     method: 'PATCH',
-    url: `/api/profiles/${profile.id}`,
+    url: `api/profiles/${profile.id}`,
     data: { profile }
   })
 );
@@ -32,7 +33,7 @@ export const updateProfile = profile => (
 export const deleteProfile = profileId => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/profiles/${profileId}`
+    url: `api/profiles/${profileId}`
   })
 );
 

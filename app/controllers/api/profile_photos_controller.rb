@@ -18,7 +18,7 @@ class Api::ProfilePhotosController < ApplicationController
   def show
     @profile_photo = ProfilePhoto.with_attached_profile_avatar.find_by(profile_id: params[:id])
     # @profile_photo = ProfilePhoto.find_by(profile_id: params[:id])
-    debugger
+    # debugger
     render :show
   end
 

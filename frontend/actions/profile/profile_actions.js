@@ -45,14 +45,14 @@ export const fetchProfiles = () => dispatch => {
 }
 
 export const fetchProfile = profileId => dispatch => {
-  debugger
+  // debugger
   return ProfileApiUtil.fetchProfile(profileId).then(profile =>
     dispatch(receiveProfile(profile))
   )
 }
 
 export const createProfile = profile => dispatch => {
-  debugger
+  // debugger
   ProfileApiUtil.createProfile(profile).then(profile => {
     dispatch(receiveProfile(profile))
     dispatch(receiveCurrentProfile(profile))
@@ -63,7 +63,7 @@ export const createProfile = profile => dispatch => {
 }
 
 export const updateProfile = profile => dispatch => {
-  debugger
+  // debugger
   return ProfileApiUtil.updateProfile(profile).then(profile =>
     dispatch(receiveProfile(profile))
   ), error => (

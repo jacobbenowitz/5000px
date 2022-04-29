@@ -2,7 +2,7 @@ class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    # debugger
+    debugger
     if @profile.save
       # debugger
       render :show

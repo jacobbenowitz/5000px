@@ -13,7 +13,7 @@ const profilesReducer = (initialState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PROFILE:
-      // debugger
+      debugger
       return Object.assign({}, nextState, { [action.profile.id]: action.profile });
     case REMOVE_PROFILE:
       delete nextState[action.profileId];
@@ -23,7 +23,7 @@ const profilesReducer = (initialState = {}, action) => {
         = action.response.id
       return nextState;
     case RECEIVE_PROFILE_PHOTO:
-      debugger
+      // debugger
       nextState[action.photo.profile_id].profile_avatar = action.photo.photoUrl
       return nextState;
     default:

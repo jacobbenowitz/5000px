@@ -6,14 +6,20 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // ()
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; // [errors]
 
 // regular action creators
-export const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-})
+export const receiveCurrentUser = currentUser => {
+  debugger
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser
+    // currently currentUser is nested
+  }
+}
 
-export const logoutCurrentUser = () => ({
-  type: LOGOUT_CURRENT_USER
-})
+export const logoutCurrentUser = () => {
+  return {
+    type: LOGOUT_CURRENT_USER
+  }
+}
 
 export const receiveErrors = errors => {
   debugger
@@ -23,31 +29,36 @@ export const receiveErrors = errors => {
   }
 }
 // thunk action creators
-export const login = user => dispatch => (
-  SessionApiUtil.login(user).then(({ user, profile }) => {
-    dispatch(receiveCurrentUser(user))
-    dispatch(receiveProfile(profile))
-    dispatch(receiveCurrentProfile(profile))
-  }, error => (
-    dispatch(receiveErrors(error.responseJSON))
-  ))
-)
+export const login = user => dispatch => {
+  return SessionApiUtil.login(user)
+    .then(({ user, profile }) => {
+      debugger
+      dispatch(receiveCurrentUser(user))
+      dispatch(receiveProfile(profile))
+      dispatch(receiveCurrentProfile(profile))
+    }, error => {
+      dispatch(receiveErrors(error.responseJSON))
+    })
+}
 
-export const signup = user => dispatch => (
-  SessionApiUtil.createUser(user).then(user => (
-    dispatch(receiveCurrentUser(user))
-  ), error => (
-    dispatch(receiveErrors(error.responseJSON))
-  ))
-)
+export const signup = user => dispatch => {
+  debugger
+  return SessionApiUtil.createUser(user)
+    .then(user => {
+      debugger
+      dispatch(receiveCurrentUser(user))
+    }, error => {
+      dispatch(receiveErrors(error.responseJSON))
+    })
+}
 
-export const logout = () => dispatch => (
-  SessionApiUtil.logout().then(() => (
+export const logout = () => dispatch => {
+  return SessionApiUtil.logout().then(() => {
     dispatch(logoutCurrentUser())
-  ))
-)
+  })
+}
 
-export const fetchCurrentUser = userId => dispatch => (
-  SessionApiUtil.fetchUser(userId).then(user =>
-    dispatch(receiveCurrentUser(user)))
-)
+export const fetchCurrentUser = userId => dispatch => {
+  return SessionApiUtil.fetchUser(userId)
+    .then(user => dispatch(receiveCurrentUser(user)))
+}
