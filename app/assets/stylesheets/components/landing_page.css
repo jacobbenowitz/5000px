@@ -1,9 +1,12 @@
 
 .landing-image-header {
+  background-image: url('https://my5000px-static.s3.amazonaws.com/2000px/brooklyn-bridge.jpg');
   display: grid;
   place-items: center;
   height: 400px;
-  background-color: #707070;
+  background-blend-mode: multiply;
+  background-color: #d6d6d6;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
