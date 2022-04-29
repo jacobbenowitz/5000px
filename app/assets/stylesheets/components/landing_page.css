@@ -114,6 +114,7 @@
 #landing-page {
   overflow: hidden;
   z-index: 1;
+  grid-column: 1 / span 12;
 }
 
 .simple-cta-section {
