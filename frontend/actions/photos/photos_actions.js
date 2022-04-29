@@ -28,6 +28,7 @@ export const fetchPhotos = () => dispatch => {
 
 
 export const uploadPhoto = formData => dispatch => {
+  debugger
   return PhotoApiUtil.uploadPhoto(formData).then(
     // success callback
     // TODO: render success

@@ -16,16 +16,18 @@ export default class PhotoUploadForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    // debugger
+    debugger
 
     const formData = new FormData();
-    formData.append('photo[title]', this.state.title);
-    formData.append('photo[description]', this.state.description);
-    // only append the file if it exists in state
+    
     if (this.state.photoFile) {
+      // only append the file if it exists in state
+      formData.append('photo[title]', this.state.title);
+      formData.append('photo[description]', this.state.description);
       formData.append('photo[photo]', this.state.photoFile);
+      debugger
     }
+    this.props.uploadPhoto(formData);
   }
 
   handleFile(e) {
@@ -39,6 +41,7 @@ export default class PhotoUploadForm extends React.Component {
         photoFile: file,
         photoUrl: fileReader.result
       }, () => {
+        debugger
         this.showDetailForm();
       })
     };
@@ -50,7 +53,6 @@ export default class PhotoUploadForm extends React.Component {
 
   handleInput = (type) => {
     return e => {
-      debugger
       this.setState(
         { [type]: e.target.value })
       }
