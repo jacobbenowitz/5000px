@@ -14,7 +14,6 @@
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: 0 64px 0 64px;
 }
 
 .landing-header-content {
@@ -67,14 +66,12 @@
 
 .editors-gallery-col img {
   margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
   .editors-gallery-col {
-    flex: 50%;
+    flex: 48%;
     max-width: 50%;
   }
 }
