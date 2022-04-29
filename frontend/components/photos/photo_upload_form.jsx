@@ -9,9 +9,9 @@ export default class PhotoUploadForm extends React.Component {
       photoFile: null,
       photoUrl: null
     };
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleFile = this.handleFile.bind(this)
-    this.showDetailForm = this.showDetailForm.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+    this.deletePhoto = this.deletePhoto.bind(this);
   }
 
   handleSubmit(e) {
@@ -41,8 +41,7 @@ export default class PhotoUploadForm extends React.Component {
         photoFile: file,
         photoUrl: fileReader.result
       }, () => {
-        debugger
-        this.showDetailForm();
+        this.toggleDetailForm();
       })
     };
 
@@ -58,7 +57,7 @@ export default class PhotoUploadForm extends React.Component {
       }
     }
     
-  showDetailForm() {
+  toggleDetailForm() {
     const photoUploadStep1 = document.getElementById('photo-upload-step-1');
     photoUploadStep1.classList.toggle('hidden');
 
@@ -66,11 +65,38 @@ export default class PhotoUploadForm extends React.Component {
     imageUploadStep2.classList.toggle('hidden');
   }
 
+  showOverlay() {
+    const overlay = document.querySelector('#img-preview-overlay');
+    overlay.classList.remove('img-overlay-hidden')
+    overlay.classList.add('img-overlay-show')
+  }
+  
+  hideOverlay() {
+    const overlay = document.querySelector('#img-preview-overlay');
+    overlay.classList.remove('img-overlay-show')
+    overlay.classList.add('img-overlay-hidden')
+  }
+
+  deletePhoto() {
+    this.setState({
+      title: "",
+      description: "",
+      photoFile: null,
+      photoUrl: null
+    }, () => this.toggleDetailForm())
+  }
+
 
   render() {
     
     const preview = this.state.photoUrl ?
-      <img src={this.state.photoUrl} /> : null;
+      <img src={this.state.photoUrl}
+      /> : null;
+    
+    const overlay = <div id="img-preview-overlay"
+      className="img-overlay-hidden">
+      <i id="delete-icon" onClick={this.deletePhoto}
+        className="fa-solid fa-trash fa-xl"></i> </div>
     
     return (
       <div className="photo-upload-main">
@@ -98,9 +124,14 @@ export default class PhotoUploadForm extends React.Component {
 
         <div id="image-upload-step-2" className="hidden">
 
-          <div id="image-preview-container">
+          <div id="image-preview-container"
+            onMouseOver={this.showOverlay}
+            onMouseLeave={this.hideOverlay}
+          >
             <div className="image-preview">
-              {preview}
+              { overlay }
+              { preview }
+              <span className="photo-label-upload">{ this.state.photoFile ? this.state.photoFile.name : "" }</span>
             </div>
           </div>
 
@@ -110,6 +141,7 @@ export default class PhotoUploadForm extends React.Component {
               <div className="form-input">
                 <label htmlFor="photo-title">Title</label>
                 <input type="text" name="photo-title"
+                  value={ this.state.photoFile ? this.state.photoFile.name : ""}
                   className="text-input" onChange={this.handleInput('title')}/>
               </div>
 
