@@ -25,7 +25,7 @@
   background: #2986F7;
   transition: background 250ms ease-in-out, transform 150ms ease;
 }
-
+/* 
 button {
   display: inline-block;
   border: none;
@@ -50,7 +50,7 @@ button:hover, button:focus {
 button:focus {
   outline: 1px solid #fff;
   outline-offset: -4px;
-}
+} */
 
 
 .sign-up {
@@ -212,6 +212,10 @@ input:focus {
   padding: 10px 22px 10px 14px;
   background-color: white;
   color: #222222;
+}
+
+.upload-button:hover {
+  background-color: #f8f8f8;
 }
 
 #upload-button-content {

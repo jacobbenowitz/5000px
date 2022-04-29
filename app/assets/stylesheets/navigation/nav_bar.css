@@ -6,7 +6,7 @@ header {
   position: sticky;
   background-color: white;
   top: 0;
-  z-index: 5;
+  z-index: 400;
 }
 
 #nav-header {

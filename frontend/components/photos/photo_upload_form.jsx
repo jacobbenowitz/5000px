@@ -143,8 +143,7 @@ export default class PhotoUploadForm extends React.Component {
         className="fa-solid fa-trash fa-xl"></i> </div>
     
     return (
-      <div className="span-12"
-      >
+      <div className="span-12">
         <div id="main-drop-zone" className="enabled"
           onDrop={this.handleDrop}
           onDragOver={this.dragOverHandler}
@@ -177,11 +176,11 @@ export default class PhotoUploadForm extends React.Component {
 
           <div id="image-upload-step-2" className="hidden">
 
-            <div id="image-preview-container"
-              onMouseOver={this.showOverlay}
-              onMouseLeave={this.hideOverlay}
-            >
-              <div className="image-preview">
+            <div id="image-preview-container">
+              <div className="image-preview"
+                onMouseOver={this.showOverlay}
+                onMouseLeave={this.hideOverlay}
+              >
                 { overlay }
                 { preview }
                 <span className="photo-label-upload">{ this.state.photoFile ? this.state.photoFile.name : "" }</span>
@@ -200,7 +199,7 @@ export default class PhotoUploadForm extends React.Component {
 
                 <div className="form-input">
                   <label htmlFor="photo-description">Description</label>
-                  <input type="text" name="photo-description"
+                  <textarea name="photo-description"
                     className="text-input" onChange={this.handleInput('description')} />
                 </div>
 
