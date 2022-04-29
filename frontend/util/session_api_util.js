@@ -1,5 +1,5 @@
 export const createUser = user => {
-  debugger
+  // debugger
   // testing: removed brackets from {user} bc could be causing too much nesting when hits reducer (ie. currentUser.user.id instead of currentUser.id) and that is not consistent with login(user) format
   // did not work, sent null object to reducer
   return $.ajax({
@@ -10,7 +10,7 @@ export const createUser = user => {
 };
 
 export const login = user => {
-  debugger
+  // debugger
   return $.ajax({
     method: 'POST',
     url: 'api/session',

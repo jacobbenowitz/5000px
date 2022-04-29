@@ -10,13 +10,13 @@ const usersReducer = (initialState = {}, action) => {
     case RECEIVE_CURRENT_USER:
       // added logic to test for nesting, still not 100% on how to avoid the nesting difference between login(user) and signup(user)
       if (typeof action.currentUser.id === 'undefined') {
-        debugger
+        // debugger
         return Object.assign(
           {}, nextState,
           { [action.currentUser.user.id]: action.currentUser.user }
         );
       } else {
-        debugger
+        // debugger
         return Object.assign(
           {}, nextState,
           { [action.currentUser.id]: action.currentUser }

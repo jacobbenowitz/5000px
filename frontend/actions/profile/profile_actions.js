@@ -8,14 +8,14 @@ export const REMOVE_PROFILE = 'REMOVE_PROFILE'; // profileId
 
 // regular action creators
 export const receiveProfile = profile => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_PROFILE,
     profile
   }
 }
 export const receiveCurrentProfile = profile => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_CURRENT_PROFILE,
     profile

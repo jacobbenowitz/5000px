@@ -7,7 +7,7 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; // [errors]
 
 // regular action creators
 export const receiveCurrentUser = currentUser => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser
@@ -22,7 +22,7 @@ export const logoutCurrentUser = () => {
 }
 
 export const receiveErrors = errors => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -32,7 +32,7 @@ export const receiveErrors = errors => {
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {
-      debugger
+      // debugger
       dispatch(receiveCurrentUser(user))
       dispatch(receiveProfile(profile))
       dispatch(receiveCurrentProfile(profile))
@@ -42,10 +42,10 @@ export const login = user => dispatch => {
 }
 
 export const signup = user => dispatch => {
-  debugger
+  // debugger
   return SessionApiUtil.createUser(user)
     .then(user => {
-      debugger
+      // debugger
       dispatch(receiveCurrentUser(user))
     }, error => {
       dispatch(receiveErrors(error.responseJSON))
