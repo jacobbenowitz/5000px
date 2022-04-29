@@ -19,10 +19,12 @@ footer {
 }
 
 #footer-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   padding: 2rem 0 1rem 0;
   border-top: 1px solid #c6c8cc;
+  left:0px;
+  bottom:0px;
+  height: fit-content;
+  width: 100%;
 }
 
 .footer-link-list {

@@ -2,6 +2,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   visibility: hidden;
+  z-index: 200;
 }
 
 .file-upload-input::before {
