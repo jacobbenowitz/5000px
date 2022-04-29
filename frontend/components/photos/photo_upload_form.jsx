@@ -47,6 +47,9 @@ export default class PhotoUploadForm extends React.Component {
     if (file) {
       fileReader.readAsDataURL(file);
     }
+    const dropZone = document.querySelector('#main-drop-zone');
+    dropZone.classList.add('disabled');
+    dropZone.classList.remove('enabled');
   }
 
   handleInput = (type) => {
@@ -77,12 +80,18 @@ export default class PhotoUploadForm extends React.Component {
   }
 
   deletePhoto() {
+    const dropZone = document.querySelector('#main-drop-zone');
+
     this.setState({
       title: "",
       description: "",
       photoFile: null,
       photoUrl: null
-    }, () => this.toggleDetailForm())
+    }, () => {
+      this.toggleDetailForm();
+      dropZone.classList.remove('disabled');
+      dropZone.classList.add('enabled');
+    })
   };
 
   dragOverHandler(e) {
@@ -111,6 +120,8 @@ export default class PhotoUploadForm extends React.Component {
         photoUrl: fileReader.result
       }, () => {
         this.toggleDetailForm();
+        dropZone.classList.add('disabled');
+        dropZone.classList.remove('enabled');
       })
     };
 
@@ -134,7 +145,7 @@ export default class PhotoUploadForm extends React.Component {
     return (
       <div className="span-12"
       >
-        <div id="main-drop-zone"
+        <div id="main-drop-zone" className="enabled"
           onDrop={this.handleDrop}
           onDragOver={this.dragOverHandler}
           onDragExit={this.dragExitHandler}

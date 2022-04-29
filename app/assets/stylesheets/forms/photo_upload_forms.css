@@ -67,6 +67,8 @@
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
+  position: relative;
+  top: 65px;
 }
 
 .image-preview {
@@ -159,13 +161,12 @@
   position: fixed;
 }
 
-#main-drop-zone.drag-on {
+#main-drop-zone.enabled.drag-on {
   opacity: 40%;
   transition: opacity 200ms ease-in-out;
 }
 
-#main-drop-zone {
-  /* pointer-events:; */
+#main-drop-zone.enabled {
   display: block;
   position: absolute;
   width: 100%;
@@ -173,4 +174,9 @@
   z-index: 100;
   background-color: #0870d1;
   opacity: 0%;
+}
+
+#main-drop-zone.disabled {
+  pointer-events: none;
+  display: none;
 }
