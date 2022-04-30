@@ -8,6 +8,5 @@ class Profile < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
 
-  has_many_attached :photos
   
 end

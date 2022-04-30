@@ -75,9 +75,11 @@ hero_photo = {
   user_id: guest_saved.id
 }
 
-hero = Photo.create(hero_photo)
+hero = Photo.new(hero_photo)
 
-guest_profile_saved.photos.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/toronto-city_t20_6lAdEo.jpg'), filename: 'toronto.jpg')
+hero.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/toronto-city_t20_6lAdEo.jpg'), filename: 'toronto.jpg')
+
+hero.save!
 
 landing_photo_1 = {
   title: "Brooklyn Bridge Vibes",
@@ -85,6 +87,8 @@ landing_photo_1 = {
   user_id: guest_saved.id
 }
 
-landing_1 = Photo.create(landing_photo_1)
+landing_1 = Photo.new(landing_photo_1)
 
-guest_profile_saved.photos.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/under-cave_t20_AV6wgr.jpg'), filename: 'cave.jpg')
+landing_1.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/under-cave_t20_AV6wgr.jpg'), filename: 'cave.jpg')
+
+landing_1.save!
