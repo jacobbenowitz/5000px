@@ -1,5 +1,6 @@
 import * as SessionApiUtil from '../../util/session_api_util'
-import { receiveProfile, receiveCurrentProfile } from '../profile/profile_actions'
+import { fetchPhotos } from '../photos/photos_actions';
+import { receiveProfile, receiveCurrentProfile, fetchProfiles } from '../profile/profile_actions'
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // ()
@@ -32,10 +33,11 @@ export const receiveErrors = errors => {
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {
-      debugger
       dispatch(receiveCurrentUser(user))
       dispatch(receiveProfile(profile))
       dispatch(receiveCurrentProfile(profile))
+      dispatch(fetchPhotos())
+      dispatch(fetchProfiles())
     }, error => {
       dispatch(receiveErrors(error.responseJSON))
     })

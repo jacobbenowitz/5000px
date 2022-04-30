@@ -2,20 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavListItem from "./nav_list_item";
 
-const userLinks = [
-  { title: 'Profile', url: '/profile' },
-  { title: 'Galleries', url: '/galleries' },
-  { title: 'Liked photos', url: '/likes' },
-  { title: 'Settings', url: '/profile/edit' }
-]
 
 export default class UserNavModal extends React.Component {
   constructor(props) {
     super(props);
+
   }
   
   render() {
+    const userLinks = [
+      { title: 'Profile', url: `/profiles/${this.props.profile}` },
+      { title: 'Galleries', url: '/galleries' },
+      { title: 'Liked photos', url: '/likes' },
+      { title: 'Settings', url: '/profile/edit' }
+    ]
     const klass = this.props.klass;
+    
     return (
       <div id="user-modal"
         className={"nav-modal-container" + klass}

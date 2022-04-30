@@ -29,7 +29,7 @@ const App = () => (
       <AuthRoute path={"/signup"} component={SignupFormContainer} />
       <Route path={"/profile/new"} component={NewProfileFormContainer} />
       <Route path={"/profile/edit"} component={EditProfileFormContainer} />
-      <Route path={"/profile/:profileId"} component={ProfileShowContainer} />
+      <Route path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <Route path={"/photos/upload"} component={PhotoFormContainer} /> 
       <Route path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
       <Route path={"/photos/index"} component={PhotosIndexContainer} />

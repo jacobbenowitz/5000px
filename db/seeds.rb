@@ -63,28 +63,28 @@ profile_guest = {
   user_id: guest_saved.id
 }
 
-Profile.create(profile_1)
-Profile.create(profile_guest)
+profile_1_saved = Profile.create(profile_1)
+guest_profile_saved = Profile.create(profile_guest)
 
 
 
 # images
 
-# hero_photo = {
-#   title: "landing_hero",
-#   user_id: guest_saved.id
-# }
+hero_photo = {
+  title: "landing_hero",
+  user_id: guest_saved.id
+}
 
-# hero = Photo.create(hero_photo)
+hero = Photo.create(hero_photo)
 
-# hero.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/landing_page/home_hero_opti.jpg'), filename: 'home-hero-opti.jpg')
+guest_profile_saved.photos.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/toronto-city_t20_6lAdEo.jpg'), filename: 'toronto.jpg')
 
-# landing_photo_1 = {
-#   title: "Brooklyn Bridge Vibes",
-#   description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
-#   user_id: user_1_saved.id
-# }
+landing_photo_1 = {
+  title: "Brooklyn Bridge Vibes",
+  description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
+  user_id: guest_saved.id
+}
 
-# landing_1 = Photo.create(landing_photo_1)
+landing_1 = Photo.create(landing_photo_1)
 
-# landing_1.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/photos/2000px/brooklyn-bridge.jpg'), filename: 'brooklyn-bridge.jpg')
+guest_profile_saved.photos.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/under-cave_t20_AV6wgr.jpg'), filename: 'cave.jpg')
