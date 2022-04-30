@@ -4,9 +4,11 @@ import {
 } from '../actions/profile/profile_actions';
 import {
   RECEIVE_NEW_PROFILE_PHOTO,
-  RECEIVE_PROFILE_PHOTO,
-  RECEIVE_PHOTO
+  RECEIVE_PROFILE_PHOTO
 } from '../actions/photos/profile_photos_actions';
+import {
+  RECEIVE_PHOTO
+} from '../actions/photos/photos_actions';
 
 const profilesReducer = (initialState = {}, action) => {
   Object.freeze(initialState);

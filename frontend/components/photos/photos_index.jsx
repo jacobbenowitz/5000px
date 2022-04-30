@@ -5,7 +5,8 @@ import PhotoIndexItem from "./photo_index_item";
 export default class PhotosIndex extends React.Component {
   
   constructor(props) {
-    super(props)
+    super(props);
+    // this.state = {[]}
   }
 
   render() {

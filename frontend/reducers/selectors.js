@@ -7,9 +7,11 @@ export const selectProfilePhotos = ({ photos }, photoIds) => {
 };
 
 export const asArray = ({ photos }) => {
+  debugger
   return Object.keys(photos).map(id => photos[id])
 }
 
+// export const selectPhotos
 
 ///////
 // refactored with jbuilder user.profile.id -> added to user slice

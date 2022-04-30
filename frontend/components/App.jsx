@@ -18,6 +18,7 @@ import PhotosIndexContainer from "./photos/photos_index_container";
 import PhotoFormContainer from "./photos/photo_form_container";
 import SinglePhotoShowContainer from "./photos/single_photo_show_container";
 import ProfileShowContainer from "./profile/show_page/profile_show_container";
+import HomeFeedContainer from "./photo_feed/home_feed_container";
 
 const App = () => (
   <div className="grid-pancake-stack">
@@ -32,7 +33,7 @@ const App = () => (
       <Route path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <Route path={"/photos/upload"} component={PhotoFormContainer} /> 
       <Route path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
-      <Route path={"/discover"} component={PhotosIndexContainer} />
+      <Route path={"/discover"} component={HomeFeedContainer} />
       <Route path={"/"} component={LandingPage} />
     </Switch>
     <footer className="grid-bottom-stack">

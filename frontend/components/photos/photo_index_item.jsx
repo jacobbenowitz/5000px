@@ -9,12 +9,12 @@ class PhotoIndexItem extends React.Component {
   }
 
   render() {
-    const { title, photo, user, profile } = this.props;
+    const { photo, user, profile, fetchPhoto } = this.props;
     debugger
     const photoOverlay = (
       <div className="photo-data-overlay">
         <div className="top-img-overlay">
-          <span>{title}</span>
+          <span>{photo.title}</span>
         </div>
         <div className="bot-img-overlay">
           <div className="left-bot-overlay">
