@@ -16,12 +16,12 @@ import LandingPage from "./landing/landing_page";
 import NavFooter from "./navigation/nav_footer";
 import PhotosIndexContainer from "./photos/photos_index_container";
 import PhotoFormContainer from "./photos/photo_form_container";
-import SinglePhotoShowContainer from "./photos/single_photo_show_container
-"
+import SinglePhotoShowContainer from "./photos/single_photo_show_container";
+import ProfileShowContainer from "./profile/show_page/profile_show_container";
 
 const App = () => (
-  <div className="grid-12-col">
-    <header>
+  <div className="grid-pancake-stack">
+    <header className="header-top-stack">
       <NavHeaderContainer />
     </header>
     <Switch>
@@ -29,13 +29,13 @@ const App = () => (
       <AuthRoute path={"/signup"} component={SignupFormContainer} />
       <Route path={"/profile/new"} component={NewProfileFormContainer} />
       <Route path={"/profile/edit"} component={EditProfileFormContainer} />
-      <Route path={"/profile/edit/:profileId"} component={EditProfileFormContainer} />
+      <Route path={"/profile/:profileId"} component={ProfileShowContainer} />
       <Route path={"/photos/upload"} component={PhotoFormContainer} /> 
       <Route path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
       <Route path={"/photos/index"} component={PhotosIndexContainer} />
       <Route path={"/"} component={LandingPage} />
     </Switch>
-    <footer>
+    <footer className="grid-bottom-stack">
       <NavFooter />
     </footer>
   </div>

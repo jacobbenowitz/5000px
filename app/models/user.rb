@@ -18,6 +18,13 @@ class User < ApplicationRecord
   validates :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_one_attached :avatar
+  has_one_attached :cover
+  
+  has_many :photos,
+    foreign_key: :user_id,
+    class_name: :Photo
+
   has_one :profile,
     foreign_key: :user_id,
     class_name: :Profile

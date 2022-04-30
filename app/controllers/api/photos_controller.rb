@@ -3,7 +3,7 @@ class Api::PhotosController < ApplicationController
 
   def create 
     photo = Photo.new(photo_params)
-    # debugger
+    debugger
     if photo.save
       render json: {message: "Successfully uploaded"}
     else
@@ -26,6 +26,6 @@ class Api::PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :description, :photo)
+    params.require(:photo).permit(:photo, :title, :description, :user_id)
   end
 end

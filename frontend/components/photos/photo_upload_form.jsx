@@ -18,7 +18,6 @@ export default class PhotoUploadForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     const formData = new FormData();
     
     if (this.state.photoFile) {
@@ -26,6 +25,7 @@ export default class PhotoUploadForm extends React.Component {
       formData.append('photo[title]', this.state.title);
       formData.append('photo[description]', this.state.description);
       formData.append('photo[photo]', this.state.photoFile);
+      formData.append('photo[user_id]', this.props.userId);
     }
     this.props.uploadPhoto(formData);
   }
@@ -37,6 +37,7 @@ export default class PhotoUploadForm extends React.Component {
 
     fileReader.onloadend = () => {
       this.setState({
+        title: file.name,
         photoFile: file,
         photoUrl: fileReader.result
       }, () => {
@@ -116,6 +117,7 @@ export default class PhotoUploadForm extends React.Component {
 
     fileReader.onloadend = () => {
       this.setState({
+        title: file.name,
         photoFile: file,
         photoUrl: fileReader.result
       }, () => {
@@ -143,14 +145,12 @@ export default class PhotoUploadForm extends React.Component {
         className="fa-solid fa-trash fa-xl"></i> </div>
     
     return (
-      <div className="span-12">
+      <div className="upload-container">
         <div id="main-drop-zone" className="enabled"
           onDrop={this.handleDrop}
           onDragOver={this.dragOverHandler}
-          onDragExit={this.dragExitHandler}
-        >
-          
-        </div>
+          onDragLeave={this.dragExitHandler}
+        > </div>
         <div className="page-top-banner">
             <span>Upload</span>
           </div>
@@ -158,6 +158,7 @@ export default class PhotoUploadForm extends React.Component {
 
           <div id="photo-upload-step-1">
             <div id="upload-title-box" >
+              <i className="fa-solid fa-file-arrow-up fa-2xl"></i>
               <h4>Upload photos</h4>
                 <div className="upload-input">
                   <input type="file" name="file-upload"
@@ -193,18 +194,23 @@ export default class PhotoUploadForm extends React.Component {
                 <div className="form-input">
                   <label htmlFor="photo-title">Title</label>
                   <input type="text" name="photo-title"
-                    value={ this.state.photoFile ? this.state.photoFile.name : ""}
+                    value={ this.state.title }
                     className="text-input" onChange={this.handleInput('title')}/>
                 </div>
 
                 <div className="form-input">
                   <label htmlFor="photo-description">Description</label>
                   <textarea name="photo-description"
-                    className="text-input" onChange={this.handleInput('description')} />
+                    className="description-input" onChange={this.handleInput('description')} />
                 </div>
+                <div className="form-bot-buttons">
 
-                <button className="upload-photo-button"
-                  type="submit">Upload photo</button>
+                  <span onClick={this.deletePhoto}
+                    className="cancel-upload"
+                  >Cancel</span>
+                  <button className="upload-photo-button"
+                    type="submit">Upload photo</button>
+                </div>
                 
               </form>
             </div>

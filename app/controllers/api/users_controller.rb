@@ -14,6 +14,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @photos = @user.photos.order(created_at: :desc)
     render :show
   end
 
@@ -28,7 +29,9 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(
+      :username, :email, :password, :avatar, :cover
+    )
   end
 
 end

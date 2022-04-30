@@ -3,7 +3,11 @@ class Photo < ApplicationRecord
 
   validate :ensure_photo
 
-  has_one_attached :photo
+  has_many_attached :photo
+
+  belongs_to :user,
+    foreign_key: :user_id,
+    class_name: :User
 
   # render the errors using if flash[:errors] ?
   def ensure_photo
@@ -11,4 +15,5 @@ class Photo < ApplicationRecord
       errors[:photo] << "must be attached"
     end
   end
+  
 end

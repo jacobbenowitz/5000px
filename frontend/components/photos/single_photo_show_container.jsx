@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => {
   fetchPhoto: photoId => dispatch(fetchPhoto(photoId))
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SinglePhotoShow)
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePhotoShow);

@@ -1,17 +1,35 @@
-html { height: 100%; }
-body { min-height: 100%; }
+html { 
+  height: 100vh; 
+}
+body { 
+  min-height: 100vw; 
+  overflow-x: hidden;
+}
 /* layouts */
+
+.grid-pancake-stack {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header-top-stack {
+  grid-row: 1;
+}
+
+.grid-bottom-stack {
+  grid-row: 3;
+}
 
 .center-simple {
   display: grid;
   place-items: center;
 }
 
-.grid-12-col {
+/* .grid-12-col {
   height: inherit;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-}
+} */
 
 .span-12 {
   grid-column: 1 / span 12;
