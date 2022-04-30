@@ -6,7 +6,7 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-import { AuthRoute } from "../util/route_util";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import NavHeaderContainer from './navigation/nav_header_container';
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from "./session/signup_form_container";
@@ -28,13 +28,14 @@ const App = () => (
     <Switch>
       <AuthRoute path={"/login"} component={LoginFormContainer} />
       <AuthRoute path={"/signup"} component={SignupFormContainer} />
-      <Route path={"/profile/new"} component={NewProfileFormContainer} />
-      <Route path={"/profile/edit"} component={EditProfileFormContainer} />
+      <AuthRoute path={"/profile/new"} component={NewProfileFormContainer} />
+      <ProtectedRoute path={"/profile/edit"} component={EditProfileFormContainer} />
       <Route path={"/profiles/:profileId"} component={ProfileShowContainer} />
-      <Route path={"/photos/upload"} component={PhotoFormContainer} /> 
-      <Route path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
-      <Route path={"/discover"} component={HomeFeedContainer} />
-      <Route path={"/"} component={LandingPage} />
+      <ProtectedRoute path={"/photos/upload"} component={PhotoFormContainer} /> 
+      <ProtectedRoute path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
+      <ProtectedRoute path={"/discover"} component={HomeFeedContainer} />
+      <ProtectedRoute path={"/"} component={HomeFeedContainer} />
+      <AuthRoute path={"/"} component={LandingPage} />
     </Switch>
     <footer className="grid-bottom-stack">
       <NavFooter />

@@ -6,7 +6,7 @@ export default class HomeFeed extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidCatch() {
+  componentDidMount() {
     this.props.fetchPhotos();
   }
 
