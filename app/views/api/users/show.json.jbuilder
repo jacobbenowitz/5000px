@@ -5,5 +5,6 @@ end
 if @user.profile 
   json.profile do
     json.partial! "api/profiles/profile", profile: @user.profile
+    json.photoIds @user.photos.pluck(:id)
   end
 end

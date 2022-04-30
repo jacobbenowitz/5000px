@@ -32,7 +32,7 @@ export const receiveErrors = errors => {
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {
-      // debugger
+      debugger
       dispatch(receiveCurrentUser(user))
       dispatch(receiveProfile(profile))
       dispatch(receiveCurrentProfile(profile))
@@ -42,10 +42,8 @@ export const login = user => dispatch => {
 }
 
 export const signup = user => dispatch => {
-  // debugger
   return SessionApiUtil.createUser(user)
     .then(user => {
-      // debugger
       dispatch(receiveCurrentUser(user))
     }, error => {
       dispatch(receiveErrors(error.responseJSON))
