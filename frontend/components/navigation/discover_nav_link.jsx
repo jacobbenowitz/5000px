@@ -27,7 +27,7 @@ export default class DiscoverNavLinkItem extends React.Component {
     return (
       <>
         <NavLink
-          to={'/discover'}
+          to={'#'}
           onClick={this.handleClick}
         >Discover</NavLink>
         <DiscoverNavModal

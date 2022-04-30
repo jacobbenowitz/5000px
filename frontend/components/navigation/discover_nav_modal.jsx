@@ -2,6 +2,7 @@ import React from "react";
 import NavListItem from "./nav_list_item";
 
 const discoverLinks = [
+  { title: 'Discover', url: '/discover' },
   { title: 'Popular photos', url: '/popular' },
   { title: 'Upcoming photos', url: '/upcoming' },
   { title: 'Fresh photos', url: '/fresh' },

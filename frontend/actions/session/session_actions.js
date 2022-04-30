@@ -47,6 +47,8 @@ export const signup = user => dispatch => {
   return SessionApiUtil.createUser(user)
     .then(user => {
       dispatch(receiveCurrentUser(user))
+      dispatch(fetchPhotos())
+      dispatch(fetchProfiles())
     }, error => {
       dispatch(receiveErrors(error.responseJSON))
     })

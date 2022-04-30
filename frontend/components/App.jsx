@@ -32,7 +32,7 @@ const App = () => (
       <Route path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <Route path={"/photos/upload"} component={PhotoFormContainer} /> 
       <Route path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
-      <Route path={"/photos/index"} component={PhotosIndexContainer} />
+      <Route path={"/discover"} component={PhotosIndexContainer} />
       <Route path={"/"} component={LandingPage} />
     </Switch>
     <footer className="grid-bottom-stack">

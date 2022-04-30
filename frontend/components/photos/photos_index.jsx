@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PhotoIndexItem from "./photo_index_item";
 
 export default class PhotosIndex extends React.Component {
   
@@ -6,12 +8,9 @@ export default class PhotosIndex extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.fetchPhotos();
-  }
-
   render() {
-    const photos = this.props.photos;
+    const { photos, profiles, users } = this.props;
+
     if (photos.length === 0) {
       return (
         <h2>Loading...</h2>
@@ -22,11 +21,13 @@ export default class PhotosIndex extends React.Component {
           <ul className="photo-gallery">
             {photos.map(photo => {
               return (
-                <li key={photo.id}>
-                  <h5>{photo.title}</h5>
-                  <span>{photo.description}</span>
-                  <img src={ photo.photoUrl } />
-                </li>
+                <PhotoIndexItem
+                  photo={photo}
+                  profile={profiles[photo.profileId]}
+                  user={users[photo.user_id]}
+                  fetchPhoto={this.props.fetchPhoto}
+                  key={photo.id}
+                />
               )
             })}
           </ul>
