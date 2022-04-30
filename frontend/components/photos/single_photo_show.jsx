@@ -7,7 +7,7 @@ export default class SinglePhotoShow extends React.Component {
 
     // }
     debugger
-    this.props.fetchPhoto(this.props.photoId);
+    // this.props.fetchPhoto(this.props.photoId);
   }
 
   render() {

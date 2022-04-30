@@ -5,7 +5,11 @@ class PhotoIndexItem extends React.Component {
   constructor(props) {
     super(props);
     // this.props.fetchPhoto(this.props.photo.id);
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.history.push(`/photos/${this.props.photo.id}`)
   }
 
   render() {
@@ -36,7 +40,9 @@ class PhotoIndexItem extends React.Component {
 
     // todo: add photo poster(user)'s name and avatar to state photos slice, so we can add to photo index item 
     return (
-      <div className="photo-index-item">
+      <div className="photo-index-item"
+        onClick={this.handleClick}
+      >
         { photoOverlay }
         <img src={photo.photoUrl} />
       </div>
