@@ -13,11 +13,11 @@ export const asArray = ({ photos }) => {
 };
 
 export const selectPhoto = ({ photos }, photoId) => {
-  debugger
   if (Object.keys(photos).length === 0) {
     return {}
   } else {
-    return photos.photoId;
+    debugger
+    return photos[photoId];
   }
 }
 

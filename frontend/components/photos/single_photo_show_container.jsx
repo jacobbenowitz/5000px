@@ -25,20 +25,20 @@ import { fetchProfile } from "../../actions/profile/profile_actions";
 
 const mapStateToProps = (state, { match }) => {
   const photoId = match.params.photoId;
-  const photo = state.entities.photos[photoId];
+  // const photo = selectPhoto(state.entities, photoId);
   debugger
-  const userId = photo.user_id;
-  const user = state.entities.users[userId];
-  const profile = state.entities.profiles[user.profileId];
+  // const userId = photo.user_id;
+  // const user = state.entities.users[userId];
+  // const profile = state.entities.profiles[user.profileId];
   /// needed for likes
   const currentUserId = state.session.id;
   const currentUser = state.entities.users[currentUserId];
   return {
     photoId: photoId,
-    profile: profile,
-    photo: photo,
-    user: user,
-    currentUser: currentUser
+    // profile: profile,
+    photo: selectPhoto(state.entities, photoId),
+    // user: user,
+    // currentUser: currentUser
   }
 }
 
