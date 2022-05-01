@@ -48,7 +48,6 @@ export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {
       dispatch(receiveCurrentUser(user))
-      dispatch(receiveProfile(profile))
       dispatch(receiveCurrentProfile(profile))
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())

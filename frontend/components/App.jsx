@@ -29,8 +29,8 @@ const App = () => (
       <AuthRoute path={"/login"} component={LoginFormContainer} />
       <AuthRoute path={"/signup"} component={SignupFormContainer} />
       <AuthRoute path={"/profile/new"} component={NewProfileFormContainer} />
-      <ProtectedRoute path={"/profile/edit"} component={EditProfileFormContainer} />
-      <Route path={"/profiles/:profileId"} component={ProfileShowContainer} />
+      <ProtectedRoute path={"/profile/settings"} component={EditProfileFormContainer} />
+      <ProtectedRoute path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <ProtectedRoute path={"/photos/upload"} component={PhotoFormContainer} /> 
       <ProtectedRoute path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
       <ProtectedRoute path={"/discover"} component={HomeFeedContainer} />

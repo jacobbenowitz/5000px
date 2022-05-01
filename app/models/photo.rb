@@ -1,5 +1,4 @@
 class Photo < ApplicationRecord
-  validates :title, presence: true
 
   validate :ensure_photo
 
