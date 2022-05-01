@@ -8,3 +8,4 @@ if @user.profile
     json.photoIds @user.photos.pluck(:id)
   end
 end
+

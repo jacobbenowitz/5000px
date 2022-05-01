@@ -10,6 +10,11 @@ export default class SinglePhotoShow extends React.Component {
     // this.props.fetchPhoto(this.props.photoId);
   }
 
+  componentDidMount() {
+    debugger
+    // if (this.props.photo)
+  }
+
   render() {
     debugger
     const { photo, profile, user, currentUser } = this.props;

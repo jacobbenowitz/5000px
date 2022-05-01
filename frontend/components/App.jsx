@@ -34,8 +34,8 @@ const App = () => (
       <ProtectedRoute path={"/photos/upload"} component={PhotoFormContainer} /> 
       <ProtectedRoute path={"/photos/:photoId"} component={SinglePhotoShowContainer} />
       <ProtectedRoute path={"/discover"} component={HomeFeedContainer} />
+      <AuthRoute exact path={"/"} component={LandingPage} />
       <ProtectedRoute path={"/"} component={HomeFeedContainer} />
-      <AuthRoute path={"/"} component={LandingPage} />
     </Switch>
     <footer className="grid-bottom-stack">
       <NavFooter />
