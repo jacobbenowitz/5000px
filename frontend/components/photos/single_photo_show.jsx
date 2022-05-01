@@ -13,7 +13,7 @@ export default class SinglePhotoShow extends React.Component {
 
 
   render() {
-    // if (typeof this.props.photo.photoUrl === 'undefined') {
+    // if (typeof this.props.photo === 'undefined') {
     //   debugger
     //   return <h3>Loading</h3>
     // } else {
@@ -28,8 +28,8 @@ export default class SinglePhotoShow extends React.Component {
 
     return (
       <>
-        {<img src={this.props.photo.photoUrl} />
-          && <h3>Loading...</h3>}
+        {this.props.photo &&
+          <img src={this.props.photo.photoUrl} />}
       </>
     )
 
