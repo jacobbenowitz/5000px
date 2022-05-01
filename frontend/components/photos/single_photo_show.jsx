@@ -1,6 +1,5 @@
 import React from "react";
 import ImageViewer from "./image_viewer";
-import PhotoActions from "./photo_actions";
 import PhotoProfileDetails from "./photo_profile_details";
 
 export default class SinglePhotoShow extends React.Component {
@@ -20,9 +19,8 @@ export default class SinglePhotoShow extends React.Component {
     return (
       <>
         {this.props.photo && this.props.profile &&
-          <div className="profile-detail-container">
+          <div className="photo-show-container">
             <ImageViewer photo={photo} />
-            <PhotoActions />
             <PhotoProfileDetails photo={photo} profile={profile} />
           </div>
         }

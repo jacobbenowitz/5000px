@@ -1,0 +1,138 @@
+.photo-show-container {
+  width: 100vw;
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+}
+
+.lg-single-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222222;
+  width: 100%;
+  padding-top: 24px;
+  padding-right: calc(80px);
+  padding-bottom: 24px;
+  padding-left: calc(80px);
+  position: relative;
+  box-sizing: border-box;
+  min-height: 420px;
+  height: calc((100vh - 72px) - 198px);
+}
+
+.image-container, .image-top-icons {
+  position: absolute;
+  display: flex;
+  max-width: 100%;
+  left: 64px;
+  right: 64px;
+  justify-content: center;
+  align-items: center;
+  inset: 24px 32px;
+}
+
+.photo-large {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.image-top-icons {
+  z-index: 20;
+  color: white;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.full-screen {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.photo-detail-summary {
+  max-width: 100%;
+  width: 100vw;
+  background-color: rgb(247, 248, 250);
+  box-sizing: border-box;
+  padding: 24px 16px 16px 16px;
+}
+
+.inset-box {
+  padding: 24px;
+  background-color: white;
+}
+
+.photo-action-icons {
+  display: flex;
+  max-width: 100%;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-icon-link {
+  color: #222222;
+  width: 24px;
+  height: 24px;
+  max-width: 100%;
+}
+
+.icon-box:hover {
+  background-color: rgba(34, 34, 34, 0.1);
+}
+
+
+.profile-info {
+  max-width: 100%;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 24px;
+  margin-top: 24px;
+  word-break: break-word;
+}
+
+.avatar-container { 
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 64px;
+}
+
+.user-details {
+  word-break: break-word;
+  max-width: 100%;
+  margin-left: 14px;
+}
+
+.photo-show-title {
+  margin-bottom: 4px;
+}
+
+.user-avatar-lg {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+}
+a {
+  cursor: pointer;
+}
