@@ -5,40 +5,22 @@ import SinglePhotoShow from "./single_photo_show";
 import { fetchUser } from "../../actions/session/session_actions";
 import { fetchProfile } from "../../actions/profile/profile_actions";
 
-// const mapStateToProps = (state, { match }) => {
-//   const photoId = match.params.photoId;
-//   debugger
-//   const photo = selectPhoto(state.entities, photoId);
-//   debugger
-//   const user = selectUserFromPhoto(state.entities, photo);
-//   const profile = selectProfileFromUser(state.entities, user);
-//   /// needed for likes
-//   const currentUser = selectUserById(state.entities, state.session.id);
-//   return {
-//     profile: profile,
-//     photoId: photoId,
-//     photo: photo,
-//     user: user,
-//     currentUser: currentUser
-//   }
-// }
 
 const mapStateToProps = (state, { match }) => {
   const photoId = match.params.photoId;
-  // const photo = selectPhoto(state.entities, photoId);
-  debugger
-  // const userId = photo.user_id;
-  // const user = state.entities.users[userId];
-  // const profile = state.entities.profiles[user.profileId];
-  /// needed for likes
+  const photo = selectPhoto(state.entities, photoId);
+  const userId = photo ? photo.user_id : null;
+  const user = userId ? selectUserById(state.entities, userId) : {};
+  const profile = user ? selectProfileFromUser(state.entities, user) : {};
   const currentUserId = state.session.id;
-  const currentUser = state.entities.users[currentUserId];
+  const currentUser = selectUserById(state.entities, currentUserId);
+  debugger
   return {
     photoId: photoId,
-    // profile: profile,
-    photo: selectPhoto(state.entities, photoId),
-    // user: user,
-    // currentUser: currentUser
+    profile: profile,
+    photo: photo,
+    user: user,
+    currentUser: currentUser
   }
 }
 

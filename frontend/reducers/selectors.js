@@ -30,9 +30,11 @@ export const selectUserFromPhoto = ({ users }, photo) => {
   }
 }
 
+// export const selectProfileById = 
+
 export const selectProfileFromUser = ({ profiles }, user) => {
   debugger
-  if (Object.keys(profiles).includes(user.profileId)) {
+  if (Object.keys(user), length === 0) {
     return profiles[user.profileId];
   } else {
     return {};
