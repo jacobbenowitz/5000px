@@ -1,4 +1,5 @@
 import React from "react";
+import SuccessModal from "../modal/success_modal";
 
 export default class PhotoUploadForm extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export default class PhotoUploadForm extends React.Component {
       formData.append('photo[user_id]', this.props.userId);
     }
     this.props.uploadPhoto(formData);
+    this.props.openModal("success");
   }
 
   handleFile(e) {

@@ -19,9 +19,11 @@ import PhotoFormContainer from "./photos/photo_form_container";
 import SinglePhotoShowContainer from "./photos/single_photo_show_container";
 import ProfileShowContainer from "./profile/show_page/profile_show_container";
 import HomeFeedContainer from "./photo_feed/home_feed_container";
+import ModalContainer from "./modal/modal_container";
 
 const App = () => (
   <div className="grid-pancake-stack">
+    <ModalContainer />
     <header className="header-top-stack">
       <NavHeaderContainer />
     </header>

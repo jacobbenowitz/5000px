@@ -1,3 +1,7 @@
+/*! https://mths.be/cssesc v3.0.0 by @mathias */
+
+/*! https://mths.be/punycode v1.3.2 by @mathias */
+
 /**
  * @license React
  * react-dom.production.min.js

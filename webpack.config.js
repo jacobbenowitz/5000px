@@ -23,6 +23,10 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js", ".jsx", "*"],
+    fallback: {
+      "path": require.resolve('path-browserify'),
+      "url": false
+    },
   }
 };

@@ -2,20 +2,30 @@ import * as PhotoApiUtil from '../../util/photo_api_util';
 
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO'; // photo
 export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS'; // [photos]
+export const RECEIVE_PHOTO_ERRORS = 'RECEIVE_PHOTO_ERRORS'; // 'error...'
 
 // actions
-const receivePhoto = photo => ({
+export const receivePhoto = photo => ({
   type: RECEIVE_PHOTO,
   photo
 })
 
-const receivePhotos = photos => {
+export const receivePhotos = photos => {
   debugger
   return {
     type: RECEIVE_PHOTOS,
     photos
   }
+};
+
+export const receivePhotoErrors = messages => {
+  debugger
+  return {
+    type: RECEIVE_PHOTO_ERRORS,
+    messages
+  }
 }
+
 // thunk actions
 export const fetchPhoto = photoId => dispatch => {
   debugger
@@ -32,11 +42,13 @@ export const fetchPhotos = () => dispatch => {
 
 export const uploadPhoto = formData => dispatch => {
   return PhotoApiUtil.uploadPhoto(formData).then(
-    // success callback
-    // TODO: render success
-    response => console.log(response.message),
-    response => (
-      console.log(response.responseJSON)
+    // response => console.log(response.message),
+    success => {
+      debugger
+      return dispatch(receivePhotoErrors(success.message))
+    },
+    error => (
+      dispatch(receivePhotoErrors(error.responseJSON))
     )
   )
-}
+};
