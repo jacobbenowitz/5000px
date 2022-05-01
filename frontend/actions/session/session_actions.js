@@ -3,6 +3,7 @@ import { fetchPhotos } from '../photos/photos_actions';
 import { receiveProfile, receiveCurrentProfile, fetchProfiles } from '../profile/profile_actions'
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user
+export const RECEIVE_USER = 'RECEIVE_USER'; // user
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // ()
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; // [errors]
 
@@ -13,6 +14,13 @@ export const receiveCurrentUser = currentUser => {
     type: RECEIVE_CURRENT_USER,
     currentUser
     // currently currentUser is nested
+  }
+}
+
+export const receiveUser = user => {
+  return {
+    type: RECEIVE_USER,
+    user
   }
 }
 
@@ -30,6 +38,12 @@ export const receiveErrors = errors => {
   }
 }
 // thunk action creators
+export const fetchUser = userId => dispatch => {
+  return SessionApiUtil.fetchUser(userId)
+    .then(user => dispatch(receiveUser(user)))
+}
+
+
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {

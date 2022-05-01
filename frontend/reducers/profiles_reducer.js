@@ -24,7 +24,7 @@ const profilesReducer = (initialState = {}, action) => {
     case RECEIVE_PHOTO:
       debugger
       return Object.assign({}, nextState,
-        { [action.profile.id]: action.profile });
+        { [action.photo.profile.id]: action.photo.profile });
     case RECEIVE_NEW_PROFILE_PHOTO:
       /////////////////////////
       // REMOVE!! refact with active record associations

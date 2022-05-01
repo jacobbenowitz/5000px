@@ -15,7 +15,7 @@ const photosReducer = (initialState = {}, action) => {
       debugger
       return Object.assign(
         {}, nextState,
-        { [action.photo.id]: action.photo }
+        { [action.photo.photo.id]: action.photo.photo }
       );
     default:
       return initialState;

@@ -1,3 +1,4 @@
+import { fetchPhoto } from "../actions/photos/photos_actions";
 
 export const selectProfilePhotos = ({ photos }, photoIds) => {
   debugger
@@ -9,7 +10,40 @@ export const selectProfilePhotos = ({ photos }, photoIds) => {
 export const asArray = ({ photos }) => {
   debugger
   return Object.keys(photos).map(id => photos[id])
+};
+
+export const selectPhoto = ({ photos }, photoId) => {
+  debugger
+  if (Object.keys(photos).length === 0) {
+    return {}
+  } else {
+    return photos.photoId;
+  }
 }
+
+export const selectUserFromPhoto = ({ users }, photo) => {
+  debugger
+  if (Object.keys(photo), length === 0 || typeof photo.user_id === "undefined") {
+    return {}
+  } else {
+    return users[photo.user_id]
+  }
+}
+
+export const selectProfileFromUser = ({ profiles }, user) => {
+  debugger
+  if (Object.keys(profiles).includes(user.profileId)) {
+    return profiles[user.profileId];
+  } else {
+    return {};
+  }
+};
+
+export const selectUserById = ({ users }, userId) => {
+  debugger
+  return users[userId]
+}
+
 
 // export const selectPhotos
 

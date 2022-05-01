@@ -1,6 +1,6 @@
 import { RECEIVE_PHOTO } from '../actions/photos/photos_actions';
 import {
-  RECEIVE_CURRENT_USER,
+  RECEIVE_CURRENT_USER, RECEIVE_USER
 } from '../actions/session/session_actions';
 
 const usersReducer = (initialState = {}, action) => {
@@ -26,10 +26,14 @@ const usersReducer = (initialState = {}, action) => {
           { [action.currentUser.id]: action.currentUser }
         );
       }
+    case RECEIVE_USER:
+      /// wait, no need if received with photo tooo...?
+      return Object.assign({}, nextState,
+        { [action.user.id]: action.user });
     case RECEIVE_PHOTO:
       debugger
       return Object.assign({}, nextState,
-        { [action.user.id]: action.user });
+        { [action.photo.user.id]: action.photo.user });
     default:
       return initialState;
   }

@@ -4,19 +4,77 @@ export default class SinglePhotoShow extends React.Component {
   constructor(props) {
     super(props);
     // this.state = {
-
+    //   loading: false,
+    //   photo: props.photo,
+    //   profile: props.profile,
+    //   user: props.user
     // }
-    debugger
-    // this.props.fetchPhoto(this.props.photoId);
+    // debugger
   }
 
-  componentDidMount() {
-    debugger
-    // if (this.props.photo)
-  }
+  // componentDidMount() {
+    // this.checkProps()
+    //   .then(this.props.fetchUser(this.props.photo.user_id))
+    //   .then(this.props.fetchProfile(this.props.profile.user_id))
+  // }
+
+  // componentDidMount(){
+  //   if (Object.keys(this.props.user).length === 0) {
+  //     debugger
+  //     this.setState({
+  //       loading: true
+  //     }, () => this.props.fetchUser(this.props.photo.user_id))
+  //   }
+  //   if (Object.keys(this.props.profile).length === 0) {
+  //     debugger
+  //     this.setState({
+  //       loading: true
+  //     }, () => this.props.fetchProfile(this.props.profile.user_id))
+  //   }
+  //   if (Object.keys(this.props.photo).length > 0 && Object.keys(this.props.user).length > 0 && Object.keys(this.props.profile).length > 0){
+  //     this.setState({ loading: false })
+  //   }
+  // }
+
+  // async checkProps() {
+  //   if (Object.keys(this.props.photo).length === 0) {
+  //     await this.props.fetchPhoto(this.props.photoId)
+  //   }
+  // }
+
+  // UNSAFE_componentWillMount() {
+  //   debugger
+  //   if (Object.keys(this.props.photo).length === 0) {
+  //     this.setState({
+  //       loading: true
+  //     }, () => this.props.fetchPhoto(this.props.photoId))
+  //   }
+  // }
+  
+  // componentDidUpdate() {
+  //   debugger
+  //   if (Object.keys(this.props.user).length === 0) {
+  //     debugger
+  //     this.setState({
+  //       loading: true
+  //     }, () => this.props.fetchUser(this.props.photo.user_id))
+  //   }
+  //   if (Object.keys(this.props.profile).length === 0) {
+  //     debugger
+  //     this.setState({
+  //       loading: true
+  //     }, () => this.props.fetchProfile(this.props.profile.user_id))
+  //   }
+  //   if (Object.keys(this.props.photo).length > 0 && Object.keys(this.props.user).length > 0 && Object.keys(this.props.profile).length > 0){
+  //     this.setState({ loading: false })
+  //   }
+
+  // }
 
   render() {
     debugger
+    
+
     const { photo, profile, user, currentUser } = this.props;
     // refactor into components
     const imageViewer = (
@@ -59,9 +117,9 @@ export default class SinglePhotoShow extends React.Component {
     const profileDetails = (
       <div className="photo-detail-summary">
         {/* TODO use user avatar component */}
-        {/* <img className="user-avatar-lg" src={user.avatar}></img> */}
-        {/* removing profile_avatar, needs to be replaced w/above */}
+        {/* removing profile_avatar, needs to be replaced w/user */}
         <div className="avatar-container">
+        {/* <img className="user-avatar-lg" src={user.avatar}></img> */}
           <img className="user-avatar-lg" src={profile.profile_avatar}></img>
         </div>
 

@@ -18,6 +18,7 @@ const receivePhotos = photos => {
 }
 // thunk actions
 export const fetchPhoto = photoId => dispatch => {
+  debugger
   return PhotoApiUtil.fetchPhoto(photoId).then(photo =>
     dispatch(receivePhoto(photo)))
 }
