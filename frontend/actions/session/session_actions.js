@@ -47,6 +47,7 @@ export const fetchUser = userId => dispatch => {
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {
+      debugger
       dispatch(receiveCurrentUser(user))
       dispatch(receiveCurrentProfile(profile))
       dispatch(fetchPhotos())

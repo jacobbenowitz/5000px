@@ -1,4 +1,5 @@
 import {
+  RECEIVE_CURRENT_PROFILE,
   RECEIVE_PROFILE,
   REMOVE_PROFILE
 } from '../actions/profile/profile_actions';
@@ -16,27 +17,20 @@ const profilesReducer = (initialState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PROFILE:
+      debugger
       return Object.assign({}, nextState,
         { [action.profile.id]: action.profile });
     case REMOVE_PROFILE:
       delete nextState[action.profileId];
       return nextState;
+    case RECEIVE_CURRENT_PROFILE:
+      return Object.assign({}, nextState,
+        { [action.profile.id]: action.profile });
     case RECEIVE_PHOTO:
+      /// why is this here?
       debugger
       return Object.assign({}, nextState,
         { [action.photo.profile.id]: action.photo.profile });
-    case RECEIVE_NEW_PROFILE_PHOTO:
-      /////////////////////////
-      // REMOVE!! refact with active record associations
-      nextState[action.response.profileId]['profile_avatar']
-        = action.response.id
-      return nextState;
-    /////////////////////////
-    case RECEIVE_PROFILE_PHOTO:
-      /////////////////////////
-      // REMOVE!! refact with active record associations
-      nextState[action.photo.profile_id].profile_avatar = action.photo.photoUrl
-      return nextState;
     default:
       return initialState;
   }
