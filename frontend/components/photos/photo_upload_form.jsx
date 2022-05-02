@@ -7,6 +7,9 @@ export default class PhotoUploadForm extends React.Component {
     this.state = {
       title: "",
       description: "",
+      location: "",
+      camera: "",
+      lens: "",
       photoFile: null,
       photoUrl: null
     };
@@ -25,6 +28,8 @@ export default class PhotoUploadForm extends React.Component {
       // only append the file if it exists in state
       formData.append('photo[title]', this.state.title);
       formData.append('photo[description]', this.state.description);
+      formData.append('photo[camera]', this.state.camera);
+      formData.append('photo[lens]', this.state.lens);
       formData.append('photo[photo]', this.state.photoFile);
       formData.append('photo[profile_id]', this.props.profileId);
     }
@@ -198,13 +203,30 @@ export default class PhotoUploadForm extends React.Component {
                   <label htmlFor="photo-title">Title</label>
                   <input type="text" name="photo-title"
                     value={ this.state.title }
-                    className="text-input" onChange={this.handleInput('title')}/>
+                    className="text-input" onChange={this.handleInput('title')}
+                  />
                 </div>
 
                 <div className="form-input">
                   <label htmlFor="photo-description">Description</label>
                   <textarea name="photo-description"
                     className="description-input" onChange={this.handleInput('description')} />
+                </div>
+
+                <div className="form-input">
+                  <label htmlFor="photo-lens">Lens</label>
+                  <input type="text" name="photo-lens"
+                    value={ this.state.lens }
+                    className="text-input" onChange={this.handleInput('lens')}
+                  />
+                </div>
+
+                <div className="form-input">
+                  <label htmlFor="photo-camera">Camera</label>
+                  <input type="text" name="photo-camera"
+                    value={ this.state.camera }
+                    className="text-input" onChange={this.handleInput('camera')}
+                  />
                 </div>
                 <div className="form-bot-buttons">
 
@@ -217,12 +239,8 @@ export default class PhotoUploadForm extends React.Component {
                 
               </form>
             </div>
-
           </div>
-
-
         </div>
-    
       </div>
     )
   }

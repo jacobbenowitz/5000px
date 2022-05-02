@@ -1,5 +1,6 @@
 import React from "react";
 import PhotoActions from "./photo_actions";
+import {timeSinceUplaod} from "../../util/todays_date_util"
 
 const PhotoProfileDetails = ({ profile, photo }) => (
   <div className="photo-detail-summary">
@@ -22,8 +23,8 @@ const PhotoProfileDetails = ({ profile, photo }) => (
       <div className="photo-details">
         {/* location */}
         <span>
-          <strong>Uploaded:</strong>
-          about {photo.created_at} hours ago
+          <strong>Uploaded: </strong>
+          about {timeSinceUplaod(photo.created_at)}
         </span>
       </div>
     </div>

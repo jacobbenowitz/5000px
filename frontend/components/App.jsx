@@ -15,7 +15,7 @@ import EditProfileFormContainer from "./profile/edit_profile_form_container";
 import LandingPage from "./landing/landing_page";
 import NavFooter from "./navigation/nav_footer";
 import PhotosIndexContainer from "./photos/photos_index_container";
-import PhotoFormContainer from "./photos/photo_form_container";
+import PhotoUploadFormContainer from "./photos/photo_upload_form_container";
 import SinglePhotoShowContainer from "./photos/single_photo_show_container";
 import ProfileShowContainer from "./profile/show_page/profile_show_container";
 import HomeFeedContainer from "./photo_feed/home_feed_container";
@@ -35,7 +35,7 @@ const App = () => (
       <ProtectedRoute path={"/profile/settings"} component={EditProfileFormContainer} />
       <ProtectedRoute path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <ProtectedRoute path={"/photos/upload"}
-        component={PhotoFormContainer} /> 
+        component={PhotoUploadFormContainer} /> 
       <ProtectedRoute path={"/photos/:photoId"}
         component={SinglePhotoShowContainer} />
       <ProtectedRoute path={"/discover"}
