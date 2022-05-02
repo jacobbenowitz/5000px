@@ -4,21 +4,21 @@ export default class SuccessModal extends React.Component {
   constructor(props) {
     super(props);
   }
+  
 
   render() {
     
     const { photos, profiles, session } = this.props.errors;
-    
-    debugger
+    // debugger
     if (photos || profiles || session) {
       return (
-        <div id="success modal">
+        <div className="modal success" key={'successModal'}>
           <div className="modal-icon">
-            <i class="fa-solid fa-circle-check"></i>
+            <i className="fa-solid fa-circle-check"></i>
           </div>
           <div>
             {photos.map(error => {
-              debugger
+              // debugger
               return (
                 <span>{error}</span>
               )})

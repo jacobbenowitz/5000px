@@ -1,0 +1,75 @@
+#modal-container {
+  position: absolute;
+  z-index: 500;
+  top: 145px;
+  left: 0;
+  right: 0;
+}
+
+#modal-content {
+  display: flex;
+  position: relative;
+  top: 0px;
+  align-content: center;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 19px;
+  min-width: 290px;
+  background-color: #222;
+  color: white;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.success > .modal-icon {
+  color: rgb(38, 218, 158);
+}
+
+.error > .modal-icon {
+  color: #EB5750;
+}
+
+.modal-icon{
+  margin-right: 16px;
+}
+
+.modal-in {
+  animation-name: modal-in;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+}
+
+.modal-out {
+  animation-name: modal-out;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes modal-in {
+  0% {
+    top: 80px;
+    opacity: 0%;
+  }
+
+  100% {
+    top: 145px;
+    opacity: 100%;
+  }
+}
+
+@keyframes modal-out {
+  0% {
+    top: 145px;
+    opacity: 100%;
+  }
+  
+  100% {
+    top: 80px;
+    opacity: 0%;
+  }
+}

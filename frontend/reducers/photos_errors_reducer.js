@@ -1,3 +1,4 @@
+import { CLOSE_MODAL } from "../actions/modal/modal_actions";
 import { RECEIVE_PHOTO_ERRORS } from "../actions/photos/photos_actions";
 
 const photosErrorsReducer = (initialState = [], action) => {
@@ -6,6 +7,8 @@ const photosErrorsReducer = (initialState = [], action) => {
   switch (action.type) {
     case RECEIVE_PHOTO_ERRORS:
       return action.messages;
+    case CLOSE_MODAL:
+      return [];
     default:
       return initialState;
   }
