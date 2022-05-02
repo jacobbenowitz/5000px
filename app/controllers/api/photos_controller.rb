@@ -14,20 +14,16 @@ class Api::PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
-    render :index
   end
 
 
   def show
     @photo = Photo.find_by(id: params[:id])
-    @user = @photo.user
-    @profile = @photo.user.profile
-    render :show
   end
 
   private
 
   def photo_params
-    params.require(:photo).permit(:photo, :title, :description, :user_id)
+    params.require(:photo).permit(:photo, :title, :description, :profile_id)
   end
 end

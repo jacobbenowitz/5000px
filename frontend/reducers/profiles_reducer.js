@@ -24,13 +24,9 @@ const profilesReducer = (initialState = {}, action) => {
       delete nextState[action.profileId];
       return nextState;
     case RECEIVE_CURRENT_PROFILE:
-      return Object.assign({}, nextState,
-        { [action.profile.id]: action.profile });
-    case RECEIVE_PHOTO:
-      /// why is this here?
       debugger
       return Object.assign({}, nextState,
-        { [action.photo.profile.id]: action.photo.profile });
+        { [action.profile.id]: action.profile });
     default:
       return initialState;
   }

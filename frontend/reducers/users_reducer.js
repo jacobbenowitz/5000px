@@ -14,7 +14,7 @@ const usersReducer = (initialState = {}, action) => {
       // REFACTOR WITH SELECTOR
       //////////////////////////////////////////
       if (typeof action.currentUser.id === 'undefined') {
-        // debugger
+        debugger // -> when is this nesting happening?
         return Object.assign(
           {}, nextState,
           { [action.currentUser.user.id]: action.currentUser.user }
@@ -27,13 +27,8 @@ const usersReducer = (initialState = {}, action) => {
         );
       }
     case RECEIVE_USER:
-      /// wait, no need if received with photo tooo...?
       return Object.assign({}, nextState,
         { [action.user.id]: action.user });
-    case RECEIVE_PHOTO:
-      debugger
-      return Object.assign({}, nextState,
-        { [action.photo.user.id]: action.photo.user });
     default:
       return initialState;
   }
