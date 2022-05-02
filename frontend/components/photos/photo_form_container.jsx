@@ -1,11 +1,11 @@
-import { connect } from "react-redux"
-import { openModal } from "../../actions/modal/modal_actions"
-import { uploadPhoto } from "../../actions/photos/photos_actions"
-import PhotoUploadForm from "./photo_upload_form"
+import { connect } from "react-redux";
+import { openModal } from "../../actions/modal/modal_actions";
+import { uploadPhoto } from "../../actions/photos/photos_actions";
+import PhotoUploadForm from "./photo_upload_form";
 
 const mapStateToProps = state => {
   return {
-    userId: state.session.id,
+    profileId: state.session.profile,
     errors: state.errors.photos
   }
 }

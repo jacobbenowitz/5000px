@@ -11,8 +11,8 @@ const mapStateToProps = (state, ownProps) => {
   // debugger
 
   return {
-    errors: state.errors.profiles,
-    userId: state.session.id
+    errors: errors,
+    userId: userId
   };
 }
 

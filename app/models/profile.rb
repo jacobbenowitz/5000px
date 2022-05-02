@@ -26,6 +26,7 @@ class Profile < ApplicationRecord
   validates :gender, inclusion: { in: ['Male', 'Female', 'Not specified']}
 
   has_one_attached :cover
+  has_one_attached :avatar
 
   belongs_to :user,
     foreign_key: :user_id,

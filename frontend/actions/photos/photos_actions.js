@@ -41,14 +41,11 @@ export const fetchPhotos = () => dispatch => {
 
 
 export const uploadPhoto = formData => dispatch => {
-  return PhotoApiUtil.uploadPhoto(formData).then(
-    // response => console.log(response.message),
-    success => {
-      debugger
+  return PhotoApiUtil.uploadPhoto(formData)
+    .then(success => {
       return dispatch(receivePhotoErrors(success.message))
-    },
-    error => (
-      dispatch(receivePhotoErrors(error.responseJSON))
+    }, error => {
+      return dispatch(receivePhotoErrors(error.responseJSON))
+    }
     )
-  )
 };

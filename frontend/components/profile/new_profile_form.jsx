@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import ProfilePhotoFormContainer from "../photos/profile_photo_form_container";
 import ProfileAvatarContainer from "./profile_avatar_container"
 
@@ -38,7 +39,14 @@ export default class NewProfileForm extends React.Component {
   }
 
   componentDidUpdate() {
-    this.state.user_id = this.props.userId;
+    if (this.props.userId === null) {
+      debugger
+      <Redirect to={'/signup'} />
+    } else {
+      this.setState({
+        user_id: this.props.userId
+      })
+    }
   }
 
   clickPreventListener(event){
@@ -59,7 +67,6 @@ export default class NewProfileForm extends React.Component {
         link.addEventListener('click', this.clickPreventListener)
       }
     });
-
   }
 
   // -> tabs with separate form!! = NOT done'

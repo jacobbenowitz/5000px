@@ -30,7 +30,7 @@ export const logoutCurrentUser = () => {
   }
 }
 
-export const receiveErrors = errors => {
+export const receiveSessionErrors = errors => {
   // debugger
   return {
     type: RECEIVE_SESSION_ERRORS,
@@ -43,7 +43,6 @@ export const fetchUser = userId => dispatch => {
     .then(user => dispatch(receiveUser(user)))
 }
 
-
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(({ user, profile }) => {
@@ -53,7 +52,7 @@ export const login = user => dispatch => {
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())
     }, error => {
-      dispatch(receiveErrors(error.responseJSON))
+      dispatch(receiveSessionErrors(error.responseJSON))
     })
 }
 
@@ -64,7 +63,7 @@ export const signup = user => dispatch => {
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())
     }, error => {
-      dispatch(receiveErrors(error.responseJSON))
+      dispatch(receiveSessionErrors(error.responseJSON))
     })
 }
 

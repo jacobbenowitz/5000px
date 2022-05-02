@@ -26,10 +26,11 @@ export default class PhotoUploadForm extends React.Component {
       formData.append('photo[title]', this.state.title);
       formData.append('photo[description]', this.state.description);
       formData.append('photo[photo]', this.state.photoFile);
-      formData.append('photo[user_id]', this.props.userId);
+      formData.append('photo[profile_id]', this.props.profileId);
     }
     this.props.uploadPhoto(formData);
     this.props.openModal("success");
+    this.props.history.push(`/profiles/${this.props.profileId}`)
   }
 
   handleFile(e) {

@@ -19,10 +19,11 @@ export default class ProfileShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfile(this.props.profileId).then((profile) => {
+    const { fetchProfile, profileId, fetchPhotos } = this.props;
+    fetchProfile(profileId).then((profile) => {
       debugger
       this.setState({ profile: profile }, () => {
-        this.props.fetchPhotos().then(photos => {
+        fetchPhotos().then(photos => {
           this.updatePhotos(photos);
         });
       })

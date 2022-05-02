@@ -31,14 +31,17 @@ export default class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { receiveErrors, currentUserId, processForm } = this.props;
     const user = Object.assign({}, this.state);
     if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
-      console.log('need to catch empty fields')
+      // use openModal instead
+      console.log(['must fill in all fields'])
     } else {
-      // debugger
-      this.props.processForm(user)
-        .then(submitPromise(300)).then(
-          this.redirectCreateProfile())
+      processForm(user).then(user => {
+        debugger
+        this.redirectCreateProfile();
+        this.props.openModal("success");
+      })
     }
     
     // TODO: create empty profile, but need user id inside of emptyProfile!

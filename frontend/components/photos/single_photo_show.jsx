@@ -16,13 +16,17 @@ export default class SinglePhotoShow extends React.Component {
 
   render() {
     const { photo, profile, user, currentUser } = this.props;
+    debugger
     return (
       <>
-        {this.props.photo && this.props.profile &&
+        {this.props.photo && this.props.profile ? (
           <div className="photo-show-container">
             <ImageViewer photo={photo} />
             <PhotoProfileDetails photo={photo} profile={profile} />
           </div>
+        ) : (
+            <h1>Loading...</h1>
+        )
         }
       </>
     )

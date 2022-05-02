@@ -32,10 +32,10 @@ export const selectUserFromPhoto = ({ users }, photo) => {
 
 // export const selectProfileById = 
 
-export const selectProfileFromUser = ({ profiles }, user) => {
+export const selectProfileById = ({ profiles }, profileId) => {
   debugger
-  if (Object.keys(user), length === 0) {
-    return profiles[user.profileId];
+  if (profiles[profileId]) {
+    return profiles[profileId];
   } else {
     return {};
   }
