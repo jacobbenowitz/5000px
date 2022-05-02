@@ -7,6 +7,11 @@ export const selectProfilePhotos = ({ photos }, photoIds) => {
   }
 };
 
+export const selectPhotoById = ({ photos }, photoId) => {
+  debugger
+  return photos[photoId]
+};
+
 export const asArray = ({ photos }) => {
   debugger
   return Object.keys(photos).map(id => photos[id])

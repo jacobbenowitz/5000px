@@ -5,6 +5,7 @@ export default class PhotoEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      photoId: "",
       title: "",
       description: "",
       location: "",
@@ -14,51 +15,33 @@ export default class PhotoEditForm extends React.Component {
       photoUrl: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
-    this.dragOverHandler = this.dragOverHandler.bind(this);
-    this.handleDrop = this.handleDrop.bind(this);
+  }
+
+  componentDidMount() {
+    const { photo, photoId, fetchPhoto } = this.props;
+    
+    if (Object.keys(photo) > 1) {
+      this.setState({
+        photoId: photoId,
+        title: photo.title,
+        description: photo.description,
+        location: photo.location,
+        camera: photo.camera,
+        lens: photo.lens,
+        photoUrl: photo.photoUrl
+      })
+    } else {
+      fetchPhoto(photoId)
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    
-    if (this.state.photoFile) {
-      // only append the file if it exists in state
-      formData.append('photo[title]', this.state.title);
-      formData.append('photo[description]', this.state.description);
-      formData.append('photo[camera]', this.state.camera);
-      formData.append('photo[lens]', this.state.lens);
-      formData.append('photo[photo]', this.state.photoFile);
-      formData.append('photo[profile_id]', this.props.profileId);
-    }
-    this.props.uploadPhoto(formData);
-    this.props.openModal("success");
-    this.props.history.push(`/profiles/${this.props.profileId}`)
-  }
-
-  handleFile(e) {
-    e.preventDefault();
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-
-    fileReader.onloadend = () => {
-      this.setState({
-        title: file.name,
-        photoFile: file,
-        photoUrl: fileReader.result
-      }, () => {
-        this.toggleDetailForm();
-      })
-    };
-
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-    const dropZone = document.querySelector('#main-drop-zone');
-    dropZone.classList.add('disabled');
-    dropZone.classList.remove('enabled');
+    this.props.updatePhoto(this.state).then(() => {
+      this.props.openModal("success");
+      this.props.history.push(`/profiles/${this.props.profileId}`)
+    })
   }
 
   handleInput = (type) => {
@@ -66,15 +49,8 @@ export default class PhotoEditForm extends React.Component {
       this.setState(
         { [type]: e.target.value })
       }
-    }
-    
-  toggleDetailForm() {
-    const photoUploadStep1 = document.getElementById('photo-upload-step-1');
-    photoUploadStep1.classList.toggle('hidden');
-
-    const imageUploadStep2 = document.getElementById('image-upload-step-2');
-    imageUploadStep2.classList.toggle('hidden');
   }
+    
 
   showOverlay() {
     const overlay = document.querySelector('#img-preview-overlay');
@@ -89,60 +65,15 @@ export default class PhotoEditForm extends React.Component {
   }
 
   deletePhoto() {
-    const dropZone = document.querySelector('#main-drop-zone');
-
-    this.setState({
-      title: "",
-      description: "",
-      photoFile: null,
-      photoUrl: null
-    }, () => {
-      this.toggleDetailForm();
-      dropZone.classList.remove('disabled');
-      dropZone.classList.add('enabled');
-    })
+    const { deletePhoto, photoId } = this.props;
+    // make a confirmation modal
+    deletePhoto(photoId)
   };
 
-  dragOverHandler(e) {
-    e.preventDefault();
-    const dropZone = document.querySelector('#main-drop-zone');
-    dropZone.classList.add('drag-on')
-  }
-  
-  dragExitHandler(e) {
-    e.preventDefault();
-    const dropZone = document.querySelector('#main-drop-zone');
-    dropZone.classList.remove('drag-on')
-  }
-  
-  handleDrop(e) {
-    e.preventDefault();
-    const dropZone = document.querySelector('#main-drop-zone');
-    dropZone.classList.remove('drag-on')
 
-    const file = e.dataTransfer.files['0'];
-    const fileReader = new FileReader();
-
-    fileReader.onloadend = () => {
-      this.setState({
-        title: file.name,
-        photoFile: file,
-        photoUrl: fileReader.result
-      }, () => {
-        this.toggleDetailForm();
-        dropZone.classList.add('disabled');
-        dropZone.classList.remove('enabled');
-      })
-    };
-
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-    document
-  }
 
   render() {
-    
+    // add image loading animation
     const preview = this.state.photoUrl ?
       <img src={this.state.photoUrl}
       /> : null;
@@ -153,37 +84,7 @@ export default class PhotoEditForm extends React.Component {
         className="fa-solid fa-trash fa-xl"></i> </div>
     
     return (
-      <div className="upload-container">
-        <div id="main-drop-zone" className="enabled"
-          onDrop={this.handleDrop}
-          onDragOver={this.dragOverHandler}
-          onDragLeave={this.dragExitHandler}
-        > </div>
-        <div className="page-top-banner">
-            <span>Upload</span>
-          </div>
-        <div className="photo-upload-main">
-
-          <div id="photo-upload-step-1">
-            <div id="upload-title-box" >
-              <i className="fa-solid fa-file-arrow-up fa-2xl"></i>
-              <h4>Upload photos</h4>
-                <div className="upload-input">
-                  <input type="file" name="file-upload"
-                    className="file-upload-input"
-                    onChange={this.handleFile} />
-                </div>
-              <span>Or drag and drop photos anywhere on this page</span>
-              <div className="photo-requirements">
-                <strong>Photo requirements</strong>
-                <span>.png, .jpg, .jpeg only</span>
-                <span>Maximum file size is 200MP/megapixels</span>
-                <span>No NSFW content</span>
-              </div>
-            </div>
-          </div>
-
-          <div id="image-upload-step-2" className="hidden">
+          <div id="image-upload-step-2" className="visable">
 
             <div id="image-preview-container">
               <div className="image-preview"
@@ -240,8 +141,6 @@ export default class PhotoEditForm extends React.Component {
               </form>
             </div>
           </div>
-        </div>
-      </div>
     )
   }
 

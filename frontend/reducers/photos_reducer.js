@@ -1,6 +1,7 @@
 import {
   RECEIVE_PHOTO,
-  RECEIVE_PHOTOS
+  RECEIVE_PHOTOS,
+  REMOVE_PHOTO
 } from '../actions/photos/photos_actions';
 
 const photosReducer = (initialState = {}, action) => {
@@ -17,6 +18,9 @@ const photosReducer = (initialState = {}, action) => {
         {}, nextState,
         { [action.photo.photo.id]: action.photo.photo }
       );
+    case REMOVE_PHOTO:
+      delete nextState[action.photoId]
+      return nextState;
     default:
       return initialState;
   }

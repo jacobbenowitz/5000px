@@ -20,6 +20,7 @@ import SinglePhotoShowContainer from "./photos/single_photo_show_container";
 import ProfileShowContainer from "./profile/show_page/profile_show_container";
 import HomeFeedContainer from "./photo_feed/home_feed_container";
 import ModalContainer from "./modal/modal_container";
+import PhotoEditFormContainer from "./photos/photo_edit_form_container";
 
 const App = () => (
   <div className="grid-pancake-stack">
@@ -36,8 +37,10 @@ const App = () => (
       <ProtectedRoute path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <ProtectedRoute path={"/photos/upload"}
         component={PhotoUploadFormContainer} /> 
-      <ProtectedRoute path={"/photos/:photoId"}
+      <ProtectedRoute exact path={"/photos/:photoId"}
         component={SinglePhotoShowContainer} />
+      <ProtectedRoute exact path={"/photos/:photoId/edit"}
+        component={PhotoEditFormContainer} />
       <ProtectedRoute path={"/discover"}
         component={HomeFeedContainer} />
       <AuthRoute exact path={"/"} component={LandingPage} />

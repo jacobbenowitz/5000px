@@ -1,23 +1,30 @@
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal/modal_actions";
-import { uploadPhoto } from "../../actions/photos/photos_actions";
-import PhotoUploadForm from "./photo_upload_form";
+import { updatePhoto } from "../../actions/photos/photos_actions";
+import { selectPhotoById } from "../../reducers/selectors";
+import PhotoEditForm from "./photo_edit_form";
+import { fetchPhoto } from "../../actions/photos/photos_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  const { session, errors, profiles } = state;
-  const { match } = ownProps;
+  const { session, errors, entities } = state;
+  debugger
+  const photoId = ownProps.match.params.photoId;
+  const photo = selectPhotoById(entities, photoId) || {};
+
   return {
-    photoId: match.params.photoId,
+    photoId: photoId,
+    photo: photo,
     profileId: session.profile,
     errors: errors.photos,
-  }
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    uploadPhoto: formData => dispatch(uploadPhoto(formData)),
+    updatePhoto: photoData => dispatch(updatePhoto(photoData)),
+    fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
     openModal: modal => dispatch(openModal(modal))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PhotoUploadForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoEditForm);
