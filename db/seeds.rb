@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+default_avatar = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp"
+default_banner = "https://my5000px-static.s3.amazonaws.com/nature-cover-guest.jpg"
 
 User.destroy_all
 Profile.destroy_all
 Photo.destroy_all
 
-default_avatar = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp"
-default_banner = "https://my5000px-static.s3.amazonaws.com/nature-cover-guest.jpg"
+## users
 
 user_1 = {
   username: 'tester',
@@ -29,13 +30,16 @@ guest = {
 user_1_saved = User.create(user_1)
 guest_saved = User.create(guest)
 
+
+## profiles
+
 profile_1 = {
   first_name: 'John',
   last_name: 'Doe',
   profile_avatar: default_avatar,
   profile_banner: default_banner,
-  website_url: '',
-  instagram_url: '',
+  website_url: 'https://www.somewebsite.com',
+  instagram_url: 'https://www.instagram.com/user',
   lenses: '50mm f/1.8',
   cameras: 'GH5',
   birthday: '01/01/2000',
@@ -52,7 +56,7 @@ profile_guest = {
   profile_avatar: default_avatar,
   profile_banner: default_banner,
   website_url: 'https://www.jacobbenowitz.com',
-  instagram_url: 'https://www.instagram.com/',
+  instagram_url: 'https://www.instagram.com/user',
   lenses: 'EF 70-200mm f/4.0',
   cameras: 'Cannon EOS 5DS',
   birthday: '01/01/2000',
@@ -67,28 +71,64 @@ profile_1_saved = Profile.create(profile_1)
 guest_profile_saved = Profile.create(profile_guest)
 
 
+## avatars
 
-# images
+# user_1_avatar = {
+#   title: "user1-avatar"
+#   profile_id: profile_1_saved.id
+# }
+# guest_avatar = {
+#   title: "guest-avatar"
+#   profile_id: guest_profile_saved.id
+# }
 
-hero_photo = {
-  title: "landing_hero",
-  user_id: guest_saved.id
+# user_1_avatar_saved = Photo.new(user_1_avatar)
+# guest_avatar_saved = Photo.new(guest_avatar)
+
+user_1_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/person-placeholder-300x300.webp'), filename: 'placeholder-avatar.webp')
+
+guest_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/person-placeholder-300x300.webp'), filename: 'placeholder-avatar.webp')
+
+user_1_saved.save!
+guest_saved.save!
+
+
+## cover photos
+
+# cover_1 = {
+#   profile_id: profile_1_saved.id
+# }
+# cover_2 = {
+#   profile_id: guest_profile_saved.id
+# }
+
+profile_1_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg'), filename: 'vietnam-street.jpg')
+
+guest_profile_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: 'jellyfish.jpg')
+
+guest_profile_saved.save!
+profile_1_saved.save!
+
+## photo posts
+
+post_1 = {
+  title: "Mystic deep ocean jelly",
+  description: "Can't wait to go on another dive soon, life is different at the bottom of the ocean",
+  profile_id: guest_profile_saved.id
 }
+post_1_saved = Photo.new(post_1)
 
-hero = Photo.new(hero_photo)
+post_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/toronto-city_t20_6lAdEo.jpg'), filename: 'toronto.jpg')
 
-hero.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/toronto-city_t20_6lAdEo.jpg'), filename: 'toronto.jpg')
+post_1_saved.save!
 
-hero.save!
-
-landing_photo_1 = {
+post_2 = {
   title: "Brooklyn Bridge Vibes",
   description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
-  user_id: guest_saved.id
+  profile_id: profile_1_saved.id
 }
+post_2_saved = Photo.new(post_2)
 
-landing_1 = Photo.new(landing_photo_1)
+post_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/under-cave_t20_AV6wgr.jpg'), filename: 'cave.jpg')
 
-landing_1.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/under-cave_t20_AV6wgr.jpg'), filename: 'cave.jpg')
-
-landing_1.save!
+post_2_saved.save!
