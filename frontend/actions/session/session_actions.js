@@ -1,11 +1,14 @@
 import * as SessionApiUtil from '../../util/session_api_util'
 import { fetchPhotos } from '../photos/photos_actions';
-import { receiveProfile, receiveCurrentProfile, fetchProfiles } from '../profile/profile_actions'
+import { receiveProfile, fetchCurrentProfile, receiveCurrentProfile, fetchProfiles } from '../profile/profile_actions'
+
+
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user
 export const RECEIVE_USER = 'RECEIVE_USER'; // user
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // ()
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; // [errors]
+
 
 // regular action creators
 export const receiveCurrentUser = currentUser => {
@@ -45,10 +48,10 @@ export const fetchUser = userId => dispatch => {
 
 export const login = user => dispatch => {
   return SessionApiUtil.login(user)
-    .then(({ user, profile }) => {
-      debugger
+    .then(({ user }) => {
       dispatch(receiveCurrentUser(user))
-      dispatch(receiveCurrentProfile(profile))
+      dispatch(fetchCurrentProfile(user.profileId))
+      debugger
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())
     }, error => {
@@ -63,6 +66,7 @@ export const signup = user => dispatch => {
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())
     }, error => {
+      debugger
       dispatch(receiveSessionErrors(error.responseJSON))
     })
 }

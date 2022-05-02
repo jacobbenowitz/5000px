@@ -1,15 +1,14 @@
 import { connect } from "react-redux";
-import { fetchProfile } from "../../actions/profile/profile_actions";
 import { login } from "../../actions/session/session_actions";
 import LoginForm from "./login_form";
 
-const mapStateToProps = ({ errors }) => ({
-  errors: errors.session
+const mapStateToProps = ({ errors, entities, session }) => ({
+  errors: errors.session,
+  currentUser:  entities.users[session.id]
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  processForm: user => dispatch(login(user)),
-  fetchProfile: user => dispatch(fetchProfile(user.id))
+  processForm: user => dispatch(login(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

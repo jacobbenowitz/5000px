@@ -14,8 +14,8 @@ export default class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.errors.length === 0) {
-      const user = Object.assign({}, this.state)
-      this.props.processForm(user)
+      const user = this.state;
+      this.props.processForm(user);
     }
   }
 

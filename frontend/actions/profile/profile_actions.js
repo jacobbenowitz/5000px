@@ -50,8 +50,15 @@ export const fetchProfile = profileId => dispatch => {
     .then(profile => {
       debugger
       dispatch(receiveProfile(profile))
-    }
-    )
+    })
+}
+
+export const fetchCurrentProfile = profileId => dispatch => {
+  return ProfileApiUtil.fetchProfile(profileId)
+    .then(profile => {
+      debugger
+      dispatch(receiveCurrentProfile(profile))
+    })
 }
 
 export const createProfile = profile => dispatch => {
