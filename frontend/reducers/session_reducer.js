@@ -27,8 +27,6 @@ const sessionReducer = (initialState = _nullSession, action) => {
         return (Object.assign({}, nextState,
           { id: action.currentUser.id }));
       };
-    case RECEIVE_USERS:
-      return action.users;
     case RECEIVE_CURRENT_PROFILE:
       debugger
       return (

@@ -13,6 +13,10 @@ class Api::ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def index 
+    @profiles = Profile.all
+  end
+
   def update
     @profile = Profile.find_by(id: params[:id])
 

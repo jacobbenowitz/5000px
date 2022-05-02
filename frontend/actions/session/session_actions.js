@@ -2,7 +2,6 @@ import * as SessionApiUtil from '../../util/session_api_util'
 import { fetchPhotos } from '../photos/photos_actions';
 import { receiveProfile, fetchCurrentProfile, receiveCurrentProfile, fetchProfiles } from '../profile/profile_actions'
 
-
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user
 export const RECEIVE_USER = 'RECEIVE_USER'; // user
@@ -64,9 +63,10 @@ export const login = user => dispatch => {
     .then(({ user }) => {
       dispatch(receiveCurrentUser(user))
       dispatch(fetchCurrentProfile(user.profileId))
-      debugger
+      // debugger
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())
+      dispatch(fetchUsers())
     }, error => {
       dispatch(receiveSessionErrors(error.responseJSON))
     })
@@ -78,6 +78,7 @@ export const signup = user => dispatch => {
       dispatch(receiveCurrentUser(user))
       dispatch(fetchPhotos())
       dispatch(fetchProfiles())
+      dispatch(fetchUsers())
     }, error => {
       debugger
       dispatch(receiveSessionErrors(error.responseJSON))

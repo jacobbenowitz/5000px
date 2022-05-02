@@ -18,6 +18,10 @@ class Api::UsersController < ApplicationController
     render :show
   end
 
+  def index
+    @user = User.all
+  end
+
   # edit user account
   # def update
   # end
