@@ -6,6 +6,7 @@ import ProfileShow from "./profile_show";
 
 const mapStateToProps = (state, { match }) => {
   const profileId = match.params.profileId;
+  const isCurrentUsersProfile = state.session.profile === profileId;
   const profile = state.entities.profiles[profileId] || {};
   const user = selectUserById(state.entities, profile.user_id) || {};
   debugger
@@ -14,6 +15,7 @@ const mapStateToProps = (state, { match }) => {
     profileId: profileId,
     profile: profile,
     user: user,
+    isCurrentUsersProfile: isCurrentUsersProfile
   }
 }
 
