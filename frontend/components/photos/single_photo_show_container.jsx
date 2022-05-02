@@ -9,13 +9,16 @@ import { fetchProfile } from "../../actions/profile/profile_actions";
 const mapStateToProps = (state, { match }) => {
   const photoId = match.params.photoId;
   const photo = selectPhoto(state.entities, photoId);
-  const profile = photo ? selectProfileById(
-    state.entities, photo.profile_id) : {};
+  const profile = photo === {} ? {} : selectProfileById(
+    state.entities, photo.profile_id);
+  const user = selectUserById(state.entities, profile.user_id);
+  debugger
   const isCurrentProfile = profile.id === state.session.profile;
   debugger
   return {
     photoId: photoId,
     profile: profile,
+    user: user,
     photo: photo,
     isCurrentProfile: isCurrentProfile
   }

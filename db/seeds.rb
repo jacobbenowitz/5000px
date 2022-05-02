@@ -91,6 +91,9 @@ profile_1_saved.save!
 post_1 = {
   title: "Mystic deep ocean jelly",
   description: "Can't wait to go on another dive soon, life is different at the bottom of the ocean",
+  location: "Malibu",
+  lens: 'EF 70-200mm f/4.0',
+  camera: 'Cannon EOS 5DS',
   profile_id: guest_profile_saved.id
 }
 post_1_saved = Photo.new(post_1)

@@ -1,4 +1,6 @@
 import React from "react";
+import SinglePhotoLoader from "./content-loaders/single-photo-loader";
+
 const ImageViewer = props => (
   <div className="lg-single-image-container">
 
@@ -17,9 +19,9 @@ const ImageViewer = props => (
       <i className="fa-solid fa-angle-right fa-xl"></i>
     </div>
     <div className="image-container">
-      <img src={props.photo.photoUrl}
-        className="photo-large"
-        alt={props.photo.title}></img>
+      {Object.keys(props.photo).length > 0 ? (
+        <img src={props.photo.photoUrl} className="photo-large" alt={props.photo.title} /> ) : ( <SinglePhotoLoader className="photo-large" /> )
+    }
     </div>
   </div>
 )
