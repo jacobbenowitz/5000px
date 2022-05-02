@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import HomeFeed from "./home_feed";
 import { asArray } from "../../reducers/selectors";
+import { fetchProfiles } from "../../actions/profile/profile_actions";
+import { fetchPhotos } from "../../actions/photos/photos_actions";
+// import fetchUs
 
 const mapStateToProps = state => {
   debugger
@@ -15,7 +18,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchPhotos: () => dispatch(fetchPhotos()),
-    fetchProfiles: () => dispatch(fetchProfiles())
+    fetchProfiles: () => dispatch(fetchProfiles()),
+    fetchUsers: () => dispatch(fetchUsers())
   }
 }
 

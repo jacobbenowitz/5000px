@@ -40,7 +40,7 @@ export const removeProfile = profileId => ({
 // thunk action creators
 export const fetchProfiles = () => dispatch => {
   ProfileApiUtil.fetchProfiles().then(profiles => {
-    dispatch(receiveProfile(profiles))
+    dispatch(receiveProfiles(profiles))
   }
   )
 }

@@ -103,6 +103,9 @@ post_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 post_2 = {
   title: "Brooklyn Bridge Vibes",
   description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
+  location: "Brooklyn",
+  lens: 'EF 70-200mm f/4.0',
+  camera: 'Cannon EOS 5DS',
   profile_id: profile_1_saved.id
 }
 post_2_saved = Photo.new(post_2)

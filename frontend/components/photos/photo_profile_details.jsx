@@ -38,10 +38,8 @@ const PhotoProfileDetails = ({ profile, photo, user, currentUser }) => {
                 <strong>Uploaded: </strong> about {timeSinceUplaod(photo.created_at)}
               </span>
             </div>
-          </div>
-          <div className="photo-details">
             <div className="detail-box">
-              <span className="photo-description">{ photo.description }</span>
+              <p className="photo-description">{ photo.description }</p>
             </div>
           </div>
             

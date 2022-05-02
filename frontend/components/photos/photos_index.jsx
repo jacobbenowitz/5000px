@@ -12,7 +12,8 @@ export default class PhotosIndex extends React.Component {
   render() {
     const { photos, profiles, users } = this.props;
 
-    if (photos.length === 0) {
+    if (photos && profiles && users) {
+      debugger
       return (
         <h2>Loading...</h2>
       )

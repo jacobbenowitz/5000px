@@ -8,6 +8,8 @@ export default class HomeFeed extends React.Component {
   }
   componentDidMount() {
     this.props.fetchPhotos();
+    this.props.fetchProfiles();
+    this.props.fetchUsers();
   }
 
   // todo: create shared title component 

@@ -1,6 +1,7 @@
 import {
   RECEIVE_CURRENT_PROFILE,
   RECEIVE_PROFILE,
+  RECEIVE_PROFILES,
   REMOVE_PROFILE
 } from '../actions/profile/profile_actions';
 import {
@@ -17,14 +18,14 @@ const profilesReducer = (initialState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PROFILE:
-      debugger
       return Object.assign({}, nextState,
         { [action.profile.id]: action.profile });
+    case RECEIVE_PROFILES:
+      return action.profiles;
     case REMOVE_PROFILE:
       delete nextState[action.profileId];
       return nextState;
     case RECEIVE_CURRENT_PROFILE:
-      debugger
       return Object.assign({}, nextState,
         { [action.profile.id]: action.profile });
     default:

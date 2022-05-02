@@ -42,7 +42,7 @@ const NavFooter = () => (
           <h5>Download the app</h5>
         </div>
         <div className="footer-link-list">
-          <Link to={'/'}>App Stpre</Link>
+          <Link to={'/'}>App Store</Link>
           <Link to={'/'}>Play Store</Link>
         </div>
       </div>

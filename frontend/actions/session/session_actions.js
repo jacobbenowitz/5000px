@@ -6,6 +6,7 @@ import { receiveProfile, fetchCurrentProfile, receiveCurrentProfile, fetchProfil
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user
 export const RECEIVE_USER = 'RECEIVE_USER'; // user
+export const RECEIVE_USERS = 'RECEIVE_USERS'; // user
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // ()
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; // [errors]
 
@@ -27,6 +28,13 @@ export const receiveUser = user => {
   }
 }
 
+export const receiveUsers = users => {
+  return {
+    type: RECEIVE_USERS,
+    users
+  }
+}
+
 export const logoutCurrentUser = () => {
   return {
     type: LOGOUT_CURRENT_USER
@@ -44,6 +52,11 @@ export const receiveSessionErrors = errors => {
 export const fetchUser = userId => dispatch => {
   return SessionApiUtil.fetchUser(userId)
     .then(user => dispatch(receiveUser(user)))
+}
+
+export const fetchUsers = () => dispatch => {
+  return SessionApiUtil.fetchUsers()
+    .then(users => dispatch(receiveUsers(users)))
 }
 
 export const login = user => dispatch => {

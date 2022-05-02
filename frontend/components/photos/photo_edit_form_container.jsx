@@ -3,10 +3,13 @@ import { openModal } from "../../actions/modal/modal_actions";
 import { uploadPhoto } from "../../actions/photos/photos_actions";
 import PhotoUploadForm from "./photo_upload_form";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { session, errors, profiles } = state;
+  const { match } = ownProps;
   return {
-    profileId: state.session.profile,
-    errors: state.errors.photos
+    photoId: match.params.photoId,
+    profileId: session.profile,
+    errors: errors.photos,
   }
 }
 
