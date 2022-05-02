@@ -5,14 +5,13 @@ export default class PhotoEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photoId: "",
-      title: "",
-      description: "",
-      location: "",
-      camera: "",
-      lens: "",
-      photoFile: null,
-      photoUrl: null
+      photoId: this.props.photoId,
+      title: this.props.title || "",
+      description: this.props.description || "",
+      location: this.props.description || "",
+      camera: this.props.camera || "",
+      lens: this.props.lens || "",
+      photoUrl: this.props.photoUrl
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
@@ -20,7 +19,7 @@ export default class PhotoEditForm extends React.Component {
 
   componentDidMount() {
     const { photo, photoId, fetchPhoto } = this.props;
-    
+    debugger
     if (Object.keys(photo) > 1) {
       this.setState({
         photoId: photoId,
@@ -32,6 +31,7 @@ export default class PhotoEditForm extends React.Component {
         photoUrl: photo.photoUrl
       })
     } else {
+      debugger
       fetchPhoto(photoId)
     }
   }
@@ -74,9 +74,6 @@ export default class PhotoEditForm extends React.Component {
 
   render() {
     // add image loading animation
-    const preview = this.state.photoUrl ?
-      <img src={this.state.photoUrl}
-      /> : null;
     
     const overlay = <div id="img-preview-overlay"
       className="img-overlay-hidden">
@@ -92,8 +89,10 @@ export default class PhotoEditForm extends React.Component {
                 onMouseLeave={this.hideOverlay}
               >
                 { overlay }
-                { preview }
-                <span className="photo-label-upload">{ this.state.photoFile ? this.state.photoFile.name : "" }</span>
+                {this.props.photoUrl ?
+              <img className={'image-preview-img'}
+                src={this.state.photoUrl} /> :
+              <h2>Loading animation here</h2>}
               </div>
             </div>
 

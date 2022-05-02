@@ -14,6 +14,12 @@ const mapStateToProps = (state, ownProps) => {
   return {
     photoId: photoId,
     photo: photo,
+    title: photo.title,
+    description: photo.description,
+    location: photo.location,
+    camera: photo.camera,
+    lens: photo.lens,
+    photoUrl: photo.photoUrl,
     profileId: session.profile,
     errors: errors.photos,
   };

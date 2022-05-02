@@ -82,6 +82,7 @@
   position: relative;
 }
 
+
 /* adjust for screen sizes */
 .image-preview {
   position: relative;
@@ -93,7 +94,7 @@
 }
 
 /* adjust for screen sizes */
-.image-preview img {
+.image-preview-img {
   border: 2px solid #0870d1;
   width: 400px;
   height: auto;

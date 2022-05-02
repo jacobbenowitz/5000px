@@ -144,7 +144,7 @@ export default class PhotoUploadForm extends React.Component {
   render() {
     
     const preview = this.state.photoUrl ?
-      <img src={this.state.photoUrl}
+      <img className={'image-preview-img'} src={this.state.photoUrl}
       /> : null;
     
     const overlay = <div id="img-preview-overlay"

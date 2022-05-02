@@ -35,7 +35,7 @@ const App = () => (
         component={NewProfileFormContainer} />
       <ProtectedRoute path={"/profile/settings"} component={EditProfileFormContainer} />
       <ProtectedRoute path={"/profiles/:profileId"} component={ProfileShowContainer} />
-      <ProtectedRoute path={"/photos/upload"}
+      <ProtectedRoute exact path={"/photos/upload"}
         component={PhotoUploadFormContainer} /> 
       <ProtectedRoute exact path={"/photos/:photoId"}
         component={SinglePhotoShowContainer} />
