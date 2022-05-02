@@ -1,5 +1,6 @@
 import React from "react";
 import SuccessModal from "../modal/success_modal";
+import PhotoEditUploadLoader from "./content-loaders/photo-edit-upload-loader";
 
 export default class PhotoEditForm extends React.Component {
   constructor(props) {
@@ -53,13 +54,13 @@ export default class PhotoEditForm extends React.Component {
     
 
   showOverlay() {
-    const overlay = document.querySelector('#img-preview-overlay');
+    const overlay = document.querySelector('.img-preview-overlay');
     overlay.classList.remove('img-overlay-hidden');
     overlay.classList.add('img-overlay-show');
   }
   
   hideOverlay() {
-    const overlay = document.querySelector('#img-preview-overlay');
+    const overlay = document.querySelector('.img-preview-overlay');
     overlay.classList.remove('img-overlay-show');
     overlay.classList.add('img-overlay-hidden');
   }
@@ -75,28 +76,27 @@ export default class PhotoEditForm extends React.Component {
   render() {
     // add image loading animation
     
-    const overlay = <div id="img-preview-overlay"
-      className="img-overlay-hidden">
-      <i id="delete-icon" onClick={this.deletePhoto}
-        className="fa-solid fa-trash fa-xl"></i> </div>
+    const overlay = <div className="img-preview-overlay img-overlay-hidden">
+      <i onClick={this.deletePhoto}
+        className="fa-solid fa-trash fa-xl delete-icon"></i> </div>
     
     return (
-          <div id="image-upload-step-2" className="visable">
+          <div className="image-edit">
 
-            <div id="image-preview-container">
+            <div className="image-preview-container">
               <div className="image-preview"
                 onMouseOver={this.showOverlay}
                 onMouseLeave={this.hideOverlay}
               >
                 { overlay }
-                {this.props.photoUrl ?
-              <img className={'image-preview-img'}
-                src={this.state.photoUrl} /> :
-              <h2>Loading animation here</h2>}
+            {this.props.photoUrl ? (
+              <img className='image-preview-img'
+                src={this.props.photoUrl} />) : (
+              <PhotoEditUploadLoader />)}
               </div>
             </div>
 
-            <div id="upload-form-container">
+            <div className="edit-form-container">
               <form className="photo-upload-form" onSubmit={this.handleSubmit}>
 
                 <div className="form-input">

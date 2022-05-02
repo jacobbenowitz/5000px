@@ -49,12 +49,6 @@ export const fetchPhotos = () => dispatch => {
   debugger
   return PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
-    .then(success => {
-      return dispatch(receivePhotoErrors(success.message))
-    }, error => {
-      return dispatch(receivePhotoErrors(error.responseJSON))
-    }
-    )
 }
 
 

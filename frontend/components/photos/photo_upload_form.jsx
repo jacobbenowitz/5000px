@@ -77,13 +77,13 @@ export default class PhotoUploadForm extends React.Component {
   }
 
   showOverlay() {
-    const overlay = document.querySelector('#img-preview-overlay');
+    const overlay = document.querySelector('.img-preview-overlay');
     overlay.classList.remove('img-overlay-hidden');
     overlay.classList.add('img-overlay-show');
   }
   
   hideOverlay() {
-    const overlay = document.querySelector('#img-preview-overlay');
+    const overlay = document.querySelector('.img-preview-overlay');
     overlay.classList.remove('img-overlay-show');
     overlay.classList.add('img-overlay-hidden');
   }
@@ -144,13 +144,12 @@ export default class PhotoUploadForm extends React.Component {
   render() {
     
     const preview = this.state.photoUrl ?
-      <img className={'image-preview-img'} src={this.state.photoUrl}
+      <img className='image-preview-img' src={this.state.photoUrl}
       /> : null;
     
-    const overlay = <div id="img-preview-overlay"
-      className="img-overlay-hidden">
-      <i id="delete-icon" onClick={this.deletePhoto}
-        className="fa-solid fa-trash fa-xl"></i> </div>
+    const overlay = <div className="img-preview-overlay img-overlay-hidden">
+      <i onClick={this.deletePhoto}
+        className="fa-solid fa-trash fa-xl delete-icon"></i> </div>
     
     return (
       <div className="upload-container">
@@ -185,7 +184,7 @@ export default class PhotoUploadForm extends React.Component {
 
           <div id="image-upload-step-2" className="hidden">
 
-            <div id="image-preview-container">
+            <div className="image-preview-container">
               <div className="image-preview"
                 onMouseOver={this.showOverlay}
                 onMouseLeave={this.hideOverlay}
@@ -196,7 +195,7 @@ export default class PhotoUploadForm extends React.Component {
               </div>
             </div>
 
-            <div id="upload-form-container">
+            <div className="upload-form-container">
               <form className="photo-upload-form" onSubmit={this.handleSubmit}>
 
                 <div className="form-input">
