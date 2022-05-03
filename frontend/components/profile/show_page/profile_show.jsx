@@ -70,7 +70,7 @@ export default class ProfileShow extends React.Component {
         </section>
         <div className="profile-gallery-box">
 
-          {/* {this.state.photos.map(photo => {
+          {this.state.photos.map(photo => {
             return ( 
               <Link to={`/photos/${photo.id}`}>
                 <div key={photo.id} className="photo-container">
@@ -81,7 +81,7 @@ export default class ProfileShow extends React.Component {
                 </div>
               </Link>
             )
-          })} */}
+          })}
             
 
         </div>

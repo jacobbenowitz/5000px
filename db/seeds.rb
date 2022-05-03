@@ -91,101 +91,173 @@ profile_1_saved.save!
 ## photo posts
 
 post_1 = {
-  title: "Mystic deep ocean jelly",
-  description: "Can't wait to go on another dive soon, life is different at the bottom of the ocean",
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
   location: "Malibu",
   lens: 'EF 70-200mm f/4.0',
   camera: 'Cannon EOS 5DS',
+  width: 1396,
+  height: 2094,
   profile_id: guest_profile_saved.id
 }
 post_1_saved = Photo.new(post_1)
 
-post_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/toronto-city_t20_6lAdEo.jpg'), filename: 'toronto.jpg')
+post_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg'), filename: 'toronto.jpg')
+
 
 post_2 = {
-  title: "Brooklyn Bridge Vibes",
-  description: "Long exposure shot of the beautiful Brooklyn Bridge at sunset",
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
   location: "Brooklyn",
   lens: 'EF 70-200mm f/4.0',
   camera: 'Cannon EOS 5DS',
+  width: 2048,
+  height: 1365,
   profile_id: profile_1_saved.id
 }
 post_2_saved = Photo.new(post_2)
 
-post_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/under-cave_t20_AV6wgr.jpg'), filename: 'cave.jpg')
+post_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/toronto-city_t20_6lAdEo.jpg'), filename: 'cave.jpg')
+
+
+post_3 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
+  width: 1953,
+  height: 1466,
+  profile_id: profile_1_saved.id
+}
+post_3_saved = Photo.new(post_3)
+
+post_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
+
+
+post_4 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
+  width: 2251,
+  height: 1326,
+  profile_id: profile_1_saved.id
+}
+post_4_saved = Photo.new(post_4)
+
+post_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/bike-in-urban-area_t20_ZV18zj.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
+
+
+post_5 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
+  profile_id: profile_1_saved.id,
+  width: 1915,
+  height: 1436,
+}
+post_5_saved = Photo.new(post_5)
+
+post_5_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/bright-and-colorful-jump_t20_B80RmO.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
+
+
+post_6 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
+  profile_id: profile_1_saved.id,
+  width: 1373,
+  height: 2059,
+}
+post_6_saved = Photo.new(post_6)
+
+post_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
+
+
+post_7 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1),
+  profile_id: profile_1_saved.id,
+  width: 2000,
+  height: 1500,
+}
+post_7_saved = Photo.new(post_7)
+
+post_7_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/sea-turtles_t20_98OYYY.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
 
 post_1_saved.save!
 post_2_saved.save!
+post_3_saved.save!
+post_4_saved.save!
+post_5_saved.save!
+post_6_saved.save!
+post_7_saved.save!
 
-postsArray = [
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  },
-  {
-    title: Faker::Hipster.sentence(word_count: 3),
-    description: Faker::Hipster.sentences(number: 1)
-    profile: guest_profile_saved.id
-  }
-]
 
-images = [
-  "https://my5000px-static.s3.amazonaws.com/800px/urban-playground.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/sunrise-in-mexico.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/speed-boat.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/silhouette-of-fitness-woman-running-on-the-beach.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/silhouette-of-boy-throwing-a-net-into-the-water.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/red-fox-cub-vulpes-vulpes.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/moody-autumn-day-in-the-dolomites-forest.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/lost-in-the-city.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/los-angeles-vibes.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg",
-  "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg"
-]
 
-def create_sample_posts 
-  i = 0
-  while i > post_array.length do
-    photo = Photo.create(post_array[i])
-    photo.photo.attach(io: images[i], filename: Faker::Hipster.sentence(word_count: 3))
-    i += 1
-  end
-end
+# photos = {
+#   0 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   1 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   2 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   3 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   4 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   5 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   6 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   7 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   },
+#   8 => {
+#     title: Faker::Hipster.sentence(word_count: 3),
+#     description: Faker::Hipster.sentences(number: 1)
+#     profile_id: guest_profile_saved.id
+#   }
+# }
+# dont use aws, use local
+# images = [
+#   "https://my5000px-static.s3.amazonaws.com/800px/urban-playground.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/sunrise-in-mexico.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/speed-boat.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/silhouette-of-fitness-woman-running-on-the-beach.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/silhouette-of-boy-throwing-a-net-into-the-water.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/red-fox-cub-vulpes-vulpes.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/moody-autumn-day-in-the-dolomites-forest.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/lost-in-the-city.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/los-angeles-vibes.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg",
+#   "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg"
+# ]
 
-create_same_posts()
+# def create_sample_posts 
+#   i = 0
+#   while i >= post_array.length do
+#     photo = Photo.create(post_array[i])
+#     photo.photo.attach(io: images[i], filename: Faker::Hipster.sentence(word_count: 3))
+#     i += 1
+#   end
+# end
+
+# create_same_posts()
