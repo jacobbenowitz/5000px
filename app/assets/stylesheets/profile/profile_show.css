@@ -1,0 +1,21 @@
+.profile-cover-container {
+  position: relative;
+  margin-bottom: 32px;
+  max-width: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cover-img-box {
+  height: 370px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.profile-show-container {
+  grid-column: 1 / span 12;
+
+}
