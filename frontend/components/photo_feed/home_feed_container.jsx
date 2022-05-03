@@ -3,7 +3,7 @@ import HomeFeed from "./home_feed";
 import { asArray } from "../../reducers/selectors";
 import { fetchProfiles } from "../../actions/profile/profile_actions";
 import { fetchPhotos } from "../../actions/photos/photos_actions";
-// import fetchUs
+import { fetchUsers } from "../../actions/session/session_actions";
 
 const mapStateToProps = state => {
   debugger
@@ -11,7 +11,7 @@ const mapStateToProps = state => {
     photos: asArray(state.entities),
     users: state.entities.users,
     profiles: state.entities.profiles,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.profiles[state.session.profile]
   }
 }
 

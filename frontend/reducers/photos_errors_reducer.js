@@ -1,5 +1,8 @@
 import { CLOSE_MODAL } from "../actions/modal/modal_actions";
-import { RECEIVE_PHOTO_ERRORS, RECEIVE_PHOTO_UPDATE } from "../actions/photos/photos_actions";
+import {
+  RECEIVE_PHOTO_ERRORS,
+  RECEIVE_PHOTO_UPDATE
+} from "../actions/photos/photos_actions";
 
 const photosErrorsReducer = (initialState = [], action) => {
   Object.freeze(initialState);

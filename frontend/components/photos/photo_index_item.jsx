@@ -13,7 +13,8 @@ class PhotoIndexItem extends React.Component {
   }
 
   render() {
-    const { photo, user, profile, fetchPhoto } = this.props;
+    const { photo, profile, user } = this.props;
+    debugger
     debugger
     const photoOverlay = (
       <div className="photo-data-overlay">
@@ -24,7 +25,12 @@ class PhotoIndexItem extends React.Component {
           <div className="left-bot-overlay">
             {/* update avatar to use user.avatar */}
             {/* <img className="user-avatar-lg" src={profile.profile_avatar}></img> */}
-            <span>{profile.first_name + profile.last_name}</span>
+            {profile.first_name.length === 0 ? (
+                <span className="photo-user-name"> {user.username} </span>
+              ) : (
+                  <span className="photo-user-name">
+                {profile.first_name + " " + profile.last_name} </span>
+              )} 
           </div>
 
           {/* refactor to components: like comment etc icons linked */}

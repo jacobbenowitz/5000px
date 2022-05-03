@@ -3,18 +3,18 @@ import PhotoActions from "./photo_actions";
 import {timeSinceUplaod} from "../../util/todays_date_util"
 import ProfileDetailsLoader from "./content-loaders/profile-details-loader";
 
-const PhotoProfileDetails = ({ profile, photo, user, currentUser }) => {
+const PhotoProfileDetails = ({ profile, photo, user, isCurrentProfile }) => {
   debugger
   return (
   <div className="photo-detail-summary">
     <div className="inset-box">
       {Object.keys(photo).length > 0 && Object.keys(profile).length > 0 && Object.keys(user).length > 0 ? (
         <>
-          <PhotoActions />
+            <PhotoActions isCurrentProfile={isCurrentProfile} photo={photo} />
           <div className="profile-info">
             <div className="avatar-container">
             {/* <img className="user-avatar-lg" src={user.avatar}></img> */}
-              <img className="user-avatar-lg" src={profile.profile_avatar}></img>
+              <img className="user-avatar-lg" src={profile.avatar}></img>
             </div>
             <div className="user-details">
               <h5 className="photo-show-title">{photo.title}</h5>
@@ -25,7 +25,6 @@ const PhotoProfileDetails = ({ profile, photo, user, currentUser }) => {
                   <span className="photo-user-name">by
                 {" " + profile.first_name + " " + profile.last_name} </span>
               )} 
-              
               <span> • </span>
               <a src={'#'} className="follow-link">Follow</a>
             </div>

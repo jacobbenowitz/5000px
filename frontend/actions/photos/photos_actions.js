@@ -2,7 +2,7 @@ import * as PhotoApiUtil from '../../util/photo_api_util';
 
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO'; // photo
 export const REMOVE_PHOTO = 'REMOVE_PHOTO'; // photo
-export const REMOVE_PHOTO_UPDATE = 'REMOVE_PHOTO_UPDATE'; // photo
+export const RECEIVE_PHOTO_UPDATE = 'RECEIVE_PHOTO_UPDATE'; // photo
 export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS'; // [photos]
 export const RECEIVE_PHOTO_ERRORS = 'RECEIVE_PHOTO_ERRORS'; // 'error...'
 
@@ -18,7 +18,7 @@ export const removePhoto = photoId => ({
 })
 
 export const receivePhotoUpdate = photo => ({
-  type: REMOVE_PHOTO_UPDATE,
+  type: RECEIVE_PHOTO_UPDATE,
   photo
 })
 
@@ -74,6 +74,5 @@ export const updatePhoto = photo => dispatch => {
     }, error => {
       return dispatch(receivePhotoErrors(error.responseJSON))
     })
-  // .then(photo => dispatch(fetchPhoto(photo.id)))
   // .then(message => dispatch(receivePhotoUpdate(message)))
 };

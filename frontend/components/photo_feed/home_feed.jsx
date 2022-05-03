@@ -15,15 +15,18 @@ export default class HomeFeed extends React.Component {
   // todo: create shared title component 
   // todo: create tab navigation component for discover
   render() {
-    // { DiscoverPageHeader }
-    // { DiscoverNavLinks }
+    const { photos, users, profiles, currentProfile } = this.props
+    debugger
     return (
-      <PhotosIndex
-        photos={this.props.photos}
-        users={this.props.users}
-        profiles={this.props.profiles}
-        currentUser={this.props.currentUser}
-      />
+      <div className="home-feed-container">
+        {/* DiscoverPageHeader */}
+        {/* DiscoverNavLinks */}
+        <PhotosIndex
+          photos={photos}
+          users={users}
+          profiles={profiles}
+          currentUser={currentProfile} />
+      </div>
     )
   }
 }

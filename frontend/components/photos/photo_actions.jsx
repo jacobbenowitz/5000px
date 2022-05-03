@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PhotoActions = props => (
   <div className="photo-action-icons">
@@ -9,12 +10,20 @@ const PhotoActions = props => (
       </a>
 
     </div>
+    {/* SHARE */}
     <div className="icon-box">
       <a href={'#'} className="photo-icon-link share">
         <i className="fa-solid fa-share-nodes fa-xl"></i>
       </a>
     </div>
-    {/* SHARE */}
+    {/* EDIT */}
+    {props.isCurrentProfile ? (
+      <div className="icon-box">
+        <Link to={`/photos/${props.photo.id}/edit`}
+          className="photo-icon-link edit">
+          <i className="fa-regular fa-pen-to-square fa-xl"></i>
+        </Link>
+      </div> ) : ( null )}
   </div>
 )
 
