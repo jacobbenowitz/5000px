@@ -2,6 +2,7 @@ import React from "react";
 import { selectProfilePhotos } from "../../../reducers/selectors";
 import { Link } from "react-router-dom";
 import CoverPhotoLoader from "../content_loaders/cover_photo_loader";
+import { AvatarLg } from "../../avatar/avatar_lg";
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
@@ -41,7 +42,9 @@ export default class ProfileShow extends React.Component {
     debugger
     return (
       <div className="profile-show-container" >
+        {/* { profile.avatar ? : } */}
         <div className="profile-cover-container">
+          <AvatarLg profile={profile} />
           {profile.cover ? (
             <div className="cover-img-box"
               style={coverStyle}

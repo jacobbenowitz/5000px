@@ -3,9 +3,7 @@
   margin-bottom: 32px;
   max-width: 100%;
   width: 100%;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  grid-column: 1 / span 12;
 }
 
 .cover-img-box {
@@ -18,4 +16,32 @@
 .profile-show-container {
   grid-column: 1 / span 12;
 
+}
+
+.avatar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-height: 96px;
+  max-width: 96px;
+}
+
+.avatar-box-lg {
+  position: absolute;
+  bottom: -55px;
+  left: 47%;
+  width: 95px;
+  height: 95px;
+}
+
+.avatar-box {
+  z-index: 50;
+}
+
+.avatar-img {
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
 }
