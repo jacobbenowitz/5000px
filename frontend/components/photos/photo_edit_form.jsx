@@ -7,12 +7,11 @@ export default class PhotoEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photoId: "",
-      title: "",
-      description: "",
-      location: "",
-      camera: "",
-      lens: "",
+      // title: this.props.photo.title,
+      // description: this.props.photo.title,
+      // location: this.props.photo.title,
+      // camera: this.props.photo.title,
+      // lens: this.props.photo.title,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
@@ -20,19 +19,17 @@ export default class PhotoEditForm extends React.Component {
   }
 
   componentDidMount() {
-    const { photo, photoId, fetchPhoto } = this.props;
     debugger
-    if (Object.keys(photo).length < 1) {
-      fetchPhoto(photoId).then(() => {
-        debugger
-        // this.setState({
-        //   photoId: photo.photoId,
-        //   title: photo.title,
-        //   description: photo.description,
-        //   location: photo.location,
-        //   camera: photo.camera,
-        //   lens: photo.lens,
-        // })
+    if (Object.keys(this.props.photo).length < 1) {
+      this.props.fetchPhoto(this.props.photoId)
+      this.props.fetchPhoto(this.props.photoId).then(() => {
+        this.setState({
+          title: this.props.photo.title,
+          description: this.props.photo.title,
+          location: this.props.photo.title,
+          camera: this.props.photo.title,
+          lens: this.props.photo.title,
+        })
       })
     }
   }
@@ -46,6 +43,7 @@ export default class PhotoEditForm extends React.Component {
   }
 
   handleInput = (type) => {
+    debugger
     return e => {
       this.setState(
         { [type]: e.target.value })
@@ -66,12 +64,10 @@ export default class PhotoEditForm extends React.Component {
   }
 
   deletePhoto() {
-    const { deletePhoto, photoId } = this.props;
+    const { photoId } = this.props;
     // make a confirmation modal
-    deletePhoto(photoId)
+    this.props.deletePhoto(photoId)
   };
-
-
 
   render() {
     // add image loading animation
@@ -94,7 +90,8 @@ export default class PhotoEditForm extends React.Component {
                 src={this.props.photo.photoUrl} />) : (
               <PhotoEditUploadLoader />)}
               </div>
-            </div>
+        </div>
+        
         {Object.values(this.props.photo).length > 0 ? (
           <div className="edit-form-container">
             <form className="photo-upload-form" onSubmit={this.handleSubmit}>
@@ -102,7 +99,7 @@ export default class PhotoEditForm extends React.Component {
               <div className="form-input">
                 <label htmlFor="photo-title">Title</label>
                 <input type="text" name="photo-title"
-                  value={ this.props.photo.title }
+                  value={ this.state.title }
                   className="text-input" onChange={this.handleInput('title')}
                 />
               </div>
@@ -110,14 +107,14 @@ export default class PhotoEditForm extends React.Component {
               <div className="form-input">
                 <label htmlFor="photo-description">Description</label>
                 <textarea name="photo-description"
-                  value={this.props.photo.description}
+                  value={this.state.description}
                   className="description-input" onChange={this.handleInput('description')} />
               </div>
 
               <div className="form-input">
                 <label htmlFor="photo-lens">Lens</label>
                 <input type="text" name="photo-lens"
-                  value={ this.props.photo.lens }
+                  value={ this.state.lens }
                   className="text-input" onChange={this.handleInput('lens')}
                 />
               </div>
@@ -125,7 +122,7 @@ export default class PhotoEditForm extends React.Component {
               <div className="form-input">
                 <label htmlFor="photo-camera">Camera</label>
                 <input type="text" name="photo-camera"
-                  value={ this.props.photo.camera }
+                  value={ this.state.camera }
                   className="text-input" onChange={this.handleInput('camera')}
                 />
           </div>
@@ -133,17 +130,17 @@ export default class PhotoEditForm extends React.Component {
               <div className="form-input">
                 <label htmlFor="photo-location">Location</label>
                 <input type="text" name="photo-location"
-                  value={ this.props.photo.location }
+                  value={ this.state.location }
                   className="text-input" onChange={this.handleInput('location')}
                 />
               </div>
           
               <div className="form-bot-buttons">
-                <span onClick={this.deletePhoto}
+                <span onClick={() => this.props.history.push('/')}
                   className="cancel-upload"
                 >Cancel</span>
                 <button className="upload-photo-button"
-                  type="submit">Upload photo</button>
+                  type="submit">Update photo</button>
               </div>
               
             </form>

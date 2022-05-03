@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal/modal_actions";
-import { updatePhoto } from "../../actions/photos/photos_actions";
+import { updatePhoto, deletePhoto } from "../../actions/photos/photos_actions";
 import { selectPhotoById } from "../../reducers/selectors";
 import PhotoEditForm from "./photo_edit_form";
 import { fetchPhoto } from "../../actions/photos/photos_actions";
@@ -22,6 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     updatePhoto: photoId => dispatch(updatePhoto(photoId)),
+    deletePhoto: photoId => dispatch(deletePhoto(photoId)),
     fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
     openModal: modal => dispatch(openModal(modal))
   }
