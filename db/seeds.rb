@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'faker'
+
 default_avatar = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp"
 default_banner = "https://my5000px-static.s3.amazonaws.com/nature-cover-guest.jpg"
 
@@ -114,3 +116,76 @@ post_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_1_saved.save!
 post_2_saved.save!
+
+postsArray = [
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  },
+  {
+    title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences(number: 1)
+    profile: guest_profile_saved.id
+  }
+]
+
+images = [
+  "https://my5000px-static.s3.amazonaws.com/800px/urban-playground.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/sunrise-in-mexico.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/speed-boat.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/silhouette-of-fitness-woman-running-on-the-beach.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/silhouette-of-boy-throwing-a-net-into-the-water.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/red-fox-cub-vulpes-vulpes.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/moody-autumn-day-in-the-dolomites-forest.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/lost-in-the-city.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/los-angeles-vibes.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg",
+  "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg"
+]
+
+def create_sample_posts 
+  i = 0
+  while i > post_array.length do
+    photo = Photo.create(post_array[i])
+    photo.photo.attach(io: images[i], filename: Faker::Hipster.sentence(word_count: 3))
+    i += 1
+  end
+end
+
+create_same_posts()

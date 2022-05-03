@@ -14,8 +14,8 @@ export default class PhotoUploadForm extends React.Component {
       lens: "",
       photoFile: null,
       photoUrl: null,
-      width: null,
-      height: null,
+      width: "",
+      height: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -147,12 +147,9 @@ export default class PhotoUploadForm extends React.Component {
       })
     };
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-    const dropZone = document.querySelector('#main-drop-zone');
-    dropZone.classList.add('disabled');
-    dropZone.classList.remove('enabled');
+    // if (file) {
+    //   fileReader.readAsDataURL(file);
+    // }
   }
 
   render() {
