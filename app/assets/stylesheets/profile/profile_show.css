@@ -15,22 +15,30 @@
 
 .profile-show-container {
   grid-column: 1 / span 12;
-
 }
-
+.profile-avatar-container {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100px;
+  top: 315px;
+}
 .avatar-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  max-height: 96px;
-  max-width: 96px;
+  max-height: 95px;
+  max-width: 95px;
 }
 
 .avatar-box-lg {
   position: absolute;
   bottom: -55px;
-  left: 47%;
   width: 95px;
   height: 95px;
 }
@@ -44,4 +52,104 @@
   border: 2px solid rgb(255, 255, 255);
   width: 100%;
   height: 100%;
+}
+
+.profile-details-container {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+@media (min-width: 1200px) {
+  .profile-details-container {
+    padding: 0 64px 0 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .profile-details-container {
+    padding: 0 32px 0 32px;
+  }
+  
+}
+
+.profile-loader-container {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 56px;
+  margin-bottom: 28px;
+}
+
+.profile-action-icons {
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  display: flex;
+  max-width: 100%;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.profile-header-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+  max-width: 100%;
+  margin-bottom: 8px;
+}
+
+.profile-bio-and-stats-container {
+  word-break: break-word;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+.profile-about {
+  text-align: center;
+  max-width: 560px;
+  margin: 0px;
+  text-transform: none;
+}
+.profile-wrapper {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile-location {
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: none;
+  margin: 0px;
+  color: rgb(34, 34, 34);
+  border-bottom: 1px dashed rgb(34, 34, 34);
+}
+
+.profile-header-container > .follow-button {
+  margin-top: 16px;
+}
+
+.profile-gallery-box {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  word-break: break-word;
+  padding: 8px 16px 64px;
+  background-color: rgb(247, 248, 250);
 }

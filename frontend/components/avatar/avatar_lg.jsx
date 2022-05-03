@@ -5,7 +5,6 @@ export const AvatarLg = props => {
   const { avatar } = props.profile;
   debugger
   return (
-    <div className="avatar-box-lg">
       <div className="avatar-wrapper">
         {avatar ? (
           <img src={avatar} className="avatar-img" />
@@ -13,6 +12,5 @@ export const AvatarLg = props => {
           <AvatarLgLoader />
         )}
       </div>
-    </div>
   )
 }

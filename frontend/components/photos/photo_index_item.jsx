@@ -35,7 +35,7 @@ class PhotoIndexItem extends React.Component {
 
           {/* refactor to components: like comment etc icons linked */}
           <div className="right-bot-overlay">
-            <a href={'#'} className="photo-icon-link like">
+            <a href={'#'} className="icon-link like">
               <i className="fa-regular fa-heart"></i>
             </a>
             {/* bonus: add comment link icon*/}
