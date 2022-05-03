@@ -1,5 +1,7 @@
 import React from "react";
 import SuccessModal from "../modal/success_modal";
+import { getImgSize } from "../../util/get_img_size";
+
 
 export default class PhotoUploadForm extends React.Component {
   constructor(props) {
@@ -11,7 +13,9 @@ export default class PhotoUploadForm extends React.Component {
       camera: "",
       lens: "",
       photoFile: null,
-      photoUrl: null
+      photoUrl: null,
+      width: null,
+      height: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -20,12 +24,13 @@ export default class PhotoUploadForm extends React.Component {
     this.handleDrop = this.handleDrop.bind(this);
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
     
     if (this.state.photoFile) {
-      // only append the file if it exists in state
+      formData.append('photo[width]', this.state.width);
+      formData.append('photo[height]', this.state.height);
       formData.append('photo[title]', this.state.title);
       formData.append('photo[description]', this.state.description);
       formData.append('photo[camera]', this.state.camera);
@@ -34,26 +39,29 @@ export default class PhotoUploadForm extends React.Component {
       formData.append('photo[photo]', this.state.photoFile);
       formData.append('photo[profile_id]', this.props.profileId);
     }
-    this.props.uploadPhoto(formData);
+    await this.props.uploadPhoto(formData);
     this.props.openModal("success");
     this.props.history.push(`/profiles/${this.props.profileId}`)
   }
 
-  handleFile(e) {
+  async handleFile(e) {
     e.preventDefault();
     const file = e.target.files[0];
     const fileReader = new FileReader();
-
+    const { width, height } = await getImgSize(file);
+    debugger
     fileReader.onloadend = () => {
       this.setState({
         title: file.name,
         photoFile: file,
-        photoUrl: fileReader.result
+        photoUrl: fileReader.result,
+        width: width,
+        height: height
       }, () => {
         this.toggleDetailForm();
       })
     };
-
+    
     if (file) {
       fileReader.readAsDataURL(file);
     }
@@ -116,19 +124,22 @@ export default class PhotoUploadForm extends React.Component {
     dropZone.classList.remove('drag-on')
   }
   
-  handleDrop(e) {
+  async handleDrop(e) {
     e.preventDefault();
     const dropZone = document.querySelector('#main-drop-zone');
     dropZone.classList.remove('drag-on')
 
     const file = e.dataTransfer.files['0'];
     const fileReader = new FileReader();
-
+    const { width, height } = await getImgSize(file);
+    
     fileReader.onloadend = () => {
       this.setState({
         title: file.name,
         photoFile: file,
-        photoUrl: fileReader.result
+        photoUrl: fileReader.result,
+        width: width,
+        height: height
       }, () => {
         this.toggleDetailForm();
         dropZone.classList.add('disabled');
@@ -139,11 +150,13 @@ export default class PhotoUploadForm extends React.Component {
     if (file) {
       fileReader.readAsDataURL(file);
     }
-    document
+    const dropZone = document.querySelector('#main-drop-zone');
+    dropZone.classList.add('disabled');
+    dropZone.classList.remove('enabled');
   }
 
   render() {
-    
+    debugger
     const preview = this.state.photoUrl ?
       <img className='image-preview-img' src={this.state.photoUrl}
       /> : null;

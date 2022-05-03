@@ -6,7 +6,7 @@ import { AvatarLg } from "../../avatar/avatar_lg";
 import ProfileDetailsLoader from "../content_loaders/profile-details-loader";
 import { ProfileDetails } from "./profile_details";
 import PhotoLoader from "../content_loaders/photo-loader";
-
+import { getImgSize } from "../../../util/get_img_size";
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
@@ -69,7 +69,7 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         <div className="profile-gallery-box">
-          
+
           {/* {this.state.photos.map(photo => {
             return ( 
               <Link to={`/photos/${photo.id}`}>
