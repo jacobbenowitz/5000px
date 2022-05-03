@@ -7,43 +7,36 @@ export default class PhotoEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // title: this.props.photo.title,
-      // description: this.props.photo.title,
-      // location: this.props.photo.title,
-      // camera: this.props.photo.title,
-      // lens: this.props.photo.title,
+      
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
     debugger
   }
 
   componentDidMount() {
-    debugger
-    if (Object.keys(this.props.photo).length < 1) {
-      this.props.fetchPhoto(this.props.photoId)
-      this.props.fetchPhoto(this.props.photoId).then(() => {
-        this.setState({
-          title: this.props.photo.title,
-          description: this.props.photo.title,
-          location: this.props.photo.title,
-          camera: this.props.photo.title,
-          lens: this.props.photo.title,
-        })
-      })
+    this.props.fetchPhoto(this.props.photoId)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.photo !== this.props.photo) {
+      this.setState(this.props.photo)
     }
   }
-
+  
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updatePhoto(this.state).then(() => {
-      this.props.openModal("success");
-      this.props.history.push(`/profiles/${this.props.profileId}`)
+    debugger
+    this.props.updatePhoto(this.state)
+      .then(() => {
+        debugger
+        this.props.openModal("success");
+        this.props.history.push(`/profiles/${this.props.profileId}`);
     })
-  }
+  };
 
   handleInput = (type) => {
-    debugger
     return e => {
       this.setState(
         { [type]: e.target.value })
@@ -75,7 +68,7 @@ export default class PhotoEditForm extends React.Component {
     const overlay = <div className="img-preview-overlay img-overlay-hidden">
       <i onClick={this.deletePhoto}
         className="fa-solid fa-trash fa-xl delete-icon"></i> </div>
-    debugger
+
     return (
           <div className="image-edit">
 
@@ -85,14 +78,14 @@ export default class PhotoEditForm extends React.Component {
                 onMouseLeave={this.hideOverlay}
               >
                 { overlay }
-            {this.props.photo.photoUrl ? (
+            {this.state.photoUrl ? (
               <img className='image-preview-img'
-                src={this.props.photo.photoUrl} />) : (
+                src={this.state.photoUrl} />) : (
               <PhotoEditUploadLoader />)}
               </div>
         </div>
         
-        {Object.values(this.props.photo).length > 0 ? (
+        {this.state.photoUrl ? (
           <div className="edit-form-container">
             <form className="photo-upload-form" onSubmit={this.handleSubmit}>
 
@@ -106,14 +99,14 @@ export default class PhotoEditForm extends React.Component {
 
               <div className="form-input">
                 <label htmlFor="photo-description">Description</label>
-                <textarea name="photo-description"
-                  value={this.state.description}
+                <textarea name="description"
+                  value={this.state.description }
                   className="description-input" onChange={this.handleInput('description')} />
               </div>
 
               <div className="form-input">
                 <label htmlFor="photo-lens">Lens</label>
-                <input type="text" name="photo-lens"
+                <input type="text" name="lens"
                   value={ this.state.lens }
                   className="text-input" onChange={this.handleInput('lens')}
                 />
@@ -121,7 +114,7 @@ export default class PhotoEditForm extends React.Component {
 
               <div className="form-input">
                 <label htmlFor="photo-camera">Camera</label>
-                <input type="text" name="photo-camera"
+                <input type="text" name="camera"
                   value={ this.state.camera }
                   className="text-input" onChange={this.handleInput('camera')}
                 />
@@ -129,8 +122,8 @@ export default class PhotoEditForm extends React.Component {
           
               <div className="form-input">
                 <label htmlFor="photo-location">Location</label>
-                <input type="text" name="photo-location"
-                  value={ this.state.location }
+                <input type="text" name="location"
+                  value={ this.state.location  }
                   className="text-input" onChange={this.handleInput('location')}
                 />
               </div>

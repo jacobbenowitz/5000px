@@ -30,6 +30,7 @@ export default class PhotoUploadForm extends React.Component {
       formData.append('photo[description]', this.state.description);
       formData.append('photo[camera]', this.state.camera);
       formData.append('photo[lens]', this.state.lens);
+      formData.append('photo[location]', this.state.location);
       formData.append('photo[photo]', this.state.photoFile);
       formData.append('photo[profile_id]', this.props.profileId);
     }
@@ -225,6 +226,14 @@ export default class PhotoUploadForm extends React.Component {
                   <input type="text" name="photo-camera"
                     value={ this.state.camera }
                     className="text-input" onChange={this.handleInput('camera')}
+                  />
+                </div>
+
+                <div className="form-input">
+                  <label htmlFor="photo-location">Location</label>
+                  <input type="text" name="photo-location"
+                    value={ this.state.location }
+                    className="text-input" onChange={this.handleInput('location')}
                   />
                 </div>
                 <div className="form-bot-buttons">

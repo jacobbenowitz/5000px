@@ -16,7 +16,7 @@ class Api::PhotosController < ApplicationController
   end
 
   def update
-    photo = photo.find_by(id: params[:id])
+    photo = Photo.find_by(id: params[:id])
     if photo.update(photo_params)
       render json: {message: ["Successfully updated!"]}
     else
@@ -40,6 +40,7 @@ class Api::PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:photo, :title, :description, :profile_id)
+    params.require(:photo).permit(
+      :photo, :title, :description, :lens, :camera, :location, :profile_id)
   end
 end

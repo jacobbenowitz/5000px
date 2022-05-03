@@ -2,6 +2,7 @@ import * as PhotoApiUtil from '../../util/photo_api_util';
 
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO'; // photo
 export const REMOVE_PHOTO = 'REMOVE_PHOTO'; // photo
+export const REMOVE_PHOTO_UPDATE = 'REMOVE_PHOTO_UPDATE'; // photo
 export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS'; // [photos]
 export const RECEIVE_PHOTO_ERRORS = 'RECEIVE_PHOTO_ERRORS'; // 'error...'
 
@@ -14,6 +15,11 @@ export const receivePhoto = photo => ({
 export const removePhoto = photoId => ({
   type: REMOVE_PHOTO,
   photoId
+})
+
+export const receivePhotoUpdate = photo => ({
+  type: REMOVE_PHOTO_UPDATE,
+  photo
 })
 
 export const receivePhotos = photos => {
@@ -54,20 +60,20 @@ export const fetchPhotos = () => dispatch => {
 
 export const uploadPhoto = formData => dispatch => {
   return PhotoApiUtil.uploadPhoto(formData)
-    .then(success => {
-      return dispatch(receivePhotoErrors(success.message))
-    }, error => {
-      return dispatch(receivePhotoErrors(error.responseJSON))
-    }
-    )
-};
-
-export const updatePhoto = formData => dispatch => {
-  return PhotoApiUtil.uploadPhoto(formData)
-    .then(dispatch(receivePhoto(success.photo)))
-    .then(success => {
-      return dispatch(receivePhotoErrors(success.message))
+    .then(response => {
+      return dispatch(receivePhotoErrors(response.message))
     }, error => {
       return dispatch(receivePhotoErrors(error.responseJSON))
     })
+};
+
+export const updatePhoto = photo => dispatch => {
+  return PhotoApiUtil.updatePhoto(photo)
+    .then(response => {
+      return dispatch(receivePhotoErrors(response.message))
+    }, error => {
+      return dispatch(receivePhotoErrors(error.responseJSON))
+    })
+  // .then(photo => dispatch(fetchPhoto(photo.id)))
+  // .then(message => dispatch(receivePhotoUpdate(message)))
 };
