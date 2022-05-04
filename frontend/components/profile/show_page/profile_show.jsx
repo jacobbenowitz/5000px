@@ -1,5 +1,5 @@
 import React from "react";
-import { selectProfilePhotos } from "../../../reducers/selectors";
+import { selectProfilePhotos, selectGalleryDetails } from "../../../reducers/selectors";
 import { Link } from "react-router-dom";
 import CoverPhotoLoader from "../content_loaders/cover_photo_loader";
 import { AvatarLg } from "../../avatar/avatar_lg";
@@ -12,86 +12,75 @@ export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profile: this.props.profile,
-      user: this.props.user,
-      photos: [],
-    };
-  };
-  updatePhotos = photos => {
+      photos: this.props.photos || [],
+      profile: this.props.profile || {}
+    }
     debugger
-    this.setState({
-      photos: selectProfilePhotos(photos, this.props.profile.photoIds),
-    });
   }
-
+  
   componentDidMount() {
-    const { fetchProfile, profileId, fetchPhotos } = this.props;
-    fetchProfile(profileId).then((profile) => {
-      debugger
-      this.setState({ profile: profile }, () => {
-        fetchPhotos().then(photos => {
-          this.updatePhotos(photos);
-        });
-      })
+    this.props.fetchProfile(this.props.profileId)
+    .then((profile) => 
+        this.setState({
+        profile: this.props.profile
+        }))
+    
+    this.props.fetchPhotos()
+      .then(photos => {
+        this.setState({
+          photos: selectProfilePhotos(photos, this.props.profile.photoIds)
+        })
       })
   };
+
 
 
   render() {
-    const { profile, isCurrentProfile } = this.props;
-    const coverStyle = {
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(${profile.cover})`
-  }
-  
     debugger
-    return (
-      <div className="profile-show-container" >
-        <div className="profile-cover-container">
-          <div className="profile-avatar-container">
-            <AvatarLg profile={profile} />
-          </div>
-          {profile.cover ? (
-            <div className="cover-img-box"
-              style={coverStyle}
-            /> 
-          ) : (
-            <CoverPhotoLoader />
-          )}
-        </div>
-        <section className="profile-details-container">
-            {profile ? (
-              <ProfileDetails profile={profile}
-                isCurrentProfile={isCurrentProfile} />
-            ) : (
-            <div className="profile-loader-container">
-              <ProfileDetailsLoader />
-            </div>
-            )}
-        </section>
-        <div className="profile-gallery-box">
-
-          {this.state.photos.map(photo => {
-            return ( 
-              <Link to={`/photos/${photo.id}`}>
-                <div key={photo.id} className="photo-container">
-                  <div className="photo-overlay"> 
-                    <h5>{photo.title}</h5>
-                  </div>
-                  <img src={ photo.photoUrl } />
-                </div>
-              </Link>
-            )
-          })}
-            
-
-        </div>
-      </div>
-    )
-
-    //       <div className="photo-gallery">
-    //       </div>
-    //     </div>
-    //   )
+    // const coverStyle = {
+    //   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(${profile.cover})`
     // }
+    console.log(this.state)
+    return ( null
+      // <div className="profile-show-container" >
+      //   <div className="profile-cover-container">
+      //     <div className="profile-avatar-container">
+      //       <AvatarLg profile={profile} />
+      //     </div>
+      //     {profile.cover ? (
+      //       <div className="cover-img-box"
+      //         style={coverStyle}
+      //       /> 
+      //     ) : (
+      //       <CoverPhotoLoader />
+      //     )}
+      //   </div>
+      //   <section className="profile-details-container">
+      //       {profile ? (
+      //         <ProfileDetails profile={profile}
+      //           isCurrentProfile={isCurrentProfile} />
+      //       ) : (
+      //       <div className="profile-loader-container">
+      //         <ProfileDetailsLoader />
+      //       </div>
+      //       )}
+      //   </section>
+        
+      //   { photos ? (
+      //       photos.map(photo => {
+      //         <Link to={`/photos/${photo.id}`}>
+      //           <div key={photo.id} className="photo-container">
+      //             <div className="photo-overlay">
+      //               <h5>{photo.title}</h5>
+      //             </div>
+      //             <img src={photo.photoUrl} />
+      //           </div>
+      //         </Link>
+      //       })
+      //     ) : ( <h2>Poop</h2> )}
+      //   <div className="profile-gallery-box">
+      //   </div>
+      // </div>
+    )
   }
 }

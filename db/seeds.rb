@@ -92,7 +92,7 @@ profile_1_saved.save!
 
 post_1 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   location: "Malibu",
   lens: 'EF 70-200mm f/4.0',
   camera: 'Cannon EOS 5DS',
@@ -107,7 +107,7 @@ post_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_2 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   location: "Brooklyn",
   lens: 'EF 70-200mm f/4.0',
   camera: 'Cannon EOS 5DS',
@@ -122,7 +122,7 @@ post_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_3 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   width: 1953,
   height: 1466,
   profile_id: profile_1_saved.id
@@ -134,7 +134,7 @@ post_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_4 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   width: 2251,
   height: 1326,
   profile_id: profile_1_saved.id
@@ -146,7 +146,7 @@ post_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_5 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   profile_id: profile_1_saved.id,
   width: 1915,
   height: 1436,
@@ -158,7 +158,7 @@ post_5_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_6 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   profile_id: profile_1_saved.id,
   width: 1373,
   height: 2059,
@@ -170,7 +170,7 @@ post_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 
 post_7 = {
   title: Faker::Hipster.sentence(word_count: 3),
-  description: Faker::Hipster.sentences(number: 1),
+  description: Faker::Hipster.sentences(number: 1).first,
   profile_id: profile_1_saved.id,
   width: 2000,
   height: 1500,

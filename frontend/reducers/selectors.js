@@ -1,10 +1,23 @@
 import { fetchPhoto } from "../actions/photos/photos_actions";
 
+export const selectGalleryDetails = (photos, photoIds) => {
+  Object.values(photos).length > 0 ? (
+    photoIds.map(id => {
+      let photo = photos[id]
+      return {
+        src: photo.photoUrl,
+        width: photo.width,
+        height: photo.height
+      }
+    })) : []
+};
+
 export const selectProfilePhotos = ({ photos }, photoIds) => {
   debugger
-  if (photoIds) {
-    return photoIds.map(photoId => photos[photoId])
-  }
+  return Object.values(photos).length > 0 ? (
+    photoIds.map(photoId => {
+      return photos[photoId]
+    })) : []
 };
 
 export const selectPhotoById = ({ photos }, photoId) => {
