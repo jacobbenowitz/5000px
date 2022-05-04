@@ -1,15 +1,25 @@
 import { fetchPhoto } from "../actions/photos/photos_actions";
 
-export const selectGalleryDetails = (photos, photoIds) => {
-  Object.keys(photos).length > 0 ? (
-    photoIds.map(id => {
-      let photo = photos[id]
-      return {
-        src: photo.photoUrl,
-        width: photo.width,
-        height: photo.height
-      }
-    })) : []
+// accepts array of photos, creates proper structure of data for each photo:
+// {
+//   src: 'https://my5000px.jpg',
+//   alt: '<img title>'
+//   width: 545,
+//   height: 531,
+//   showLink: `/photos/${id}`,
+// }
+
+export const buildGalleryArray = ({ photos }) => {
+  debugger
+  return photos.map(photo => {
+    return {
+      src: photo.photoUrl,
+      alt: photo.title,
+      width: photo.width,
+      height: photo.height,
+      link: `/photos/${photo.id}`
+    }
+  })
 };
 
 export const selectProfilePhotos = ({ photos }, photoIds) => {

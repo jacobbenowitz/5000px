@@ -143,7 +143,7 @@
   margin-top: 16px;
 }
 
-.profile-gallery-box {
+#profile-gallery-box {
   box-sizing: border-box;
   display: block;
   width: 100%;

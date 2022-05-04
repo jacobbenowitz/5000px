@@ -1,0 +1,10 @@
+.overlay-show {
+  opacity: 100%;
+  transition: opactity 500ms ease-in-out;
+}
+
+.overlay-hidden {
+  opacity: 0%;
+  transition: opactity 500ms ease-in-out;
+}
+

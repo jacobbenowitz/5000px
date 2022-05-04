@@ -1,45 +1,41 @@
-import Gallery from "react-photo-gallery";
+import PhotoAlbum from "react-photo-album";
 import SinglePhotoLoader from "../../photos/content-loaders/single-photo-loader";
 import React from "react";
 import { render } from "react-dom";
+import { buildGalleryArray } from "../../../reducers/selectors";
+import { Link } from "react-router-dom";
 
-const renderPhotos = [
-  {
-    src: "https://my5000px-static.s3.amazonaws.com/800px/brooklyn-bridge.jpg",
-    width: 8,
-    height: 4,
-  },
-  {
-    src: "https://my5000px-static.s3.amazonaws.com/800px/jazz-performer-plays-the-saxophone.jpg",
-    width: 545,
-    height: 531,
-  },
-  {
-    src: "https://my5000px-static.s3.amazonaws.com/800px/los-angeles-vibes.jpg",
-    width: 573,
-    height: 531,
-  },
-  {
-    src: "https://my5000px-static.s3.amazonaws.com/800px/lost-in-the-city.jpg",
-    width: 708,
-    height: 529,
-  }
-]
 
-const ProfileRows = () => {
-  return <Gallery photos={renderPhotos} />
+
+const renderPhoto = ({ id, layout, layoutOptions, imageProps: { link, alt, style, ...restImageProps } }) => (
+  <div 
+    style={{
+      border: "2px solid #eee",
+      borderRadius: "4px",
+      boxSizing: "content-box",
+      alignItems: "center",
+      width: style?.width,
+      height: style?.height,
+      padding: `${layoutOptions.padding - 2}px`,
+      paddingBottom: 0,
+    }}
+    
+  >
+    <img key={id} alt={alt} style={{ ...style, width: "100%", padding: 0 }} {...restImageProps} />
+  </div>
+);
+
+const ProfileRows = photos => {
+  let galleryPhotos = buildGalleryArray(photos);
+  debugger
+  return <div id="profile-gallery-box">
+    <PhotoAlbum photos={galleryPhotos}
+      layout="rows"
+      maxPhotos={4}
+      targetRowHeight={377}
+      renderPhoto={renderPhoto}
+    />
+  </div>
 }
-/* popout the browser and maximize to see more rows! -> */
-// const ProfileRows = photos => {
-//   // const renderPhotos = photos.length > 0 ? photos : {
-//   //   [
-//   //     <SinglePhotoLoader />
-//   //   ]
-//   // }
-
-//   <Gallery photos={renderPhotos} />;
-//   // render(<ProfileRows />, document.getElementById("profile-gallery-box"))
-//   return <ProfileRows />
-// };
 
 export default ProfileRows;

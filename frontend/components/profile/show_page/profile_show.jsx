@@ -83,12 +83,11 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {/* { photos.length > 0 ? (
-          <ProfileRows />
-          ) : ( <h2>Poop</h2> )} */}
-        <div id="profile-gallery-box">
-          <ProfileRows />
-        </div>
+        { photos.length > 0 ? (
+          <ProfileRows photos={ photos }/>
+        ) : ( <h2>Poop</h2> )}
+
+
       </div>
     )
   }

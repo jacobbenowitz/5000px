@@ -147,9 +147,9 @@ export default class PhotoUploadForm extends React.Component {
       })
     };
 
-    // if (file) {
-    //   fileReader.readAsDataURL(file);
-    // }
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   render() {
