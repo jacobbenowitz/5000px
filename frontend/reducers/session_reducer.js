@@ -9,7 +9,8 @@ import {
 } from '../actions/profile/profile_actions';
 
 const _nullSession = {
-  id: null
+  id: null,
+  profile: null,
 }
 
 const sessionReducer = (initialState = _nullSession, action) => {

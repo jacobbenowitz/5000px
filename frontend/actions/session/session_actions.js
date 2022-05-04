@@ -86,9 +86,11 @@ export const signup = user => dispatch => {
 }
 
 export const logout = () => dispatch => {
-  return SessionApiUtil.logout().then(() => {
-    dispatch(logoutCurrentUser())
-  })
+  return SessionApiUtil.logout()
+    .then(() => {
+      dispatch(logoutCurrentUser())
+    })
+  // .then(() => flush state and reset to initial)
 }
 
 export const fetchCurrentUser = userId => dispatch => {

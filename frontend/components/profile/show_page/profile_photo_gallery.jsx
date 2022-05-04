@@ -25,16 +25,21 @@ const renderPhotos = [
     height: 529,
   }
 ]
-/* popout the browser and maximize to see more rows! -> */
-const ProfileRows = photos => {
-  // const renderPhotos = photos.length > 0 ? photos : {
-  //   [
-  //     <SinglePhotoLoader />
-  //   ]
-  // }
 
-  <Gallery photos={renderPhotos} />;
-  render(<ProfileRows />, document.querySelector(".profile-gallery-box"))
-};
+const ProfileRows = () => {
+  return <Gallery photos={renderPhotos} />
+}
+/* popout the browser and maximize to see more rows! -> */
+// const ProfileRows = photos => {
+//   // const renderPhotos = photos.length > 0 ? photos : {
+//   //   [
+//   //     <SinglePhotoLoader />
+//   //   ]
+//   // }
+
+//   <Gallery photos={renderPhotos} />;
+//   // render(<ProfileRows />, document.getElementById("profile-gallery-box"))
+//   return <ProfileRows />
+// };
 
 export default ProfileRows;

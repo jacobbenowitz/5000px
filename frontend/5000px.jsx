@@ -3,13 +3,13 @@ require("babel-polyfill");
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from '../frontend/store/store';
 import Root from './components/root';
 import {fetchPhoto, fetchPhotos} from './actions/photos/photos_actions';
-
+import configureStore from './store/configure_store';
+import { persistStore } from 'redux-persist';
 
 document.addEventListener("DOMContentLoaded", () => {
-  let store;
+  let store, persistor;
   // check if we need to bootstrap a logged in user
   if (window.currentUser) {
     const preloadedState = {
@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   };
+
+  persistor = persistStore(store);
   
   // BEGIN TESTING
   window.getState = store.getState;
@@ -41,6 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // END TESTING
   
   const root = document.getElementById("root");
-  ReactDOM.render(<Root store={store} />, root)
+  ReactDOM.render(<Root store={store} persistor={persistor} />, root)
 })
 

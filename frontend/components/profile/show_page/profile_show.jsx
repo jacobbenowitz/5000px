@@ -11,25 +11,38 @@ export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: this.props.photos || [],
-      profile: this.props.profile || {}
+      photos: [],
+      profile: {},
     }
     debugger
   }
   
   componentDidMount() {
-    this.props.fetchProfile(this.props.profileId)
-    .then((profile) => 
-        this.setState({
-        profile: this.props.profile
-        }))
-    
-    this.props.fetchPhotos()
-      .then(photos => {
-        this.setState({
-          photos: selectProfilePhotos(photos, this.props.profile.photoIds)
+    let { photos, profile } = this.props;
+
+    Object.keys(profile).length === 0 ? (
+      this.props.fetchProfile(this.props.profileId)
+    ) : photos.length === 0 ? (
+      this.props.fetchPhotos()
+      ) : (
+          this.setState({
+            photos: this.props.photos,
+            profile: this.props.profile
         })
-      })
+    )
+        
+    //   photos.length === 0 ? (
+    //     .then((photos) => 
+    //       this.setState({
+    //         photos: this.props.photos
+    //         )}
+    //         )
+    // ) : this.render()
+    //   .then((profile) => 
+    //       this.setState({
+    //         profile: this.props.profile
+    //       }))
+    
   };
 
 
@@ -70,10 +83,11 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        { photos.length > 0 ? (
+        {/* { photos.length > 0 ? (
           <ProfileRows />
-          ) : ( <h2>Poop</h2> )}
-        <div className="profile-gallery-box">
+          ) : ( <h2>Poop</h2> )} */}
+        <div id="profile-gallery-box">
+          <ProfileRows />
         </div>
       </div>
     )
