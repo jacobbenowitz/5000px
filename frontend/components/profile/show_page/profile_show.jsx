@@ -5,7 +5,8 @@ import CoverPhotoLoader from "../content_loaders/cover_photo_loader";
 import { AvatarLg } from "../../avatar/avatar_lg";
 import ProfileDetailsLoader from "../content_loaders/profile-details-loader";
 import { ProfileDetails } from "./profile_details";
-import ProfileRows from "./profile_photo_gallery"
+import ProfileRows from "./profile_photo_gallery";
+
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
@@ -26,26 +27,12 @@ export default class ProfileShow extends React.Component {
       this.props.fetchPhotos()
       ) : (
           this.setState({
-            photos: this.props.photos,
-            profile: this.props.profile
+            photos: photos,
+            profile: profile,
         })
     )
-        
-    //   photos.length === 0 ? (
-    //     .then((photos) => 
-    //       this.setState({
-    //         photos: this.props.photos
-    //         )}
-    //         )
-    // ) : this.render()
-    //   .then((profile) => 
-    //       this.setState({
-    //         profile: this.props.profile
-    //       }))
     
   };
-
-
 
 
 
@@ -57,8 +44,6 @@ export default class ProfileShow extends React.Component {
       rgba(0, 0, 0, 0)), url(${profile.cover})`
     }) : (null);
     
-
-    console.log(this.state);
 
     return ( 
       <div className="profile-show-container" >
@@ -83,9 +68,12 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        { photos.length > 0 ? (
-          <ProfileRows photos={ photos }/>
-        ) : ( <h2>Poop</h2> )}
+        {photos.length > 0 && Object.keys(profile).length > 0 ?
+          (
+          <ProfileRows photos={photos}/>
+          ) : (
+            <h2>Poop</h2>
+          )}
 
 
       </div>

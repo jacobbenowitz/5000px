@@ -14,10 +14,11 @@ export const buildGalleryArray = ({ photos }) => {
   return photos.map(photo => {
     return {
       src: photo.photoUrl,
-      alt: photo.title,
+      alt: photo.alt,
+      title: photo.title,
       width: photo.width,
       height: photo.height,
-      link: `/photos/${photo.id}`
+      key: photo.id,
     }
   })
 };

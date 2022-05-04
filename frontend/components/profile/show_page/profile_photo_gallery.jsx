@@ -7,27 +7,26 @@ import { Link } from "react-router-dom";
 
 
 
-const renderPhoto = ({ id, layout, layoutOptions, imageProps: { link, alt, style, ...restImageProps } }) => (
-  <div 
-    style={{
-      border: "2px solid #eee",
-      borderRadius: "4px",
-      boxSizing: "content-box",
-      alignItems: "center",
-      width: style?.width,
-      height: style?.height,
-      padding: `${layoutOptions.padding - 2}px`,
-      paddingBottom: 0,
-    }}
-    
-  >
-    <img key={id} alt={alt} style={{ ...style, width: "100%", padding: 0 }} {...restImageProps} />
-  </div>
-);
+const renderPhoto = ({ layoutOptions, imageProps: { key, title, alt, style, ...restImageProps } }) => {
 
-const ProfileRows = photos => {
+  return <div 
+  style={{
+    boxSizing: "content-box",
+    alignItems: "center",
+    width: style?.width,
+    height: style?.height,
+    }}
+    >
+    {/* <span>{key}, {title}, {alt} </span> */}
+    <img key={key} alt={alt} style={{ ...style, width: "100%", padding: 0 }} {...restImageProps} />
+  </div>
+};
+
+// const renderContainer = (RenderContainerProps) => (  )
+
+
+const ProfileRows = (photos) => {
   let galleryPhotos = buildGalleryArray(photos);
-  debugger
   return <div id="profile-gallery-box">
     <PhotoAlbum photos={galleryPhotos}
       layout="rows"
