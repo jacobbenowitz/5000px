@@ -16,5 +16,5 @@ const PhotoLoader = (props) => (
   </ContentLoader>
 )
 
-export default PhotoLoader
+export default PhotoLoader;
 

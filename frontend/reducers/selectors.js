@@ -1,7 +1,7 @@
 import { fetchPhoto } from "../actions/photos/photos_actions";
 
 export const selectGalleryDetails = (photos, photoIds) => {
-  Object.values(photos).length > 0 ? (
+  Object.keys(photos).length > 0 ? (
     photoIds.map(id => {
       let photo = photos[id]
       return {
@@ -14,7 +14,7 @@ export const selectGalleryDetails = (photos, photoIds) => {
 
 export const selectProfilePhotos = ({ photos }, photoIds) => {
   debugger
-  return Object.values(photos).length > 0 ? (
+  return Object.keys(photos).length > 0 ? (
     photoIds.map(photoId => {
       return photos[photoId]
     })) : []

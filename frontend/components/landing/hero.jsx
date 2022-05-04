@@ -22,8 +22,10 @@ export const Hero = (
           <Link to={'/signup'} className="sign-up-large">Sign up</Link>
         </div>
       </div>
+    
       <div className="hero-graphic">
         <img src="https://my5000px-static.s3.amazonaws.com/hero_graphic/size%3Dlarge.svg" />
       </div>
+
     </div>
 )
