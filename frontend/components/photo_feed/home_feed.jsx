@@ -4,7 +4,7 @@ import PhotosIndex from "../photos/photos_index";
 import ProfileRows from "../profile/show_page/profile_photo_gallery";
 import Demo3 from "../galleries/grid-gallery";
 import Demo4 from "../galleries/demo4.jsx";
-
+import DiscoverGallery from "../galleries/discover-gallery";
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -59,7 +59,8 @@ export default class HomeFeed extends React.Component {
         </div>
 
         <div className="home-feed-gallery" >
-          <Demo4  />
+          <DiscoverGallery />
+          {/* <Demo4  /> */}
           {/* <Demo3 photos={photos} /> */}
         </div>
 

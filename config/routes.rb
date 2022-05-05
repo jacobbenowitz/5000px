@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     resources :profile_photos, only: [:create, :show]
   end
 
-
-
   root to: "static_pages#root"
 
 end
