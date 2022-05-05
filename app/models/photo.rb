@@ -17,6 +17,10 @@ class Photo < ApplicationRecord
   validate :ensure_photo
 
   has_one_attached :photo
+  
+  version :thumb do
+    process :resize_to_fit => [50, 50]
+  end
 
   belongs_to :profile,
     foreign_key: :profile_id,
