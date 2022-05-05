@@ -1,5 +1,6 @@
-class FollowsController < ApplicationController
+class Api::FollowsController < ApplicationController
   def create 
+    debugger
     follow = Follow.new(follow_params)
     if follow.save
       render json: {message: ["follow saved!"]}
