@@ -17,7 +17,7 @@ export const ProfileDetails = ({profile, isCurrentProfile}) => {
         {/* EDIT */}
         {isCurrentProfile ? (
           <div className="icon-box">
-            <Link to={`/profiles/${profile.id}/edit`}
+            <Link to={`/profiles/settings`}
               className="icon-link edit">
               <i className="fa-regular fa-pen-to-square fa-xl"></i>
             </Link>

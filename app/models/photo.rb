@@ -11,6 +11,8 @@
 #  location    :string
 #  lens        :string
 #  camera      :string
+#  width       :integer
+#  height      :integer
 #
 class Photo < ApplicationRecord
 
@@ -21,6 +23,10 @@ class Photo < ApplicationRecord
   belongs_to :profile,
     foreign_key: :profile_id,
     class_name: :Profile
+
+  has_many :likes,
+    foreign_key: :photo_id,
+    class_name: :Like
 
   # render the errors using if flash[:errors] ?
   def ensure_photo

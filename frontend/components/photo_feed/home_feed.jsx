@@ -1,10 +1,7 @@
 import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
-import ProfileRows from "../profile/show_page/profile_photo_gallery";
-import Demo3 from "../galleries/grid-gallery";
-import Demo4 from "../galleries/demo4.jsx";
-import DiscoverGallery from "../galleries/discover-gallery";
+import DiscoverGallery from "../galleries/discover_gallery";
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -50,13 +47,6 @@ export default class HomeFeed extends React.Component {
       <div className="page-top-banner">
         <span>Discover</span>
       </div>
-        {/* DiscoverPageHeader */}
-        {/* DiscoverNavLinks */}
-        {/* test */}
-
-        {/* <div className="home-feed-gallery">
-          <ProfileRows id="discover-gal" photos={photos} />
-        </div> */}
         {photos.length ? (
           <div className="home-feed-gallery" >
             <DiscoverGallery images={ photos }/>

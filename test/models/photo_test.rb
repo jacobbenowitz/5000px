@@ -11,6 +11,8 @@
 #  location    :string
 #  lens        :string
 #  camera      :string
+#  width       :integer
+#  height      :integer
 #
 require 'test_helper'
 

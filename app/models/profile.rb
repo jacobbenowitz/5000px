@@ -37,4 +37,22 @@ class Profile < ApplicationRecord
     class_name: :Photo,
     dependent: :destroy
   
+  has_many :following,
+    foreign_key: :follower_id,
+    class_name: :Follow
+
+  has_many :followers,
+    foreign_key: :followee_id,
+    class_name: :Follow
+  
+  # use for users' liked photos page
+  has_many :liked_photos,
+    foreign_key: :liker_id,
+    class_name: :Likes
+
+  has_many :photo_likes,
+    through: :photos,
+    source: :likes
+  
+  
 end
