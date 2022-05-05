@@ -25,11 +25,11 @@ body {
   place-items: center;
 }
 
-/* .grid-12-col {
+.grid-12-col {
   height: inherit;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-} */
+}
 
 .span-12 {
   grid-column: 1 / span 12;

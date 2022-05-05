@@ -9,7 +9,6 @@ import { newLike, deleteLike, getLikes } from "../../actions/likes/like_actions"
 
 const mapStateToProps = (state, { match }) => {
   const photoId = match.params.photoId;
-  
   const photo = selectPhoto(state.entities, photoId);
   const profile = photo === {} ? {} : selectProfileById(
     state.entities, photo.profile_id);

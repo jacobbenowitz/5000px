@@ -117,6 +117,13 @@
   min-width: 64px;
 }
 
+.avatar-container-sm { 
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 38px;
+}
+
 .user-details {
   word-break: break-word;
   max-width: 100%;

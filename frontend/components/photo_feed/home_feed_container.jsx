@@ -11,7 +11,7 @@ const mapStateToProps = ({entities, session}) => {
   const photos = asArray(entities);
   
   return {
-    photos: buildGridGalleryProps(photos),
+    photos: photos,
     users: entities.users,
     likes: entities.likes,
     profiles: entities.profiles,

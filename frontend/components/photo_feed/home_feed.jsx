@@ -2,6 +2,8 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
+import { buildGridGalleryProps, asArray } from "../../reducers/selectors";
+import GridLoader from "../galleries/gallery_grid_loader";
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ export default class HomeFeed extends React.Component {
     debugger
     photos && profiles ? (
       this.setState({
-        photos: photos,
+        photos: buildGridGalleryProps(photos),
         users: users,
         profiles: profiles,
         currentProfile: currentProfile,
@@ -48,12 +50,12 @@ export default class HomeFeed extends React.Component {
       <div className="page-top-banner">
         <span>Discover</span>
       </div>
-        {photos.length ? (
+        {photos ? (
           <div className="home-feed-gallery" >
             <DiscoverGallery images={ photos }/>
           </div>
 
-        ) : ( null )
+        ) : ( <GridLoader /> )
         }
 
         {/* <div> */}

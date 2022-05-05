@@ -61,13 +61,13 @@ header {
 }
 
 #user-avatar {
-  background-color: #454578;
+  /* background-color: #454578; */
   color: white;
-  border-radius: 100px;
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
+  border-radius: 50%;
+  /* width: 32px;
+  height: 32px; */
+  /* display: grid;
+  place-items: center; */
   cursor: pointer;
   margin-right: 1rem;
 }

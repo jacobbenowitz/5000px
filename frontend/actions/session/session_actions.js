@@ -1,6 +1,7 @@
 import * as SessionApiUtil from '../../util/session_api_util'
 import { fetchPhotos } from '../photos/photos_actions';
 import { receiveProfile, fetchCurrentProfile, receiveCurrentProfile, fetchProfiles } from '../profile/profile_actions';
+import { getLikes } from '../likes/like_actions';
 
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user
@@ -64,10 +65,10 @@ export const login = user => dispatch => {
       dispatch(receiveCurrentUser(user))
       dispatch(fetchCurrentProfile(user.profileId))
       // debugger
-      // dispatch(fetchPhotos())
-      // dispatch(fetchProfiles())
-      // dispatch(fetchUsers())
-      // dispatch(getLikes())
+      dispatch(fetchPhotos())
+      dispatch(fetchProfiles())
+      dispatch(fetchUsers())
+      dispatch(getLikes())
     }, error => {
       dispatch(receiveSessionErrors(error.responseJSON))
     })
@@ -77,10 +78,10 @@ export const signup = user => dispatch => {
   return SessionApiUtil.createUser(user)
     .then(user => {
       dispatch(receiveCurrentUser(user))
-      // dispatch(fetchPhotos())
-      // dispatch(fetchProfiles())
-      // dispatch(fetchUsers())
-      // dispatch(getLikes())
+      dispatch(fetchPhotos())
+      dispatch(fetchProfiles())
+      dispatch(fetchUsers())
+      dispatch(getLikes())
     }, error => {
       debugger
       dispatch(receiveSessionErrors(error.responseJSON))

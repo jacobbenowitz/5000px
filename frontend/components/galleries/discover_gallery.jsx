@@ -12,7 +12,6 @@ export default class DiscoverGallery extends React.Component {
     //   images: defaultProps
     // };
     // const images2 = buildGridGalleryProps(this.props)
-    console.log(props)
   }
 
   setCustomTags (i) {
@@ -47,6 +46,7 @@ export default class DiscoverGallery extends React.Component {
         <Gallery
           images={images}
           enableImageSelection={false}
+          tagStyle={customTagStyle}
           enableLightbox={false}
           rowHeight={375}
           margin={12}

@@ -188,6 +188,13 @@ post_6_saved.save!
 post_7_saved.save!
 
 
+## likes
+
+like1 = Like.create(photo_id: post_1_saved.id, liker_id: profile_1_saved.id)
+like2 = Like.create(photo_id: post_2_saved.id, liker_id: guest_profile_saved.id)
+like3 = Like.create(photo_id: post_3_saved.id, liker_id: guest_profile_saved.id)
+
+
 
 # photos = {
 #   0 => {
