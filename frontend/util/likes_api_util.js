@@ -10,13 +10,13 @@ export const newLike = like => {
   return $.ajax({
     method: "POST",
     url: "api/likes",
-    data: like
+    data: { like }
   })
 };
 
 export const deleteLike = likeId => {
   return $.ajax({
-    method: "POST",
+    method: "DELETE",
     url: `api/likes/${likeId}`,
   })
 };

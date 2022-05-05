@@ -4,10 +4,10 @@ import {
   DELETE_LIKE
 } from "../actions/likes/like_actions";
 
-const LikesReducer = (initialState = {}, action) => {
+const likesReducer = (initialState = {}, action) => {
   Object.freeze(initialState);
   let nextState = Object.assign({}, initialState);
-
+  debugger
   switch (action.type) {
     case RECEIVE_LIKES:
       return action.likes;
@@ -22,4 +22,4 @@ const LikesReducer = (initialState = {}, action) => {
   }
 }
 
-export default LikesReducer;
+export default likesReducer;

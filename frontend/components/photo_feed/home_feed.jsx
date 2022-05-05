@@ -26,12 +26,13 @@ export default class HomeFeed extends React.Component {
       })) : (
         this.props.fetchPhotos()
         .then(() => this.props.fetchProfiles()
-          .then(() => this.props.fetchUsers()
+          .then(() => this.props.getLikes()
             .then(() => { this.setState({
-            photos: photos,
-            users: users,
-            profiles: profiles,
-            currentProfile: currentProfile,
+              photos: photos,
+              users: users,
+              profiles: profiles,
+              likes: likes,
+              currentProfile: currentProfile,
           })
         })
       )))

@@ -12,12 +12,10 @@ class Like < ApplicationRecord
 
   belongs_to :photo,
     foreign_key: :photo_id,
-    class_name: :Photo,
-    dependent: :destroy
+    class_name: :Photo
     
   belongs_to :liker,
     foreign_key: :liker_id,
-    class_name: :Profile,
-    dependent: :destroy
+    class_name: :Profile
 
 end

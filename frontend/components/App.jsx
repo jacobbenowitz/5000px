@@ -45,8 +45,8 @@ const App = () => (
       <ProtectedRoute path={"/discover"}
         component={HomeFeedContainer} />
       <ProtectedRoute path={"/popular"} component={PopularPhotos} />
-      <AuthRoute exact path={"/"} component={LandingPage} />
       <ProtectedRoute path={"/"} component={HomeFeedContainer} />
+      <AuthRoute exact path={"/"} component={LandingPage} />
     </Switch>
     <footer className="grid-bottom-stack">
       <NavFooter />

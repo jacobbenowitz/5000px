@@ -1,35 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LikeIconContainer from "../action_components/like_icon_container";
+import LikeIcon from "../action_components/like_icon";
 
-const PhotoActions = props => (
-  <div className="photo-action-icons">
-    {/* LIKE */}
-    <div className="icon-box">
-      <LikeIconContainer
-        currentProfile={this.props.currentProfile}
-        photoId={this.props.photo.id}
-      />
-      {/* <a href={'#'} className="icon-link like">
-        <i className="fa-regular fa-heart fa-xl"></i>
-      </a> */}
+export default class PhotoActions extends React.Component {
+  constructor(props) {
+    super(props)
+    debugger
+  }
 
-    </div>
-    {/* SHARE */}
-    <div className="icon-box">
-      <a href={'#'} className="icon-link share">
-        <i className="fa-solid fa-share-nodes fa-xl"></i>
-      </a>
-    </div>
-    {/* EDIT */}
-    {props.isCurrentProfile ? (
-      <div className="icon-box">
-        <Link to={`/photos/${props.photo.id}/edit`}
-          className="icon-link edit">
-          <i className="fa-regular fa-pen-to-square fa-xl"></i>
-        </Link>
-      </div> ) : ( null )}
-  </div>
-)
+  render() {
+    const { photo, profile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes } = this.props;
+    return (
+      <div className="photo-action-icons">
+        {/* LIKE */}
+        <div className="icon-box">
+          <LikeIcon isCurrentProfile={isCurrentProfile} photo={photo}
+                  photoId={photo.id}
+                  profile={profile} isCurrentProfile={isCurrentProfile}
+                  currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes} />
+          {/* <a href={'#'} className="icon-link like">
+            <i className="fa-regular fa-heart fa-xl"></i>
+          </a> */}
 
-export default PhotoActions;
+        </div>
+        {/* SHARE */}
+        <div className="icon-box">
+          <a href={'#'} className="icon-link share">
+            <i className="fa-solid fa-share-nodes fa-xl"></i>
+          </a>
+        </div>
+        {/* EDIT */}
+        {currentProfile ? (
+          <div className="icon-box">
+            <Link to={`/photos/${photo.id}/edit`}
+              className="icon-link edit">
+              <i className="fa-regular fa-pen-to-square fa-xl"></i>
+            </Link>
+          </div> ) : ( null )}
+      </div>
+    )
+  }
+}

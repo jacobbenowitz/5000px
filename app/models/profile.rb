@@ -34,8 +34,7 @@ class Profile < ApplicationRecord
 
   has_many :photos,
     foreign_key: :profile_id,
-    class_name: :Photo,
-    dependent: :destroy
+    class_name: :Photo
   
   has_many :following,
     foreign_key: :follower_id,
