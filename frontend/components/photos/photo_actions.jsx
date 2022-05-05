@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LikeIconContainer from "../action_components/like_icon_container";
 
 const PhotoActions = props => (
   <div className="photo-action-icons">
     {/* LIKE */}
     <div className="icon-box">
-      <a href={'#'} className="icon-link like">
+      <LikeIconContainer
+        currentProfile={this.props.currentProfile}
+        photoId={this.props.photo.id}
+      />
+      {/* <a href={'#'} className="icon-link like">
         <i className="fa-regular fa-heart fa-xl"></i>
-      </a>
+      </a> */}
 
     </div>
     {/* SHARE */}

@@ -3,7 +3,7 @@ class Api::PhotosController < ApplicationController
 
   def create 
     photo = Photo.new(photo_params)
-    debugger
+    # debugger
     if photo.save
       render json: {message: ["Successfully uploaded!"]}
     else

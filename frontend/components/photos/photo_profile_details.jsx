@@ -2,6 +2,7 @@ import React from "react";
 import PhotoActions from "./photo_actions";
 import {timeSinceUplaod} from "../../util/todays_date_util"
 import ProfileDetailsLoader from "./content-loaders/profile-details-loader";
+import likeIconContainer from "../action_components/like_icon_container";
 
 const PhotoProfileDetails = ({ profile, photo, user, isCurrentProfile }) => {
   debugger

@@ -9,6 +9,8 @@ import { fetchPhoto } from "../actions/photos/photos_actions";
 //   showLink: `/photos/${id}`,
 // }
 
+import React from "react";
+
 export const buildGalleryArray = ({ photos }) => {
   debugger
   return photos.map(photo => {
@@ -31,6 +33,7 @@ export const buildGridGalleryProps = (photos) => {
       thumbnail: photo.thumbnailUrl,
       caption: photo.profileName.length > 1 ?
         photo.profileName : photo.username,
+      tags: [{ value: <a href={photo.showLink}>View photo</a>, title: 'View photo' }],
       thumbnailWidth: photo.width,
       thumbnailHeight: photo.height,
     }

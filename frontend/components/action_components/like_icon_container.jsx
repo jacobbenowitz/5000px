@@ -1,4 +1,6 @@
+import { connect } from "react-redux";
 import { newLike, deleteLike } from "../../actions/likes/like_actions";
+import LikeIcon from "./like_icon";
 
 const mapStateToProps = (state, { match }) => {
 
@@ -14,7 +16,9 @@ const mapStateToProps = (state, { match }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newLike = like => dispatch(newLike(like)),
-    deleteLike = likeId => dispatch(deleteLike(likeId)) 
+    newLike: like => dispatch(newLike(like)),
+    deleteLike: likeId => dispatch(deleteLike(likeId)) 
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LikeIcon);

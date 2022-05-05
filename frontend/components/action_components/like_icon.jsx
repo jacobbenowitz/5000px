@@ -18,8 +18,8 @@ export default class LikeIcon extends React.Component {
     const { photoId, likerId, likeCount } = this.state;
 
     const like = {
-      liker_id = likerId,
-      photo_id = photoId
+      liker_id: likerId,
+      photo_id: photoId
     };
     this.props.newLike(like).then(like => {
       this.setState({

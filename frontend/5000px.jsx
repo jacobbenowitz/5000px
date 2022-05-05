@@ -8,6 +8,7 @@ import {fetchPhoto, fetchPhotos} from './actions/photos/photos_actions';
 import configureStore from './store/configure_store';
 import { persistStore } from 'redux-persist';
 import { logout } from '../frontend/actions/session/session_actions'
+import { deleteLike, newLike } from './actions/likes/like_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store, persistor;
@@ -43,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchPhoto = fetchPhoto;
   window.fetchPhotos = fetchPhotos;
   window.logout = logout;
+  window.newLike = newLike
+  window.deleteLike = deleteLike
   // END TESTING
   
   const root = document.getElementById("root");

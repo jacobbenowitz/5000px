@@ -7,5 +7,5 @@ json.thumbnailUrl url_for(photo.photo.variant(resize: "500x500"))
 json.userId photo.profile.user_id
 json.username photo.profile.user.username
 json.profileName photo.profile.first_name + " " + photo.profile.last_name
-json.showLink "/photos/#{photo.id}"
+json.showLink "/#/photos/#{photo.id}"
 json.likeIds photo.likes.pluck(:id)
