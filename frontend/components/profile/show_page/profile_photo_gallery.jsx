@@ -26,9 +26,11 @@ const renderPhoto = ({ layoutOptions, imageProps: { key, title, alt, style, ...r
 
 
 const ProfileRows = (photos) => {
+  debugger
   let galleryPhotos = buildGalleryArray(photos);
   return <div id="profile-gallery-box">
-    <PhotoAlbum photos={galleryPhotos}
+    <PhotoAlbum
+      photos={galleryPhotos}
       layout="rows"
       maxPhotos={4}
       targetRowHeight={377}

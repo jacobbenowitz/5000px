@@ -2,29 +2,42 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import ProfileRows from "../profile/show_page/profile_photo_gallery";
+import Demo3 from "../galleries/grid-gallery";
+import Demo4 from "../galleries/demo4.jsx";
+
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       photos: [],
-      galleryPhotos: [],
       profiles: {},
       users: {},
       currentProfile: null,
     }
   }
+
   componentDidMount() {
-    // this.props.fetchPhotos();
-    // this.props.fetchProfiles();
-    // this.props.fetchUsers();
     const { photos, users, profiles, currentProfile } = this.props;
-    this.setState({
-      photos: photos,
-      users: users,
-      profiles: profiles,
-      currentProfile: currentProfile,
-    })
+    debugger
+    photos && profiles ? (
+      this.setState({
+        photos: photos,
+        users: users,
+        profiles: profiles,
+        currentProfile: currentProfile,
+      })) : (
+        this.props.fetchPhotos()
+        .then(() => this.props.fetchProfiles()
+          .then(() => this.props.fetchUsers()
+            .then(() => { this.setState({
+            photos: photos,
+            users: users,
+            profiles: profiles,
+            currentProfile: currentProfile,
+          })
+        })
+      )))
   }
 
   // todo: create shared title component 
@@ -40,14 +53,23 @@ export default class HomeFeed extends React.Component {
         {/* DiscoverPageHeader */}
         {/* DiscoverNavLinks */}
         {/* test */}
+
         <div className="home-feed-gallery">
-          <ProfileRows photos={photos} />
+          <ProfileRows id="discover-gal" photos={photos} />
         </div>
-        <PhotosIndex
-          photos={photos}
-          users={users}
-          profiles={profiles}
-          currentUser={currentProfile} />
+
+        <div className="home-feed-gallery" >
+          <Demo4  />
+          {/* <Demo3 photos={photos} /> */}
+        </div>
+
+        {/* <div> */}
+          {/* <PhotosIndex
+            photos={photos}
+            users={users}
+            profiles={profiles}
+            currentUser={currentProfile} /> */}
+        {/* </div> */}
       </div>
     )
   }

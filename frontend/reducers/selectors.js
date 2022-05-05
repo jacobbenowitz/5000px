@@ -23,6 +23,28 @@ export const buildGalleryArray = ({ photos }) => {
   })
 };
 
+// for react-grid-gallery
+export const buildGridGalleryProps = ({ photos }) => {
+  debugger
+  return photos.map(photo => {
+
+    const name = photo.profileName.length > 1 ?
+      photo.profileName : photo.username;
+
+    return {
+      src: photo.photoUrl,
+      thumbnail: photo.thumbnailUrl,
+      width: photo.width,
+      height: photo.height,
+      caption: name,
+      link: photo.showLink,
+      alt: photo.title,
+      key: photo.id,
+      profileId: photo.profile_id,
+    }
+  })
+};
+
 export const selectProfilePhotos = ({ photos }, photoIds) => {
   debugger
   return Object.keys(photos).length > 0 ? (

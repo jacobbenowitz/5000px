@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HomeFeed from "./home_feed";
-import { buildGalleryArray, asArray } from "../../reducers/selectors";
+import { buildGridGalleryProps, asArray } from "../../reducers/selectors";
 import { fetchProfiles } from "../../actions/profile/profile_actions";
 import { fetchPhotos } from "../../actions/photos/photos_actions";
 import { fetchUsers } from "../../actions/session/session_actions";
