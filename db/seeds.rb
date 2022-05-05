@@ -96,8 +96,8 @@ post_1 = {
   location: "Malibu",
   lens: 'EF 70-200mm f/4.0',
   camera: 'Cannon EOS 5DS',
-  width: 1396,
-  height: 2094,
+  width: 333,
+  height: 500,
   profile_id: guest_profile_saved.id
 }
 post_1_saved = Photo.new(post_1)
@@ -111,8 +111,8 @@ post_2 = {
   location: "Brooklyn",
   lens: 'EF 70-200mm f/4.0',
   camera: 'Cannon EOS 5DS',
-  width: 2048,
-  height: 1365,
+  width: 500,
+  height: 333,
   profile_id: profile_1_saved.id
 }
 post_2_saved = Photo.new(post_2)
@@ -123,8 +123,8 @@ post_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 post_3 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
-  width: 1953,
-  height: 1466,
+  width: 500,
+  height: 375,
   profile_id: profile_1_saved.id
 }
 post_3_saved = Photo.new(post_3)
@@ -135,8 +135,8 @@ post_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 post_4 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
-  width: 2251,
-  height: 1326,
+  width: 500,
+  height: 295,
   profile_id: profile_1_saved.id
 }
 post_4_saved = Photo.new(post_4)
@@ -148,8 +148,8 @@ post_5 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
   profile_id: profile_1_saved.id,
-  width: 1915,
-  height: 1436,
+  width: 500,
+  height: 375,
 }
 post_5_saved = Photo.new(post_5)
 
@@ -160,8 +160,8 @@ post_6 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
   profile_id: profile_1_saved.id,
-  width: 1373,
-  height: 2059,
+  width: 333,
+  height: 500,
 }
 post_6_saved = Photo.new(post_6)
 
@@ -172,8 +172,8 @@ post_7 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
   profile_id: profile_1_saved.id,
-  width: 2000,
-  height: 1500,
+  width: 500,
+  height: 375,
 }
 post_7_saved = Photo.new(post_7)
 

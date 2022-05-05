@@ -7,8 +7,10 @@ import { fetchUsers } from "../../actions/session/session_actions";
 
 const mapStateToProps = ({entities, session}) => {
   debugger
+  const photos = asArray(entities);
+  
   return {
-    photos: asArray(entities),
+    photos: buildGridGalleryProps(photos),
     users: entities.users,
     profiles: entities.profiles,
     currentProfile: entities.profiles[session.profile]

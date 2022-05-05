@@ -54,15 +54,16 @@ export default class HomeFeed extends React.Component {
         {/* DiscoverNavLinks */}
         {/* test */}
 
-        <div className="home-feed-gallery">
+        {/* <div className="home-feed-gallery">
           <ProfileRows id="discover-gal" photos={photos} />
-        </div>
+        </div> */}
+        {photos.length ? (
+          <div className="home-feed-gallery" >
+            <DiscoverGallery images={ photos }/>
+          </div>
 
-        <div className="home-feed-gallery" >
-          <DiscoverGallery />
-          {/* <Demo4  /> */}
-          {/* <Demo3 photos={photos} /> */}
-        </div>
+        ) : ( null )
+        }
 
         {/* <div> */}
           {/* <PhotosIndex
