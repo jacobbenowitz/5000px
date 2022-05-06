@@ -126,7 +126,7 @@ post_3 = {
   description: Faker::Hipster.sentences(number: 1).first,
   width: 500,
   height: 375,
-  profile_id: profile_1_saved.id
+  profile_id: guest_profile_saved.id
 }
 post_3_saved = Photo.new(post_3)
 
@@ -148,7 +148,7 @@ post_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 post_5 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
-  profile_id: profile_1_saved.id,
+  profile_id: guest_profile_saved.id,
   width: 500,
   height: 375,
 }
@@ -172,7 +172,7 @@ post_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000
 post_7 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
-  profile_id: profile_1_saved.id,
+  profile_id: guest_profile_saved.id,
   width: 500,
   height: 375,
 }
