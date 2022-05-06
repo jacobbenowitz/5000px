@@ -1,6 +1,7 @@
 import React from "react";
+import { ReactDOM } from "react";
 import UserNavModalContainer from "./user_nav_modal_container";
-
+import AvatarLgLoader from "../avatar/avatar-loaders/avatar_lg_loader";
 
 export default class UserNavLinkItem extends React.Component {
 
@@ -22,16 +23,18 @@ export default class UserNavLinkItem extends React.Component {
   render() {
 
     const modalClass = this.state.modalOpen ? "" : " modal-off";
-    const avatar = this.props.currentProfile.avatar
+    debugger
     return (
       <>
         <div id="user-avatar"
           onClick={this.handleClick}
           className="avatar-container-sm">
-        {avatar ? (
-          <img src={avatar} className="avatar-img" />
-        ): (
-          <AvatarLgLoader />
+          
+        {this.props.currentProfile.avatar ? (
+            <img src={this.props.currentProfile.avatar}
+              className="avatar-img" />
+          ): (
+            <AvatarLgLoader />
         )}
       </div>
         <UserNavModalContainer

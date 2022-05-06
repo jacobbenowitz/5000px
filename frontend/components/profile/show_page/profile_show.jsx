@@ -6,11 +6,13 @@ import { AvatarLg } from "../../avatar/avatar_lg";
 import ProfileDetailsLoader from "../content_loaders/profile-details-loader";
 import { ProfileDetails } from "./profile_details";
 import ProfileRows from "./profile_photo_gallery";
-
+import DiscoverGallery from "../../galleries/discover_gallery";
+import { buildGridGalleryProps, asArray } from "../../../reducers/selectors"
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       photos: [],
       profile: {},
@@ -19,25 +21,21 @@ export default class ProfileShow extends React.Component {
   }
   
   componentDidMount() {
-    let { photos, profile } = this.props;
+    const { photos, profile, profileId, fetchPhotos, fetchProfile } = this.props;
 
-    Object.keys(profile).length === 0 ? (
-      this.props.fetchProfile(this.props.profileId)
-    ) : photos.length === 0 ? (
-      this.props.fetchPhotos()
-      ) : (
-          this.setState({
-            photos: photos,
-            profile: profile,
-        })
-    )
+    profile && photos ? (
+      this.setState({
+        photos: buildGridGalleryProps(photos),
+        profile: profile,
+    }) ) : photos ? (
+      fetchProfile(profileId)) : fetchPhotos() 
     
   };
 
 
 
   render() {
-    const { profile, photos } = this.state;
+    const { profile, photos } = this.props;
     debugger
     const coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
@@ -58,7 +56,7 @@ export default class ProfileShow extends React.Component {
         </div>
 
         <section className="profile-details-container">
-          {Object.keys(profile).length > 0 ? (
+          { profile ? (
               <ProfileDetails profile={profile}
                 isCurrentProfile={this.props.isCurrentProfile} />
             ) : (
@@ -68,11 +66,13 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {photos.length > 0 && Object.keys(profile).length > 0 ?
+        {/* <ProfileRows photos={photos}/> */}
+        {photos && profile  ?
           (
+          // <DiscoverGallery images={ photos }/>
           <ProfileRows photos={photos}/>
           ) : (
-            <h2>Poop</h2>
+            <GridLoader />
           )}
 
 

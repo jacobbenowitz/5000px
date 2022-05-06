@@ -9,18 +9,18 @@ export default class NavHeader extends React.Component {
   }
 
   componentDidMount() {
-    // fetch profile avatar and anything else needed
+    this.props.currentProfile ? null : this.props.fetchProfiles()
   }
 
   render() {
     const { currentUser, currentProfile } = this.props;
+
     const initials = currentUser ?
       currentUser.username.slice(0, 2).toUpperCase() : "";
-
+    
     const userLinks = currentUser ? (
       <div id="user-links">
         <UserNavLink initials={initials} currentProfile={currentProfile} />
-        {/* <UserNavLink /> */}
 
         <Link to={'/photos/upload'} className="upload-button">
           <div id="upload-button-content">

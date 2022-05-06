@@ -13,10 +13,13 @@ export default class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.errors.length === 0) {
-      const user = this.state;
-      this.props.processForm(user);
-    }
+    // if (this.props.errors.length === 0) {
+    //   const user = this.state;
+    //   this.props.processForm(user);
+    // }
+
+    this.props.processForm(this.state);
+    this.setState({username: "", password: ""})
   }
 
   update = type => {

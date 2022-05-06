@@ -7,7 +7,6 @@ export default class ImageViewer extends React.Component {
   }
 
   render() {
-
     return (
       <div className="lg-single-image-container">
         <div className="image-top-icons">
@@ -29,8 +28,9 @@ export default class ImageViewer extends React.Component {
             <img src={this.props.photo.photoUrl} className="photo-large" alt={this.props.photo.title} />
           ) : (
             <SinglePhotoLoader className="photo-large" />
-          )}
+            )}
         </div>
+            <SinglePhotoLoader className="photo-large" />
       </div>
     )
   }

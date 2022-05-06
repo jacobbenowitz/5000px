@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom"
 import PhotoActions from "./photo_actions";
 import {timeSinceUplaod} from "../../util/todays_date_util"
 import ProfileDetailsLoader from "./content-loaders/profile-details-loader";
@@ -10,31 +11,31 @@ export default class PhotoProfileDetails extends React.Component {
   }
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes } = this.props;
+    const { photo, photoId, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, getLikes } = this.props;
 
     return (
       <div className="photo-detail-summary">
         <div className="inset-box">
-          {Object.keys(photo).length > 0 && Object.keys(profile).length > 0 && Object.keys(user).length > 0 ? (
+          {photo && photoProfile && user ? (
             <>
-              <PhotoActions isCurrentProfile={isCurrentProfile} photo={photo}
-                photoId={photo.id}
-                profile={profile} isCurrentProfile={isCurrentProfile}
-                currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes}
+              <PhotoActions getLikes={getLikes} isCurrentProfile={isCurrentProfile} photo={photo}
+                photoId={photoId} photoProfile={photoProfile}
+                isCurrentProfile={isCurrentProfile}
+                currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} getLikes={getLikes} likes={likes}
               />
               <div className="profile-info">
                 <div className="avatar-container">
                   {/* <img className="user-avatar-lg" src={user.avatar}></img> */}
-                  <img className="user-avatar-lg" src={profile.avatar}></img>
+                  <img className="user-avatar-lg" src={photoProfile.avatar}></img>
                 </div>
                 <div className="user-details">
                   <h5 className="photo-show-title">{photo.title}</h5>
-                  {profile.first_name.length === 0 ? (
+                  {photoProfile.first_name ? (
                     <span className="photo-user-name">by
-                      {user.username} </span>
+                      {" " + photoProfile.first_name + " " + photoProfile.last_name} </span>
                   ) : (
                     <span className="photo-user-name">by
-                      {" " + profile.first_name + " " + profile.last_name} </span>
+                      {user.username} </span>
                   )}
                   <span> • </span>
                   <a src={'#'} className="follow-link">Follow</a>
@@ -53,12 +54,7 @@ export default class PhotoProfileDetails extends React.Component {
                 </div>
               </div>
               
-            </>) : (
-            <ProfileDetailsLoader />
-          )
-          }
-          {/* TODO use user avatar component */}
-          {/* removing profile_avatar, needs to be replaced w/user */}
+            </> ) : ( <ProfileDetailsLoader /> )  }
         </div>
       </div>
     )

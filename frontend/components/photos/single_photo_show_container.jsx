@@ -9,25 +9,27 @@ import { newLike, deleteLike, getLikes } from "../../actions/likes/like_actions"
 
 const mapStateToProps = (state, { match }) => {
   const photoId = match.params.photoId;
-  const photo = selectPhoto(state.entities, photoId);
-  const profile = photo === {} ? {} : selectProfileById(
-    state.entities, photo.profile_id);
-  const user = selectUserById(state.entities, profile.user_id);
+  const photo = state.entities.photos[photoId];
+  // const profile = photo === {} ? {} : selectProfileById(
+  //   state.entities, photo.profile_id);
+  // const user = selectUserById(state.entities, profile.user_id);
+  const profile = state.entities.profiles[photo.profile_id];
+  const user = state.entities.users[photo.userId];
   debugger
-  const isCurrentProfile = profile.id === state.session.profile;
+  const isCurrentProfile = photo.profile_id === state.session.profile;
   const currentProfile = state.session.profile;
   
 
   debugger
   return {
-    photoId: photoId,
-    likeCount: photo.likeIds,
-    isLiked: Object.values(state.entities.likes).filter(like =>
-      like.likerId === state.session.profile && like.photoId === match.params.photoId),
-    likes: Object.values(state.entities.likes),
-    profile: profile,
-    user: user,
     photo: photo,
+    photoProfile: profile,
+    photoId: photoId,
+    likes: Object.values(state.entities.likes).filter(like => like.photoId === photoId),
+    isLiked: Object.values(state.entities.likes).filter(like =>
+      like.likerId === currentProfile &&
+      like.photoId === photoId),
+    user: user,
     isCurrentProfile: isCurrentProfile,
     currentProfile: currentProfile,
   }

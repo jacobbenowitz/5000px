@@ -20,7 +20,7 @@ class Api::LikesController < ApplicationController
 
   def destroy
     like = Like.find_by(id: params[:id])
-    
+    debugger
     if like.destroy
       render :show
       # render json: {message: ["Like removed"]}
@@ -33,7 +33,7 @@ class Api::LikesController < ApplicationController
   private
 
   def like_params
-    params.require(:like).permit(:photo_id, :liker_id)
+    params.require(:like).permit(:photo_id, :liker_id, :id)
   end
 
 end

@@ -11,21 +11,28 @@ export default class SinglePhotoShow extends React.Component {
 
   componentDidMount() {
     debugger
-    this.props.fetchPhoto(this.props.photoId);
-    this.props.getLikes(this.props.getLikes);
+    this.props.photo && this.props.photoProfile &&
+      this.props.likes ? this.render() :
+      this.props.fetchPhoto(this.props.photoId)
+      this.props.getLikes(this.props.getLikes)
   }
 
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes } = this.props;
+    const { photo, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, photoId, getLikes } = this.props;
     debugger
     return (
       <div className="photo-show-container">
-        <ImageViewer photo={photo} />
-        <PhotoProfileDetails photo={photo} profile={profile}
-          user={user} isCurrentProfile={isCurrentProfile}
-          currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes}
-        />
+        {photo ? (
+          <>
+            <ImageViewer photo={photo} />
+            <PhotoProfileDetails photo={photo} photoId={photoId} photoProfile={photoProfile} getLikes={getLikes}
+              user={user} isCurrentProfile={isCurrentProfile}
+              currentProfile={currentProfile} newLike={newLike}
+              deleteLike={deleteLike} isLiked={isLiked} likes={likes}
+            />
+          </>
+        ) : ( <SinglePhotoLoader className="profile-loader" /> )}
       </div>
     )
   }

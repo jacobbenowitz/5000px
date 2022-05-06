@@ -1,17 +1,24 @@
 import React from "react";
 
 export default class LikeIcon extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       photoId: this.props.photoId,
       likerId: this.props.currentProfile,
-      likeCount: this.props.likeCount,
-      isLiked: this.props.isLiked
+      isLiked: this.props.isLiked,
+      likes: this.props.likes,
+      likeCount: this.props.likes.length,
+      like: {}
     }
     this.newLike = this.newLike.bind(this);
     this.removeLike = this.removeLike.bind(this);
     debugger
+  }
+
+  componentDidMount() {
+    this.props.getLikes();
   }
 
   newLike(e) {
@@ -25,19 +32,17 @@ export default class LikeIcon extends React.Component {
     this.props.newLike({like: like}).then(like => {
       this.setState({
         likeCount: likeCount + 1,
-        isLiked: true
+        isLiked: true,
+        like: like
       })
     })
   }
 
   removeLike(e) {
     e.preventDefault();
-
     debugger
 
-    const { photoId, likerId, likeCount } = this.state;
-    const { likes } = this.props;
-
+    const { photoId, likerId, likeCount, likes } = this.state;
     const like = likes.filter(like =>
       like.photoId === photoId && like.likerId === likerId)
 
@@ -45,6 +50,7 @@ export default class LikeIcon extends React.Component {
       this.setState({
         isLiked: false,
         likeCount: likeCount - 1,
+        like: {}
       })
     })
   }
@@ -55,16 +61,20 @@ export default class LikeIcon extends React.Component {
 
     const isLikedIcon = (
       <i onClick={this.removeLike}
-        className="fa-solid fa-heart fa-xl like-icon-liked"></i>
+        className="fa-solid fa-heart fa-xl like-icon liked"></i>
     )
 
     const notLikedicon = (
       <i onClick={this.newLike}
-        className="fa-regular fa-heart fa-xl like-icon-default"
+        className="fa-regular fa-heart fa-xl like-icon default"
       />
     )
+    
     return (
-      isLiked ? ( isLikedIcon ) : ( notLikedicon )
+      <div className="like-icon-container">
+        <span> { this.state.likeCount } </span>
+        {isLiked ? ( isLikedIcon ) : ( notLikedicon )}
+      </div>
     )
   }
 }

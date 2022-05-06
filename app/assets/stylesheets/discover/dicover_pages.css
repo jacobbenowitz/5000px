@@ -1,5 +1,6 @@
 .home-feed-container {
   grid-column: 1 / span 12;
+  margin-bottom: 160px;
 }
 .home-feed-gallery {
   position: relative;

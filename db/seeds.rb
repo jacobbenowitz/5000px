@@ -14,6 +14,7 @@ default_banner = "https://my5000px-static.s3.amazonaws.com/nature-cover-guest.jp
 User.destroy_all
 Profile.destroy_all
 Photo.destroy_all
+Like.destroy_all
 
 ## users
 
@@ -179,21 +180,24 @@ post_7_saved = Photo.new(post_7)
 
 post_7_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/sea-turtles_t20_98OYYY.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
 
-post_1_saved.save!
-post_2_saved.save!
-post_3_saved.save!
-post_4_saved.save!
-post_5_saved.save!
-post_6_saved.save!
-post_7_saved.save!
+post_1_saved.save
+post_2_saved.save
+post_3_saved.save
+post_4_saved.save
+post_5_saved.save
+post_6_saved.save
+post_7_saved.save
 
 
 ## likes
 
-like1 = Like.create(photo_id: post_1_saved.id, liker_id: profile_1_saved.id)
-like2 = Like.create(photo_id: post_2_saved.id, liker_id: guest_profile_saved.id)
-like3 = Like.create(photo_id: post_3_saved.id, liker_id: guest_profile_saved.id)
+like1 = Like.new(photo_id: post_1_saved.id, liker_id: profile_1_saved.id)
+like2 = Like.new(photo_id: post_2_saved.id, liker_id: guest_profile_saved.id)
+like3 = Like.new(photo_id: post_3_saved.id, liker_id: guest_profile_saved.id)
 
+like1.save
+like2.save
+like3.save
 
 
 # photos = {

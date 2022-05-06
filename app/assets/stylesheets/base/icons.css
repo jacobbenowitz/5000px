@@ -1,0 +1,15 @@
+.like-icon {
+  color: rgb(143, 10, 10);
+}
+
+.like-box span {
+  font-size: 12px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.like-icon-container {
+  display: grid;
+  place-items: center;
+  color: white;
+}

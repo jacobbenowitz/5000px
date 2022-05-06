@@ -9,18 +9,15 @@ export default class PhotoActions extends React.Component {
   }
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes } = this.props;
+    const { photo, photoId, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, getLikes } = this.props;
     return (
       <div className="photo-action-icons">
         {/* LIKE */}
-        <div className="icon-box">
+        <div className="icon-box like-box">
           <LikeIcon isCurrentProfile={isCurrentProfile} photo={photo}
-                  photoId={photo.id}
-                  profile={profile} isCurrentProfile={isCurrentProfile}
-                  currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes} />
-          {/* <a href={'#'} className="icon-link like">
-            <i className="fa-regular fa-heart fa-xl"></i>
-          </a> */}
+            photoId={photoId} currentProfile={currentProfile}
+            isCurrentProfile={isCurrentProfile} currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked}
+            likes={likes} getLikes={getLikes} className="icon-link like"/>
 
         </div>
         {/* SHARE */}
