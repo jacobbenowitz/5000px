@@ -12,7 +12,7 @@ import { fetchPhoto } from "../actions/photos/photos_actions";
 import React from "react";
 
 export const buildGalleryArray = ({ photos }) => {
-  debugger
+  // debugger
   return photos.map(photo => {
     return {
       src: photo.photoUrl,
@@ -26,7 +26,7 @@ export const buildGalleryArray = ({ photos }) => {
 };
 
 export const buildGridGalleryProps = (photos) => {
-  debugger
+  // debugger
   return photos.map(photo => {
     return {
       src: photo.photoUrl,
@@ -42,7 +42,7 @@ export const buildGridGalleryProps = (photos) => {
 
 // for react-grid-gallery
 // export const buildGridGalleryProps = ({ photos }) => {
-//   debugger
+// debugger
 //   photos.map(photo => {
 //     const name = photo.profileName.length > 1 ?
 //       photo.profileName : photo.username;
@@ -62,7 +62,7 @@ export const buildGridGalleryProps = (photos) => {
 // };
 
 export const selectProfilePhotos = ({ photos }, photoIds) => {
-  debugger
+  // debugger
   return Object.keys(photos).length > 0 ? (
     photoIds.map(photoId => {
       return photos[photoId]
@@ -70,12 +70,12 @@ export const selectProfilePhotos = ({ photos }, photoIds) => {
 };
 
 export const selectPhotoById = ({ photos }, photoId) => {
-  debugger
+  // debugger
   return photos[photoId]
 };
 
 export const asArray = ({ photos }) => {
-  debugger
+  // debugger
   return Object.keys(photos).map(id => photos[id])
 };
 
@@ -83,13 +83,13 @@ export const selectPhoto = ({ photos }, photoId) => {
   if (Object.keys(photos).length === 0) {
     return {}
   } else {
-    debugger
+    // debugger
     return photos[photoId];
   }
 }
 
 export const selectUserFromPhoto = ({ users }, photo) => {
-  debugger
+  // debugger
   if (Object.keys(photo), length === 0 || typeof photo.user_id === "undefined") {
     return {}
   } else {
@@ -100,7 +100,7 @@ export const selectUserFromPhoto = ({ users }, photo) => {
 // export const selectProfileById = 
 
 export const selectProfileById = ({ profiles }, profileId) => {
-  debugger
+  // debugger
   if (profiles[profileId]) {
     return profiles[profileId];
   } else {
@@ -109,7 +109,7 @@ export const selectProfileById = ({ profiles }, profileId) => {
 };
 
 export const selectUserById = ({ users }, userId) => {
-  debugger
+  // debugger
   return users[userId]
 }
 
@@ -121,7 +121,7 @@ export const selectUserById = ({ users }, userId) => {
 
 // export const selectPhotoProfile = ({ profiles }, userId) => {
 //   for (let i = 0; i < profiles.length; i++) {
-//     debugger
+// debugger
 //     const profile = profiles[i];
 //     if (profile.user_id === userId) return profile;
 //   }

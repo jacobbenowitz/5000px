@@ -83,7 +83,7 @@ export const signup = user => dispatch => {
       dispatch(fetchUsers())
       dispatch(getLikes())
     }, error => {
-      debugger
+      // debugger
       dispatch(receiveSessionErrors(error.responseJSON))
     })
 }

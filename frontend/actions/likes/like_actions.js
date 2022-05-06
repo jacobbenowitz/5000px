@@ -42,7 +42,7 @@ export const newLike = like => dispatch => {
 };
 
 export const deleteLike = likeId => dispatch => {
-  debugger
+  // debugger
   return (
     likeApiUtil.deleteLike(likeId).then(likeId =>
       dispatch(removeLike(likeId)))

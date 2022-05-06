@@ -4,7 +4,7 @@ import SignupForm from "./signup_form";
 import { openModal } from "../../actions/modal/modal_actions";
 
 const mapStateToProps = (state) => {
-  debugger
+  // debugger
   return {
     errors: state.errors.session,
     currentUserId: state.session.id

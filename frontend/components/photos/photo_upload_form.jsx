@@ -49,7 +49,7 @@ export default class PhotoUploadForm extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     const { width, height } = await getImgSize(file);
-    debugger
+    // debugger
     fileReader.onloadend = () => {
       this.setState({
         title: file.name,
@@ -153,7 +153,7 @@ export default class PhotoUploadForm extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
     const preview = this.state.photoUrl ?
       <img className='image-preview-img' src={this.state.photoUrl}
       /> : null;

@@ -15,12 +15,11 @@ const mapStateToProps = (state, { match }) => {
   // const user = selectUserById(state.entities, profile.user_id);
   const profile = state.entities.profiles[photo.profile_id];
   const user = state.entities.users[photo.userId];
-  debugger
+  // debugger
   const isCurrentProfile = photo.profile_id === state.session.profile;
   const currentProfile = state.session.profile;
   
 
-  debugger
   return {
     photo: photo,
     photoProfile: profile,

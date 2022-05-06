@@ -10,7 +10,7 @@ export default class SinglePhotoShow extends React.Component {
   }
 
   componentDidMount() {
-    debugger
+    // debugger
     this.props.photo && this.props.photoProfile &&
       this.props.likes ? this.render() :
       this.props.fetchPhoto(this.props.photoId)
@@ -20,7 +20,7 @@ export default class SinglePhotoShow extends React.Component {
 
   render() {
     const { photo, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, photoId, getLikes } = this.props;
-    debugger
+    // debugger
     return (
       <div className="photo-show-container">
         {photo ? (

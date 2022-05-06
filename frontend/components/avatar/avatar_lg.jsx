@@ -6,7 +6,7 @@ const placeholderImg = "/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/ima
 export const AvatarLg = props => {
   
   const { avatar } = props.profile ? props.profile : placeholderImg;
-  debugger
+  // debugger
   return (
       <div className="avatar-wrapper">
         {avatar ? (

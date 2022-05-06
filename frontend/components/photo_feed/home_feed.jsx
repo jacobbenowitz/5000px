@@ -16,7 +16,7 @@ export default class HomeFeed extends React.Component {
     const { photos, profiles, likes,
       fetchPhotos, fetchProfiles, getLikes } = this.props;
     
-    debugger
+    // debugger
     
     photos ? fetchPhotos() : profiles ? fetchProfiles() : likes ? getLikes() : this.render();
   }
@@ -26,7 +26,7 @@ export default class HomeFeed extends React.Component {
   // todo: create tab navigation component for discover
   render() {
     const { photos, users, profiles, currentProfile } = this.props;
-    debugger
+    // debugger
     return (
       <div className="home-feed-container">
       <div className="page-top-banner">

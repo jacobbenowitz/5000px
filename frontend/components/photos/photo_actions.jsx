@@ -5,7 +5,7 @@ import LikeIcon from "../action_components/like_icon";
 export default class PhotoActions extends React.Component {
   constructor(props) {
     super(props)
-    debugger
+    // debugger
   }
 
   render() {

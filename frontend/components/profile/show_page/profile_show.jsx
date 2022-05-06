@@ -17,7 +17,7 @@ export default class ProfileShow extends React.Component {
       photos: [],
       profile: {},
     }
-    debugger
+    // debugger
   }
   
   componentDidMount() {
@@ -36,7 +36,7 @@ export default class ProfileShow extends React.Component {
 
   render() {
     const { profile, photos } = this.props;
-    debugger
+    // debugger
     const coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
       rgba(0, 0, 0, 0)), url(${profile.cover})`

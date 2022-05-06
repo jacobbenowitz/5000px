@@ -20,7 +20,7 @@ class Api::LikesController < ApplicationController
 
   def destroy
     like = Like.find_by(id: params[:id])
-    debugger
+    # debugger
     if like.destroy
       render :show
       # render json: {message: ["Like removed"]}

@@ -7,7 +7,7 @@ import { fetchUsers } from "../../actions/session/session_actions";
 import { getLikes } from "../../actions/likes/like_actions";
 
 const mapStateToProps = ({entities, session}) => {
-  debugger
+  // debugger
   const photos = asArray(entities);
   
   return {

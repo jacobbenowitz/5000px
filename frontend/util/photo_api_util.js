@@ -37,7 +37,7 @@ export const uploadPhoto = formData => {
 }
 
 export const updatePhoto = photo => {
-  debugger
+  // debugger
   return (
     $.ajax({
       method: 'PATCH',

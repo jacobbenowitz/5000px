@@ -12,7 +12,7 @@ export default class PhotoEditForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
-    debugger
+    // debugger
   }
 
   componentDidMount() {
@@ -27,10 +27,10 @@ export default class PhotoEditForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    // debugger
     this.props.updatePhoto(this.state)
       .then(() => {
-        debugger
+        // debugger
         this.props.openModal("success");
         this.props.history.push(`/profiles/${this.props.profileId}`);
     })

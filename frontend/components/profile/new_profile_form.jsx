@@ -40,7 +40,7 @@ export default class NewProfileForm extends React.Component {
 
   componentDidUpdate() {
     if (this.props.userId === null) {
-      debugger
+      // debugger
       <Redirect to={'/signup'} />
     } else {
       this.setState({

@@ -14,7 +14,7 @@ export default class LikeIcon extends React.Component {
     }
     this.newLike = this.newLike.bind(this);
     this.removeLike = this.removeLike.bind(this);
-    debugger
+    // debugger
   }
 
   componentDidMount() {
@@ -24,7 +24,7 @@ export default class LikeIcon extends React.Component {
   newLike(e) {
     e.preventDefault();
     const { photoId, likerId, likeCount } = this.state;
-    debugger
+    // debugger
     const like = {
       liker_id: likerId,
       photo_id: photoId
@@ -40,7 +40,7 @@ export default class LikeIcon extends React.Component {
 
   removeLike(e) {
     e.preventDefault();
-    debugger
+    // debugger
 
     const { photoId, likerId, likeCount, likes } = this.state;
     const like = likes.filter(like =>

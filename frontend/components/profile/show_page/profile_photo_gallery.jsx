@@ -26,7 +26,7 @@ const renderPhoto = ({ layoutOptions, imageProps: { key, title, alt, style, ...r
 
 
 const ProfileRows = (photos) => {
-  debugger
+  // debugger
   let galleryPhotos = buildGalleryArray(photos);
   return <div id="profile-gallery-box">
     <PhotoAlbum

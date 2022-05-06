@@ -11,7 +11,7 @@ const usersReducer = (initialState = {}, action) => {
     case RECEIVE_CURRENT_USER:
       /// REVIEW USERS VIEW FOR NESTING
       if (typeof action.currentUser.id === 'undefined') {
-        debugger // -> when is this nesting happening?
+        // debugger // -> when is this nesting happening?
         return Object.assign(
           {}, nextState,
           { [action.currentUser.user.id]: action.currentUser.user }
