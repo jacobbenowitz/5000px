@@ -23,7 +23,6 @@ export const receivePhotoUpdate = photo => ({
 })
 
 export const receivePhotos = photos => {
-  // debugger
   return {
     type: RECEIVE_PHOTOS,
     photos
@@ -31,7 +30,6 @@ export const receivePhotos = photos => {
 };
 
 export const receivePhotoErrors = messages => {
-  // debugger
   return {
     type: RECEIVE_PHOTO_ERRORS,
     messages
@@ -40,19 +38,16 @@ export const receivePhotoErrors = messages => {
 
 // thunk actions
 export const fetchPhoto = photoId => dispatch => {
-  // debugger
   return PhotoApiUtil.fetchPhoto(photoId).then(photo =>
     dispatch(receivePhoto(photo)))
 }
 
 export const deletePhoto = photoId => dispatch => {
-  // debugger
   return PhotoApiUtil.deletePhoto(photoId).then(() =>
     dispatch(removePhoto(photoId)))
 }
 
 export const fetchPhotos = () => dispatch => {
-  // debugger
   return PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
 }

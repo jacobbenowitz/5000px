@@ -11,7 +11,6 @@ class SimpleCTA extends React.Component {
 
   signUp() {
     const demoButton = document.getElementById('demo-signup');
-    // debugger
     demoButton.click();
   }
 

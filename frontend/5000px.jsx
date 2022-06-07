@@ -7,7 +7,7 @@ import Root from './components/root';
 import {fetchPhoto, fetchPhotos} from './actions/photos/photos_actions';
 import configureStore from './store/configure_store';
 import { persistStore } from 'redux-persist';
-import { logout } from '../frontend/actions/session/session_actions'
+import { login, logout, signup } from '../frontend/actions/session/session_actions'
 import { deleteLike, newLike } from './actions/likes/like_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,20 +35,23 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   };
 
-  persistor = persistStore(store);
+  // persistor = persistStore(store);
   
   // BEGIN TESTING
-  window.persistor = persistor;
+  // window.persistor = persistor;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchPhoto = fetchPhoto;
   window.fetchPhotos = fetchPhotos;
-  window.logout = logout;
+  window.logout = logout
+  window.login = login
+  window.signup = signup
   window.newLike = newLike
   window.deleteLike = deleteLike
   // END TESTING
   
   const root = document.getElementById("root");
-  ReactDOM.render(<Root store={store} persistor={persistor} />, root)
+  ReactDOM.render(<Root store={store} />, root)
+  // ReactDOM.render(<Root store={store} persistor={persistor} />, root)
 })
 

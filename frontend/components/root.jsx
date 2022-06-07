@@ -6,11 +6,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 const Root = ({ store, persistor }) => (
   <Provider store={store}>
-    <PersistGate loading={<h2>Loading...</h2>} persistor={persistor}>
+    {/* <PersistGate loading={<h2>Loading...</h2>} persistor={persistor}> */}
       <HashRouter>
         <App />
       </HashRouter>
-    </PersistGate>
+    {/* </PersistGate> */}
   </Provider>
 );
 

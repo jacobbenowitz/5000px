@@ -15,18 +15,17 @@ export default class ProfileShow extends React.Component {
 
     this.state = {
       photos: [],
-      profile: {},
     }
-    // debugger
   }
   
   componentDidMount() {
-    const { photos, profile, profileId, fetchPhotos, fetchProfile } = this.props;
+    const {
+      photos, profile, user, profileId,
+      fetchPhotos, fetchProfile } = this.props;
 
     profile && photos ? (
       this.setState({
-        photos: buildGridGalleryProps(photos),
-        profile: profile,
+        photos: buildGridGalleryProps(photos)
     }) ) : photos ? (
       fetchProfile(profileId)) : fetchPhotos() 
     
@@ -35,8 +34,8 @@ export default class ProfileShow extends React.Component {
 
 
   render() {
-    const { profile, photos } = this.props;
-    // debugger
+    const { profile, user, photos } = this.props;
+
     const coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
       rgba(0, 0, 0, 0)), url(${profile.cover})`
@@ -57,8 +56,10 @@ export default class ProfileShow extends React.Component {
 
         <section className="profile-details-container">
           { profile ? (
-              <ProfileDetails profile={profile}
-                isCurrentProfile={this.props.isCurrentProfile} />
+            <ProfileDetails
+              profile={profile}
+              user={user}
+              isCurrentProfile={this.props.isCurrentProfile} />
             ) : (
             <div className="profile-loader-container">
               <ProfileDetailsLoader />

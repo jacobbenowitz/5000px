@@ -13,10 +13,6 @@ export default class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // if (this.props.errors.length === 0) {
-    //   const user = this.state;
-    //   this.props.processForm(user);
-    // }
 
     this.props.processForm(this.state);
     this.setState({username: "", password: ""})
@@ -66,6 +62,7 @@ export default class LoginForm extends React.Component {
                 type="password"
                 onChange={this.update('password')}
                 className="text-input"
+                value={this.state.password}
               />
             </div>
             <button type="submit" className="login">Log in</button>

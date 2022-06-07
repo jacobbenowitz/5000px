@@ -5,12 +5,12 @@ import rootReducer from "../reducers/root_reducer";
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // const enhancers = [applyMiddleware(thunk, logger)];
 
@@ -20,22 +20,22 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 //     compose(...enhancers))
 // );
 
-const configureStore = (preloadedState = {}) => {
-  // debugger
-  return createStore(persistedReducer, preloadedState,
-    applyMiddleware(thunk, logger))
-}
-
-export default configureStore;
-
-// export default (preloadedState) => {
-//   let store = configureStore(preloadedState);
-//   let persistor = persistStore(store);
-//   return { store, persistor };
+// const configureStore = (preloadedState = {}) => {
+//   return createStore(persistedReducer, preloadedState,
+//     applyMiddleware(thunk, logger))
 // }
 
 
-// const configureStore = (preloadedState = {}) => (
-//   createStore(rootReducer, preloadedState,
-//     applyMiddleware(thunk, logger))
-// );
+// export default (preloadedState) => {
+  //   let store = configureStore(preloadedState);
+  //   let persistor = persistStore(store);
+  //   return { store, persistor };
+  // }
+  
+  
+const configureStore = (preloadedState = {}) => (
+  createStore(rootReducer, preloadedState,
+    applyMiddleware(thunk, logger))
+);
+
+export default configureStore;

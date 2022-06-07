@@ -24,7 +24,6 @@ export default class NewProfileForm extends React.Component {
       gender: 'Not specified',
       user_id: null
     };
-    // debugger
     this.bindHandlers();
   }
   
@@ -33,30 +32,18 @@ export default class NewProfileForm extends React.Component {
     this.redirectHome = this.redirectHome.bind(this);
   }
 
-  beforeUnloadListener = event => {
-    event.preventDefault();
-    event.returnValue = "Don't leave without saving your profile!";
-  }
+  componentDidMount() {
+    const { userId } = this.props;
 
-  componentDidUpdate() {
-    if (this.props.userId === null) {
-      // debugger
+    if (userId === null) {
       <Redirect to={'/signup'} />
-    } else {
+    } else if (this.state.user_id !== userId) {
       this.setState({
-        user_id: this.props.userId
+        user_id: userId
       })
     }
-  }
-
-  clickPreventListener(event){
-    event.preventDefault();
-    return confirm("Don't leave without saving your profile!");
-  }
-
-  componentDidMount() {
-    window.addEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
-    
+    window.addEventListener('beforeunload',
+      this.beforeUnloadListener, { capture: true });
     const skip = document.querySelector('.skip-profile-form');
     const submit = document.querySelector('.save-profile');
     
@@ -68,6 +55,19 @@ export default class NewProfileForm extends React.Component {
       }
     });
   }
+
+
+  beforeUnloadListener = event => {
+    event.preventDefault();
+    event.returnValue = "Don't leave without saving your profile!";
+  }
+
+  clickPreventListener(event){
+    event.preventDefault();
+    return confirm("Don't leave without saving your profile!");
+  }
+
+
 
   // -> tabs with separate form!! = NOT done'
 
@@ -251,7 +251,7 @@ export default class NewProfileForm extends React.Component {
               />
             </div>
             <button type="submit"
-              className="save-profile">Save changes</button>
+              className="save-profile">Create profile</button>
           </form>
         </div>
       </div>

@@ -1,2 +1,2 @@
 json.extract! user, :id, :username, :email
-json.profileId user.profile.id
+# json.profileId user.profile.id

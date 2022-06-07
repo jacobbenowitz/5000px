@@ -42,11 +42,12 @@ export default class HomeFeed extends React.Component {
             }
       </div>
         <div>
-          <PhotosIndex
+          {/* <PhotosIndex
             photos={photos}
             users={users}
             profiles={profiles}
-            currentUser={currentProfile} />
+            currentUser={currentProfile}
+          /> */}
         </div>
       </div>
     )

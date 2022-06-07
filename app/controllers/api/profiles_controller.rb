@@ -2,6 +2,10 @@ class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    @profile.avatar.attach(io: File.open('app/assets/images/person-placeholder-300x300.webp'), filename: 'placeholder-avatar.webp')
+    @profile.cover.attach(io: File.open('app/assets/images/placeholder-image.png'), filename: 'vietnam-street.jpg')
+
+
     if @profile.save
       render :show
     else

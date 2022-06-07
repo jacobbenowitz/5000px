@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const ProfileDetails = ({profile, isCurrentProfile}) => {
+export const ProfileDetails = ({profile, user, isCurrentProfile}) => {
   
   return (
     <div className="profile-wrapper">

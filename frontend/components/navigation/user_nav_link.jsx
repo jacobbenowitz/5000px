@@ -30,7 +30,7 @@ export default class UserNavLinkItem extends React.Component {
           onClick={this.handleClick}
           className="avatar-container-sm">
           
-        {this.props.currentProfile.avatar ? (
+        {this.props.currentProfile?.avatar ? (
             <img src={this.props.currentProfile.avatar}
               className="avatar-img" />
           ): (

@@ -18,10 +18,10 @@ export default class PhotoProfileDetails extends React.Component {
         <div className="inset-box">
           {photo && photoProfile && user ? (
             <>
-              <PhotoActions getLikes={getLikes} isCurrentProfile={isCurrentProfile} photo={photo}
+              <PhotoActions getLikes={getLikes}
+                isCurrentProfile={isCurrentProfile} photo={photo}
                 photoId={photoId} photoProfile={photoProfile}
-                isCurrentProfile={isCurrentProfile}
-                currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} getLikes={getLikes} likes={likes}
+                currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes}
               />
               <div className="profile-info">
                 <div className="avatar-container">

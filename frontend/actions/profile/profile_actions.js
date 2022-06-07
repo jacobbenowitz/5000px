@@ -8,14 +8,12 @@ export const REMOVE_PROFILE = 'REMOVE_PROFILE'; // profileId
 
 // regular action creators
 export const receiveProfile = profile => {
-  // debugger
   return {
     type: RECEIVE_PROFILE,
     profile
   }
 }
 export const receiveCurrentProfile = profile => {
-  // debugger
   return {
     type: RECEIVE_CURRENT_PROFILE,
     profile
@@ -48,7 +46,6 @@ export const fetchProfiles = () => dispatch => {
 export const fetchProfile = profileId => dispatch => {
   return ProfileApiUtil.fetchProfile(profileId)
     .then(profile => {
-      // debugger
       dispatch(receiveProfile(profile))
     })
 }
@@ -56,13 +53,11 @@ export const fetchProfile = profileId => dispatch => {
 export const fetchCurrentProfile = profileId => dispatch => {
   return ProfileApiUtil.fetchProfile(profileId)
     .then(profile => {
-      // debugger
       dispatch(receiveCurrentProfile(profile))
     })
 }
 
 export const createProfile = profile => dispatch => {
-  // debugger
   ProfileApiUtil.createProfile(profile).then(profile => {
     dispatch(receiveProfile(profile))
     dispatch(receiveCurrentProfile(profile))
@@ -73,7 +68,6 @@ export const createProfile = profile => dispatch => {
 }
 
 export const updateProfile = profile => dispatch => {
-  // debugger
   return ProfileApiUtil.updateProfile(profile).then(profile =>
     dispatch(receiveProfile(profile))
   ), error => (

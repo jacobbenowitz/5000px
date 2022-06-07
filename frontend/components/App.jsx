@@ -30,23 +30,23 @@ const App = () => (
       <NavHeaderContainer />
     </header>
     <Switch>
-      <AuthRoute path={"/login"} component={LoginFormContainer} />
-      <AuthRoute path={"/signup"} component={SignupFormContainer} />
-      <ProtectedRoute path={"/profile/new"}
+      <AuthRoute exact path={"/login"} component={LoginFormContainer} />
+      <AuthRoute exact path={"/signup"} component={SignupFormContainer} />
+      <ProtectedRoute exact path={"/profile/new"}
         component={NewProfileFormContainer} />
-      <ProtectedRoute path={"/profile/settings"} component={EditProfileFormContainer} />
-      <ProtectedRoute path={"/profiles/:profileId"} component={ProfileShowContainer} />
+      <ProtectedRoute exact path={"/profile/settings"} component={EditProfileFormContainer} />
+      <ProtectedRoute exact path={"/profiles/:profileId"} component={ProfileShowContainer} />
       <ProtectedRoute exact path={"/photos/upload"}
         component={PhotoUploadFormContainer} /> 
       <ProtectedRoute exact path={"/photos/:photoId"}
         component={SinglePhotoShowContainer} />
       <ProtectedRoute exact path={"/photos/:photoId/edit"}
         component={PhotoEditFormContainer} />
-      <ProtectedRoute path={"/discover"}
+      <ProtectedRoute exact path={"/discover"}
         component={HomeFeedContainer} />
-      <ProtectedRoute path={"/popular"} component={PopularPhotos} />
-      <ProtectedRoute path={"/"} component={HomeFeedContainer} />
+      <ProtectedRoute exact path={"/popular"} component={PopularPhotos} />
       <AuthRoute exact path={"/"} component={LandingPage} />
+      <ProtectedRoute exact path={"/home"} component={HomeFeedContainer} />
     </Switch>
     <footer className="grid-bottom-stack">
       <NavFooter />

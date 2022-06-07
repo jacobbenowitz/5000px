@@ -264,3 +264,7 @@ input:focus {
   background-color: rgb(69, 69, 124);
   color: #FFFFFF;
 }
+
+#hidden-demo {
+  display: none;
+}

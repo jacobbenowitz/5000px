@@ -9,7 +9,9 @@ export default class NavHeader extends React.Component {
   }
 
   componentDidMount() {
-    this.props.currentProfile ? null : this.props.fetchProfiles()
+    if (this.props.profile) {
+      this.props.fetchCurrentProfile()
+    }
   }
 
   render() {
