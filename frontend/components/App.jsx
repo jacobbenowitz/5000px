@@ -35,7 +35,7 @@ const App = () => (
       <ProtectedRoute exact path={"/profile/new"}
         component={NewProfileFormContainer}
       />
-      <ProtectedRoute exact path={"/profile/settings"}
+      <ProtectedRoute exact path={"/profiles/settings"}
         component={EditProfileFormContainer}
       />
       <ProtectedRoute exact path={"/profiles/:profileId"}

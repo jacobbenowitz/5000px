@@ -4,11 +4,11 @@ import EditProfileForm from "./edit_profile_form";
 
 const mapStateToProps = (state, ownProps) => {
   const profileId = state.session.profile;
-  const profileProps = {
+  return {
     profile: state.entities.profiles[profileId],
+    profileId: profileId,
     errors: state.errors.profiles
   }
-  return profileProps;
 }
 
 

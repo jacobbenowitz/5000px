@@ -1,20 +1,17 @@
 import React from "react";
 
-export default class ProfileAvatar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  // TEST: Removed bc url should be in db now, no need to fetch by id
-  componentDidMount() {
-    // this.props.fetchProfile(this.props.profileId)
-  }
-
-  render() {
-    if (this.props.avatar) {
-      return (
-        <img src = {this.props.avatar }/>
-      )
-    }
-  }
+const ProfileAvatar = (avatar) => {
+  
+  return avatar ? (
+      <div className="avatar-container-sm">
+      <img src={avatar} />
+      <img src={avatar} className='avatar-img' />
+      </div>
+  ) : (
+    <div className="avatar-container-sm">
+      <span>Loader here</span>
+    </div>
+  )
 }
+
+export default ProfileAvatar
