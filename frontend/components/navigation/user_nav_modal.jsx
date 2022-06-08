@@ -14,7 +14,7 @@ export default class UserNavModal extends React.Component {
       { title: 'Profile', url: `/profiles/${this.props.profile}` },
       { title: 'Galleries', url: '/galleries' },
       { title: 'Liked photos', url: '/likes' },
-      { title: 'Settings', url: '/profile/settings' }
+      { title: 'Settings', url: '/profiles/settings' }
     ]
     const klass = this.props.klass;
     

@@ -143,3 +143,74 @@
   background-color: #3b7fe6;
 }
 
+.avatar-input-label {
+  cursor: pointer;
+}
+
+#avatar-input {
+  display: none;
+}
+
+.avatar-form:hover::before {
+  content: "Upload a new avatar";
+  z-index: 500;
+  width: max-content;
+  position: absolute;
+  left: 110px;
+  top: -7px;
+  text-align: end;
+  background: #eeeeee;
+  padding: 0.4rem;
+  border-radius: 4px;
+  box-shadow: 0px 2px 16px rgb(0 0 0 / 30%);
+  animation: fadeIn 500ms ease-in-out;
+}
+
+.avatar-form:hover::after {
+  position: absolute;
+  content: "";
+  top: 6px;
+  right: -16px;
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 8px solid #eee;
+  animation: fadeIn 500ms ease-in-out;
+  z-index: 500;
+}
+
+.avatar-form {
+  position: relative;
+  cursor: pointer;
+}
+
+.file-input-wrapper {
+  top: -5px;
+  right: -5px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #f3f3f5;
+  box-shadow: 0px 0px 12px rgb(0 0 0 / 30%);
+  cursor: pointer;
+}
+
+.profile-avatar-container-form {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}

@@ -73,8 +73,8 @@ export default class PhotoUploadForm extends React.Component {
     return e => {
       this.setState(
         { [type]: e.target.value })
-      }
     }
+  }
     
   toggleDetailForm() {
     const photoUploadStep1 = document.getElementById('photo-upload-step-1');
@@ -179,7 +179,8 @@ export default class PhotoUploadForm extends React.Component {
                 <div className="upload-input">
                   <input type="file" name="file-upload"
                     className="file-upload-input"
-                    onChange={this.handleFile} />
+                    onChange={this.handleFile} 
+                  />
                 </div>
               <span>Or drag and drop photos anywhere on this page</span>
               <div className="photo-requirements">

@@ -23,7 +23,7 @@ class Api::ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by(id: params[:id])
-
+    
     if @profile.update(profile_params)
       render :show
     else

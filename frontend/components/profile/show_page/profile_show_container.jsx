@@ -3,7 +3,7 @@ import {
   fetchPhoto,
   fetchPhotos
 } from "../../../actions/photos/photos_actions";
-import { fetchProfile } from "../../../actions/profile/profile_actions";
+import { fetchProfile, updateProfile } from "../../../actions/profile/profile_actions";
 import { selectProfilePhotos, buildGalleryArray, buildGridGalleryProps } from "../../../reducers/selectors";
 import ProfileShow from "./profile_show";
 
@@ -26,7 +26,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchProfile: profileId => dispatch(fetchProfile(profileId)),
     fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
-    fetchPhotos: () => dispatch(fetchPhotos())
+    fetchPhotos: () => dispatch(fetchPhotos()),
+    updateProfile: profileData => dispatch(updateProfile(profileData))
   }
 }
 

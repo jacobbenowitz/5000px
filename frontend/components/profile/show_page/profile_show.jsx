@@ -9,6 +9,8 @@ import ProfileRows from "./profile_photo_gallery";
 import DiscoverGallery from "../../galleries/discover_gallery";
 import { buildGridGalleryProps } from "../../../reducers/selectors"
 import GridLoader from '../content_loaders/profile-details-loader'
+import ProfilePhotoForm from "../../photos/profile_photo_form";
+import ProfileAvatarInput from "./profile_avatar_input";
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
@@ -26,20 +28,40 @@ export default class ProfileShow extends React.Component {
 
 
   render() {
-    const { profile, user, photos } = this.props;
+    const { profile, user, photos, isCurrentProfile } = this.props;
 
-    const coverStyle = profile.cover ? ({
+    let coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
       rgba(0, 0, 0, 0)), url(${profile.cover})`
     }) : (null);
+
+    let avatarForm, coverForm;
+
+    if (isCurrentProfile) {
+      avatarForm = (
+        <div className="profile-avatar-container">
+          <ProfileAvatarInput
+            profile={profile}
+            currentAvatar={profile.avatar}
+          />
+          {/* <AvatarLg
+            profile={profile}
+          /> */}
+        </div>
+        // <ProfilePhotoForm 
+        //   profileId={profile.id}
+        //   // up
+        // />
+      )
+      // coverForm = ()
+    }
     
     return ( 
       <div className="profile-show-container" >
-
         <div className="profile-cover-container">
-          <div className="profile-avatar-container">
-            <AvatarLg profile={profile} />
-          </div>
+          
+          {avatarForm}
+          
           {profile.cover ? (
             <div className="cover-img-box" style={coverStyle} /> 
           ) : ( <CoverPhotoLoader /> )}
