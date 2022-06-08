@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export const ProfileDetails = ({ profile, user, isCurrentProfile }) => {
   
   let location, name, profileStats, profileLinks, websiteLink, instagramLink;
@@ -24,22 +25,24 @@ export const ProfileDetails = ({ profile, user, isCurrentProfile }) => {
 
   if (profile.website_url) {
     websiteLink = (
-      <Link
-        to={profile.website_url}
+      <a
+        href={profile.website_url}
+        target="_blank" rel="noreferrer"
         className="social-icon-link"
       >
         <i className="fa-solid fa-globe fa-xl" />
-      </Link>
+      </a>
     )
   }
   if (profile.instagram_url) {
     instagramLink = (
-      <Link
-        to={`https://www.instagram.com/${profile.instagram_url}`}
+      <a
+        href={`https://www.instagram.com/${profile.instagram_url}`}
+        target="_blank" rel="noreferrer"
         className="social-icon-link"
       >
         <i className="fa-brands fa-instagram fa-xl" />
-      </Link>
+      </a>
     )
   }
 

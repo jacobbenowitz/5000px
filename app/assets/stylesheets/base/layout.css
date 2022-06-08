@@ -80,6 +80,11 @@ html {
   place-content: center;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .gap-10 {
   gap: 10px;
 }

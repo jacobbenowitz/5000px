@@ -113,6 +113,15 @@ export default class NewProfileForm extends React.Component {
     )
   }
 
+
+  buildUrl(url) {
+    if (url.includes('https://www.')) {
+      return url
+    } else {
+      return 'https://www.' + url
+    }
+  }
+
   render() {
 
     return (
@@ -162,7 +171,7 @@ export default class NewProfileForm extends React.Component {
               <input
                 type="text"
                 id="website_url"
-                value={website_url}
+                value={this.buildUrl(website_url)}
                 onChange={this.update('website_url')}
                 className="text-input"
                 placeholder="www.mywebsite.com"

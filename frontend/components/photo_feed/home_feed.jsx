@@ -5,6 +5,7 @@ import DiscoverGallery from "../galleries/discover_gallery";
 import { buildGridGalleryProps } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
+import FeaturedPhotographerCard from "./cards/featured_photographer_card";
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -30,9 +31,53 @@ export default class HomeFeed extends React.Component {
     return (
       <div className="home-feed-container">
       <div className="page-top-banner">
-        <span>Discover</span>
+          <h3>Home Feed</h3>
+          <span className="sub-header-text">See photos and published Galleries from people you follow.</span>
       </div>
-        {/* <DiscoverGallery images={ photos }/> */}
+      <div className="home-callout-container">
+        <div className="home-callout">
+          <div className="content-wrapper flex-col">
+            <div className="flex-col gap-10 call-text">
+              <h3>Welcome to 5000px</h3>
+              <div className="spacer-2rem;h"></div>
+              <span>This is a fullstack clone of 500px, a popular photo sharing site for photographers.</span>
+              <span>Developed by Jacob Benowitz</span>
+            </div>
+            <div className="flex-row callout-buttons">
+              <a href="https://github.com/jacobbenowitz/"
+                target="_blank" rel="noreferrer"
+                className="icon-button"
+              >
+                <i className="fa-brands fa-github fa-lg" />
+                GitHub
+              </a>
+
+              <a href="https://angel.co/u/jacob-benowitz"
+                target="_blank" rel="noreferrer"
+                className="icon-button"
+              >
+                <i className="fa-brands fa-angellist fa-lg" />
+                AngelList
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+      <div className="featured-section">
+        <div className="featured-section-header">
+          <span className="featured-header">
+            Featured photographers
+          </span>
+          <span className="sub-header featured">
+            Follow to explore new work
+          </span>
+        </div>
+        <div className="featured-cards-wrapper">
+          <FeaturedPhotographerCard 
+          />
+        </div>
+      </div>
       <div className="home-feed-gallery" >
         { photos ? (
             <DiscoverRows photos={photos}/>

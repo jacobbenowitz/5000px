@@ -97,6 +97,14 @@ export default class EditProfileForm extends React.Component {
     )
   }
 
+  buildUrl(url) {
+    if (url.includes('https://www.')) {
+      return url
+    } else {
+      return 'https://www.' + url
+    }
+  }
+
   render() {
     let userGender = this.state.gender;
     const { first_name, last_name, profile_avatar, profile_banner, website_url, instagram_url, lenses, cameras, birthday, city, country, about, gender, user_id } = this.state;
@@ -144,10 +152,10 @@ export default class EditProfileForm extends React.Component {
               <input
                 type="text"
                 id="website_url"
-                value={website_url}
+                value={this.buildUrl(website_url)}
                 onChange={this.update('website_url')}
                 className="text-input"
-                placeholder="www.mywebsite.com"
+                placeholder="https://www.mywebsite.com"
               />
             </div>
 
@@ -270,8 +278,18 @@ export default class EditProfileForm extends React.Component {
                 placeholder="Which lens do you use for that bokkah?"
               />
             </div>
-            <button type="submit"
-              className="save-profile">Save changes</button>
+            <div className="form-buttons flex-row">
+              <div
+                onClick={() => this.props.history.goBack()}
+                className="cancel"
+              >
+                <span>Cancel</span>
+              </div>
+              <button type="submit"
+                className="save-profile">
+                Save changes
+              </button>
+            </div>
           </form>
         </div>
       </div>

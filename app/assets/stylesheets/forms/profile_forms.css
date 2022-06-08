@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+.form-buttons {
+  width: 100%;
+  place-content: space-around;
+}
+
 .main-avatar-form {
   position: relative;
   display: flex;
