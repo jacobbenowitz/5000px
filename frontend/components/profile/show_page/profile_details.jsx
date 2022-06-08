@@ -27,8 +27,8 @@ export const ProfileDetails = ({profile, user, isCurrentProfile}) => {
       <div className="profile-header-container">
         {/* name */}
         {profile.first_name.length === 0 ? (
-        <span className="profile-name">
-          {user.username} </span> ) : (
+        <h3 className="profile-name">
+          {user.username} </h3> ) : (
         <h3 className="profile-name">
           {profile.first_name + " " + profile.last_name}
           </h3>)} 

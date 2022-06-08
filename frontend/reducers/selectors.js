@@ -1,16 +1,6 @@
 import React from "react";
-import { fetchPhoto } from "../actions/photos/photos_actions";
 
-// react-photo-album photo props //
-
-// key	string	  - Optional key attribute.
-// src	string	  - Image source.
-// width	number  - Image width in pixels.
-// height	number  -	Image height in pixels.
-// alt	string	  - Optional image alt attribute.
-// title	string  - Optional image title attribute.
-
-export const buildProfileGalleryArray = ({ photos }) => {
+export const buildProfileGalleryArray = (photos) => {
   return photos.map(photo => {
     let name = photo.profileName.length > 1 ?
       photo.profileName : photo.username
@@ -55,29 +45,7 @@ export const buildGridGalleryProps = (photos) => {
   })
 };
 
-// for react-grid-gallery
-// export const buildGridGalleryProps = ({ photos }) => {
-// debugger
-//   photos.map(photo => {
-//     const name = photo.profileName.length > 1 ?
-//       photo.profileName : photo.username;
-
-//     return {
-//       src: photo.photoUrl,
-//       thumbnail: photo.thumbnailUrl,
-//       width: photo.width,
-//       height: photo.height,
-//       caption: name,
-//       link: photo.showLink,
-//       alt: photo.title,
-//       key: photo.id,
-//       profileId: photo.profile_id,
-//     }
-//   })
-// };
-
 export const selectProfilePhotos = (photos, photoIds) => {
-  // debugger
   if (Object.keys(photos).length) {
     return photoIds.map(photoId => photos[photoId])
   }
@@ -103,8 +71,6 @@ export const selectUserFromPhoto = ({ users }, photo) => {
   }
 }
 
-// export const selectProfileById = 
-
 export const selectProfileById = ({ profiles }, profileId) => {
   if (profiles[profileId]) {
     return profiles[profileId];
@@ -116,17 +82,3 @@ export const selectProfileById = ({ profiles }, profileId) => {
 export const selectUserById = ({ users }, userId) => {
   return users[userId]
 }
-
-
-// export const selectPhotos
-
-///////
-// refactored with jbuilder user.profile.id -> added to user slice
-
-// export const selectPhotoProfile = ({ profiles }, userId) => {
-//   for (let i = 0; i < profiles.length; i++) {
-// debugger
-//     const profile = profiles[i];
-//     if (profile.user_id === userId) return profile;
-//   }
-// }

@@ -11,6 +11,7 @@ import { buildGridGalleryProps } from "../../../reducers/selectors"
 import GridLoader from '../content_loaders/profile-details-loader'
 import ProfilePhotoForm from "../../photos/profile_photo_form";
 import ProfileAvatarInput from "./profile_avatar_input";
+import ProfileCoverInput from "./profile_cover_input";
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
@@ -35,39 +36,46 @@ export default class ProfileShow extends React.Component {
       rgba(0, 0, 0, 0)), url(${profile.cover})`
     }) : (null);
 
-    let avatarForm, coverForm;
+    let avatar, cover;
 
     if (isCurrentProfile) {
-      avatarForm = (
+      avatar = (
         <div className="profile-avatar-container">
           <ProfileAvatarInput
             profile={profile}
             currentAvatar={profile.avatar}
             updateProfilePhoto={updateProfilePhoto}
           />
-          {/* <AvatarLg
-            profile={profile}
-          /> */}
         </div>
-        // <ProfilePhotoForm 
-        //   profileId={profile.id}
-        //   // up
-        // />
       )
-      // coverForm = ()
+      cover = (
+        <ProfileCoverInput
+          profile={profile}
+          currentCover={profile.cover}
+          updateProfilePhoto={updateProfilePhoto}
+        />
+      )
+    } else {
+      avatar = (
+        <AvatarLg
+          avatar={profile}
+        />
+      )
+      cover = (
+        profile.cover ? (
+          <div className="cover-img-box" style={coverStyle} />
+        ) : <CoverPhotoLoader />
+      )
     }
+    console.log(photos)
     
     return ( 
       <div className="profile-show-container" >
         <div className="profile-cover-container">
           
-          {avatarForm}
-          
-          {profile.cover ? (
-            <div className="cover-img-box" style={coverStyle} /> 
-          ) : ( <CoverPhotoLoader /> )}
+          {avatar}
+          {cover}
         </div>
-
         <section className="profile-details-container">
           { profile ? (
             <ProfileDetails
@@ -81,12 +89,14 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {photos  ?
+        {/* <ProfileRows photos={photos} /> */}
+        
+        {/* {photos  ?
           (
             <ProfileRows photos={photos}/>
           ) : (
             <GridLoader />
-          )}
+          )} */}
 
       </div>
     )

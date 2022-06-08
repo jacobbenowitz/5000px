@@ -29,7 +29,6 @@ export const updateProfile = profile => {
 }
 
 export const updateProfilePhoto = (formData, profileId) => {
-  debugger
   return $.ajax({
     method: 'PATCH',
     url: `api/profiles/${profileId}`,

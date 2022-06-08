@@ -11,6 +11,7 @@ export default class ProfileAvatarInput extends React.Component {
       id: '',
     }
     this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +26,7 @@ export default class ProfileAvatarInput extends React.Component {
       formData.append('profile[avatar]', this.state.avatar);
       formData.append('profile[id]', this.state.id);
     }
-    debugger
-    this.props.updateProfilePhoto(formData, this.props.profile.id);
+    await this.props.updateProfilePhoto(formData, this.props.profile.id);
     // this.props.openModal("success");
   }
 
@@ -51,7 +51,9 @@ export default class ProfileAvatarInput extends React.Component {
     const { currentAvatar, profile, updateAvatar } = this.props;
 
     return (
-      <div className='avatar-form'>
+      <div className='avatar-form'
+        id='avatar-form-profile'
+      >
         <div className="file-input-wrapper">
           <label htmlFor="avatar-input" className="avatar-input-label">
             <i className="fa-solid fa-arrow-up-from-bracket fa-sm" />
@@ -65,6 +67,7 @@ export default class ProfileAvatarInput extends React.Component {
 
         <div className="profile-avatar-container-form">
           <AvatarLg
+            // avatar={this.state.photoUrl.length ? this.state.photoUrl : currentAvatar}
             profile={profile}
           />
         </div>

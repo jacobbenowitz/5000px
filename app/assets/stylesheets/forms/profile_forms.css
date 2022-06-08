@@ -143,11 +143,11 @@
   background-color: #3b7fe6;
 }
 
-.avatar-input-label {
+.avatar-input-label, .cover-input-label {
   cursor: pointer;
 }
 
-#avatar-input {
+#avatar-input, #cover-input {
   display: none;
 }
 
@@ -156,7 +156,7 @@
   z-index: 500;
   width: max-content;
   position: absolute;
-  left: 110px;
+  left: 115px;
   top: -7px;
   text-align: end;
   background: #eeeeee;
@@ -185,6 +185,44 @@
   cursor: pointer;
 }
 
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#cover-img-box-input:hover {
+  border: 2px solid #265cac;
+}
+#cover-img-box-input {
+  border: 2px solid transparent;
+}
+
+.file-input-wrapper.cover {
+  top: 20px;
+  right: 20px;
+  z-index: 200;
+  display: flex;
+  visibility: visible;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 12px rgb(0 0 0 / 30%);
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+}
+
 .file-input-wrapper {
   top: -5px;
   right: -5px;
@@ -200,9 +238,15 @@
   border-radius: 50%;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: #f3f3f5;
+  background-color: #ffffff;
   box-shadow: 0px 0px 12px rgb(0 0 0 / 30%);
   cursor: pointer;
+  z-index: 200;
+  transition: transform 250ms ease-in-out;
+}
+
+.file-input-wrapper:hover {
+  transform: scale(110%);
 }
 
 .profile-avatar-container-form {

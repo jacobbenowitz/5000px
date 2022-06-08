@@ -24,7 +24,7 @@ export default class UserNavLinkItem extends React.Component {
 
     const modalClass = this.state.modalOpen ? "" : " modal-off";
     const styles = {
-      'background-image': `url(${this.props?.currentProfile.avatar})`
+      'backgroundImage': `url(${this.props?.currentProfile.avatar})`
     }
     return (
       <>
