@@ -117,14 +117,26 @@
   display: flex;
   align-items: center;
   position: relative;
-  min-width: 64px;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
 }
 
 .avatar-container-sm { 
   display: flex;
   align-items: center;
   position: relative;
-  max-width: 38px;
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
 }
 
 .user-details {

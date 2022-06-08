@@ -4,15 +4,18 @@ import AvatarLgLoader from "./avatar-loaders/avatar_lg_loader"
 const placeholderImg = "/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/placeholder-image.png";
 
 export const AvatarLg = props => {
-  
   const { avatar } = props.profile ? props.profile : placeholderImg;
+  const styles = {
+    'background-image': `url(${avatar})`
+  }
+
   return (
-      <div className="avatar-wrapper">
-        {avatar ? (
+      <div className="avatar-wrapper" style={styles}>
+        {/* {avatar ? (
           <img src={avatar} className="avatar-img" />
         ): (
           <AvatarLgLoader />
-        )}
+        )} */}
       </div>
   )
 }

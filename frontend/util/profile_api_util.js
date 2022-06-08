@@ -20,13 +20,24 @@ export const createProfile = profile => {
   })
 };
 
-export const updateProfile = profile => (
-  $.ajax({
+export const updateProfile = profile => {
+  return $.ajax({
     method: 'PATCH',
     url: `api/profiles/${profile.id}`,
     data: { profile }
   })
-);
+}
+
+export const updateProfilePhoto = (formData, profileId) => {
+  debugger
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/profiles/${profileId}`,
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+}
 
 export const deleteProfile = profileId => (
   $.ajax({

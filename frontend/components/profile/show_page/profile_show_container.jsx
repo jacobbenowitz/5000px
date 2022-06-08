@@ -1,9 +1,10 @@
 import { connect } from "react-redux"
 import {
   fetchPhoto,
-  fetchPhotos
+  fetchPhotos,
+  uploadPhoto
 } from "../../../actions/photos/photos_actions";
-import { fetchProfile, updateProfile } from "../../../actions/profile/profile_actions";
+import { fetchProfile, updateProfile, updateProfilePhoto } from "../../../actions/profile/profile_actions";
 import { selectProfilePhotos, buildGalleryArray, buildGridGalleryProps } from "../../../reducers/selectors";
 import ProfileShow from "./profile_show";
 
@@ -27,7 +28,9 @@ const mapDispatchToProps = dispatch => {
     fetchProfile: profileId => dispatch(fetchProfile(profileId)),
     fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
     fetchPhotos: () => dispatch(fetchPhotos()),
-    updateProfile: profileData => dispatch(updateProfile(profileData))
+    updateProfile: profileData => dispatch(updateProfile(profileData)),
+    updateProfilePhoto: (formData, profileId) =>
+      dispatch(updateProfilePhoto(formData, profileId))
   }
 }
 

@@ -32,8 +32,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  max-height: 95px;
-  max-width: 95px;
+  height: 95px;
+  width: 95px;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
 }
 
 .avatar-box-lg {
@@ -48,10 +54,8 @@
 }
 
 .avatar-img {
-  border-radius: 50%;
-  border: 2px solid rgb(255, 255, 255);
-  width: 100%;
   height: 100%;
+  width: auto;
 }
 
 .profile-details-container {

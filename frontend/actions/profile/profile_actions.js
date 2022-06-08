@@ -67,11 +67,19 @@ export const createProfile = profile => dispatch => {
 }
 
 export const updateProfile = profile => dispatch => {
-  return ProfileApiUtil.updateProfile(profile).then(profile =>
-    dispatch(receiveProfile(profile))
+  debugger
+  return ProfileApiUtil.updateProfile(profile)
+    .then(profile => dispatch(receiveProfile(profile))
   ), error => (
     dispatch(receiveProfileErrors(error.responseJSON))
   )
+}
+
+export const updateProfilePhoto = (formData, profileId) => {
+  debugger
+  return ProfileApiUtil.updateProfilePhoto(formData, profileId)
+    .then(profile => dispatch(receiveProfile(profile)))
+    .catch(error => dispatch(receiveProfileErrors(error.responseJSON)))
 }
 
 export const deleteProfile = profileId => dispatch => {

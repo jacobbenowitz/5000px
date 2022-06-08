@@ -28,7 +28,7 @@ export default class ProfileShow extends React.Component {
 
 
   render() {
-    const { profile, user, photos, isCurrentProfile } = this.props;
+    const { profile, user, photos, isCurrentProfile, updateProfilePhoto } = this.props;
 
     let coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
@@ -43,6 +43,7 @@ export default class ProfileShow extends React.Component {
           <ProfileAvatarInput
             profile={profile}
             currentAvatar={profile.avatar}
+            updateProfilePhoto={updateProfilePhoto}
           />
           {/* <AvatarLg
             profile={profile}

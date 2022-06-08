@@ -23,7 +23,17 @@ class Api::ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by(id: params[:id])
-    
+
+    byebug
+
+    if params[:avatar]
+      @profile.avatar.attach(:avatar)
+    end
+
+    # if params[:profile_banner]
+    #   @profile.avatar.attach(:profile_banner)
+    # end
+
     if @profile.update(profile_params)
       render :show
     else
@@ -37,7 +47,7 @@ class Api::ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :first_name, :last_name, :profile_avatar, :profile_banner, :website_url, :instagram_url, :lenses, :cameras, :birthday, :city, :country, :about, :gender, :about, :user_id
+      :first_name, :last_name, :avatar, :profile_banner, :website_url, :instagram_url, :lenses, :cameras, :birthday, :city, :country, :about, :gender, :about, :user_id
     )
   end
 
