@@ -1,15 +1,9 @@
 import React from "react";
-import { selectProfilePhotos, selectGalleryDetails } from "../../../reducers/selectors";
-import { Link } from "react-router-dom";
 import CoverPhotoLoader from "../content_loaders/cover_photo_loader";
 import { AvatarLg } from "../../avatar/avatar_lg";
 import ProfileDetailsLoader from "../content_loaders/profile-details-loader";
 import { ProfileDetails } from "./profile_details";
 import ProfileRows from "./profile_photo_gallery";
-import DiscoverGallery from "../../galleries/discover_gallery";
-import { buildGridGalleryProps } from "../../../reducers/selectors"
-import GridLoader from '../content_loaders/profile-details-loader'
-import ProfilePhotoForm from "../../photos/profile_photo_form";
 import ProfileAvatarInput from "./profile_avatar_input";
 import ProfileCoverInput from "./profile_cover_input";
 
@@ -67,8 +61,7 @@ export default class ProfileShow extends React.Component {
         ) : <CoverPhotoLoader />
       )
     }
-    console.log(photos)
-    
+
     return ( 
       <div className="profile-show-container" >
         <div className="profile-cover-container">
@@ -76,6 +69,7 @@ export default class ProfileShow extends React.Component {
           {avatar}
           {cover}
         </div>
+
         <section className="profile-details-container">
           { profile ? (
             <ProfileDetails
@@ -89,14 +83,12 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {/* <ProfileRows photos={photos} /> */}
-        
-        {/* {photos  ?
+        {photos.length  ?
           (
             <ProfileRows photos={photos}/>
           ) : (
-            <GridLoader />
-          )} */}
+            <span>Content loader here!</span>
+          )}
 
       </div>
     )

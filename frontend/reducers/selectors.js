@@ -1,6 +1,6 @@
 import React from "react";
 
-export const buildProfileGalleryArray = (photos) => {
+export const buildProfileGalleryArray = ({photos}) => {
   return photos.map(photo => {
     let name = photo.profileName.length > 1 ?
       photo.profileName : photo.username
@@ -46,9 +46,10 @@ export const buildGridGalleryProps = (photos) => {
 };
 
 export const selectProfilePhotos = (photos, photoIds) => {
-  if (Object.keys(photos).length) {
+  debugger
+  if (Object.keys(photos).length && photoIds.length) {
     return photoIds.map(photoId => photos[photoId])
-  }
+  } else return []
 };
 
 export const selectPhotoById = ({ photos }, photoId) => {

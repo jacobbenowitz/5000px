@@ -13,12 +13,14 @@ const mapStateToProps = ({entities, session}, { match }) => {
   const isCurrentProfile = session.profile == profileId;
   const profile = entities.profiles[profileId];
   const user = entities.users[profile.user_id];
-
+  const profilePhotos = selectProfilePhotos(entities.photos, profile.photoIds)
+  // const 
+  debugger
   return {
     profileId: profileId,
     profile: profile,
     user: user,
-    photos: selectProfilePhotos(entities.photos, profile.photoIds),
+    photos: profilePhotos,
     isCurrentProfile: isCurrentProfile
   }
 }
