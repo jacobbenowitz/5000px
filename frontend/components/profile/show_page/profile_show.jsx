@@ -7,23 +7,40 @@ import ProfileRows from "./profile_photo_gallery";
 import ProfileAvatarInput from "./profile_avatar_input";
 import ProfileCoverInput from "./profile_cover_input";
 
+const IDLE = 'IDLE'
+const BUSY = 'BUSY'
+const DONE = 'DONE'
+
 export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      status: IDLE
+    }
   }
   
   componentDidMount() {
     const { photos, profile, profileId,
       fetchPhotos, fetchProfile } = this.props
-    
-    fetchProfile(profileId)
-    fetchPhotos() 
+    this.setState({ status: BUSY }, () => {
+      fetchPhotos() 
+      fetchProfile(profileId)
+    })
+  }
 
+  componentDidUpdate() {
+    const {status} = this.state;
+    const { photos, profile } = this.props;
+    
+    if (status === BUSY && photos.length && Object.values(profile)) {
+      this.setState({status: DONE})
+    }
   }
 
 
   render() {
     const { profile, user, photos, isCurrentProfile, updateProfilePhoto } = this.props;
+    const { status } = this.state;
 
     let coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
@@ -65,7 +82,6 @@ export default class ProfileShow extends React.Component {
     return ( 
       <div className="profile-show-container" >
         <div className="profile-cover-container">
-          
           {avatar}
           {cover}
         </div>
@@ -75,7 +91,7 @@ export default class ProfileShow extends React.Component {
             <ProfileDetails
               profile={profile}
               user={user}
-              isCurrentProfile={this.props.isCurrentProfile} />
+              isCurrentProfile={isCurrentProfile} />
             ) : (
             <div className="profile-loader-container">
               <ProfileDetailsLoader />
@@ -83,7 +99,7 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {photos.length  ?
+        {status === DONE  ?
           (
             <ProfileRows photos={photos}/>
           ) : (

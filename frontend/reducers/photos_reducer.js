@@ -1,7 +1,8 @@
 import {
   RECEIVE_PHOTO,
   RECEIVE_PHOTOS,
-  REMOVE_PHOTO
+  REMOVE_PHOTO,
+  REQUEST_PHOTOS
 } from '../actions/photos/photos_actions';
 import { merge } from 'lodash';
 
@@ -12,6 +13,8 @@ const photosReducer = (initialState = {}, action) => {
   switch (action.type) {
     case RECEIVE_PHOTOS:
       return action.photos;
+    case REQUEST_PHOTOS:
+      return nextState
     case RECEIVE_PHOTO:
       nextState[action.photo.photo.id] = action.photo.photo
       return nextState;

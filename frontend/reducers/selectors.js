@@ -2,22 +2,22 @@ import React from "react";
 
 export const buildProfileGalleryArray = ({photos}) => {
   return photos.map(photo => {
-    let name = photo.profileName.length > 1 ?
-      photo.profileName : photo.username
+    let name = photo?.profileName.length > 1 ?
+      photo.profileName : photo?.username
     
     return {
-      key: photo.id,
-      src: photo.photoUrl,
-      width: photo.width,
-      height: photo.height,
-      alt: photo.title,
-      title: photo.showLink,
+      key: photo?.id,
+      src: photo?.photoUrl,
+      width: photo?.width,
+      height: photo?.height,
+      alt: photo?.title,
+      title: photo?.showLink,
     }
   })
 };
 export const buildDiscoverGalleryArray = ({ photos }) => {
   return photos.map(photo => {
-    let name = photo.profileName.length > 1 ?
+    let name = photo?.profileName.length > 1 ?
       photo.profileName : photo.username
     
     return {

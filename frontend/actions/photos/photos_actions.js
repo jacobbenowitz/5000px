@@ -5,7 +5,7 @@ export const REMOVE_PHOTO = 'REMOVE_PHOTO'; // photo
 export const RECEIVE_PHOTO_UPDATE = 'RECEIVE_PHOTO_UPDATE'; // photo
 export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS'; // [photos]
 export const RECEIVE_PHOTO_ERRORS = 'RECEIVE_PHOTO_ERRORS'; // 'error...'
-
+export const REQUEST_PHOTOS = 'REQUEST_PHOTOS';
 // actions
 export const receivePhoto = photo => ({
   type: RECEIVE_PHOTO,
@@ -29,6 +29,10 @@ export const receivePhotos = photos => {
   }
 };
 
+export const requestPhotos = () => ({
+  type: REQUEST_PHOTOS
+})
+
 export const receivePhotoErrors = messages => {
   return {
     type: RECEIVE_PHOTO_ERRORS,
@@ -48,6 +52,7 @@ export const deletePhoto = photoId => dispatch => {
 }
 
 export const fetchPhotos = () => dispatch => {
+  dispatch(requestPhotos())
   return PhotoApiUtil.fetchPhotos().then(photos =>
     dispatch(receivePhotos(photos)))
 }
