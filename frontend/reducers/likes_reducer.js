@@ -7,7 +7,7 @@ import {
 const likesReducer = (initialState = {}, action) => {
   Object.freeze(initialState);
   let nextState = Object.assign({}, initialState);
-  // debugger
+  
   switch (action.type) {
     case RECEIVE_LIKES:
       return action.likes;

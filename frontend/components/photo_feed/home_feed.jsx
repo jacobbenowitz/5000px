@@ -4,7 +4,7 @@ import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
 import { buildGridGalleryProps } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
-import ProfileRows from "../profile/show_page/profile_photo_gallery";
+import DiscoverRows from "./discover_photo_gallery"
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class HomeFeed extends React.Component {
   // todo: create tab navigation component for discover
   render() {
     const { photos, users, profiles, currentProfile } = this.props;
-    // debugger
+    
     return (
       <div className="home-feed-container">
       <div className="page-top-banner">
@@ -35,7 +35,7 @@ export default class HomeFeed extends React.Component {
         {/* <DiscoverGallery images={ photos }/> */}
       <div className="home-feed-gallery" >
         { photos ? (
-            <ProfileRows photos={photos}/>
+            <DiscoverRows photos={photos}/>
             ) : (
               <GridLoader />
               )

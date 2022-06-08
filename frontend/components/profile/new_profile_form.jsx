@@ -82,8 +82,6 @@ export default class NewProfileForm extends React.Component {
 
     const formData = Object.assign({}, this.state,
       { user_id: this.props.userId} )
-    
-    // debugger
     if (this.props.userId !== null) {
       this.props.submitForm(formData)
       this.redirectHome();

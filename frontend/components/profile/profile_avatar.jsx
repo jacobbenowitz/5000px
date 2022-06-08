@@ -8,11 +8,9 @@ export default class ProfileAvatar extends React.Component {
   // TEST: Removed bc url should be in db now, no need to fetch by id
   componentDidMount() {
     // this.props.fetchProfile(this.props.profileId)
-    // debugger
   }
 
   render() {
-    // debugger
     if (this.props.avatar) {
       return (
         <img src = {this.props.avatar }/>

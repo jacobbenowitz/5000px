@@ -42,7 +42,6 @@ export const buildDiscoverGalleryArray = ({ photos }) => {
 };
 
 export const buildGridGalleryProps = (photos) => {
-  // debugger
   return photos.map(photo => {
     return {
       src: photo.photoUrl,
@@ -78,14 +77,13 @@ export const buildGridGalleryProps = (photos) => {
 // };
 
 export const selectProfilePhotos = (photos, photoIds) => {
-  debugger
+  // debugger
   if (Object.keys(photos).length) {
     return photoIds.map(photoId => photos[photoId])
   }
 };
 
 export const selectPhotoById = ({ photos }, photoId) => {
-  // debugger
   return photos[photoId]
 };
 
@@ -93,13 +91,11 @@ export const selectPhoto = ({ photos }, photoId) => {
   if (Object.keys(photos).length === 0) {
     return {}
   } else {
-    // debugger
     return photos[photoId];
   }
 }
 
 export const selectUserFromPhoto = ({ users }, photo) => {
-  // debugger
   if (Object.keys(photo), length === 0 || typeof photo.user_id === "undefined") {
     return {}
   } else {
@@ -110,7 +106,6 @@ export const selectUserFromPhoto = ({ users }, photo) => {
 // export const selectProfileById = 
 
 export const selectProfileById = ({ profiles }, profileId) => {
-  // debugger
   if (profiles[profileId]) {
     return profiles[profileId];
   } else {
@@ -119,7 +114,6 @@ export const selectProfileById = ({ profiles }, profileId) => {
 };
 
 export const selectUserById = ({ users }, userId) => {
-  // debugger
   return users[userId]
 }
 

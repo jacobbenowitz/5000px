@@ -39,7 +39,6 @@ export default class SignupForm extends React.Component {
       console.log(['must fill in all fields'])
     } else {
       processForm(user).then(user => {
-        // debugger
         this.redirectCreateProfile();
         this.props.openModal("success");
       })

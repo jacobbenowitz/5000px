@@ -20,14 +20,12 @@ const sessionReducer = (initialState = _nullSession, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       if (typeof action.currentUser.id === 'undefined') {
-        // debugger
         return (Object.assign({}, nextState,
           {
             id: action.currentUser.user.id,
             profile: action.currentUser.user.profileId
           }));
       } else {
-        // debugger
         return (Object.assign({}, nextState,
           {
             id: action.currentUser.id,
@@ -35,7 +33,6 @@ const sessionReducer = (initialState = _nullSession, action) => {
           }));
       };
     case RECEIVE_CURRENT_PROFILE:
-      // debugger
       return (
         Object.assign({}, initialState,
           { profile: action.profile.id })

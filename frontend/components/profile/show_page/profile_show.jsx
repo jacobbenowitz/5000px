@@ -33,7 +33,6 @@ export default class ProfileShow extends React.Component {
       rgba(0, 0, 0, 0)), url(${profile.cover})`
     }) : (null);
     
-    console.log(`render: ${photos}`)
     return ( 
       <div className="profile-show-container" >
 
@@ -66,9 +65,6 @@ export default class ProfileShow extends React.Component {
             <GridLoader />
           )}
 
-        <div className='image-wrapper'>
-          <div className="spacer-test"></div>
-        </div>
       </div>
     )
   }

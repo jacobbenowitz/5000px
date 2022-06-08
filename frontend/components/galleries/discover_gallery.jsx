@@ -28,7 +28,6 @@ export default class DiscoverGallery extends React.Component {
 
   render() {
     const images = this.props.images.map((img) => {
-      console.log(img.caption)
       img.customOverlay = (
         <div className="photo-caption">
           <div style={captionStyle}>

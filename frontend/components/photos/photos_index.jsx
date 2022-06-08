@@ -10,7 +10,7 @@ export default class PhotosIndex extends React.Component {
 
   render() {
     const { photos, profiles, users } = this.props;
-    // debugger
+    
     return (
       <div id="photos-index-test">
         <ul className="photo-gallery">

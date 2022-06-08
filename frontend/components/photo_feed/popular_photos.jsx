@@ -54,17 +54,11 @@ class PopularPhotos extends React.Component {
               enableImageSelection={false}
               enableLightbox={false}
               // onClickThumbnail={(e, i) => console.log(e.target, i)}
-              thumbnailImageComponent={ thumbnailTest}
             />
           </div>
         </div>
       );
   }
-}
-
-const thumbnailTest = (imageProps, item) => {
-  console.log(imageProps, item)
-
 }
 
 PopularPhotos.propTypes = {

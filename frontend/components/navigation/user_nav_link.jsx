@@ -23,7 +23,7 @@ export default class UserNavLinkItem extends React.Component {
   render() {
 
     const modalClass = this.state.modalOpen ? "" : " modal-off";
-    // debugger
+
     return (
       <>
         <div id="user-avatar"

@@ -26,7 +26,6 @@ export default class Modal extends React.Component {
     setTimeout(() => {
       const modalContainer = document.getElementById('modal-container');
       modalContainer.className = 'modal-out';
-      // debugger
     }, 5000)
     setTimeout(() => {
       this.props.closeModal()
@@ -36,7 +35,6 @@ export default class Modal extends React.Component {
 
   
   render() {
-    // debugger
     const { modal, closeModal, errors } = this.props;
     if (!modal) {
       return null;

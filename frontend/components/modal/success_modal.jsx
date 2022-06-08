@@ -9,7 +9,7 @@ export default class SuccessModal extends React.Component {
   render() {
     
     const { photos, profiles, session } = this.props.errors;
-    // debugger
+
     if (photos || profiles || session) {
       return (
         <div className="modal success" key={'successModal'}>
@@ -18,7 +18,6 @@ export default class SuccessModal extends React.Component {
           </div>
           <div>
             {photos.map(error => {
-              // debugger
               return (
                 <span>{error}</span>
               )})

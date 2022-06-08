@@ -8,7 +8,6 @@ import PhotosIndex from "./photos_index";
 //   const photos = Object.values(state.entities.photos);
 //   const users = state.entities.users;
 //   const profiles = state.entities.profiles;
-//   debugger
 //   return {
 //     photos: photos,
 //     users: users,

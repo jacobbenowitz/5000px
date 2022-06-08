@@ -13,10 +13,11 @@ export default class PhotoProfileDetails extends React.Component {
   render() {
     const { photo, photoId, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, getLikes } = this.props;
 
+
     return (
       <div className="photo-detail-summary">
         <div className="inset-box">
-          {photo && photoProfile && user ? (
+          {photoProfile ? (
             <>
               <PhotoActions getLikes={getLikes}
                 isCurrentProfile={isCurrentProfile} photo={photo}

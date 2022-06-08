@@ -1,8 +1,8 @@
 import PhotoAlbum from "react-photo-album";
-import SinglePhotoLoader from "../../photos/content-loaders/single-photo-loader";
+import SinglePhotoLoader from "../photos/content-loaders/single-photo-loader";
 import React from "react";
 import { render } from "react-dom";
-import { buildGalleryArray } from "../../../reducers/selectors";
+import { buildDiscoverGalleryArray } from "../../reducers/selectors";
 import { Link } from "react-router-dom";
 
 
@@ -31,8 +31,8 @@ const renderPhoto = ({ layoutOptions, imageProps: { title, alt, style, id, key, 
 // const renderContainer = (RenderContainerProps) => (  )
 
 
-const ProfileRows = (photos) => {
-  let galleryPhotos = buildGalleryArray(photos);
+const DiscoverRows = (photos) => {
+  let galleryPhotos = buildDiscoverGalleryArray(photos);
   return <div id="profile-gallery-box">
     <PhotoAlbum
       photos={galleryPhotos}
@@ -44,4 +44,4 @@ const ProfileRows = (photos) => {
   </div>
 }
 
-export default ProfileRows;
+export default DiscoverRows;

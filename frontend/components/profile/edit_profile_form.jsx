@@ -10,7 +10,6 @@ export default class EditProfileForm extends React.Component {
     this.state = {
     };
     //testing this here instead of didMount
-    // debugger
     // this.props.fetchProfile(props.profile.id);
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +17,6 @@ export default class EditProfileForm extends React.Component {
   
   componentDidMount() {
     this.setState(this.props.profile);
-    // debugger
   }
 
   // -> tabs with separate form!! = NOT done
@@ -51,7 +49,6 @@ export default class EditProfileForm extends React.Component {
 
   render() {
     let userGender = this.state.gender;
-    // debugger
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">

@@ -5,7 +5,6 @@ import LikeIcon from "../action_components/like_icon";
 export default class PhotoActions extends React.Component {
   constructor(props) {
     super(props)
-    // debugger
   }
 
   render() {
@@ -14,9 +13,12 @@ export default class PhotoActions extends React.Component {
       <div className="photo-action-icons">
         {/* LIKE */}
         <div className="icon-box like-box">
-          <LikeIcon isCurrentProfile={isCurrentProfile} photo={photo}
-            photoId={photoId} currentProfile={currentProfile}
-            isCurrentProfile={isCurrentProfile} currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked}
+          <LikeIcon
+            photo={photo}
+            photoId={photoId}
+            currentProfile={currentProfile}
+            isCurrentProfile={isCurrentProfile}
+            newLike={newLike} deleteLike={deleteLike} isLiked={isLiked}
             likes={likes} getLikes={getLikes} className="icon-link like"/>
 
         </div>

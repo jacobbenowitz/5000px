@@ -9,8 +9,6 @@ const mapStateToProps = (state, ownProps) => {
   const photoId = ownProps.match.params.photoId;
   const photo = state.entities.photos[photoId] || {};
   
-  // debugger
-   /// NOT WORKING
   return {
     photoId: photoId,
     photo: photo,

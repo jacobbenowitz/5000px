@@ -14,7 +14,6 @@ class PhotoIndexItem extends React.Component {
 
   render() {
     const { photo, profile, user } = this.props;
-    // debugger
     const photoOverlay = (
       <div className="photo-data-overlay">
         <div className="top-img-overlay">

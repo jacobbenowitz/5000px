@@ -6,30 +6,40 @@ import SinglePhotoLoader from "./content-loaders/single-photo-loader";
 export default class SinglePhotoShow extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
   }
 
   componentDidMount() {
-    // debugger
-    this.props.photo && this.props.photoProfile &&
-      this.props.likes ? this.render() :
-      this.props.fetchPhoto(this.props.photoId)
-      this.props.getLikes(this.props.getLikes)
+    const { photoId, photo, photoProfile, likes,
+      isLiked, user, isCurrentProfile, currentProfile,
+      fetchProfile, fetchPhoto, getLikes } = this.props;
+    
+    fetchPhoto(photoId)
+    fetchProfile(photo?.profile_id)
+    getLikes(getLikes)
   }
 
 
   render() {
     const { photo, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, photoId, getLikes } = this.props;
-    // debugger
     return (
       <div className="photo-show-container">
         {photo ? (
           <>
-            <ImageViewer photo={photo} />
-            <PhotoProfileDetails photo={photo} photoId={photoId} photoProfile={photoProfile} getLikes={getLikes}
-              user={user} isCurrentProfile={isCurrentProfile}
-              currentProfile={currentProfile} newLike={newLike}
-              deleteLike={deleteLike} isLiked={isLiked} likes={likes}
+            <ImageViewer
+              photo={photo} 
+            />
+            <PhotoProfileDetails
+              photo={photo}
+              photoId={photoId}
+              photoProfile={photoProfile}
+              user={user}
+              isCurrentProfile={isCurrentProfile}
+              currentProfile={currentProfile}
+              getLikes={getLikes}
+              newLike={newLike}
+              deleteLike={deleteLike}
+              isLiked={isLiked}
+              likes={likes}
             />
           </>
         ) : ( <SinglePhotoLoader className="profile-loader" /> )}
