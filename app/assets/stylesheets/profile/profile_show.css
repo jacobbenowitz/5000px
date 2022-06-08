@@ -113,6 +113,7 @@
   word-break: break-word;
   max-width: 100%;
   margin-bottom: 8px;
+  gap: 8px;
 }
 
 .profile-bio-and-stats-container {
@@ -124,6 +125,8 @@
   display: flex;
   margin-top: 16px;
   margin-bottom: 28px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .profile-about {
@@ -161,4 +164,27 @@
   word-break: break-word;
   padding: 8px 16px 64px;
   background-color: rgb(247, 248, 250);
+}
+
+.profile-stats-section {
+  padding: 1rem 0;
+  gap: 0.25rem;
+  font-size: 14px;
+  color: #222222;
+}
+
+.profile-stats-wrapper {
+  gap: 2rem;
+}
+
+/* .stats-reg {
+
+} */
+
+.social-links {
+  gap: 1rem;
+}
+
+.stats-bold {
+  font-weight: 700;
 }

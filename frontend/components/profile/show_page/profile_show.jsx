@@ -43,15 +43,28 @@ export default class ProfileShow extends React.Component {
 
 
   render() {
-    const { profile, user, photos, isCurrentProfile, updateProfilePhoto } = this.props;
+    const { profile, user, photos, isCurrentProfile,
+      updateProfilePhoto } = this.props;
     const { status } = this.state;
 
-    let coverStyle = profile.cover ? ({
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
-      rgba(0, 0, 0, 0)), url(${profile.cover})`
-    }) : (null);
+    let avatar, cover, coverStyle;
 
-    let avatar, cover;
+    if (profile.cover) {
+      coverStyle = (
+        {
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
+          rgba(0, 0, 0, 0)), url(${profile.cover})`
+        }
+      ) // add fallback image or content placeholder in else statement
+    } else {
+      coverStyle = (
+        {
+          backgroundImage: 'linear-gradient(315deg, #485461 0 %, #28313b 74 %)',
+          backgroundColor: '#485461'
+        }
+      )
+    }
+
 
     if (isCurrentProfile) {
       avatar = (

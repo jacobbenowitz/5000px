@@ -72,3 +72,14 @@ html {
 #bottom-footer-links a {
   margin-left: 10px;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center;
+}
+
+.gap-10 {
+  gap: 10px;
+}
