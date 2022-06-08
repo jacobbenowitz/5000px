@@ -151,6 +151,8 @@ a {
   padding-top: 1.4rem;
 }
 
-.img-test {
-  width: 20px;
+.spacer-test {
+  width: 250px;
+  height: 200px;
+  background-color: blue;
 }

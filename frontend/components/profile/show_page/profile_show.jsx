@@ -7,34 +7,27 @@ import ProfileDetailsLoader from "../content_loaders/profile-details-loader";
 import { ProfileDetails } from "./profile_details";
 import ProfileRows from "./profile_photo_gallery";
 import DiscoverGallery from "../../galleries/discover_gallery";
-import { buildGridGalleryProps, asArray } from "../../../reducers/selectors"
+import { buildGridGalleryProps } from "../../../reducers/selectors"
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      photos: [],
-    }
   }
   
   componentDidMount() {
-    const {
-      photos, profile, user, profileId,
-      fetchPhotos, fetchProfile } = this.props;
-
-    profile && photos ? (
-      this.setState({
-        photos: buildGridGalleryProps(photos)
-    }) ) : photos ? (
-      fetchProfile(profileId)) : fetchPhotos() 
+    const { photos, profile, profileId,
+      fetchPhotos, fetchProfile } = this.props
     
-  };
-
+    if (!profile || !photos.length) {
+      fetchProfile(profileId)
+      fetchPhotos() 
+    }
+  }
 
 
   render() {
-    const { profile, user, photos } = this.props;
+    const { profile, user, photos,
+      gridGalleryPhotos, isCurrentProfile } = this.props;
 
     const coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
@@ -67,16 +60,16 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {/* <ProfileRows photos={photos}/> */}
-        {photos && profile  ?
+        {photos  ?
           (
-          // <DiscoverGallery images={ photos }/>
-          <ProfileRows photos={photos}/>
+            <ProfileRows photos={photos}/>
           ) : (
             <GridLoader />
           )}
 
-
+        <div className='image-wrapper'>
+          <div className="spacer-test"></div>
+        </div>
       </div>
     )
   }

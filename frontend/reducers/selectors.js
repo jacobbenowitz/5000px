@@ -12,12 +12,14 @@ import { fetchPhoto } from "../actions/photos/photos_actions";
 import React from "react";
 
 export const buildGalleryArray = ({ photos }) => {
-  // debugger
   return photos.map(photo => {
+    let name = photo.profileName.length > 1 ?
+      photo.profileName : photo.username
+    
     return {
       src: photo.photoUrl,
-      alt: photo.alt,
-      title: photo.title,
+      alt: photo.username,
+      title: photo.showLink,
       width: photo.width,
       height: photo.height,
       key: photo.id,
@@ -61,7 +63,7 @@ export const buildGridGalleryProps = (photos) => {
 //   })
 // };
 
-export const selectProfilePhotos = ({ photos }, photoIds) => {
+export const selectProfilePhotos = (photos, photoIds) => {
   // debugger
   return Object.keys(photos).length > 0 ? (
     photoIds.map(photoId => {
@@ -72,11 +74,6 @@ export const selectProfilePhotos = ({ photos }, photoIds) => {
 export const selectPhotoById = ({ photos }, photoId) => {
   // debugger
   return photos[photoId]
-};
-
-export const asArray = ({ photos }) => {
-  // debugger
-  return Object.keys(photos).map(id => photos[id])
 };
 
 export const selectPhoto = ({ photos }, photoId) => {

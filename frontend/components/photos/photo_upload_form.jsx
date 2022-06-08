@@ -195,67 +195,71 @@ export default class PhotoUploadForm extends React.Component {
 
           <div id="image-upload-step-2" className="hidden">
 
-            <div className="image-preview-container">
-              <div className="image-preview"
-                onMouseOver={this.showOverlay}
-                onMouseLeave={this.hideOverlay}
-              >
-                { overlay }
-                { preview }
-                <span className="photo-label-upload">{ this.state.photoFile ? this.state.photoFile.name : "" }</span>
+            <div className="left-col-edit">
+              <div className="image-preview-container">
+                <div className="image-preview"
+                  onMouseOver={this.showOverlay}
+                  onMouseLeave={this.hideOverlay}
+                >
+                  { overlay }
+                  { preview }
+                  <span className="photo-label-upload">{ this.state.photoFile ? this.state.photoFile.name : "" }</span>
+                </div>
               </div>
             </div>
+            
+            <div className="right-col-edit">
+              <div className="upload-form-container">
+                <form className="photo-upload-form" onSubmit={this.handleSubmit}>
 
-            <div className="upload-form-container">
-              <form className="photo-upload-form" onSubmit={this.handleSubmit}>
+                  <div className="form-input">
+                    <label htmlFor="photo-title">Title</label>
+                    <input type="text" name="photo-title"
+                      value={ this.state.title }
+                      className="text-input" onChange={this.handleInput('title')}
+                    />
+                  </div>
 
-                <div className="form-input">
-                  <label htmlFor="photo-title">Title</label>
-                  <input type="text" name="photo-title"
-                    value={ this.state.title }
-                    className="text-input" onChange={this.handleInput('title')}
-                  />
-                </div>
+                  <div className="form-input">
+                    <label htmlFor="photo-description">Description</label>
+                    <textarea name="photo-description"
+                      className="description-input" onChange={this.handleInput('description')} />
+                  </div>
 
-                <div className="form-input">
-                  <label htmlFor="photo-description">Description</label>
-                  <textarea name="photo-description"
-                    className="description-input" onChange={this.handleInput('description')} />
-                </div>
+                  <div className="form-input">
+                    <label htmlFor="photo-lens">Lens</label>
+                    <input type="text" name="photo-lens"
+                      value={ this.state.lens }
+                      className="text-input" onChange={this.handleInput('lens')}
+                    />
+                  </div>
 
-                <div className="form-input">
-                  <label htmlFor="photo-lens">Lens</label>
-                  <input type="text" name="photo-lens"
-                    value={ this.state.lens }
-                    className="text-input" onChange={this.handleInput('lens')}
-                  />
-                </div>
+                  <div className="form-input">
+                    <label htmlFor="photo-camera">Camera</label>
+                    <input type="text" name="photo-camera"
+                      value={ this.state.camera }
+                      className="text-input" onChange={this.handleInput('camera')}
+                    />
+                  </div>
 
-                <div className="form-input">
-                  <label htmlFor="photo-camera">Camera</label>
-                  <input type="text" name="photo-camera"
-                    value={ this.state.camera }
-                    className="text-input" onChange={this.handleInput('camera')}
-                  />
-                </div>
+                  <div className="form-input">
+                    <label htmlFor="photo-location">Location</label>
+                    <input type="text" name="photo-location"
+                      value={ this.state.location }
+                      className="text-input" onChange={this.handleInput('location')}
+                    />
+                  </div>
+                  <div className="form-bot-buttons">
 
-                <div className="form-input">
-                  <label htmlFor="photo-location">Location</label>
-                  <input type="text" name="photo-location"
-                    value={ this.state.location }
-                    className="text-input" onChange={this.handleInput('location')}
-                  />
-                </div>
-                <div className="form-bot-buttons">
-
-                  <span onClick={this.deletePhoto}
-                    className="cancel-upload"
-                  >Cancel</span>
-                  <button className="upload-photo-button"
-                    type="submit">Upload photo</button>
-                </div>
-                
-              </form>
+                    <span onClick={this.deletePhoto}
+                      className="cancel-upload"
+                    >Cancel</span>
+                    <button className="upload-photo-button"
+                      type="submit">Upload photo</button>
+                  </div>
+                  
+                </form>
+              </div>
             </div>
           </div>
         </div>

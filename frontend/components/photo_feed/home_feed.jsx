@@ -2,7 +2,7 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
-import { buildGridGalleryProps, asArray } from "../../reducers/selectors";
+import { buildGridGalleryProps } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import ProfileRows from "../profile/show_page/profile_photo_gallery";
 
@@ -16,9 +16,9 @@ export default class HomeFeed extends React.Component {
     const { photos, profiles, likes,
       fetchPhotos, fetchProfiles, getLikes } = this.props;
     
-    // debugger
-    
-    photos ? fetchPhotos() : profiles ? fetchProfiles() : likes ? getLikes() : this.render();
+    fetchPhotos()
+    fetchProfiles()
+    getLikes()
   }
   
 

@@ -1,22 +1,23 @@
 
 .upload-container {
   display: block;
-  width: 100vmin;
-  height: 100vmin;
+  width: 100%;
+  /* height: 100vmin; */
   max-width: 100%;
+  z-index: 500;
 }
 
 .photo-upload-main {
   display: grid;
   place-items: center;
   width: 100vmax;
-  min-height: 100vh;
+  max-height: 100vh;
   background-color: #F7F8FA;
 }
 
 
 #photo-upload-step-1 {
-  padding: 0 0 10rem 0;
+  padding: 4rem 0 4rem 0;
 }
 
 .upload-input {
@@ -63,6 +64,23 @@
   display: none;
 }
 
+.left-col-edit {
+  width: calc(100% - 424px);
+  margin-right: 24px;
+  overflow: hidden;
+  height: 100%;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.right-col-edit {
+  width: 400px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 0 16px;
+  position: relative;
+}
+
 #image-upload-step-2.hidden {
   display: none;
 }
@@ -83,9 +101,9 @@
 }
 
 #image-upload-step-2 ,.image-edit{
+  height: calc(100% - 56px);
   box-sizing: border-box;
-  padding: 24px 64px 0;
-  /* width: 100%; */
+  padding: 24px 64px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -113,7 +131,7 @@
 /* adjust for screen sizes */
 .image-preview-img {
   border: 2px solid #0870d1;
-  width: 400px;
+  width: 100%;
   height: auto;
 }
 /* adjust for screen sizes */
@@ -136,6 +154,7 @@
   overflow: hidden;
   height: calc(100% + 24px);
   padding-bottom: 20px;
+  padding-top: 20px;
   position: relative;
 }
 
@@ -183,7 +202,7 @@
 
 .page-top-banner {
   grid-column: 1 / span 12;
-  z-index: 15;
+  z-index: 350;
   height: 56px;
   line-height: 56px;
   width: 100%;
@@ -194,7 +213,7 @@
   padding: 0 0 0 64px;
   display: flex;
   align-items: center;
-  position: absolute;
+  position: relative;
 }
 
 #main-drop-zone.enabled.drag-on {

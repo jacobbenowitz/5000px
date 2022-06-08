@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import NavHeaderContainer from './navigation/nav_header_container';
 import LoginFormContainer from './session/login_form_container'
@@ -26,28 +20,50 @@ import PopularPhotos from "./photo_feed/popular_photos";
 const App = () => (
   <div className="grid-pancake-stack">
     <ModalContainer />
+
     <header className="header-top-stack">
       <NavHeaderContainer />
     </header>
+
     <Switch>
-      <AuthRoute exact path={"/login"} component={LoginFormContainer} />
-      <AuthRoute exact path={"/signup"} component={SignupFormContainer} />
+      <AuthRoute exact path={"/login"}
+        component={LoginFormContainer}
+      />
+      <AuthRoute exact path={"/signup"}
+        component={SignupFormContainer}
+      />
       <ProtectedRoute exact path={"/profile/new"}
-        component={NewProfileFormContainer} />
-      <ProtectedRoute exact path={"/profile/settings"} component={EditProfileFormContainer} />
-      <ProtectedRoute exact path={"/profiles/:profileId"} component={ProfileShowContainer} />
+        component={NewProfileFormContainer}
+      />
+      <ProtectedRoute exact path={"/profile/settings"}
+        component={EditProfileFormContainer}
+      />
+      <ProtectedRoute exact path={"/profiles/:profileId"}
+        component={ProfileShowContainer} 
+      />
       <ProtectedRoute exact path={"/photos/upload"}
-        component={PhotoUploadFormContainer} /> 
+        component={PhotoUploadFormContainer} 
+      /> 
       <ProtectedRoute exact path={"/photos/:photoId"}
-        component={SinglePhotoShowContainer} />
+        component={SinglePhotoShowContainer} 
+      />
       <ProtectedRoute exact path={"/photos/:photoId/edit"}
-        component={PhotoEditFormContainer} />
+        component={PhotoEditFormContainer} 
+      />
+      <ProtectedRoute exact path={"/home"} 
+        component={HomeFeedContainer} 
+      />
       <ProtectedRoute exact path={"/discover"}
-        component={HomeFeedContainer} />
-      <ProtectedRoute exact path={"/popular"} component={PopularPhotos} />
-      <AuthRoute exact path={"/"} component={LandingPage} />
-      <ProtectedRoute exact path={"/home"} component={HomeFeedContainer} />
+        component={HomeFeedContainer}
+      />
+      {/* <ProtectedRoute exact path={"/popular"}
+        component={PopularPhotos} 
+      /> */}
+      <AuthRoute exact path={"/"} 
+        component={LandingPage} 
+      />
     </Switch>
+
     <footer className="grid-bottom-stack">
       <NavFooter />
     </footer>

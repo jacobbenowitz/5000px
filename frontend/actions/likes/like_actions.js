@@ -28,10 +28,8 @@ const removeLike = likeId => {
 // thunk actions
 
 export const getLikes = () => dispatch => {
-  return (
-    likeApiUtil.fetchLikes().then(likes =>
+  return likeApiUtil.fetchLikes().then(likes =>
       dispatch(receiveLikes(likes)))
-  )
 };
 
 export const newLike = like => dispatch => {

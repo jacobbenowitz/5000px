@@ -1,8 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import ProfilePhotoFormContainer from "../photos/profile_photo_form_container";
-import ProfileAvatarContainer from "./profile_avatar_container"
 
 
 export default class NewProfileForm extends React.Component {
@@ -66,10 +63,6 @@ export default class NewProfileForm extends React.Component {
     event.preventDefault();
     return confirm("Don't leave without saving your profile!");
   }
-
-
-
-  // -> tabs with separate form!! = NOT done'
 
   
   handleSubmit(e) {

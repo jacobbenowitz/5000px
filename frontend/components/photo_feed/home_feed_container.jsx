@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HomeFeed from "./home_feed";
-import { buildGridGalleryProps, asArray } from "../../reducers/selectors";
+import { buildGridGalleryProps } from "../../reducers/selectors";
 import { fetchProfiles } from "../../actions/profile/profile_actions";
 import { fetchPhotos } from "../../actions/photos/photos_actions";
 import { fetchUsers } from "../../actions/session/session_actions";
@@ -8,7 +8,7 @@ import { getLikes } from "../../actions/likes/like_actions";
 
 const mapStateToProps = ({entities, session}) => {
   // debugger
-  const photos = asArray(entities);
+  const photos = Object.values(entities.photos);
   
   return {
     photos: photos,
@@ -25,7 +25,6 @@ const mapDispatchToProps = dispatch => {
     fetchProfiles: () => dispatch(fetchProfiles()),
     fetchUsers: () => dispatch(fetchUsers()),
     getLikes: () => dispatch(getLikes())
-
   }
 }
 

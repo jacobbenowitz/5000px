@@ -39,8 +39,7 @@ export const removeProfile = profileId => ({
 export const fetchProfiles = () => dispatch => {
   ProfileApiUtil.fetchProfiles().then(profiles => {
     dispatch(receiveProfiles(profiles))
-  }
-  )
+  })
 }
 
 export const fetchProfile = profileId => dispatch => {

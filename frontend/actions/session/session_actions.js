@@ -61,11 +61,6 @@ export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then((user) => {
       dispatch(receiveCurrentUser(user))
-      dispatch(fetchCurrentProfile(user.profileId))
-      dispatch(fetchPhotos())
-      dispatch(fetchProfiles())
-      dispatch(fetchUsers())
-      dispatch(getLikes())
     }, error => {
       dispatch(receiveSessionErrors(error.responseJSON))
     })
@@ -75,10 +70,6 @@ export const signup = user => dispatch => {
   return SessionApiUtil.createUser(user)
     .then(user => {
       dispatch(receiveCurrentUser(user))
-      dispatch(fetchPhotos())
-      dispatch(fetchProfiles())
-      dispatch(fetchUsers())
-      dispatch(getLikes())
     }, error => {
       dispatch(receiveSessionErrors(error.responseJSON))
     })
@@ -87,7 +78,6 @@ export const signup = user => dispatch => {
 export const logout = () => dispatch => {
   return SessionApiUtil.logout()
     .then(() => dispatch(logoutCurrentUser()))
-  // .then(() => flush state and reset to initial)
 }
 
 export const fetchCurrentUser = userId => dispatch => {
