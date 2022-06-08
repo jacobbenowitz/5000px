@@ -1,28 +1,42 @@
+import React from "react";
 import { fetchPhoto } from "../actions/photos/photos_actions";
 
-// accepts array of photos, creates proper structure of data for each photo:
-// {
-//   src: 'https://my5000px.jpg',
-//   alt: '<img title>'
-//   width: 545,
-//   height: 531,
-//   showLink: `/photos/${id}`,
-// }
+// react-photo-album photo props //
 
-import React from "react";
+// key	string	  - Optional key attribute.
+// src	string	  - Image source.
+// width	number  - Image width in pixels.
+// height	number  -	Image height in pixels.
+// alt	string	  - Optional image alt attribute.
+// title	string  - Optional image title attribute.
 
-export const buildGalleryArray = ({ photos }) => {
+export const buildProfileGalleryArray = ({ photos }) => {
   return photos.map(photo => {
     let name = photo.profileName.length > 1 ?
       photo.profileName : photo.username
     
     return {
+      key: photo.id,
       src: photo.photoUrl,
-      alt: photo.username,
-      title: photo.showLink,
       width: photo.width,
       height: photo.height,
+      alt: photo.title,
+      title: photo.showLink,
+    }
+  })
+};
+export const buildDiscoverGalleryArray = ({ photos }) => {
+  return photos.map(photo => {
+    let name = photo.profileName.length > 1 ?
+      photo.profileName : photo.username
+    
+    return {
       key: photo.id,
+      src: photo.photoUrl,
+      width: photo.width,
+      height: photo.height,
+      alt: name,
+      title: photo.showLink,
     }
   })
 };
@@ -64,11 +78,10 @@ export const buildGridGalleryProps = (photos) => {
 // };
 
 export const selectProfilePhotos = (photos, photoIds) => {
-  // debugger
-  return Object.keys(photos).length > 0 ? (
-    photoIds.map(photoId => {
-      return photos[photoId]
-    })) : []
+  debugger
+  if (Object.keys(photos).length) {
+    return photoIds.map(photoId => photos[photoId])
+  }
 };
 
 export const selectPhotoById = ({ photos }, photoId) => {

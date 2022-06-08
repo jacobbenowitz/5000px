@@ -2,11 +2,10 @@ import PhotoAlbum from "react-photo-album";
 import SinglePhotoLoader from "../../photos/content-loaders/single-photo-loader";
 import React from "react";
 import { render } from "react-dom";
-import { buildProfileGalleryArray } from "../../../reducers/selectors";
+import { buildGalleryArray } from "../../../reducers/selectors";
 import { Link } from "react-router-dom";
 
 
-// for profile gallery, image title shown on hover
 // for discover gallery, username shown on hover
 const renderPhoto = ({ layoutOptions, imageProps: { title, alt, style, id, key, ...restImageProps } }) => {
   return (
@@ -33,7 +32,7 @@ const renderPhoto = ({ layoutOptions, imageProps: { title, alt, style, id, key, 
 
 
 const ProfileRows = (photos) => {
-  let galleryPhotos = buildProfileGalleryArray(photos);
+  let galleryPhotos = buildGalleryArray(photos);
   return <div id="profile-gallery-box">
     <PhotoAlbum
       photos={galleryPhotos}

@@ -8,6 +8,7 @@ import { ProfileDetails } from "./profile_details";
 import ProfileRows from "./profile_photo_gallery";
 import DiscoverGallery from "../../galleries/discover_gallery";
 import { buildGridGalleryProps } from "../../../reducers/selectors"
+import GridLoader from '../content_loaders/profile-details-loader'
 
 export default class ProfileShow extends React.Component {
   constructor(props) {
@@ -18,23 +19,21 @@ export default class ProfileShow extends React.Component {
     const { photos, profile, profileId,
       fetchPhotos, fetchProfile } = this.props
     
-    if (!profile || !photos.length) {
-      fetchProfile(profileId)
-      fetchPhotos() 
-    }
+    fetchProfile(profileId)
+    fetchPhotos() 
+
   }
 
 
   render() {
-    const { profile, user, photos,
-      gridGalleryPhotos, isCurrentProfile } = this.props;
+    const { profile, user, photos } = this.props;
 
     const coverStyle = profile.cover ? ({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
       rgba(0, 0, 0, 0)), url(${profile.cover})`
     }) : (null);
     
-
+    console.log(`render: ${photos}`)
     return ( 
       <div className="profile-show-container" >
 
