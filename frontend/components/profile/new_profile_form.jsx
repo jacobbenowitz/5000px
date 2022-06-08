@@ -128,7 +128,10 @@ export default class NewProfileForm extends React.Component {
             <span className="profile-form-instructions">Create your profile <a onClick={this.handleSubmit} className="skip-profile-form" href="#">or skip</a></span>
           </div>
 
-          <form onSubmit={this.handleSubmit}>
+          <form
+            className="profile-form-container"
+            onSubmit={this.handleSubmit}
+          >
               
             <div className="form-input">
               <label htmlFor="first-name">First name</label>
@@ -138,6 +141,7 @@ export default class NewProfileForm extends React.Component {
                 value={this.state.first_name}
                 onChange={this.update('first_name')}
                 className="text-input"
+                placeholder="First name"
               />
             </div>
               
@@ -149,16 +153,42 @@ export default class NewProfileForm extends React.Component {
                 value={this.state.last_name}
                 onChange={this.update('last_name')}
                 className="text-input"
+                placeholder="Last name"
               />
             </div>
 
             <div className="form-input">
-              <label htmlFor="first-name">About</label>
+              <label htmlFor="website">Personal website</label>
+              <input
+                type="text"
+                id="website_url"
+                value={website_url}
+                onChange={this.update('website_url')}
+                className="text-input"
+                placeholder="www.mywebsite.com"
+              />
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="instagram">Instagram username</label>
+              <input
+                type="text"
+                id="instagram_url"
+                value={instagram_url}
+                onChange={this.update('instagram_url')}
+                className="text-input"
+                placeholder="Instagram username"
+              />
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="about">About</label>
               <textarea
                 id="about"
                 value={this.state.about}
                 onChange={this.update('about')}
                 className="textarea-input"
+                placeholder="Introduce yourself to the community!"
               />
             </div>
             
@@ -170,6 +200,19 @@ export default class NewProfileForm extends React.Component {
                 value={this.state.city}
                 onChange={this.update('city')}
                 className="text-input"
+                placeholder="City"
+              />
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                value={country}
+                onChange={this.update('country')}
+                className="text-input"
+                placeholder="Country"
               />
             </div>
               
@@ -228,6 +271,7 @@ export default class NewProfileForm extends React.Component {
                 value={this.state.cameras}
                 onChange={this.update('cameras')}
                 className="text-input"
+                placeholder="What's your go-to camera?"
               />
               </div>
             
@@ -239,10 +283,14 @@ export default class NewProfileForm extends React.Component {
                 value={this.state.lenses}
                 onChange={this.update('lenses')}
                 className="text-input"
+                placeholder="Which lens do you use for that bokkah?"
               />
             </div>
-            <button type="submit"
-              className="save-profile">Create profile</button>
+            <button
+              type="submit"
+              className="save-profile"
+            > Create profile
+            </button>
           </form>
         </div>
       </div>

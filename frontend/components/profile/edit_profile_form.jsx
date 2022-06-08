@@ -20,7 +20,7 @@ export default class EditProfileForm extends React.Component {
       country: '',
       about: '',
       gender: 'Not specified',
-      user_id: undefined,
+      user_id: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,6 +48,27 @@ export default class EditProfileForm extends React.Component {
     ) : (
       fetchProfile(profileId)
     )
+  }
+
+  componentDidUpdate() {
+    const { profile } = this.props;
+    if (profile && this.state.user_id.length === 0) {
+      this.setState({
+        id: profile.id,
+        first_name: profile.first_name,
+        last_name: profile.last_name,
+        website_url: profile.website_url,
+        instagram_url: profile.instagram_url,
+        lenses: profile.lenses,
+        cameras: profile.cameras,
+        birthday: profile.birthday ? profile.birthday : "",
+        city: profile.city,
+        country: profile.country,
+        about: profile.about,
+        gender: profile.gender,
+        user_id: profile.user_id,
+      })
+    }
   }
 
   handleSubmit(e) {
@@ -84,23 +105,15 @@ export default class EditProfileForm extends React.Component {
     return (
       <div className="profile-settings center-simple">
         <div id="profile-form">
-          {/* <div id="profile-photo-form"> */}
-            {/* <div className="avatar-container-sm">
-              <img src={profile.avatar} 
-                className="avatar-img"
-              />
-            </div> */}
-            {/* <ProfileAvatar
-              avatar={profile.avatar}
-            /> */}
-            {/* <ProfilePhotoFormContainer /> */}
-          {/* </div> */}
 
           <div className="profile-form-title">
             <h4>My Account</h4>
           </div>
 
-          <form onSubmit={this.handleSubmit}>
+          <form
+            className="profile-form-container"
+            onSubmit={this.handleSubmit}
+          >
 
             <div className="form-input">
               <label htmlFor="first-name">First name</label>
@@ -110,6 +123,7 @@ export default class EditProfileForm extends React.Component {
                 value={first_name}
                 onChange={this.update('first_name')}
                 className="text-input"
+                placeholder="First name"
               />
             </div>
 
@@ -121,16 +135,42 @@ export default class EditProfileForm extends React.Component {
                 value={last_name}
                 onChange={this.update('last_name')}
                 className="text-input"
+                placeholder="Last name"
               />
             </div>
 
             <div className="form-input">
-              <label htmlFor="first-name">About</label>
+              <label htmlFor="website">Personal website</label>
+              <input
+                type="text"
+                id="website_url"
+                value={website_url}
+                onChange={this.update('website_url')}
+                className="text-input"
+                placeholder="www.mywebsite.com"
+              />
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="instagram">Instagram username</label>
+              <input
+                type="text"
+                id="instagram_url"
+                value={instagram_url}
+                onChange={this.update('instagram_url')}
+                className="text-input"
+                placeholder="Instagram username"
+              />
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="about">About</label>
               <textarea
                 id="about"
                 value={about}
                 onChange={this.update('about')}
                 className="textarea-input"
+                placeholder="Introduce yourself to the community!"
               />
             </div>
 
@@ -142,6 +182,19 @@ export default class EditProfileForm extends React.Component {
                 value={city}
                 onChange={this.update('city')}
                 className="text-input"
+                placeholder="City"
+              />
+            </div>
+
+            <div className="form-input">
+              <label htmlFor="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                value={country}
+                onChange={this.update('country')}
+                className="text-input"
+                placeholder="Country"
               />
             </div>
 
@@ -202,6 +255,7 @@ export default class EditProfileForm extends React.Component {
                 value={cameras}
                 onChange={this.update('cameras')}
                 className="text-input"
+                placeholder="What's your go-to camera?"
               />
             </div>
 
@@ -213,6 +267,7 @@ export default class EditProfileForm extends React.Component {
                 value={lenses}
                 onChange={this.update('lenses')}
                 className="text-input"
+                placeholder="Which lens do you use for that bokkah?"
               />
             </div>
             <button type="submit"

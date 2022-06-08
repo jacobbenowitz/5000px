@@ -24,8 +24,6 @@ class Api::ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by(id: params[:id])
 
-    byebug
-
     if params[:avatar]
       @profile.avatar.attach(:avatar)
     end

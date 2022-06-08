@@ -46,7 +46,6 @@ export const buildGridGalleryProps = (photos) => {
 };
 
 export const selectProfilePhotos = (photos, photoIds) => {
-  debugger
   if (Object.keys(photos).length && photoIds.length) {
     return photoIds.map(photoId => photos[photoId])
   } else return []

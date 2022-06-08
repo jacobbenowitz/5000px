@@ -30,10 +30,14 @@ export default class ProfileShow extends React.Component {
 
   componentDidUpdate() {
     const {status} = this.state;
-    const { photos, profile } = this.props;
+    const { photos, profile, profileId } = this.props;
     
     if (status === BUSY && photos.length && Object.values(profile)) {
       this.setState({status: DONE})
+    }
+    if ((status === DONE || status === IDLE) && !photos.length) {
+      fetchPhotos()
+      fetchProfile(profileId)
     }
   }
 
