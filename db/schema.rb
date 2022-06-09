@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_015913) do
+ActiveRecord::Schema.define(version: 2022_06_09_210349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_015913) do
     t.string "camera"
     t.integer "width"
     t.integer "height"
+    t.string "category"
     t.index ["profile_id"], name: "index_photos_on_profile_id"
   end
 
