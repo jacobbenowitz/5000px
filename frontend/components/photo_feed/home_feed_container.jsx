@@ -6,16 +6,18 @@ import { fetchPhotos } from "../../actions/photos/photos_actions";
 import { fetchUsers } from "../../actions/session/session_actions";
 import { getLikes } from "../../actions/likes/like_actions";
 
-const mapStateToProps = ({entities, session}) => {
+const mapStateToProps = ({ entities, session }) => {
 
   const photos = Object.values(entities.photos);
-  
+
   return {
     photos: photos,
+    allPhotos: entities.photos,
     users: entities.users,
     likes: entities.likes,
     profiles: entities.profiles,
-    currentProfile: entities.profiles[session.profile]
+    currentProfile: entities.profiles[session.profile],
+    status: entities.photos.status
   }
 }
 

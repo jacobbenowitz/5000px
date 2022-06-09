@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_05_093050) do
+ActiveRecord::Schema.define(version: 2022_06_09_015913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2022_05_05_093050) do
     t.integer "user_id", null: false
     t.string "profile_avatar"
     t.string "profile_banner"
+    t.boolean "featured"
     t.index ["profile_avatar"], name: "index_profiles_on_profile_avatar"
     t.index ["profile_banner"], name: "index_profiles_on_profile_banner"
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true

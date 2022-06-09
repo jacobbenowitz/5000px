@@ -196,6 +196,9 @@
   position: relative;
   width: calc((100% - 32px) - 8px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
 }
 
 .ft-name {
@@ -232,4 +235,9 @@ button.follow-button {
   margin-top: 16px;
   box-sizing: border-box;
   display: block;
+}
+
+.featured-card-gallery {
+  width: 387px;
+  overflow: hidden;
 }
