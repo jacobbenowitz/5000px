@@ -33,7 +33,7 @@ const renderPhoto = ({ layoutOptions, imageProps: { title, alt, style, id, key, 
 
 const DiscoverRows = (photos) => {
   let galleryPhotos = buildDiscoverGalleryArray(photos);
-  return <div id="profile-gallery-box">
+  return <div id="home-gallery-box">
     <PhotoAlbum
       photos={galleryPhotos}
       layout="rows"

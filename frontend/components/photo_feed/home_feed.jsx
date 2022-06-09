@@ -74,9 +74,18 @@ export default class HomeFeed extends React.Component {
           </span>
         </div>
         <div className="featured-cards-wrapper">
-          <FeaturedPhotographerCard 
-          />
+            <div className="ft-scroll">
+              <div className="spacer-52px" />
+            <FeaturedPhotographerCard 
+            />
+            <FeaturedPhotographerCard 
+            />
+            <FeaturedPhotographerCard 
+            />
+              <div className="spacer-52px" />
+          </div>
         </div>
+        <div className="ft-divider" />
       </div>
       <div className="home-feed-gallery" >
         { photos ? (
