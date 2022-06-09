@@ -41,7 +41,6 @@ const renderRowContainer = ({ rowContainerProps, children }) => (
 );
 
 const FeaturedCardRows = ({photos}) => {
-  console.log(photos)
   let galleryPhotos = buildFeaturedGalleryArray(photos);
   return <div className="featured-card-gallery">
     <PhotoAlbum

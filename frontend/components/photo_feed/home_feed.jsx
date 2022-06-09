@@ -16,8 +16,10 @@ export default class HomeFeed extends React.Component {
     super(props);
     this.state = {
       featuredPhotographers: [],
-      status: IDLE
+      status: IDLE,
+      infoCallout: true
     }
+    this.closeInfoCallout = this.closeInfoCallout.bind(this)
   }
 
   componentDidMount() {
@@ -35,10 +37,8 @@ export default class HomeFeed extends React.Component {
     const { allPhotos, photos, users, profiles } = this.props;
     const { featuredPhotographers, status } = this.state;
 
-    // console.log(allPhotos, users, profiles)
-    if (status === BUSY && Object.values(allPhotos).length && users && profiles) {
-      // const featuredPhotographers =
-        
+    if (status === BUSY && Object.values(allPhotos).length &&
+      users && profiles) {
       this.setState({
         featuredPhotographers:
           selectFeaturedPhotographers(allPhotos, profiles, users),
@@ -47,22 +47,23 @@ export default class HomeFeed extends React.Component {
     }
   }
 
+  closeInfoCallout(e) {
+    e.preventDefault()
+    this.setState({infoCallout: false})
+  }
+
 
   // todo: create shared title component 
   // todo: create tab navigation component for discover
+
   render() {
     const { photos, users, profiles, currentProfile } = this.props;
-    const { featuredPhotographers, status } = this.state;
+    const { featuredPhotographers, status, infoCallout } = this.state;
 
     let featuredCards;
 
     if (status === DONE) {
-      // for (let i = 0; i < featuredPhotographers.length; i++) {
-        //   const photo = array[i];
-        // }
-      debugger
         featuredCards = featuredPhotographers.map((photographer, i) => {
-        // debugger
         return (
           <FeaturedPhotographerCard
             key={`ft-card-${i}`}
@@ -79,16 +80,34 @@ export default class HomeFeed extends React.Component {
           <h3>Home Feed</h3>
           <span className="sub-header-text">See photos and published Galleries from people you follow.</span>
         </div>
-        <div className="home-callout-container">
+
+        <div className={infoCallout ?
+          "home-callout-container" : "home-callout-container close"}>
           <div className="home-callout">
+            <div className="close-wrapper"
+              onClick={this.closeInfoCallout}
+            >
+              <i className="fa-solid fa-xmark fa-lg" />
+            </div>
             <div className="content-wrapper flex-col">
               <div className="flex-col gap-10 call-text">
                 <h3>Welcome to 5000px</h3>
                 <div className="spacer-2rem;h"></div>
-                <span>This is a fullstack clone of 500px, a popular photo sharing site for photographers.</span>
+                <span className="callout-sub">This is a fullstack clone of&nbsp;
+                  <a href="https://500px.com/" className="callout-sub"
+                    target="_blank" rel="noreferrer"
+                  >500px
+                  </a>, a popular photo sharing site for photographers around the world.</span>
                 <span>Developed by Jacob Benowitz</span>
               </div>
               <div className="flex-row callout-buttons">
+                <a href="https://jacobbenowitz.com"
+                  target="_blank" rel="noreferrer"
+                  className="icon-button"
+                >
+                  <i className="fa-solid fa-link fa-lg" />
+                  Portfolio
+                </a>
                 <a href="https://github.com/jacobbenowitz/"
                   target="_blank" rel="noreferrer"
                   className="icon-button"
@@ -96,7 +115,6 @@ export default class HomeFeed extends React.Component {
                   <i className="fa-brands fa-github fa-lg" />
                   GitHub
                 </a>
-
                 <a href="https://angel.co/u/jacob-benowitz"
                   target="_blank" rel="noreferrer"
                   className="icon-button"

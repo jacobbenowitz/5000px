@@ -32,7 +32,6 @@ export const buildDiscoverGalleryArray = ({ photos }) => {
 };
 
 export const buildFeaturedGalleryArray = photos => {
-  debugger
   return photos.map(photo => {
     return {
       key: photo.id,
@@ -134,17 +133,24 @@ export const selectFeaturedPhotographers = (photos, profiles, users) => {
 export const selectThreeRandomPhotos = (photos) => {
   let maxPhotos = photos.length;
   let randomPhotos = [];
-  let max = maxPhotos > 2 ? 2 : maxPhotos
-
-  for (let i = 0; i < max; i++) {
-    let randomInt = getRandomInt(0, max)
-    let photo = photos[randomInt];
-    randomPhotos.push(photo)
+  let prevInts = [];
+  if (maxPhotos < 3) {
+    return photos
+  } else {
+    for (let i = 0; i < 3; i++) {
+      let randomInt = getUniqueRandomInt(1, maxPhotos, prevInts)
+      prevInts.push(randomInt)
+      let photo = photos[randomInt];
+      randomPhotos.push(photo)
+    }
+    return randomPhotos;
   }
-  return randomPhotos;
 }
 
-const getRandomInt = (min, max) => {
+const getUniqueRandomInt = (min, max, prevInts) => {
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min
+  let randomInt = Math.floor(Math.random() * (max - min + 1)) + min - 1;
+  if (prevInts.includes(randomInt)) {
+    return getUniqueRandomInt(min, max, prevInts)
+  } else return randomInt;
 }

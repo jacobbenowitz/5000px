@@ -241,3 +241,30 @@ button.follow-button {
   width: 387px;
   overflow: hidden;
 }
+
+.callout-sub {
+  font-size: 20px;
+}
+
+a.callout-sub {
+  text-decoration: underline;
+}
+
+a.callout-sub:hover {
+  color: #46b0e9;
+}
+
+.close-wrapper {
+  position: absolute;
+  z-index: 400;
+  color: white;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.home-callout-container.close{
+  display: none;
+}
