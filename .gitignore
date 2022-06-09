@@ -38,4 +38,4 @@ npm-debug.log
 .env
 
 # imgs
-/assets/images
+app/assets/images/
