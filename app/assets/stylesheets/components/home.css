@@ -268,3 +268,69 @@ a.callout-sub:hover {
 .home-callout-container.close{
   display: none;
 }
+
+.ft-grid-wrapper {
+  max-width: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 50vh;
+}
+
+.featured-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50% 50%;
+  height: 100%;
+  gap: 4px;
+  position: relative;
+}
+
+.ft-grid-top-label {
+  height: 50px;
+  top: 0px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  transition: opacity 0.2s ease 0s, max-height 0.2s ease 0s;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+  padding: 8px;
+}
+
+/* .ft-label {
+
+} */
+
+.ft-grid-img-wrapper {
+  background-color: #d8d9dc;
+}
+
+.ft-small {
+  grid-column: 1 / span 1;
+}
+
+.ft-large {
+  grid-column: 1 / span 2;
+}
+
+.ft-top {
+  grid-row: 1 / span 1;
+}
+
+.ft-bottom {
+  grid-row: 2 / span 1;
+}
+
+.ft-tall {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+}
+
+.grid-gallery-wrapper {
+  width: 100%;
+  margin-top: 16px;
+  padding: 0px 64px;
+}
