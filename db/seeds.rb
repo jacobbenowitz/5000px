@@ -38,8 +38,6 @@ jacob = {
 }
 
 # generated users
-faker_user_1 = Faker::Twitter.user(include_email: true)
-faker_user_2 = Faker::Twitter.user(include_email: true)
 faker_user_3 = Faker::Twitter.user(include_email: true)
 faker_user_4 = Faker::Twitter.user(include_email: true)
 faker_user_5 = Faker::Twitter.user(include_email: true)
@@ -54,16 +52,6 @@ faker_user_13 = Faker::Twitter.user(include_email: true)
 faker_user_14 = Faker::Twitter.user(include_email: true)
 faker_user_15 = Faker::Twitter.user(include_email: true)
 
-generated_user_1 = {
-  username: faker_user_1[:screen_name],
-  email: faker_user_1[:email],
-  password: 'Lmd15cCX!aDk63b',
-}
-generated_user_2 = {
-  username: faker_user_2[:screen_name],
-  email: faker_user_2[:email],
-  password: 'Lmd15cCX!aDk63b',
-}
 generated_user_3 = {
   username: faker_user_3[:screen_name],
   email: faker_user_3[:email],
@@ -132,8 +120,7 @@ generated_user_15 = {
 
 guest_saved = User.create(guest)
 jacob_saved = User.create(jacob)
-user_1_saved = User.create(generated_user_1)
-user_2_saved = User.create(generated_user_2)
+
 user_3_saved = User.create(generated_user_3)
 user_4_saved = User.create(generated_user_4)
 user_5_saved = User.create(generated_user_5)
@@ -246,6 +233,7 @@ profile_jacob = {
   gender: 'Male',
   user_id: jacob_saved.id
 }
+
 profile_guest = {
   first_name: 'Jane',
   last_name: 'Smith',
@@ -261,46 +249,319 @@ profile_guest = {
   user_id: guest_saved.id
 }
 
-camera_1 = Faker::Camera.brand_with_model
-lenses_1 = get_lenses(camera_1.split.first)
-profile_user_1 = {
-  first_name: user_1_saved[:name].split.first,
-  last_name: user_1_saved[:name].split.last,
-  website_url: user_1_saved[:url],
+camera_3 = Faker::Camera.brand_with_model
+lenses_3 = get_lenses(camera_1.split.first)
+profile_abstract = {
+  first_name: user_3_saved[:name].split.first,
+  last_name: user_3_saved[:name].split.last,
+  website_url: user_3_saved[:url],
   instagram_url: 'https://www.instagram.com/',
-  cameras: camera_1,
-  lenses: lenses_1,
-  birthday: '01/01/2000',
-  city: 'Dobbs Ferry',
+  cameras: camera_3,
+  lenses: lenses_3,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
   country: 'United States',
-  about: 'Minimalist. I live by the motto: less is more, and do my best to caputure that in my photography.',
-  gender: 'Female',
-  user_id: user_1_saved.id
+  about: 'The unknown is known...to me. Abstract photographer.',
+  gender: 'Male',
+  user_id: user_3_saved.id
 }
 
-profile_1_saved = Profile.create(profile_1)
-guest_profile_saved = Profile.create(profile_guest)
+camera_4 = Faker::Camera.brand_with_model
+lenses_4 = get_lenses(camera_1.split.first)
+profile_animals = {
+  first_name: user_4_saved[:name].split.first,
+  last_name: user_4_saved[:name].split.last,
+  website_url: user_4_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_4,
+  lenses: lenses_4,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: 'Vegan, animal lover. Nature photography is my life!',
+  gender: 'Male',
+  user_id: user_4_saved.id
+}
+
+camera_5 = Faker::Camera.brand_with_model
+lenses_5 = get_lenses(camera_1.split.first)
+profile_chocolate = {
+  first_name: user_5_saved[:name].split.first,
+  last_name: user_5_saved[:name].split.last,
+  website_url: user_5_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_5,
+  lenses: lenses_5,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: "Who doesn't like chocolate? ME... I LOVE CHOCOLATE",
+  gender: 'Male',
+  user_id: user_5_saved.id
+}
+
+camera_8 = Faker::Camera.brand_with_model
+lenses_8 = get_lenses(camera_1.split.first)
+profile_music = {
+  first_name: user_8_saved[:name].split.first,
+  last_name: user_8_saved[:name].split.last,
+  website_url: user_8_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_8,
+  lenses: lenses_8,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: "Professional photographer for musicians around the world",
+  gender: 'Male',
+  user_id: user_8_saved.id
+}
+
+camera_9 = Faker::Camera.brand_with_model
+lenses_9 = get_lenses(camera_1.split.first)
+profile_sports = {
+  first_name: user_9_saved[:name].split.first,
+  last_name: user_9_saved[:name].split.last,
+  website_url: user_9_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_9,
+  lenses: lenses_9,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: "Sports is life.",
+  gender: 'Male',
+  user_id: user_9_saved.id
+}
+
+camera_6 = Faker::Camera.brand_with_model
+lenses_6 = get_lenses(camera_1.split.first)
+profile_8 = {
+  first_name: user_6_saved[:name].split.first,
+  last_name: user_6_saved[:name].split.last,
+  website_url: user_6_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_6,
+  lenses: lenses_6,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_6_saved.id
+}
+
+camera_10 = Faker::Camera.brand_with_model
+lenses_10 = get_lenses(camera_1.split.first)
+profile_9 = {
+  first_name: user_10_saved[:name].split.first,
+  last_name: user_10_saved[:name].split.last,
+  website_url: user_10_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_10,
+  lenses: lenses_10,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_10_saved.id
+}
+
+camera_11 = Faker::Camera.brand_with_model
+lenses_11 = get_lenses(camera_1.split.first)
+profile_10 = {
+  first_name: user_11_saved[:name].split.first,
+  last_name: user_11_saved[:name].split.last,
+  website_url: user_11_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_11,
+  lenses: lenses_11,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_11_saved.id
+}
+
+camera_12 = Faker::Camera.brand_with_model
+lenses_12 = get_lenses(camera_1.split.first)
+profile_11 = {
+  first_name: user_12_saved[:name].split.first,
+  last_name: user_12_saved[:name].split.last,
+  website_url: user_12_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_12,
+  lenses: lenses_12,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_12_saved.id
+}
+
+camera_13 = Faker::Camera.brand_with_model
+lenses_13 = get_lenses(camera_1.split.first)
+profile_12 = {
+  first_name: user_13_saved[:name].split.first,
+  last_name: user_13_saved[:name].split.last,
+  website_url: user_13_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_13,
+  lenses: lenses_13,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_13_saved.id
+}
+
+camera_14 = Faker::Camera.brand_with_model
+lenses_14 = get_lenses(camera_1.split.first)
+profile_13 = {
+  first_name: user_14_saved[:name].split.first,
+  last_name: user_14_saved[:name].split.last,
+  website_url: user_14_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_14,
+  lenses: lenses_14,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_14_saved.id
+}
+
+camera_15 = Faker::Camera.brand_with_model
+lenses_15 = get_lenses(camera_1.split.first)
+profile_14 = {
+  first_name: user_15_saved[:name].split.first,
+  last_name: user_15_saved[:name].split.last,
+  website_url: user_15_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_15,
+  lenses: lenses_15,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_15_saved.id
+}
+
+camera_16 = Faker::Camera.brand_with_model
+lenses_16 = get_lenses(camera_1.split.first)
+profile_15 = {
+  first_name: user_16_saved[:name].split.first,
+  last_name: user_16_saved[:name].split.last,
+  website_url: user_16_saved[:url],
+  instagram_url: 'https://www.instagram.com/',
+  cameras: camera_16,
+  lenses: lenses_16,
+  birthday: Faker::Date.between(from: '1980-01-01', to: '2005-12-25'),
+  city: Faker::Address.city ,
+  country: 'United States',
+  about: Faker::TvShows::BigBangTheory.quote,
+  gender: 'Male',
+  user_id: user_16_saved.id
+}
+
+profile_guest_saved = Profile.create(profile_guest)
+profile_jacob_saved = Profile.create(profile_jacob)
+profile_abstract_saved = Profile.create(profile_abstract)
+profile_animals_saved = Profile.create(profile_animals)
+profile_chocolate_saved = Profile.create(profile_chocolate)
+profile_music_saved = Profile.create(profile_music)
+profile_sports_saved = Profile.create(profile_sports)
+
+
+profile_8_saved = Profile.create(profile_8)
+profile_9_saved = Profile.create(profile_9)
+profile_10_saved = Profile.create(profile_10)
+profile_11_saved = Profile.create(profile_11)
+profile_12_saved = Profile.create(profile_12)
+profile_13_saved = Profile.create(profile_13)
+profile_14_saved = Profile.create(profile_14)
+profile_15_saved = Profile.create(profile_15)
 
 ################################################################################
 
 ## avatars
 
-profile_1_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/person-placeholder-300x300.webp'), filename: 'placeholder-avatar.webp')
+profile_guest_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/guest_avatar.webp', filename: 'guest_avatar.jpg')
 
-guest_profile_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/person-placeholder-300x300.webp'), filename: 'placeholder-avatar.webp')
+profile_jacob_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/jacob_avatar.jpg', filename: 'jacob_avatar.jpg')
 
-profile_1_saved.save!
-guest_profile_saved.save!
+profile_abstract_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_1.png', filename: 'abstract_avatar.jpg')
 
+profile_animals_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_2.png', filename: 'animal_avatar.jpg')
+
+profile_chocolate_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_3.png', filename: 'choco_avatar.jpg')
+
+profile_music_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_4.png', filename: 'music_avatar.jpg')
+
+profile_sports_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_5.png', filename: 'sport_avatar.jpg')
+
+profile_8_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_6.png', filename: '8_avatar.jpg')
+
+profile_9_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_7.png', filename: '9_avatar.jpg')
+
+profile_10_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_8.png', filename: '10_avatar.jpg')
+
+profile_11_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_9.png', filename: '11_avatar.jpg')
+
+profile_12_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_10.png', filename: '12_avatar.jpg')
+
+profile_13_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_11.png', filename: '13_avatar.jpg')
+
+profile_14_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_12.png', filename: '14_avatar.jpg')
+
+profile_15_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/avatar_13.png', filename: '15_avatar.jpg')
+
+
+
+################################################################################
 
 ## cover photos
 
-profile_1_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg'), filename: 'vietnam-street.jpg')
+profile_guest_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/minimalist_cover.jpg'), filename: 'guest_cover.jpg')
+profile_jacob_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/jacob_cover.jpg'), filename: 'malibu.jpg')
+profile_abstract_saved.cover.attach(io: File.open('app/assets/images/seeds/covers/abstract_cover.jpg'), filename: 'abstract_cover')
+profile_animals_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/animals_cover.jpg'), filename: 'animals_cover.jpg')
+profile_chocolate_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/chocolate_cover.jpg'), filename: 'chocolate_cover.jpg')
+profile_music_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/music_cover.jpg'), filename: 'music_cover.jpg')
+profile_sports_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/sports_cover.jpg'), filename: 'sports_cover.jpg')
 
-guest_profile_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: 'jellyfish.jpg')
+profile_8_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/8_cover.jpg'), filename: '8_cover.jpg')
+profile_9_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/9_cover.jpg'), filename: '9_cover.jpg')
+profile_10_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/10_cover.jpg'), filename: '10_cover.jpg')
+profile_11_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/11_cover.jpg'), filename: '11_cover.jpg')
+profile_12_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/12_cover.jpg'), filename: '12_cover.jpg')
+profile_13_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/13_cover.jpg'), filename: '13_cover.jpg')
+profile_14_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/14_cover.jpg'), filename: '14_cover.jpg')
+profile_15_saved.cover.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/covers/15_cover.jpg'), filename: '15_cover.jpg')
 
-guest_profile_saved.save!
-profile_1_saved.save!
+profile_guest_saved.save!
+profile_jacob_saved.save!
+profile_abstract_saved.save!
+profile_animals_saved.save!
+profile_chocolate_saved.save!
+profile_music_saved.save!
+profile_sports_saved.save!
+
+profile_8_saved.save!
+profile_9_saved.save!
+profile_10_saved.save!
+profile_11_saved.save!
+profile_12_saved.save!
+profile_13_saved.save!
+profile_14_saved.save!
+profile_15_saved.save!
+
 
 ################################################################################
 
@@ -309,17 +570,17 @@ profile_1_saved.save!
 photo_1 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
-  location: "Malibu",
-  lens: 'EF 70-200mm f/4.0',
-  camera: 'Cannon EOS 5DS',
+  location: ,
+  lens: ,
+  camera: ,
   width: 333,
   height: 500,
-  profile_id: guest_profile_saved.id,
-  # category
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism'
 }
 photo_1_saved = Photo.new(photo_1)
 
-photo_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg'), filename: 'toronto.jpg')
+photo_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/architecture-building-black-and-white-staircase-staircase-steps-spiral-london-spiral-staircase_t20_Amw31y.jpg'), filename: 'minimal_1.jpg')
 
 
 photo_2 = {
