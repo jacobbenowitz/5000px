@@ -34,6 +34,21 @@ user_1_saved = User.create(user_1)
 guest_saved = User.create(guest)
 
 
+# id: 34,
+#   first_name: "Jacob",
+#   last_name: "Benowitz",
+#   website_url: "https://www.jacobbenowitz.com",
+#   instagram_url: "j.benowitz",
+#   lenses: "50mm f/1.8",
+#   cameras: "Panasonic GH5",
+#   birthday: Tue, 17 Mar 1998,
+#   city: "Brooklyn, NY",
+#   country: "United States",
+#   about:
+#    "Full-stack engineer & previously a technical marketer with a passion for photography an
+# d video.",
+#   gender: "Male",
+
 ## profiles
 
 profile_1 = {

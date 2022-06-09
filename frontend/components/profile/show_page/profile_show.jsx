@@ -21,7 +21,10 @@ export default class ProfileShow extends React.Component {
   
   componentDidMount() {
     const { photos, profile, profileId,
-      fetchPhotos, fetchProfile } = this.props
+      fetchPhotos, fetchProfile } = this.props;
+    
+    window.scrollTo(0, 0)
+
     this.setState({ status: BUSY }, () => {
       fetchPhotos() 
       fetchProfile(profileId)

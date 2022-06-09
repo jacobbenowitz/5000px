@@ -13,6 +13,8 @@ export default class SinglePhotoShow extends React.Component {
       isLiked, user, isCurrentProfile, currentProfile,
       fetchProfile, fetchPhoto, getLikes } = this.props;
     
+    window.scrollTo(0, 0)
+    
     fetchPhoto(photoId)
     fetchProfile(photo?.profile_id)
     getLikes(getLikes)

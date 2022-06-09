@@ -10,7 +10,9 @@ import FeaturedPhotographerCard from "./cards/featured_photographer_card";
 export default class HomeFeed extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      featuredPhotographers: []
+    }
   }
 
   componentDidMount() {
@@ -20,6 +22,10 @@ export default class HomeFeed extends React.Component {
     fetchPhotos()
     fetchProfiles()
     getLikes()
+  }
+
+  componentDidUpdate() {
+    
   }
   
 
@@ -74,14 +80,10 @@ export default class HomeFeed extends React.Component {
           </span>
         </div>
         <div className="featured-cards-wrapper">
-            <div className="ft-scroll">
-              <div className="spacer-52px" />
-            <FeaturedPhotographerCard 
-            />
-            <FeaturedPhotographerCard 
-            />
-            <FeaturedPhotographerCard 
-            />
+          <div className="ft-scroll">
+            <div className="spacer-52px" />
+              <FeaturedPhotographerCard 
+              />
               <div className="spacer-52px" />
           </div>
         </div>

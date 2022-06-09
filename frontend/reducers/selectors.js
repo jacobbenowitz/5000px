@@ -1,4 +1,3 @@
-import React from "react";
 
 export const buildProfileGalleryArray = ({photos}) => {
   return photos.map(photo => {
@@ -15,6 +14,7 @@ export const buildProfileGalleryArray = ({photos}) => {
     }
   })
 };
+
 export const buildDiscoverGalleryArray = ({ photos }) => {
   return photos.map(photo => {
     let name = photo?.profileName.length > 1 ?
@@ -81,4 +81,11 @@ export const selectProfileById = ({ profiles }, profileId) => {
 
 export const selectUserById = ({ users }, userId) => {
   return users[userId]
+}
+
+export const selectFeaturedPhotographers = (photos, profiles) => {
+  // select 5 profiles
+  
+  // get 3 random photos from each
+  // return array [{photos: [], profile: {name: '', location: '', id: ''}}]
 }
