@@ -24,6 +24,8 @@ export default class DiscoverFeed extends React.Component {
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, page } = this.props;
     let title, description;
+    
+    window.scrollTo(0, 0)
 
     if (page === 'popular') {
       title = discoverTitles.popular.title
@@ -101,9 +103,7 @@ export default class DiscoverFeed extends React.Component {
         />
       )
     } else {
-      gallery = (
-        <GridLoader />
-      )
+      gallery = <GridLoader />
     }
 
     return (

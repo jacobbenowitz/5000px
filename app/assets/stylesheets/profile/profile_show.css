@@ -1,4 +1,4 @@
-.profile-cover-container {
+.profile-cover-container, .collection-cover-container {
   position: relative;
   margin-bottom: 32px;
   max-width: 100%;
@@ -13,7 +13,7 @@
   background-position: 50% 50%;
 }
 
-.profile-show-container {
+.profile-show-container, .collection-container {
   grid-column: 1 / span 12;
 }
 .profile-avatar-container {
