@@ -47,11 +47,40 @@
 }
 
 #discover-modal {
-  top: 62px;
-  left: 162px;
+  top: 64px;
+  left: 229px;
 }
 
 #user-modal {
-  top: 62px;
-  right: 135px;
+  top: 70px;
+  right: 137px;
+}
+
+.nav-pseduo {
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.down-arrow-wrapper {
+  display: flex;
+  box-sizing: border-box;
+  place-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+
+}
+
+.fa-angle-down {
+  color: #909091;
+}
+
+.dropdown-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: baseline;
 }

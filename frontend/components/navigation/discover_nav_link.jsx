@@ -23,15 +23,25 @@ export default class DiscoverNavLinkItem extends React.Component {
   render() {
 
     const modalClass = this.state.modalOpen ? "" : " modal-off";
-
     return (
       <>
-        <NavLink
-          to={'#'}
-          onClick={this.handleClick}
-        >Discover</NavLink>
+        <NavLink to={'/home'}>
+          Home
+        </NavLink>
+        <div className="dropdown-nav">
+          <span className="nav-pseduo"
+            onClick={this.handleClick}
+          >
+            Discover
+          </span>
+          <div className="down-arrow-wrapper">
+            <i className="fa-solid fa-angle-down fa-sm" />
+          </div>
+        </div>
+
         <DiscoverNavModal
-          klass={modalClass} />
+          klass={modalClass}
+        />
       </>
     )
       

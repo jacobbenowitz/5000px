@@ -8,12 +8,28 @@ import FeaturedCardRows from "../featured_card_gallery";
  * @param  {} => return (<divclassName="featured-photo-card-wrapper"><divclassName={type}></div></div>
  */
 
-const FeaturedPhotographerCard = ({photos, profile}) => {
+const FeaturedPhotographerCard = ({ photos, profile }) => {
+
+  const styleBg = (src) => {
+    return {backgroundImage: `url(${src})`}
+  }
+
   return (
     <div className="featured-photo-card-wrapper">
-      <FeaturedCardRows
+      {/* <FeaturedCardRows
         photos={photos}
-      />
+      /> */}
+      <div className="ft-card-grid">
+        <div className="ft-card-photo" 
+          style={styleBg(photos[0].thumbnailUrl)}
+        />
+        <div className="ft-card-photo " 
+          style={styleBg(photos[1].thumbnailUrl)}
+        />
+        <div className="ft-card-photo" 
+          style={styleBg(photos[2].thumbnailUrl)}
+        />
+      </div>
       <div className="ft-card-bottom">
         <div className="ft-card-profile">
           {/* <AvatarSm /> */}

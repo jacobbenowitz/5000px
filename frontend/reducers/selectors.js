@@ -22,7 +22,7 @@ export const buildDiscoverGalleryArray = ({ photos }) => {
 
     return {
       key: photo.id,
-      src: photo.photoUrl,
+      src: photo.thumbnailUrl,
       width: photo.width,
       height: photo.height,
       alt: name,
@@ -95,14 +95,12 @@ export const selectUserById = ({ users }, userId) => {
   return users[userId]
 }
 
+// return array [{photos: [], profile: {name: '', location: '', id: ''}}]
 export const selectFeaturedPhotographers = (photos, profiles, users) => {
-
   // select 5 profiles
-  const featured = Object.values(profiles).filter(
-    profile => profile.featured
-  )
+  const featured = selectFeaturedProfiles(profiles)
 
-  const finalFeatured = featured.map(profile => {
+  const formattedProfiles = featured.map(profile => {
     let name;
 
     if (profile.first_name) {
@@ -115,42 +113,75 @@ export const selectFeaturedPhotographers = (photos, profiles, users) => {
 
     // get 3 random photos from each
     const featuredPhotos = selectThreeRandomPhotos(profilePhotos)
-    // return array [{photos: [], profile: {name: '', location: '', id: ''}}]
 
     return {
       photos: featuredPhotos,
       profile: {
         name: name,
-        location: profile?.location || 'Brooklyn',
+        location: profile.city,
         id: profile.id
       }
     }
   })
 
-  return finalFeatured;
+  return formattedProfiles;
+}
+
+export const selectFeaturedProfiles = (profiles) => {
+  let featured = Object.values(profiles).filter(
+    profile => profile.featured
+  )
+  // shuffle order of profiles
+  return featured.sort(() => Math.random() - 0.5);
 }
 
 export const selectThreeRandomPhotos = (photos) => {
   let maxPhotos = photos.length;
   let randomPhotos = [];
   let prevInts = [];
+
   if (maxPhotos < 3) {
     return photos
   } else {
     for (let i = 0; i < 3; i++) {
       let randomInt = getUniqueRandomInt(1, maxPhotos, prevInts)
       prevInts.push(randomInt)
-      let photo = photos[randomInt];
+      let photo = photos[randomInt]
       randomPhotos.push(photo)
     }
     return randomPhotos;
   }
 }
-
-const getUniqueRandomInt = (min, max, prevInts) => {
+/**
+ * @param  {integer} min
+ * @param  {integer} max
+ * @param  {array} prevInts => array of previous numbers
+ * @param  {max} => Math.floor to ensure integer
+ */
+export const getUniqueRandomInt = (min, max, prevInts) => {
   max = Math.floor(max);
   let randomInt = Math.floor(Math.random() * (max - min + 1)) + min - 1;
   if (prevInts.includes(randomInt)) {
     return getUniqueRandomInt(min, max, prevInts)
   } else return randomInt;
 }
+
+// todo: refactor with photo.featured once seeded
+// return object {photos: [], profile: {name: '', id: ''}}
+export const selectCollectionPhotos = (photos, profiles, collection) => {
+  const featured = selectFeaturedProfiles(profiles)
+  let formattedCollection = {}
+
+  const formattedProfiles = featured.forEach(profile => {
+    let profilePhotos = selectProfilePhotos(photos, profile.photoIds)
+
+    if (profilePhotos[0].category === collection) {
+      formattedCollection.photos = selectThreeRandomPhotos(profilePhotos)
+      formattedCollection.profile = {
+        name: profile.first_name + " " + profile.last_name,
+        id: profile.id
+      }
+    }
+  })
+  return formattedCollection;
+};

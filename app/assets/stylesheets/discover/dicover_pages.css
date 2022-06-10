@@ -5,6 +5,8 @@
 }
 .home-feed-gallery {
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .photo-index-item {

@@ -33,16 +33,45 @@
   content: attr(data-before);
   top: 0;
   width: 100%;
-  min-height: 80px;
-  height: min-content;
+  height: 100%;
   z-index: 100;
   display: flex;
   position: absolute;
   color: white;
-  background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 40%);
   cursor: pointer;
   overflow: hidden;
   padding: 1rem 1rem 0 1rem;
   box-sizing: border-box;
   font-weight: 700;
+  animation: slideDown 400ms ease-in-out;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -8px;
+    opacity: 0%;
+    filter: blur(3px);
+  }
+  100% {
+    top: 0px;
+    opacity: 100%;
+    filter: blur(0px);
+  }
+  
+}
+
+@keyframes slideUp {
+  
+  0% {
+    top: 0px;
+    opacity: 100%;
+    filter: blur(0px);
+  }
+  
+  100% {
+    top: -8px;
+    opacity: 0%;
+    filter: blur(3px);
+  }
 }

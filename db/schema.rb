@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_210349) do
+ActiveRecord::Schema.define(version: 2022_06_09_232845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_210349) do
     t.integer "width"
     t.integer "height"
     t.string "category"
+    t.string "featured"
     t.index ["profile_id"], name: "index_photos_on_profile_id"
   end
 
@@ -82,11 +83,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_210349) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.string "profile_avatar"
-    t.string "profile_banner"
     t.boolean "featured"
-    t.index ["profile_avatar"], name: "index_profiles_on_profile_avatar"
-    t.index ["profile_banner"], name: "index_profiles_on_profile_banner"
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 

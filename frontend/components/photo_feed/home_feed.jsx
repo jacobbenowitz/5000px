@@ -2,11 +2,13 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
-import { buildGridGalleryProps, selectFeaturedPhotographers } from "../../reducers/selectors";
+import { buildGridGalleryProps, selectCollectionPhotos, selectFeaturedPhotographers } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
 import FeaturedPhotographerCard from "./cards/featured_photographer_card";
 import InfoCallout from "./cards/info_callout";
+import CollectionGridCard from "./cards/collection_grid_card";
+import SinglePhotoLarge from "./cards/single_photo_large";
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -18,7 +20,8 @@ export default class HomeFeed extends React.Component {
     this.state = {
       featuredPhotographers: [],
       status: IDLE,
-      infoCallout: true
+      infoCallout: true,
+      minimalismCollection: []
     }
     this.closeInfoCallout = this.closeInfoCallout.bind(this)
   }
@@ -37,13 +40,14 @@ export default class HomeFeed extends React.Component {
   componentDidUpdate() {
     const { allPhotos, photos, users, profiles } = this.props;
     const { featuredPhotographers, status } = this.state;
-
-    if (status === BUSY && Object.values(allPhotos).length &&
+    if (status === BUSY && Object.values(allPhotos).length > 0 &&
       users && profiles) {
+      let featuredPhotographers = selectFeaturedPhotographers(allPhotos, profiles, users)
+      let minimalismCollection = selectCollectionPhotos(allPhotos, profiles, 'minimalism')
       this.setState({
-        featuredPhotographers:
-          selectFeaturedPhotographers(allPhotos, profiles, users),
-        status: DONE
+        status: DONE,
+        featuredPhotographers: featuredPhotographers,
+        minimalismCollection: minimalismCollection,
       })
     }
   }
@@ -59,12 +63,13 @@ export default class HomeFeed extends React.Component {
 
   render() {
     const { photos, users, profiles, currentProfile } = this.props;
-    const { featuredPhotographers, status, infoCallout } = this.state;
+    const { featuredPhotographers, minimalismCollection,
+      status, infoCallout } = this.state;
 
-    let featuredCards;
+    let featuredCards, minimalismCard, singlePhotoCard;
 
     if (status === DONE) {
-        featuredCards = featuredPhotographers.map((photographer, i) => {
+      featuredCards = featuredPhotographers.map((photographer, i) => {
         return (
           <FeaturedPhotographerCard
             key={`ft-card-${i}`}
@@ -72,7 +77,22 @@ export default class HomeFeed extends React.Component {
             profile={photographer.profile}
           />
         )
-      })
+      });
+
+      minimalismCard = (
+        <CollectionGridCard 
+          photos={minimalismCollection.photos}
+        />
+      )
+
+      singlePhotoCard = (
+        <SinglePhotoLarge
+          // temp testing
+          photo={featuredPhotographers[0].photos[0]}
+          profile={featuredPhotographers[0].profile}
+        />
+      )
+      
     }
 
     return (
@@ -107,31 +127,15 @@ export default class HomeFeed extends React.Component {
         </div>
         <div className="home-feed-gallery" >
           <div className="grid-gallery-wrapper">
-            <div className="ft-grid-wrapper">
-              <div className="featured-grid-container">
-                <div className="ft-grid-top-label">
-                  <span className="ft-label">
-                    Minimalism | Collection
-                  </span>
-                </div>
-                <div className="ft-grid-img-wrapper ft-large ft-top">
-
-                </div>
-                <div className="ft-grid-img-wrapper ft-small">
-                  
-                </div>
-                <div className="ft-grid-img-wrapper">
-
-                </div>
-              </div>
-            </div>
+            {minimalismCard}
+            {singlePhotoCard}
           </div>
 
           {photos ? (
             <DiscoverRows photos={photos} />
-          ) : (
-            <GridLoader />
-          )
+            ) : (
+              <GridLoader />
+            )
           }
         </div>
         <div>

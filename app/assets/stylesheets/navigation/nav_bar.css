@@ -9,6 +9,17 @@ header {
   z-index: 400;
 }
 
+.primary-logo-header {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.active {
+  color: #316ECA;
+  font-weight: 600;
+}
+
 #nav-header {
   display: flex;
   overflow: hidden;
