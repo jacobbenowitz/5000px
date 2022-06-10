@@ -8,7 +8,8 @@ const mapStateToProps = ({ errors, entities, session }) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  processForm: user => dispatch(login(user))
+  processForm: user => dispatch(login(user)),
+  loginGuest: user => dispatch(login(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

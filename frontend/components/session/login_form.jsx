@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import demoLoginScript from "../../demo/demo_user_login";
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -22,6 +23,20 @@ export default class LoginForm extends React.Component {
     return e => {
       this.setState({ [type]: e.target.value });
     }
+  }
+
+  demoLogin(e) {
+    e.preventDefault()
+    demoLoginScript.demoLoginForm()
+  }
+
+  demoSignup = (e) => {
+    e.preventDefault();
+    const user = {
+      username: 'Guest',
+      password: 'demo#User!806'
+    }
+    this.props.loginGuest(user);
   }
 
   renderErrors() {
@@ -65,12 +80,24 @@ export default class LoginForm extends React.Component {
                 value={this.state.password}
               />
             </div>
-            <button type="submit" className="login">Log in</button>
+            <button type="submit" className="login">
+              Log in
+            </button>
+
+            <button className="demo_button"
+              id="demo-signup"
+              onClick={this.demoLogin}
+            >Demo account</button>
+
             <span className="alt-session-link">
               <p>Don't have an account?</p>
               <Link to={'/signup'}>Sign up</Link>
             </span>
           </form>
+          <button
+            onClick={this.demoSignup}
+            id="hidden-demo">Demo only
+          </button>
         </div>
       </div>
     )

@@ -20,8 +20,8 @@ export default class SinglePhotoShow extends React.Component {
   }
 
   componentDidUpdate() {
-    const { profile, photo, fetchProfile } = this.props; 
-    if (!profile && photo) {
+    const { photoProfile, photo, fetchProfile } = this.props; 
+    if (photo && !photoProfile) {
       fetchProfile(photo?.profile_id)
     }
   }

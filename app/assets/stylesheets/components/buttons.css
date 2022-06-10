@@ -307,3 +307,21 @@ input:focus {
 .cancel:hover {
   color: #2986F7;
 }
+
+#demo-signup {
+  font-weight: 800;
+  background: linear-gradient(91.5deg, #3F4DCE -21.96%, #8731CA 106.98%);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0);
+  transition: all 250ms ease-in-out;
+}
+
+#demo-signup:hover {
+  transition: all 250ms ease-in-out;
+  background: linear-gradient(91.5deg, #3F4DCE -21.96%, #8731CA 106.98%);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.45);
+}
+#demo-signup:focus {
+  transition: all 250ms ease-in-out;
+  background: linear-gradient(91.5deg, #8731CA -21.96%, #8731CA 106.98%);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+}

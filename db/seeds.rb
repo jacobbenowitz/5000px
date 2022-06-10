@@ -582,18 +582,22 @@ profile_15_saved.save!
 
 ## photos
 
-# guest user
+def assignFeaturedPage
+  pages = ['editors', 'fresh', 'popular', 'upcoming']
+  return pages[rand(0...3)]
+end
+
+# guest user | minimalism
 photo_1 = {
   title: Faker::Hipster.sentence(word_count: 3),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2111,
-  height: 1407,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_1_saved = Photo.new(photo_1)
 photo_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/architecture-building-black-and-white-staircase-staircase-steps-spiral-london-spiral-staircase_t20_Amw31y.jpg'), filename: 'minimal_1.jpg')
@@ -605,11 +609,10 @@ photo_2 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1933,
-  height: 1165,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_2_saved = Photo.new(photo_2)
 photo_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/big-surf-off-the-coast-of-southern-africa_t20_K6EEyE.jpg'), filename: 'minimal_2.jpg')
@@ -621,11 +624,10 @@ photo_3 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2094,
-  height: 1396,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_3_saved = Photo.new(photo_3)
 photo_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/cabalgata-en-el-mar_t20_gLlABx.jpg'), filename: 'minimal_3.jpg')
@@ -637,11 +639,10 @@ photo_4 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1070,
-  height: 1070,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_4_saved = Photo.new(photo_4)
 photo_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/capture-light_t20_ZnBxYY.jpg'), filename: 'minimal_4.jpg')
@@ -653,11 +654,10 @@ photo_5 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').last,
-  width: 1024,
-  height: 1024,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_5_saved = Photo.new(photo_5)
 photo_5_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/cat-cat-s-eye-minimal-minimalist-minimalistic-minimalism_t20_7yN4Kk.jpg'), filename: 'minimal_5.jpg')
@@ -669,11 +669,10 @@ photo_6 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2016,
-  height: 1344,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_6_saved = Photo.new(photo_6)
 photo_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/city-architecture-bridge-uk-landmark-london-fog-monochrome-mist-millennium-bridge_t20_A321Py.jpg'), filename: 'minimal_6.jpg')
@@ -685,11 +684,10 @@ photo_7 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1824,
-  height: 1503,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_7_saved = Photo.new(photo_7)
 photo_7_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/city-architecture-people-business-adult-sign-hand-iron-minimal-desktop_t20_kRRmzE.jpg'), filename: 'minimal_7.jpg')
@@ -701,11 +699,10 @@ photo_8 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2094,
-  height: 1396,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_8_saved = Photo.new(photo_8)
 photo_8_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/door-outside-that-leads-to-the-ocean_t20_ZJJRn0.jpg'), filename: 'minimal_8.jpg')
@@ -717,11 +714,10 @@ photo_9 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2092,
-  height: 1396,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_9_saved = Photo.new(photo_9)
 photo_9_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/frame-mock-up-canvas-white-poster-blank-template-background-wall-design-mock-up-mockup-empty-copy_t20_nLZw6P.jpg'), filename: 'minimal_9.jpg')
@@ -733,11 +729,10 @@ photo_10 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2170,
-  height: 1323,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_10_saved = Photo.new(photo_10)
 photo_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/green-spiral-vine-macro-curly-spirals-minimal-green-plants-natural-spirals-plant-spirals_t20_kz3kkX.jpg'), filename: 'minimal_10.jpg')
@@ -749,11 +744,10 @@ photo_11 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1915,
-  height: 1436,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_11_saved = Photo.new(photo_11)
 photo_11_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/minimal_t20_PJjN97.jpg'), filename: 'minimal_11.jpg')
@@ -765,11 +759,10 @@ photo_12 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1405,
-  height: 2108,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_12_saved = Photo.new(photo_12)
 photo_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/minimalistic-orange-corridor-with-arched-ceiling-in-egyptian-architecture_t20_4230d2.jpg'), filename: 'minimal_12.jpg')
@@ -781,11 +774,10 @@ photo_13 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1479,
-  height: 1849,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_13_saved = Photo.new(photo_13)
 photo_13_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/minimalistic-vibe_t20_VW10N1.jpg'), filename: 'minimal_13.jpg')
@@ -797,11 +789,10 @@ photo_14 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 1436,
-  height: 1915,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_14_saved = Photo.new(photo_14)
 photo_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/nature-fog-bench-dock-minimalism-neutrals_t20_onn1E8.jpg'), filename: 'minimal_14.jpg')
@@ -813,15 +804,119 @@ photo_15 = {
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
   camera: profile_guest_saved.cameras.split(',').first,
-  width: 2014,
-  height: 1411,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_15_saved = Photo.new(photo_15)
 photo_15_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/nature-outdoors-sky-night-adventure-male-landscape-star-impact-earth-milky-way-minimalism-epic_t20_nR7L9A.jpg'), filename: 'minimal_15.jpg')
 photo_15_saved.save!
+
+guest_photo_16 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_16_saved = Photo.new(guest_photo_16)
+guest_photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/nature-sky-sunset-mountain-mountain-landscape-extreme-sports-mountains-paragliding-neutral-airy_t20_nRk8Kn.jpg'), filename: 'minimal_16.jpg')
+guest_photo_16_saved.save!
+
+guest_photo_17 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_17_saved = Photo.new(guest_photo_17)
+guest_photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/scandinavian-modern-white-cozy-eco-interior-white-table-and-mirror-in-bed-room-minimalism-cactus_t20_Jzvvp4.jpg'), filename: 'minimal_17.jpg')
+guest_photo_17_saved.save!
+
+guest_photo_18 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_18_saved = Photo.new(guest_photo_18)
+guest_photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/silhouettes-of-mountains-in-the-mist-and-bird-flying-light-blue-color-minimal-landscape-adventure_t20_lLlXvQ.jpg'), filename: 'minimal_18.jpg')
+guest_photo_18_saved.save!
+
+guest_photo_19 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_19_saved = Photo.new(guest_photo_19)
+guest_photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/sky-architecture-sunset-yellow-window-love-edifice-apartment_t20_8gZPwj.jpg'), filename: 'minimal_19.jpg')
+guest_photo_19_saved.save!
+
+guest_photo_20 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_20_saved = Photo.new(guest_photo_20)
+guest_photo_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/summer-purple-lavender-running-freedom-girl-flowers-lavender-farm_t20_jjlOVd.jpg'), filename: 'minimal_20.jpg')
+guest_photo_20_saved.save!
+
+guest_photo_21 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_21_saved = Photo.new(guest_photo_21)
+guest_photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/travel-landscape-desert-dunes-orange-color-sand-dunes-minimalism-neutral-colors-tiny-human_t20_E0GePJ.jpg'), filename: 'minimal_21.jpg')
+guest_photo_21_saved.save!
+
+guest_photo_22 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_guest_saved.lenses,
+  camera: profile_guest_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_guest_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+guest_photo_22_saved = Photo.new(guest_photo_22)
+guest_photo_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/windows-on-windows_t20_knrmR4.jpg'), filename: 'minimal_22.jpg')
+guest_photo_22_saved.save!
 
 
 ## jacob
@@ -832,11 +927,10 @@ photo_16 = {
   location: 'South Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1581,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'people',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_16_saved = Photo.new(photo_16)
 photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Benowitz Jacob - Eyes.jpg'), filename: 'jacob_16.jpg')
@@ -848,11 +942,10 @@ photo_17 = {
   location: 'Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1581,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'city',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_17_saved = Photo.new(photo_17)
 photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Benowitz Jacob - LampSkyColor.jpg'), filename: 'jacob_17.jpg')
@@ -864,11 +957,10 @@ photo_18 = {
   location: 'Grape Valley',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1164,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'nature',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_18_saved = Photo.new(photo_18)
 photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/DSC_Creative_0214.jpg'), filename: 'jacob_18.jpg')
@@ -880,11 +972,10 @@ photo_18_1 = {
   location: 'Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1164,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'creative',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_18_1_saved = Photo.new(photo_18_1)
 photo_18_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/DSC_Creative_0232.jpg'), filename: 'jacob_18_1.jpg')
@@ -896,11 +987,10 @@ photo_19 = {
   location: 'Ashville',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1167,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'nature',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_19_saved = Photo.new(photo_19)
 photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_1453.jpg'), filename: 'jacob_19.jpg')
@@ -912,11 +1002,10 @@ photo_20 = {
   location: 'San Luis Obispo',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1167,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'nature',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_20_saved = Photo.new(photo_20)
 photo_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_9052.jpg'), filename: 'jacob_20.jpg')
@@ -928,11 +1017,10 @@ photo_21 = {
   location: 'South Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1167,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'city',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_21_saved = Photo.new(photo_21)
 photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0443.jpg'), filename: 'jacob_21.jpg')
@@ -944,11 +1032,10 @@ photo_22 = {
   location: 'Malibu',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1167,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'city',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_22_saved = Photo.new(photo_22)
 photo_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0794.jpg'), filename: 'jacob_22.jpg')
@@ -960,11 +1047,10 @@ photo_23 = {
   location: 'Malibu',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1167,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'beach',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_23_saved = Photo.new(photo_23)
 photo_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0885.jpg'), filename: 'jacob_23.jpg')
@@ -976,11 +1062,10 @@ photo_24 = {
   location: 'Old Town Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1167,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'beach',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_24_saved = Photo.new(photo_24)
 photo_24_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_2774.jpg'), filename: 'jacob_24.jpg')
@@ -992,11 +1077,10 @@ photo_25 = {
   location: 'Pismo Beach',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 990,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'beach',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_25_saved = Photo.new(photo_25)
 photo_25_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Sunset.jpg'), filename: 'jacob_25.jpg')
@@ -1008,15 +1092,106 @@ photo_26 = {
   location: 'Old Town Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
   camera: profile_jacob_saved.cameras,
-  width: 1750,
-  height: 1164,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'creative',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_26_saved = Photo.new(photo_26)
 photo_26_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Upside.jpg'), filename: 'jacob_26.jpg')
 photo_26_saved.save!
+
+
+jacob_photo_27 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_jacob_saved.lenses.split(',').last,
+  camera: profile_jacob_saved.cameras,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_jacob_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+jacob_photo_27_saved = Photo.new(jacob_photo_27)
+jacob_photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_2789.jpg'), filename: 'jacob_27.jpg')
+jacob_photo_27_saved.save!
+
+jacob_photo_28 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_jacob_saved.lenses.split(',').last,
+  camera: profile_jacob_saved.cameras,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_jacob_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+jacob_photo_28_saved = Photo.new(jacob_photo_28)
+jacob_photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_6565.jpg'), filename: 'jacob_28.jpg')
+jacob_photo_28_saved.save!
+
+jacob_photo_29 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_jacob_saved.lenses.split(',').last,
+  camera: profile_jacob_saved.cameras,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_jacob_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+jacob_photo_29_saved = Photo.new(jacob_photo_29)
+jacob_photo_29_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_6576.jpg'), filename: 'jacob_29.jpg')
+jacob_photo_29_saved.save!
+
+jacob_photo_30 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_jacob_saved.lenses.split(',').last,
+  camera: profile_jacob_saved.cameras,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_jacob_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+jacob_photo_30_saved = Photo.new(jacob_photo_30)
+jacob_photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/JacobBenowitz_Contact_Fallback.jpg'), filename: 'jacob_30.jpg')
+jacob_photo_30_saved.save!
+
+jacob_photo_31 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_jacob_saved.lenses.split(',').last,
+  camera: profile_jacob_saved.cameras,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_jacob_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+jacob_photo_31_saved = Photo.new(jacob_photo_31)
+jacob_photo_31_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/JacobBenowitz_Cove_Fallback.jpg'), filename: 'jacob_31.jpg')
+jacob_photo_31_saved.save!
+
+jacob_photo_32 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_jacob_saved.lenses.split(',').last,
+  camera: profile_jacob_saved.cameras,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_jacob_saved.id,
+  category: 'minimalism',
+  featured: assignFeaturedPage
+}
+jacob_photo_32_saved = Photo.new(jacob_photo_32)
+jacob_photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/JacobBenowitz_Home_Fallback.jpg'), filename: 'jacob_32.jpg')
+jacob_photo_32_saved.save!
+
 
 ## abstract
 
@@ -1026,11 +1201,10 @@ photo_27 = {
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
   camera: profile_abstract_saved.cameras.split(',').first,
-  width: 1891,
-  height: 1502,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_27_saved = Photo.new(photo_27)
 photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/abstract-background_t20_E4387Z.jpg'), filename: 'abstract_27.jpg')
@@ -1042,11 +1216,10 @@ photo_28 = {
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
   camera: profile_abstract_saved.cameras.split(',').first,
-  width: 1407,
-  height: 2111,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_28_saved = Photo.new(photo_28)
 photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg'), filename: 'abstract_28.jpg')
@@ -1058,11 +1231,10 @@ photo_28_1 = {
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
   camera: profile_abstract_saved.cameras.split(',').first,
-  width: 1436,
-  height: 1915,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_28_1_saved = Photo.new(photo_28_1)
 photo_28_1_saved.photo.attach(io: File.open('//Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg')
@@ -1074,11 +1246,10 @@ photo_29 = {
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
   camera: profile_abstract_saved.cameras.split(',').first,
-  width: 1379,
-  height: 2068,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_29_saved = Photo.new(photo_29)
 photo_29_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/ferris-wheel-upside-down-evening-neon-colors-attraction-carousel-crystal-ball_t20_rB8vBo.jpg'), filename: 'abstract_29.jpg')
@@ -1090,11 +1261,10 @@ photo_30 = {
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
   camera: profile_abstract_saved.cameras.split(',').first,
-  width: 2048,
-  height: 1365,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_30_saved = Photo.new(photo_30)
 photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/motions-3-3_t20_BAP4Nv.jpg'), filename: 'abstract_30.jpg')
@@ -1106,15 +1276,121 @@ photo_31 = {
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
   camera: profile_abstract_saved.cameras.split(',').first,
-  width: 1536,
-  height: 1536,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_31_saved = Photo.new(photo_31)
 photo_31_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/nominated-digital-experiment_t20_XQNjXR.jpg'), filename: 'abstract_31.jpg')
 photo_31_saved.save!
+
+
+abs_photo_32 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_32_saved = Photo.new(abs_photo_32)
+abs_photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/people-come-and-go-that-s-life_t20_dzRGY9.jpg'), filename: 'abstract_32.jpg')
+abs_photo_32_saved.save!
+
+abs_photo_33 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_33_saved = Photo.new(abs_photo_33)
+abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/people-come-and-go-that-s-life_t20_dzRGY9.jpg'), filename: 'abstract_33.jpg')
+abs_photo_33_saved.save!
+
+abs_photo_33 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_33_saved = Photo.new(abs_photo_33)
+abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/reflection-pattern-sphere-abstract-bubble-texture-macro-creative-closeup-soap-bubble_t20_OJevlE.jpg'), filename: 'abstract_33.jpg')
+abs_photo_33_saved.save!
+
+abs_photo_34 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_34_saved = Photo.new(abs_photo_34)
+abs_photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/the-roof-of-the-building-esplanade-theatres-on-the-bay_t20_kzAoRp.jpg'), filename: 'abstract_34.jpg')
+abs_photo_34_saved.save!
+
+abs_photo_35 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_35_saved = Photo.new(abs_photo_35)
+abs_photo_35_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/through-tiny-lens_t20_loK6db.jpg'), filename: 'abstract_35.jpg')
+abs_photo_35_saved.save!
+
+abs_photo_36 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_36_saved = Photo.new(abs_photo_36)
+abs_photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'abstract_36.jpg')
+abs_photo_36_saved.save!
+
+abs_photo_37 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_abstract_saved.lenses.split(',').first,
+  camera: profile_abstract_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_abstract_saved.id,
+  category: 'abstract',
+  featured: assignFeaturedPage
+}
+abs_photo_37_saved = Photo.new(abs_photo_37)
+abs_photo_37_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/warm-city-1-3_t20_aO1a6Q.jpg'), filename: 'abstract_37.jpg')
+abs_photo_37_saved.save!
+
 
 ## animals
 
@@ -1124,11 +1400,10 @@ photo_32 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 1407,
-  height: 2111,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_32_saved = Photo.new(photo_32)
 photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/_t20_kLZ3zr.jpg'), filename: 'animals_32.jpg')
@@ -1140,11 +1415,10 @@ photo_33 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 1711,
-  height: 1107,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_33_saved = Photo.new(photo_33)
 photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/_t20_YamEaR.jpg'), filename: 'animals_33.jpg')
@@ -1156,31 +1430,14 @@ photo_34 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 1396,
-  height: 2094,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_34_saved = Photo.new(photo_34)
 photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/a-monkey-sat-in-a-human-pose-in-loro-park-tenerife_t20_98LvYA.jpg'), filename: 'animals_34.jpg')
 photo_34_saved.save!
-
-# photo_35 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   location: Faker::Address.city,
-#   lens: profile_animals_saved.lenses.split(',').first,
-#   camera: profile_animals_saved.cameras.split(',').first,
-#   width: 2094,
-#   height: 1396,
-#   profile_id: profile_animals_saved.id,
-#   category: 'animals',
-# featured: ''
-# }
-
-# photo_35_saved = Photo.new(photo_35)
-# photo_35_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/an-infant-monkey-is-nursing-looking-at-the-camera-while-his-mother-is-lying-on-her-back-and-the-male_t20_KAPOyK.jpg'), filename: 'animals_35.jpg')photo_35_saved.save!
 
 photo_36 = {
   title: Faker::Hipster.sentence(word_count: 3),
@@ -1188,11 +1445,10 @@ photo_36 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 2020,
-  height: 1348,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_36_saved = Photo.new(photo_36)
 photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-animal-nature-animals-green-wild-exotic-fox-wild-nature-foxy_t20_rL13QJ.jpg'), filename: 'animals_36.jpg')
@@ -1204,11 +1460,10 @@ photo_37 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 2081,
-  height: 1387,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_37_saved = Photo.new(photo_37)
 photo_37_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg'), filename: 'animals_37.jpg')
@@ -1220,11 +1475,10 @@ photo_38 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 1672,
-  height: 1112,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_38_saved = Photo.new(photo_38)
 photo_38_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/happy-elephant_t20_kLWQ24.jpg'), filename: 'animals_38.jpg')
@@ -1236,11 +1490,10 @@ photo_39 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 2117,
-  height: 1411,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_39_saved = Photo.new(photo_39)
 photo_39_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/humans-in-monkeys-body-everyone-is-a-human-kind-just-living-in-different-dimension-and-different-life_t20_yne8zp.jpg'), filename: 'animals_39.jpg')
@@ -1252,15 +1505,105 @@ photo_40 = {
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
   camera: profile_animals_saved.cameras.split(',').first,
-  width: 2117,
-  height: 1411,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_40_saved = Photo.new(photo_40)
 photo_40_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/red-fox-having-a-good-stretch-in-the-dunes-around-kijkduin-in-the-hague-netherlands-details-of-fur_t20_mLZJx3.jpg'), filename: 'animals_40.jpg')
 photo_40_saved.save!
+
+animal_photo_41 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_animals_saved.lenses.split(',').first,
+  camera: profile_animals_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_animals_saved.id,
+  category: 'animals',
+  featured: assignFeaturedPage
+}
+animal_photo_41_saved = Photo.new(animal_photo_41)
+animal_photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/reindeers-in-a-winter-landscape-with-a-glow-on-snowy-mountains-the-reindeer-looks-directly-into-the_t20_3d2j4o.jpg'), filename: 'animals_41.jpg')
+animal_photo_41_saved.save!
+
+animal_photo_42 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_animals_saved.lenses.split(',').first,
+  camera: profile_animals_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_animals_saved.id,
+  category: 'animals',
+  featured: assignFeaturedPage
+}
+animal_photo_42_saved = Photo.new(animal_photo_42)
+animal_photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/the-baby-monkey-sits-on-a-stone-and-eats-tropical-animals-in-their-natural-habitat_t20_0X38rw.jpg'), filename: 'animals_42.jpg')
+animal_photo_42_saved.save!
+
+animal_photo_43 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_animals_saved.lenses.split(',').first,
+  camera: profile_animals_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_animals_saved.id,
+  category: 'animals',
+  featured: assignFeaturedPage
+}
+animal_photo_43_saved = Photo.new(animal_photo_43)
+animal_photo_43_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/together-forever_t20_1J8k41.jpg'), filename: 'animals_43.jpg')
+animal_photo_43_saved.save!
+
+animal_photo_44 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_animals_saved.lenses.split(',').first,
+  camera: profile_animals_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_animals_saved.id,
+  category: 'animals',
+  featured: assignFeaturedPage
+}
+animal_photo_44_saved = Photo.new(animal_photo_44)
+animal_photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/twenty20_600e29d6-776e-479a-b0e6-7dce00962a7c.jpg'), filename: 'animals_44.jpg')
+animal_photo_44_saved.save!
+
+animal_photo_45 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_animals_saved.lenses.split(',').first,
+  camera: profile_animals_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_animals_saved.id,
+  category: 'animals',
+  featured: assignFeaturedPage
+}
+animal_photo_45_saved = Photo.new(animal_photo_45)
+animal_photo_45_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/wild-beautiful-giant-iguana-reminding-prehistoric-reptiles-close-up-portrait_t20_kL86B4.jpg'), filename: 'animals_45.jpg')
+animal_photo_45_saved.save!
+
+animal_photo_46 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_animals_saved.lenses.split(',').first,
+  camera: profile_animals_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_animals_saved.id,
+  category: 'animals',
+  featured: assignFeaturedPage
+}
+animal_photo_46_saved = Photo.new(animal_photo_46)
+animal_photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg'), filename: 'animals_46.jpg')
+animal_photo_46_saved.save!
+
 
 ## chocolate
 
@@ -1270,11 +1613,10 @@ photo_40_choc = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1223,
-  height: 1223,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_40_choc_saved = Photo.new(photo_40_choc)
 photo_40_choc_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-brownie-batter-on-beaters_t20_yvjYVx.jpg'), filename: 'chocolate_40_choc.jpg')
@@ -1286,11 +1628,10 @@ photo_41 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 900,
-  height: 1200,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_41_saved = Photo.new(photo_41)
 photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-cake_t20_yvZNpx.jpg'), filename: 'chocolate_41.jpg')
@@ -1302,11 +1643,10 @@ photo_42 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1396,
-  height: 2094,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_42_saved = Photo.new(photo_42)
 photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-chia-seed-pudding_t20_PoPbdR.jpg'), filename: 'chocolate_42.jpg')
@@ -1318,11 +1658,10 @@ photo_43 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1499,
-  height: 1006,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_43_saved = Photo.new(photo_43)
 photo_43_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-curls_t20_4ENQOy.jpg'), filename: 'chocolate_43.jpg')
@@ -1334,11 +1673,10 @@ photo_44 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1500,
-  height: 1000,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_44_saved = Photo.new(photo_44)
 photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg'), filename: 'chocolate_44.jpg')
@@ -1350,11 +1688,10 @@ photo_45 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1616,
-  height: 1080,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_45_saved = Photo.new(photo_45)
 photo_45_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-truffles_t20_JlPK14.jpg'), filename: 'chocolate_45.jpg')
@@ -1366,11 +1703,10 @@ photo_46 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1512,
-  height: 1512,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_46_saved = Photo.new(photo_46)
 photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolates_t20_1Je2dx.jpg'), filename: 'chocolate_46.jpg')
@@ -1382,16 +1718,135 @@ photo_47 = {
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
   camera: profile_chocolate_saved.cameras.split(',').first,
-  width: 1376,
-  height: 2064,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_47_saved = Photo.new(photo_47)
 photo_47_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/cocoa-powder-spilled-out-on-a-white-table_t20_kjEgYE.jpg'), filename: 'chocolate_47.jpg')
 photo_47_saved.save!
 
+
+chocolate_photo_48 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_48_saved = Photo.new(chocolate_photo_48)
+chocolate_photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/marzipan-balls_t20_rKv67g.jpg'), filename: 'chocolate_48.jpg')
+chocolate_photo_48_saved.save!
+
+chocolate_photo_49 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_49_saved = Photo.new(chocolate_photo_49)
+chocolate_photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/my-idea-of-heaven_t20_pld4n8.jpg'), filename: 'chocolate_49.jpg')
+chocolate_photo_49_saved.save!
+
+chocolate_photo_50 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_50_saved = Photo.new(chocolate_photo_50)
+chocolate_photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/photography-flower-sun-travel-sea-yellow-beach-light-vacations-pattern-sphere-still-life-business-my_t20_dpe4XR.jpg'), filename: 'chocolate_50.jpg')
+chocolate_photo_50_saved.save!
+
+chocolate_photo_51 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_51_saved = Photo.new(chocolate_photo_51)
+chocolate_photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/raw-dessert_t20_YXx6VW.jpg'), filename: 'chocolate_51.jpg')
+chocolate_photo_51_saved.save!
+
+chocolate_photo_52 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_52_saved = Photo.new(chocolate_photo_52)
+chocolate_photo_52_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/the-right-cake_t20_EPgrWJ.jpg'), filename: 'chocolate_52.jpg')
+chocolate_photo_52_saved.save!
+
+chocolate_photo_53 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_53_saved = Photo.new(chocolate_photo_53)
+chocolate_photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/tiramis_t20_yvAYoO.jpg'), filename: 'chocolate_53.jpg')
+chocolate_photo_53_saved.save!
+
+chocolate_photo_54 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_54_saved = Photo.new(chocolate_photo_54)
+chocolate_photo_54_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/white-chocolate-with-hazelnuts_t20_bkjGzg.jpg'), filename: 'chocolate_54.jpg')
+chocolate_photo_54_saved.save!
+
+chocolate_photo_55 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_chocolate_saved.lenses.split(',').first,
+  camera: profile_chocolate_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_chocolate_saved.id,
+  category: 'chocolate',
+  featured: assignFeaturedPage
+}
+chocolate_photo_55_saved = Photo.new(chocolate_photo_55)
+chocolate_photo_55_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/white-rose_t20_7OYOKN.jpg'), filename: 'chocolate_55.jpg')
+chocolate_photo_55_saved.save!
 
 ## music
 
@@ -1401,11 +1856,10 @@ photo_48 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 2014,
-  height: 1471,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_48_saved = Photo.new(photo_48)
 photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/a-guitarist-with-long-hair-performing-at-a-concert-with-pyro_t20_vLVAaG.jpg'), filename: 'music_48.jpg')
@@ -1417,11 +1871,10 @@ photo_49 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 1936,
-  height: 1088,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_49_saved = Photo.new(photo_49)
 photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/behind-the-djs_t20_pY9gdO.jpg'), filename: 'music_49.jpg')
@@ -1433,11 +1886,10 @@ photo_50 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 2118,
-  height: 1412,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_50_saved = Photo.new(photo_50)
 photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/close-up-drum-sticks-drumming-hit-beat-rhythm-on-drum-surface-with-splash-water-drops_t20_QJQ99y.jpg'), filename: 'music_50.jpg')
@@ -1449,11 +1901,10 @@ photo_51 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 1152,
-  height: 1728,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_51_saved = Photo.new(photo_51)
 photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/defocus-young-woman-playing-guitar-on-sunset-in-autumn-field-candid-silhouette-woman-in-hat-chill_t20_NlWYyQ.jpg'), filename: 'music_51.jpg')
@@ -1465,11 +1916,10 @@ photo_52 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 1596,
-  height: 1239,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_52_saved = Photo.new(photo_52)
 photo_52_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/dnepropetrovsk-ukraine-04-05-2017-a-musician-on-a-city-street-after-a-successful-concert_t20_WJEmmz.jpg'), filename: 'music_52.jpg')
@@ -1481,11 +1931,10 @@ photo_53 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 1168,
-  height: 1752,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_53_saved = Photo.new(photo_53)
 photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/happy-accordion-player_t20_rorAaJ.jpg'), filename: 'music_53.jpg')
@@ -1497,11 +1946,10 @@ photo_54 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 2048,
-  height: 1365,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_54_saved = Photo.new(photo_54)
 photo_54_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/illuminated-neon-words-on-the-wall_t20_yRbZAL.jpg'), filename: 'music_54.jpg')
@@ -1513,11 +1961,10 @@ photo_55 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 2111,
-  height: 1407,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_55_saved = Photo.new(photo_55)
 photo_55_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music_t20_mxbEml.jpg'), filename: 'music_55.jpg')
@@ -1529,15 +1976,150 @@ photo_56 = {
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
   camera: profile_music_saved.cameras.split(',').first,
-  width: 2094,
-  height: 1396,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_56_saved = Photo.new(photo_56)
 photo_56_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-concert-musician-drummer-drums-live-drummer_t20_4dmEEl.jpg'), filename: 'music_56.jpg')
 photo_56_saved.save!
+
+music_photo_57 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_57_saved = Photo.new(music_photo_57)
+music_photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-music-musical-instrument-classic-playing-music-saksophone_t20_K8Lrk9.jpg'), filename: 'music_57.jpg')
+music_photo_57_saved.save!
+
+music_photo_58 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_58_saved = Photo.new(music_photo_58)
+music_photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-musical-instrument-musician-music-festival-woman-play-sound-musical-instruments-harp_t20_pW9lvk.jpg'), filename: 'music_58.jpg')
+music_photo_58_saved.save!
+
+music_photo_59 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_59_saved = Photo.new(music_photo_59)
+music_photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/outdoors-sunset-beach-beach-decoration-celebration-music-concert-party-party-craft-chill-vibes_t20_9JAlwB.jpg'), filename: 'music_59.jpg')
+music_photo_59_saved.save!
+
+music_photo_60 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_60_saved = Photo.new(music_photo_60)
+music_photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/piano-hands-woman-piano-keys-pianist-playing-piano-playing-the-piano-vintage-piano_t20_LX7Jxo.jpg'), filename: 'music_60.jpg')
+music_photo_60_saved.save!
+
+music_photo_61 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_61_saved = Photo.new(music_photo_61)
+music_photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/playing-the-mandolin_t20_P3WEmR.jpg'), filename: 'music_61.jpg')
+music_photo_61_saved.save!
+
+music_photo_62 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_62_saved = Photo.new(music_photo_62)
+music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/selective-focus-music-acoustic-guitar-guitar-musical-instrument-musician-acoustic-musicians_t20_vOvpXE.jpg'), filename: 'music_62.jpg')
+music_photo_62_saved.save!
+
+music_photo_62 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_62_saved = Photo.new(music_photo_62)
+music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/summer-hand-music-music-antique-vintage-hands-hands-retro-closeup-vinyl-dj-old-school-putting_t20_yp6aa2.jpg'), filename: 'music_62.jpg')
+music_photo_62_saved.save!
+
+music_photo_63 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_63_saved = Photo.new(music_photo_63)
+music_photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/two-young-musicians-playing-classic-digital-piano-at-home-during-online-concert-at-home_t20_om9AkW.jpg'), filename: 'music_63.jpg')
+music_photo_63_saved.save!
+
+music_photo_64 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_music_saved.lenses.split(',').first,
+  camera: profile_music_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_music_saved.id,
+  category: 'music',
+  featured: assignFeaturedPage
+}
+music_photo_64_saved = Photo.new(music_photo_64)
+music_photo_64_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/window-guitar-natural-light-morning-light_t20_PJnaJJ.jpg'), filename: 'music_64.jpg')
+music_photo_64_saved.save!
+
 
 ## sports 
 
@@ -1547,11 +2129,10 @@ photo_57 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 2072,
-  height: 1381,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_57_saved = Photo.new(photo_57)
 photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adrenaline-trail-dirt-man-leg-boot-biker-racer-moto-active-cross-enduro-motorcyclist-boots_t20_KArpK1.jpg'), filename: 'sports_57.jpg')
@@ -1563,11 +2144,10 @@ photo_58 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 2066,
-  height: 1371,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_58_saved = Photo.new(photo_58)
 photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adventure-sports-sports-extreme-sports-action-adrenaline-adventurous-watersports-flyboard_t20_g1bEzz.jpg'), filename: 'sports_58.jpg')
@@ -1579,11 +2159,10 @@ photo_59 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 1354,
-  height: 2031,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_59_saved = Photo.new(photo_59)
 photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adventure-surfing-sports-extreme-sports-extreme-sports-water-sports-life-surf-adrenaline-adventurous_t20_JokERk.jpg'), filename: 'sports_59.jpg')
@@ -1595,11 +2174,10 @@ photo_60 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 1355,
-  height: 2031,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_60_saved = Photo.new(photo_60)
 photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/backflip-off-motorbike_t20_eVnelb.jpg'), filename: 'sports_60.jpg')
@@ -1611,11 +2189,10 @@ photo_61 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 1644,
-  height: 1645,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_61_saved = Photo.new(photo_61)
 photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/bmx-freestyle_t20_GREW1R.jpg'), filename: 'sports_61.jpg')
@@ -1627,11 +2204,10 @@ photo_62 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 2079,
-  height: 1386,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_62_saved = Photo.new(photo_62)
 photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/dune-rider_t20_1WPPev.jpg'), filename: 'sports_62.jpg')
@@ -1643,11 +2219,10 @@ photo_63 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 1152,
-  height: 768,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_63_saved = Photo.new(photo_63)
 photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/going-down_t20_Noelrp.jpg'), filename: 'sports_63.jpg')
@@ -1659,11 +2234,10 @@ photo_64 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 2117,
-  height: 1411,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_64_saved = Photo.new(photo_64)
 photo_64_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/hot-summer-days-are-just-perfect-for-a-river-cool-down_t20_8ORbGa.jpg'), filename: 'sports_64.jpg')
@@ -1675,11 +2249,10 @@ photo_65 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 2048,
-  height: 1352,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_65_saved = Photo.new(photo_65)
 photo_65_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/jerrod-skorupski-pontiac-14_t20_VodWQ8.jpg'), filename: 'sports_65.jpg')
@@ -1691,115 +2264,526 @@ photo_66 = {
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
   camera: profile_sports_saved.cameras.split(',').first,
-  width: 1152,
-  height: 768,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: ''
+  featured: assignFeaturedPage
 }
 photo_66_saved = Photo.new(photo_66)
 photo_66_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/KokOOx_t20_KokOOx.jpg'), filename: 'sports_66.jpg')
 photo_66_saved.save!
 
+photo_67 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_67_saved = Photo.new(photo_67)
+photo_67_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/MQmDKe_t20_d12GoB.jpg'), filename: 'sports_67.jpg')
+photo_67_saved.save!
 
-### first batch
+photo_68 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_68_saved = Photo.new(photo_68)
+photo_68_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/nominated-austria-kaprun_t20_VWNpQk.jpg'), filename: 'sports_68.jpg')
+photo_68_saved.save!
 
-# photo_2 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   location: "Brooklyn",
-#   lens: 'EF 70-200mm f/4.0',
-#   camera: 'Cannon EOS 5DS',
-#   width: 500,
-#   height: 333,
-#   profile_id: profile_1_saved.id,
-#     # category
-# }
-# photo_2_saved = Photo.new(photo_2)
+photo_69 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_69_saved = Photo.new(photo_69)
+photo_69_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/outdoors-people-sport-sports-extreme-sports-motorcycle-racing-race-motorbike-outdoor-activity_t20_QKZobb.jpg'), filename: 'sports_69.jpg')
+photo_69_saved.save!
 
-# photo_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/toronto-city_t20_6lAdEo.jpg'), filename: 'cave.jpg')
+photo_70 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_70_saved = Photo.new(photo_70)
+photo_70_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/outdoors-winter-cold-snow-adventure-adventure-mountain-sport-recreation-action-outdoor-skier_t20_3Q7P3y.jpg'), filename: 'sports_70.jpg')
+photo_70_saved.save!
+
+photo_71 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_71_saved = Photo.new(photo_71)
+photo_71_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/paragliding-in-the-mountains-extreme-sports-hang-glider-paragliding-sport-extreme-glider-hang-flight_t20_YE62a4.jpg'), filename: 'sports_71.jpg')
+photo_71_saved.save!
+
+photo_72 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_72_saved = Photo.new(photo_72)
+photo_72_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/sport-freedom-fly-blue-sky-paragliders-tandem-bucket-list-sunrise-sunset-skydiving-parachuting_t20_XNRPX3.jpg'), filename: 'sports_72.jpg')
+photo_72_saved.save!
+
+photo_73 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_73_saved = Photo.new(photo_73)
+photo_73_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/sport-surfing-waves-surf-extreme_t20_8OJe9g.jpg'), filename: 'sports_73.jpg')
+photo_73_saved.save!
+
+photo_74 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_74_saved = Photo.new(photo_74)
+photo_74_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg'), filename: 'sports_74.jpg')
+photo_74_saved.save!
+
+photo_75 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_75_saved = Photo.new(photo_75)
+photo_75_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/view-from-above-flying-happiness-girl-above-blue-sky-paradise-happy-paragliding-happy-girl_t20_e9Z9ko.jpg'), filename: 'sports_75.jpg')
+photo_75_saved.save!
+
+photo_76 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_sports_saved.lenses.split(',').first,
+  camera: profile_sports_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
+  profile_id: profile_sports_saved.id,
+  category: 'sports',
+  featured: assignFeaturedPage
+}
+photo_76_saved = Photo.new(photo_76)
+photo_76_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/wave-ocean-surf-caribbean-surfer-extreme-sport-ocean-waves-seaspray-sunnyseasand-bvi-apple-bay_t20_rLvzlX.jpg'), filename: 'sports_76.jpg')
+photo_76_saved.save!
 
 
-# photo_3 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   width: 500,
-#   height: 375,
-#   profile_id: guest_profile_saved.id,
-#     # category
-# }
-# photo_3_saved = Photo.new(photo_3)
+## general seeds (no category)
 
-# photo_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
+# profile_8_saved
+
+general_01 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_8_saved.lenses.split(',').first,
+  camera: profile_8_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_8_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_01_saved = Photo.new(general_01)
+general_01_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: 'general_01.jpg')
+general_01_saved.save!
+
+general_02 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_8_saved.lenses.split(',').first,
+  camera: profile_8_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_8_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_02_saved = Photo.new(general_02)
+general_02_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/bike-in-urban-area_t20_ZV18zj.jpg'), filename: 'general_02.jpg')
+general_02_saved.save!
+
+# profile_9_saved
+
+general_03 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_9_saved.lenses.split(',').first,
+  camera: profile_9_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_9_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_03_saved = Photo.new(general_03)
+general_03_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/bright-and-colorful-jump_t20_B80RmO.jpg'), filename: 'general_03.jpg')
+general_03_saved.save!
+
+general_04 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_9_saved.lenses.split(',').first,
+  camera: profile_9_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_9_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_04_saved = Photo.new(general_04)
+general_04_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/chifogo_t20_dxRlJA.jpg'), filename: 'general_04.jpg')
+general_04_saved.save!
+
+# profile_10_saved
+
+general_05 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_10_saved.lenses.split(',').first,
+  camera: profile_10_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_10_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_05_saved = Photo.new(general_05)
+general_05_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/city-bridge-woman-at-the-bridge-winter-snow-glasses-weather-eyes-hands-scarf-gloves-city-life-style_t20_Kvn8n9.jpg'), filename: 'general_05.jpg')
+general_05_saved.save!
+
+general_06 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_10_saved.lenses.split(',').first,
+  camera: profile_10_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_10_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_06_saved = Photo.new(general_06)
+general_06_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg'), filename: 'general_06.jpg')
+general_06_saved.save!
+
+general_07 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_10_saved.lenses.split(',').first,
+  camera: profile_10_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_10_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_07_saved = Photo.new(general_07)
+general_07_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/female-hand-with-palm-leaves-on-a-black-dark-background-dark-light-stylish-beauty-composition_t20_rRBBgw.jpg'), filename: 'general_07.jpg')
+general_07_saved.save!
+
+# profile_11_saved
+
+general_08 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_11_saved.lenses.split(',').first,
+  camera: profile_11_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_11_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_08_saved = Photo.new(general_08)
+general_08_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/fresh-plant-minimal-background_t20_x27K1Q.jpg'), filename: 'general_08.jpg')
+general_08_saved.save!
+
+general_09 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_11_saved.lenses.split(',').first,
+  camera: profile_11_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_11_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_09_saved = Photo.new(general_09)
+general_09_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/jumping-for-joy-in-canada_t20_0AEgkV.jpg'), filename: 'general_09.jpg')
+general_09_saved.save!
+
+# profile_12_saved
+
+general_10 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_12_saved.lenses.split(',').first,
+  camera: profile_12_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_12_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_10_saved = Photo.new(general_10)
+general_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg'), filename: 'general_10.jpg')
+general_10_saved.save!
+
+general_11 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_12_saved.lenses.split(',').first,
+  camera: profile_12_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_12_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_11_saved = Photo.new(general_11)
+general_11_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/outdoors-adventure-summer-surfboard-surfing-recreation-extreme-sports-water-sports-outdoor-surf_t20_GJGOQo.jpg'), filename: 'general_11.jpg')
+general_11_saved.save!
+
+general_12 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_12_saved.lenses.split(',').first,
+  camera: profile_12_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_12_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_12_saved = Photo.new(general_12)
+general_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/palm-leave-from-real-close-abstract-texture-with-pastel-colors_t20_2JPnKK.jpg'), filename: 'general_12.jpg')
+general_12_saved.save!
+
+general_13 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_12_saved.lenses.split(',').first,
+  camera: profile_12_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_12_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_13_saved = Photo.new(general_13)
+general_13_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/QQgekN_t20_mvLBQn.jpg'), filename: 'general_13.jpg')
+general_13_saved.save!
+
+# profile_13_saved
+
+general_14 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_13_saved.lenses.split(',').first,
+  camera: profile_13_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_13_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_14_saved = Photo.new(general_14)
+general_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/reflections_t20_XQ84wV.jpg'), filename: 'general_14.jpg')
+general_14_saved.save!
+
+general_15 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_13_saved.lenses.split(',').first,
+  camera: profile_13_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_13_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_15_saved = Photo.new(general_15)
+general_15_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/sea-turtles_t20_98OYYY.jpg'), filename: 'general_15.jpg')
+general_15_saved.save!
+
+general_16 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_13_saved.lenses.split(',').first,
+  camera: profile_13_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_13_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_16_saved = Photo.new(general_16)
+general_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg'), filename: 'general_16.jpg')
+general_16_saved.save!
+
+# profile_14_saved
+
+general_17 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: 'Toronto',
+  lens: profile_14_saved.lenses.split(',').first,
+  camera: profile_14_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_14_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_17_saved = Photo.new(general_17)
+general_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/toronto-city_t20_6lAdEo.jpg'), filename: 'general_17.jpg')
+general_17_saved.save!
+
+general_18 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_14_saved.lenses.split(',').first,
+  camera: profile_14_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_14_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_18_saved = Photo.new(general_18)
+general_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/under-cave_t20_AV6wgr.jpg'), filename: 'general_18.jpg')
+general_18_saved.save!
+
+general_19 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_14_saved.lenses.split(',').first,
+  camera: profile_14_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_14_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_19_saved = Photo.new(general_19)
+general_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'general_19.jpg')
+general_19_saved.save!
 
 
-# photo_4 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   width: 500,
-#   height: 295,
-#   profile_id: profile_1_saved.id,
-#     # category
-# }
-# photo_4_saved = Photo.new(photo_4)
+# profile_15_saved
 
-# photo_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/bike-in-urban-area_t20_ZV18zj.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
+general_20 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_15_saved.lenses.split(',').first,
+  camera: profile_15_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_15_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_20_saved = Photo.new(general_20)
+general_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/waterfall_t20_wLLyyV.jpg'), filename: 'general_20.jpg')
+general_20_saved.save!
 
+general_21 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_15_saved.lenses.split(',').first,
+  camera: profile_15_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_15_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_21_saved = Photo.new(general_21)
+general_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/winter-wanderlust_t20_x6rlNX.jpg'), filename: 'general_21.jpg')
+general_21_saved.save!
 
-# photo_5 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   profile_id: guest_profile_saved.id,
-#   width: 500,
-#   height: 375,
-#     # category
-# }
-# photo_5_saved = Photo.new(photo_5)
+general_22 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_15_saved.lenses.split(',').first,
+  camera: profile_15_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_15_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_22_saved = Photo.new(general_22)
+general_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg'), filename: 'general_22.jpg')
+general_22_saved.save!
 
-# photo_5_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/bright-and-colorful-jump_t20_B80RmO.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
-
-
-# photo_6 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   profile_id: profile_1_saved.id,
-#   width: 333,
-#   height: 500,
-#     # category
-# }
-# photo_6_saved = Photo.new(photo_6)
-
-# photo_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
-
-
-# photo_7 = {
-#   title: Faker::Hipster.sentence(word_count: 3),
-#   description: Faker::Hipster.sentences(number: 1).first,
-#   profile_id: guest_profile_saved.id,
-#   width: 500,
-#   height: 375,
-#     # category
-# }
-# photo_7_saved = Photo.new(photo_7)
-
-# photo_7_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/2000px/sea-turtles_t20_98OYYY.jpg'), filename: Faker::Hipster.sentence(word_count: 3))
-
-# photo_1_saved.save
-# photo_2_saved.save
-# photo_3_saved.save
-# photo_4_saved.save
-# photo_5_saved.save
-# photo_6_saved.save
-# photo_7_saved.save
-
-################################################################################
-
-## likes
-
-# like1 = Like.new(photo_id: photo_1_saved.id, liker_id: profile_1_saved.id)
-# like2 = Like.new(photo_id: photo_2_saved.id, liker_id: guest_profile_saved.id)
-# like3 = Like.new(photo_id: photo_3_saved.id, liker_id: guest_profile_saved.id)
-
-# like1.save
-# like2.save
-# like3.save
+general_23 = {
+  title: Faker::Hipster.sentence(word_count: 3),
+  description: Faker::Hipster.sentences(number: 1).first,
+  location: Faker::Address.city,
+  lens: profile_15_saved.lenses.split(',').first,
+  camera: profile_15_saved.cameras.split(',').first,
+  taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
+  profile_id: profile_15_saved.id,
+  category: 'fresh',
+  featured: assignFeaturedPage
+}
+general_23_saved = Photo.new(general_23)
+general_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg'), filename: 'general_23.jpg')
+general_23_saved.save!

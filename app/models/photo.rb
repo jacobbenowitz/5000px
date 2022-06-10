@@ -15,8 +15,8 @@
 #  height      :integer
 #
 class Photo < ApplicationRecord
-
   validate :ensure_photo
+  # after_commit :save_dimensions_now
 
   has_one_attached :photo
 
@@ -28,11 +28,22 @@ class Photo < ApplicationRecord
     foreign_key: :photo_id,
     class_name: :Like
 
-  # render the errors using if flash[:errors] ?
+  def height
+    photo.metadata['height']
+  end
+
+  def width
+    photo.metadata['width']
+  end
+
   def ensure_photo
     unless self.photo.attached?
       errors[:photo] << "must be attached"
     end
   end
+  # save image height & width after uploading
+  # def save_dimensions_now
+  #   photo.analyze if photo.attached?
+  # end
   
 end
