@@ -30,7 +30,6 @@ export default class ImageViewer extends React.Component {
             <SinglePhotoLoader className="photo-large" />
             )}
         </div>
-            <SinglePhotoLoader className="photo-large" />
       </div>
     )
   }

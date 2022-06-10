@@ -9,6 +9,7 @@ import FeaturedPhotographerCard from "./cards/featured_photographer_card";
 import InfoCallout from "./cards/info_callout";
 import CollectionGridCard from "./cards/collection_grid_card";
 import SinglePhotoLarge from "./cards/single_photo_large";
+import FeedHeader from "./headers/feed_header";
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -97,10 +98,10 @@ export default class HomeFeed extends React.Component {
 
     return (
       <div className="home-feed-container">
-        <div className="page-top-banner">
-          <h3>Home Feed</h3>
-          <span className="sub-header-text">See photos and published Galleries from people you follow.</span>
-        </div>
+        <FeedHeader
+          title={'Home Feed'}
+          description={'See photos and published Galleries from people you follow.'}
+        />
 
         <InfoCallout 
           infoCallout={infoCallout}
@@ -125,7 +126,7 @@ export default class HomeFeed extends React.Component {
           </div>
           <div className="ft-divider" />
         </div>
-        <div className="home-feed-gallery" >
+        <div className="home-feed-gallery">
           <div className="grid-gallery-wrapper">
             {minimalismCard}
             {singlePhotoCard}

@@ -206,7 +206,7 @@
   width: 100%;
   background-color: #ffffff;
   box-sizing: border-box;
-  padding: 18px 64px;
+  padding: 0 64px 12px 64px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;

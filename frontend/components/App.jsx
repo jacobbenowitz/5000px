@@ -16,6 +16,7 @@ import HomeFeedContainer from "./photo_feed/home_feed_container";
 import ModalContainer from "./modal/modal_container";
 import PhotoEditFormContainer from "./photos/photo_edit_form_container";
 import PopularPhotos from "./photo_feed/popular_photos";
+import DiscoverFeedContainer from "./photo_feed/discover_feed_container";
 
 const App = () => (
   <div className="grid-pancake-stack">
@@ -53,8 +54,8 @@ const App = () => (
       <ProtectedRoute exact path={"/home"} 
         component={HomeFeedContainer} 
       />
-      <ProtectedRoute exact path={"/discover"}
-        component={HomeFeedContainer}
+      <ProtectedRoute exact path={"/discover/:page"}
+        component={DiscoverFeedContainer}
       />
       {/* <ProtectedRoute exact path={"/popular"}
         component={PopularPhotos} 

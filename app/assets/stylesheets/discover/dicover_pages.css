@@ -1,7 +1,8 @@
 .home-feed-container {
   grid-column: 1 / span 12;
   margin-bottom: 160px;
-    background-color: #F7F8FA;
+  background-color: #F7F8FA;
+  box-sizing: border-box;
 }
 .home-feed-gallery {
   position: relative;
@@ -22,4 +23,52 @@
 .photo-gallery {
   display: flex;
   flex-wrap: wrap;
+}
+
+.discover-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.discover-nav {
+  grid-column: 1 / span 12;
+  flex-wrap: nowrap;
+  width: 100%;
+  position: sticky;
+  top: 70px;
+  z-index: 350;
+  background-color: rgb(255, 255, 255);
+  overflow-x: scroll;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  padding-left: 16px;
+  padding: 0 64px;
+  height: 51px;
+}
+
+.disc-tab {
+  display: flex;
+  flex: 0 0 auto;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  padding: 0px 8px;
+}
+
+.disc-link {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 36px;
+  font-weight: bold;
+  color: rgb(109, 115, 120);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.disc-link.active, .disc-link:hover {
+  color: rgb(8, 112, 209);
+  font-weight: bold;
+  box-shadow: rgb(8 112 209) 0px -2px inset;
 }

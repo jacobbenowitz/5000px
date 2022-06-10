@@ -11,9 +11,12 @@ h1 {
 
 h2 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 38px;
-  font-weight: 600;
-  color: #222222;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: bold;
+  text-transform: none;
+  margin: 32px 0px 8px;
+  color: rgb(34, 34, 34);
 }
 
 h3 {

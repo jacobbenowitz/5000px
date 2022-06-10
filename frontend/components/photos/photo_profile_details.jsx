@@ -4,6 +4,7 @@ import PhotoActions from "./photo_actions";
 import {timeSinceUplaod} from "../../util/todays_date_util"
 import ProfileDetailsLoader from "./content-loaders/profile-details-loader";
 import likeIconContainer from "../action_components/like_icon_container";
+import moment from 'moment';
 
 export default class PhotoProfileDetails extends React.Component {
   constructor(props) {
@@ -45,9 +46,14 @@ export default class PhotoProfileDetails extends React.Component {
 
               <div className="photo-details">
                 <div className="detail-box">
-                  <span className="photo-location"> {photo.location} </span>
+                  <div className="flex-row gap-10">
+                    <i className="fa-solid fa-map-pin fa-sm" />
+                    <span className="photo-location" >
+                      {photo.location}
+                    </span>
+                  </div>
                   <span className="photo-date">
-                    <strong>Uploaded: </strong> about {timeSinceUplaod(photo.created_at)}
+                    <strong>Uploaded: </strong> {moment(photo.created_at).fromNow()}
                   </span>
                 </div>
                 <div className="detail-box">

@@ -4,6 +4,8 @@ html {
 body { 
   min-height: 100vw; 
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 /* layouts */
 

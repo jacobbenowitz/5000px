@@ -83,4 +83,5 @@
   align-content: center;
   justify-content: flex-start;
   align-items: baseline;
+  cursor: pointer;
 }

@@ -142,7 +142,7 @@
   margin: 0 auto;
 }
 
-.profile-location {
+.profile-location, .photo-location {
   font-size: 14px;
   line-height: 20px;
   text-transform: none;

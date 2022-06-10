@@ -28,10 +28,10 @@ export default class DiscoverNavLinkItem extends React.Component {
         <NavLink to={'/home'}>
           Home
         </NavLink>
-        <div className="dropdown-nav">
-          <span className="nav-pseduo"
-            onClick={this.handleClick}
-          >
+        <div className="dropdown-nav"
+          onClick={this.handleClick}
+        >
+          <span className="nav-pseduo">
             Discover
           </span>
           <div className="down-arrow-wrapper">
@@ -40,6 +40,7 @@ export default class DiscoverNavLinkItem extends React.Component {
         </div>
 
         <DiscoverNavModal
+          toggleModal={this.handleClick}
           klass={modalClass}
         />
       </>

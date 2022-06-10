@@ -11,6 +11,7 @@
     "core-js": "^3.22.2",
     "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.0",
+    "moment": "^2.29.3",
     "path-browserify": "^1.0.1",
     "react": "^16.14.0",
     "react-content-loader": "^6.2.0",
