@@ -15,7 +15,6 @@ export default class DiscoverFeed extends React.Component {
     super(props)
     this.state = {
       status: IDLE,
-      allPhotos: {},
       pageTitle: '',
       pageDescription: '',
       page: '',
@@ -53,7 +52,7 @@ export default class DiscoverFeed extends React.Component {
 
   componentDidUpdate() {
     const { allPhotos, allProfiles, page } = this.props;
-    const { pageTitle, status } = this.state;
+    const { status } = this.state;
 
     let title, description;
 
@@ -71,12 +70,9 @@ export default class DiscoverFeed extends React.Component {
       description = discoverTitles.editors.description
     }
 
-    if (status === BUSY && Object.values(allPhotos) > 0 && allProfiles) {
-      // todo: filter by discover page type
+    if (status === BUSY && allPhotos && allProfiles) {
       this.setState({
-        status: DONE,
-        allPhotos: Object.values(allPhotos),
-        allProfiles: allProfiles
+        status: DONE
       })
     }
     if (page !== this.state.page) {
@@ -89,33 +85,37 @@ export default class DiscoverFeed extends React.Component {
   }
 
   render() {
-    const { pageTitle, pageDescription, status, allPhotos } = this.state;
-    let feedHeader, gallery;
+    const { pageTitle, pageDescription, status } = this.state;
+    const { popularPhotos, freshPhotos,
+      upcomingPhotos, editorsPhotos, page } = this.props;
+    let gallery;
 
-    feedHeader = (
-      <FeedHeader
-        title={pageTitle}
-        description={pageDescription}
-      />
-    )
-    // if (status === DONE) {
-      // gallery = (
-      //   <DiscoverRows photos={allPhotos} />
-      // )
-    // } 
-    // debugger
+    if (status === DONE) {
+      gallery = (
+        <DiscoverRows photos={
+          page === 'popular' ? popularPhotos : 
+          page === 'editors' ? editorsPhotos : 
+          page === 'upcoming' ? upcomingPhotos : 
+          freshPhotos
+          }
+        />
+      )
+    } else {
+      gallery = (
+        <GridLoader />
+      )
+    }
+
     return (
       <div className="home-feed-container">
-        {feedHeader}
+        <FeedHeader
+          title={pageTitle}
+          description={pageDescription}
+        />
         
         <DiscoverNav />
         <div className="home-feed-gallery">
-          {this.props.allPhotos.length ? (
-            <DiscoverRows photos={this.props.allPhotos} />
-          ) : (
-            <GridLoader />
-          )
-          }
+          {gallery}
         </div>
       </div>
     )

@@ -584,12 +584,12 @@ profile_15_saved.save!
 
 def assignFeaturedPage
   pages = ['editors', 'fresh', 'popular', 'upcoming']
-  return pages[rand(0...3)]
+  return pages[rand(0..3)]
 end
 
 # guest user | minimalism
 photo_1 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -604,7 +604,7 @@ photo_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_1_saved.save!
 
 photo_2 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -619,7 +619,7 @@ photo_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_2_saved.save!
 
 photo_3 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -634,7 +634,7 @@ photo_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_3_saved.save!
 
 photo_4 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -649,7 +649,7 @@ photo_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_4_saved.save!
 
 photo_5 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -664,7 +664,7 @@ photo_5_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_5_saved.save!
 
 photo_6 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -679,7 +679,7 @@ photo_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_6_saved.save!
 
 photo_7 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -694,7 +694,7 @@ photo_7_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_7_saved.save!
 
 photo_8 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -709,7 +709,7 @@ photo_8_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_8_saved.save!
 
 photo_9 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -724,7 +724,7 @@ photo_9_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my500
 photo_9_saved.save!
 
 photo_10 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -739,7 +739,7 @@ photo_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_10_saved.save!
 
 photo_11 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -754,7 +754,7 @@ photo_11_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_11_saved.save!
 
 photo_12 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -769,7 +769,7 @@ photo_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_12_saved.save!
 
 photo_13 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -784,7 +784,7 @@ photo_13_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_13_saved.save!
 
 photo_14 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -799,7 +799,7 @@ photo_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_14_saved.save!
 
 photo_15 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -814,7 +814,7 @@ photo_15_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_15_saved.save!
 
 guest_photo_16 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -829,7 +829,7 @@ guest_photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_16_saved.save!
 
 guest_photo_17 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -844,7 +844,7 @@ guest_photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_17_saved.save!
 
 guest_photo_18 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -859,7 +859,7 @@ guest_photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_18_saved.save!
 
 guest_photo_19 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -874,7 +874,7 @@ guest_photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_19_saved.save!
 
 guest_photo_20 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -889,7 +889,7 @@ guest_photo_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_20_saved.save!
 
 guest_photo_21 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -904,7 +904,7 @@ guest_photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_21_saved.save!
 
 guest_photo_22 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_guest_saved.lenses,
@@ -937,7 +937,7 @@ photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_16_saved.save!
 
 photo_17 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -952,7 +952,7 @@ photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_17_saved.save!
 
 photo_18 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Grape Valley',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -967,7 +967,7 @@ photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_18_saved.save!
 
 photo_18_1 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -982,7 +982,7 @@ photo_18_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 photo_18_1_saved.save!
 
 photo_19 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Ashville',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -997,7 +997,7 @@ photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_19_saved.save!
 
 photo_20 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'San Luis Obispo',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1012,7 +1012,7 @@ photo_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_20_saved.save!
 
 photo_21 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'South Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1027,7 +1027,7 @@ photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_21_saved.save!
 
 photo_22 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Malibu',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1042,7 +1042,7 @@ photo_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_22_saved.save!
 
 photo_23 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Malibu',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1057,7 +1057,7 @@ photo_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_23_saved.save!
 
 photo_24 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Old Town Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1072,7 +1072,7 @@ photo_24_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_24_saved.save!
 
 photo_25 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Pismo Beach',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1087,7 +1087,7 @@ photo_25_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_25_saved.save!
 
 photo_26 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Old Town Pasadena',
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1103,7 +1103,7 @@ photo_26_saved.save!
 
 
 jacob_photo_27 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1118,7 +1118,7 @@ jacob_photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 jacob_photo_27_saved.save!
 
 jacob_photo_28 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1133,7 +1133,7 @@ jacob_photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 jacob_photo_28_saved.save!
 
 jacob_photo_29 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1148,7 +1148,7 @@ jacob_photo_29_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 jacob_photo_29_saved.save!
 
 jacob_photo_30 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1163,7 +1163,7 @@ jacob_photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 jacob_photo_30_saved.save!
 
 jacob_photo_31 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1178,7 +1178,7 @@ jacob_photo_31_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 jacob_photo_31_saved.save!
 
 jacob_photo_32 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_jacob_saved.lenses.split(',').last,
@@ -1196,7 +1196,7 @@ jacob_photo_32_saved.save!
 ## abstract
 
 photo_27 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1211,7 +1211,7 @@ photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_27_saved.save!
 
 photo_28 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1226,7 +1226,7 @@ photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_28_saved.save!
 
 photo_28_1 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1241,7 +1241,7 @@ photo_28_1_saved.photo.attach(io: File.open('//Users/jacobbenowitz/Desktop/a:A/m
 photo_28_1_saved.save!
 
 photo_29 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1256,7 +1256,7 @@ photo_29_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_29_saved.save!
 
 photo_30 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1271,7 +1271,7 @@ photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_30_saved.save!
 
 photo_31 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1287,7 +1287,7 @@ photo_31_saved.save!
 
 
 abs_photo_32 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1302,7 +1302,7 @@ abs_photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/
 abs_photo_32_saved.save!
 
 abs_photo_33 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1317,7 +1317,7 @@ abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/
 abs_photo_33_saved.save!
 
 abs_photo_33 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1332,7 +1332,7 @@ abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/
 abs_photo_33_saved.save!
 
 abs_photo_34 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1347,7 +1347,7 @@ abs_photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/
 abs_photo_34_saved.save!
 
 abs_photo_35 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1362,7 +1362,7 @@ abs_photo_35_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/
 abs_photo_35_saved.save!
 
 abs_photo_36 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1377,7 +1377,7 @@ abs_photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/
 abs_photo_36_saved.save!
 
 abs_photo_37 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_abstract_saved.lenses.split(',').first,
@@ -1395,7 +1395,7 @@ abs_photo_37_saved.save!
 ## animals
 
 photo_32 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1410,7 +1410,7 @@ photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_32_saved.save!
 
 photo_33 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1425,7 +1425,7 @@ photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_33_saved.save!
 
 photo_34 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1440,7 +1440,7 @@ photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_34_saved.save!
 
 photo_36 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1455,7 +1455,7 @@ photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_36_saved.save!
 
 photo_37 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1470,7 +1470,7 @@ photo_37_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_37_saved.save!
 
 photo_38 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1485,7 +1485,7 @@ photo_38_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_38_saved.save!
 
 photo_39 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1500,7 +1500,7 @@ photo_39_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_39_saved.save!
 
 photo_40 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1515,7 +1515,7 @@ photo_40_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_40_saved.save!
 
 animal_photo_41 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1530,7 +1530,7 @@ animal_photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a
 animal_photo_41_saved.save!
 
 animal_photo_42 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1545,7 +1545,7 @@ animal_photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a
 animal_photo_42_saved.save!
 
 animal_photo_43 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1560,7 +1560,7 @@ animal_photo_43_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a
 animal_photo_43_saved.save!
 
 animal_photo_44 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1575,7 +1575,7 @@ animal_photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a
 animal_photo_44_saved.save!
 
 animal_photo_45 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1589,8 +1589,10 @@ animal_photo_45_saved = Photo.new(animal_photo_45)
 animal_photo_45_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/wild-beautiful-giant-iguana-reminding-prehistoric-reptiles-close-up-portrait_t20_kL86B4.jpg'), filename: 'animals_45.jpg')
 animal_photo_45_saved.save!
 
+
+
 animal_photo_46 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_animals_saved.lenses.split(',').first,
@@ -1605,10 +1607,11 @@ animal_photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a
 animal_photo_46_saved.save!
 
 
+
 ## chocolate
 
 photo_40_choc = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1623,7 +1626,7 @@ photo_40_choc_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A
 photo_40_choc_saved.save!
 
 photo_41 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1638,7 +1641,7 @@ photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_41_saved.save!
 
 photo_42 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1652,8 +1655,9 @@ photo_42_saved = Photo.new(photo_42)
 photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-chia-seed-pudding_t20_PoPbdR.jpg'), filename: 'chocolate_42.jpg')
 photo_42_saved.save!
 
+
 photo_43 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1668,7 +1672,7 @@ photo_43_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_43_saved.save!
 
 photo_44 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1683,7 +1687,7 @@ photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_44_saved.save!
 
 photo_45 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1698,7 +1702,7 @@ photo_45_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_45_saved.save!
 
 photo_46 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1713,7 +1717,7 @@ photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_46_saved.save!
 
 photo_47 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1729,7 +1733,7 @@ photo_47_saved.save!
 
 
 chocolate_photo_48 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1744,7 +1748,7 @@ chocolate_photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_48_saved.save!
 
 chocolate_photo_49 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1759,7 +1763,7 @@ chocolate_photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_49_saved.save!
 
 chocolate_photo_50 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1774,7 +1778,7 @@ chocolate_photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_50_saved.save!
 
 chocolate_photo_51 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1789,7 +1793,7 @@ chocolate_photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_51_saved.save!
 
 chocolate_photo_52 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1804,7 +1808,7 @@ chocolate_photo_52_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_52_saved.save!
 
 chocolate_photo_53 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1819,7 +1823,7 @@ chocolate_photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_53_saved.save!
 
 chocolate_photo_54 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1834,7 +1838,7 @@ chocolate_photo_54_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Deskto
 chocolate_photo_54_saved.save!
 
 chocolate_photo_55 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_chocolate_saved.lenses.split(',').first,
@@ -1851,7 +1855,7 @@ chocolate_photo_55_saved.save!
 ## music
 
 photo_48 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1866,7 +1870,7 @@ photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_48_saved.save!
 
 photo_49 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1881,7 +1885,7 @@ photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_49_saved.save!
 
 photo_50 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1896,7 +1900,7 @@ photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_50_saved.save!
 
 photo_51 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1911,7 +1915,7 @@ photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_51_saved.save!
 
 photo_52 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1926,7 +1930,7 @@ photo_52_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_52_saved.save!
 
 photo_53 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1941,7 +1945,7 @@ photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_53_saved.save!
 
 photo_54 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1956,7 +1960,7 @@ photo_54_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_54_saved.save!
 
 photo_55 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1971,7 +1975,7 @@ photo_55_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_55_saved.save!
 
 photo_56 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -1986,7 +1990,7 @@ photo_56_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_56_saved.save!
 
 music_photo_57 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2001,7 +2005,7 @@ music_photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_57_saved.save!
 
 music_photo_58 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2016,7 +2020,7 @@ music_photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_58_saved.save!
 
 music_photo_59 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2031,7 +2035,7 @@ music_photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_59_saved.save!
 
 music_photo_60 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2046,7 +2050,7 @@ music_photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_60_saved.save!
 
 music_photo_61 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2061,7 +2065,7 @@ music_photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_61_saved.save!
 
 music_photo_62 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2076,7 +2080,7 @@ music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_62_saved.save!
 
 music_photo_62 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2091,7 +2095,7 @@ music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_62_saved.save!
 
 music_photo_63 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2106,7 +2110,7 @@ music_photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 music_photo_63_saved.save!
 
 music_photo_64 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_music_saved.lenses.split(',').first,
@@ -2124,7 +2128,7 @@ music_photo_64_saved.save!
 ## sports 
 
 photo_57 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2139,7 +2143,7 @@ photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_57_saved.save!
 
 photo_58 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2154,7 +2158,7 @@ photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_58_saved.save!
 
 photo_59 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2169,7 +2173,7 @@ photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_59_saved.save!
 
 photo_60 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2184,7 +2188,7 @@ photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_60_saved.save!
 
 photo_61 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2199,7 +2203,7 @@ photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_61_saved.save!
 
 photo_62 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2214,7 +2218,7 @@ photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_62_saved.save!
 
 photo_63 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2229,7 +2233,7 @@ photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_63_saved.save!
 
 photo_64 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2244,7 +2248,7 @@ photo_64_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_64_saved.save!
 
 photo_65 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2259,7 +2263,7 @@ photo_65_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_65_saved.save!
 
 photo_66 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2274,7 +2278,7 @@ photo_66_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_66_saved.save!
 
 photo_67 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2289,7 +2293,7 @@ photo_67_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_67_saved.save!
 
 photo_68 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2304,7 +2308,7 @@ photo_68_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_68_saved.save!
 
 photo_69 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2319,7 +2323,7 @@ photo_69_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_69_saved.save!
 
 photo_70 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2334,7 +2338,7 @@ photo_70_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_70_saved.save!
 
 photo_71 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2349,7 +2353,7 @@ photo_71_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_71_saved.save!
 
 photo_72 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2364,7 +2368,7 @@ photo_72_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_72_saved.save!
 
 photo_73 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2379,7 +2383,7 @@ photo_73_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_73_saved.save!
 
 photo_74 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2394,7 +2398,7 @@ photo_74_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_74_saved.save!
 
 photo_75 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2409,7 +2413,7 @@ photo_75_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my50
 photo_75_saved.save!
 
 photo_76 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_sports_saved.lenses.split(',').first,
@@ -2429,7 +2433,7 @@ photo_76_saved.save!
 # profile_8_saved
 
 general_01 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_8_saved.lenses.split(',').first,
@@ -2444,7 +2448,7 @@ general_01_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_01_saved.save!
 
 general_02 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_8_saved.lenses.split(',').first,
@@ -2461,7 +2465,7 @@ general_02_saved.save!
 # profile_9_saved
 
 general_03 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_9_saved.lenses.split(',').first,
@@ -2476,7 +2480,7 @@ general_03_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_03_saved.save!
 
 general_04 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_9_saved.lenses.split(',').first,
@@ -2493,7 +2497,7 @@ general_04_saved.save!
 # profile_10_saved
 
 general_05 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_10_saved.lenses.split(',').first,
@@ -2508,7 +2512,7 @@ general_05_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_05_saved.save!
 
 general_06 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_10_saved.lenses.split(',').first,
@@ -2523,7 +2527,7 @@ general_06_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_06_saved.save!
 
 general_07 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_10_saved.lenses.split(',').first,
@@ -2540,7 +2544,7 @@ general_07_saved.save!
 # profile_11_saved
 
 general_08 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_11_saved.lenses.split(',').first,
@@ -2555,7 +2559,7 @@ general_08_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_08_saved.save!
 
 general_09 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_11_saved.lenses.split(',').first,
@@ -2572,7 +2576,7 @@ general_09_saved.save!
 # profile_12_saved
 
 general_10 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_12_saved.lenses.split(',').first,
@@ -2587,7 +2591,7 @@ general_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_10_saved.save!
 
 general_11 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_12_saved.lenses.split(',').first,
@@ -2602,7 +2606,7 @@ general_11_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_11_saved.save!
 
 general_12 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_12_saved.lenses.split(',').first,
@@ -2617,7 +2621,7 @@ general_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_12_saved.save!
 
 general_13 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_12_saved.lenses.split(',').first,
@@ -2634,7 +2638,7 @@ general_13_saved.save!
 # profile_13_saved
 
 general_14 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_13_saved.lenses.split(',').first,
@@ -2649,7 +2653,7 @@ general_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_14_saved.save!
 
 general_15 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_13_saved.lenses.split(',').first,
@@ -2664,7 +2668,7 @@ general_15_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_15_saved.save!
 
 general_16 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_13_saved.lenses.split(',').first,
@@ -2681,7 +2685,7 @@ general_16_saved.save!
 # profile_14_saved
 
 general_17 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: 'Toronto',
   lens: profile_14_saved.lenses.split(',').first,
@@ -2696,7 +2700,7 @@ general_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_17_saved.save!
 
 general_18 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_14_saved.lenses.split(',').first,
@@ -2711,7 +2715,7 @@ general_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_18_saved.save!
 
 general_19 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_14_saved.lenses.split(',').first,
@@ -2729,7 +2733,7 @@ general_19_saved.save!
 # profile_15_saved
 
 general_20 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_15_saved.lenses.split(',').first,
@@ -2744,7 +2748,7 @@ general_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_20_saved.save!
 
 general_21 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_15_saved.lenses.split(',').first,
@@ -2759,7 +2763,7 @@ general_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_21_saved.save!
 
 general_22 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_15_saved.lenses.split(',').first,
@@ -2774,7 +2778,7 @@ general_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my
 general_22_saved.save!
 
 general_23 = {
-  title: Faker::Hipster.sentence(word_count: 3),
+  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
   location: Faker::Address.city,
   lens: profile_15_saved.lenses.split(',').first,

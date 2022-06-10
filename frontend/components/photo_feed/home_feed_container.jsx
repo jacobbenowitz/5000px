@@ -8,11 +8,8 @@ import { getLikes } from "../../actions/likes/like_actions";
 
 const mapStateToProps = ({ entities, session }) => {
 
-  const photos = Object.values(entities.photos);
-
   return {
-    photos: photos,
-    allPhotos: entities.photos,
+    allPhotos: entities.photos?.all,
     users: entities.users,
     likes: entities.likes,
     profiles: entities.profiles,

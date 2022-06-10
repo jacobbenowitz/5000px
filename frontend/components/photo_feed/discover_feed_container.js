@@ -5,9 +5,12 @@ import DiscoverFeed from "./discover_feed"
 
 
 const mapStateToProps = ({entities}, { match }) => {
-  const photos = Object.values(entities.photos);
   return {
-    allPhotos: photos,
+    allPhotos: entities.photos.all,
+    popularPhotos: entities.photos.popular,
+    freshPhotos: entities.photos.fresh,
+    upcomingPhotos: entities.photos.upcoming,
+    editorsPhotos: entities.photos.editors,
     allProfiles: entities.profiles,
     page: match.params.page
   }

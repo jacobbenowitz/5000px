@@ -34,15 +34,13 @@ export default class HomeFeed extends React.Component {
       fetchUsers()
       fetchProfiles()
       fetchPhotos()
-      // getLikes()
     })
   }
 
   componentDidUpdate() {
-    const { allPhotos, photos, users, profiles } = this.props;
+    const { allPhotos, users, profiles } = this.props;
     const { featuredPhotographers, status } = this.state;
-    if (status === BUSY && Object.values(allPhotos).length > 0 &&
-      users && profiles) {
+    if (status === BUSY && allPhotos && users && profiles) {
       let featuredPhotographers = selectFeaturedPhotographers(allPhotos, profiles, users)
       let minimalismCollection = selectCollectionPhotos(allPhotos, profiles, 'minimalism')
       this.setState({
@@ -63,7 +61,7 @@ export default class HomeFeed extends React.Component {
   // todo: create tab navigation component for discover
 
   render() {
-    const { photos, users, profiles, currentProfile } = this.props;
+    const {allPhotos, users, profiles, currentProfile } = this.props;
     const { featuredPhotographers, minimalismCollection,
       status, infoCallout } = this.state;
 
@@ -132,8 +130,8 @@ export default class HomeFeed extends React.Component {
             {singlePhotoCard}
           </div>
 
-          {photos ? (
-            <DiscoverRows photos={photos} />
+          {allPhotos ? (
+            <DiscoverRows photos={Object.values(allPhotos)} />
             ) : (
               <GridLoader />
             )
