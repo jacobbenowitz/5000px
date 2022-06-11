@@ -4,18 +4,31 @@ import SinglePhotoLoader from "./content-loaders/single-photo-loader";
 export default class ImageViewer extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      fullScreen: false
+    }
+    this.toggleFullScreen = this.toggleFullScreen.bind(this)
+  }
+
+  toggleFullScreen(e) {
+    e.preventDefault()
+    this.setState({fullScreen: !this.state.fullScreen})
   }
 
   render() {
     let imageTopIcons = (
       <div className="image-top-icons">
-        <a href={"#"}>
-          <i className="fa-solid fa-up-right-and-down-left-from-center fa-xl full-screen">
+        <div className="full-screen icon-wrapper"
+          onClick={this.toggleFullScreen}
+        >
+          <i className="fa-solid fa-up-right-and-down-left-from-center fa-xl">
           </i>
-        </a>
-        <a href={"#"}>
+        </div>
+        <div className="back icon-wrapper"
+          onClick={() => this.props.history.goBack()}
+        >
           <i className="fa-solid fa-arrow-left-long fa-xl back-arrow"></i>
-        </a>
+        </div>
       </div>
     )
     // todo: imageNavIcons (need array of imageIds)
@@ -26,9 +39,10 @@ export default class ImageViewer extends React.Component {
     //   </div>
     // )
 
+    const { fullScreen } = this.state;
     return (
       <>
-        <div className="full-screen-image-container">
+        <div className={fullScreen ? "full-screen-image-container" : 'hide'}>
           {imageTopIcons}
           <div className="image-container">
             {this.props.photo.photoUrl ? (

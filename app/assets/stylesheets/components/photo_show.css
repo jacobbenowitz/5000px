@@ -212,6 +212,7 @@ a {
   margin-bottom: 6px;
 }
 
+.icon-wrapper, 
 .ft-info-icon-wrapper, 
 .gear-icon-wrapper {
   cursor: pointer;
