@@ -8,28 +8,21 @@ const discoverLinks = [
   { title: 'Editors Choice', url: '/discover/editors' }
 ]
 
-
-export default class DiscoverNavModal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
-  render() {
-    const {klass, toggleModal} = this.props;
-
-    return (
-      <div id="discover-modal"
-        className={"nav-modal-container" + klass}
-        onClick={toggleModal}
-      >
-        <ul>
-          {discoverLinks.map((link, index) => {
-            return (
-              <NavListItem link={ link } key={index} />
-            )
-          })}
-        </ul>
-      </div>
-    )
-  }
+const DiscoverNavModal = ({ klass, toggleModal }) => {
+  return (
+    <div id="discover-modal"
+      className={"nav-modal-container" + klass}
+      onClick={toggleModal}
+    >
+      <ul>
+        {discoverLinks.map((link, index) => {
+          return (
+            <NavListItem link={ link } key={index} />
+          )
+        })}
+      </ul>
+    </div>
+  )
 }
+
+export default DiscoverNavModal

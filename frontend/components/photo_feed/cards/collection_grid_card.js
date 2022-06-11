@@ -13,13 +13,13 @@ const CollectionGridCard = ({photos}) => {
           </span>
         </div>
         <div className="ft-grid-img-wrapper ft-large ft-top"
-          style={styleBg(photos[0].thumbnailUrl)}
+          style={styleBg(photos[0]?.thumbnailUrl)}
         />
         <div className="ft-grid-img-wrapper ft-small"
-          style={styleBg(photos[1].thumbnailUrl)}
+          style={styleBg(photos[1]?.thumbnailUrl)}
         />
         <div className="ft-grid-img-wrapper"
-          style={styleBg(photos[2].thumbnailUrl)}
+          style={styleBg(photos[2]?.thumbnailUrl)}
         />
       </div>
     </div>

@@ -1,14 +1,9 @@
 
-.nav-modal-container.modal-off {
-  visibility: hidden;
-}
-
 .nav-modal-container:hover {
   visibility: visible;
 }
 
 .nav-modal-container {
-  visibility: visible;
   position: fixed;
   z-index: 20;
   display: flex;
@@ -47,8 +42,13 @@
 }
 
 #discover-modal {
-  top: 64px;
+  top: 65px;
   left: 229px;
+}
+
+#collection-modal {
+  top: 65px;
+  left: 350px;
 }
 
 #user-modal {
@@ -61,7 +61,7 @@
   cursor: pointer;
 }
 
-.down-arrow-wrapper {
+.down-arrow-wrapper, .right-arrow-wrapper {
   display: flex;
   box-sizing: border-box;
   place-content: center;
@@ -84,4 +84,41 @@
   justify-content: flex-start;
   align-items: baseline;
   cursor: pointer;
+}
+
+.modal-on {
+  /* animation: growIn 200ms ease-in-out; */
+  visibility: visible;
+}
+
+.modal-off {
+  /* animation: shrinkOut 200ms ease-in-out ; */
+  visibility: hidden;
+}
+
+@keyframes growIn {
+  0% {
+    opacity: 0%;
+    transform: scaleY(0.75);
+    top: 30px;
+  }
+  100% {
+    opacity: 0%;
+    transform: scaleY(1);
+    top: 65px;
+  }
+}
+
+@keyframes shrinkOut {
+  0% {
+    opacity: 100%;
+    transform: scaleY(1);
+    top: 65px;
+  }
+
+  100% {
+    opacity: 0%;
+    transform: scaleY(0.75);
+    top: 30px;
+  }
 }

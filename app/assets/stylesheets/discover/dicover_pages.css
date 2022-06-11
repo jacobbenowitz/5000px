@@ -1,8 +1,12 @@
-.home-feed-container {
+.home-feed-container, .collection-feed-gallery {
   grid-column: 1 / span 12;
   margin-bottom: 160px;
   background-color: #F7F8FA;
   box-sizing: border-box;
+}
+
+.collection-feed-gallery {
+  padding-top: 2rem;
 }
 .home-feed-gallery {
   position: relative;

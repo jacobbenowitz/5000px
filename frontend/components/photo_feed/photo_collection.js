@@ -21,8 +21,8 @@ export default class PhotoCollection extends React.Component {
 
   componentDidMount() {
     const { fetchPhotos, category } = this.props;
-
     let pageCopy = this.getTitleAndDescription(category)
+    window.scrollTo(0, 0)
 
     this.setState({
       status: BUSY,
@@ -52,6 +52,7 @@ export default class PhotoCollection extends React.Component {
         photos: photos
       })
     }
+    this.randomPhoto = this.randomPhoto.bind(this)
   }
 
   getPhotoCollection(category) {
@@ -96,6 +97,16 @@ export default class PhotoCollection extends React.Component {
     return { title: title, description: description }
   }
 
+  randomPhoto = () => {
+    let { photos } = this.state
+    let max, min
+    max = Math.floor(photos.length)
+    min = 1
+    let randomInt = Math.floor(Math.random() * (max - min + 1)) + min - 1
+    let photo = photos[randomInt]
+    return photo.photoUrl
+  }
+
   render() {
     const { pageTitle, pageDescription, status, photos } = this.state;
     let coverStyle, gallery;
@@ -104,7 +115,7 @@ export default class PhotoCollection extends React.Component {
       coverStyle = (
         {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
-          rgba(0, 0, 0, 0)), url(${photos[0].photoUrl})`
+          rgba(0, 0, 0, 0)), url(${this.randomPhoto()})`
         }
       )
       gallery = <DiscoverRows photos={photos} />
@@ -123,12 +134,19 @@ export default class PhotoCollection extends React.Component {
         <div className="collection-cover-container">
           <div className="cover-img-box" style={coverStyle} />
         </div>
-        <div className='collection-header'>
-          <span>{pageTitle}</span>
-          <span>{pageDescription}</span>
-        </div>
-        <div className='collection-details'>
 
+        <div className='collection-header'>
+          <h4>{pageTitle}</h4>
+          <span className='collection-description'>
+            {pageDescription}
+          </span>
+          <div className='curated-by'>
+            <div className="avatar-wrapper-sm" style={
+              { 'backgroundImage': `url(https://my5000px-static.s3.amazonaws.com/5000px-avatar-alt.png)`}
+            } 
+            />
+            <span>Curated by <strong>5000px</strong></span>
+          </div>
         </div>
         <div className='collection-feed-gallery'>
           {gallery}

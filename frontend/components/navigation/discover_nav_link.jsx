@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import CollectionNavModal from "./collection_nav_modal";
 import DiscoverNavModal from "./discover_nav_modal";
 
 
@@ -8,28 +9,37 @@ export default class DiscoverNavLinkItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: false
+      discoverModal: false,
+      collectionModal: false,
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleDiscoverClick = this.handleDiscoverClick.bind(this);
+    this.handleCollectionClick = this.handleCollectionClick.bind(this);
   }
 
-  handleClick(e) {
+  handleDiscoverClick(e) {
+    e.preventDefault()
     this.setState({
-      modalOpen: !this.state.modalOpen
+      discoverModal: !this.state.discoverModal
+    });
+  }
+  handleCollectionClick(e) {
+    e.preventDefault()
+    this.setState({
+      collectionModal: !this.state.collectionModal
     });
   }
 
   render() {
-
-    const modalClass = this.state.modalOpen ? "" : " modal-off";
+    const { discoverModal, collectionModal } = this.state;
+    
     return (
       <>
         <NavLink to={'/home'}>
           Home
         </NavLink>
         <div className="dropdown-nav"
-          onClick={this.handleClick}
+          onClick={this.handleDiscoverClick}
         >
           <span className="nav-pseduo">
             Discover
@@ -39,9 +49,24 @@ export default class DiscoverNavLinkItem extends React.Component {
           </div>
         </div>
 
+        <div className="dropdown-nav"
+          onClick={this.handleCollectionClick}
+        >
+          <span className="nav-pseduo">
+            Collections
+          </span>
+          <div className="down-arrow-wrapper">
+            <i className="fa-solid fa-angle-down fa-sm" />
+          </div>
+        </div>
+
         <DiscoverNavModal
-          toggleModal={this.handleClick}
-          klass={modalClass}
+          toggleModal={this.handleDiscoverClick}
+          klass={discoverModal ? " modal-on" : " modal-off"}
+        />
+        <CollectionNavModal
+          toggleModal={this.handleCollectionClick}
+          klass={collectionModal ? " modal-on" : " modal-off"}
         />
       </>
     )

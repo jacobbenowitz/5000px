@@ -1313,21 +1313,6 @@ abs_photo_33 = {
   featured: assignFeaturedPage
 }
 abs_photo_33_saved = Photo.new(abs_photo_33)
-abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/people-come-and-go-that-s-life_t20_dzRGY9.jpg'), filename: 'abstract_33.jpg')
-abs_photo_33_saved.save!
-
-abs_photo_33 = {
-  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
-  description: Faker::Hipster.sentences(number: 1).first,
-  location: Faker::Address.city,
-  lens: profile_abstract_saved.lenses.split(',').first,
-  camera: profile_abstract_saved.cameras.split(',').first,
-  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
-  profile_id: profile_abstract_saved.id,
-  category: 'abstract',
-  featured: assignFeaturedPage
-}
-abs_photo_33_saved = Photo.new(abs_photo_33)
 abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/reflection-pattern-sphere-abstract-bubble-texture-macro-creative-closeup-soap-bubble_t20_OJevlE.jpg'), filename: 'abstract_33.jpg')
 abs_photo_33_saved.save!
 

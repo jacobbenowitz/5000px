@@ -47,6 +47,21 @@
   background-position: center center; 
 }
 
+.avatar-wrapper-sm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}
+
 .avatar-box-lg {
   position: absolute;
   bottom: -55px;
@@ -104,7 +119,7 @@
   margin-bottom: 16px;
 }
 
-.profile-header-container {
+.profile-header-container, .collection-header {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -189,6 +204,24 @@
   font-weight: 700;
 }
 
-.cover-input-wrapper {
+/* .cover-input-wrapper {
   
+} */
+
+.collection-description {
+  text-align: center;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, FreeSans, Arial, sansserif;
+  max-width: 560px;
+  max-width: 560px;
+}
+
+.curated-by {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
