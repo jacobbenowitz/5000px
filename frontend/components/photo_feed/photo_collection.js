@@ -35,7 +35,7 @@ export default class PhotoCollection extends React.Component {
   }
 
   componentDidUpdate() {
-    const { category, allProfiles, musicPhotos } = this.props;
+    const { category, allProfiles, minimalismPhotos, musicPhotos, abstractPhotos, animalsPhotos, chocolatePhotos, sportsPhotos } = this.props;
 
     if (category !== this.state.category) {
       let pageCopy = this.getTitleAndDescription(category)
@@ -45,7 +45,7 @@ export default class PhotoCollection extends React.Component {
         category: category,
       })
     }
-    if (this.state.status === BUSY && musicPhotos) {
+    if (this.state.status === BUSY && musicPhotos && minimalismPhotos && abstractPhotos && animalsPhotos && chocolatePhotos && sportsPhotos) {
       let photos = this.getPhotoCollection(category)
       this.setState({
         status: DONE,
@@ -98,9 +98,10 @@ export default class PhotoCollection extends React.Component {
   }
 
   randomPhoto = () => {
+    // debugger
     let { photos } = this.state
     let max, min
-    max = Math.floor(photos.length)
+    max = Math.floor(Object.values(photos).length)
     min = 1
     let randomInt = Math.floor(Math.random() * (max - min + 1)) + min - 1
     let photo = photos[randomInt]

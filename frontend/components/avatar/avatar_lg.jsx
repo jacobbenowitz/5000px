@@ -1,21 +1,21 @@
 import React from "react"
 import AvatarLgLoader from "./avatar-loaders/avatar_lg_loader"
 
-const placeholderImg = "/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/placeholder-image.png";
+const placeholderImg = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp";
 
-export const AvatarLg = ({profile}) => {
-  const { avatar } = profile ? profile : placeholderImg;
+export const AvatarLg = ({ profile }) => {
+  let avatarUrl;
+  if (profile) {
+    avatarUrl = profile.avatar
+  } else {
+    avatarUrl = placeholderImg
+  }
+
   const styles = {
-    'backgroundImage': `url(${avatar})`
+    'backgroundImage': `url(${avatarUrl})`
   }
 
   return (
-      <div className="avatar-wrapper" style={styles}>
-        {/* {avatar ? (
-          <img src={avatar} className="avatar-img" />
-        ): (
-          <AvatarLgLoader />
-        )} */}
-      </div>
+      <div className="avatar-wrapper profile" style={styles} />
   )
 }

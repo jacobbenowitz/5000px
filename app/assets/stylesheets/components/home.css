@@ -274,6 +274,7 @@ a.callout-sub:hover {
   overflow: hidden;
   box-sizing: border-box;
   height: 50vh;
+  cursor: pointer;
 }
 
 .single-photo-card {

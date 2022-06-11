@@ -37,6 +37,10 @@ export default class HomeFeed extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    this.setState({ status: IDLE })
+  }
+
   componentDidUpdate() {
     const { allPhotos, users, profiles } = this.props;
     const { featuredPhotographers, status } = this.state;
@@ -65,7 +69,7 @@ export default class HomeFeed extends React.Component {
     const { featuredPhotographers, minimalismCollection,
       status, infoCallout } = this.state;
 
-    let featuredCards, minimalismCard, singlePhotoCard;
+    let featuredCards, minimalismCard, singlePhotoCard, shuffledPhotos;
 
     if (status === DONE) {
       featuredCards = featuredPhotographers.map((photographer, i) => {
@@ -78,9 +82,14 @@ export default class HomeFeed extends React.Component {
         )
       });
 
+      shuffledPhotos = Object.values(allPhotos).sort(() =>
+        Math.random() - 0.5);
+      
       minimalismCard = (
         <CollectionGridCard 
           photos={minimalismCollection.photos}
+          collection={'minimalism'}
+          history={this.props.history}
         />
       )
 
@@ -130,20 +139,12 @@ export default class HomeFeed extends React.Component {
             {singlePhotoCard}
           </div>
 
-          {allPhotos ? (
-            <DiscoverRows photos={Object.values(allPhotos)} />
+          {shuffledPhotos ? (
+            <DiscoverRows photos={shuffledPhotos} />
             ) : (
               <GridLoader />
             )
           }
-        </div>
-        <div>
-          {/* <PhotosIndex
-            photos={photos}
-            users={users}
-            profiles={profiles}
-            currentUser={currentProfile}
-          /> */}
         </div>
       </div>
     )

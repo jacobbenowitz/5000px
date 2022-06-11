@@ -61,7 +61,6 @@ export default class ProfileCoverInput extends React.Component {
     const { currentCover, profile } = this.props;
 
     let coverStyle;
-    
     if (this.state.photoUrl.length) {
       coverStyle = ({
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
@@ -70,13 +69,13 @@ export default class ProfileCoverInput extends React.Component {
     } else {
       coverStyle = ({
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
-        rgba(0, 0, 0, 0)), url(${profile.cover})`
+        rgba(0, 0, 0, 0)), url(${currentCover})`
       })
     }
     
     return (
       <div
-        className="cover-img-box"
+        className="cover-img-box profile"
         style={coverStyle}
         onMouseEnter={this.toggleInputForm}
         onMouseLeave={this.toggleInputForm}

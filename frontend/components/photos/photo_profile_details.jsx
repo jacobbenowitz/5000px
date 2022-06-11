@@ -12,25 +12,25 @@ import { Link } from "react-router-dom";
 export default class PhotoProfileDetails extends React.Component {
   constructor(props) {
     super(props)
-    // this.setBeforeContent = this.setBeforeContent.bind(this)
+    this.setBeforeContent = this.setBeforeContent.bind(this)
   }
 
   setBeforeContent = (e) => {
-    e.preventDefault()
     const featured = this.props.photo.featured;
-
+    e.preventDefault()
+    debugger
     if (featured === 'editors') {
-      e.target.setAttribute('data-before',
+      e.currentTarget.setAttribute('data-before',
         "The photos featured in Editors' Choice are selected by our 5000px Editors.")
     } else if (featured === 'fresh') {
-      e.target.setAttribute('data-before',
+      e.currentTarget.setAttribute('data-before',
         "The photos featured in Fresh are newly added to 5000px!")
     } else if (featured === 'popular') {
-      e.target.setAttribute('data-before',
+      e.currentTarget.setAttribute('data-before',
         "The photos featured in Popular are recently added photos that are trending!") 
     } else if (featured === 'upcoming') {
-      e.target.setAttribute('data-before',
-        "The photos featured in Upcoming have a Pulse of at least 70 and rising!")
+      e.currentTarget.setAttribute('data-before',
+        "The photos featured in Upcoming are newly posted photos with the most views!")
     }
   }
 
@@ -56,14 +56,15 @@ export default class PhotoProfileDetails extends React.Component {
                 currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes}
               />
               <div className="profile-info">
-                <div className="avatar-container">
-                  {/* <img className="user-avatar-lg" src={user.avatar}></img> */}
-                  <img className="user-avatar-lg" src={photoProfile.avatar}></img>
-                </div>
+                <Link to={`/profiles/${photo.profile_id}`}>
+                  <div className="avatar-container">
+                    <img className="user-avatar-lg" src={photoProfile.avatar}></img>
+                  </div>
+                </Link>
                 <div className="user-details">
                   <h5 className="photo-show-title">{photo.title}</h5>
                   <span className="photo-user-name">
-                    by {photo.profileName}
+                    by <Link to={`/profiles/${photo.profile_id}`}>{photo.profileName}</Link>
                   </span>
                   <span> • </span>
                   <div className="follow-link">
@@ -100,9 +101,9 @@ export default class PhotoProfileDetails extends React.Component {
                       {photo.featured.slice(0,1).toUpperCase() + photo.featured.slice(1)}
                     </span>
                     <div className="ft-info-icon-wrapper"
-                      onMouseEnter={this.setBeforeContent}
+                      onMouseOver={this.setBeforeContent}
                     >
-                      <i class="fa-solid fa-circle-info"></i>
+                      <i className="fa-solid fa-circle-info"></i>
                     </div>
                   </div>
                   <div className="featured-icon-wrapper">

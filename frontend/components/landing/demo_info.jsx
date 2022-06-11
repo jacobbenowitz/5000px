@@ -1,6 +1,6 @@
 import React from "react";
 
-export const DemoInfo = (
+const DemoInfo = props => (
   <div id="landing-info">
     <div id="demo-title">
       <h3>The home of ideation</h3>
@@ -67,3 +67,4 @@ export const DemoInfo = (
     
   </div>
 )
+export default DemoInfo

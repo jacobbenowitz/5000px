@@ -70,7 +70,9 @@ export default class NavHeader extends React.Component {
           </Link>
         </div>
         <div className="nav-links">
-          <DiscoverNavLinkItem />
+          <DiscoverNavLinkItem 
+            currentUserId={this.props.currentUserId}
+          />
         </div>
         <div id="user-links-container">
           {userLinks}

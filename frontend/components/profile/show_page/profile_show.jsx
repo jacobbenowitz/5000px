@@ -26,8 +26,8 @@ export default class ProfileShow extends React.Component {
     window.scrollTo(0, 0)
 
     this.setState({ status: BUSY }, () => {
-      fetchPhotos() 
       fetchProfile(profileId)
+      fetchPhotos() 
     })
   }
 
@@ -35,6 +35,7 @@ export default class ProfileShow extends React.Component {
     const {status} = this.state;
     const { photos, profile, profileId } = this.props;
     
+
     if (status === BUSY && photos.length && Object.values(profile)) {
       this.setState({status: DONE})
     }
@@ -52,11 +53,10 @@ export default class ProfileShow extends React.Component {
 
     let avatar, cover, coverStyle;
 
-    if (profile.cover) {
+    if (profile?.cover) {
       coverStyle = (
         {
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
-          rgba(0, 0, 0, 0)), url(${profile.cover})`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(${profile.cover})`
         }
       ) // add fallback image or content placeholder in else statement
     } else {
@@ -69,7 +69,7 @@ export default class ProfileShow extends React.Component {
     }
 
 
-    if (isCurrentProfile) {
+    if (isCurrentProfile && profile) {
       avatar = (
         <div className="profile-avatar-container">
           <ProfileAvatarInput
@@ -86,16 +86,20 @@ export default class ProfileShow extends React.Component {
           updateProfilePhoto={updateProfilePhoto}
         />
       )
-    } else {
+    } else if (!isCurrentProfile && profile) {
       avatar = (
-        <AvatarLg
-          avatar={profile}
-        />
+        <div className="profile-avatar-container">
+          <AvatarLg
+            profile={profile}
+          />
+        </div>
       )
       cover = (
-        profile.cover ? (
-          <div className="cover-img-box" style={coverStyle} />
-        ) : <CoverPhotoLoader />
+          <div className="cover-img-box profile" style={coverStyle} />
+      )
+    } else {
+      cover = (
+        <CoverPhotoLoader />
       )
     }
 

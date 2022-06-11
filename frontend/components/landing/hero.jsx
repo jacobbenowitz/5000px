@@ -13,7 +13,7 @@ const heroCredit = (
   <span className="photo-credit">Photo by <strong>Photographer Name</strong></span>
 );
 
-export const Hero = (
+const Hero = props => (
     <div id='hero-container' >
       <div id='hero-content'>
         <div id='hero-text'>
@@ -29,3 +29,5 @@ export const Hero = (
 
     </div>
 )
+
+export default Hero

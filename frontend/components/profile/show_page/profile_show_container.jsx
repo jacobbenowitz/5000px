@@ -8,12 +8,14 @@ import { fetchProfile, updateProfile, updateProfilePhoto } from "../../../action
 import { selectProfilePhotos, buildGalleryArray, buildGridGalleryProps } from "../../../reducers/selectors";
 import ProfileShow from "./profile_show";
 
-const mapStateToProps = ({entities, session}, { match }) => {
+const mapStateToProps = ({ entities, session }, { match }) => {
+  
   const profileId = match.params.profileId;
   const isCurrentProfile = session.profile == profileId;
   const profile = entities.profiles[profileId];
-  const user = entities.users[profile.user_id];
-  const profilePhotos = selectProfilePhotos(entities.photos, profile.photoIds)
+  const user = entities.users[profile?.user_id];
+  
+  const profilePhotos = selectProfilePhotos(entities.photos?.all, profile?.photoIds)
 
   return {
     profileId: profileId,

@@ -18,16 +18,16 @@ export default class ImageViewer extends React.Component {
   render() {
     let imageTopIcons = (
       <div className="image-top-icons">
+        <div className="back icon-wrapper"
+          onClick={() => this.props.history.goBack()}
+        >
+          <i className="fa-solid fa-arrow-left-long fa-xl back-arrow"></i>
+        </div>
         <div className="full-screen icon-wrapper"
           onClick={this.toggleFullScreen}
         >
           <i className="fa-solid fa-up-right-and-down-left-from-center fa-xl">
           </i>
-        </div>
-        <div className="back icon-wrapper"
-          onClick={() => this.props.history.goBack()}
-        >
-          <i className="fa-solid fa-arrow-left-long fa-xl back-arrow"></i>
         </div>
       </div>
     )

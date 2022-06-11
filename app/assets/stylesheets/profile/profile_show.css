@@ -6,6 +6,18 @@
   grid-column: 1 / span 12;
 }
 
+.profile-cover-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cover-img-box.profile {
+  width: 100%;
+}
+
 .cover-img-box {
   height: 370px;
   background-repeat: no-repeat;
@@ -45,6 +57,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; 
+  transition: all 250ms ease-in;
+}
+
+.avatar-wrapper.profile {
+  position: absolute;
+  background-color: rgb(213, 213, 213);
 }
 
 .avatar-wrapper-sm{

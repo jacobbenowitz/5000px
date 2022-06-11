@@ -56,6 +56,11 @@
 .image-top-icons {
   z-index: 20;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 0 14px;
 }
 
 .back-arrow {
@@ -219,6 +224,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .gear-icon-wrapper {
@@ -244,8 +250,8 @@ a {
   z-index: 500;
   width: max-content;
   position: absolute;
-  left: 0;
-  bottom: 62px;
+  left: -94px;
+  bottom: 31px;
   text-align: center;
   background: #fff;
   padding: 0.4rem;
@@ -259,8 +265,8 @@ a {
   content: "";
   bottom: 54px;
   left: 52px;
-  width: 0;
-  height: 0;
+  bottom: 23px;
+  left: 2px;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 9px solid #fff;

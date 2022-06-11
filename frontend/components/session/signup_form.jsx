@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Demo from "../../demo/demo_user_signup";
 
 const submitPromise = (milliseconds) => {
-  return new Promise(resolve => 
-  setTimeout(resolve, milliseconds))
+  return new Promise(resolve =>
+    setTimeout(resolve, milliseconds))
 }
 
 export default class SignupForm extends React.Component {
@@ -17,6 +17,10 @@ export default class SignupForm extends React.Component {
       password2: "",
     };
     this.bindHandlers()
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
   }
 
   bindHandlers() {
@@ -43,7 +47,7 @@ export default class SignupForm extends React.Component {
         this.props.openModal("success");
       })
     }
-    
+
   }
 
   update = type => {
@@ -71,7 +75,7 @@ export default class SignupForm extends React.Component {
       <div className="error-modal">
         <ul className="error-list">
           {this.props.errors.map((error, i) => (
-            <li key={`error-${i}`}> 
+            <li key={`error-${i}`}>
               {error}
             </li>
           ))}
@@ -139,7 +143,7 @@ export default class SignupForm extends React.Component {
                 className="text-input"
                 value={this.state.email}
                 onChange={this.update('email')}
-            />
+              />
             </div>
             <div className="form-input">
               <label htmlFor="password-signup">Password</label>
@@ -163,12 +167,12 @@ export default class SignupForm extends React.Component {
               />
             </div>
 
-            { frontendErrors }
+            {frontendErrors}
 
             <button className="signup"
               id="submit-signup"
               type="submit">Create account</button>
-            
+
             <button className="demo_button"
               id="demo-signup"
               onClick={this.demoScript}
@@ -179,15 +183,15 @@ export default class SignupForm extends React.Component {
               <Link to={'/login'}>Log in</Link>
             </span>
 
-            
+
 
           </form>
 
-            <button
-              onClick={this.demoSignup}
-              id="hidden-demo">Demo only
-            </button>
-          
+          <button
+            onClick={this.demoSignup}
+            id="hidden-demo">Demo only
+          </button>
+
         </div>
       </div>
     )

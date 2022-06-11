@@ -1,15 +1,19 @@
 import React from 'react' 
+import Link from 'react-router-dom'
 
-const CollectionGridCard = ({photos}) => { 
+const CollectionGridCard = ({ photos, collection, history }) => { 
+  debugger
   const styleBg = (src) => {
     return { backgroundImage: `url(${src})` }
   }
   return (
     <div className="ft-grid-wrapper">
-      <div className="featured-grid-container">
+      <div onClick={() => history.push(`/galleries/${collection}`)}
+        className="featured-grid-container">
         <div className="ft-grid-top-label">
           <span className="ft-label">
-            Minimalism | Collection
+            {collection.slice(0, 1).toUpperCase() +
+              collection.slice(1)} | Collection
           </span>
         </div>
         <div className="ft-grid-img-wrapper ft-large ft-top"

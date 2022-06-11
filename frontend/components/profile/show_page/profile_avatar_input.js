@@ -54,7 +54,7 @@ export default class ProfileAvatarInput extends React.Component {
       <div className='avatar-form'
         id='avatar-form-profile'
       >
-        <div className="file-input-wrapper">
+        <div className="file-input-wrapper avatar">
           <label htmlFor="avatar-input" className="avatar-input-label">
             <i className="fa-solid fa-arrow-up-from-bracket fa-sm" />
             <input

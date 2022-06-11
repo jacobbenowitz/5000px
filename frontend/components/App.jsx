@@ -17,6 +17,7 @@ import ModalContainer from "./modal/modal_container";
 import PhotoEditFormContainer from "./photos/photo_edit_form_container";
 import DiscoverFeedContainer from "./photo_feed/discover_feed_container";
 import PhotoCollectionContainer from "./photo_feed/photo_collection_container";
+import { Route } from "react-router-dom";
 
 const App = () => (
   <div className="grid-pancake-stack">
@@ -54,7 +55,7 @@ const App = () => (
       <ProtectedRoute exact path={"/home"} 
         component={HomeFeedContainer} 
       />
-      <ProtectedRoute exact path={"/discover/:page"}
+      <Route exact path={"/discover/:page"}
         component={DiscoverFeedContainer}
       />
       <ProtectedRoute exact path={"/galleries/:category"}

@@ -16,7 +16,7 @@ export const buildProfileGalleryArray = ({ photos }) => {
 };
 
 export const buildDiscoverGalleryArray = ({ photos }) => {
-  return photos.map(photo => {
+  let discoverPhotos = photos.map(photo => {
     let name = photo?.profileName.length > 1 ?
       photo.profileName : photo.username
 
@@ -29,6 +29,7 @@ export const buildDiscoverGalleryArray = ({ photos }) => {
       title: photo.showLink,
     }
   })
+  return discoverPhotos.sort(() => Math.random() - 0.5)
 };
 
 export const buildFeaturedGalleryArray = photos => {
@@ -58,7 +59,7 @@ export const buildGridGalleryProps = (photos) => {
 };
 
 export const selectProfilePhotos = (photos, photoIds) => {
-  if (Object.keys(photos).length && photoIds.length) {
+  if (photos && photoIds) {
     return photoIds.map(photoId => photos[photoId])
   } else return []
 };

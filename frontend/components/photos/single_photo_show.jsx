@@ -34,7 +34,8 @@ export default class SinglePhotoShow extends React.Component {
         {photo ? (
           <>
             <ImageViewer
-              photo={photo} 
+              photo={photo}
+              history={this.props.history}
             />
             <PhotoProfileDetails
               photo={photo}

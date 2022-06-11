@@ -32,10 +32,11 @@ export default class DiscoverNavLinkItem extends React.Component {
 
   render() {
     const { discoverModal, collectionModal } = this.state;
+    const { currentUserId } = this.props;
     
     return (
       <>
-        <NavLink to={'/home'}>
+        <NavLink to={currentUserId ? '/home' : '/'}>
           Home
         </NavLink>
         <div className="dropdown-nav"
