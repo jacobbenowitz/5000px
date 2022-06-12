@@ -176,7 +176,7 @@ export default class SignupForm extends React.Component {
             <button className="demo_button"
               id="demo-signup"
               onClick={this.demoScript}
-            >Demo account</button>
+            >Demo signup</button>
 
             <span className="alt-session-link">
               <p>Already got an account?</p>

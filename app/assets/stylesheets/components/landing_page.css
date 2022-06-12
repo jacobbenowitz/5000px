@@ -32,11 +32,14 @@
 .landing-gallery-header {
   display: grid;
   place-items: center;
-  padding: 3em 0 1em 0;
+  padding: 0 0 2em 0;
 }
 
 .landing-gallery-header span {
   margin: 1em 0 1em 0;
+}
+.landing-gallery-header h4 {
+  margin-bottom: 0;
 }
 
 /* .image-gallery-2-row {

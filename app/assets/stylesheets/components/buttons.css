@@ -284,6 +284,7 @@ input:focus {
 .demo-sign-up-large:hover {
   border: 2px solid #B05C87;
   color: #B05C87;
+    background: #FFFFFF;
   -webkit-box-shadow:0px 0px 20px 0px #B05C87;
   -moz-box-shadow: 0px 0px 20px 0px #B05C87;
   box-shadow: 0px 0px 20px 0px #B05C87;

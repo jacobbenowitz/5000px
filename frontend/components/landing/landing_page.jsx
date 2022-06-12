@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Hero from "./hero";
 import DemoInfo from "./demo_info";
-import EditorsChoiceLanding from "./editors_choice";
 import SimpleCTA from "./simple_cta_section";
+import EditorsChoiceContainer from "./editors_choice_container";
 
 const LandingPage = props => {
   return (
     <div id="landing-page">
       <Hero />
       <DemoInfo />
-      <EditorsChoiceLanding />
+      <EditorsChoiceContainer />
       <SimpleCTA key={'cta-landing'} props={props} />
     </div>
   )

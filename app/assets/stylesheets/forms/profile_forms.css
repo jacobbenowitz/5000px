@@ -156,14 +156,14 @@
   display: none;
 }
 
-.avatar-form:hover::before {
+#avatar-form-profile:hover::before {
   content: "Upload a new avatar";
-    font-size: 14px;
+  font-size: 14px;
   z-index: 500;
   width: max-content;
   position: absolute;
-  left: 115px;
-  top: -7px;
+  left: 64px;
+  top: -11px;
   text-align: end;
   background: #eeeeee;
   padding: 0.4rem;
@@ -172,11 +172,11 @@
   animation: fadeIn 500ms ease-in-out;
 }
 
-.avatar-form:hover::after {
+#avatar-form-profile:hover::after {
   position: absolute;
   content: "";
-  top: 6px;
-  right: -16px;
+  top: 0px;
+  right: -64px;
   width: 0;
   height: 0;
   border-bottom: 5px solid transparent;
@@ -226,6 +226,11 @@
 
 .hide {
   visibility: hidden;
+}
+
+.file-input-wrapper.avatar {
+  top: -10px;
+  right: -50px;
 }
 
 .file-input-wrapper.cover {

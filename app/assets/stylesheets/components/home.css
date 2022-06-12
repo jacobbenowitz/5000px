@@ -229,6 +229,13 @@ button.follow-button {
   margin: 0;
 }
 
+#landing-gallery-box {
+  width: 100%;
+  margin-top: 16px;
+  box-sizing: border-box;
+  display: block;
+}
+
 #home-gallery-box {
   padding: 0px 64px;
   width: 100%;

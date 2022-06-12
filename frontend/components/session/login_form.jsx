@@ -90,7 +90,7 @@ export default class LoginForm extends React.Component {
             <button className="demo_button"
               id="demo-signup"
               onClick={this.demoLogin}
-            >Demo account</button>
+            >Demo login</button>
 
             <span className="alt-session-link">
               <p>Don't have an account?</p>
