@@ -18,7 +18,6 @@ export default class PhotoProfileDetails extends React.Component {
   setBeforeContent = (e) => {
     const featured = this.props.photo.featured;
     e.preventDefault()
-    debugger
     if (featured === 'editors') {
       e.currentTarget.setAttribute('data-before',
         "The photos featured in Editors' Choice are selected by our 5000px Editors.")

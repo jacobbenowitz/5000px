@@ -167,14 +167,16 @@ export default class NewProfileForm extends React.Component {
             </div>
 
             <div className="form-input">
-              <label htmlFor="website">Personal website</label>
+              <label htmlFor="website_url">Personal website</label>
               <input
                 type="text"
                 id="website_url"
-                value={this.buildUrl(website_url)}
+                value={
+                  this.state.website_url.length ? this.buildUrl(this.state.website_url) : ''
+                }
                 onChange={this.update('website_url')}
                 className="text-input"
-                placeholder="www.mywebsite.com"
+                placeholder="https://www.mywebsite.com"
               />
             </div>
 
@@ -183,7 +185,7 @@ export default class NewProfileForm extends React.Component {
               <input
                 type="text"
                 id="instagram_url"
-                value={instagram_url}
+                value={this.state.instagram_url}
                 onChange={this.update('instagram_url')}
                 className="text-input"
                 placeholder="Instagram username"
@@ -218,7 +220,7 @@ export default class NewProfileForm extends React.Component {
               <input
                 type="text"
                 id="country"
-                value={country}
+                value={this.state.country}
                 onChange={this.update('country')}
                 className="text-input"
                 placeholder="Country"

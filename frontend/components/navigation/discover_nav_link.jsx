@@ -33,6 +33,29 @@ export default class DiscoverNavLinkItem extends React.Component {
   render() {
     const { discoverModal, collectionModal } = this.state;
     const { currentUserId } = this.props;
+
+    let collectionsNav, collectionsModal;
+
+    if (!!currentUserId) {
+      collectionsNav = (
+        <div className="dropdown-nav"
+          onClick={this.handleCollectionClick}
+        >
+          <span className="nav-pseduo">
+            Collections
+          </span>
+          <div className="down-arrow-wrapper">
+            <i className="fa-solid fa-angle-down fa-sm" />
+          </div>
+        </div>
+      )
+      collectionsModal = (
+        <CollectionNavModal
+          toggleModal={this.handleCollectionClick}
+          klass={collectionModal ? " modal-on" : " modal-off"}
+        />
+      )
+    }
     
     return (
       <>
@@ -50,25 +73,13 @@ export default class DiscoverNavLinkItem extends React.Component {
           </div>
         </div>
 
-        <div className="dropdown-nav"
-          onClick={this.handleCollectionClick}
-        >
-          <span className="nav-pseduo">
-            Collections
-          </span>
-          <div className="down-arrow-wrapper">
-            <i className="fa-solid fa-angle-down fa-sm" />
-          </div>
-        </div>
+        {collectionsNav}
 
         <DiscoverNavModal
           toggleModal={this.handleDiscoverClick}
           klass={discoverModal ? " modal-on" : " modal-off"}
         />
-        <CollectionNavModal
-          toggleModal={this.handleCollectionClick}
-          klass={collectionModal ? " modal-on" : " modal-off"}
-        />
+        {collectionsModal}
       </>
     )
       

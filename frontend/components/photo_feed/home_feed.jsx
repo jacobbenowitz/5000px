@@ -29,7 +29,7 @@ export default class HomeFeed extends React.Component {
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getLikes } = this.props;
-
+    window.scrollTo(0, 0)
     this.setState({ status: BUSY }, () => {
       fetchUsers()
       fetchProfiles()

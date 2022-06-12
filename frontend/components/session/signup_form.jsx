@@ -26,12 +26,7 @@ export default class SignupForm extends React.Component {
   bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoSignup = this.demoSignup.bind(this);
-    this.redirectCreateProfile = this.redirectCreateProfile.bind(this);
-
-  }
-
-  redirectCreateProfile() {
-    this.props.history.push('/profile/new');
+    this.checkAllFields = this.checkAllFields.bind(this)
   }
 
   handleSubmit(e) {
@@ -43,7 +38,7 @@ export default class SignupForm extends React.Component {
       console.log(['must fill in all fields'])
     } else {
       processForm(user).then(user => {
-        this.redirectCreateProfile();
+        this.props.history.push('/profile/new')
         this.props.openModal("success");
       })
     }
@@ -84,35 +79,95 @@ export default class SignupForm extends React.Component {
     )
   }
 
+  checkAllFields() {
+    const { username, email, password, password2 } = this.state;
+    // check all fields, if all valid return true, else return false
+    if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) && 
+      username.length > 4 && password.length > 5 && password === password2
+    ) { return true } else return false 
+  }
+
   render() {
     const { username, email, password, password2 } = this.state;
-    let frontendErrors, passwordError, password2Error;
+    let frontendErrors, passwordError, password2Error, emailError, usernameError;
+
+    usernameError = (
+      <div className='session-error'>
+        {(username.length > 4) ?
+          <i className="fa-solid fa-circle-check"></i>
+          :
+          <i className="fa-solid fa-circle-xmark"></i>
+        }
+        <span>Username must be at least 5 characters</span>
+      </div>
+    )
 
     password2Error = (
       <div className='session-error'>
-        {(this.state.password !== this.state.password2 || this.state.password === '') ?
+        {(password !== password2 || password === '') ?
           <i className="fa-solid fa-circle-xmark"></i>
           :
           <i className="fa-solid fa-circle-check"></i>
         }
-        <span>Passwords Must Match</span>
+        <span>Passwords must match</span>
       </div>
     )
 
     passwordError = (
       <div className='session-error'>
-        {(password.length < 6) ?
+        {(password.length < 5) ?
           <i className="fa-solid fa-circle-xmark"></i>
           :
           <i className="fa-solid fa-circle-check"></i>
         }
-        <span>Password must be 6 characters or more</span>
+        <span>Password must be least 6 characters</span>
       </div>
     )
 
-    if (username.length && email.length) {
+    emailError = (
+      <div className="session-error">
+        {
+          (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) ? 
+            <i className="fa-solid fa-circle-check"></i>
+          :
+            <i className="fa-solid fa-circle-xmark"></i>
+        }
+        <span>Email must be a valid address</span>
+      </div>
+    )
+
+    if (username.length) {
       frontendErrors = (
         <div className='session-error-wrapper'>
+          {usernameError}
+        </div>
+      )
+    }
+
+    if (email.length) {
+      frontendErrors = (
+        <div className='session-error-wrapper'>
+          {usernameError}
+          {emailError}
+        </div>
+      )
+    }
+
+    if (password.length) {
+      frontendErrors = (
+        <div className='session-error-wrapper'>
+          {usernameError}
+          {emailError}
+          {passwordError}
+        </div>
+      )
+    }
+
+    if (password2.length) {
+      frontendErrors = (
+        <div className='session-error-wrapper'>
+          {usernameError}
+          {emailError}
           {passwordError}
           {password2Error}
         </div>
@@ -131,7 +186,7 @@ export default class SignupForm extends React.Component {
                 type="text"
                 id="username-signup"
                 className="text-input"
-                value={this.state.username}
+                value={username}
                 onChange={this.update('username')}
               />
             </div>
@@ -141,7 +196,7 @@ export default class SignupForm extends React.Component {
                 type="email"
                 id="email-signup"
                 className="text-input"
-                value={this.state.email}
+                value={email}
                 onChange={this.update('email')}
               />
             </div>
@@ -152,7 +207,7 @@ export default class SignupForm extends React.Component {
                 id="password-signup"
                 className="text-input"
                 onChange={this.update('password')}
-                value={this.state.password}
+                value={password}
               />
             </div>
 
@@ -163,27 +218,31 @@ export default class SignupForm extends React.Component {
                 id="password2-signup"
                 className="text-input"
                 onChange={this.update('password2')}
-                value={this.state.password2}
+                value={password2}
               />
             </div>
 
             {frontendErrors}
 
-            <button className="signup"
+            <button className={this.checkAllFields() ? "signup" :
+              "signup disabled"}
               id="submit-signup"
-              type="submit">Create account</button>
+              type="submit"
+            >
+              Create account
+            </button>
 
             <button className="demo_button"
               id="demo-signup"
               onClick={this.demoScript}
-            >Demo signup</button>
+            >
+              Demo signup
+            </button>
 
             <span className="alt-session-link">
               <p>Already got an account?</p>
               <Link to={'/login'}>Log in</Link>
             </span>
-
-
 
           </form>
 

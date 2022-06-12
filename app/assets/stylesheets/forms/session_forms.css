@@ -1,7 +1,8 @@
 
 .session {
   grid-column: 1 / span 12;
-  height: 100vh;
+  height: 92vh;
+  max-height: fit-content;
   background-color: #F7F8FA;
 }
 
@@ -13,11 +14,9 @@
   border-radius: 4px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 
-  position: absolute;
+  position: relative;
   width: 402px;
   height: min-content;
-  left: calc(50% - 402px/2);
-  top: calc(50% - 591px/2);
 
   background: #FFFFFF;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
@@ -52,4 +51,54 @@
 }
 .alt-session-link > p {
   margin-right: 0.5rem;
+}
+
+.session-error-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.session-error {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.fa-circle-check {
+  color: #409817;
+}
+
+.fa-circle-xmark {
+  color: #A33833;
+}
+
+.signup.disabled {
+  cursor: not-allowed;
+  background-color: #616161;
+}
+
+.signup.disabled:hover {
+  background-color: #616161;
+}
+
+.signup.disabled:hover::before {
+  content: "All fields must be filled out properly";
+  font-size: 14px;
+  z-index: 500;
+  width: max-content;
+  position: absolute;
+  left: 64px;
+  top: -11px;
+  text-align: end;
+  background: #ffffff;
+  color: rgb(104, 9, 9);
+  padding: 0.4rem;
+  border-radius: 4px;
+  box-shadow: 0px 2px 16px rgb(0 0 0 / 30%);
+  animation: fadeIn 500ms ease-in-out;
 }

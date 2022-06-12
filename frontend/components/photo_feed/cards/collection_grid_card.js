@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'react-router-dom'
 
 const CollectionGridCard = ({ photos, collection, history }) => { 
-  debugger
   const styleBg = (src) => {
     return { backgroundImage: `url(${src})` }
   }
