@@ -22,10 +22,10 @@ export const receivePhotoUpdate = photo => ({
   photo
 })
 
-export const receivePhotos = photos => {
+export const receivePhotos = ({photoIds}) => {
   return {
     type: RECEIVE_PHOTOS,
-    photos
+    photoIds
   }
 };
 
@@ -53,8 +53,8 @@ export const deletePhoto = photoId => dispatch => {
 
 export const fetchPhotos = () => dispatch => {
   dispatch(requestPhotos())
-  return PhotoApiUtil.fetchPhotos().then(photos =>
-    dispatch(receivePhotos(photos)))
+  return PhotoApiUtil.fetchPhotos().then(photoIds =>
+    dispatch(receivePhotos(photoIds)))
 }
 
 

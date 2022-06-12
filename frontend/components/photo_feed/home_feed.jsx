@@ -19,10 +19,12 @@ export default class HomeFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      featuredPhotographers: [],
       status: IDLE,
+      fetchedPhotos: [],
+      photoCount: 10,
+      featuredPhotographers: [],
+      minimalismCollection: [],
       infoCallout: true,
-      minimalismCollection: []
     }
     this.closeInfoCallout = this.closeInfoCallout.bind(this)
   }
@@ -42,15 +44,46 @@ export default class HomeFeed extends React.Component {
   }
 
   componentDidUpdate() {
-    const { allPhotos, users, profiles } = this.props;
-    const { featuredPhotographers, status } = this.state;
-    if (status === BUSY && allPhotos && users && profiles) {
-      let featuredPhotographers = selectFeaturedPhotographers(allPhotos, profiles, users)
-      let minimalismCollection = selectCollectionPhotos(allPhotos, profiles, 'minimalism')
+    const { photoIds, allPhotos, users, profiles, fetchPhoto } = this.props;
+    const { featuredPhotographers, status,
+      fetchedPhotos, photoCount } = this.state;
+
+    // if (status === BUSY && allPhotos && users && profiles) {
+      // todo: build this in photos route
+      // let featuredPhotographers = selectFeaturedPhotographers(allPhotos, profiles, users)
+      // todo: all ready doing this in photos route
+      // let minimalismCollection = selectCollectionPhotos(allPhotos, profiles, 'minimalism')
+      // this.setState({
+        // status: DONE,
+        // featuredPhotographers: featuredPhotographers,
+        // minimalismCollection: minimalismCollection,
+      // })
+    // }
+    if (status === BUSY && photoIds.length > 0) {
+      if (photoCount > fetchedPhotos.length) {
+        let suffled = photoIds.sort(() => Math.random() - 0.5)
+        let filtered = suffled.filter(id => !fetchedPhotos.includes(id))
+        // let newPhotoCount = photoCount
+        let photos = [] 
+        for (let i = 0; i < photoCount; i++) {
+          const photoId = filtered[i];
+          fetchPhoto(photoId).then(photo => {
+            photos.push(photo.photo.photo)
+          })
+          // debugger
+          // newPhotoCount = newPhotoCount + 1
+        }
+        this.setState({
+          status: DONE,
+          // fetchedPhotos: fetchedPhotos.concat(photos), // photos is still empty
+          // photoCount: newPhotoCount // temp, need to increment elsewhere
+        })
+      }
+    }
+    if (status === DONE && fetchedPhotos.length <
+      Object.values(allPhotos).length) {
       this.setState({
-        status: DONE,
-        featuredPhotographers: featuredPhotographers,
-        minimalismCollection: minimalismCollection,
+        fetchedPhotos: Object.values(allPhotos)
       })
     }
   }
@@ -61,45 +94,41 @@ export default class HomeFeed extends React.Component {
   }
 
 
-  // todo: create shared title component 
-  // todo: create tab navigation component for discover
 
   render() {
     const {allPhotos, users, profiles, currentProfile } = this.props;
     const { featuredPhotographers, minimalismCollection,
-      status, infoCallout } = this.state;
+      status, infoCallout, fetchedPhotos } = this.state;
 
-    let featuredCards, minimalismCard, singlePhotoCard, shuffledPhotos;
+    let featuredCards, minimalismCard, singlePhotoCard;
 
     if (status === DONE) {
-      featuredCards = featuredPhotographers.map((photographer, i) => {
-        return (
-          <FeaturedPhotographerCard
-            key={`ft-card-${i}`}
-            photos={photographer.photos}
-            profile={photographer.profile}
-          />
-        )
-      });
+      // featuredCards = featuredPhotographers.map((photographer, i) => {
+      //   return (
+      //     <FeaturedPhotographerCard
+      //       key={`ft-card-${i}`}
+      //       photos={photographer.photos}
+      //       profile={photographer.profile}
+      //     />
+      //   )
+      // });
 
-      shuffledPhotos = Object.values(allPhotos).sort(() =>
-        Math.random() - 0.5);
       
-      minimalismCard = (
-        <CollectionGridCard 
-          photos={minimalismCollection.photos}
-          collection={'minimalism'}
-          history={this.props.history}
-        />
-      )
+      // minimalismCard = (
+      //   <CollectionGridCard 
+      //     photos={minimalismCollection.photos}
+      //     collection={'minimalism'}
+      //     history={this.props.history}
+      //   />
+      // )
 
-      singlePhotoCard = (
-        <SinglePhotoLarge
-          // temp testing
-          photo={featuredPhotographers[0].photos[0]}
-          profile={featuredPhotographers[0].profile}
-        />
-      )
+      // singlePhotoCard = (
+      //   <SinglePhotoLarge
+      //     // temp testing
+      //     photo={featuredPhotographers[0].photos[0]}
+      //     profile={featuredPhotographers[0].profile}
+      //   />
+      // )
       
     }
 
@@ -124,13 +153,13 @@ export default class HomeFeed extends React.Component {
               Follow to explore new work
             </span>
           </div>
-          <div className="featured-cards-wrapper">
+          {/* <div className="featured-cards-wrapper">
             <div className="ft-scroll">
               <div className="spacer-52px" />
               {featuredCards}
               <div className="spacer-52px" />
             </div>
-          </div>
+          </div> */}
           <div className="ft-divider" />
         </div>
         <div className="home-feed-gallery">
@@ -139,8 +168,8 @@ export default class HomeFeed extends React.Component {
             {singlePhotoCard}
           </div>
 
-          {shuffledPhotos ? (
-            <DiscoverRows photos={shuffledPhotos} />
+          {fetchedPhotos ? (
+            <DiscoverRows photos={fetchedPhotos} />
             ) : (
               <GridLoader />
             )

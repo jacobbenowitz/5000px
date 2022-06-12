@@ -263,12 +263,15 @@ a.callout-sub:hover {
 
 .close-wrapper {
   position: absolute;
-  z-index: 400;
+  z-index: 200;
   color: white;
   top: 15px;
   right: 15px;
   width: 20px;
   height: 20px;
+  display: flex;
+  place-content: center;
+  align-items: center;
   cursor: pointer;
 }
 

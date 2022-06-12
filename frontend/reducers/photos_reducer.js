@@ -6,23 +6,39 @@ import {
 } from '../actions/photos/photos_actions';
 import { merge } from 'lodash';
 
-const photosReducer = (initialState = {}, action) => {
-  Object.freeze(initialState);
-  let nextState = merge({}, initialState);
+const initialState = {
+  photoIds: [],
+  all: {},
+  popular: {},
+  fresh: {},
+  upcoming: {},
+  editors: {},
+  minimalism: {},
+  music: {},
+  abstract: {},
+  animals: {},
+  chocolate: {},
+  sports: {},
+}
+
+const photosReducer = (prevState = initialState, action) => {
+  Object.freeze(prevState);
+  let nextState = merge({}, prevState);
 
   switch (action.type) {
     case RECEIVE_PHOTOS:
-      return action.photos;
+      nextState.photoIds = action.photoIds
+      return nextState;
     case REQUEST_PHOTOS:
       return nextState
     case RECEIVE_PHOTO:
-      nextState[action.photo.photo.id] = action.photo.photo
+      nextState.all[action.photo.photo.id] = action.photo.photo
       return nextState;
     case REMOVE_PHOTO:
       delete nextState[action.photoId]
       return nextState;
     default:
-      return initialState;
+      return prevState;
   }
 }
 
