@@ -14,8 +14,12 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
 }
 
-#footer-top h5, #footer-top a {
+#footer-top h5, #footer-top a, #footer-top i {
   color: rgb(109, 115, 120);
+}
+
+#footer-top a:hover {
+  color: #316ECA;
 }
 
 #footer-bottom {
@@ -41,4 +45,14 @@ footer {
 
 .footer-logo {
   width: 120px;
+}
+
+.footer-icon-link {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  place-content: center;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 6px;
 }

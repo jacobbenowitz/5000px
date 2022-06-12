@@ -57,7 +57,8 @@ export default class ProfileShow extends React.Component {
         {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(${profile.cover})`
         }
-      ) // add fallback image or content placeholder in else statement
+      )
+      // todo: add fallback image or content placeholder in else statement
     } else {
       coverStyle = (
         {

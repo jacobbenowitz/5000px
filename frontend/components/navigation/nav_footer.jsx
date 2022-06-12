@@ -21,19 +21,38 @@ const NavFooter = () => (
           <h5>Company</h5>
         </div>
         <div className="footer-link-list">
-          <Link to={'https://500px.com/'}>Original 500px</Link>
+          <a href={'https://500px.com/'}
+            target="_blank" rel="noreferrer"
+          >
+            Original 500px
+          </a>
         </div>
         
       </div>
 
       <div className="nav-col-03">
         <div className="footer-header">
-          <h5>Social</h5>
+          <h5>Developer Links</h5>
         </div>
         <div className="footer-link-list">
-          <NavLink to={'https://github.com/jacobbenowitz/'}>Github</NavLink>
-          <NavLink to={'https://www.linkedin.com/in/jacobbenowitz/'}>LinkedIn</NavLink>
-          <NavLink to={'https://www.jacobbenowitz.com/'}>Porfolio</NavLink>
+          <div className="footer-icon-link">
+            <i className="fa-brands fa-github" />
+            <a href={'https://github.com/jacobbenowitz/'}
+              target="_blank" rel="noreferrer"
+            >Github</a>
+          </div>
+          <div className="footer-icon-link">
+            <i className="fa-brands fa-linkedin-in" />
+            <a href={'https://www.linkedin.com/in/jacobbenowitz/'}
+              target="_blank" rel="noreferrer"
+            >LinkedIn</a>
+          </div>
+          <div className="footer-icon-link">
+            <i className="fa-solid fa-link" />
+            <a href={'https://www.jacobbenowitz.com/'}
+              target="_blank" rel="noreferrer"
+            >Porfolio</a>
+          </div>
         </div>
       </div>
 
@@ -42,12 +61,18 @@ const NavFooter = () => (
           <h5>Project Links</h5>
         </div>
         <div className="footer-link-list">
-          <Link to={'https://github.com/jacobbenowitz/5000px'}>
-            Github Repo
-          </Link>
-          <Link to={'https://github.com/jacobbenowitz/5000px/wiki'}>
-            GitHub Wiki
-          </Link>
+          <div className="footer-icon-link">
+            <i className="fa-brands fa-github" />
+            <a href={'https://github.com/jacobbenowitz/5000px'}
+              target="_blank" rel="noreferrer"
+            >Github Repo</a>
+          </div>
+          <div className="footer-icon-link">
+            <i className="fa-solid fa-book" />
+            <a href={'https://github.com/jacobbenowitz/5000px/wiki'}
+              target="_blank" rel="noreferrer"
+            >GitHub Wiki</a>
+          </div>
         </div>
       </div>
     </div>
@@ -60,8 +85,8 @@ const NavFooter = () => (
         </Link>
       </div>
       <div id="bottom-footer-links">
-        <NavLink to={'/'}>Privacy</NavLink>
-        <NavLink to={'/'}>Terms</NavLink>
+        <NavLink to={'#'}>Privacy</NavLink>
+        <NavLink to={'#'}>Terms</NavLink>
       </div>
     </div>
     
