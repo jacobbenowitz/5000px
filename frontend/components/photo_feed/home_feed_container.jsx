@@ -13,9 +13,10 @@ const mapStateToProps = ({ entities, session }) => {
     allPhotos: entities.photos?.all,
     users: entities.users,
     likes: entities.likes,
-    profiles: entities.profiles,
+    profiles: entities.profiles.all,
     currentProfile: entities.profiles[session.profile],
-    status: entities.photos.status
+    photosStatus: entities.photos.status,
+    profilesStatus: entities.profiles.status
   }
 }
 

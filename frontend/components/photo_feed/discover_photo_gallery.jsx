@@ -38,7 +38,7 @@ const DiscoverRows = (photos) => {
       photos={galleryPhotos}
       layout="rows"
       maxPhotos={4}
-      targetRowHeight={377}
+      targetRowHeight={312}
       renderPhoto={renderPhoto}
     />
   </div>

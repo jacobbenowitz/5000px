@@ -8,26 +8,24 @@ import FeaturedCardRows from "../featured_card_gallery";
  * @param  {} => return (<divclassName="featured-photo-card-wrapper"><divclassName={type}></div></div>
  */
 
-const FeaturedPhotographerCard = ({ photos, profile }) => {
+const FeaturedPhotographerCard = ({ allPhotos, featuredPhotographer }) => {
 
   const styleBg = (src) => {
     return {backgroundImage: `url(${src})`}
   }
-
+  debugger
+  let featuredIds = featuredPhotographer.photoIds
   return (
     <div className="featured-photo-card-wrapper">
-      {/* <FeaturedCardRows
-        photos={photos}
-      /> */}
       <div className="ft-card-grid">
         <div className="ft-card-photo" 
-          style={styleBg(photos[0].thumbnailUrl)}
+          style={styleBg(allPhotos[featuredIds[0]].thumbnailUrl)}
         />
         <div className="ft-card-photo " 
-          style={styleBg(photos[1].thumbnailUrl)}
+          style={styleBg(allPhotos[featuredIds[1]].thumbnailUrl)}
         />
         <div className="ft-card-photo" 
-          style={styleBg(photos[2].thumbnailUrl)}
+          style={styleBg(allPhotos[featuredIds[2]].thumbnailUrl)}
         />
       </div>
       <div className="ft-card-bottom">
@@ -35,12 +33,12 @@ const FeaturedPhotographerCard = ({ photos, profile }) => {
           {/* <AvatarSm /> */}
           <div className="ft-text">
             <Link className="ft-name"
-              to={`/profiles/${profile.id}`}
+              to={`/profiles/${featuredPhotographer.profile.id}`}
             >
-              {profile.name}
+              {featuredPhotographer.profile.name}
             </Link>
             <span className="ft-location">
-              {profile.location}
+              {featuredPhotographer.profile.location}
             </span>
           </div>
         </div>

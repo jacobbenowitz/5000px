@@ -97,10 +97,10 @@ export const selectUserById = ({ users }, userId) => {
 }
 
 // return array [{photos: [], profile: {name: '', location: '', id: ''}}]
-export const selectFeaturedPhotographers = (photos, profiles, users) => {
+export const selectFeaturedPhotographers = (profiles, users) => {
   // select 5 profiles
   const featured = selectFeaturedProfiles(profiles)
-
+  const featuredPhotoIds = [];
   const formattedProfiles = featured.map(profile => {
     let name;
 
@@ -110,22 +110,24 @@ export const selectFeaturedPhotographers = (photos, profiles, users) => {
       name = users[profile.user_id].username
     }
     // get all profile photos
-    const profilePhotos = selectProfilePhotos(photos, profile.photoIds)
+    const profilePhotos = profile.photoIds
 
     // get 3 random photos from each
-    const featuredPhotos = selectThreeRandomPhotos(profilePhotos)
-
+    const threeSelectedPhotos = selectThreeRandomPhotos(profilePhotos)
+    featuredPhotoIds.push(threeSelectedPhotos)
     return {
-      photos: featuredPhotos,
+      photoIds: threeSelectedPhotos,
       profile: {
+        id: profile.id,
         name: name,
         location: profile.city,
-        id: profile.id
       }
     }
   })
 
-  return formattedProfiles;
+  let photoIds = featuredPhotoIds.flat()
+
+  return {profiles: formattedProfiles, photoIds: photoIds};
 }
 
 export const selectFeaturedProfiles = (profiles) => {

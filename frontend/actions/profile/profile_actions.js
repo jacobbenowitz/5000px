@@ -1,6 +1,7 @@
 import * as ProfileApiUtil from '../../util/profile_api_util';
 
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'; // profile
+export const REQUEST_PROFILES = 'REQUEST_PROFILES'; // profile
 export const RECEIVE_CURRENT_PROFILE = 'RECEIVE_CURRENT_PROFILE'; // profile
 export const RECEIVE_PROFILES = 'RECEIVE_PROFILES'; // [profiles]
 export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS'; // [errors]
@@ -33,6 +34,10 @@ export const receiveProfileErrors = errors => ({
 export const removeProfile = profileId => ({
   type: REMOVE_PROFILE,
   profileId
+})
+
+export const requestProfiles = () => ({
+  type: REQUEST_PROFILES
 })
 
 // thunk action creators

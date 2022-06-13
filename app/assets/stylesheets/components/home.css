@@ -390,10 +390,10 @@ a.callout-sub:hover {
 }
 
 #lazy-load-box {
-  margin-top: 100px;
+  margin-top: 150px;
   height: 50px;
   width: 100%;
-  background-color: #d8d9dc;
+  /* background-color: #d8d9dc; */
 }
 
 .spacer {

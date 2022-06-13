@@ -46,7 +46,7 @@ export default class DiscoverGallery extends React.Component {
           enableImageSelection={false}
           tagStyle={customTagStyle}
           enableLightbox={false}
-          rowHeight={375}
+          rowHeight={360}
           margin={12}
         />
       </div>

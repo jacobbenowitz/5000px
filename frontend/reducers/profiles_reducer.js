@@ -2,25 +2,41 @@ import {
   RECEIVE_CURRENT_PROFILE,
   RECEIVE_PROFILE,
   RECEIVE_PROFILES,
-  REMOVE_PROFILE
+  REMOVE_PROFILE,
+  REQUEST_PROFILES
 } from '../actions/profile/profile_actions';
 
+import { merge } from 'lodash';
 
-const profilesReducer = (initialState = {}, action) => {
-  Object.freeze(initialState);
-  let nextState = Object.assign({}, initialState);
+const IDLE = 'IDLE'
+const BUSY = 'BUSY'
+const DONE = 'DONE'
+
+const initialState = {
+  all: {},
+  status: IDLE
+}
+
+const profilesReducer = (prevState = initialState, action) => {
+  Object.freeze(prevState);
+  let nextState = merge({}, prevState);
 
   switch (action.type) {
+    case REQUEST_PROFILES:
+      nextState.status = BUSY;
+      return nextState;
     case RECEIVE_PROFILE:
-      return Object.assign({}, nextState,
-        { [action.profile.id]: action.profile });
+      nextState.all[action.profile.id] = action.profile;
+      return nextState
     case RECEIVE_PROFILES:
-      return action.profiles;
+      nextState.all = action.profiles;
+      nextState.status = DONE
+      return nextState;
     case REMOVE_PROFILE:
-      delete nextState[action.profileId];
+      delete nextState.all[action.profileId];
       return nextState;
     default:
-      return initialState;
+      return prevState;
   }
 }
 
