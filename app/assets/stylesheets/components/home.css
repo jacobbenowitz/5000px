@@ -389,3 +389,22 @@ a.callout-sub:hover {
   width: 115px;
 }
 
+#lazy-load-box {
+  margin-top: 100px;
+  height: 50px;
+  width: 100%;
+  background-color: #d8d9dc;
+}
+
+.spacer {
+  width: 100%;
+  height: 700px;
+}
+
+.spacer.on {
+  display: block;
+}
+
+.spacer.off {
+  display: none;
+}

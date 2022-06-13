@@ -21,21 +21,32 @@ export default class HomeFeed extends React.Component {
     this.state = {
       status: IDLE,
       fetchedPhotos: [],
-      photoCount: 10,
       featuredPhotographers: [],
       minimalismCollection: [],
       infoCallout: true,
     }
+    this.bindHandlers()
+  }
+  
+  bindHandlers() {
+    this.lazyLoadBox = React.createRef()
     this.closeInfoCallout = this.closeInfoCallout.bind(this)
+    this.eleIsInViewport = this.eleIsInViewport.bind(this)
+    this.fetchTenMorePhotos = this.fetchTenMorePhotos.bind(this)
+    this.lazyScrollListener = this.lazyScrollListener.bind(this)
+    this.handleLazyLoad = this.handleLazyLoad.bind(this)
   }
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getLikes } = this.props;
     window.scrollTo(0, 0)
+    this.lazyScrollListener()
     this.setState({ status: BUSY }, () => {
       fetchUsers()
       fetchProfiles()
-      fetchPhotos()
+      fetchPhotos().then(() => 
+        this.fetchTenMorePhotos()
+      )
     })
   }
 
@@ -45,8 +56,7 @@ export default class HomeFeed extends React.Component {
 
   componentDidUpdate() {
     const { photoIds, allPhotos, users, profiles, fetchPhoto } = this.props;
-    const { featuredPhotographers, status,
-      fetchedPhotos, photoCount } = this.state;
+    const { featuredPhotographers, status, fetchedPhotos } = this.state;
 
     // if (status === BUSY && allPhotos && users && profiles) {
       // todo: build this in photos route
@@ -59,41 +69,73 @@ export default class HomeFeed extends React.Component {
         // minimalismCollection: minimalismCollection,
       // })
     // }
-    if (status === BUSY && photoIds.length > 0) {
-      if (photoCount > fetchedPhotos.length) {
-        let suffled = photoIds.sort(() => Math.random() - 0.5)
-        let filtered = suffled.filter(id => !fetchedPhotos.includes(id))
-        // let newPhotoCount = photoCount
-        let photos = [] 
-        for (let i = 0; i < photoCount; i++) {
-          const photoId = filtered[i];
-          fetchPhoto(photoId).then(photo => {
-            photos.push(photo.photo.photo)
-          })
-          // debugger
-          // newPhotoCount = newPhotoCount + 1
-        }
-        this.setState({
-          status: DONE,
-          // fetchedPhotos: fetchedPhotos.concat(photos), // photos is still empty
-          // photoCount: newPhotoCount // temp, need to increment elsewhere
-        })
-      }
-    }
-    if (status === DONE && fetchedPhotos.length <
-      Object.values(allPhotos).length) {
+    // delete if fetchTenMorePhotos callback in didMount works 
+    // if (status !== BUSY && photoIds.length > 0 && fetchedPhotos.length < 10) {
+    //   this.setState({ status: BUSY }, () =>
+    //     this.fetchTenMorePhotos()
+    //   )
+    // }
+    if (status === DONE && fetchedPhotos.length < Object.values(allPhotos).length) {
       this.setState({
         fetchedPhotos: Object.values(allPhotos)
       })
     }
   }
 
+  eleIsInViewport(element) {
+    const boundingRect = element.getBoundingClientRect();
+
+    return (
+      boundingRect.top >= 0 &&
+      boundingRect.left >= 0 &&
+      boundingRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      boundingRect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  lazyScrollListener() {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000)
+
+    document.addEventListener('scroll', () => this.handleLazyLoad(timeoutId))
+  }
+
+  handleLazyLoad(timeoutId) {
+    const lazyLoadEle = this.lazyLoadBox.current // use ref to get actual DOM Element
+    // do not fetch more photos if already fetching photos
+    if (this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
+      this.setState({ status: BUSY }, () =>
+        this.fetchTenMorePhotos(timeoutId)
+      )
+    }
+  }
+
+  fetchTenMorePhotos(timeoutId) {
+    const { photoIds, fetchPhoto } = this.props;
+    const { fetchedPhotos, status } = this.state;
+
+    // test removing scroll eventListener to avoid duplicate events
+    document.removeEventListener('scroll', e => this.handleLazyLoad(e))
+    debugger
+    let suffled = photoIds.sort(() => Math.random() - 0.5)
+    let filtered = suffled.filter(id => !fetchedPhotos.includes(id))
+    for (let i = 0; i < 10; i++) {
+      const photoId = filtered[i];
+      fetchPhoto(photoId)
+    }
+
+    this.setState({ status: DONE }, () => {
+      // reinstate eventListener after 3 seconds
+      clearTimeout(timeoutId)
+    })
+
+    // fetch 10 more photos (unique and shuffled)
+  }
+
   closeInfoCallout(e) {
     e.preventDefault()
     this.setState({infoCallout: false})
   }
-
-
 
   render() {
     const {allPhotos, users, profiles, currentProfile } = this.props;
@@ -174,6 +216,11 @@ export default class HomeFeed extends React.Component {
               <GridLoader />
             )
           }
+          <div id="spacer" className={'spacer' + status === BUSY ? 'on' : 'off'}></div>
+          <div id="lazy-load-box"
+            ref={this.lazyLoadBox}
+          ></div>
+
         </div>
       </div>
     )
