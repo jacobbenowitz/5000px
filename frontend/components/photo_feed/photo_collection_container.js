@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { fetchPhotos } from "../../actions/photos/photos_actions"
+import { fetchPhoto, fetchPhotos } from "../../actions/photos/photos_actions"
 import { fetchProfiles } from "../../actions/profile/profile_actions"
 import PhotoCollection from "./photo_collection"
 
@@ -12,6 +12,8 @@ const mapStateToProps = ({ entities }, { match }) => {
     animalsPhotos: entities.photos.animals,
     chocolatePhotos: entities.photos.chocolate,
     sportsPhotos: entities.photos.sports,
+    photosStatus: entities.photos.status,
+    profilesStatus: entities.profiles.status,
     allProfiles: entities.profiles,
     category: match.params.category
   }
@@ -20,6 +22,7 @@ const mapStateToProps = ({ entities }, { match }) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchPhotos: () => dispatch(fetchPhotos()),
+    fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
     fetchProfiles: () => dispatch(fetchProfiles())
   }
 }

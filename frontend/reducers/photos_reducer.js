@@ -32,7 +32,17 @@ const photosReducer = (prevState = initialState, action) => {
 
   switch (action.type) {
     case RECEIVE_PHOTOS:
-      nextState.photoIds = action.photoIds
+      nextState.photoIds = action.photos.photoIds
+      nextState.popular = action.photos.popular
+      nextState.fresh = action.photos.fresh
+      nextState.upcoming = action.photos.upcoming
+      nextState.editors = action.photos.editors
+      nextState.minimalism = action.photos.minimalism
+      nextState.music = action.photos.music
+      nextState.abstract = action.photos.abstract
+      nextState.animals = action.photos.animals
+      nextState.chocolate = action.photos.chocolate
+      nextState.sports = action.photos.sports
       nextState.status = DONE
       return nextState;
     case REQUEST_PHOTOS:

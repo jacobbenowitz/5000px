@@ -13,46 +13,55 @@ export default class PhotoCollection extends React.Component {
     super(props)
     this.state = {
       status: IDLE,
+      collectionPhotos: [],
       pageTitle: '',
       pageDescription: '',
-      page: '',
+      collection: '',
     }
+    this.randomPhoto = this.randomPhoto.bind(this)
   }
 
   componentDidMount() {
     const { fetchPhotos, category } = this.props;
-    let pageCopy = this.getTitleAndDescription(category)
     window.scrollTo(0, 0)
+    // let pageCopy = this.getTitleAndDescription(category)
 
-    this.setState({
-      status: BUSY,
-      pageTitle: pageCopy.title,
-      pageDescription: pageCopy.description,
-      category: category,
-    }, () => {
+    // this.setState({
+    //   status: BUSY,
+    //   pageTitle: pageCopy.title,
+    //   pageDescription: pageCopy.description,
+    //   category: category,
+    // }, () => {
       fetchPhotos()
-    })
+    // })
   }
 
   componentDidUpdate() {
-    const { category, allProfiles, minimalismPhotos, musicPhotos, abstractPhotos, animalsPhotos, chocolatePhotos, sportsPhotos } = this.props;
+    const { collection, status } = this.state;
+    const { category, photosStatus, profilesStatus, allProfiles, minimalismPhotos, musicPhotos, abstractPhotos, animalsPhotos, chocolatePhotos, sportsPhotos, fetchPhoto } = this.props;
 
-    if (category !== this.state.category) {
+    if (collection !== category && status !== BUSY && photosStatus === DONE) {
+      this.setState({ status: BUSY })
+      
       let pageCopy = this.getTitleAndDescription(category)
-      this.setState({
-        pageTitle: pageCopy.title,
-        pageDescription: pageCopy.description,
-        category: category,
-      })
+      let photoIds = this.getPhotoCollection(category)
+      let photos = [];
+      let fetches = [];
+
+      photoIds.forEach(photoId =>
+        fetches.push(fetchPhoto(photoId)));
+      
+      Promise.all(fetches).then(res => {
+        photos = res.map(action => action.photo.photo)
+        this.setState({
+          status: DONE,
+          photos: photos,
+          pageTitle: pageCopy.title,
+          pageDescription: pageCopy.description,
+          collection: category,
+        })
+      });
     }
-    if (this.state.status === BUSY && musicPhotos && minimalismPhotos && abstractPhotos && animalsPhotos && chocolatePhotos && sportsPhotos) {
-      let photos = this.getPhotoCollection(category)
-      this.setState({
-        status: DONE,
-        photos: photos
-      })
-    }
-    this.randomPhoto = this.randomPhoto.bind(this)
   }
 
   getPhotoCollection(category) {
@@ -111,7 +120,7 @@ export default class PhotoCollection extends React.Component {
   render() {
     const { pageTitle, pageDescription, status, photos } = this.state;
     let coverStyle, gallery;
-
+    debugger
     if (status === DONE) {
       coverStyle = (
         {
