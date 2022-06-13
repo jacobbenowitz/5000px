@@ -98,7 +98,7 @@ export default class DiscoverFeed extends React.Component {
   render() {
     const { pageTitle, pageDescription, status, pagePhotos } = this.state;
     let gallery;
-
+    // debugger
     if (status === DONE) {
       gallery = (
         <DiscoverRows photos={ pagePhotos }
