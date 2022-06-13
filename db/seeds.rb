@@ -248,7 +248,8 @@ profile_guest = {
   about: 'Minimalist. I live by the motto: less is more, and do my best to caputure that in my photography.',
   gender: 'Female',
   user_id: guest_saved.id,
-  featured: true
+  featured: true,
+  category: 'minimalism'
 }
 
 camera_3 = Faker::Camera.brand_with_model
@@ -266,7 +267,8 @@ profile_abstract = {
   about: 'The unknown is known...to me. Abstract photographer.',
   gender: 'Male',
   user_id: user_3_saved.id,
-  featured: true
+  featured: true,
+  category: 'abstract'
 }
 
 camera_4 = Faker::Camera.brand_with_model
@@ -284,7 +286,8 @@ profile_animals = {
   about: 'Vegan, animal lover. Nature photography is my life!',
   gender: 'Male',
   user_id: user_4_saved.id,
-  featured: true
+  featured: true,
+  category: 'animals'
 }
 
 camera_5 = Faker::Camera.brand_with_model
@@ -302,7 +305,8 @@ profile_chocolate = {
   about: "Who doesn't like chocolate? ME... I LOVE CHOCOLATE",
   gender: 'Male',
   user_id: user_5_saved.id,
-  featured: true
+  featured: true,
+  category: 'chocolate'
 }
 
 camera_8 = Faker::Camera.brand_with_model
@@ -320,7 +324,8 @@ profile_music = {
   about: "Professional photographer for musicians around the world",
   gender: 'Male',
   user_id: user_8_saved.id,
-  featured: true
+  featured: true,
+  category: 'music'
 }
 
 camera_9 = Faker::Camera.brand_with_model
@@ -338,7 +343,8 @@ profile_sports = {
   about: "Sports is life.",
   gender: 'Male',
   user_id: user_9_saved.id,
-  featured: true
+  featured: true,
+  category: 'sports'
 }
 
 camera_6 = Faker::Camera.brand_with_model

@@ -11,10 +11,19 @@ import CollectionGridCard from "./cards/collection_grid_card";
 import SinglePhotoLarge from "./cards/single_photo_large";
 import FeedHeader from "./headers/feed_header";
 import FeaturedCardsLoader from '../galleries/featured_cards_loader'
+import merge from 'lodash'
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
 const DONE = 'DONE'
+const COLLECTIONS = [
+  'abstract',
+  'chocolate',
+  'minimalism',
+  'music',
+  'animals',
+  'sports'
+]
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -22,10 +31,11 @@ export default class HomeFeed extends React.Component {
     this.state = {
       status: IDLE,
       featuredStatus: IDLE,
+      collectionStatus: IDLE,
       fetchedPhotos: [],
       newPhotos: [],
       featuredPhotographers: [],
-      minimalismCollection: [],
+      featuredCollections: {},
       infoCallout: true,
     }
     this.bindHandlers()
@@ -64,11 +74,31 @@ export default class HomeFeed extends React.Component {
 
   componentDidUpdate() {
     const { photoIds, allPhotos, users, profiles, fetchPhoto, photosStatus, profilesStatus } = this.props;
-    const { featuredStatus, featuredPhotographers, status, fetchedPhotos } = this.state;
+    const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
-    if (featuredStatus === IDLE && photosStatus === DONE && profilesStatus === DONE) {
+    if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE) {
       // setState to BUSY in order to prevent multiple calls while updating
-      this.setState({ featuredStatus: BUSY})
+      this.setState({
+        featuredStatus: BUSY,
+        collectionStatus: BUSY
+      })
+      // featured Collections
+      let finalCollections = {};
+      COLLECTIONS.forEach(collection => {
+        let collectionFetches = [];
+        let formattedCollection = selectCollectionPhotos(profiles, collection)
+        formattedCollection.photos.forEach(photoId =>
+          collectionFetches.push(fetchPhoto(photoId))
+        )
+        Promise.all(collectionFetches).then((res) => {
+          let collectionPhotos = res.map(action => action.photo.photo)
+          formattedCollection.photos = collectionPhotos
+        })
+        finalCollections[collection] = formattedCollection
+      })
+
+
+      // featured Photographers
       let featured = selectFeaturedPhotographers(profiles, users)
       let fetches = []
       // build array of promises (each fetching one photo)
@@ -77,29 +107,34 @@ export default class HomeFeed extends React.Component {
         this.setState({
           status: DONE,
           featuredStatus: DONE,
+          collectionStatus: DONE,
           featuredPhotographers: featured.profiles,
-          // minimalismCollection: minimalismCollection,
+          featuredCollections: finalCollections
         })
       })
     }
-    
-    // let minimalismCollection = selectCollectionPhotos(photoIds, profiles, 'minimalism')
+  }
 
-      // !! HOW TO SET STATE AFTER ALL PHOTOS FETCHED?
-      // current issue is photos have not been fetched yet, but state is still being set as DONE and rendering without photos needed
-      
-    }
-    // delete if fetchTenMorePhotos callback in didMount works 
-    // if (status !== BUSY && photoIds.length > 0 && fetchedPhotos.length < 10) {
-    //   this.setState({ status: BUSY }, () =>
-    //     this.fetchTenMorePhotos()
-    //   )
-    // }
-    // if (status === DONE && fetchedPhotos.length < Object.values(allPhotos).length) {
-    //   this.setState({
-    //     fetchedPhotos: Object.values(allPhotos)
-    //   })
-    // }
+  // fetchCollectionPhotos(collection) {
+  //   const { fetchPhoto } = this.props;
+  //   const { collections } = this.state;
+  //   let fetches = [];
+  //   let collectionsDup = merge({}, collections)
+
+  //   collection.photos.forEach(photoId =>
+  //     fetches.push(fetchPhoto(photoId)))
+    
+  //   Promise.all(fetches).then((res) => {
+  //     let fetchedPhotos = res.map(action => action.photo.photo)
+  //     collection.photos = fetchedPhotos
+    // })
+      // collectionsDup[collection.key] = collection
+      // debugger
+      // this.setState({
+      //   collectionStatus: DONE,
+      //   collections: collectionsDup
+      // })
+  // }
 
   eleIsInViewport(element) {
     const boundingRect = element.getBoundingClientRect();
@@ -142,26 +177,12 @@ export default class HomeFeed extends React.Component {
     suffledIds.forEach(id => fetches.push(fetchPhoto(id)))
     Promise.all(fetches).then((res) => {
       let newPhotos = res.map(action => action.photo.photo)
-      debugger
-      // allPhotos is not updated with latest version of store
-      // let newPhotos = selectPhotosByIds(allPhotos, suffledIds)
       let updatedFetchedPhotos = fetchedPhotos.concat([newPhotos])
       this.setState({
         status: DONE,
         fetchedPhotos: updatedFetchedPhotos
       })
     })
-
-    // for (let i = 0; i < 10; i++) {
-    //   const photoId = suffled[i];
-    //   fetchPhoto(photoId).then(res => photos.push(res.photo.photo))
-    // }
-    // setTimeout(() => {
-    // }, 0)
-
-    // setTimeout(() => {
-    //   this.setState({ status: DONE })
-    // }, 500)
   }
 
   closeInfoCallout(e) {
@@ -171,30 +192,63 @@ export default class HomeFeed extends React.Component {
 
   render() {
     const { allPhotos, users, profiles, currentProfile, photosStatus } = this.props;
-    const { featuredPhotographers, minimalismCollection, featuredStatus,
-      status, infoCallout, fetchedPhotos, newPhotos } = this.state;
+    const { featuredPhotographers, collections, featuredStatus,
+      status, collectionStatus, infoCallout, fetchedPhotos, newPhotos,
+      featuredCollections } = this.state;
 
-    let featuredCards, minimalismCard, singlePhotoCard, homeGallery, newGallery, lazyBox, loadingGrid;
+    let featuredCards, minimalismCard, singlePhotoCard, homeGallery, newGallery, lazyBox, loadingGrid, collectionComponents;
 
-    if (fetchedPhotos.length) {
+    if (fetchedPhotos.length && collectionStatus === DONE) {
+      // debugger
       homeGallery = fetchedPhotos.map((photos, i) => 
-        <DiscoverRows
-          photos={photos} 
-          key={`home-gal-${i}`}
-        />
+        <React.Fragment key={`fragment-wrapper-${i}`}>
+          {i < 7 ? i % 2 === 0 ? (
+            <div className="grid-gallery-wrapper"
+              key={`collection-wrapper-${i}`}>
+              <CollectionGridCard
+                key={`collection-card-${i}`}
+                photos={Object.values(featuredCollections)[i]['photos'].slice(0, 3)}
+                collection={Object.keys(featuredCollections)[i]}
+                history={this.props.history}
+              />
+              <SinglePhotoLarge
+                photo={Object.values(featuredCollections)[i]['photos'][3]}
+                profile={Object.values(featuredCollections)[i].profile}
+              />
+            </div>
+          ) : (
+            <div className="grid-gallery-wrapper"
+              key={`collection-wrapper-${i}`}>
+              <SinglePhotoLarge
+                photo={Object.values(featuredCollections)[i]['photos'][3]}
+                profile={Object.values(featuredCollections)[i].profile}
+              />
+              <CollectionGridCard
+                key={`collection-card-${i}`}
+                photos={Object.values(featuredCollections)[i]['photos'].slice(0, 3)}
+                collection={Object.keys(featuredCollections)[i]}
+                history={this.props.history}
+              />
+            </div>
+          ) : null}
+          <DiscoverRows
+            photos={photos}
+            key={`home-gal-${i}`}
+          />
+        </React.Fragment>
       )
     }
 
     if (featuredStatus === DONE) {
       featuredCards = featuredPhotographers.map((photographer, i) => {
         return (
-          <FeaturedPhotographerCard
-            key={`ft-card-${i}`}
-            allPhotos={allPhotos}
-            featuredPhotographer={photographer}
-          />
+            <FeaturedPhotographerCard
+              key={`ft-card-${i}`}
+              allPhotos={allPhotos}
+              featuredPhotographer={photographer}
+            />
         )
-      });
+      })
     } else {
       featuredCards = (
         <FeaturedCardsLoader />
@@ -215,21 +269,18 @@ export default class HomeFeed extends React.Component {
       // )
       
 
-      
-      // minimalismCard = (
-      //   <CollectionGridCard 
-      //     photos={minimalismCollection.photos}
-      //     collection={'minimalism'}
-      //     history={this.props.history}
-      //   />
-      // )
+    // if (collectionStatus === DONE) {
+    //   collectionComponents = Object.keys(collections).map(key => 
+    //     <CollectionGridCard 
+    //       photos={this.fetchCollectionPhotos(collections[key])}
+    //       collection={key}
+    //       history={this.props.history}
+    //     />
+    //   )
+    // }
 
       // singlePhotoCard = (
-      //   <SinglePhotoLarge
-      //     // temp testing
-      //     photo={featuredPhotographers[0].photos[0]}
-      //     profile={featuredPhotographers[0].profile}
-      //   />
+
       // )
 
     if (status === BUSY) {
@@ -270,10 +321,6 @@ export default class HomeFeed extends React.Component {
           <div className="ft-divider" />
         </div>
         <div className="home-feed-gallery">
-          <div className="grid-gallery-wrapper">
-            {minimalismCard}
-            {singlePhotoCard}
-          </div>
           {homeGallery}
           {loadingGrid}
           <div id="lazy-load-box" ref={this.lazyLoadBox}>

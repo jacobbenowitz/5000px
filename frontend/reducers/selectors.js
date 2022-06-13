@@ -155,6 +155,26 @@ export const selectThreeRandomPhotos = (photos) => {
     return randomPhotos;
   }
 }
+
+export const selectFourRandomPhotos = (photos) => {
+  let maxPhotos = photos.length;
+  let randomPhotos = [];
+  let prevInts = [];
+
+  if (maxPhotos < 4) {
+    return photos
+  } else {
+    for (let i = 0; i < 4; i++) {
+      let randomInt = getUniqueRandomInt(1, maxPhotos, prevInts)
+      prevInts.push(randomInt)
+      let photo = photos[randomInt]
+      randomPhotos.push(photo)
+    }
+    return randomPhotos;
+  }
+}
+
+
 /**
  * @param  {integer} min
  * @param  {integer} max
@@ -169,17 +189,15 @@ export const getUniqueRandomInt = (min, max, prevInts) => {
   } else return randomInt;
 }
 
-// todo: refactor with photo.featured once seeded
 // return object {photos: [], profile: {name: '', id: ''}}
-export const selectCollectionPhotos = (photos, profiles, collection) => {
-  const featured = selectFeaturedProfiles(profiles)
-  let formattedCollection = {}
+export const selectCollectionPhotos = (profiles, collection) => {
+  let featured = selectFeaturedProfiles(profiles)
 
-  const formattedProfiles = featured.forEach(profile => {
-    let profilePhotos = selectProfilePhotos(photos, profile.photoIds)
+  let formattedCollection = {};
 
-    if (profilePhotos[0].category === collection) {
-      formattedCollection.photos = selectThreeRandomPhotos(profilePhotos)
+  featured.forEach(profile => {
+    if (profile.category === collection) {
+      formattedCollection.photos = selectFourRandomPhotos(profile.photoIds)
       formattedCollection.profile = {
         name: profile.first_name + " " + profile.last_name,
         id: profile.id
@@ -198,6 +216,5 @@ export const divideArrayIntoGroups = (array, length) => {
 }
 
 export const selectPhotosByIds = (allPhotos, photoIds) => {
-  debugger
   return photoIds.map(id => allPhotos[id])
 }

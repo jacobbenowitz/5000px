@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const SinglePhotoLarge = ({ photo, profile }) => { 
   return (
     <Link
-      to={photo.showLink}
+      to={`/photos/${photo.id}`}
       className="image-wrapper"
       onMouseOver={e => {
         e.target.setAttribute('data-before', profile.name)
