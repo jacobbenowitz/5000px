@@ -13,7 +13,6 @@ const FeaturedPhotographerCard = ({ allPhotos, featuredPhotographer }) => {
   const styleBg = (src) => {
     return {backgroundImage: `url(${src})`}
   }
-  debugger
   let featuredIds = featuredPhotographer.photoIds
   return (
     <div className="featured-photo-card-wrapper">

@@ -2,7 +2,7 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
-import { buildGridGalleryProps, divideArrayIntoGroups, selectCollectionPhotos, selectFeaturedPhotographers, selectThreeRandomPhotos } from "../../reducers/selectors";
+import { buildGridGalleryProps, divideArrayIntoGroups, selectCollectionPhotos, selectFeaturedPhotographers, selectPhotosByIds, selectThreeRandomPhotos } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
 import FeaturedPhotographerCard from "./cards/featured_photographer_card";
@@ -71,10 +71,9 @@ export default class HomeFeed extends React.Component {
       this.setState({ featuredStatus: BUSY})
       let featured = selectFeaturedPhotographers(profiles, users)
       let fetches = []
+      // build array of promises (each fetching one photo)
       featured.photoIds.forEach(id => fetches.push(fetchPhoto(id)))
-      // debugger
       Promise.all(fetches).then(() => {
-        debugger
         this.setState({
           status: DONE,
           featuredStatus: DONE,
@@ -84,9 +83,8 @@ export default class HomeFeed extends React.Component {
       })
     }
     
+    // let minimalismCollection = selectCollectionPhotos(photoIds, profiles, 'minimalism')
 
-      // let minimalismCollection = selectCollectionPhotos(photoIds, profiles, 'minimalism')
-      // debugger
       // !! HOW TO SET STATE AFTER ALL PHOTOS FETCHED?
       // current issue is photos have not been fetched yet, but state is still being set as DONE and rendering without photos needed
       
@@ -98,7 +96,6 @@ export default class HomeFeed extends React.Component {
     //   )
     // }
     // if (status === DONE && fetchedPhotos.length < Object.values(allPhotos).length) {
-    //   debugger
     //   this.setState({
     //     fetchedPhotos: Object.values(allPhotos)
     //   })
@@ -135,25 +132,36 @@ export default class HomeFeed extends React.Component {
   }
 
   fetchTenMorePhotos() {
-    const { photoIds, fetchPhoto } = this.props;
+    const { allPhotos, photoIds, fetchPhoto } = this.props;
     const { fetchedPhotos, status } = this.state;
 
-    let filtered = photoIds.filter(id => !fetchedPhotos.includes(id))
-    let suffled = filtered.sort(() => Math.random() - 0.5)
-    let photos = [];
-    for (let i = 0; i < 10; i++) {
-      const photoId = suffled[i];
-      fetchPhoto(photoId).then(res => photos.push(res.photo.photo))
-    }
-    setTimeout(() => {
+    let filteredIds = photoIds.filter(id => !fetchedPhotos.includes(id))
+    let suffledIds = filteredIds.sort(() => Math.random() - 0.5).slice(0, 10)
+    // debugger
+    let fetches = [];
+    suffledIds.forEach(id => fetches.push(fetchPhoto(id)))
+    Promise.all(fetches).then((res) => {
+      let newPhotos = res.map(action => action.photo.photo)
+      debugger
+      // allPhotos is not updated with latest version of store
+      // let newPhotos = selectPhotosByIds(allPhotos, suffledIds)
+      let updatedFetchedPhotos = fetchedPhotos.concat([newPhotos])
       this.setState({
-        fetchedPhotos: fetchedPhotos.concat([photos])
+        status: DONE,
+        fetchedPhotos: updatedFetchedPhotos
       })
-    }, 0)
+    })
 
-    setTimeout(() => {
-      this.setState({ status: DONE })
-    }, 500)
+    // for (let i = 0; i < 10; i++) {
+    //   const photoId = suffled[i];
+    //   fetchPhoto(photoId).then(res => photos.push(res.photo.photo))
+    // }
+    // setTimeout(() => {
+    // }, 0)
+
+    // setTimeout(() => {
+    //   this.setState({ status: DONE })
+    // }, 500)
   }
 
   closeInfoCallout(e) {

@@ -196,3 +196,8 @@ export const divideArrayIntoGroups = (array, length) => {
   }
   return groups;
 }
+
+export const selectPhotosByIds = (allPhotos, photoIds) => {
+  debugger
+  return photoIds.map(id => allPhotos[id])
+}
