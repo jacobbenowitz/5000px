@@ -44,21 +44,22 @@ export default class DiscoverFeed extends React.Component {
       allProfiles, page, fetchPhoto } = this.props;
     const { status } = this.state;
 
-    if (page !== this.state.page) {
+    if (page !== this.state.page && status !== BUSY && photosStatus === DONE) {
+      this.setState({status: BUSY})
       let pageCopy = this.getTitleAndDescription(page)
       let photoIds = this.getPagePhotoIds(page)
       let photos = [];
       let fetches = [];
-      
+
       photoIds.forEach(photoId =>
         fetches.push(fetchPhoto(photoId)));
-      
+
       Promise.all(fetches).then(res => {
         photos = res.map(action => action.photo.photo)
         this.setState({
           status: DONE,
-          pageTitle: title,
-          pageDescription: description,
+          pageTitle: pageCopy.title,
+          pageDescription: pageCopy.description,
           page: page,
           pagePhotos: photos
         })
@@ -69,7 +70,7 @@ export default class DiscoverFeed extends React.Component {
   getPagePhotoIds(page) {
     const { popularPhotos, freshPhotos,
       upcomingPhotos, editorsPhotos } = this.props;
-    
+
     return page === 'popular' ? popularPhotos :
       page === 'editors' ? editorsPhotos :
       page === 'upcoming' ? upcomingPhotos :
