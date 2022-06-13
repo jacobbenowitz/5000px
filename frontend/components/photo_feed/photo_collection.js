@@ -24,16 +24,7 @@ export default class PhotoCollection extends React.Component {
   componentDidMount() {
     const { fetchPhotos, category } = this.props;
     window.scrollTo(0, 0)
-    // let pageCopy = this.getTitleAndDescription(category)
-
-    // this.setState({
-    //   status: BUSY,
-    //   pageTitle: pageCopy.title,
-    //   pageDescription: pageCopy.description,
-    //   category: category,
-    // }, () => {
-      fetchPhotos()
-    // })
+    fetchPhotos()
   }
 
   componentDidUpdate() {
