@@ -2,7 +2,7 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
-import { buildGridGalleryProps, selectCollectionPhotos, selectFeaturedPhotographers } from "../../reducers/selectors";
+import { buildGridGalleryProps, divideArrayIntoGroups, selectCollectionPhotos, selectFeaturedPhotographers } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
 import FeaturedPhotographerCard from "./cards/featured_photographer_card";
@@ -21,6 +21,7 @@ export default class HomeFeed extends React.Component {
     this.state = {
       status: IDLE,
       fetchedPhotos: [],
+      newPhotos: [],
       featuredPhotographers: [],
       minimalismCollection: [],
       infoCallout: true,
@@ -30,6 +31,7 @@ export default class HomeFeed extends React.Component {
   
   bindHandlers() {
     this.lazyLoadBox = React.createRef()
+    this.homeSpacer = React.createRef()
     this.closeInfoCallout = this.closeInfoCallout.bind(this)
     this.eleIsInViewport = this.eleIsInViewport.bind(this)
     this.fetchTenMorePhotos = this.fetchTenMorePhotos.bind(this)
@@ -75,11 +77,12 @@ export default class HomeFeed extends React.Component {
     //     this.fetchTenMorePhotos()
     //   )
     // }
-    if (status === DONE && fetchedPhotos.length < Object.values(allPhotos).length) {
-      this.setState({
-        fetchedPhotos: Object.values(allPhotos)
-      })
-    }
+    // if (status === DONE && fetchedPhotos.length < Object.values(allPhotos).length) {
+    //   debugger
+    //   this.setState({
+    //     fetchedPhotos: Object.values(allPhotos)
+    //   })
+    // }
   }
 
   eleIsInViewport(element) {
@@ -94,43 +97,68 @@ export default class HomeFeed extends React.Component {
   }
 
   lazyScrollListener() {
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000)
+    // const controller = new AbortController()
+    // const signal = controller.signal
+    // const timeoutId = setTimeout(() => controller.abort(), 5000)
 
-    document.addEventListener('scroll', () => this.handleLazyLoad(timeoutId))
+    // if (this.state.status === BUSY) {
+    //   document.removeEventListener('scroll', lazyLoad)
+    // } else document.addEventListener('scroll', lazyLoad)
+    window.addEventListener('scroll', (e) => this.handleLazyLoad(e))
   }
 
-  handleLazyLoad(timeoutId) {
-    const lazyLoadEle = this.lazyLoadBox.current // use ref to get actual DOM Element
+  handleLazyLoad(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    // use ref to get actual DOM Element
+    const lazyLoadEle = this.lazyLoadBox.current
+
     // do not fetch more photos if already fetching photos
     if (this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
-      this.setState({ status: BUSY }, () =>
-        this.fetchTenMorePhotos(timeoutId)
-      )
+      this.setState({ status: BUSY }, () => {
+        window.removeEventListener('scroll', (e) => this.handleLazyLoad(e))
+        this.fetchTenMorePhotos()
+      })
     }
   }
 
-  fetchTenMorePhotos(timeoutId) {
+  fetchTenMorePhotos() {
     const { photoIds, fetchPhoto } = this.props;
     const { fetchedPhotos, status } = this.state;
 
-    // test removing scroll eventListener to avoid duplicate events
-    document.removeEventListener('scroll', e => this.handleLazyLoad(e))
     debugger
-    let suffled = photoIds.sort(() => Math.random() - 0.5)
-    let filtered = suffled.filter(id => !fetchedPhotos.includes(id))
+    let filtered = photoIds.filter(id => !fetchedPhotos.includes(id))
+    let suffled = filtered.sort(() => Math.random() - 0.5)
+    let photos = [];
     for (let i = 0; i < 10; i++) {
-      const photoId = filtered[i];
-      fetchPhoto(photoId)
+      const photoId = suffled[i];
+      fetchPhoto(photoId).then(res => photos.push(res.photo.photo))
     }
+    setTimeout(() => {
+      this.setState({
+        fetchedPhotos: fetchedPhotos.concat([photos])
+      })
+    }, 0)
 
-    this.setState({ status: DONE }, () => {
-      // reinstate eventListener after 3 seconds
-      clearTimeout(timeoutId)
-    })
-
-    // fetch 10 more photos (unique and shuffled)
+    setTimeout(() => {
+      this.setState({ status: DONE })
+    }, 3000)
   }
+
+  // cannot add React components to DOM with insertBefore 
+  // addNewGallery() { 
+  //   // refactor to find last gallery on page and append after that
+  //   // let spacer = this.homeSpacer.current
+  //   let spacer = document.getElementById('home-spacer')
+  //   let parent = spacer.parentNode
+  //   let newGallery = (
+  //     <DiscoverRows
+  //       photos={this.state.newPhotos}
+  //       key={`home-gal-new`}
+  //     />
+  //   )
+  //   parent.insertBefore(newGallery, spacer)
+  // }
 
   closeInfoCallout(e) {
     e.preventDefault()
@@ -138,13 +166,35 @@ export default class HomeFeed extends React.Component {
   }
 
   render() {
-    const {allPhotos, users, profiles, currentProfile } = this.props;
+    const { allPhotos, users, profiles, currentProfile } = this.props;
     const { featuredPhotographers, minimalismCollection,
-      status, infoCallout, fetchedPhotos } = this.state;
+      status, infoCallout, fetchedPhotos, newPhotos } = this.state;
 
-    let featuredCards, minimalismCard, singlePhotoCard;
+    let featuredCards, minimalismCard, singlePhotoCard, homeGallery, newGallery, lazyBox;
+
+    if (fetchedPhotos.length) {
+      homeGallery = fetchedPhotos.map((photos, i) => 
+        <DiscoverRows
+          photos={photos} 
+          key={`home-gal-${i}`}
+        />
+      )
+    }
 
     if (status === DONE) {
+      // get groups of 10 photos using selector
+      // no good, does not keep order
+      // let photoGroups = divideArrayIntoGroups(fetchedPhotos, 10)
+      
+      // for every group of ten, add a new discoverRow
+      // homeGallery = photoGroups.map((photos, i) =>
+      // )
+      
+      // lazyBox = (
+      //   <div id="lazy-load-box"
+      //     ref={this.lazyLoadBox}
+      //   ></div>
+      // )
       // featuredCards = featuredPhotographers.map((photographer, i) => {
       //   return (
       //     <FeaturedPhotographerCard
@@ -210,17 +260,12 @@ export default class HomeFeed extends React.Component {
             {singlePhotoCard}
           </div>
 
-          {fetchedPhotos ? (
-            <DiscoverRows photos={fetchedPhotos} />
-            ) : (
-              <GridLoader />
-            )
-          }
-          <div id="spacer" className={'spacer' + status === BUSY ? 'on' : 'off'}></div>
+          {homeGallery}
+
+          {/* {lazyBox} */}
           <div id="lazy-load-box"
             ref={this.lazyLoadBox}
           ></div>
-
         </div>
       </div>
     )

@@ -29,7 +29,7 @@ export const buildDiscoverGalleryArray = ({ photos }) => {
       title: photo.showLink,
     }
   })
-  return discoverPhotos.sort(() => Math.random() - 0.5)
+  return discoverPhotos;
 };
 
 export const buildFeaturedGalleryArray = photos => {
@@ -186,3 +186,11 @@ export const selectCollectionPhotos = (photos, profiles, collection) => {
   })
   return formattedCollection;
 };
+
+export const divideArrayIntoGroups = (array, length) => {
+  let groups = [], i = 0, max = array.length
+  while (i < max) {
+    groups.push(array.slice(i, i += length))
+  }
+  return groups;
+}

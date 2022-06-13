@@ -1576,23 +1576,6 @@ animal_photo_45_saved.save!
 
 
 
-animal_photo_46 = {
-  title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
-  description: Faker::Hipster.sentences(number: 1).first,
-  location: Faker::Address.city,
-  lens: profile_animals_saved.lenses.split(',').first,
-  camera: profile_animals_saved.cameras.split(',').first,
-  taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
-  profile_id: profile_animals_saved.id,
-  category: 'animals',
-  featured: assignFeaturedPage
-}
-animal_photo_46_saved = Photo.new(animal_photo_46)
-animal_photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg'), filename: 'animals_46.jpg')
-animal_photo_46_saved.save!
-
-
-
 ## chocolate
 
 photo_40_choc = {

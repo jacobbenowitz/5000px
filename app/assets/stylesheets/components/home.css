@@ -408,3 +408,9 @@ a.callout-sub:hover {
 .spacer.off {
   display: none;
 }
+
+#home-spacer {
+  height: 50px;
+  border-bottom: 1px solid #46b0e9;
+  margin-bottom: 50px;
+}
