@@ -6,16 +6,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/configure_store';
 import { persistStore } from 'redux-persist';
-import {
-  getFollows,
-  createFollow,
-  removeFollow
-} from '../frontend/actions/follows/follows_actions';
-import {
-  fetchFollows,
-  newFollow,
-  deleteFollow
-} from '../frontend/util/follows_api_util'
+import { createComment, fetchComments, deleteComment } from './actions/comments/comment_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store, persistor;
@@ -52,12 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.persistor = persistor;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.getFollows = getFollows
-  window.createFollow = createFollow
-  window.removeFollow = removeFollow
-  window.fetchFollows = fetchFollows
-  window.newFollow = newFollow
-  window.deleteFollow = deleteFollow
+  window.fetchComments = fetchComments
+  window.createComment = createComment
+  window.deleteComment = deleteComment
   // END TESTING
 
   const root = document.getElementById("root");
