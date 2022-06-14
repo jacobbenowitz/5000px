@@ -63,6 +63,7 @@ export const uploadPhoto = formData => dispatch => {
     .then(response => {
       return dispatch(receivePhotoErrors(response.message))
     }, error => {
+      debugger
       return dispatch(receivePhotoErrors(error.responseJSON))
     })
 };

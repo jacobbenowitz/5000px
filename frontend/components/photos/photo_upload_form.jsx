@@ -14,8 +14,6 @@ export default class PhotoUploadForm extends React.Component {
       lens: "",
       photoFile: null,
       photoUrl: null,
-      width: "",
-      height: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -29,8 +27,6 @@ export default class PhotoUploadForm extends React.Component {
     const formData = new FormData();
     
     if (this.state.photoFile) {
-      formData.append('photo[width]', this.state.width);
-      formData.append('photo[height]', this.state.height);
       formData.append('photo[title]', this.state.title);
       formData.append('photo[description]', this.state.description);
       formData.append('photo[camera]', this.state.camera);
@@ -48,14 +44,13 @@ export default class PhotoUploadForm extends React.Component {
     e.preventDefault();
     const file = e.target.files[0];
     const fileReader = new FileReader();
-    const { width, height } = await getImgSize(file);
+    // not needed, using rails photo model and view to get img dimensions
+    // const { width, height } = await getImgSize(file);
     fileReader.onloadend = () => {
       this.setState({
         title: file.name,
         photoFile: file,
         photoUrl: fileReader.result,
-        width: width,
-        height: height
       }, () => {
         this.toggleDetailForm();
       })

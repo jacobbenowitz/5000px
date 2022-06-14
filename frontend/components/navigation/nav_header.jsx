@@ -31,7 +31,7 @@ export default class NavHeader extends React.Component {
   }
 
   render() {
-    const { currentUser, currentProfile } = this.props;
+    const { currentUser, currentProfile, logout } = this.props;
 
     const initials = currentUser ?
       currentUser.username.slice(0, 2).toUpperCase() : "";
@@ -41,6 +41,7 @@ export default class NavHeader extends React.Component {
         <UserNavLink
           initials={initials}
           currentProfile={currentProfile} 
+          logout={logout}
         />
 
         <Link to={'/photos/upload'} className="upload-button">

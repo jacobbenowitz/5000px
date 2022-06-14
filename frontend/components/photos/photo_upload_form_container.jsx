@@ -5,7 +5,7 @@ import PhotoUploadForm from "./photo_upload_form";
 
 const mapStateToProps = state => {
   return {
-    profileId: state.session.profile,
+    profileId: state.session.profile.id,
     errors: state.errors.photos
   }
 }

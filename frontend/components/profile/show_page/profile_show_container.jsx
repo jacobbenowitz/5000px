@@ -13,7 +13,7 @@ import ProfileShow from "./profile_show";
 const mapStateToProps = (state, { match }) => {
 
   const profile = state.entities.profiles.all[match.params.profileId];
-  const user = state.entities.users[profile.user_id];
+  const user = state.entities.users[profile?.user_id];
   return {
     profileId: match.params.profileId,
     isCurrentProfile: state.session.profile.id == match.params.profileId,
