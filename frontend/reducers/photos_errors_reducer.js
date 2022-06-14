@@ -9,7 +9,6 @@ const photosErrorsReducer = (initialState = [], action) => {
 
   switch (action.type) {
     case RECEIVE_PHOTO_ERRORS:
-      debugger
       return action.messages;
     case RECEIVE_PHOTO_UPDATE:
       return action.messages;

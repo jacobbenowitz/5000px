@@ -35,11 +35,9 @@ export default class SinglePhotoShow extends React.Component {
     const { status } = this.state;
 
     if (status === IDLE && photo) {
-      debugger
       this.setState({status: BUSY})
       fetchProfile(photo.profile_id)
     }
-    debugger
     if (photo && profile && status !== DONE) {
       this.setState({status: DONE})
     }
