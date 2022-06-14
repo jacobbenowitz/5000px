@@ -276,7 +276,8 @@ export default class PhotoProfileDetails extends React.Component {
 
               </div>
               
-            </> ) : ( <ProfileDetailsLoader /> )  }
+            </> ) : <ProfileDetailsLoader />
+            }
         </div>
       </div>
     </>

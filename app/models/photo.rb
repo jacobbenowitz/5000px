@@ -28,6 +28,10 @@ class Photo < ApplicationRecord
   has_many :likes,
     foreign_key: :photo_id,
     class_name: :Like
+  
+  has_many :comments,
+    foreign_key: :photo_id,
+    class_name: :Comment
 
   def height
     photo.metadata['height']

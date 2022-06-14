@@ -48,6 +48,10 @@ class Profile < ApplicationRecord
     foreign_key: :liker_id,
     class_name: :Like
 
+  has_many :comments,
+    foreign_key: :profile_id,
+    class_name: :Comment
+
   # through associations
   
   has_many :likes_received,
@@ -56,7 +60,6 @@ class Profile < ApplicationRecord
   has_many :liked_photos,
     through: :likes,
     source: :photo
-
   
   
 end

@@ -11,8 +11,7 @@ export default class LikeIcon extends React.Component {
   }
 
   componentDidMount() {
-    const { photo, likes, currentProfile, allLikes } = this.props;
-    debugger
+    const { likes, currentProfile } = this.props;
     let isLiked = likes.filter(like =>
       like.liker == currentProfile.id).length >= 1
     this.setState({
@@ -23,13 +22,11 @@ export default class LikeIcon extends React.Component {
   newLike(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { likeCount } = this.state;
     const { currentProfile, photo, createLike } = this.props;
-    debugger
     const like = {
       liker_id: currentProfile.id,
       photo_id: photo.id,
-    };
+    }
     createLike(like)
     this.setState({
       isLiked: true
@@ -42,7 +39,6 @@ export default class LikeIcon extends React.Component {
     const { likes, removeLike, currentProfile } = this.props;
     const likeId = likes.filter(like =>
       like.liker == currentProfile.id)[0].id
-    debugger
     removeLike(likeId)
     this.setState({
       isLiked: false
@@ -63,9 +59,8 @@ export default class LikeIcon extends React.Component {
     
     return (
       <div className="like-icon-container"
-        onClick={isLiked ? this.removeLike: this.newLike}
-      >
-        { isLiked ? isLikedIcon : notLikedicon }
+        onClick={isLiked ? this.removeLike: this.newLike}>
+      { isLiked ? isLikedIcon : notLikedicon }
       </div>
     )
   }

@@ -25,7 +25,7 @@ class Api::LikesController < ApplicationController
       render :show
       # render json: {message: ["Like removed"]}
     else
-      render json: @like.errors.full_messages
+      render json: @like.errors.full_messages, status: 422
     end
   end
 
