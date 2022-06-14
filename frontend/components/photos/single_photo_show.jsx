@@ -2,36 +2,57 @@ import React from "react";
 import ImageViewer from "./image_viewer";
 import PhotoProfileDetails from "./photo_profile_details";
 import SinglePhotoLoader from "./content-loaders/single-photo-loader";
-
+const IDLE = 'IDLE'
+const BUSY = 'BUSY'
+const DONE = 'DONE'
 export default class SinglePhotoShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      status: IDLE
+    }
   }
 
   componentDidMount() {
-    const { photoId, photo, photoProfile, likes,
-      isLiked, user, isCurrentProfile, currentProfile,
-      fetchProfile, fetchPhoto, getLikes } = this.props;
-    
+    const { photo, profile, photoId, fetchPhoto, fetchProfile } = this.props;
     window.scrollTo(0, 0)
-    
-    fetchPhoto(photoId)
-    getLikes(getLikes)
+    if (photo && profile) {
+      this.setState({status: DONE})
+    } else if (photo && !profile) {
+      this.setState({BUSY})
+      fetchProfile(photo.profile_id)
+    } else {
+      fetchPhoto(photoId)
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({status: IDLE})
   }
 
   componentDidUpdate() {
-    const { photoProfile, photo, fetchProfile } = this.props; 
-    if (photo && !photoProfile) {
-      fetchProfile(photo?.profile_id)
+    const { profile, photo, fetchProfile } = this.props; 
+    const { status } = this.state;
+
+    if (status === IDLE && photo) {
+      debugger
+      this.setState({status: BUSY})
+      fetchProfile(photo.profile_id)
+    }
+    debugger
+    if (photo && profile && status !== DONE) {
+      this.setState({status: DONE})
     }
   }
 
 
   render() {
-    const { photo, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, photoId, getLikes } = this.props;
+    const { photo, profile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, photoId, getLikes } = this.props;
+    const { status } = this.state;
+    
     return (
       <div className="photo-show-container">
-        {photo ? (
+        {status === DONE ? (
           <>
             <ImageViewer
               photo={photo}
@@ -40,7 +61,7 @@ export default class SinglePhotoShow extends React.Component {
             <PhotoProfileDetails
               photo={photo}
               photoId={photoId}
-              photoProfile={photoProfile}
+              photoProfile={profile}
               user={user}
               isCurrentProfile={isCurrentProfile}
               currentProfile={currentProfile}

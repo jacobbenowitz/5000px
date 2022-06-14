@@ -1,28 +1,24 @@
 import { connect } from "react-redux"
 import {
   fetchPhoto,
-  fetchPhotos,
-  uploadPhoto
+  fetchPhotos
 } from "../../../actions/photos/photos_actions";
-import { fetchProfile, updateProfile, updateProfilePhoto } from "../../../actions/profile/profile_actions";
-import { selectProfilePhotos, buildGalleryArray, buildGridGalleryProps } from "../../../reducers/selectors";
+import {
+  fetchProfile,
+  updateProfile,
+  updateProfilePhoto
+} from "../../../actions/profile/profile_actions";
 import ProfileShow from "./profile_show";
 
-const mapStateToProps = ({ entities, session }, { match }) => {
-  
-  const profileId = match.params.profileId;
-  const isCurrentProfile = session.profile == profileId;
-  const profile = entities.profiles[profileId];
-  const user = entities.users[profile?.user_id];
-  
-  const profilePhotos = selectProfilePhotos(entities.photos?.all, profile?.photoIds)
+const mapStateToProps = (state, { match }) => {
 
+  const profile = state.entities.profiles.all[match.params.profileId];
+  const user = state.entities.users[profile.user_id];
   return {
-    profileId: profileId,
+    profileId: match.params.profileId,
+    isCurrentProfile: state.session.profile.id == match.params.profileId,
     profile: profile,
     user: user,
-    photos: profilePhotos,
-    isCurrentProfile: isCurrentProfile
   }
 }
 

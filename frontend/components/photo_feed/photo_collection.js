@@ -21,6 +21,12 @@ export default class PhotoCollection extends React.Component {
     this.randomPhoto = this.randomPhoto.bind(this)
   }
 
+  componentWillUnmount() {
+    this.setState({
+      status: IDLE
+    })
+  }
+
   componentDidMount() {
     const { fetchPhotos, category } = this.props;
     window.scrollTo(0, 0)
@@ -98,7 +104,6 @@ export default class PhotoCollection extends React.Component {
   }
 
   randomPhoto = () => {
-    // debugger
     let { photos } = this.state
     let max, min
     max = Math.floor(Object.values(photos).length)
@@ -111,7 +116,6 @@ export default class PhotoCollection extends React.Component {
   render() {
     const { pageTitle, pageDescription, status, photos } = this.state;
     let coverStyle, gallery;
-    debugger
     if (status === DONE) {
       coverStyle = (
         {

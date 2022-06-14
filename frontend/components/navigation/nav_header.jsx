@@ -13,9 +13,9 @@ export default class NavHeader extends React.Component {
     this.toggleLogo = this.toggleLogo.bind(this)
   }
 
-  componentDidMount() {
-    this.props.fetchCurrentProfile()
-  }
+  // componentDidMount() {
+  //   this.props.fetchCurrentProfile()
+  // }
 
   toggleLogo(e) {
     e.preventDefault()
@@ -36,9 +36,12 @@ export default class NavHeader extends React.Component {
     const initials = currentUser ?
       currentUser.username.slice(0, 2).toUpperCase() : "";
     
-    const userLinks = currentUser ? (
+    let userLinks = currentProfile ? (
       <div id="user-links">
-        <UserNavLink initials={initials} currentProfile={currentProfile} />
+        <UserNavLink
+          initials={initials}
+          currentProfile={currentProfile} 
+        />
 
         <Link to={'/photos/upload'} className="upload-button">
           <div id="upload-button-content">
@@ -71,7 +74,7 @@ export default class NavHeader extends React.Component {
         </div>
         <div className="nav-links">
           <DiscoverNavLinkItem 
-            currentUserId={this.props.currentUserId}
+            currentUserId={this.props.currentUser.id}
           />
         </div>
         <div id="user-links-container">

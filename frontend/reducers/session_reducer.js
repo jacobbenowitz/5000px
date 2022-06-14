@@ -8,39 +8,35 @@ import {
   RECEIVE_CURRENT_PROFILE
 } from '../actions/profile/profile_actions';
 
+import { merge } from 'lodash'
+
 const _nullSession = {
   id: null,
   profile: null,
 }
 
-const sessionReducer = (initialState = _nullSession, action) => {
-  Object.freeze(initialState);
-  let nextState = Object.assign({}, initialState)
+const sessionReducer = (prevState = _nullSession, action) => {
+  Object.freeze(prevState);
+  let nextState = merge({}, prevState)
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       if (typeof action.currentUser.id === 'undefined') {
-        return (Object.assign({}, nextState,
-          {
-            id: action.currentUser.user.id,
-            profile: action.currentUser.user.profileId
-          }));
+        nextState.id = action.currentUser.user.id,
+        nextState.profile = action.currentUser.user.profileId
+        return nextState;
       } else {
-        return (Object.assign({}, nextState,
-          {
-            id: action.currentUser.id,
-            profile: action.currentUser.profileId
-          }));
+        nextState.id = action.currentUser.id,
+        nextState.profile = action.currentUser.profileId
+        return nextState;
       };
     case RECEIVE_CURRENT_PROFILE:
-      return (
-        Object.assign({}, initialState,
-          { profile: action.profile.id })
-      );
+      nextState.profile = action.profile.id
+      return nextState;
     case LOGOUT_CURRENT_USER:
       return _nullSession;
     default:
-      return initialState;
+      return prevState;
   }
 }
 

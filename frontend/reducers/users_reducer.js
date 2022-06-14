@@ -1,33 +1,32 @@
-import { RECEIVE_PHOTO } from '../actions/photos/photos_actions';
 import {
-  RECEIVE_CURRENT_USER, RECEIVE_USER, RECEIVE_USERS
+  RECEIVE_CURRENT_USER,
+  RECEIVE_USER,
+  RECEIVE_USERS
 } from '../actions/session/session_actions';
 
-const usersReducer = (initialState = {}, action) => {
-  Object.freeze(initialState);
-  let nextState = Object.assign({}, initialState);
+import { merge } from 'lodash'
+
+const usersReducer = (prevState = {}, action) => {
+  Object.freeze(prevState);
+  let nextState = merge({}, prevState);
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      /// REVIEW USERS VIEW FOR NESTING
+      // todo: REVIEW USERS VIEW FOR NESTING
       if (typeof action.currentUser.id === 'undefined') {
-        return Object.assign(
-          {}, nextState,
-          { [action.currentUser.user.id]: action.currentUser.user }
-        );
+        nextState[action.currentUser.user.id] = action.currentUser.user
+        return nextState;
       } else {
-        return Object.assign(
-          {}, nextState,
-          { [action.currentUser.id]: action.currentUser }
-        );
+        nextState[action.currentUser.id] = action.currentUser
+        return nextState;
       }
-    case RECEIVE_USER:
-      return Object.assign({}, nextState,
-        { [action.user.id]: action.user });
+      case RECEIVE_USER:
+      nextState[action.user.id] = action.user
+      return nextState;
     case RECEIVE_USERS:
       return action.users;
     default:
-      return initialState;
+      return prevState;
   }
 }
 

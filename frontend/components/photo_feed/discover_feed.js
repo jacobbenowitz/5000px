@@ -23,25 +23,19 @@ export default class DiscoverFeed extends React.Component {
     this.getTitleAndDescription = this.getTitleAndDescription.bind(this)
   }
 
+  componentWillUnmount() {
+    this.setState({status: IDLE})
+  }
+
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, page } = this.props;
     window.scrollTo(0, 0)
-
-    // let pageCopy = this.getTitleAndDescription(page)
-
-    // this.setState({
-    //   pageTitle: pageCopy.title,
-    //   pageDescription: pageCopy.description,
-    //   page: page,
-    // }, () => {
-      fetchProfiles()
-      fetchPhotos()
-    // })
+    fetchProfiles()
+    fetchPhotos()
   }
 
   componentDidUpdate() {
-    const { photosStatus, profilesStatus, allPhotos,
-      allProfiles, page, fetchPhoto } = this.props;
+    const { photosStatus, page, fetchPhoto } = this.props;
     const { status } = this.state;
 
     if (page !== this.state.page && status !== BUSY && photosStatus === DONE) {
@@ -98,14 +92,16 @@ export default class DiscoverFeed extends React.Component {
 
   render() {
     const { pageTitle, pageDescription, status, pagePhotos } = this.state;
-    let gallery;
-    // debugger
+    let gallery, header;
     if (status === DONE) {
       gallery = (
         <DiscoverRows photos={ pagePhotos }
         />
       )
     } else {
+      // header = (
+
+      // )
       gallery = <GridLoader />
     }
 

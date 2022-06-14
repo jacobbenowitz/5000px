@@ -115,27 +115,6 @@ export default class HomeFeed extends React.Component {
     }
   }
 
-  // fetchCollectionPhotos(collection) {
-  //   const { fetchPhoto } = this.props;
-  //   const { collections } = this.state;
-  //   let fetches = [];
-  //   let collectionsDup = merge({}, collections)
-
-  //   collection.photos.forEach(photoId =>
-  //     fetches.push(fetchPhoto(photoId)))
-    
-  //   Promise.all(fetches).then((res) => {
-  //     let fetchedPhotos = res.map(action => action.photo.photo)
-  //     collection.photos = fetchedPhotos
-    // })
-      // collectionsDup[collection.key] = collection
-      // debugger
-      // this.setState({
-      //   collectionStatus: DONE,
-      //   collections: collectionsDup
-      // })
-  // }
-
   eleIsInViewport(element) {
     const boundingRect = element.getBoundingClientRect();
 
@@ -172,9 +151,9 @@ export default class HomeFeed extends React.Component {
 
     let filteredIds = photoIds.filter(id => !fetchedPhotos.includes(id))
     let suffledIds = filteredIds.sort(() => Math.random() - 0.5).slice(0, 10)
-    // debugger
     let fetches = [];
     suffledIds.forEach(id => fetches.push(fetchPhoto(id)))
+
     Promise.all(fetches).then((res) => {
       let newPhotos = res.map(action => action.photo.photo)
       let updatedFetchedPhotos = fetchedPhotos.concat([newPhotos])
@@ -199,7 +178,6 @@ export default class HomeFeed extends React.Component {
     let featuredCards, minimalismCard, singlePhotoCard, homeGallery, newGallery, lazyBox, loadingGrid, collectionComponents;
 
     if (fetchedPhotos.length && collectionStatus === DONE) {
-      // debugger
       homeGallery = fetchedPhotos.map((photos, i) => 
         <React.Fragment key={`fragment-wrapper-${i}`}>
           {i < 7 ? i % 2 === 0 ? (

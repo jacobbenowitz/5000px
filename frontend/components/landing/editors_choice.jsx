@@ -10,40 +10,50 @@ export default class EditorsChoiceLanding extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: IDLE
+      status: IDLE,
+      photos: []
     }
   }
   componentDidMount() {
     const {fetchPhotos} = this.props;
-    this.setState({ status: BUSY }, () => 
-      fetchPhotos()
-    )
-  }
-
-
-  componentDidUpdate() {
-    const { editorsPhotos } = this.props;
-    const { status } = this.state;
-
-    if (editorsPhotos && status === BUSY) {
-      this.setState({
-        status: DONE
-      })
-    }
+    fetchPhotos()
   }
 
   componentWillUnmount() {
     this.setState({ status: IDLE })
   }
 
-  render() {
-    const { editorsPhotos } = this.props;
+  componentDidUpdate() {
+    const { editorsPhotos, photosStatus, fetchPhoto } = this.props;
     const { status } = this.state;
+
+    if (photosStatus === DONE && status === IDLE) {
+      this.setState({status: BUSY})
+      let photos = [];
+      let fetches = [];
+
+      let photoIds = editorsPhotos
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8)
+      
+      photoIds.forEach(photoId =>
+        fetches.push(fetchPhoto(photoId)));
+        
+        Promise.all(fetches).then(res => {
+          photos = res.map(action => action.photo.photo)
+          this.setState({
+            status: DONE,
+            photos: photos
+        })
+      });
+    }
+  }
+
+  render() {
+    const { status, photos } = this.state;
     let editorsGallery;
 
     if (status === DONE) {
-      let shuffled = editorsPhotos.sort(() => Math.random() - 0.5)
-      let photos = shuffled.slice(0, 8)
       editorsGallery = (
         <LandingRows
           photos={photos}

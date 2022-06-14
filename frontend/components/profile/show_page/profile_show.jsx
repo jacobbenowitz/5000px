@@ -6,6 +6,8 @@ import { ProfileDetails } from "./profile_details";
 import ProfileRows from "./profile_photo_gallery";
 import ProfileAvatarInput from "./profile_avatar_input";
 import ProfileCoverInput from "./profile_cover_input";
+import { sortPhotosByRecent } from "../../../reducers/selectors";
+import GridLoader from "../../galleries/gallery_grid_loader";
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -15,42 +17,50 @@ export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: IDLE
+      status: IDLE,
+      profilePhotos: [],
     }
+  }
+
+  componentWillUnmount() {
+    this.setState({status: IDLE})
   }
   
   componentDidMount() {
-    const { profileId,fetchPhotos, fetchProfile } = this.props;
-    
+    const { profileId, fetchProfile } = this.props;
     window.scrollTo(0, 0)
-
-    this.setState({ status: BUSY }, () => {
-      fetchProfile(profileId)
-      fetchPhotos() 
-    })
+    fetchProfile(profileId)
   }
 
   componentDidUpdate() {
     const {status} = this.state;
-    const { photos, profile, profileId } = this.props;
+    const { profile, profileId, fetchPhoto } = this.props;
     
 
-    if (status === BUSY && photos.length && Object.values(profile)) {
-      this.setState({status: DONE})
-    }
-    if ((status === DONE || status === IDLE) && !photos.length) {
-      fetchPhotos()
-      fetchProfile(profileId)
+    if (status === IDLE && Object.values(profile)) {
+      this.setState({ status: BUSY })
+      let photos = [];
+      let fetches = [];
+
+      profile.photoIds.forEach(photoId =>
+        fetches.push(fetchPhoto(photoId)));
+
+      Promise.all(fetches).then(res => {
+        photos = res.map(action => action.photo.photo)
+        this.setState({
+          status: DONE,
+          profilePhotos: sortPhotosByRecent(photos)
+        })
+      });
     }
   }
 
 
   render() {
-    const { profile, user, photos, isCurrentProfile,
-      updateProfilePhoto } = this.props;
-    const { status } = this.state;
+    const { profile, user, isCurrentProfile, updateProfilePhoto } = this.props;
+    const { status, profilePhotos } = this.state;
 
-    let avatar, cover, coverStyle;
+    let avatar, cover, coverStyle, photoGallery;
 
     if (profile?.cover) {
       coverStyle = (
@@ -103,6 +113,11 @@ export default class ProfileShow extends React.Component {
       )
     }
 
+    if (status === DONE) {
+      photoGallery = <ProfileRows photos={profilePhotos} />
+    } else {
+      photoGallery = <GridLoader />
+    }
     return ( 
       <div className="profile-show-container" >
         <div className="profile-cover-container">
@@ -123,12 +138,7 @@ export default class ProfileShow extends React.Component {
             )}
         </section>
         
-        {status === DONE  ?
-          (
-            <ProfileRows photos={photos}/>
-          ) : (
-            <span>Content loader here!</span>
-          )}
+        {photoGallery}
 
       </div>
     )

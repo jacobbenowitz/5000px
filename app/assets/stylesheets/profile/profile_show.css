@@ -149,6 +149,10 @@
   gap: 8px;
 }
 
+.collection-header {
+  margin-bottom: 2rem;
+}
+
 .profile-bio-and-stats-container {
   word-break: break-word;
   max-width: 100%;

@@ -218,3 +218,17 @@ export const divideArrayIntoGroups = (array, length) => {
 export const selectPhotosByIds = (allPhotos, photoIds) => {
   return photoIds.map(id => allPhotos[id])
 }
+
+export const sortPhotosByRecent = (photos) => {
+  return photos.sort(orderByDate)
+}
+
+function orderByDate(a, b) {
+  if (a?.created_at > b?.created_at) {
+    return -1;
+  }
+  if (a?.created_at < b?.created_at) {
+    return 1;
+  }
+  return 0;
+}

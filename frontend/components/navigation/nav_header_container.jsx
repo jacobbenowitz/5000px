@@ -3,20 +3,17 @@ import { fetchCurrentUser, logout } from "../../actions/session/session_actions"
 import { fetchCurrentProfile, fetchProfiles } from "../../actions/profile/profile_actions";
 import NavHeader from "./nav_header";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({entities, session}) => {
 
   return {
-    currentUser: state.entities.users[state.session.id],
-    currentProfile: state.entities.profiles[state.session.profile],
-    currentUserId: state.session.id,
-    currentProfileId: state.session.profile
+    currentUser: session.user,
+    currentProfile: session.profile
   }
 };
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  fetchCurrentUser: () => dispatch(fetchCurrentUser()),
-  fetchCurrentProfile: () => dispatch(fetchCurrentProfile())
+  fetchCurrentProfile: (id) => dispatch(fetchCurrentProfile(id))
   // fetchProfiles: () => dispatch(fetchProfiles())
 });
 

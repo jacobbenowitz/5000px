@@ -20,12 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
           [window.currentUser.id]: window.currentUser
         },
         profiles: {
-          [window.currentProfile.id]: window.currentProfile
+          all: {
+            [window.currentProfile.id]: window.currentProfile
+          },
+          status: 'IDLE'
         }
       },
       session: {
         id: window.currentUser.id,
-        profile: window.currentProfile.id
+        user: window.currentUser,
+        profile: window.currentProfile
       }
     };
     store = configureStore(preloadedState);
@@ -41,11 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.persistor = persistor;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchPhoto = fetchPhoto;
-  window.fetchPhotos = fetchPhotos;
-  window.logout = logout
-  window.login = login
-  window.signup = signup
   window.newLike = newLike
   window.deleteLike = deleteLike
   // END TESTING
