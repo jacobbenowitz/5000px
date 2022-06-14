@@ -46,7 +46,7 @@ class Profile < ApplicationRecord
   
   has_many :likes,
     foreign_key: :liker_id,
-    class_name: :Likes
+    class_name: :Like
 
   # through associations
   
@@ -54,7 +54,8 @@ class Profile < ApplicationRecord
     through: :photos
 
   has_many :liked_photos,
-    through: :likes
+    through: :likes,
+    source: :photo
 
   
   

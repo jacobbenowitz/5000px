@@ -4,11 +4,18 @@ require("babel-polyfill");
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
-import {fetchPhoto, fetchPhotos} from './actions/photos/photos_actions';
 import configureStore from './store/configure_store';
 import { persistStore } from 'redux-persist';
-import { login, logout, signup } from '../frontend/actions/session/session_actions'
-import { getLikes, createLike, removeLike } from './actions/likes/like_actions';
+import {
+  getFollows,
+  createFollow,
+  removeFollow
+} from '../frontend/actions/follows/follows_actions';
+import {
+  fetchFollows,
+  newFollow,
+  deleteFollow
+} from '../frontend/util/follows_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   let store, persistor;
@@ -45,9 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.persistor = persistor;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.createLike = createLike
-  window.getLikes = getLikes
-  window.removeLike = removeLike
+  window.getFollows = getFollows
+  window.createFollow = createFollow
+  window.removeFollow = removeFollow
+  window.fetchFollows = fetchFollows
+  window.newFollow = newFollow
+  window.deleteFollow = deleteFollow
   // END TESTING
   
   const root = document.getElementById("root");

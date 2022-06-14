@@ -18,8 +18,4 @@ class Like < ApplicationRecord
     foreign_key: :liker_id,
     class_name: :Profile
   
-  # belongs_to :likee,
-  #   through: :photo,
-  #   source: :profile
-
 end

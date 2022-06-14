@@ -44,7 +44,7 @@ h5 {
 
 a {
   font-size: 16px;
-  color: #316ECA;
+  /* color: #316ECA; */
 }
 
 a:hover {
@@ -66,4 +66,12 @@ strong {
   text-transform: none;
   font-weight: 400;
   color: rgb(109, 115, 120);
+}
+
+.social-icon-link {
+  color: #222222;
+}
+
+.social-icon-link:hover {
+  color: #316ECA;
 }

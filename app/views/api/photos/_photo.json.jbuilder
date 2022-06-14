@@ -13,5 +13,10 @@ json.photoUrl url_for(photo.photo)
 json.thumbnailUrl url_for(photo.photo.variant(resize: "500x500"))
 
 json.likes do
-  json.array! photo.likes
+  json.array! photo.likes do |like|
+    json.id like.id
+    json.liker like.liker.id
+    json.first_name like.liker.first_name
+    json.last_name like.liker.last_name
+  end
 end
