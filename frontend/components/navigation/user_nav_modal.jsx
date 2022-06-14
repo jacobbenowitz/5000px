@@ -6,8 +6,8 @@ import NavListItem from "./nav_list_item";
 const UserNavModal = ({ profile, klass, handleClick, logout }) => {
   const userLinks = [
     { title: 'Profile', url: `/profiles/${profile.id}` },
-    { title: 'Galleries', url: '/galleries' },
-    { title: 'Liked photos', url: '/likes' },
+    // { title: 'Galleries', url: '/galleries' },
+    // { title: 'Liked photos', url: '/likes' },
     { title: 'Settings', url: '/profiles/settings' }
   ]
 
@@ -16,7 +16,7 @@ const UserNavModal = ({ profile, klass, handleClick, logout }) => {
       className={"nav-modal-container" + klass}
       onClick={handleClick}
     >
-      <ul>
+      <ul className="modal-links">
         {userLinks.map((link, index) => {
           return (
             <NavListItem link={ link } key={index} />
