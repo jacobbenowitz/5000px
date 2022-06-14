@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :current_profile, :logged_in?
 
+  # User only used for user auth
   def current_user
     return nil unless session[:session_token]
     @current_user ||= User.find_by_session_token(session[:session_token])
+  end
+
+  # Profiles used for all associations
+  def current_profile
+    return nil unless session[:session_token]
+    @current_user ||= User.find_by_session_token(session[:session_token])
+    return @profile = @current_user.profile
   end
 
   def login!(user)
