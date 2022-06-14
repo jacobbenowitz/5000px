@@ -15,9 +15,11 @@ export default class SinglePhotoShow extends React.Component {
   }
 
   componentDidMount() {
-    const { photo, profile, photoId, fetchPhoto, fetchProfile, getLikes } = this.props;
+    const { photo, profile, photoId, fetchPhoto,
+      fetchProfile, getLikes, getFollows } = this.props;
     window.scrollTo(0, 0)
     getLikes()
+    getFollows()
     if (photo && profile) {
       this.setState({status: DONE})
     } else if (photo && !profile) {

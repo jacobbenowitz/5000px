@@ -22,16 +22,14 @@ const sessionReducer = (prevState = _nullSession, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       if (typeof action.currentUser.id === 'undefined') {
-        nextState.id = action.currentUser.user.id,
-        nextState.profile = action.currentUser.user.profileId
+        nextState.id = action.currentUser.user.id;
         return nextState;
       } else {
-        nextState.id = action.currentUser.id,
-        nextState.profile = action.currentUser.profileId
+        nextState.id = action.currentUser.id;
         return nextState;
       };
     case RECEIVE_CURRENT_PROFILE:
-      nextState.profile = action.profile.id
+      nextState.profile = action.profile
       return nextState;
     case LOGOUT_CURRENT_USER:
       return _nullSession;

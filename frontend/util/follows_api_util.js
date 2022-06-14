@@ -2,7 +2,7 @@
 export const fetchFollows = () => {
   return $.ajax({
     method: "GET",
-    URL: "api/follows"
+    url: "api/follows"
   })
 }
 

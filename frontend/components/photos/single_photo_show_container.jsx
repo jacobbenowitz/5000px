@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { fetchPhoto } from "../../actions/photos/photos_actions";
-import { selectPhoto, selectProfileById, selectUserById, selectUserFromPhoto } from "../../reducers/selectors";
 import SinglePhotoShow from "./single_photo_show";
 import { fetchUser } from "../../actions/session/session_actions";
 import { fetchProfile } from "../../actions/profile/profile_actions";
 import { getLikes, createLike, removeLike } from '../../actions/likes/like_actions';
+import { getFollows, createFollow, removeFollow } from "../../actions/follows/follows_actions";
 
 
 const mapStateToProps = ({entities, session}, { match }) => {
@@ -19,6 +19,7 @@ const mapStateToProps = ({entities, session}, { match }) => {
   return {
     photo: photo,
     profile: profile,
+    allProfiles: entities.profiles.all,
     photoId: photoId,
     likes: photo?.likes,
     allLikes: entities.likes,
@@ -35,7 +36,10 @@ const mapDispatchToProps = dispatch => {
     fetchProfile: profileId => dispatch(fetchProfile(profileId)),
     getLikes: () => dispatch(getLikes()),
     createLike: like => dispatch(createLike(like)),
-    removeLike: likeId => dispatch(removeLike(likeId)) 
+    removeLike: likeId => dispatch(removeLike(likeId)),
+    createFollow: follow => dispatch(createFollow(follow)),
+    removeFollow: follow => dispatch(removeFollow(follow)),
+    getFollows: () => dispatch(getFollows())
   }
 }
 

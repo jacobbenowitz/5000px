@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // persistor = persistStore(store);
-  
+
   // BEGIN TESTING
   // window.persistor = persistor;
   window.getState = store.getState;
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.newFollow = newFollow
   window.deleteFollow = deleteFollow
   // END TESTING
-  
+
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root)
   // ReactDOM.render(<Root store={store} persistor={persistor} />, root)

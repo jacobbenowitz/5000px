@@ -27,7 +27,10 @@ const profilesReducer = (prevState = initialState, action) => {
       return nextState;
     case RECEIVE_PROFILE:
       nextState.all[action.profile.id] = action.profile;
-      return nextState
+      return nextState;
+    case RECEIVE_CURRENT_PROFILE:
+      nextState.all[action.profile.id] = action.profile;
+      return nextState;
     case RECEIVE_PROFILES:
       nextState.all = action.profiles;
       nextState.status = DONE
