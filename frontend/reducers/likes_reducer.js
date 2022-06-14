@@ -4,9 +4,11 @@ import {
   DELETE_LIKE
 } from "../actions/likes/like_actions";
 
+import { merge } from 'lodash'
+
 const likesReducer = (initialState = {}, action) => {
   Object.freeze(initialState);
-  let nextState = Object.assign({}, initialState);
+  let nextState = merge({}, initialState);
   
   switch (action.type) {
     case RECEIVE_LIKES:

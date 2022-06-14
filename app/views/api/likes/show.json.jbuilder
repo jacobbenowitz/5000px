@@ -1,3 +1,3 @@
 json.like do
-  json.partial! "like", like: @like
+  json.partial! "api/likes/like", like: @like
 end

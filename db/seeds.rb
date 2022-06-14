@@ -156,7 +156,7 @@ end
 
 def select_cannon_lenses(num)
   options = [
-    'Canon EF 50mm f/1.8', 'Canon EF-S 24mm f/2.8', 'Canon RF 50mm f/1.8', 'Canon EF-S 55-250mm f/4-5.6 IS', 'Canon RF 16mm f/2.8', 'Canon EF-S 10-18mm f/4.5-5.6', 'Canon EF 24-70mm f/2.8L II', 'Canon EF-S 18-55mm f/3.5-5.6 IS II', 'Canon EF 50mm f/1.2L', 'Canon RF 24-70mm f/2.8L IS', 'Canon RF 70-200mm f/2.8L IS', 'Canon RF 15-35mm f/2.8L IS', 'Canon RF 28-70mm f/2L', 'Canon RF 100-500mm f/4.5-7.1L IS', 'Canon RF 50mm f/1.2L', 'Canon EF 70-200mm f/2.8L IS II'
+    "Canon EF 50mm f/1.8", "Canon EF-S 24mm f/2.8", "Canon RF 50mm f/1.8", "Canon EF-S 55-250mm f/4-5.6 IS", "Canon RF 16mm f/2.8", "Canon EF-S 10-18mm f/4.5-5.6", "Canon EF 24-70mm f/2.8L II", "Canon EF-S 18-55mm f/3.5-5.6 IS II", "Canon EF 50mm f/1.2L", "Canon RF 24-70mm f/2.8L IS", "Canon RF 70-200mm f/2.8L IS", "Canon RF 15-35mm f/2.8L IS", "Canon RF 28-70mm f/2L", "Canon RF 100-500mm f/4.5-7.1L IS", "Canon RF 50mm f/1.2L", "Canon EF 70-200mm f/2.8L IS II"
   ]
 
   lenses = []
@@ -172,7 +172,7 @@ end
 
 def select_nikon_lenses(num)
   options = [
-    'Nikon AF-S DX Nikkor 35mm f/1.8G', 'Nikon AF-S FX Nikkor 50mm f/1.8G', 'Nikon AF-S FX Nikkor 85mm f/1.8G', 'Nikon Nikkor Z 85mm f/1.8 S', 'Nikon AF-S DX Nikkor 18-140mm f/3.5-5.6G ED', 'Nikon Nikkor Z 24-200mm f/4-6.3', 'Nikon AF FX Nikkor 50mm f/1.8D', 'Nikon AF-S DX Nikkor 18-300mm f/3.5-6.3G ED', 'Nikon Nikkor Z 14-24mm f/2.8 S', 'Nikon Nikkor Z 50mm f/1.8 S', 'Nikon AF-P DX Nikkor 70-300mm f/4.5-6.3G ED VR', 'Nikon AF-S FX Nikkor 200-500mm f/5.6E ED', 'Nikon Nikkor Z 24-70mm f/2.8 S', 'Nikon Nikkor Z 70-200mm f/2.8 VR S', 'Nikon AF-S DX Micro-Nikkor 40mm f/2.8G'
+    "Nikon AF-S DX Nikkor 35mm f/1.8G", "Nikon AF-S FX Nikkor 50mm f/1.8G", "Nikon AF-S FX Nikkor 85mm f/1.8G", "Nikon Nikkor Z 85mm f/1.8 S", "Nikon AF-S DX Nikkor 18-140mm f/3.5-5.6G ED", "Nikon Nikkor Z 24-200mm f/4-6.3", "Nikon AF FX Nikkor 50mm f/1.8D", "Nikon AF-S DX Nikkor 18-300mm f/3.5-6.3G ED", "Nikon Nikkor Z 14-24mm f/2.8 S", "Nikon Nikkor Z 50mm f/1.8 S", "Nikon AF-P DX Nikkor 70-300mm f/4.5-6.3G ED VR", "Nikon AF-S FX Nikkor 200-500mm f/5.6E ED", "Nikon Nikkor Z 24-70mm f/2.8 S", "Nikon Nikkor Z 70-200mm f/2.8 VR S", "Nikon AF-S DX Micro-Nikkor 40mm f/2.8G"
   ]
 
   lenses = []
@@ -188,7 +188,7 @@ end
 
 def select_sony_lenses(num)
   options = [
-    'Sony FE 12-24mm f/2.8', 'Sony E 55-210mm f/4.5-6.3', 'Sony FE 85mm f/1.8', 'Sony FE 50mm f/1.2', 'Sony FE 35mm f/1.4', 'Sony E 16-50mm f/3.5-5.6', 'Sony FE 24mm f/1.4', 'Sony E 70-350mm f/4.5-6.3 G', 'Sony FE 70-200mm f/2.8 II', 'Sony FE 20mm f/1.8 G', 'Sony E 18-135mm f/3.5-5.6', 'Sony FE 200-600mm f/5.6-6.3 G', 'Sony FE 24-105mm f/4 G', 'Sony FE 12-24mm f/2.8'
+    "Sony FE 12-24mm f/2.8", "Sony E 55-210mm f/4.5-6.3", "Sony FE 85mm f/1.8", "Sony FE 50mm f/1.2", "Sony FE 35mm f/1.4", "Sony E 16-50mm f/3.5-5.6", "Sony FE 24mm f/1.4", "Sony E 70-350mm f/4.5-6.3 G", "Sony FE 70-200mm f/2.8 II", "Sony FE 20mm f/1.8 G", "Sony E 18-135mm f/3.5-5.6", "Sony FE 200-600mm f/5.6-6.3 G", "Sony FE 24-105mm f/4 G", "Sony FE 12-24mm f/2.8"
   ]
 
   lenses = []
@@ -204,7 +204,7 @@ end
 
 def select_other_lenses(num)
   options = [
-    'Sigma 24-70mm f/2.8', 'Tamron 28-75mm f/2.8', 'Sigma 16mm f/1.4', 'Sigma 150-600mm f/5-6.3 ', 'Sigma 18-35mm f/1.8', 'Sigma 18-50mm f/2.8', 'Tamron 70-180mm f/2.8'
+    "Sigma 24-70mm f/2.8", "Tamron 28-75mm f/2.8", "Sigma 16mm f/1.4", "Sigma 150-600mm f/5-6.3 ", "Sigma 18-35mm f/1.8", "Sigma 18-50mm f/2.8", "Tamron 70-180mm f/2.8"
   ]
 
   lenses = []
@@ -2765,3 +2765,13 @@ general_23 = {
 general_23_saved = Photo.new(general_23)
 general_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg'), filename: 'general_23.jpg')
 general_23_saved.save!
+
+############################################################################
+
+# Likes
+
+
+############################################################################
+
+# Follows
+

@@ -12,4 +12,6 @@ json.height photo.height
 json.photoUrl url_for(photo.photo)
 json.thumbnailUrl url_for(photo.photo.variant(resize: "500x500"))
 
-json.likeIds photo.likes.pluck(:id)
+json.likes do
+  json.array! photo.likes
+end

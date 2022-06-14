@@ -182,12 +182,6 @@ a {
 /* .photo-description {
 } */
 
-.spacer-test {
-  width: 250px;
-  height: 200px;
-  background-color: blue;
-}
-
 .detail-box {
   display: flex;
   flex-direction: column;
@@ -196,7 +190,7 @@ a {
   align-content: flex-start;
   justify-content: flex-start;
   gap: 8px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .photo-date {

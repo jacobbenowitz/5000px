@@ -3,7 +3,6 @@ import ReactDOM from "react-dom"
 import PhotoActions from "./photo_actions";
 import {timeSinceUplaod} from "../../util/todays_date_util"
 import ProfileDetailsLoader from "./content-loaders/profile-details-loader";
-import likeIconContainer from "../action_components/like_icon_container";
 import moment from 'moment';
 import cameraIcons from "../../util/camera_icons";
 import featuredIcons from "../../util/featured_icons";
@@ -41,18 +40,47 @@ export default class PhotoProfileDetails extends React.Component {
   } 
 
   render() {
-    const { photo, photoId, photoProfile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, getLikes } = this.props;
-
+    const { photo, photoId, photoProfile, isCurrentProfile, currentProfile, createLike, removeLike, likes, allLikes } = this.props;
+    let likesDetails, likeCopy;
+    
+    if (likes.length > 0) {
+      likeCopy = likes.length > 1 ? (
+        <span className="photo-detail-title liked">
+          {likes.length}&nbsp;people liked this photo
+        </span>
+      ) : (
+        <span className="photo-detail-title liked">
+          {likes.length}&nbsp;person liked this photo
+        </span>
+      )
+        
+      likesDetails = (
+        <div className="detail-box" >
+          <div className="flex-row">
+              {likeCopy}
+            <div className="right-arrow-wrapper">
+              <i className="fa-solid fa-angle-right" />
+            </div>
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div className="photo-detail-summary">
         <div className="inset-box">
           {photoProfile ? (
             <>
-              <PhotoActions getLikes={getLikes}
-                isCurrentProfile={isCurrentProfile} photo={photo}
-                photoId={photoId} photoProfile={photoProfile}
-                currentProfile={currentProfile} newLike={newLike} deleteLike={deleteLike} isLiked={isLiked} likes={likes}
+              <PhotoActions
+                isCurrentProfile={isCurrentProfile}
+                photo={photo}
+                photoId={photoId}
+                photoProfile={photoProfile}
+                currentProfile={currentProfile}
+                createLike={createLike}
+                removeLike={removeLike}
+                likes={likes}
+                allLikes={allLikes}
               />
               <div className="profile-info">
                 <Link to={`/profiles/${photo.profile_id}`}>
@@ -60,18 +88,23 @@ export default class PhotoProfileDetails extends React.Component {
                     <img className="user-avatar-lg" src={photoProfile.avatar}></img>
                   </div>
                 </Link>
-                <div className="user-details">
+                <div className="user-details flex-col">
                   <h5 className="photo-show-title">{photo.title}</h5>
-                  <span className="photo-user-name">
-                    by <Link to={`/profiles/${photo.profile_id}`}>{photo.profileName}</Link>
-                  </span>
-                  <span> • </span>
-                  <div className="follow-link">
-                    <span>Follow</span>
+                  <div className="flex-row">
+                    <span className="photo-user-name">
+                      by&nbsp;•&nbsp;
+                      <Link to={`/profiles/${photo.profile_id}`}>
+                        {photo.profileName}
+                      </Link>
+                    </span>
+                    <div>
+                      <span className="follow-link">
+                        {/* Follow <- blue || Following <- grey */}
+                        &nbsp;•&nbsp;Follow</span>
+                    </div>
                   </div>
                 </div>
               </div>
-
               <div className="photo-details">
                 <div className="detail-box">
                   <div className="flex-row gap-10">
@@ -79,8 +112,6 @@ export default class PhotoProfileDetails extends React.Component {
                     <span className="photo-location" >
                       {photo.location}
                     </span>
-                  </div>
-                  <div className="flex-row gap-10">
                     <span className="photo-date">
                       <strong>Taken: </strong> {moment(photo.taken).fromNow()}
                     </span>
@@ -109,7 +140,7 @@ export default class PhotoProfileDetails extends React.Component {
                     {this.getFeaturedIcon(photo.featured)}
                   </div>
                 </div>
-
+                {likesDetails}
                 <div className="detail-box">
                   <span className="photo-detail-title gear">
                     Gear

@@ -2,41 +2,38 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LikeIcon from "../action_components/like_icon";
 
-export default class PhotoActions extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, createLike, removeLike, likes, allLikes }) => {
+  return (
+    <div className="photo-action-icons">
+      <div className="icon-box like-box">
+        <LikeIcon
+          photo={photo}
+          photoId={photoId}
+          currentProfile={currentProfile}
+          isCurrentProfile={isCurrentProfile}
+          createLike={createLike}
+          removeLike={removeLike}
+          likes={likes} 
+          allLikes={allLikes}
+        />
 
-  render() {
-    const { photo, photoId, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, getLikes } = this.props;
-    return (
-      <div className="photo-action-icons">
-        {/* LIKE */}
-        <div className="icon-box like-box">
-          <LikeIcon
-            photo={photo}
-            photoId={photoId}
-            currentProfile={currentProfile}
-            isCurrentProfile={isCurrentProfile}
-            newLike={newLike} deleteLike={deleteLike} isLiked={isLiked}
-            likes={likes} getLikes={getLikes} className="icon-link like"/>
-
-        </div>
-        {/* SHARE */}
-        <div className="icon-box">
-          <a href={'#'} className="icon-link share">
-            <i className="fa-solid fa-share-nodes fa-xl"></i>
-          </a>
-        </div>
-        {/* EDIT */}
-        {currentProfile ? (
-          <div className="icon-box">
-            <Link to={`/photos/${photo.id}/edit`}
-              className="icon-link edit">
-              <i className="fa-regular fa-pen-to-square fa-xl"></i>
-            </Link>
-          </div> ) : ( null )}
       </div>
-    )
-  }
+      {/* SHARE */}
+      <div className="icon-box">
+        <a href={'#'} className="icon-link share">
+          <i className="fa-solid fa-share-nodes fa-xl"></i>
+        </a>
+      </div>
+      {/* EDIT */}
+      {currentProfile ? (
+        <div className="icon-box">
+          <Link to={`/photos/${photo.id}/edit`}
+            className="icon-link edit">
+            <i className="fa-regular fa-pen-to-square fa-xl"></i>
+          </Link>
+        </div> ) : ( null )}
+    </div>
+  )
 }
+
+export default PhotoActions;

@@ -5,71 +5,73 @@ export default class LikeIcon extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photoId: this.props.photoId,
-      likerId: this.props.currentProfile,
       isLiked: this.props.isLiked,
-      likes: this.props.likes,
       likeCount: this.props.likes.length,
-      like: {}
     }
     this.newLike = this.newLike.bind(this);
     this.removeLike = this.removeLike.bind(this);
   }
 
   componentDidMount() {
-    this.props.getLikes();
+    const { photo, likes, currentProfile, allLikes } = this.props;
+    let isLiked = likes.filter(like =>
+      like.liker_id === currentProfile.id).length > 0
+    this.setState({
+      isLiked: isLiked,
+      likeCount: likes.length
+    })
   }
 
   newLike(e) {
-    e.preventDefault();
-    const { photoId, likerId, likeCount } = this.state;
+    e.preventDefault()
+    e.stopPropagation()
+    const { likeCount } = this.state;
+    const { currentProfile, photo, createLike } = this.props;
     const like = {
-      liker_id: likerId,
-      photo_id: photoId
+      liker_id: currentProfile.id,
+      photo_id: photo.id,
     };
-    this.props.newLike({like: like}).then(like => {
-      this.setState({
-        likeCount: likeCount + 1,
-        isLiked: true,
-        like: like
-      })
+    createLike(like)
+    this.setState({
+      isLiked: true,
+      likeCount: likeCount + 1,
     })
   }
 
   removeLike(e) {
-    e.preventDefault();
-    const { photoId, likerId, likeCount, likes } = this.state;
+    e.preventDefault()
+    e.stopPropagation()
+    const { likeCount } = this.state;
+    const { likes, removeLike, currentProfile } = this.props;
     const like = likes.filter(like =>
-      like.photoId === photoId && like.likerId === likerId)
+      like.liker_id == currentProfile.id)[0]
 
-    this.props.deleteLike(like.id).then(likeId => {
-      this.setState({
-        isLiked: false,
-        likeCount: likeCount - 1,
-        like: {}
-      })
+    removeLike(like.id)
+    this.setState({
+      isLiked: false,
+      likeCount: likeCount - 1,
+      like: {}
     })
   }
 
 
   render() {
-    const { isLiked } = this.state;
+    const { isLiked, likeCount } = this.state;
 
     const isLikedIcon = (
-      <i onClick={this.removeLike}
-        className="fa-solid fa-heart fa-xl like-icon liked"></i>
+      <i className="fa-solid fa-heart fa-xl like-icon liked" />
     )
 
     const notLikedicon = (
-      <i onClick={this.newLike}
-        className="fa-regular fa-heart fa-xl like-icon default"
-      />
+      <i className="fa-regular fa-heart fa-xl like-icon default"/>
     )
     
     return (
-      <div className="like-icon-container">
-        <span> { this.state.likeCount } </span>
-        {isLiked ? ( isLikedIcon ) : ( notLikedicon )}
+      <div className="like-icon-container"
+        onClick={isLiked ? this.removeLike: this.newLike}
+      >
+        <span className="like-counter"> { likeCount } </span>
+        { isLiked ? isLikedIcon : notLikedicon }
       </div>
     )
   }

@@ -2,6 +2,7 @@ import React from "react";
 import ImageViewer from "./image_viewer";
 import PhotoProfileDetails from "./photo_profile_details";
 import SinglePhotoLoader from "./content-loaders/single-photo-loader";
+
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
 const DONE = 'DONE'
@@ -14,8 +15,9 @@ export default class SinglePhotoShow extends React.Component {
   }
 
   componentDidMount() {
-    const { photo, profile, photoId, fetchPhoto, fetchProfile } = this.props;
+    const { photo, profile, photoId, fetchPhoto, fetchProfile, getLikes } = this.props;
     window.scrollTo(0, 0)
+    getLikes()
     if (photo && profile) {
       this.setState({status: DONE})
     } else if (photo && !profile) {
@@ -45,7 +47,7 @@ export default class SinglePhotoShow extends React.Component {
 
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, newLike, deleteLike, isLiked, likes, photoId, getLikes } = this.props;
+    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes } = this.props;
     const { status } = this.state;
     
     return (
@@ -64,10 +66,10 @@ export default class SinglePhotoShow extends React.Component {
               isCurrentProfile={isCurrentProfile}
               currentProfile={currentProfile}
               getLikes={getLikes}
-              newLike={newLike}
-              deleteLike={deleteLike}
-              isLiked={isLiked}
+              createLike={createLike}
+              removeLike={removeLike}
               likes={likes}
+              allLikes={allLikes}
             />
           </>
         ) : ( <SinglePhotoLoader className="profile-loader" /> )}

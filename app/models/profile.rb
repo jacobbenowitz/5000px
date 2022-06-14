@@ -2,23 +2,23 @@
 #
 # Table name: profiles
 #
-#  id             :bigint           not null, primary key
-#  first_name     :string
-#  last_name      :string
-#  website_url    :string
-#  instagram_url  :string
-#  lenses         :string
-#  cameras        :string
-#  birthday       :date
-#  city           :string
-#  country        :string
-#  about          :text
-#  gender         :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  user_id        :integer          not null
-#  profile_avatar :string
-#  profile_banner :string
+#  id            :bigint           not null, primary key
+#  first_name    :string
+#  last_name     :string
+#  website_url   :string
+#  instagram_url :string
+#  lenses        :string
+#  cameras       :string
+#  birthday      :date
+#  city          :string
+#  country       :string
+#  about         :text
+#  gender        :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :integer          not null
+#  featured      :boolean
+#  category      :string
 #
 class Profile < ApplicationRecord
 
@@ -44,14 +44,18 @@ class Profile < ApplicationRecord
     foreign_key: :followee_id,
     class_name: :Follow
   
-  # use for users' liked photos page
-  has_many :liked_photos,
+  has_many :likes,
     foreign_key: :liker_id,
     class_name: :Likes
 
-  has_many :photo_likes,
-    through: :photos,
-    source: :likes
+  # through associations
+  
+  has_many :likes_received,
+    through: :photos
+
+  has_many :liked_photos,
+    through: :likes
+
   
   
 end

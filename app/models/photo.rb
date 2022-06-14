@@ -11,8 +11,9 @@
 #  location    :string
 #  lens        :string
 #  camera      :string
-#  width       :integer
-#  height      :integer
+#  category    :string
+#  featured    :string
+#  taken       :date
 #
 class Photo < ApplicationRecord
   validate :ensure_photo
