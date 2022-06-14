@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/configure_store';
 import { persistStore } from 'redux-persist';
-import { createComment, fetchComments, deleteComment } from './actions/comments/comment_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store, persistor;
@@ -43,9 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.persistor = persistor;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchComments = fetchComments
-  window.createComment = createComment
-  window.deleteComment = deleteComment
   // END TESTING
 
   const root = document.getElementById("root");

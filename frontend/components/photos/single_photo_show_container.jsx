@@ -5,6 +5,7 @@ import { fetchUser } from "../../actions/session/session_actions";
 import { fetchProfile } from "../../actions/profile/profile_actions";
 import { getLikes, createLike, removeLike } from '../../actions/likes/like_actions';
 import { getFollows, createFollow, removeFollow } from "../../actions/follows/follows_actions";
+import {getComments, createComment, deleteComment } from "../../actions/comments/comment_actions"
 
 
 const mapStateToProps = ({entities, session}, { match }) => {
@@ -40,7 +41,10 @@ const mapDispatchToProps = dispatch => {
     removeLike: likeId => dispatch(removeLike(likeId)),
     createFollow: follow => dispatch(createFollow(follow)),
     removeFollow: follow => dispatch(removeFollow(follow)),
-    getFollows: () => dispatch(getFollows())
+    getFollows: () => dispatch(getFollows()),
+    getComments: () => dispatch(getComments()),
+    createComment: comment => dispatch(createComment(comment)),
+    deleteComment: commentId => dispatch(deleteComment(commentId)),
   }
 }
 

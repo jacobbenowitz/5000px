@@ -2,6 +2,8 @@ import React from "react";
 import ImageViewer from "./image_viewer";
 import PhotoProfileDetails from "./photo_profile_details";
 import SinglePhotoLoader from "./content-loaders/single-photo-loader";
+import PhotoComments from "./photo_comments";
+
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -16,18 +18,19 @@ export default class SinglePhotoShow extends React.Component {
 
   componentDidMount() {
     const { photo, profile, photoId, fetchPhoto,
-      fetchProfile, getLikes, getFollows } = this.props;
+      fetchProfile, getLikes, getFollows, getComments } = this.props;
+    
     window.scrollTo(0, 0)
     getLikes()
     getFollows()
+    getComments()
+    
     if (photo && profile) {
       this.setState({status: DONE})
     } else if (photo && !profile) {
       this.setState({BUSY})
       fetchProfile(photo.profile_id)
-    } else {
-      fetchPhoto(photoId)
-    }
+    } else fetchPhoto(photoId)
   }
 
   componentWillUnmount() {
@@ -49,7 +52,7 @@ export default class SinglePhotoShow extends React.Component {
 
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows } = this.props;
+    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows, createComment, deleteComment } = this.props;
     const { status } = this.state;
     
     return (
@@ -60,22 +63,30 @@ export default class SinglePhotoShow extends React.Component {
               photo={photo}
               history={this.props.history}
             />
-            <PhotoProfileDetails
-              photo={photo}
-              photoId={photoId}
-              photoProfile={profile}
-              user={user}
-              isCurrentProfile={isCurrentProfile}
-              currentProfile={currentProfile}
-              getLikes={getLikes}
-              createLike={createLike}
-              removeLike={removeLike}
-              likes={likes}
-              allLikes={allLikes}
-              allFollows={allFollows}
-              createFollow={createFollow}
-              removeFollow={removeFollow}
-            />
+            <div className="photo-bottom-wrapper">
+              <PhotoProfileDetails
+                photo={photo}
+                photoId={photoId}
+                photoProfile={profile}
+                user={user}
+                isCurrentProfile={isCurrentProfile}
+                currentProfile={currentProfile}
+                getLikes={getLikes}
+                createLike={createLike}
+                removeLike={removeLike}
+                likes={likes}
+                allLikes={allLikes}
+                allFollows={allFollows}
+                createFollow={createFollow}
+                removeFollow={removeFollow}
+              />
+              <PhotoComments
+                currentProfile={currentProfile}
+                photo={photo}
+                createComment={createComment}
+                deleteComment={deleteComment}
+              />
+            </div>
           </>
         ) : ( <SinglePhotoLoader className="profile-loader" /> )}
       </div>

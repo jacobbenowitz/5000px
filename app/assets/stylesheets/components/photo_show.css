@@ -77,10 +77,10 @@
 
 .photo-detail-summary {
   max-width: 100%;
-  width: 100vw;
+  width: 50%;
   background-color: rgb(247, 248, 250);
   box-sizing: border-box;
-  padding: 24px 16px 16px 16px;
+  padding: 24px 8px 16px 16px;
 }
 
 .inset-box {
@@ -436,7 +436,7 @@ a {
   min-width: 48px;
 }
 
-.liker-profile-summary {
+.liker-profile-summary, .profile-summary {
   display: flex;
   flex-direction: column;
   flex: 1 1 0%;
@@ -463,6 +463,110 @@ a {
 .photo-detail-title.liked {
   cursor: pointer;
 }
+
 .photo-detail-title.liked:hover {
   color: #316ECA;
+}
+
+.photo-bottom-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comments-wrapper {
+  max-width: 100%;
+  width: 50%;
+  background-color: rgb(247, 248, 250);
+  box-sizing: border-box;
+  padding: 24px 16px 16px 8px;
+}
+
+@media only screen and (max-width: 780px) {
+  .comments-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .photo-detail-summary {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.comments-header {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-transform: none;
+  margin: 0px 0px 16px;
+  font-weight: bold;
+}
+
+.comment-index-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #FFF;
+  padding: 24px;
+}
+
+.comment-index-content {
+
+}
+
+.comment-item {
+  word-break: break-word;
+  max-width: 100%;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.comment-content {
+  word-break: break-word;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.comment-avatar {
+  margin-right: 8px;
+  box-sizing: border-box;
+}
+
+.comment-main {
+  max-width: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.comment-profile-name, .comment-body {
+  word-break: break-word;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-profile-name {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(34, 34, 34);
+  transition: color 0.1s ease 0s;
+}
+.comment-profile-name:hover {
+  color:  #316ECA;
+  transition: color 0.1s ease 0s;
+}
+
+.comment-body-content {
+  letter-spacing: 0px;
+  text-transform: none;
+  margin: 0px;
+  box-sizing: border-box;
 }

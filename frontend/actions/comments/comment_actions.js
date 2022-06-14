@@ -21,7 +21,7 @@ const removeComment = commentId => ({
 
 // thunk actions
 
-export const fetchComments = () => dispatch => {
+export const getComments = () => dispatch => {
   return commentApiUtil.getComments().then(comments => 
     dispatch(receiveComments(comments)))
 }

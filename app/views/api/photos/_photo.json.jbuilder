@@ -22,3 +22,9 @@ json.likes do
     json.followers like.liker.followers
   end
 end
+
+json.comments do 
+  json.array! photo.comments do |comment|
+    json.partial! "api/comments/comment", comment: comment
+  end
+end

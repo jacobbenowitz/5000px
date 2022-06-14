@@ -22,10 +22,12 @@ const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
             {photo.likes.map((like, i) =>
               <li key={`liker-${i}`} className='liker-modal-list-item'>
                 <div className="profile-summary-wrapper">
-                  <div className="avatar-wrapper-sm"
-                    style={{ 'backgroundImage': `url(${like.avatar})` }
-                    }
-                  />
+                  <Link to={`/profiles/${like.liker}`}>
+                    <div className="avatar-wrapper-sm"
+                      style={{ 'backgroundImage': `url(${like.avatar})` }
+                      }
+                    />
+                  </Link>
                   <div className="liker-profile-summary">
                     <Link to={`/profiles/${like.liker}`}>
                       {like.first_name}&nbsp;{like.last_name}
