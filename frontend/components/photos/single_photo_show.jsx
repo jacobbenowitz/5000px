@@ -49,7 +49,7 @@ export default class SinglePhotoShow extends React.Component {
 
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes } = this.props;
+    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows } = this.props;
     const { status } = this.state;
     
     return (
@@ -72,6 +72,9 @@ export default class SinglePhotoShow extends React.Component {
               removeLike={removeLike}
               likes={likes}
               allLikes={allLikes}
+              allFollows={allFollows}
+              createFollow={createFollow}
+              removeFollow={removeFollow}
             />
           </>
         ) : ( <SinglePhotoLoader className="profile-loader" /> )}

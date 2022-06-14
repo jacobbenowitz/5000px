@@ -7,9 +7,7 @@ json.avatar url_for(profile.avatar)
 json.cover url_for(profile.cover)
 
 #follows
-json.following do
-  profile.following.pluck(:followee_id)
-end
+json.following profile.following.pluck(:followee_id)
 
 json.followers profile.followers.pluck(:follower_id)
 

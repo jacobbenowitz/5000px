@@ -1,12 +1,10 @@
 import React from "react";
 
 export default class LikeIcon extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      isLiked: this.props.isLiked,
-      likeCount: this.props.likes.length,
+      isLiked: false
     }
     this.newLike = this.newLike.bind(this);
     this.removeLike = this.removeLike.bind(this);
@@ -14,11 +12,11 @@ export default class LikeIcon extends React.Component {
 
   componentDidMount() {
     const { photo, likes, currentProfile, allLikes } = this.props;
+    debugger
     let isLiked = likes.filter(like =>
-      like.liker_id === currentProfile.id).length > 0
+      like.liker == currentProfile.id).length >= 1
     this.setState({
-      isLiked: isLiked,
-      likeCount: likes.length
+      isLiked: isLiked
     })
   }
 
@@ -27,36 +25,33 @@ export default class LikeIcon extends React.Component {
     e.stopPropagation()
     const { likeCount } = this.state;
     const { currentProfile, photo, createLike } = this.props;
+    debugger
     const like = {
       liker_id: currentProfile.id,
       photo_id: photo.id,
     };
     createLike(like)
     this.setState({
-      isLiked: true,
-      likeCount: likeCount + 1,
+      isLiked: true
     })
   }
 
   removeLike(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { likeCount } = this.state;
     const { likes, removeLike, currentProfile } = this.props;
-    const like = likes.filter(like =>
-      like.liker_id == currentProfile.id)[0]
-
-    removeLike(like.id)
+    const likeId = likes.filter(like =>
+      like.liker == currentProfile.id)[0].id
+    debugger
+    removeLike(likeId)
     this.setState({
-      isLiked: false,
-      likeCount: likeCount - 1,
-      like: {}
+      isLiked: false
     })
   }
 
 
   render() {
-    const { isLiked, likeCount } = this.state;
+    const { isLiked } = this.state;
 
     const isLikedIcon = (
       <i className="fa-solid fa-heart fa-xl like-icon liked" />
@@ -70,7 +65,6 @@ export default class LikeIcon extends React.Component {
       <div className="like-icon-container"
         onClick={isLiked ? this.removeLike: this.newLike}
       >
-        <span className="like-counter"> { likeCount } </span>
         { isLiked ? isLikedIcon : notLikedicon }
       </div>
     )

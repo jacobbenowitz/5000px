@@ -7,16 +7,43 @@ import moment from 'moment';
 import cameraIcons from "../../util/camera_icons";
 import featuredIcons from "../../util/featured_icons";
 import { Link } from "react-router-dom";
+import LikesModal from "../modal/likes_modal";
 
 export default class PhotoProfileDetails extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      isFollowing: false,
+      openLikeModal: false
+    }
+    this.bindHandlers()
+  }
+  
+  bindHandlers() {
     this.setBeforeContent = this.setBeforeContent.bind(this)
+    this.handleFollow = this.handleFollow.bind(this)
+    this.handleUnfollow = this.handleUnfollow.bind(this)
+    this.showUnfollow = this.showUnfollow.bind(this)
+    this.toggleLikeModal = this.toggleLikeModal.bind(this)
+  }
+
+  componentDidMount() {
+    const { currentProfile, photoProfile } = this.props;
+    this.setState({
+      isFollowing: currentProfile.following.includes(photoProfile.id)
+    })
+  }
+
+  toggleLikeModal(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.setState({ openLikeModal: !this.state.openLikeModal })
   }
 
   setBeforeContent = (e) => {
     const featured = this.props.photo.featured;
     e.preventDefault()
+    e.stopPropagation()
     if (featured === 'editors') {
       e.currentTarget.setAttribute('data-before',
         "The photos featured in Editors' Choice are selected by our 5000px Editors.")
@@ -32,20 +59,62 @@ export default class PhotoProfileDetails extends React.Component {
     }
   }
 
+  showUnfollow(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    e.currentTarget.setAttribute('data-before', "Unfollow")
+  }
+
   getFeaturedIcon(type) {
     return type === 'editors' ? featuredIcons.editors :
     type === 'fresh' ? featuredIcons.fresh :
     type === 'popular' ? featuredIcons.popular :
     featuredIcons.upcoming
-  } 
+  }
+
+  handleFollow(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    const { createFollow, photoProfile, currentProfile } = this.props;
+    let follow = {
+      follower_id: currentProfile.id,
+      followee_id: photoProfile.id
+    }
+    this.setState({
+      isFollowing: true
+    }, () => createFollow(follow))
+  }
+
+  handleUnfollow(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    const { removeFollow, photoProfile,
+      currentProfile, allFollows } = this.props;
+    let followId;
+    Object.values(allFollows).forEach(follow => {
+      if (follow.followee_id === photoProfile.id &&
+        follow.follower_id === currentProfile.id) {
+        followId = follow.id
+        } 
+    })
+    this.setState({
+      isFollowing: false
+    }, () => removeFollow(followId))
+  }
 
   render() {
-    const { photo, photoId, photoProfile, isCurrentProfile, currentProfile, createLike, removeLike, likes, allLikes } = this.props;
-    let likesDetails, likeCopy;
+    const { photo, photoId, photoProfile, isCurrentProfile,
+      currentProfile, createLike, removeLike, likes, allLikes,
+      createFollow, removeFollow, allFollows } = this.props;
+    const { isFollowing, openLikeModal } = this.state;
+
+    let likesDetails, likesModal, likeCopy, followLink;
     
     if (likes.length > 0) {
       likeCopy = likes.length > 1 ? (
-        <span className="photo-detail-title liked">
+        <span className="photo-detail-title liked"
+          onClick={this.toggleLikeModal}
+        >
           {likes.length}&nbsp;people liked this photo
         </span>
       ) : (
@@ -64,9 +133,43 @@ export default class PhotoProfileDetails extends React.Component {
           </div>
         </div>
       )
+
+
+      likesModal = (
+        <LikesModal 
+          photo={photo}
+          currentProfile={currentProfile}
+          createFollow={createFollow}
+          removeFollow={removeFollow}
+          allFollows={allFollows}
+          openLikeModal={openLikeModal}
+          toggleLikeModal={this.toggleLikeModal}
+        />
+      )
+    }
+
+    if (isFollowing) {
+      followLink = (
+        <div onClick={this.handleUnfollow} onMouseOver={this.showUnfollow}
+          className='follow-link' id="following-wrapper">
+          <span 
+            className="following"
+          >Following</span>
+        </div>
+      )
+    } else {
+      followLink = (
+        <div onClick={this.handleFollow} className='follow-link'>
+          <span className="follow">
+            Follow</span>
+        </div>
+      )
     }
 
     return (
+    <>
+        
+      {likesModal}
       <div className="photo-detail-summary">
         <div className="inset-box">
           {photoProfile ? (
@@ -96,12 +199,9 @@ export default class PhotoProfileDetails extends React.Component {
                       <Link to={`/profiles/${photo.profile_id}`}>
                         {photo.profileName}
                       </Link>
+                      &nbsp;•&nbsp;
                     </span>
-                    <div>
-                      <span className="follow-link">
-                        {/* Follow <- blue || Following <- grey */}
-                        &nbsp;•&nbsp;Follow</span>
-                    </div>
+                    {followLink}
                   </div>
                 </div>
               </div>
@@ -179,6 +279,7 @@ export default class PhotoProfileDetails extends React.Component {
             </> ) : ( <ProfileDetailsLoader /> )  }
         </div>
       </div>
+    </>
     )
   }
 }

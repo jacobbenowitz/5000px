@@ -25,7 +25,7 @@ const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, create
         </a>
       </div>
       {/* EDIT */}
-      {currentProfile ? (
+      {isCurrentProfile ? (
         <div className="icon-box">
           <Link to={`/photos/${photo.id}/edit`}
             className="icon-link edit">

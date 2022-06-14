@@ -23,6 +23,7 @@ const mapStateToProps = ({entities, session}, { match }) => {
     photoId: photoId,
     likes: photo?.likes,
     allLikes: entities.likes,
+    allFollows: entities.follows,
     user: user,
     isCurrentProfile: isCurrentProfile,
     currentProfile: currentProfile,
