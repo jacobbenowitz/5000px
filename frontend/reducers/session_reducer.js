@@ -12,7 +12,9 @@ import { merge } from 'lodash'
 
 const _nullSession = {
   id: null,
+  user: null,
   profile: null,
+  profileId: null,
 }
 
 const sessionReducer = (prevState = _nullSession, action) => {
@@ -22,10 +24,14 @@ const sessionReducer = (prevState = _nullSession, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       if (typeof action.currentUser.id === 'undefined') {
-        nextState.id = action.currentUser.user.id;
+        nextState.id = action.currentUser.user.id
+        nextState.user = action.currentUser.user
+        nextState.profileId = action.currentUser.user.profileId
         return nextState;
       } else {
-        nextState.id = action.currentUser.id;
+        nextState.id = action.currentUser.id
+        nextState.user = action.currentUser
+        nextState.profileId = action.currentUser.profileId
         return nextState;
       };
     case RECEIVE_CURRENT_PROFILE:

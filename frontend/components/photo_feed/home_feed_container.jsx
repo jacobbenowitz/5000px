@@ -19,7 +19,7 @@ const mapStateToProps = ({ entities, session }) => {
     users: entities.users,
     likes: entities.likes,
     profiles: entities.profiles.all,
-    currentProfile: entities.profiles.all[session.profile.id],
+    currentProfile: entities.profiles.all[session.profile?.id],
     photosStatus: entities.photos.status,
     profilesStatus: entities.profiles.status,
     allFollows: entities.follows,

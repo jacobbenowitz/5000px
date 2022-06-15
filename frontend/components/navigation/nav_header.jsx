@@ -15,7 +15,13 @@ export default class NavHeader extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCurrentProfile()
+    this.props.fetchCurrentProfile(this.props.currentProfileId)
+  }
+
+  componentDidUpdate() {
+    if (!this.props.currentProfile) {
+      this.props.fetchCurrentProfile(this.props.currentProfileId)
+    }
   }
 
   toggleLogo(e) {

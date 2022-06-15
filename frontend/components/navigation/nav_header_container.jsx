@@ -6,9 +6,10 @@ import NavHeader from "./nav_header";
 const mapStateToProps = ({entities, session}) => {
 
   return {
-    currentUserId: session.id,
+    currentUserId: session?.id,
     currentUser: session.user,
-    currentProfile: entities.profiles.all[session.profile.id],
+    currentProfileId: session.profileId,
+    currentProfile: entities.profiles.all[session.profile?.id],
   }
 };
 
