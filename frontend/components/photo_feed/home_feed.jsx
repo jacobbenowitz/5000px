@@ -11,7 +11,6 @@ import CollectionGridCard from "./cards/collection_grid_card";
 import SinglePhotoLarge from "./cards/single_photo_large";
 import FeedHeader from "./headers/feed_header";
 import FeaturedCardsLoader from '../galleries/featured_cards_loader'
-import merge from 'lodash'
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -52,8 +51,7 @@ export default class HomeFeed extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchUsers, fetchPhotos, fetchProfiles, getLikes,
-      photoIds, allPhotos, profiles } = this.props;
+    const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
     
     this.lazyScrollListener()
     window.scrollTo(0, 0)
@@ -64,6 +62,7 @@ export default class HomeFeed extends React.Component {
       fetchUsers()
       fetchProfiles()
       fetchPhotos()
+      getFollows()
     })
   }
 
@@ -170,7 +169,8 @@ export default class HomeFeed extends React.Component {
   }
 
   render() {
-    const { allPhotos, users, profiles, currentProfile, photosStatus } = this.props;
+    const { allPhotos, currentProfile, allFollows,
+      createFollow, removeFollow } = this.props;
     const { featuredPhotographers, collections, featuredStatus,
       status, collectionStatus, infoCallout, fetchedPhotos, newPhotos,
       featuredCollections } = this.state;
@@ -220,11 +220,15 @@ export default class HomeFeed extends React.Component {
     if (featuredStatus === DONE) {
       featuredCards = featuredPhotographers.map((photographer, i) => {
         return (
-            <FeaturedPhotographerCard
-              key={`ft-card-${i}`}
-              allPhotos={allPhotos}
-              featuredPhotographer={photographer}
-            />
+          <FeaturedPhotographerCard
+            key={`ft-card-${i}`}
+            allPhotos={allPhotos}
+            featuredPhotographer={photographer}
+            currentProfile={currentProfile}
+            allFollows={allFollows}
+            createFollow={createFollow}
+            removeFollow={removeFollow}
+          />
         )
       })
     } else {

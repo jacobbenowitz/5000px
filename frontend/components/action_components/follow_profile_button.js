@@ -21,7 +21,6 @@ export default class FollowProfileButton extends React.Component {
   componentDidMount() {
     const { followee, currentProfile, allFollows } = this.props;
     const followers = selectFollowsById(followee.followers, allFollows)
-    debugger
     this.setState({
       isFollowing: followers.filter(follow =>
         follow.follower_id === currentProfile.id).length === 1,
@@ -37,7 +36,6 @@ export default class FollowProfileButton extends React.Component {
       follower_id: currentProfile.id,
       followee_id: followee.id
     }
-    debugger
     this.setState({
       isFollowing: true
     }, () => createFollow(follow))
@@ -48,7 +46,6 @@ export default class FollowProfileButton extends React.Component {
     e.stopPropagation()
     const { allFollows, followee, removeFollow, currentProfile } = this.props;
     let followId;
-    debugger
     Object.values(allFollows).forEach(follow => {
       if (follow.followee_id === followee.id &&
         follow.follower_id === currentProfile.id) {

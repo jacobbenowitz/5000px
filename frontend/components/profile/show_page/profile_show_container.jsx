@@ -1,5 +1,9 @@
 import { connect } from "react-redux"
-import { getFollows, createFollow, removeFollow } from "../../../actions/follows/follows_actions";
+import {
+  getFollows,
+  createFollow,
+  removeFollow
+} from "../../../actions/follows/follows_actions";
 import {
   fetchPhoto,
   fetchPhotos

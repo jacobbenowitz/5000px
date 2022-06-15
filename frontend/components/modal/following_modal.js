@@ -6,7 +6,7 @@ import FollowFollowingModalButton from '../action_components/follow_following_mo
 const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, currentProfile, createFollow, removeFollow, allFollows }) => {
   let following = selectFollowsById(followee.following, allFollows)
   let followingModal;
-  debugger
+  
   if (showFollowingModal) {
     followingModal = (
       <div className="modal-wrapper">

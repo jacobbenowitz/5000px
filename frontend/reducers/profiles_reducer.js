@@ -57,7 +57,6 @@ const profilesReducer = (prevState = initialState, action) => {
       nextState.all[action.follow.follower_id].following = nextFollows;
       // for the receipent of the follow
       let nextFollowing = nextState.all[action.follow.followee_id].followers.filter(follow => follow.follower_id !== action.follow.follower_id);
-      debugger
       nextState.all[action.follow.followee_id].followers = nextFollowing;
       return nextState;
     default:

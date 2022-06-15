@@ -121,6 +121,9 @@ export const selectFeaturedPhotographers = (profiles, users) => {
         id: profile.id,
         name: name,
         location: profile.city,
+        followers: profile.followers,
+        following: profile.following,
+        avatar: profile.avatar
       }
     }
   })
