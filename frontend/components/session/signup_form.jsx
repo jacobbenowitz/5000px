@@ -39,6 +39,7 @@ export default class SignupForm extends React.Component {
     } else {
       processForm(user).then(user => {
         this.props.history.push('/profile/new')
+        this.props.sessionMessage(['Account created successfully'])
         this.props.openModal("success");
       })
     }

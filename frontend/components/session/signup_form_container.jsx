@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   processForm: user => dispatch(signup(user)),
   loginGuest: user => dispatch(login(user)),
-  receiveErrors: errors => dispatch(receiveSessionErrors(errors)),
+  sessionMessage: errors => dispatch(receiveSessionErrors(errors)),
   openModal: modal => dispatch(openModal(modal))
 });
 

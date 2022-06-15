@@ -57,14 +57,14 @@
   }
 
   100% {
-    top: 145px;
+    top: 100px;
     opacity: 100%;
   }
 }
 
 @keyframes modal-out {
   0% {
-    top: 145px;
+    top: 100px;
     opacity: 100%;
   }
   

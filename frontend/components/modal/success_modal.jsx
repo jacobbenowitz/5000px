@@ -9,7 +9,7 @@ export default class SuccessModal extends React.Component {
   render() {
     
     const { photos, profiles, session } = this.props.errors;
-
+    let messages = photos.concat(profiles, session)
     if (photos || profiles || session) {
       return (
         <div className="modal success" key={'successModal'}>
@@ -17,7 +17,7 @@ export default class SuccessModal extends React.Component {
             <i className="fa-solid fa-circle-check"></i>
           </div>
           <div>
-            {photos.map(error => {
+            {messages.map(error => {
               return (
                 <span>{error}</span>
               )})
