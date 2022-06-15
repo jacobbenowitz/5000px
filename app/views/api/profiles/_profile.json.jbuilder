@@ -6,8 +6,8 @@ json.avatar url_for(profile.avatar)
 # json.avatar url_for(profile.avatar.variant(resize: "200x200")) // error?
 json.cover url_for(profile.cover)
 
-#follows
 
+#follows
 json.following profile.following.pluck(:id)
 json.followers profile.followers.pluck(:id)
 

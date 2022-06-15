@@ -52,6 +52,7 @@ class Profile < ApplicationRecord
     foreign_key: :profile_id,
     class_name: :Comment
 
+
   # through associations
   
   has_many :likes_received,

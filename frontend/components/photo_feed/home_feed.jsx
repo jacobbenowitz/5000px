@@ -2,7 +2,7 @@ import React from "react";
 import PhotosIndexContainer from "../photos/photos_index_container";
 import PhotosIndex from "../photos/photos_index";
 import DiscoverGallery from "../galleries/discover_gallery";
-import { buildGridGalleryProps, divideArrayIntoGroups, selectCollectionPhotos, selectFeaturedPhotographers, selectPhotosByIds, selectThreeRandomPhotos } from "../../reducers/selectors";
+import { buildGridGalleryProps, divideArrayIntoGroups, selectCollectionPhotos, selectFeaturedPhotographers, selectFollowersPhotoIds, selectPhotosByIds, selectThreeRandomPhotos } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
 import FeaturedPhotographerCard from "./cards/featured_photographer_card";
@@ -72,7 +72,7 @@ export default class HomeFeed extends React.Component {
   }
 
   componentDidUpdate() {
-    const { photoIds, allPhotos, users, profiles, fetchPhoto, photosStatus, profilesStatus } = this.props;
+    const { photoIds, allFollows, allPhotos, allProfiles, users, profiles, fetchPhoto, photosStatus, profilesStatus, currentProfile } = this.props;
     const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
     if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE) {
@@ -81,6 +81,10 @@ export default class HomeFeed extends React.Component {
         featuredStatus: BUSY,
         collectionStatus: BUSY
       })
+
+      // current user's following photo ids
+      let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allPhotos, allProfiles)
+      
       // featured Collections
       let finalCollections = {};
       COLLECTIONS.forEach(collection => {
@@ -96,7 +100,6 @@ export default class HomeFeed extends React.Component {
         finalCollections[collection] = formattedCollection
       })
 
-
       // featured Photographers
       let featured = selectFeaturedPhotographers(profiles, users)
       let fetches = []
@@ -108,7 +111,8 @@ export default class HomeFeed extends React.Component {
           featuredStatus: DONE,
           collectionStatus: DONE,
           featuredPhotographers: featured.profiles,
-          featuredCollections: finalCollections
+          featuredCollections: finalCollections,
+          followingPhotoIds: followingPhotoIds
         })
       })
     }
@@ -146,12 +150,19 @@ export default class HomeFeed extends React.Component {
 
   fetchTenMorePhotos() {
     const { allPhotos, photoIds, fetchPhoto } = this.props;
-    const { fetchedPhotos, status } = this.state;
-
-    let filteredIds = photoIds.filter(id => !fetchedPhotos.includes(id))
-    let suffledIds = filteredIds.sort(() => Math.random() - 0.5).slice(0, 10)
+    const { fetchedPhotos, status, followingPhotoIds } = this.state;
+    let shuffledIds;
+    let unfetchedPhotos = photoIds.filter(id => !fetchedPhotos.includes(id))
+    // !! if we have followingPhotoIds, fetch those photos first
+    if (!!followingPhotoIds.length) {
+      shuffledIds = followingPhotoIds.sort(() => Math.random() - 0.5).slice(0, 10)
+    } else {
+      // !! else, fetch shuffled photos from all photos [photoIds]
+      shuffledIds = photoIds.sort(() => Math.random() - 0.5).slice(0, 10)
+    }
+    
     let fetches = [];
-    suffledIds.forEach(id => fetches.push(fetchPhoto(id)))
+    shuffledIds.forEach(id => fetches.push(fetchPhoto(id)))
 
     Promise.all(fetches).then((res) => {
       let newPhotos = res.map(action => action.photo.photo)
@@ -175,7 +186,7 @@ export default class HomeFeed extends React.Component {
       status, collectionStatus, infoCallout, fetchedPhotos, newPhotos,
       featuredCollections } = this.state;
 
-    let featuredCards, minimalismCard, singlePhotoCard, homeGallery, newGallery, lazyBox, loadingGrid, collectionComponents;
+    let featuredCards, homeGallery, loadingGrid, followedGallery;
 
     if (fetchedPhotos.length && collectionStatus === DONE) {
       homeGallery = fetchedPhotos.map((photos, i) => 
@@ -236,34 +247,6 @@ export default class HomeFeed extends React.Component {
         <FeaturedCardsLoader />
       )
     }
-      // get groups of 10 photos using selector
-      // no good, does not keep order
-      // let photoGroups = divideArrayIntoGroups(fetchedPhotos, 10)
-      
-      // for every group of ten, add a new discoverRow
-      // homeGallery = photoGroups.map((photos, i) =>
-      // )
-
-      // lazyBox = (
-      //   <div id="lazy-load-box"
-      //     ref={this.lazyLoadBox}
-      //   ></div>
-      // )
-      
-
-    // if (collectionStatus === DONE) {
-    //   collectionComponents = Object.keys(collections).map(key => 
-    //     <CollectionGridCard 
-    //       photos={this.fetchCollectionPhotos(collections[key])}
-    //       collection={key}
-    //       history={this.props.history}
-    //     />
-    //   )
-    // }
-
-      // singlePhotoCard = (
-
-      // )
 
     if (status === BUSY) {
       loadingGrid = (
