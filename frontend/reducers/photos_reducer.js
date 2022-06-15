@@ -4,6 +4,11 @@ import {
   REMOVE_PHOTO,
   REQUEST_PHOTOS,
 } from '../actions/photos/photos_actions';
+import {
+  RECEIVE_COMMENT,
+  REMOVE_COMMENT
+} from '../actions/comments/comment_actions';
+
 import { merge } from 'lodash';
 
 const IDLE = 'IDLE'
@@ -53,6 +58,15 @@ const photosReducer = (prevState = initialState, action) => {
       return nextState;
     case REMOVE_PHOTO:
       delete nextState[action.photoId]
+      return nextState;
+    case RECEIVE_COMMENT:
+      let comments = nextState.all[action.comment.photo_id].comments
+      nextState.all[action.comment.photo_id].comments =
+        comments.concat(action.comment)
+      return nextState;
+    case REMOVE_COMMENT:
+      let nextComments = nextState.all[action.comment.photo_id].comments.filter(comment => comment.id !== action.comment.id);
+      nextState.all[action.comment.photo_id].comments = nextComments;
       return nextState;
     default:
       return prevState;

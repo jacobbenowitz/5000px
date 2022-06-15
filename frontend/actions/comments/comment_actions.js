@@ -14,9 +14,9 @@ const receiveComments = comments => ({
   comments
 })
 
-const removeComment = commentId => ({
+const removeComment = comment => ({
   type: REMOVE_COMMENT,
-  commentId
+  comment
 })
 
 // thunk actions
@@ -33,5 +33,5 @@ export const createComment = comment => dispatch => {
 
 export const deleteComment = commentId => dispatch => {
   return commentApiUtil.deleteComment(commentId).then(comment =>
-    dispatch(removeComment(comment.id)))
+    dispatch(removeComment(comment)))
 }

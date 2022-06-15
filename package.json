@@ -19,6 +19,7 @@
     "react-photo-album": "^1.13.2",
     "react-redux": "^8.0.1",
     "react-router-dom": "^5.3.1",
+    "react-textarea-autosize": "^8.3.4",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",

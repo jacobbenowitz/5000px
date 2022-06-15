@@ -19,6 +19,17 @@
   box-sizing: border-box;
 }
 
+.nav-modal-container::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(255, 255, 255);
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px -2px 1px);
+}
+
 .modal-links {
   width: 100%;
 }
@@ -35,17 +46,6 @@
 }
 .modal-list-item:hover a {
   color: white;
-}
-
-.nav-modal-container::after {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: 12px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid rgb(255, 255, 255);
-  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px -2px 1px);
 }
 
 #discover-modal {
