@@ -8,7 +8,7 @@ export const ProfileDetails = ({ profile, user, currentProfile,
   isCurrentProfile, allFollows, createFollow, removeFollow,
   toggleFollowsModal, showFollowsModal, showFollowingModal, toggleFollowingModal }) => {
   
-  let location, name, profileStats, profileLinks, websiteLink, instagramLink;
+  let location, name, profileStats, profileLinks, websiteLink, instagramLink, followProfileButton;
 
   profileStats = (
     <div className="profile-stats-wrapper flex-row">
@@ -86,6 +86,18 @@ export const ProfileDetails = ({ profile, user, currentProfile,
       </h3>
     )
   }
+
+  if (!!Object.values(allFollows).length) {
+    followProfileButton = (
+      <FollowProfileButton
+        followee={profile}
+        allFollows={allFollows}
+        createFollow={createFollow}
+        removeFollow={removeFollow}
+        currentProfile={currentProfile}
+      />
+    )
+  }
   
   return (
     <>
@@ -126,13 +138,7 @@ export const ProfileDetails = ({ profile, user, currentProfile,
         <div className="profile-header-container">
           {name}
           {location}
-          <FollowProfileButton 
-            followee={profile}
-            allFollows={allFollows}
-            createFollow={createFollow}
-            removeFollow={removeFollow}
-            currentProfile={currentProfile}
-          />
+          {followProfileButton}
         <div className="profile-bio-and-stats-container">
           <p className="profile-about">
             {profile.about}

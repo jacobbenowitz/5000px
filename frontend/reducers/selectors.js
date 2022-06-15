@@ -245,3 +245,9 @@ export const selectFollowsById = (ids, allFollows) => {
   let follows = ids.map(id => allFollows[id])
   return sortByRecent(follows)
 }
+
+export const selectFollowersById = (ids, allFollows) => {
+  let followers = Object.values(allFollows).map(follow => 
+    ids.includes(follow.followee_id))
+  return sortByRecent(followers)
+}

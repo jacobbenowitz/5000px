@@ -1,4 +1,5 @@
 import React from 'react'
+import { selectFollowsById } from '../../reducers/selectors'
 
 // Props needed //
 // followee {} @profile obj
@@ -12,20 +13,18 @@ export default class FollowFollowersModalButton extends React.Component {
     super(props)
     this.state = {
       isFollowing: false,
-      isCurrentProfile: false,
+      isCurrentProfile: false
     }
     this.handleFollow = this.handleFollow.bind(this)
     this.handleUnfollow = this.handleUnfollow.bind(this)
   }
 
   componentDidMount() {
-    const { followee, currentProfile } = this.props;
+    const { followee, currentProfile, allFollows } = this.props;
+    const followers = selectFollowsById(followee.followers, allFollows)
     this.setState({
-      // isFollowing: followee.followers.map(follow => follow.followers.map(follow => follow.followee_id)).flat().includes(currentProfile.id),
-      isFollowing: followee.followers.filter(follow =>
-        follow.follower_id == currentProfile.id).length === 1,
-      // isFollowing: Object.values(followee.followers).filter(follower =>
-      //   follower.id !== currentProfile.id).length === 1,
+      isFollowing: followers.filter(follow =>
+        follow.follower_id === currentProfile.id).length === 1,
       isCurrentProfile: currentProfile.id === followee.followerId
     })
   }
@@ -48,6 +47,7 @@ export default class FollowFollowersModalButton extends React.Component {
     e.stopPropagation()
     const { allFollows, followee, removeFollow, currentProfile } = this.props;
     let followId;
+
     Object.values(allFollows).forEach(follow => {
       if (follow.followee_id === followee.followerId &&
         follow.follower_id === currentProfile.id) {
@@ -61,7 +61,6 @@ export default class FollowFollowersModalButton extends React.Component {
 
   render() {
     const { isFollowing, isCurrentProfile } = this.state;
-
     let followButton;
 
     if (isCurrentProfile) {

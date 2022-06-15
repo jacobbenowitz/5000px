@@ -5,7 +5,9 @@ import FollowFollowersModalButton from '../action_components/follow_followers_mo
 
 const FollowersModal = ({ showFollowsModal, toggleFollowsModal, followee, currentProfile, createFollow, removeFollow, allFollows }) => {
 
+  let followers = selectFollowsById(followee.followers, allFollows) 
   let followersModal;
+  
   if (showFollowsModal) {
     followersModal = (
       <div className="modal-wrapper">
@@ -20,26 +22,26 @@ const FollowersModal = ({ showFollowsModal, toggleFollowsModal, followee, curren
             </span>
           </div>
           <ul className="likers-list">
-            {followee.followers.map((follow, i) =>
+            {followers.map((follow, i) =>
               <li key={`liker-${i}`} className='liker-modal-list-item'>
                 <div className="profile-summary-wrapper">
-                  <Link to={`/profiles/${follow.followerId}`}>
+                  <Link to={`/profiles/${follow.follower_id}`}>
                     <div className="avatar-wrapper-sm"
-                      style={{ 'backgroundImage': `url(${follow.avatar})` }
+                      style={{ 'backgroundImage': `url(${follow.follower.avatar})` }
                       }
                     />
                   </Link>
                   <div className="liker-profile-summary">
-                    <Link to={`/profiles/${follow.followerId}`}>
-                      {follow.first_name}&nbsp;{follow.last_name}
+                    <Link to={`/profiles/${follow.follower_id}`}>
+                      {follow.follower.first_name}&nbsp;{follow.follower.last_name}
                     </Link>
                     <span className="liker-followers-count">
-                      {follow.followers.length}&nbsp;Followers
+                      {follow.follower.followers.length}&nbsp;Followers
                     </span>
                   </div>
                 </div>
                 <FollowFollowersModalButton
-                  followee={follow}
+                  followee={follow.follower}
                   allFollows={allFollows}
                   createFollow={createFollow}
                   removeFollow={removeFollow}
