@@ -13,9 +13,9 @@ export default class NavHeader extends React.Component {
     this.toggleLogo = this.toggleLogo.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.props.fetchCurrentProfile()
-  // }
+  componentDidMount() {
+    this.props.fetchCurrentProfile()
+  }
 
   toggleLogo(e) {
     e.preventDefault()

@@ -1,5 +1,5 @@
 
-export const fetchFollows = () => {
+export const getFollows = () => {
   return $.ajax({
     method: "GET",
     url: "api/follows"

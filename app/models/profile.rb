@@ -55,7 +55,8 @@ class Profile < ApplicationRecord
   # through associations
   
   has_many :likes_received,
-    through: :photos
+    through: :photos,
+    source: :likes
 
   has_many :liked_photos,
     through: :likes,

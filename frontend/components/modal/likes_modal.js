@@ -15,7 +15,8 @@ const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
               <i className="fa-solid fa-xmark fa-xl modal-close" />
             </div>
             <span className="modal-header-copy">
-              Likes&nbsp;{photo.likes.length}
+              {photo.likes.length}&nbsp;
+              {photo.likes.length > 1 ? 'Likes' : 'Like'}
             </span>
           </div>
           <ul className="likers-list">

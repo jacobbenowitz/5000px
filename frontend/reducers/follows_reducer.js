@@ -17,7 +17,7 @@ const followsReducer = (prevState = {}, action) => {
       nextState[action.follow.id] = action.follow;
       return nextState;
     case DELETE_FOLLOW:
-      delete nextState[action.followId];
+      delete nextState[action.follow.id];
       return nextState;
     default:
       return prevState;

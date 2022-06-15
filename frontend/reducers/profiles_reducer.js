@@ -6,6 +6,11 @@ import {
   REQUEST_PROFILES
 } from '../actions/profile/profile_actions';
 
+import {
+  RECEIVE_FOLLOW,
+  DELETE_FOLLOW
+} from '../actions/follows/follows_actions'
+
 import { merge } from 'lodash';
 
 const IDLE = 'IDLE'
@@ -37,6 +42,24 @@ const profilesReducer = (prevState = initialState, action) => {
       return nextState;
     case REMOVE_PROFILE:
       delete nextState.all[action.profileId];
+      return nextState;
+    case RECEIVE_FOLLOW:
+      // for current user's profile
+      debugger
+      let following = nextState.all[action.follow.follower_id].following
+      nextState.all[action.follow.follower_id].following = following.concat(action.follow)
+      // for the receipent of the follow
+      let followers = nextState.all[action.follow.followee_id].followers
+      nextState.all[action.follow.followee_id].followers = followers.concat(action.follow)
+      return nextState;
+    case DELETE_FOLLOW:
+      let nextFollows = nextState.all[action.follow.follower_id].following.filter(follow => follow.follower_id !== action.follow.follower_id);
+
+      nextState.all[action.follow.follower_id].following = nextFollows;
+      // for the receipent of the follow
+      let nextFollowing = nextState.all[action.follow.followee_id].followers.filter(follow => follow.follower_id !== action.follow.follower_id);
+      // debugger
+      nextState.all[action.follow.followee_id].followers = nextFollowing;
       return nextState;
     default:
       return prevState;

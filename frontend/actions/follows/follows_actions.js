@@ -18,17 +18,17 @@ const receiveFollow = follow => {
   }
 }
 
-const deleteFollow = followId => {
+const deleteFollow = follow => {
   return {
     type: DELETE_FOLLOW,
-    followId
+    follow
   }
 }
 
 // thunk actions
 
 export const getFollows = () => dispatch => {
-  return followsApiUtil.fetchFollows().then(follows =>
+  return followsApiUtil.getFollows().then(follows =>
     dispatch(receiveFollows(follows))
   )
 }
@@ -40,6 +40,6 @@ export const createFollow = follow => dispatch => {
 
 export const removeFollow = followId => dispatch => {
   return followsApiUtil.deleteFollow(followId).then(follow =>
-    dispatch(deleteFollow(follow.id))
+    dispatch(deleteFollow(follow))
   )
 }

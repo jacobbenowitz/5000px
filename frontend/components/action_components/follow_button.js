@@ -1,6 +1,13 @@
 import React from 'react'
 
-export default class FollowModalButton extends React.Component {
+// Props needed //
+// followee {} @profile obj
+// allFollows [] 
+// createFollow thunk
+// removeFollow thunk
+// currentProfile {} @profile obj
+
+export default class FollowButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,21 +19,23 @@ export default class FollowModalButton extends React.Component {
   }
 
   componentDidMount() {
-    const { followers, currentProfile, likerId } = this.props
+    const { followee, currentProfile } = this.props;
     this.setState({
-      isFollowing: followers.filter(follow =>
-        follow.follower_id == currentProfile.id).length === 1,
-      isCurrentProfile: currentProfile.id == likerId
+      isFollowing: Object.values(followee.followers).filter(follow =>
+        follow.followee_id !== currentProfile.id).length === 1,
+      // isFollowing: Object.values(followee.followers).filter(follower =>
+      //   follower.id !== currentProfile.id).length === 1,
+      isCurrentProfile: currentProfile.id === followee.followeeId
     })
   }
 
   handleFollow(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { likerId, createFollow, currentProfile } = this.props;
+    const { followee, createFollow, currentProfile } = this.props;
     let follow = {
       follower_id: currentProfile.id,
-      followee_id: likerId
+      followee_id: followee.id
     }
     this.setState({
       isFollowing: true
@@ -36,10 +45,10 @@ export default class FollowModalButton extends React.Component {
   handleUnfollow(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { allFollows, likerId, removeFollow, currentProfile } = this.props;
+    const { allFollows, followee, removeFollow, currentProfile } = this.props;
     let followId;
     Object.values(allFollows).forEach(follow => {
-      if (follow.followee_id === likerId &&
+      if (follow.followee_id === followee.id &&
         follow.follower_id === currentProfile.id) {
         followId = follow.id
       }

@@ -3,6 +3,7 @@ import ImageViewer from "./image_viewer";
 import PhotoProfileDetails from "./photo_profile_details";
 import SinglePhotoLoader from "./content-loaders/single-photo-loader";
 import PhotoComments from "./photo_comments";
+import FollowButton from "../action_components/follow_button";
 
 
 const IDLE = 'IDLE'

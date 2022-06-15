@@ -454,7 +454,7 @@ a {
   margin-left: 16px;
 }
 
-.follow-liker-button, .unfollow-liker-button {
+.follow-liker-button, .unfollow-button {
   color: #fff;
   font-size: 16px;
   line-height: 20px;
@@ -462,18 +462,26 @@ a {
   border: 2px solid transparent;
 }
 
-.unfollow-liker-button {
+.unfollow-button {
   background-color: #fff;
   color: #1b1b1b;
   border: 2px solid #316ECA;
   transition: all 200ms ease-in;
 }
 
-.photo-detail-title.liked {
+.unfollow-button:hover {
+  color: #fff
+}
+
+.photo-detail-title.liked, 
+.profile-stats-section.followers,
+.profile-stats-section.following {
   cursor: pointer;
 }
 
-.photo-detail-title.liked:hover {
+.photo-detail-title.liked:hover,
+.profile-stats-section.followers:hover,
+.profile-stats-section.following:hover {
   color: #316ECA;
 }
 

@@ -19,25 +19,31 @@ export default class ProfileShow extends React.Component {
     this.state = {
       status: IDLE,
       profilePhotos: [],
+      showFollowsModal: false,
+      showFollowingModal: false,
     }
+    this.toggleFollowsModal = this.toggleFollowsModal.bind(this)
+    this.toggleFollowingModal = this.toggleFollowingModal.bind(this)
   }
 
   componentWillUnmount() {
-    this.setState({status: IDLE})
+    this.setState({ status: IDLE })
   }
-  
+
   componentDidMount() {
-    const { profileId, fetchProfile } = this.props;
+    const { profileId, fetchProfile, fetchProfiles, getFollows } = this.props;
     window.scrollTo(0, 0)
     fetchProfile(profileId)
+    fetchProfiles()
+    getFollows()
   }
 
   componentDidUpdate() {
-    const {status} = this.state;
+    const { status } = this.state;
     const { profile, profileId, fetchPhoto } = this.props;
-    
 
-    if (status === IDLE && Object.values(profile)) {
+
+    if (status === IDLE && profile) {
       this.setState({ status: BUSY })
       let photos = [];
       let fetches = [];
@@ -55,10 +61,22 @@ export default class ProfileShow extends React.Component {
     }
   }
 
+  toggleFollowsModal(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.setState({ showFollowsModal: !this.state.showFollowsModal })
+  }
+
+  toggleFollowingModal(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.setState({ showFollowingModal: !this.state.showFollowingModal })
+  }
+
 
   render() {
-    const { profile, user, isCurrentProfile, updateProfilePhoto } = this.props;
-    const { status, profilePhotos } = this.state;
+    const { profile, user, isCurrentProfile, updateProfilePhoto, currentProfile, allFollows, createFollow, removeFollow } = this.props;
+    const { status, profilePhotos, showFollowsModal, showFollowingModal } = this.state;
 
     let avatar, cover, coverStyle, photoGallery;
 
@@ -105,7 +123,7 @@ export default class ProfileShow extends React.Component {
         </div>
       )
       cover = (
-          <div className="cover-img-box profile" style={coverStyle} />
+        <div className="cover-img-box profile" style={coverStyle} />
       )
     } else {
       cover = (
@@ -118,7 +136,7 @@ export default class ProfileShow extends React.Component {
     } else {
       photoGallery = <GridLoader />
     }
-    return ( 
+    return (
       <div className="profile-show-container" >
         <div className="profile-cover-container">
           {avatar}
@@ -126,18 +144,27 @@ export default class ProfileShow extends React.Component {
         </div>
 
         <section className="profile-details-container">
-          { profile ? (
+          {profile ? (
             <ProfileDetails
               profile={profile}
               user={user}
-              isCurrentProfile={isCurrentProfile} />
-            ) : (
+              isCurrentProfile={isCurrentProfile}
+              allFollows={allFollows}
+              createFollow={createFollow}
+              removeFollow={removeFollow}
+              currentProfile={currentProfile}
+              showFollowsModal={showFollowsModal}
+              showFollowingModal={showFollowingModal}
+              toggleFollowsModal={this.toggleFollowsModal}
+              toggleFollowingModal={this.toggleFollowingModal}
+            />
+          ) : (
             <div className="profile-loader-container">
               <ProfileDetailsLoader />
             </div>
-            )}
+          )}
         </section>
-        
+
         {photoGallery}
 
       </div>

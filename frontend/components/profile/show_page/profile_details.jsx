@@ -1,24 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FollowProfileButton from "../../action_components/follow_profile_button";
+import FollowersModal from "../../modal/followers_modal";
+import FollowingModal from "../../modal/following_modal"
 
-
-export const ProfileDetails = ({ profile, user, isCurrentProfile }) => {
+export const ProfileDetails = ({ profile, user, currentProfile,
+  isCurrentProfile, allFollows, createFollow, removeFollow,
+  toggleFollowsModal, showFollowsModal, showFollowingModal, toggleFollowingModal }) => {
   
   let location, name, profileStats, profileLinks, websiteLink, instagramLink;
 
   profileStats = (
     <div className="profile-stats-wrapper flex-row">
-      <div className="profile-stats-section flex-row following">
-        <span className="stats-reg">0</span>
+      <div className="profile-stats-section flex-row following"
+        onClick={toggleFollowingModal}
+      >
+        <span className="stats-reg">{profile.following.length}</span>
         <span className="stats-bold">Following</span>
       </div>
-      <div className="profile-stats-section flex-row followers">
-        <span className="stats-reg">0</span>
+      <div className="profile-stats-section flex-row followers"
+        onClick={toggleFollowsModal}
+      >
+        <span className="stats-reg">{profile.followers.length}</span>
         <span className="stats-bold">Followers</span>
       </div>
       <div className="profile-stats-section flex-row likes">
-        <span className="stats-reg">0</span>
-        <span className="stats-bold">Photo likes</span>
+        <span className="stats-reg">{profile.likesReceived.length}</span>
+        <span className="stats-bold">Likes received</span>
       </div>
     </div>
   )
@@ -80,45 +88,60 @@ export const ProfileDetails = ({ profile, user, isCurrentProfile }) => {
   }
   
   return (
-    <div className="profile-wrapper">
-
-      <div className="profile-action-icons">
-
-        <div className="icon-box">
-          <a href={'#'} className="icon-link share">
-            <i className="fa-solid fa-share-nodes fa-xl"></i>
-          </a>
-        </div>
-
-        {/* EDIT */}
-        {isCurrentProfile ? (
+    <>
+      <FollowersModal
+        showFollowsModal={showFollowsModal}
+        toggleFollowsModal={toggleFollowsModal}
+        createFollow={createFollow}
+        removeFollow={removeFollow}
+        currentProfile={currentProfile}
+        followee={profile}
+        allFollows={allFollows}
+      />
+      <FollowingModal
+        showFollowingModal={showFollowingModal}
+        toggleFollowingModal={toggleFollowingModal}
+        createFollow={createFollow}
+        removeFollow={removeFollow}
+        currentProfile={currentProfile}
+        followee={profile}
+        allFollows={allFollows}
+      />
+      <div className="profile-wrapper">
+        <div className="profile-action-icons">
           <div className="icon-box">
-            <Link to={`/profiles/settings`}
-              className="icon-link edit">
-              <i className="fa-regular fa-pen-to-square fa-xl"></i>
-            </Link>
-          </div> ) : ( null )}
+            <a href={'#'} className="icon-link share">
+              <i className="fa-solid fa-share-nodes fa-xl"></i>
+            </a>
+          </div>
+          {/* EDIT */}
+          {isCurrentProfile ? (
+            <div className="icon-box">
+              <Link to={`/profiles/settings`}
+                className="icon-link edit">
+                <i className="fa-regular fa-pen-to-square fa-xl"></i>
+              </Link>
+            </div> ) : ( null )}
+        </div>
+        <div className="profile-header-container">
+          {name}
+          {location}
+          <FollowProfileButton 
+            followee={profile}
+            allFollows={allFollows}
+            createFollow={createFollow}
+            removeFollow={removeFollow}
+            currentProfile={currentProfile}
+          />
+        <div className="profile-bio-and-stats-container">
+          <p className="profile-about">
+            {profile.about}
+          </p>
+          {profileStats}
+          {profileLinks}
+          </div>
+        </div>
       </div>
-      
-      <div className="profile-header-container">
-        {name}
-        {location}
-        {/* follow button  */}
-        <button
-          className="follow-button"
-        >
-          Follow
-        </button>
-      </div>
-
-      <div className="profile-bio-and-stats-container">
-        <p className="profile-about">
-          {profile.about}
-        </p>
-        {profileStats}
-        {profileLinks}
-      </div>
-
-    </div>
+    </>
   )
 }

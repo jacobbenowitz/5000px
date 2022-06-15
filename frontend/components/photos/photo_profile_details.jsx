@@ -118,7 +118,9 @@ export default class PhotoProfileDetails extends React.Component {
           {likes.length}&nbsp;people liked this photo
         </span>
       ) : (
-        <span className="photo-detail-title liked">
+        <span className="photo-detail-title liked"
+            onClick={this.toggleLikeModal}
+          >
           {likes.length}&nbsp;person liked this photo
         </span>
       )

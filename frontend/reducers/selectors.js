@@ -227,6 +227,10 @@ export const sortCommentsByRecent = comments => {
   return comments.sort(orderByDate)
 }
 
+export const sortByRecent = array => {
+  return array.sort(orderByDate)
+}
+
 function orderByDate(a, b) {
   if (a?.created_at > b?.created_at) {
     return -1;
@@ -235,4 +239,9 @@ function orderByDate(a, b) {
     return 1;
   }
   return 0;
+}
+
+export const selectFollowsById = (ids, allFollows) => {
+  let follows = ids.map(id => allFollows[id])
+  return sortByRecent(follows)
 }
