@@ -50,22 +50,26 @@
 
 #discover-modal {
   top: 65px;
-  left: 229px;
+  left: 175px;
 }
 
 #collection-modal {
   top: 65px;
-  left: 350px;
+  left: 294px;
 }
 
 #user-modal {
   top: 70px;
-  right: 144px;
+  right: 138px;
 }
 
 .nav-pseduo {
   margin-left: 24px;
   cursor: pointer;
+}
+
+.nav-pseduo:hover {
+  color: #316ECA;
 }
 
 .down-arrow-wrapper, .right-arrow-wrapper {
@@ -98,13 +102,24 @@
 }
 
 .modal-on {
-  /* animation: growIn 200ms ease-in-out; */
   visibility: visible;
+}
+
+#collection-modal.modal-on,
+#discover-modal.modal-on,
+#user-modal.modal-on {
+  animation: growIn 200ms ease-in-out;
 }
 
 .modal-off {
   /* animation: shrinkOut 200ms ease-in-out ; */
   visibility: hidden;
+}
+
+#collection-modal.modal-out,
+#discover-modal.modal-out,
+#user-modal.modal-out {
+  animation: shrinkOut 200ms ease-in-out ;
 }
 
 @keyframes growIn {
@@ -114,7 +129,7 @@
     top: 30px;
   }
   100% {
-    opacity: 0%;
+    opacity: 100%;
     transform: scaleY(1);
     top: 65px;
   }

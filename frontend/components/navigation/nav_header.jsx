@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import primaryLogoBlack from "../../util/primary_logo_black";
+import primaryLogoBlue from "../../util/primary_logo_blue";
 import DiscoverNavLinkItem from "./discover_nav_link";
 import UserNavLink from "./user_nav_link";
 
@@ -7,8 +9,7 @@ export default class NavHeader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      logoState: 'default',
-      logoSrc: "https://my5000px-static.s3.amazonaws.com/5000px-logo.svg"
+      logoHover: false
     }
     this.toggleLogo = this.toggleLogo.bind(this)
   }
@@ -19,19 +20,15 @@ export default class NavHeader extends React.Component {
 
   toggleLogo(e) {
     e.preventDefault()
-    this.state.logoState === 'default' ?
-      this.setState({
-        logoState: 'hover',
-        logoSrc: "https://my5000px-static.s3.amazonaws.com/5000px-logo-blue.svg"
-      }) : 
-      this.setState({
-        logoState: 'default',
-        logoSrc: "https://my5000px-static.s3.amazonaws.com/5000px-logo.svg"
-      })
+    e.stopPropagation()
+    this.setState({
+      logoHover: !this.state.logoHover
+    })
   }
 
   render() {
     const { currentUser, currentProfile, logout } = this.props;
+    const { logoHover } = this.state;
 
     const initials = currentUser ?
       currentUser.username.slice(0, 2).toUpperCase() : "";
@@ -64,13 +61,12 @@ export default class NavHeader extends React.Component {
       
     return (
       <div id="nav-header">
-        <div id="logo-container">
+        <div id="logo-container"
+          onMouseEnter={this.toggleLogo}
+          onMouseLeave={this.toggleLogo}
+        >
           <Link to={'/'}>
-            <img
-              // onMouseEnter={this.toggleLogo}
-              className="primary-logo-header"
-              src={this.state.logoSrc}>
-              </img>
+            {logoHover ? primaryLogoBlue : primaryLogoBlack}
           </Link>
         </div>
         <div className="nav-links">

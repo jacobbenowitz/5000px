@@ -2,12 +2,11 @@ import { connect } from "react-redux";
 import { updateProfile, fetchProfile } from "../../actions/profile/profile_actions";
 import EditProfileForm from "./edit_profile_form";
 
-const mapStateToProps = (state, ownProps) => {
-  const profileId = state.session.profile;
+const mapStateToProps = ({ entities, session, errors }, { match }) => {
   return {
-    profile: state.entities.profiles[profileId],
-    profileId: profileId,
-    errors: state.errors.profiles
+    profile: entities.profiles.all[session.profile.id],
+    profileId: session.profile.id,
+    errors: errors.profiles
   }
 }
 

@@ -48,7 +48,7 @@ export default class ProfileAvatarInput extends React.Component {
   }
 
   render() {
-    const { currentAvatar, profile, updateAvatar } = this.props;
+    const { profile } = this.props;
 
     return (
       <div className='avatar-form'

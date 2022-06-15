@@ -8,6 +8,7 @@ import cameraIcons from "../../util/camera_icons";
 import featuredIcons from "../../util/featured_icons";
 import { Link } from "react-router-dom";
 import LikesModal from "../modal/likes_modal";
+import { selectFollowsById } from "../../reducers/selectors";
 
 export default class PhotoProfileDetails extends React.Component {
   constructor(props) {
@@ -28,9 +29,13 @@ export default class PhotoProfileDetails extends React.Component {
   }
 
   componentDidMount() {
-    const { currentProfile, photoProfile } = this.props;
+    const { currentProfile, photoProfile, allFollows } = this.props;
+    let following = selectFollowsById(currentProfile.following, allFollows)
+    let isFollowing = following.filter(follow =>
+      follow.followee_id == photoProfile.id).length === 1
+    debugger
     this.setState({
-      isFollowing: currentProfile.following.includes(photoProfile.id)
+      isFollowing: isFollowing
     })
   }
 
@@ -108,7 +113,7 @@ export default class PhotoProfileDetails extends React.Component {
       createFollow, removeFollow, allFollows } = this.props;
     const { isFollowing, openLikeModal } = this.state;
 
-    let likesDetails, likesModal, likeCopy, followLink;
+    let likesDetails, likesModal, likeCopy, followLink, photoGear;
     
     if (likes.length > 0) {
       likeCopy = likes.length > 1 ? (
@@ -168,6 +173,31 @@ export default class PhotoProfileDetails extends React.Component {
       )
     }
 
+    if (!photo.camera === null || !photo.lens === null) {
+      photoGear = (
+      <div className="detail-box">
+        <span className="photo-detail-title gear">
+          Gear
+        </span>
+        {photo.camera === null ? null :(
+          <div className="flex-row gear-row">
+            <div className="gear-icon-wrapper">
+              {cameraIcons.body}
+            </div>
+            <span className="gear-label">{photo.camera}</span>
+          </div>
+          )}
+        {photo.lens === null ? null : (
+          <div className="flex-row gear-row">
+            <div className="gear-icon-wrapper">
+              {cameraIcons.lens}
+            </div>
+            <span className="gear-label">{photo.lens}</span>
+          </div>
+        )}
+      </div>
+    )}
+
     return (
     <>
         
@@ -210,13 +240,20 @@ export default class PhotoProfileDetails extends React.Component {
               <div className="photo-details">
                 <div className="detail-box">
                   <div className="flex-row gap-10">
-                    <i className="fa-solid fa-map-pin fa-sm" />
-                    <span className="photo-location" >
-                      {photo.location}
-                    </span>
-                    <span className="photo-date">
-                      <strong>Taken: </strong> {moment(photo.taken).fromNow()}
-                    </span>
+                    {photo.location.length > 0 ? (
+                    <>
+                      <i className="fa-solid fa-map-pin fa-sm" />
+                      <span className="photo-location" >
+                        {photo.location}
+                      </span>
+                    </>
+                    ) : null
+                  }
+                    {photo.taken === null ? null : 
+                      <span className="photo-date">
+                        <strong>Taken: </strong> {moment(photo.taken).fromNow()}
+                      </span>
+                    }
                     <span className="photo-date">
                       <strong>Uploaded: </strong> {moment(photo.created_at).fromNow()}
                     </span>
@@ -227,11 +264,13 @@ export default class PhotoProfileDetails extends React.Component {
                   <p className="photo-description">{photo.description}</p>
                 </div>
 
+                {photo.featured === null ? null : (
                 <div className="detail-box">
                   <div className="flex-row ft-photo-header">
-                    <span className="photo-detail-title">
-                      {photo.featured.slice(0,1).toUpperCase() + photo.featured.slice(1)}
-                    </span>
+                        <span className="photo-detail-title">
+                          {photo.featured.slice(0, 1).toUpperCase() +
+                            photo.featured.slice(1)}
+                        </span>
                     <div className="ft-info-icon-wrapper"
                       onMouseOver={this.setBeforeContent}
                     >
@@ -242,24 +281,12 @@ export default class PhotoProfileDetails extends React.Component {
                     {this.getFeaturedIcon(photo.featured)}
                   </div>
                 </div>
+                )}
+                
                 {likesDetails}
-                <div className="detail-box">
-                  <span className="photo-detail-title gear">
-                    Gear
-                  </span>
-                  <div className="flex-row gear-row">
-                    <div className="gear-icon-wrapper">
-                      {cameraIcons.body}
-                    </div>
-                    <span className="gear-label">{photo.camera}</span>
-                  </div>
-                  <div className="flex-row gear-row">
-                    <div className="gear-icon-wrapper">
-                      {cameraIcons.lens}
-                    </div>
-                    <span className="gear-label">{photo.lens}</span>
-                  </div>
-                </div>
+                
+                {photoGear}
+                { photo.category === null ? null : (
                 <div className="detail-box">
                   <div className="flex-row">
                     <span className="category-detail-title">
@@ -275,6 +302,7 @@ export default class PhotoProfileDetails extends React.Component {
                     </Link>
                   </div>
                 </div>
+                )}
 
               </div>
               

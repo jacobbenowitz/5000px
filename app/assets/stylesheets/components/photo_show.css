@@ -473,7 +473,9 @@ a {
 }
 
 .unfollow-button:hover {
-  color: #fff
+  background-color: rgb(233, 233, 233);
+  border-color: rgb(237, 38, 38);
+  color: rgb(237, 38, 38);
 }
 
 .photo-detail-title.liked, 

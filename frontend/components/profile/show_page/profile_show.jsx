@@ -160,7 +160,7 @@ export default class ProfileShow extends React.Component {
               fetchProfile={fetchProfile}
             />
           ) : (
-            <div className="profile-loader-container">
+            <div className="profile-details-container">
               <ProfileDetailsLoader />
             </div>
           )}

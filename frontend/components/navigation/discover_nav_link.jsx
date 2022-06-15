@@ -20,13 +20,15 @@ export default class DiscoverNavLinkItem extends React.Component {
   handleDiscoverClick(e) {
     e.preventDefault()
     this.setState({
-      discoverModal: !this.state.discoverModal
+      discoverModal: !this.state.discoverModal,
+      collectionModal: false,
     });
   }
   handleCollectionClick(e) {
     e.preventDefault()
     this.setState({
-      collectionModal: !this.state.collectionModal
+      collectionModal: !this.state.collectionModal,
+      discoverModal: false,
     });
   }
 
@@ -59,9 +61,6 @@ export default class DiscoverNavLinkItem extends React.Component {
     
     return (
       <>
-        <NavLink to={currentUserId ? '/home' : '/'}>
-          Home
-        </NavLink>
         <div className="dropdown-nav"
           onClick={this.handleDiscoverClick}
         >

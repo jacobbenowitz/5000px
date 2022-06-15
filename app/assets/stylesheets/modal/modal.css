@@ -1,7 +1,7 @@
 #modal-container {
   position: absolute;
   z-index: 500;
-  top: 145px;
+  top: 100px;
   left: 0;
   right: 0;
 }

@@ -7,12 +7,12 @@ import { fetchPhoto } from "../../actions/photos/photos_actions";
 
 const mapStateToProps = (state, ownProps) => {
   const photoId = ownProps.match.params.photoId;
-  const photo = state.entities.photos[photoId] || {};
+  const photo = state.entities.photos.all[photoId] || {};
   
   return {
     photoId: photoId,
     photo: photo,
-    profileId: state.session.profile,
+    profileId: state.session.profile.id,
     errors: state.errors.photos,
   };
 }

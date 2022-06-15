@@ -13,7 +13,7 @@ const UserNavModal = ({ profile, klass, handleClick, logout }) => {
 
   return (
     <div id="user-modal"
-      className={"nav-modal-container" + klass}
+      className={"nav-modal-container " + klass}
       onClick={handleClick}
     >
       <ul className="modal-links">

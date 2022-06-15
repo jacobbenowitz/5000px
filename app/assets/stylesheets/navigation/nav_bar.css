@@ -31,8 +31,8 @@ header {
 }
 
 #logo-container {
-  height: 16px;
-  min-width: 16px;
+  max-width: 100px;
+  width: 100px;
   position: relative;
 }
 
