@@ -45,19 +45,32 @@ const profilesReducer = (prevState = initialState, action) => {
       return nextState;
     case RECEIVE_FOLLOW:
       // for current user's profile
-      let following = nextState.all[action.follow.follower_id].following
-      nextState.all[action.follow.follower_id].following = following.concat(action.follow.id)
+      if (nextState.all[action.follow.follower_id]) {
+        let following = nextState.all[action.follow.follower_id].following
+        nextState.all[action.follow.follower_id].following =
+          following.concat(action.follow.id)
+      }
       // for the receipent of the follow
-      let followers = nextState.all[action.follow.followee_id].followers
-      nextState.all[action.follow.followee_id].followers = followers.concat(action.follow.id)
+      if (nextState.all[action.follow.followee_id]) {
+        let followers = nextState.all[action.follow.followee_id].followers
+        nextState.all[action.follow.followee_id].followers =
+          followers.concat(action.follow.id)
+      }
       return nextState;
     case DELETE_FOLLOW:
       // for the followee
-      let nextFollows = nextState.all[action.follow.follower_id].following.filter(follow => follow.follower_id !== action.follow.follower_id);
-      nextState.all[action.follow.follower_id].following = nextFollows;
+      if (nextState.all[action.follow.follower_id]) {
+        let nextFollows = nextState.all[action.follow.follower_id]
+          .following.filter(followId => followId !== action.follow.id)
+        nextState.all[action.follow.follower_id].following = nextFollows;
+      }
       // for the receipent of the follow
-      let nextFollowing = nextState.all[action.follow.followee_id].followers.filter(follow => follow.follower_id !== action.follow.follower_id);
-      nextState.all[action.follow.followee_id].followers = nextFollowing;
+      // debugger
+      if (nextState.all[action.follow.followee_id]) {
+        let nextFollowing = nextState.all[action.follow.followee_id]
+          .followers.filter(followId => followId !== action.follow.id)
+        nextState.all[action.follow.followee_id].followers = nextFollowing;
+      }
       return nextState;
     default:
       return prevState;

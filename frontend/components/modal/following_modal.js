@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { selectFollowsById } from '../../reducers/selectors';
 import FollowFollowingModalButton from '../action_components/follow_following_modal_button';
 
-const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, currentProfile, createFollow, removeFollow, allFollows }) => {
+const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, currentProfile, createFollow, removeFollow, allFollows, fetchProfile }) => {
   let following = selectFollowsById(followee.following, allFollows)
   let followingModal;
   
@@ -12,7 +12,9 @@ const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, cu
       <div className="modal-wrapper">
         <div className="likes-modal">
           <div className="modal-header">
-            <div className="icon-close-button" onClick={toggleFollowingModal}>
+            <div className="icon-close-button"
+              onClick={toggleFollowingModal}
+            >
               <i className="fa-solid fa-xmark fa-xl modal-close" />
             </div>
             <span className="modal-header-copy">
@@ -23,18 +25,18 @@ const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, cu
             {following.map((follow, i) =>
               <li key={`liker-${i}`} className='liker-modal-list-item'>
                 <div className="profile-summary-wrapper">
-                  <Link to={`/profiles/${follow.followee_id}`}>
+                  <Link to={`/profiles/${follow?.followee_id}`}>
                     <div className="avatar-wrapper-sm"
                       style={{ 'backgroundImage': `url(${follow.followee.avatar})` }
                       }
                     />
                   </Link>
                   <div className="liker-profile-summary">
-                    <Link to={`/profiles/${follow.followee_id}`}>
+                    <Link to={`/profiles/${follow?.followee_id}`}>
                       {follow.followee.first_name}&nbsp;{follow.followee.last_name}
                     </Link>
                     <span className="liker-followers-count">
-                      {follow.followee.followers.length}&nbsp;Followers
+                      {follow?.followee.followers.length}&nbsp;Followers
                     </span>
                   </div>
                 </div>
@@ -44,6 +46,7 @@ const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, cu
                   createFollow={createFollow}
                   removeFollow={removeFollow}
                   currentProfile={currentProfile}
+                  fetchProfile={fetchProfile}
                 />
               </li>
             )}

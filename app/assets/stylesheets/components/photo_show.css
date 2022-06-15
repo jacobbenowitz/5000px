@@ -147,10 +147,12 @@
   width: 64px;
   height: 64px;
   overflow: hidden;
+  border-radius: 50%;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; 
+  background-color: rgb(213, 213, 213);
 }
 
 .avatar-container-sm { 
@@ -164,6 +166,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; 
+  background-color: rgb(213, 213, 213);
 }
 
 .user-details {
@@ -563,6 +566,10 @@ a {
   box-sizing: border-box;
 }
 
+.profile-name {
+  margin: 0;
+}
+
 .comment-profile-name, .comment-body {
   word-break: break-word;
   max-width: 100%;
@@ -657,6 +664,7 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; 
+  background-color: rgb(213, 213, 213);
 }
 
 .comment-form-buttons {

@@ -14,7 +14,7 @@ const mapStateToProps = ({entities, session}, { match }) => {
   const profile = entities.profiles.all[photo?.profile_id];
   const user = entities.users[photo?.userId];
   const isCurrentProfile = photo?.profile_id == session.profile.id;
-  const currentProfile = session.profile;
+  const currentProfile = entities.profiles.all[session.profile.id];
   
 
   return {

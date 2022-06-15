@@ -189,9 +189,9 @@ export default class PhotoProfileDetails extends React.Component {
               />
               <div className="profile-info">
                 <Link to={`/profiles/${photo.profile_id}`}>
-                  <div className="avatar-container">
-                    <img className="user-avatar-lg" src={photoProfile.avatar}></img>
-                  </div>
+                  <div className="avatar-container" style={{
+                    'backgroundImage': `url(${photoProfile.avatar})`
+                  }} />
                 </Link>
                 <div className="user-details flex-col">
                   <h5 className="photo-show-title">{photo.title}</h5>

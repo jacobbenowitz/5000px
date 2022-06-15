@@ -40,10 +40,6 @@
   top: 315px;
 }
 
-.avatar-wrapper:hover {
-  border: 2px solid #265cac;
-}
-
 .avatar-wrapper {
   display: flex;
   align-items: center;
@@ -53,6 +49,7 @@
   width: 95px;
   border-radius: 50%;
   border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(213, 213, 213);
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
@@ -85,6 +82,7 @@
   bottom: -55px;
   width: 95px;
   height: 95px;
+  /* background-color: rgb(213, 213, 213); */
 }
 
 .avatar-box {

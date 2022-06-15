@@ -13,7 +13,7 @@ export default class LikeIcon extends React.Component {
   componentDidMount() {
     const { likes, currentProfile } = this.props;
     let isLiked = likes.filter(like =>
-      like.liker == currentProfile.id).length >= 1
+      like.liker_id == currentProfile.id).length >= 1
     this.setState({
       isLiked: isLiked
     })
@@ -38,7 +38,7 @@ export default class LikeIcon extends React.Component {
     e.stopPropagation()
     const { likes, removeLike, currentProfile } = this.props;
     const likeId = likes.filter(like =>
-      like.liker == currentProfile.id)[0].id
+      like.liker_id == currentProfile.id)[0].id
     removeLike(likeId)
     this.setState({
       isLiked: false

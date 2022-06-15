@@ -67,7 +67,6 @@ export default class ProfileAvatarInput extends React.Component {
 
         <div className="profile-avatar-container-form">
           <AvatarLg
-            // avatar={this.state.photoUrl.length ? this.state.photoUrl : currentAvatar}
             profile={profile}
           />
         </div>

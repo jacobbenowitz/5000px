@@ -75,7 +75,7 @@ export default class ProfileShow extends React.Component {
 
 
   render() {
-    const { profile, user, isCurrentProfile, updateProfilePhoto, currentProfile, allFollows, createFollow, removeFollow } = this.props;
+    const { profile, user, isCurrentProfile, updateProfilePhoto, currentProfile, allFollows, createFollow, removeFollow, getFollows, fetchProfile } = this.props;
     const { status, profilePhotos, showFollowsModal, showFollowingModal } = this.state;
 
     let avatar, cover, coverStyle, photoGallery;
@@ -157,6 +157,7 @@ export default class ProfileShow extends React.Component {
               showFollowingModal={showFollowingModal}
               toggleFollowsModal={this.toggleFollowsModal}
               toggleFollowingModal={this.toggleFollowingModal}
+              fetchProfile={fetchProfile}
             />
           ) : (
             <div className="profile-loader-container">

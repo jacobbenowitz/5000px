@@ -18,10 +18,10 @@ const receiveLike = like => {
   }
 }
 
-const deleteLike = likeId => {
+const deleteLike = like => {
   return {
     type: DELETE_LIKE,
-    likeId
+    like
   }
 }
 
@@ -42,6 +42,6 @@ export const createLike = like => dispatch => {
 export const removeLike = likeId => dispatch => {
   return (
     likeApiUtil.deleteLike(likeId).then(like =>
-      dispatch(deleteLike(like.id)))
+      dispatch(deleteLike(like)))
   )
 };

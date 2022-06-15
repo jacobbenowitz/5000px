@@ -87,7 +87,6 @@ export default class HomeFeed extends React.Component {
       })
 
       // current user's following photo ids
-      debugger
       let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
       
       // featured Collections

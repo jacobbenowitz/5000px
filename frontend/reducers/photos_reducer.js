@@ -10,6 +10,8 @@ import {
 } from '../actions/comments/comment_actions';
 
 import { merge } from 'lodash';
+import { DELETE_LIKE, RECEIVE_LIKE } from '../actions/likes/like_actions';
+import { DELETE_FOLLOW, RECEIVE_FOLLOW } from '../actions/follows/follows_actions';
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -61,12 +63,39 @@ const photosReducer = (prevState = initialState, action) => {
       return nextState;
     case RECEIVE_COMMENT:
       let comments = nextState.all[action.comment.photo_id].comments
-      nextState.all[action.comment.photo_id].comments =
-        comments.concat(action.comment)
+      nextState.all[action.comment.photo_id]
+        .comments = comments.concat(action.comment)
       return nextState;
     case REMOVE_COMMENT:
-      let nextComments = nextState.all[action.comment.photo_id].comments.filter(comment => comment.id !== action.comment.id);
-      nextState.all[action.comment.photo_id].comments = nextComments;
+      let nextComments = nextState.all[action.comment.photo_id]
+        .comments.filter(comment => comment.id !== action.comment.id)
+      nextState.all[action.comment.photo_id].comments = nextComments
+      return nextState;
+    case RECEIVE_LIKE:
+      let nextLikes = nextState.all[action.like.photo_id]
+        .likes.concat([action.like])
+      nextState.all[action.like.photo_id].likes = nextLikes
+      return nextState;
+    case DELETE_LIKE:
+      let filteredLikes = nextState.all[action.like.photo_id]
+        .likes.filter(like => like.id !== action.like.id)
+      nextState.all[action.like.photo_id].likes = filteredLikes
+    // case RECEIVE_FOLLOW:
+    //   // for the receipent of the follow
+    //   if (Object.values(nextState.all).filter(photo =>
+    //     photo.likes.filter(like =>
+    //       like.liker_id === action.follow.followee_id))
+    //     .length > 0) {
+    //       debugger
+    //     let likeIds = Object.values(nextState.all)
+    //       .filter(photo => photo.likes.filter(like =>
+    //         like.liker_id === action.follow.followee_id))
+    //       .map(like => like.id)
+    //     debugger
+    //     likeIds.forEach(id => nextState[id].followers =
+    //       nextState[id].followers.concat(action.follow))
+    //   }
+    // case DELETE_FOLLOW:
       return nextState;
     default:
       return prevState;

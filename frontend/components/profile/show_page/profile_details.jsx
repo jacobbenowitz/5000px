@@ -6,7 +6,7 @@ import FollowingModal from "../../modal/following_modal"
 
 export const ProfileDetails = ({ profile, user, currentProfile,
   isCurrentProfile, allFollows, createFollow, removeFollow,
-  toggleFollowsModal, showFollowsModal, showFollowingModal, toggleFollowingModal }) => {
+  toggleFollowsModal, showFollowsModal, showFollowingModal, toggleFollowingModal, fetchProfile }) => {
   
   let location, name, profileStats, profileLinks, websiteLink, instagramLink, followProfileButton;
 
@@ -87,7 +87,7 @@ export const ProfileDetails = ({ profile, user, currentProfile,
     )
   }
 
-  if (!!Object.values(allFollows).length) {
+  if (!!Object.values(allFollows).length && !isCurrentProfile) {
     followProfileButton = (
       <FollowProfileButton
         followee={profile}
@@ -109,6 +109,7 @@ export const ProfileDetails = ({ profile, user, currentProfile,
         currentProfile={currentProfile}
         followee={profile}
         allFollows={allFollows}
+        fetchProfile={fetchProfile}
       />
       <FollowingModal
         showFollowingModal={showFollowingModal}
@@ -118,6 +119,7 @@ export const ProfileDetails = ({ profile, user, currentProfile,
         currentProfile={currentProfile}
         followee={profile}
         allFollows={allFollows}
+        fetchProfile={fetchProfile}
       />
       <div className="profile-wrapper">
         <div className="profile-action-icons">

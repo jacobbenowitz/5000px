@@ -245,7 +245,7 @@ function orderByDate(a, b) {
 }
 
 export const selectFollowsById = (ids, allFollows) => {
-  let follows = ids.map(id => allFollows[id])
+  let follows = ids.map(id => allFollows[id]).filter(e => e)
   return sortByRecent(follows)
 }
 
@@ -262,6 +262,5 @@ export const selectFollowersPhotoIds = (
     follow?.followee_id)
       
   let followers = followerIds.map(id => allProfiles[id])
-  debugger
   return followers.map(follower => follower.photoIds).flat()
 }

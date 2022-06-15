@@ -29,10 +29,25 @@ export default class FollowFollowingModalButton extends React.Component {
     })
   }
 
+  componentDidUpdate() {
+    const { followee, currentProfile, allFollows } = this.props;
+    
+    let following = selectFollowsById(followee.followers, allFollows)
+    let isFollowing = following.filter(follow =>
+      follow.follower_id === currentProfile.id).length === 1
+
+    if (isFollowing !== this.state.isFollowing) {
+      this.setState({
+        isFollowing: isFollowing,
+        isCurrentProfile: currentProfile.id === followee.followeeId
+      })
+    }
+  }
+
   handleFollow(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { followee, createFollow, currentProfile } = this.props;
+    const { followee, createFollow, currentProfile, fetchProfile } = this.props;
     let follow = {
       follower_id: currentProfile.id,
       followee_id: followee.followeeId
@@ -45,7 +60,8 @@ export default class FollowFollowingModalButton extends React.Component {
   handleUnfollow(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { allFollows, followee, removeFollow, currentProfile } = this.props;
+    const { allFollows, followee, removeFollow,
+      currentProfile, fetchProfile } = this.props;
     let followId;
     Object.values(allFollows).forEach(follow => {
       if (follow.followee_id === followee.followeeId &&

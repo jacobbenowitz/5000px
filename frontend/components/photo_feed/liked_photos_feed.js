@@ -41,7 +41,6 @@ export default class LikedPhotosFeed extends React.Component {
       let fetches = [];
       photoIds.forEach(photoId =>
         fetches.push(fetchPhoto(photoId)));
-      debugger
       Promise.all(fetches).then(res => {
         photos = res.map(action => action.photo.photo)
         this.setState({

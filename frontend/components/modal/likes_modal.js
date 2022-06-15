@@ -4,8 +4,8 @@ import FollowModalButton from "../action_components/follow_modal_button";
 
 const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
   createFollow, removeFollow, allFollows }) => {
-
   let likesModal;
+  
   if (openLikeModal) {
     likesModal = (
       <div className="modal-wrapper">
@@ -23,14 +23,14 @@ const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
             {photo.likes.map((like, i) =>
               <li key={`liker-${i}`} className='liker-modal-list-item'>
                 <div className="profile-summary-wrapper">
-                  <Link to={`/profiles/${like.liker}`}>
+                  <Link to={`/profiles/${like.liker_id}`}>
                     <div className="avatar-wrapper-sm"
                       style={{ 'backgroundImage': `url(${like.avatar})` }
                       }
                     />
                   </Link>
                   <div className="liker-profile-summary">
-                    <Link to={`/profiles/${like.liker}`}>
+                    <Link to={`/profiles/${like.liker_id}`}>
                       {like.first_name}&nbsp;{like.last_name}
                     </Link>
                     <span className="liker-followers-count">
@@ -39,7 +39,7 @@ const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
                   </div>
                 </div>
                 <FollowModalButton
-                  likerId={like.liker}
+                  likerId={like.liker_id}
                   followers={like.followers}
                   currentProfile={currentProfile}
                   createFollow={createFollow}
