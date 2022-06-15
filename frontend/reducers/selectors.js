@@ -256,11 +256,12 @@ export const selectFollowersById = (ids, allFollows) => {
 }
 
 
-export const selectFollowersPhotoIds = (followingIds,
-  allFollows, allPhotos, allProfiles) => {
+export const selectFollowersPhotoIds = (
+  followingIds, allFollows, allProfiles) => {
   let followerIds = selectFollowsById(followingIds, allFollows).map(follow => 
     follow?.followee_id)
-  
+      
   let followers = followerIds.map(id => allProfiles[id])
+  debugger
   return followers.map(follower => follower.photoIds).flat()
 }

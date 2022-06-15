@@ -7,7 +7,7 @@ const UserNavModal = ({ profile, klass, handleClick, logout }) => {
   const userLinks = [
     { title: 'Profile', url: `/profiles/${profile.id}` },
     // { title: 'Galleries', url: '/galleries' },
-    // { title: 'Liked photos', url: '/likes' },
+    { title: 'Liked photos', url: '/galleries/likes' },
     { title: 'Settings', url: '/profiles/settings' }
   ]
 

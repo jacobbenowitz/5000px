@@ -68,14 +68,18 @@ export default class HomeFeed extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleLazyLoad)
-    this.setState({ status: IDLE })
+    this.setState({
+      status: IDLE,
+      featuredStatus: IDLE,
+      collectionStatus: IDLE,
+    })
   }
 
   componentDidUpdate() {
     const { photoIds, allFollows, allPhotos, allProfiles, users, profiles, fetchPhoto, photosStatus, profilesStatus, currentProfile } = this.props;
     const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
-    if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE) {
+    if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && currentProfile && !!Object.values(allFollows).length) {
       // setState to BUSY in order to prevent multiple calls while updating
       this.setState({
         featuredStatus: BUSY,
@@ -83,7 +87,8 @@ export default class HomeFeed extends React.Component {
       })
 
       // current user's following photo ids
-      let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allPhotos, allProfiles)
+      debugger
+      let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
       
       // featured Collections
       let finalCollections = {};

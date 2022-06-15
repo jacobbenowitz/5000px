@@ -18,6 +18,7 @@ import PhotoEditFormContainer from "./photos/photo_edit_form_container";
 import DiscoverFeedContainer from "./photo_feed/discover_feed_container";
 import PhotoCollectionContainer from "./photo_feed/photo_collection_container";
 import { Route } from "react-router-dom";
+import LikedPhotosFeedContainer from "./photo_feed/liked_photos_feed_container";
 
 const App = () => (
   <div className="grid-pancake-stack">
@@ -57,6 +58,9 @@ const App = () => (
       />
       <Route exact path={"/discover/:page"}
         component={DiscoverFeedContainer}
+      />
+      <ProtectedRoute exact path={"/galleries/likes"}
+        component={LikedPhotosFeedContainer}
       />
       <ProtectedRoute exact path={"/galleries/:category"}
         component={PhotoCollectionContainer}

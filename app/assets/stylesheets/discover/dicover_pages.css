@@ -76,3 +76,58 @@
   font-weight: bold;
   box-shadow: rgb(8 112 209) 0px -2px inset;
 }
+
+.liked-photos-empty-container {
+  box-sizing: border-box;
+  word-break: break-word;
+  max-width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  padding-top: 24px;
+  padding-bottom: 350px;
+}
+
+.no-likes-icon-container {
+  box-sizing: border-box;
+  word-break: break-word;
+  max-width: 100%;
+  position: relative;
+  height: 48px;
+  width: 48px;
+}
+
+.no-likes-icon-container svg > path {
+  fill: rgb(109, 115, 120);
+}
+
+.no-likes-icon-container svg  {
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+}
+
+.no-likes {
+  text-align: center;
+  text-transform: none;
+  color: rgb(109, 115, 120);
+  max-width: 580px;
+}
+
+.no-likes.header {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  margin: 32px 0px 24px;
+}
+
+.no-likes.subheader {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-transform: none;
+  margin: 0px 0px 24px;
+}
