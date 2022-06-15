@@ -303,6 +303,14 @@ input:focus {
   font-weight: 700;
   color: #2B5FA8;
   cursor: pointer;
+  max-height: 36px;
+  padding: 12px 14px;
+  min-width: 90px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cancel:hover {

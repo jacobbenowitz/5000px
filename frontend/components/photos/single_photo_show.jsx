@@ -12,8 +12,10 @@ export default class SinglePhotoShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: IDLE
+      status: IDLE,
+      fullScreen: false
     }
+    this.toggleFullScreen = this.toggleFullScreen.bind(this)
   }
 
   componentDidMount() {
@@ -50,43 +52,58 @@ export default class SinglePhotoShow extends React.Component {
     }
   }
 
+  toggleFullScreen(e) {
+    e.preventDefault()
+    this.setState({ fullScreen: !this.state.fullScreen })
+  }
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows, createComment, deleteComment } = this.props;
-    const { status } = this.state;
-    
+    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows, createComment, deleteComment, history } = this.props;
+    const { status, fullScreen } = this.state;
+    let photoDetailsBottom;
+
+    if (fullScreen) {
+      photoDetailsBottom = null
+    } else {
+      photoDetailsBottom = (
+        <div className="photo-bottom-wrapper">
+          <PhotoProfileDetails
+            photo={photo}
+            photoId={photoId}
+            photoProfile={profile}
+            user={user}
+            isCurrentProfile={isCurrentProfile}
+            currentProfile={currentProfile}
+            getLikes={getLikes}
+            createLike={createLike}
+            removeLike={removeLike}
+            likes={likes}
+            allLikes={allLikes}
+            allFollows={allFollows}
+            createFollow={createFollow}
+            removeFollow={removeFollow}
+          />
+          <PhotoComments
+            currentProfile={currentProfile}
+            photo={photo}
+            createComment={createComment}
+            deleteComment={deleteComment}
+          />
+        </div>
+      )
+    }
+
     return (
       <div className="photo-show-container">
         {status === DONE ? (
           <>
             <ImageViewer
               photo={photo}
-              history={this.props.history}
+              history={history}
+              fullScreen={fullScreen}
+              toggleFullScreen={this.toggleFullScreen}
             />
-            <div className="photo-bottom-wrapper">
-              <PhotoProfileDetails
-                photo={photo}
-                photoId={photoId}
-                photoProfile={profile}
-                user={user}
-                isCurrentProfile={isCurrentProfile}
-                currentProfile={currentProfile}
-                getLikes={getLikes}
-                createLike={createLike}
-                removeLike={removeLike}
-                likes={likes}
-                allLikes={allLikes}
-                allFollows={allFollows}
-                createFollow={createFollow}
-                removeFollow={removeFollow}
-              />
-              <PhotoComments
-                currentProfile={currentProfile}
-                photo={photo}
-                createComment={createComment}
-                deleteComment={deleteComment}
-              />
-            </div>
+            {photoDetailsBottom}
           </>
         ) : ( <SinglePhotoLoader className="profile-loader" /> )}
       </div>

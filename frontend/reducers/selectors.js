@@ -223,6 +223,10 @@ export const sortPhotosByRecent = (photos) => {
   return photos.sort(orderByDate)
 }
 
+export const sortCommentsByRecent = comments => {
+  return comments.sort(orderByDate)
+}
+
 function orderByDate(a, b) {
   if (a?.created_at > b?.created_at) {
     return -1;

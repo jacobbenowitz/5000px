@@ -31,7 +31,7 @@
   position: absolute;
   top: 0;
   box-sizing: border-box;
-  height: 100vh;
+  height: 100vmax;
   z-index: 2000;
 }
 
@@ -39,11 +39,18 @@
   position: absolute;
   display: flex;
   max-width: 100%;
-  left: 64px;
-  right: 64px;
   justify-content: center;
-  align-items: center;
-  inset: 24px 32px;
+  align-items: flex-start;
+  inset: 32px 26px;
+}
+
+.image-container.full {
+  inset: 32px 32px;
+  max-height: calc(100vh - 72px);
+}
+
+.photo-large.full {
+  top: 2.5rem;
 }
 
 .photo-large {
@@ -51,6 +58,7 @@
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  position: relative;
 }
 
 .image-top-icons {
@@ -509,6 +517,7 @@ a {
   align-items: flex-start;
   background-color: #FFF;
   padding: 24px;
+  height: 100%;
 }
 
 .comment-index-content {
@@ -720,24 +729,35 @@ a {
   border-left: 10px solid #316ECA;
 }
 
-.modal-links {
-  width: 100%;
+.modal-list-item.comments {
+  padding: 6px 17px;
 }
 
-.modal-list-item {
-  background-color: white;
-  display: flex;
-  padding: 6px;
-  width: 100%;
-}
-
-.modal-list-item:hover {
-  background-color: #316ECA;
-}
 .modal-list-item:hover {
   color: white;
 }
 
 .modal-list-item.comments:hover {
   cursor: pointer;
+}
+
+.no-comments-placeholder {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 64px;
+  margin-bottom: 256px;
+  width: 100%;
+}
+
+.placeholder-copy {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-transform: none;
+  margin: 16px 0px 0px;
+}
+.comment-icon-placeholder-wrapper, .comment-icon-placeholder-wrapper svg {
+  height: 48px;
+  width: 48px;
 }
