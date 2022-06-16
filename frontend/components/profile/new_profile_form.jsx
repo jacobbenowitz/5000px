@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import TextareaAutosize from "react-textarea-autosize";
 
 
 export default class NewProfileForm extends React.Component {
@@ -22,6 +23,12 @@ export default class NewProfileForm extends React.Component {
       user_id: null
     };
     this.bindHandlers();
+  }
+
+  componentWillUnmount() {
+    const profile = Object.assign({}, this.state,
+      { user_id: this.props.userId })
+    this.props.submitForm(profile)
   }
   
   bindHandlers() {
@@ -80,10 +87,10 @@ export default class NewProfileForm extends React.Component {
 
     window.removeEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
 
-    const formData = Object.assign({}, this.state,
+    const profile = Object.assign({}, this.state,
       { user_id: this.props.userId} )
     if (this.props.userId !== null) {
-      this.props.submitForm(formData)
+      this.props.submitForm(profile)
       this.redirectHome();
     }
   }
@@ -133,8 +140,17 @@ export default class NewProfileForm extends React.Component {
           </div>
 
           <div className="profile-form-title">
-            <span className="profile-title-copy">My Account</span>
-            <span className="profile-form-instructions">Create your profile <a onClick={this.handleSubmit} className="skip-profile-form" href="#">or skip</a></span>
+            <span className="profile-title-copy">
+              My Account
+            </span>
+            <span className="profile-form-instructions">
+              Create your profile
+            </span>
+            <span className="skip-profile-form"
+              onClick={this.handleSubmit}
+            >
+              or skip for now
+            </span>
           </div>
 
           <form
@@ -181,20 +197,20 @@ export default class NewProfileForm extends React.Component {
             </div>
 
             <div className="form-input">
-              <label htmlFor="instagram">Instagram username</label>
+              <label htmlFor="instagram">Instagram</label>
               <input
                 type="text"
                 id="instagram_url"
                 value={this.state.instagram_url}
                 onChange={this.update('instagram_url')}
                 className="text-input"
-                placeholder="Instagram username"
+                placeholder="Instagram handle"
               />
             </div>
 
             <div className="form-input">
               <label htmlFor="about">About</label>
-              <textarea
+              <TextareaAutosize
                 id="about"
                 value={this.state.about}
                 onChange={this.update('about')}

@@ -4,6 +4,7 @@
   height: 92vh;
   max-height: fit-content;
   background-color: #F7F8FA;
+  padding-top: 20px;
 }
 
 #session-form {

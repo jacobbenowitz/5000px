@@ -15,7 +15,6 @@
     "react": "^16.14.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "^16.14.0",
-    "react-grid-gallery": "^0.5.5",
     "react-photo-album": "^1.13.2",
     "react-redux": "^8.0.1",
     "react-router-dom": "^5.3.1",

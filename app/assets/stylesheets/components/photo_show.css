@@ -448,8 +448,10 @@ a {
   word-break: break-word;
   max-width: 100%;
   min-height: 248px;
-  max-height: 670px;
-  overflow-y: auto;
+  max-height: 100%;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
   box-sizing: border-box;
 }
 

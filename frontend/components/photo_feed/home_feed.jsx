@@ -1,8 +1,9 @@
 import React from "react";
-import PhotosIndexContainer from "../photos/photos_index_container";
-import PhotosIndex from "../photos/photos_index";
-import DiscoverGallery from "../galleries/discover_gallery";
-import { buildGridGalleryProps, divideArrayIntoGroups, selectCollectionPhotos, selectFeaturedPhotographers, selectFollowersPhotoIds, selectPhotosByIds, selectThreeRandomPhotos } from "../../reducers/selectors";
+import {
+  selectCollectionPhotos,
+  selectFeaturedPhotographers,
+  selectFollowersPhotoIds
+} from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
 import FeaturedPhotographerCard from "./cards/featured_photographer_card";

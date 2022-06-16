@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  # def not_found
+  #   redirect_to "/not-found"
+  # end
+
   # def require_logged_in
   #   redirect_to ... unless logged_in?
   # end

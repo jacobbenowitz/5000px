@@ -19,6 +19,7 @@ import DiscoverFeedContainer from "./photo_feed/discover_feed_container";
 import PhotoCollectionContainer from "./photo_feed/photo_collection_container";
 import { Route } from "react-router-dom";
 import LikedPhotosFeedContainer from "./photo_feed/liked_photos_feed_container";
+import NotFound from "./404/not_found";
 
 const App = () => (
   <div className="grid-pancake-stack">
@@ -68,6 +69,8 @@ const App = () => (
       <AuthRoute exact path={"/"} 
         component={LandingPage} 
       />
+      <Route exact path={"/not-found"} component={NotFound} />
+      <Route component={NotFound} />
     </Switch>
 
     <footer className="grid-bottom-stack">

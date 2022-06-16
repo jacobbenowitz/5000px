@@ -10,7 +10,7 @@ const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, cu
   if (showFollowingModal) {
     followingModal = (
       <div className="modal-wrapper">
-        <div className="likes-modal">
+        <div className="likes-modal" onClick={toggleFollowingModal}>
           <div className="modal-header">
             <div className="icon-close-button"
               onClick={toggleFollowingModal}

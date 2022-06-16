@@ -74,7 +74,7 @@ export default class EditProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.submitForm(this.state);
-    this.props.history.goBack()
+    this.props.history.push(`/profiles/${this.props.profile.id}`)
   }
 
   update = field => {

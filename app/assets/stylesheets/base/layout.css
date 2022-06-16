@@ -26,6 +26,7 @@ body {
 .center-simple {
   display: grid;
   place-items: center;
+  align-items: start
 }
 
 .grid-12-col {
@@ -99,4 +100,20 @@ html {
   flex-direction: row;
   align-content: center;
   align-items: baseline;
+}
+
+.not-found-container {
+  width: 100vw;
+  height: 54vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.not-found-header {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
 }
