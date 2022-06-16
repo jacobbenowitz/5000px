@@ -44,9 +44,7 @@ Rails.application.configure do
   ## setting secret_key_base due to errors received:
   #### => "Missing `secret_key_base` for 'production' environment"
 
-  Rails.application.configure do
-    config.secret_key_base = ENV["SECRET_KEY_BASE"]
-  end
+  config.secret_key_base = '<%= ENV["SECRET_KEY_BASE"] %>'
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
