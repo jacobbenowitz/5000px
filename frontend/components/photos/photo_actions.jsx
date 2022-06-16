@@ -26,20 +26,23 @@ const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, create
       </div> */}
       {/* EDIT */}
       {isCurrentProfile ? (
-      <div className="icon-box">
-        <Link to={`/photos/${photo.id}/edit`}
-          className="icon-link edit">
-          <i className="fa-regular fa-pen-to-square fa-xl"></i>
-        </Link>
-      </div>) : (null)}
-      <div
-        onClick={handleDelete}
-        className="icon-box delete"
-        title="delete photo"
-      >
-        <i className="fa-solid fa-trash fa-xl" />
-      </div>
-    </div>
+        <>
+          <div className="icon-box">
+            <Link to={`/photos/${photo.id}/edit`}
+              className="icon-link edit">
+              <i className="fa-regular fa-pen-to-square fa-xl"></i>
+            </Link>
+          </div>
+          <div
+            onClick={handleDelete}
+            className="icon-box delete"
+            title="delete photo"
+          >
+            <i className="fa-solid fa-trash fa-xl" />
+          </div>
+        </> ) : null
+      }
+      </div> 
   )
 }
 
