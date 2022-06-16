@@ -155,6 +155,10 @@
   margin-bottom: 2rem;
 }
 
+.collection-header.placeholder {
+  padding-top: 1rem;
+}
+
 .profile-bio-and-stats-container {
   word-break: break-word;
   max-width: 100%;

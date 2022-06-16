@@ -4,6 +4,7 @@ import FeedHeader from './headers/feed_header'
 import discoverTitles from '../../util/discover_titles'
 import DiscoverRows from './discover_photo_gallery'
 import GridLoader from '../galleries/gallery_grid_loader'
+import DiscoverHeaderLoader from './content_loaders/discover_header_placeholder'
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -39,6 +40,7 @@ export default class DiscoverFeed extends React.Component {
     const { status } = this.state;
 
     if (page !== this.state.page && status !== BUSY && photosStatus === DONE) {
+      window.scrollTo(0, 0)
       this.setState({status: BUSY})
       let pageCopy = this.getTitleAndDescription(page)
       let photoIds = this.getPagePhotoIds(page)
@@ -92,26 +94,30 @@ export default class DiscoverFeed extends React.Component {
 
   render() {
     const { pageTitle, pageDescription, status, pagePhotos } = this.state;
-    let gallery, header;
+    let gallery, discoverHeader;
     if (status === DONE) {
       gallery = (
         <DiscoverRows photos={ pagePhotos }
         />
       )
+      discoverHeader = (
+        <FeedHeader
+          title={pageTitle}
+          description={pageDescription}
+        />
+      )
     } else {
-      // header = (
-
-      // )
+      discoverHeader = (
+        <div className="page-top-banner">
+          <DiscoverHeaderLoader />
+        </div>
+      )
       gallery = <GridLoader />
     }
 
     return (
       <div className="home-feed-container">
-        <FeedHeader
-          title={pageTitle}
-          description={pageDescription}
-        />
-        
+        { discoverHeader }
         <DiscoverNav />
         <div className="home-feed-gallery">
           {gallery}

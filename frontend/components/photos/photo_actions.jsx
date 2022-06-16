@@ -19,11 +19,11 @@ const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, create
 
       </div>
       {/* SHARE */}
-      <div className="icon-box">
+      {/* <div className="icon-box">
         <a href={'#'} className="icon-link share">
           <i className="fa-solid fa-share-nodes fa-xl"></i>
         </a>
-      </div>
+      </div> */}
       {/* EDIT */}
       {isCurrentProfile ? (
         <div className="icon-box">

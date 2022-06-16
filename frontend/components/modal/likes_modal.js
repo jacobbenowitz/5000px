@@ -54,9 +54,17 @@ const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
     )
   }
   return (
-    <div className={openLikeModal ? "modal-mask modal-on" : "modal-off"}>
-      {likesModal}
-    </div>
+    <>
+      <div className={openLikeModal ?
+        'modal-mask modal-on' : 'modal-off'}>
+        {likesModal}
+      </div>
+      <div className={openLikeModal ?
+        'modal-close-container' : 'mask-off'}
+        onClick={toggleLikeModal} 
+        
+        />
+    </>
   )
 }
 

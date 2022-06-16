@@ -33,7 +33,6 @@ export default class PhotoProfileDetails extends React.Component {
     let following = selectFollowsById(currentProfile.following, allFollows)
     let isFollowing = following.filter(follow =>
       follow.followee_id == photoProfile.id).length === 1
-    debugger
     this.setState({
       isFollowing: isFollowing
     })
@@ -155,22 +154,27 @@ export default class PhotoProfileDetails extends React.Component {
       )
     }
 
-    if (isFollowing) {
-      followLink = (
-        <div onClick={this.handleUnfollow} onMouseOver={this.showUnfollow}
-          className='follow-link' id="following-wrapper">
-          <span 
-            className="following"
-          >Following</span>
-        </div>
-      )
-    } else {
-      followLink = (
-        <div onClick={this.handleFollow} className='follow-link'>
-          <span className="follow">
-            Follow</span>
-        </div>
-      )
+    if (!isCurrentProfile) {
+      if (isFollowing) {
+        followLink = (
+          <div onClick={this.handleUnfollow} onMouseOver={this.showUnfollow}
+            className='follow-link' id="following-wrapper">
+            <span className="following"
+            >
+              &nbsp;•&nbsp;Following
+            </span>
+          </div>
+        )
+      } else {
+        followLink = (
+          <div onClick={this.handleFollow} className='follow-link'>
+            <span className="follow"
+            >
+              &nbsp;•&nbsp;Follow
+            </span>
+          </div>
+        )
+      }
     }
 
     if (!photo.camera === null || !photo.lens === null) {
@@ -231,7 +235,6 @@ export default class PhotoProfileDetails extends React.Component {
                       <Link to={`/profiles/${photo.profile_id}`}>
                         {photo.profileName}
                       </Link>
-                      &nbsp;•&nbsp;
                     </span>
                     {followLink}
                   </div>
@@ -284,8 +287,8 @@ export default class PhotoProfileDetails extends React.Component {
                 )}
                 
                 {likesDetails}
-                
                 {photoGear}
+                  
                 { photo.category === null ? null : (
                 <div className="detail-box">
                   <div className="flex-row">

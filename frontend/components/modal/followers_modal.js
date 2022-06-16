@@ -55,9 +55,17 @@ const FollowersModal = ({ showFollowsModal, toggleFollowsModal, followee, curren
     )
   }
   return (
-    <div className={showFollowsModal ? "modal-mask modal-on" : "modal-off"}>
-      {followersModal}
-    </div>
+    <>
+      <div onClick={toggleFollowsModal}
+        className={showFollowsModal ? "modal-mask modal-on" : "modal-off"}>
+        {followersModal}
+      </div>
+      <div className={showFollowsModal ?
+        'modal-close-container' : 'mask-off'}
+        onClick={toggleFollowsModal} 
+        
+        />
+    </>
   )
 }
 

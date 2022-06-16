@@ -32,7 +32,7 @@ const NavFooter = () => (
 
       <div className="nav-col-03">
         <div className="footer-header">
-          <h5>Developer Links</h5>
+          <h5>Developer</h5>
         </div>
         <div className="footer-link-list">
           <div className="footer-icon-link">

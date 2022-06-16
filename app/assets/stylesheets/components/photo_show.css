@@ -326,21 +326,40 @@ a {
   width: 80px;
   position: absolute;
   top: 0;
-  left: 0;
+  right: -10px;
   background: #fff;
 }
 
-.modal-mask {
+.modal-close-container {
   box-sizing: border-box;
   padding: 0;
-  background-color: rgba(0,0,0,.65);
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  display: block;
+  width: 100%;
   height: 100%;
+  background-color: rgba(0,0,0,.65);
+  z-index: 500;
+}
+
+.profile-modal {
+  z-index: 1100;
+}
+
+.modal-mask {
+  box-sizing: border-box;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1400;
+  height: 100%;
+  pointer-events: none;
 }
 
 .modal-wrapper {
@@ -355,6 +374,8 @@ a {
   overflow: auto;
   outline: 0;
   box-sizing: border-box;
+  z-index: 1400;
+  pointer-events: none;
 }
 
 .likes-modal {
@@ -364,13 +385,15 @@ a {
   margin: 0%;
   position: relative;
   font-size: 14px;
-  /* pointer-events: none; */
+  pointer-events: all;
   padding: 16px 16px 0 16px;
   border-radius: 8px;
   background-color: #fff;
   background-clip: padding-box;
   box-sizing: border-box;
   text-align: left;
+  pointer-events: all;
+  z-index: 1400;
 }
 
 .modal-header {
@@ -463,6 +486,7 @@ a {
   line-height: 20px;
   font-weight: bold;
   border: 2px solid transparent;
+  transition: all 200ms ease-in;
 }
 
 .unfollow-button {
@@ -476,6 +500,7 @@ a {
   background-color: rgb(233, 233, 233);
   border-color: rgb(237, 38, 38);
   color: rgb(237, 38, 38);
+  transition: all 200ms ease-in;
 }
 
 .photo-detail-title.liked, 

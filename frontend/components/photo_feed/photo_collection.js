@@ -2,6 +2,8 @@ import React from 'react'
 import DiscoverRows from './discover_photo_gallery'
 import GridLoader from '../galleries/gallery_grid_loader'
 import collectionTitles from '../../util/collection_titles'
+import CollectionHeaderPlaceholder from './content_loaders/collection_header_placeholder'
+import CoverPhotoLoader from '../profile/content_loaders/cover_photo_loader'
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -115,7 +117,7 @@ export default class PhotoCollection extends React.Component {
 
   render() {
     const { pageTitle, pageDescription, status, photos } = this.state;
-    let coverStyle, gallery;
+    let coverStyle, gallery, collectionHeader, cover;
     if (status === DONE) {
       coverStyle = (
         {
@@ -123,23 +125,12 @@ export default class PhotoCollection extends React.Component {
           rgba(0, 0, 0, 0)), url(${this.randomPhoto()})`
         }
       )
-      gallery = <DiscoverRows photos={photos} />
-    } else {
-      gallery = <GridLoader />
-      coverStyle = (
-        {
-          backgroundImage: 'linear-gradient(315deg, #485461 0 %, #28313b 74 %)',
-          backgroundColor: '#485461'
-        }
-      )
-    }
-
-    return (
-      <div className='collection-container'>
+      cover = (
         <div className="collection-cover-container">
           <div className="cover-img-box" style={coverStyle} />
         </div>
-
+      )
+      collectionHeader = (
         <div className='collection-header'>
           <h4>{pageTitle}</h4>
           <span className='collection-description'>
@@ -147,14 +138,35 @@ export default class PhotoCollection extends React.Component {
           </span>
           <div className='curated-by'>
             <div className="avatar-wrapper-sm" style={
-              { 'backgroundImage': `url(https://my5000px-static.s3.amazonaws.com/5000px-avatar-alt.png)`}
-            } 
+              { 'backgroundImage': `url(https://my5000px-static.s3.amazonaws.com/5000px-avatar-alt.png)` }
+            }
             />
             <span>Curated by <strong>5000px</strong></span>
           </div>
         </div>
+      )
+      gallery = <DiscoverRows photos={photos} />
+    } else {
+      cover = (
+        <CoverPhotoLoader />
+      )
+      collectionHeader = (
+        <div className='collection-header placeholder'>
+          <CollectionHeaderPlaceholder />
+        </div>
+      )
+      gallery = <GridLoader />
+    }
+
+    return (
+      <div className='collection-container'>
+        { cover }
+        { collectionHeader }
+        {/* <div className='collection-header placeholder'>
+          <CollectionHeaderPlaceholder />
+        </div> */}
         <div className='collection-feed-gallery'>
-          {gallery}
+          { gallery }
         </div>
       </div>
     )

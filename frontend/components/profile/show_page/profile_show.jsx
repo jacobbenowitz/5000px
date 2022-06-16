@@ -17,6 +17,7 @@ export default class ProfileShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: null,
       status: IDLE,
       profilePhotos: [],
       showFollowsModal: false,
@@ -27,7 +28,10 @@ export default class ProfileShow extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({ status: IDLE })
+    this.setState({
+      status: IDLE,
+      id: null,
+    })
   }
 
   componentDidMount() {
@@ -39,11 +43,22 @@ export default class ProfileShow extends React.Component {
   }
 
   componentDidUpdate() {
-    const { status } = this.state;
-    const { profile, profileId, fetchPhoto } = this.props;
+    const { status, id  } = this.state;
+    const { profile, profileId, fetchPhoto,
+      fetchProfile, fetchProfiles, getFollows } = this.props;
 
-
-    if (status === IDLE && profile) {
+    if (profileId != id && status !== BUSY) {
+      // debugger
+      this.setState({
+        id: profileId,
+        status: IDLE,
+      })
+      fetchProfile(profileId)
+      fetchProfiles()
+      getFollows()
+    }
+    if (status === IDLE && profile && profileId == profile.id) {
+      // debugger
       this.setState({ status: BUSY })
       let photos = [];
       let fetches = [];
@@ -63,13 +78,13 @@ export default class ProfileShow extends React.Component {
 
   toggleFollowsModal(e) {
     e.preventDefault()
-    e.stopPropagation()
+    // e.stopPropagation()
     this.setState({ showFollowsModal: !this.state.showFollowsModal })
   }
 
   toggleFollowingModal(e) {
     e.preventDefault()
-    e.stopPropagation()
+    // e.stopPropagation()
     this.setState({ showFollowingModal: !this.state.showFollowingModal })
   }
 

@@ -116,6 +116,10 @@
   visibility: hidden;
 }
 
+.mask-off {
+  display: none;
+}
+
 #collection-modal.modal-out,
 #discover-modal.modal-out,
 #user-modal.modal-out {
