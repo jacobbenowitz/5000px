@@ -49,7 +49,6 @@ export default class ProfileShow extends React.Component {
       fetchProfile, fetchProfiles, getFollows } = this.props;
 
     if (profileId != id && status !== BUSY) {
-      // debugger
       this.setState({
         id: profileId,
         status: IDLE,
@@ -60,7 +59,6 @@ export default class ProfileShow extends React.Component {
     }
     if (status === IDLE && profile && profileId == profile.id
       && profile.photoIds.length !== profilePhotos.length) {
-      // debugger
       this.setState({ status: BUSY })
       let ordered;
       let photos = [];

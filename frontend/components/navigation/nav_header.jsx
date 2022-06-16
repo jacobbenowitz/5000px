@@ -71,9 +71,9 @@ export default class NavHeader extends React.Component {
           onMouseEnter={this.toggleLogo}
           onMouseLeave={this.toggleLogo}
         >
-          <Link to={'/'}>
-            {logoHover ? primaryLogoBlue : primaryLogoBlack}
-          </Link>
+        <Link to={'/'}>
+          {logoHover ? primaryLogoBlue : primaryLogoBlack}
+        </Link>
         </div>
         <div className="nav-links">
           <DiscoverNavLinkItem 

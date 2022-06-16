@@ -1,7 +1,7 @@
 {
   "name": "my5000px",
   "version": "1.0.0",
-  "description": "A clone of 500px",
+  "description": "A full-stack clone of 500px by Jacob Benowitz",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.17.9",

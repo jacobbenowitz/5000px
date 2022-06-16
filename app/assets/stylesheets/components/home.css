@@ -228,6 +228,10 @@
 button.follow-button {
   margin: 0;
 }
+button.follow-liker-button, 
+button.unfollow-button {
+  width: 137px;
+}
 
 #landing-gallery-box {
   width: 100%;

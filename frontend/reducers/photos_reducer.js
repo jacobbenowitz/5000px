@@ -11,7 +11,6 @@ import {
 
 import { merge } from 'lodash';
 import { DELETE_LIKE, RECEIVE_LIKE } from '../actions/likes/like_actions';
-import { DELETE_FOLLOW, RECEIVE_FOLLOW } from '../actions/follows/follows_actions';
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -56,7 +55,6 @@ const photosReducer = (prevState = initialState, action) => {
       nextState.status = BUSY
       return nextState;
     case RECEIVE_PHOTO:
-      debugger
       nextState.all[action.photo.photo.id] = action.photo.photo
       return nextState;
     case REMOVE_PHOTO:
@@ -81,22 +79,6 @@ const photosReducer = (prevState = initialState, action) => {
       let filteredLikes = nextState.all[action.like.photo_id]
         .likes.filter(like => like.id !== action.like.id)
       nextState.all[action.like.photo_id].likes = filteredLikes
-    // case RECEIVE_FOLLOW:
-    //   // for the receipent of the follow
-    //   if (Object.values(nextState.all).filter(photo =>
-    //     photo.likes.filter(like =>
-    //       like.liker_id === action.follow.followee_id))
-    //     .length > 0) {
-    //       debugger
-    //     let likeIds = Object.values(nextState.all)
-    //       .filter(photo => photo.likes.filter(like =>
-    //         like.liker_id === action.follow.followee_id))
-    //       .map(like => like.id)
-    //     debugger
-    //     likeIds.forEach(id => nextState[id].followers =
-    //       nextState[id].followers.concat(action.follow))
-    //   }
-    // case DELETE_FOLLOW:
       return nextState;
     default:
       return prevState;

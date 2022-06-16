@@ -35,7 +35,7 @@ export default class SignupForm extends React.Component {
     const user = Object.assign({}, this.state);
     if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
       // use openModal instead
-      console.log(['must fill in all fields'])
+      // console.log(['must fill in all fields'])
     } else {
       processForm(user).then(user => {
         this.props.history.push('/profile/new')

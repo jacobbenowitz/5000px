@@ -25,7 +25,7 @@ Comment.destroy_all
 ################################################################################
 ## comments
 
-comments = [
+$comments = [
   'Excellent work ❤️', 'Amazing shot 😍',
   'Very beautiful, love the contrast ⚪️⚫️', '👍👍👍',
   'Wow, just stunning!', 'Nice shot my friend! ✌️', 
@@ -48,17 +48,17 @@ comments = [
   "Wow...🤯 stunning!", "Perfectly executed 🙏", "🔥🔥", "✌️🙏", "Keep it up 👏"
 ]
 
-prev_comments = []
+$prev_comments = []
 
 def get_comment
-  if comments.length > 1 
-    comment = comments.pop(rand(0...comments.length))
-    prev_comments.push(comment)
+  if $comments.length > 1 
+    comment = $comments.pop(rand(0...$comments.length))
+    $prev_comments.push(comment)
     return comment
   else 
-    comment = comments.first
-    comments = comments.concat(prev_comments)
-    prev_comments = []
+    comment = $comments.first
+    $comments = $comments.concat($prev_comments)
+    $prev_comments = []
     return comment
   end
 end
@@ -205,9 +205,13 @@ def select_cannon_lenses(num)
   lenses = ""
   num_options = options.length
 
-  num.times do 
+  num.times do |i|
     lens = options[rand(0...num_options)]
-    lenses.push(lens + ", ")
+    if i == num 
+      lenses.concat(lens)
+    else 
+      lenses.concat(lens + ", ")
+    end
   end
 
   return lenses
@@ -221,9 +225,13 @@ def select_nikon_lenses(num)
   lenses = ""
   num_options = options.length
 
-  num.times do 
+  num.times do |i|
     lens = options[rand(0...num_options)]
-    lenses.push(lens + ", ")
+    if i == num 
+      lenses.concat(lens)
+    else 
+      lenses.concat(lens + ", ")
+    end
   end
 
   return lenses
@@ -237,9 +245,13 @@ def select_sony_lenses(num)
   lenses = ""
   num_options = options.length
 
-  num.times do 
+  num.times do |i|
     lens = options[rand(0...num_options)]
-    lenses.push(lens + ", ")
+    if i == num 
+      lenses.concat(lens)
+    else 
+      lenses.concat(lens + ", ")
+    end
   end
 
   return lenses
@@ -247,15 +259,19 @@ end
 
 def select_other_lenses(num)
   options = [
-    "Sigma 24-70mm f/2.8", "Tamron 28-75mm f/2.8", "Sigma 16mm f/1.4", "Sigma 150-600mm f/5-6.3 ", "Sigma 18-35mm f/1.8", "Sigma 18-50mm f/2.8", "Tamron 70-180mm f/2.8"
+    "Sigma 24-70mm f/2.8", "Tamron 28-75mm f/2.8", "Sigma 16mm f/1.4", "Sigma 150-600mm f/5-6.3", "Sigma 18-35mm f/1.8", "Sigma 18-50mm f/2.8", "Tamron 70-180mm f/2.8"
   ]
 
   lenses = ""
   num_options = options.length
 
-  num.times do 
+  num.times do |i|
     lens = options[rand(0...num_options)]
-    lenses.push(lens + ", ")
+    if i == num 
+      lenses.concat(lens)
+    else 
+      lenses.concat(lens + ", ")
+    end
   end
 
   return lenses
@@ -646,7 +662,7 @@ photo_1 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_1_saved = Photo.new(photo_1)
 photo_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/architecture-building-black-and-white-staircase-staircase-steps-spiral-london-spiral-staircase_t20_Amw31y.jpg'), filename: 'minimal_1.jpg')
@@ -661,7 +677,7 @@ photo_2 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_2_saved = Photo.new(photo_2)
 photo_2_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/big-surf-off-the-coast-of-southern-africa_t20_K6EEyE.jpg'), filename: 'minimal_2.jpg')
@@ -676,7 +692,7 @@ photo_3 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_3_saved = Photo.new(photo_3)
 photo_3_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/cabalgata-en-el-mar_t20_gLlABx.jpg'), filename: 'minimal_3.jpg')
@@ -691,7 +707,7 @@ photo_4 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_4_saved = Photo.new(photo_4)
 photo_4_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/capture-light_t20_ZnBxYY.jpg'), filename: 'minimal_4.jpg')
@@ -706,7 +722,7 @@ photo_5 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_5_saved = Photo.new(photo_5)
 photo_5_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/cat-cat-s-eye-minimal-minimalist-minimalistic-minimalism_t20_7yN4Kk.jpg'), filename: 'minimal_5.jpg')
@@ -721,7 +737,7 @@ photo_6 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_6_saved = Photo.new(photo_6)
 photo_6_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/city-architecture-bridge-uk-landmark-london-fog-monochrome-mist-millennium-bridge_t20_A321Py.jpg'), filename: 'minimal_6.jpg')
@@ -736,7 +752,7 @@ photo_7 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_7_saved = Photo.new(photo_7)
 photo_7_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/city-architecture-people-business-adult-sign-hand-iron-minimal-desktop_t20_kRRmzE.jpg'), filename: 'minimal_7.jpg')
@@ -751,7 +767,7 @@ photo_8 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_8_saved = Photo.new(photo_8)
 photo_8_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/door-outside-that-leads-to-the-ocean_t20_ZJJRn0.jpg'), filename: 'minimal_8.jpg')
@@ -766,7 +782,7 @@ photo_9 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_9_saved = Photo.new(photo_9)
 photo_9_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/frame-mock-up-canvas-white-poster-blank-template-background-wall-design-mock-up-mockup-empty-copy_t20_nLZw6P.jpg'), filename: 'minimal_9.jpg')
@@ -781,7 +797,7 @@ photo_10 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_10_saved = Photo.new(photo_10)
 photo_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/green-spiral-vine-macro-curly-spirals-minimal-green-plants-natural-spirals-plant-spirals_t20_kz3kkX.jpg'), filename: 'minimal_10.jpg')
@@ -796,7 +812,7 @@ photo_11 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_11_saved = Photo.new(photo_11)
 photo_11_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/minimal_t20_PJjN97.jpg'), filename: 'minimal_11.jpg')
@@ -811,7 +827,7 @@ photo_12 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_12_saved = Photo.new(photo_12)
 photo_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/minimalistic-orange-corridor-with-arched-ceiling-in-egyptian-architecture_t20_4230d2.jpg'), filename: 'minimal_12.jpg')
@@ -826,7 +842,7 @@ photo_13 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_13_saved = Photo.new(photo_13)
 photo_13_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/minimalistic-vibe_t20_VW10N1.jpg'), filename: 'minimal_13.jpg')
@@ -841,7 +857,7 @@ photo_14 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_14_saved = Photo.new(photo_14)
 photo_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/nature-fog-bench-dock-minimalism-neutrals_t20_onn1E8.jpg'), filename: 'minimal_14.jpg')
@@ -856,7 +872,7 @@ photo_15 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_15_saved = Photo.new(photo_15)
 photo_15_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/nature-outdoors-sky-night-adventure-male-landscape-star-impact-earth-milky-way-minimalism-epic_t20_nR7L9A.jpg'), filename: 'minimal_15.jpg')
@@ -871,7 +887,7 @@ guest_photo_16 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_16_saved = Photo.new(guest_photo_16)
 guest_photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/nature-sky-sunset-mountain-mountain-landscape-extreme-sports-mountains-paragliding-neutral-airy_t20_nRk8Kn.jpg'), filename: 'minimal_16.jpg')
@@ -886,7 +902,7 @@ guest_photo_17 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_17_saved = Photo.new(guest_photo_17)
 guest_photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/scandinavian-modern-white-cozy-eco-interior-white-table-and-mirror-in-bed-room-minimalism-cactus_t20_Jzvvp4.jpg'), filename: 'minimal_17.jpg')
@@ -901,7 +917,7 @@ guest_photo_18 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_18_saved = Photo.new(guest_photo_18)
 guest_photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/silhouettes-of-mountains-in-the-mist-and-bird-flying-light-blue-color-minimal-landscape-adventure_t20_lLlXvQ.jpg'), filename: 'minimal_18.jpg')
@@ -916,7 +932,7 @@ guest_photo_19 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_19_saved = Photo.new(guest_photo_19)
 guest_photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/sky-architecture-sunset-yellow-window-love-edifice-apartment_t20_8gZPwj.jpg'), filename: 'minimal_19.jpg')
@@ -931,7 +947,7 @@ guest_photo_20 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_20_saved = Photo.new(guest_photo_20)
 guest_photo_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/summer-purple-lavender-running-freedom-girl-flowers-lavender-farm_t20_jjlOVd.jpg'), filename: 'minimal_20.jpg')
@@ -946,7 +962,7 @@ guest_photo_21 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_21_saved = Photo.new(guest_photo_21)
 guest_photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/travel-landscape-desert-dunes-orange-color-sand-dunes-minimalism-neutral-colors-tiny-human_t20_E0GePJ.jpg'), filename: 'minimal_21.jpg')
@@ -961,7 +977,7 @@ guest_photo_22 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_guest_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 guest_photo_22_saved = Photo.new(guest_photo_22)
 guest_photo_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/minimalism/windows-on-windows_t20_knrmR4.jpg'), filename: 'minimal_22.jpg')
@@ -1029,7 +1045,7 @@ comment_12 = Comment.new({
   body: get_comment
 })
 comment_13 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_10_saved.id,
   photo_id: photo_7_saved.id,
   body: get_comment
 })
@@ -1136,7 +1152,7 @@ photo_16 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'people',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_16_saved = Photo.new(photo_16)
 photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Benowitz Jacob - Eyes.jpg'), filename: 'jacob_16.jpg')
@@ -1162,7 +1178,7 @@ photo_17 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'city',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_17_saved = Photo.new(photo_17)
 photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Benowitz Jacob - LampSkyColor.jpg'), filename: 'jacob_17.jpg')
@@ -1174,7 +1190,7 @@ comment_34 = Comment.new({
   body: get_comment
 })
 comment_35 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_animals_saved.id,
   photo_id: photo_17_saved.id,
   body: get_comment
 })
@@ -1188,7 +1204,7 @@ photo_18 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'nature',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_18_saved = Photo.new(photo_18)
 photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/DSC_Creative_0214.jpg'), filename: 'jacob_18.jpg')
@@ -1214,7 +1230,7 @@ photo_18_1 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'creative',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_18_1_saved = Photo.new(photo_18_1)
 photo_18_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/DSC_Creative_0232.jpg'), filename: 'jacob_18_1.jpg')
@@ -1240,7 +1256,7 @@ photo_19 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'nature',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_19_saved = Photo.new(photo_19)
 photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_1453.jpg'), filename: 'jacob_19.jpg')
@@ -1267,7 +1283,7 @@ photo_20 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'nature',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_20_saved = Photo.new(photo_20)
 photo_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_9052.jpg'), filename: 'jacob_20.jpg')
@@ -1282,7 +1298,7 @@ photo_21 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'city',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_21_saved = Photo.new(photo_21)
 photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0443.jpg'), filename: 'jacob_21.jpg')
@@ -1308,7 +1324,7 @@ photo_22 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'city',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_22_saved = Photo.new(photo_22)
 photo_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0794.jpg'), filename: 'jacob_22.jpg')
@@ -1323,7 +1339,7 @@ photo_23 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'beach',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_23_saved = Photo.new(photo_23)
 photo_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0885.jpg'), filename: 'jacob_23.jpg')
@@ -1359,7 +1375,7 @@ photo_24 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'beach',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_24_saved = Photo.new(photo_24)
 photo_24_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_2774.jpg'), filename: 'jacob_24.jpg')
@@ -1374,7 +1390,7 @@ photo_25 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'beach',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_25_saved = Photo.new(photo_25)
 photo_25_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Sunset.jpg'), filename: 'jacob_25.jpg')
@@ -1389,7 +1405,7 @@ photo_26 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'creative',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_26_saved = Photo.new(photo_26)
 photo_26_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Upside.jpg'), filename: 'jacob_26.jpg')
@@ -1416,7 +1432,7 @@ jacob_photo_27 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 jacob_photo_27_saved = Photo.new(jacob_photo_27)
 jacob_photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_2789.jpg'), filename: 'jacob_27.jpg')
@@ -1431,7 +1447,7 @@ jacob_photo_28 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 jacob_photo_28_saved = Photo.new(jacob_photo_28)
 jacob_photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_6565.jpg'), filename: 'jacob_28.jpg')
@@ -1457,7 +1473,7 @@ jacob_photo_29 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 jacob_photo_29_saved = Photo.new(jacob_photo_29)
 jacob_photo_29_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_6576.jpg'), filename: 'jacob_29.jpg')
@@ -1472,7 +1488,7 @@ jacob_photo_30 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 jacob_photo_30_saved = Photo.new(jacob_photo_30)
 jacob_photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/JacobBenowitz_Contact_Fallback.jpg'), filename: 'jacob_30.jpg')
@@ -1487,7 +1503,7 @@ jacob_photo_31 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 jacob_photo_31_saved = Photo.new(jacob_photo_31)
 jacob_photo_31_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/JacobBenowitz_Cove_Fallback.jpg'), filename: 'jacob_31.jpg')
@@ -1502,7 +1518,7 @@ jacob_photo_32 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_jacob_saved.id,
   category: 'minimalism',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 jacob_photo_32_saved = Photo.new(jacob_photo_32)
 jacob_photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/JacobBenowitz_Home_Fallback.jpg'), filename: 'jacob_32.jpg')
@@ -1520,7 +1536,7 @@ photo_27 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_27_saved = Photo.new(photo_27)
 photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/abstract-background_t20_E4387Z.jpg'), filename: 'abstract_27.jpg')
@@ -1546,7 +1562,7 @@ photo_28 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_28_saved = Photo.new(photo_28)
 photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg'), filename: 'abstract_28.jpg')
@@ -1561,7 +1577,8 @@ comment_55 = Comment.new({
   profile_id: profile_14_saved.id,
   photo_id: photo_28_saved.id,
   body: get_comment
-})comment_56 = Comment.new({
+})
+comment_56 = Comment.new({
   profile_id: profile_13_saved.id,
   photo_id: photo_28_saved.id,
   body: get_comment
@@ -1576,7 +1593,7 @@ photo_28_1 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_28_1_saved = Photo.new(photo_28_1)
 photo_28_1_saved.photo.attach(io: File.open('//Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg')
@@ -1602,7 +1619,7 @@ photo_29 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_29_saved = Photo.new(photo_29)
 photo_29_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/ferris-wheel-upside-down-evening-neon-colors-attraction-carousel-crystal-ball_t20_rB8vBo.jpg'), filename: 'abstract_29.jpg')
@@ -1617,7 +1634,7 @@ photo_30 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_30_saved = Photo.new(photo_30)
 photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/motions-3-3_t20_BAP4Nv.jpg'), filename: 'abstract_30.jpg')
@@ -1629,7 +1646,7 @@ comment_59 = Comment.new({
   body: get_comment
 })
 comment_60 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_animals_saved.id,
   photo_id: photo_30_saved.id,
   body: get_comment
 })
@@ -1643,7 +1660,7 @@ photo_31 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_31_saved = Photo.new(photo_31)
 photo_31_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/nominated-digital-experiment_t20_XQNjXR.jpg'), filename: 'abstract_31.jpg')
@@ -1659,7 +1676,7 @@ abs_photo_32 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 abs_photo_32_saved = Photo.new(abs_photo_32)
 abs_photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/people-come-and-go-that-s-life_t20_dzRGY9.jpg'), filename: 'abstract_32.jpg')
@@ -1685,7 +1702,7 @@ abs_photo_33 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 abs_photo_33_saved = Photo.new(abs_photo_33)
 abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/reflection-pattern-sphere-abstract-bubble-texture-macro-creative-closeup-soap-bubble_t20_OJevlE.jpg'), filename: 'abstract_33.jpg')
@@ -1706,7 +1723,7 @@ abs_photo_34 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 abs_photo_34_saved = Photo.new(abs_photo_34)
 abs_photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/the-roof-of-the-building-esplanade-theatres-on-the-bay_t20_kzAoRp.jpg'), filename: 'abstract_34.jpg')
@@ -1727,7 +1744,7 @@ abs_photo_35 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 abs_photo_35_saved = Photo.new(abs_photo_35)
 abs_photo_35_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/through-tiny-lens_t20_loK6db.jpg'), filename: 'abstract_35.jpg')
@@ -1753,19 +1770,19 @@ abs_photo_36 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 abs_photo_36_saved = Photo.new(abs_photo_36)
 abs_photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'abstract_36.jpg')
 abs_photo_36_saved.save!
 
 comment_66 = Comment.new({
-  profile_id: profile__saved.id,
+  profile_id: profile_13_saved.id,
   photo_id: abs_photo_36_saved.id,
   body: get_comment
 })
 comment_67 = Comment.new({
-  profile_id: profile__saved.id,
+  profile_id: profile_14_saved.id,
   photo_id: abs_photo_36_saved.id,
   body: get_comment
 })
@@ -1779,7 +1796,7 @@ abs_photo_37 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_abstract_saved.id,
   category: 'abstract',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 abs_photo_37_saved = Photo.new(abs_photo_37)
 abs_photo_37_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/warm-city-1-3_t20_aO1a6Q.jpg'), filename: 'abstract_37.jpg')
@@ -1797,7 +1814,7 @@ photo_32 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_32_saved = Photo.new(photo_32)
 photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/_t20_kLZ3zr.jpg'), filename: 'animals_32.jpg')
@@ -1833,7 +1850,7 @@ photo_33 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_33_saved = Photo.new(photo_33)
 photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/_t20_YamEaR.jpg'), filename: 'animals_33.jpg')
@@ -1859,7 +1876,7 @@ photo_34 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_34_saved = Photo.new(photo_34)
 photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/a-monkey-sat-in-a-human-pose-in-loro-park-tenerife_t20_98LvYA.jpg'), filename: 'animals_34.jpg')
@@ -1867,17 +1884,17 @@ photo_34_saved.save!
 
 comment_73 = Comment.new({
   profile_id: profile_sports_saved.id,
-  photo_id: photo_35_saved.id,
+  photo_id: photo_34_saved.id,
   body: get_comment
 })
 comment_74 = Comment.new({
   profile_id: profile_11_saved.id,
-  photo_id: photo_35_saved.id,
+  photo_id: photo_34_saved.id,
   body: get_comment
 })
 comment_75 = Comment.new({
   profile_id: profile_14_saved.id,
-  photo_id: photo_35_saved.id,
+  photo_id: photo_34_saved.id,
   body: get_comment
 })
 
@@ -1890,7 +1907,7 @@ photo_36 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_36_saved = Photo.new(photo_36)
 photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-animal-nature-animals-green-wild-exotic-fox-wild-nature-foxy_t20_rL13QJ.jpg'), filename: 'animals_36.jpg')
@@ -1911,7 +1928,7 @@ photo_37 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_37_saved = Photo.new(photo_37)
 photo_37_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg'), filename: 'animals_37.jpg')
@@ -1937,7 +1954,7 @@ photo_38 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_38_saved = Photo.new(photo_38)
 photo_38_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/happy-elephant_t20_kLWQ24.jpg'), filename: 'animals_38.jpg')
@@ -1958,7 +1975,7 @@ photo_39 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_39_saved = Photo.new(photo_39)
 photo_39_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/humans-in-monkeys-body-everyone-is-a-human-kind-just-living-in-different-dimension-and-different-life_t20_yne8zp.jpg'), filename: 'animals_39.jpg')
@@ -1984,7 +2001,7 @@ photo_40 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_40_saved = Photo.new(photo_40)
 photo_40_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/red-fox-having-a-good-stretch-in-the-dunes-around-kijkduin-in-the-hague-netherlands-details-of-fur_t20_mLZJx3.jpg'), filename: 'animals_40.jpg')
@@ -1999,7 +2016,7 @@ animal_photo_41 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 animal_photo_41_saved = Photo.new(animal_photo_41)
 animal_photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/reindeers-in-a-winter-landscape-with-a-glow-on-snowy-mountains-the-reindeer-looks-directly-into-the_t20_3d2j4o.jpg'), filename: 'animals_41.jpg')
@@ -2014,7 +2031,7 @@ animal_photo_42 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 animal_photo_42_saved = Photo.new(animal_photo_42)
 animal_photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/the-baby-monkey-sits-on-a-stone-and-eats-tropical-animals-in-their-natural-habitat_t20_0X38rw.jpg'), filename: 'animals_42.jpg')
@@ -2040,7 +2057,7 @@ animal_photo_43 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 animal_photo_43_saved = Photo.new(animal_photo_43)
 animal_photo_43_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/together-forever_t20_1J8k41.jpg'), filename: 'animals_43.jpg')
@@ -2055,7 +2072,7 @@ animal_photo_44 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 animal_photo_44_saved = Photo.new(animal_photo_44)
 animal_photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/twenty20_600e29d6-776e-479a-b0e6-7dce00962a7c.jpg'), filename: 'animals_44.jpg')
@@ -2070,7 +2087,7 @@ animal_photo_45 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_animals_saved.id,
   category: 'animals',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 animal_photo_45_saved = Photo.new(animal_photo_45)
 animal_photo_45_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/wild-beautiful-giant-iguana-reminding-prehistoric-reptiles-close-up-portrait_t20_kL86B4.jpg'), filename: 'animals_45.jpg')
@@ -2089,7 +2106,7 @@ photo_40_choc = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_40_choc_saved = Photo.new(photo_40_choc)
 photo_40_choc_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-brownie-batter-on-beaters_t20_yvjYVx.jpg'), filename: 'chocolate_40_choc.jpg')
@@ -2115,7 +2132,7 @@ photo_41 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_41_saved = Photo.new(photo_41)
 photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-cake_t20_yvZNpx.jpg'), filename: 'chocolate_41.jpg')
@@ -2151,7 +2168,7 @@ photo_42 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_42_saved = Photo.new(photo_42)
 photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-chia-seed-pudding_t20_PoPbdR.jpg'), filename: 'chocolate_42.jpg')
@@ -2173,7 +2190,7 @@ photo_43 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_43_saved = Photo.new(photo_43)
 photo_43_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-curls_t20_4ENQOy.jpg'), filename: 'chocolate_43.jpg')
@@ -2188,7 +2205,7 @@ photo_44 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_44_saved = Photo.new(photo_44)
 photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg'), filename: 'chocolate_44.jpg')
@@ -2200,7 +2217,7 @@ comment_88 = Comment.new({
   body: get_comment
 })
 comment_89 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_animals_saved.id,
   photo_id: photo_44_saved.id,
   body: get_comment
 })
@@ -2214,7 +2231,7 @@ photo_45 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_45_saved = Photo.new(photo_45)
 photo_45_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-truffles_t20_JlPK14.jpg'), filename: 'chocolate_45.jpg')
@@ -2229,7 +2246,7 @@ photo_46 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_46_saved = Photo.new(photo_46)
 photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolates_t20_1Je2dx.jpg'), filename: 'chocolate_46.jpg')
@@ -2255,7 +2272,7 @@ photo_47 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_47_saved = Photo.new(photo_47)
 photo_47_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/cocoa-powder-spilled-out-on-a-white-table_t20_kjEgYE.jpg'), filename: 'chocolate_47.jpg')
@@ -2271,7 +2288,7 @@ chocolate_photo_48 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_48_saved = Photo.new(chocolate_photo_48)
 chocolate_photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/marzipan-balls_t20_rKv67g.jpg'), filename: 'chocolate_48.jpg')
@@ -2286,7 +2303,7 @@ chocolate_photo_49 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_49_saved = Photo.new(chocolate_photo_49)
 chocolate_photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/my-idea-of-heaven_t20_pld4n8.jpg'), filename: 'chocolate_49.jpg')
@@ -2312,7 +2329,7 @@ chocolate_photo_50 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_50_saved = Photo.new(chocolate_photo_50)
 chocolate_photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/photography-flower-sun-travel-sea-yellow-beach-light-vacations-pattern-sphere-still-life-business-my_t20_dpe4XR.jpg'), filename: 'chocolate_50.jpg')
@@ -2327,7 +2344,7 @@ chocolate_photo_51 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_51_saved = Photo.new(chocolate_photo_51)
 chocolate_photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/raw-dessert_t20_YXx6VW.jpg'), filename: 'chocolate_51.jpg')
@@ -2348,7 +2365,7 @@ chocolate_photo_52 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_52_saved = Photo.new(chocolate_photo_52)
 chocolate_photo_52_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/the-right-cake_t20_EPgrWJ.jpg'), filename: 'chocolate_52.jpg')
@@ -2363,7 +2380,7 @@ chocolate_photo_53 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_53_saved = Photo.new(chocolate_photo_53)
 chocolate_photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/tiramis_t20_yvAYoO.jpg'), filename: 'chocolate_53.jpg')
@@ -2378,7 +2395,7 @@ chocolate_photo_54 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_54_saved = Photo.new(chocolate_photo_54)
 chocolate_photo_54_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/white-chocolate-with-hazelnuts_t20_bkjGzg.jpg'), filename: 'chocolate_54.jpg')
@@ -2393,7 +2410,7 @@ chocolate_photo_55 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_chocolate_saved.id,
   category: 'chocolate',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 chocolate_photo_55_saved = Photo.new(chocolate_photo_55)
 chocolate_photo_55_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/white-rose_t20_7OYOKN.jpg'), filename: 'chocolate_55.jpg')
@@ -2410,7 +2427,7 @@ photo_48 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_48_saved = Photo.new(photo_48)
 photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/a-guitarist-with-long-hair-performing-at-a-concert-with-pyro_t20_vLVAaG.jpg'), filename: 'music_48.jpg')
@@ -2441,7 +2458,7 @@ photo_49 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_49_saved = Photo.new(photo_49)
 photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/behind-the-djs_t20_pY9gdO.jpg'), filename: 'music_49.jpg')
@@ -2462,7 +2479,7 @@ photo_50 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_50_saved = Photo.new(photo_50)
 photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/close-up-drum-sticks-drumming-hit-beat-rhythm-on-drum-surface-with-splash-water-drops_t20_QJQ99y.jpg'), filename: 'music_50.jpg')
@@ -2470,12 +2487,12 @@ photo_50_saved.save!
 
 comment_99 = Comment.new({
   profile_id: profile_14_saved.id,
-  photo_id: photo__saved.id,
+  photo_id: photo_50_saved.id,
   body: get_comment
 })
 comment_100 = Comment.new({
   profile_id: profile_guest_saved.id,
-  photo_id: photo__saved.id,
+  photo_id: photo_50_saved.id,
   body: get_comment
 })
 
@@ -2488,7 +2505,7 @@ photo_51 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_51_saved = Photo.new(photo_51)
 photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/defocus-young-woman-playing-guitar-on-sunset-in-autumn-field-candid-silhouette-woman-in-hat-chill_t20_NlWYyQ.jpg'), filename: 'music_51.jpg')
@@ -2519,7 +2536,7 @@ photo_52 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_52_saved = Photo.new(photo_52)
 photo_52_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/dnepropetrovsk-ukraine-04-05-2017-a-musician-on-a-city-street-after-a-successful-concert_t20_WJEmmz.jpg'), filename: 'music_52.jpg')
@@ -2534,7 +2551,7 @@ photo_53 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_53_saved = Photo.new(photo_53)
 photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/happy-accordion-player_t20_rorAaJ.jpg'), filename: 'music_53.jpg')
@@ -2560,7 +2577,7 @@ photo_54 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_54_saved = Photo.new(photo_54)
 photo_54_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/illuminated-neon-words-on-the-wall_t20_yRbZAL.jpg'), filename: 'music_54.jpg')
@@ -2575,7 +2592,7 @@ photo_55 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_55_saved = Photo.new(photo_55)
 photo_55_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music_t20_mxbEml.jpg'), filename: 'music_55.jpg')
@@ -2596,14 +2613,14 @@ photo_56 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_56_saved = Photo.new(photo_56)
 photo_56_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-concert-musician-drummer-drums-live-drummer_t20_4dmEEl.jpg'), filename: 'music_56.jpg')
 photo_56_saved.save!
 
 comment_107 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_animals_saved.id,
   photo_id: photo_56_saved.id,
   body: get_comment
 })
@@ -2622,7 +2639,7 @@ music_photo_57 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_57_saved = Photo.new(music_photo_57)
 music_photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-music-musical-instrument-classic-playing-music-saksophone_t20_K8Lrk9.jpg'), filename: 'music_57.jpg')
@@ -2643,7 +2660,7 @@ music_photo_58 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_58_saved = Photo.new(music_photo_58)
 music_photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-musical-instrument-musician-music-festival-woman-play-sound-musical-instruments-harp_t20_pW9lvk.jpg'), filename: 'music_58.jpg')
@@ -2669,7 +2686,7 @@ music_photo_59 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_59_saved = Photo.new(music_photo_59)
 music_photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/outdoors-sunset-beach-beach-decoration-celebration-music-concert-party-party-craft-chill-vibes_t20_9JAlwB.jpg'), filename: 'music_59.jpg')
@@ -2684,7 +2701,7 @@ music_photo_60 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_60_saved = Photo.new(music_photo_60)
 music_photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/piano-hands-woman-piano-keys-pianist-playing-piano-playing-the-piano-vintage-piano_t20_LX7Jxo.jpg'), filename: 'music_60.jpg')
@@ -2710,7 +2727,7 @@ music_photo_61 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_61_saved = Photo.new(music_photo_61)
 music_photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/playing-the-mandolin_t20_P3WEmR.jpg'), filename: 'music_61.jpg')
@@ -2725,7 +2742,7 @@ music_photo_62 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_62_saved = Photo.new(music_photo_62)
 music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/selective-focus-music-acoustic-guitar-guitar-musical-instrument-musician-acoustic-musicians_t20_vOvpXE.jpg'), filename: 'music_62.jpg')
@@ -2747,7 +2764,7 @@ music_photo_62 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_62_saved = Photo.new(music_photo_62)
 music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/summer-hand-music-music-antique-vintage-hands-hands-retro-closeup-vinyl-dj-old-school-putting_t20_yp6aa2.jpg'), filename: 'music_62.jpg')
@@ -2762,7 +2779,7 @@ music_photo_63 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_63_saved = Photo.new(music_photo_63)
 music_photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/two-young-musicians-playing-classic-digital-piano-at-home-during-online-concert-at-home_t20_om9AkW.jpg'), filename: 'music_63.jpg')
@@ -2777,7 +2794,7 @@ music_photo_64 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_music_saved.id,
   category: 'music',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 music_photo_64_saved = Photo.new(music_photo_64)
 music_photo_64_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/window-guitar-natural-light-morning-light_t20_PJnaJJ.jpg'), filename: 'music_64.jpg')
@@ -2789,7 +2806,7 @@ comment_115 = Comment.new({
   body: get_comment
 })
 comment_116 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_music_saved.id,
   photo_id: music_photo_64_saved.id,
   body: get_comment
 })
@@ -2806,7 +2823,7 @@ photo_57 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_57_saved = Photo.new(photo_57)
 photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adrenaline-trail-dirt-man-leg-boot-biker-racer-moto-active-cross-enduro-motorcyclist-boots_t20_KArpK1.jpg'), filename: 'sports_57.jpg')
@@ -2821,7 +2838,7 @@ photo_58 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_58_saved = Photo.new(photo_58)
 photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adventure-sports-sports-extreme-sports-action-adrenaline-adventurous-watersports-flyboard_t20_g1bEzz.jpg'), filename: 'sports_58.jpg')
@@ -2847,7 +2864,7 @@ photo_59 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_59_saved = Photo.new(photo_59)
 photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adventure-surfing-sports-extreme-sports-extreme-sports-water-sports-life-surf-adrenaline-adventurous_t20_JokERk.jpg'), filename: 'sports_59.jpg')
@@ -2873,7 +2890,7 @@ photo_60 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_60_saved = Photo.new(photo_60)
 photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/backflip-off-motorbike_t20_eVnelb.jpg'), filename: 'sports_60.jpg')
@@ -2888,7 +2905,7 @@ photo_61 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_61_saved = Photo.new(photo_61)
 photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/bmx-freestyle_t20_GREW1R.jpg'), filename: 'sports_61.jpg')
@@ -2934,7 +2951,7 @@ photo_62 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_62_saved = Photo.new(photo_62)
 photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/dune-rider_t20_1WPPev.jpg'), filename: 'sports_62.jpg')
@@ -2949,7 +2966,7 @@ photo_63 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_63_saved = Photo.new(photo_63)
 photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/going-down_t20_Noelrp.jpg'), filename: 'sports_63.jpg')
@@ -2970,7 +2987,7 @@ photo_64 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_64_saved = Photo.new(photo_64)
 photo_64_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/hot-summer-days-are-just-perfect-for-a-river-cool-down_t20_8ORbGa.jpg'), filename: 'sports_64.jpg')
@@ -2985,7 +3002,7 @@ photo_65 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_65_saved = Photo.new(photo_65)
 photo_65_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/jerrod-skorupski-pontiac-14_t20_VodWQ8.jpg'), filename: 'sports_65.jpg')
@@ -3011,7 +3028,7 @@ photo_66 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_66_saved = Photo.new(photo_66)
 photo_66_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/KokOOx_t20_KokOOx.jpg'), filename: 'sports_66.jpg')
@@ -3037,7 +3054,7 @@ photo_67 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_67_saved = Photo.new(photo_67)
 photo_67_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/MQmDKe_t20_d12GoB.jpg'), filename: 'sports_67.jpg')
@@ -3052,7 +3069,7 @@ photo_68 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_68_saved = Photo.new(photo_68)
 photo_68_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/nominated-austria-kaprun_t20_VWNpQk.jpg'), filename: 'sports_68.jpg')
@@ -3078,7 +3095,7 @@ photo_69 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_69_saved = Photo.new(photo_69)
 photo_69_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/outdoors-people-sport-sports-extreme-sports-motorcycle-racing-race-motorbike-outdoor-activity_t20_QKZobb.jpg'), filename: 'sports_69.jpg')
@@ -3093,7 +3110,7 @@ photo_70 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_70_saved = Photo.new(photo_70)
 photo_70_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/outdoors-winter-cold-snow-adventure-adventure-mountain-sport-recreation-action-outdoor-skier_t20_3Q7P3y.jpg'), filename: 'sports_70.jpg')
@@ -3120,7 +3137,7 @@ comment_137 = Comment.new({
   body: get_comment
 })
 comment_138 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_animals_saved.id,
   photo_id: photo_69_saved.id,
   body: get_comment
 })
@@ -3139,7 +3156,7 @@ photo_71 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_71_saved = Photo.new(photo_71)
 photo_71_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/paragliding-in-the-mountains-extreme-sports-hang-glider-paragliding-sport-extreme-glider-hang-flight_t20_YE62a4.jpg'), filename: 'sports_71.jpg')
@@ -3154,7 +3171,7 @@ photo_72 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_72_saved = Photo.new(photo_72)
 photo_72_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/sport-freedom-fly-blue-sky-paragliders-tandem-bucket-list-sunrise-sunset-skydiving-parachuting_t20_XNRPX3.jpg'), filename: 'sports_72.jpg')
@@ -3180,7 +3197,7 @@ photo_73 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_73_saved = Photo.new(photo_73)
 photo_73_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/sport-surfing-waves-surf-extreme_t20_8OJe9g.jpg'), filename: 'sports_73.jpg')
@@ -3195,7 +3212,7 @@ photo_74 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_74_saved = Photo.new(photo_74)
 photo_74_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg'), filename: 'sports_74.jpg')
@@ -3216,7 +3233,7 @@ photo_75 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_75_saved = Photo.new(photo_75)
 photo_75_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/view-from-above-flying-happiness-girl-above-blue-sky-paradise-happy-paragliding-happy-girl_t20_e9Z9ko.jpg'), filename: 'sports_75.jpg')
@@ -3242,7 +3259,7 @@ photo_76 = {
   taken: Faker::Date.between(from: 90.days.ago, to: Date.today),
   profile_id: profile_sports_saved.id,
   category: 'sports',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 photo_76_saved = Photo.new(photo_76)
 photo_76_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/wave-ocean-surf-caribbean-surfer-extreme-sport-ocean-waves-seaspray-sunnyseasand-bvi-apple-bay_t20_rLvzlX.jpg'), filename: 'sports_76.jpg')
@@ -3268,7 +3285,7 @@ general_01 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_8_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_01_saved = Photo.new(general_01)
 general_01_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: 'general_01.jpg')
@@ -3283,7 +3300,7 @@ general_02 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_8_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_02_saved = Photo.new(general_02)
 general_02_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/bike-in-urban-area_t20_ZV18zj.jpg'), filename: 'general_02.jpg')
@@ -3316,7 +3333,7 @@ general_03 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_9_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_03_saved = Photo.new(general_03)
 general_03_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/bright-and-colorful-jump_t20_B80RmO.jpg'), filename: 'general_03.jpg')
@@ -3331,7 +3348,7 @@ general_04 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_9_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_04_saved = Photo.new(general_04)
 general_04_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/chifogo_t20_dxRlJA.jpg'), filename: 'general_04.jpg')
@@ -3359,7 +3376,7 @@ general_05 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_10_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_05_saved = Photo.new(general_05)
 general_05_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/city-bridge-woman-at-the-bridge-winter-snow-glasses-weather-eyes-hands-scarf-gloves-city-life-style_t20_Kvn8n9.jpg'), filename: 'general_05.jpg')
@@ -3374,7 +3391,7 @@ general_06 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_10_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_06_saved = Photo.new(general_06)
 general_06_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg'), filename: 'general_06.jpg')
@@ -3406,7 +3423,7 @@ general_07 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_10_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_07_saved = Photo.new(general_07)
 general_07_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/female-hand-with-palm-leaves-on-a-black-dark-background-dark-light-stylish-beauty-composition_t20_rRBBgw.jpg'), filename: 'general_07.jpg')
@@ -3423,7 +3440,7 @@ general_08 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_11_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_08_saved = Photo.new(general_08)
 general_08_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/fresh-plant-minimal-background_t20_x27K1Q.jpg'), filename: 'general_08.jpg')
@@ -3438,7 +3455,7 @@ general_09 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_11_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_09_saved = Photo.new(general_09)
 general_09_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/jumping-for-joy-in-canada_t20_0AEgkV.jpg'), filename: 'general_09.jpg')
@@ -3471,7 +3488,7 @@ general_10 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_12_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_10_saved = Photo.new(general_10)
 general_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg'), filename: 'general_10.jpg')
@@ -3497,7 +3514,7 @@ general_11 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_12_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_11_saved = Photo.new(general_11)
 general_11_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/outdoors-adventure-summer-surfboard-surfing-recreation-extreme-sports-water-sports-outdoor-surf_t20_GJGOQo.jpg'), filename: 'general_11.jpg')
@@ -3512,7 +3529,7 @@ general_12 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_12_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_12_saved = Photo.new(general_12)
 general_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/palm-leave-from-real-close-abstract-texture-with-pastel-colors_t20_2JPnKK.jpg'), filename: 'general_12.jpg')
@@ -3538,7 +3555,7 @@ general_13 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_12_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_13_saved = Photo.new(general_13)
 general_13_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/QQgekN_t20_mvLBQn.jpg'), filename: 'general_13.jpg')
@@ -3555,7 +3572,7 @@ general_14 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_13_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_14_saved = Photo.new(general_14)
 general_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/reflections_t20_XQ84wV.jpg'), filename: 'general_14.jpg')
@@ -3567,7 +3584,7 @@ comment_161 = Comment.new({
   body: get_comment
 })
 comment_162 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_jacob_saved.id,
   photo_id: general_14_saved.id,
   body: get_comment
 })
@@ -3581,7 +3598,7 @@ general_15 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_13_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_15_saved = Photo.new(general_15)
 general_15_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/sea-turtles_t20_98OYYY.jpg'), filename: 'general_15.jpg')
@@ -3596,7 +3613,7 @@ general_16 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_13_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_16_saved = Photo.new(general_16)
 general_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg'), filename: 'general_16.jpg')
@@ -3624,7 +3641,7 @@ general_17 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_14_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_17_saved = Photo.new(general_17)
 general_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/toronto-city_t20_6lAdEo.jpg'), filename: 'general_17.jpg')
@@ -3650,7 +3667,7 @@ general_18 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_14_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_18_saved = Photo.new(general_18)
 general_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/under-cave_t20_AV6wgr.jpg'), filename: 'general_18.jpg')
@@ -3665,7 +3682,7 @@ general_19 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_14_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_19_saved = Photo.new(general_19)
 general_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'general_19.jpg')
@@ -3688,7 +3705,7 @@ comment_169 = Comment.new({
   body: get_comment
 })
 comment_170 = Comment.new({
-  profile_id: profile_minimalism_saved.id,
+  profile_id: profile_animals_saved.id,
   photo_id: general_19_saved.id,
   body: get_comment
 })
@@ -3705,7 +3722,7 @@ general_20 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_15_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_20_saved = Photo.new(general_20)
 general_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/waterfall_t20_wLLyyV.jpg'), filename: 'general_20.jpg')
@@ -3736,7 +3753,7 @@ general_21 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_15_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_21_saved = Photo.new(general_21)
 general_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/winter-wanderlust_t20_x6rlNX.jpg'), filename: 'general_21.jpg')
@@ -3751,7 +3768,7 @@ general_22 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_15_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_22_saved = Photo.new(general_22)
 general_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg'), filename: 'general_22.jpg')
@@ -3777,7 +3794,7 @@ general_23 = {
   taken: Faker::Date.between(from: 5.days.ago, to: Date.today),
   profile_id: profile_15_saved.id,
   category: 'fresh',
-  featured: assignFeaturedPage
+  featured: assignFeaturedPage()
 }
 general_23_saved = Photo.new(general_23)
 general_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg'), filename: 'general_23.jpg')
@@ -3802,366 +3819,637 @@ comment_177 = Comment.new({
 # Follows
 
 ### profile_guest_saved
+follow_0 = Follow.new({
+  followee_id: profile_guest_saved.id,
+  follower_id: profile_11_saved.id
+})
 follow_1 = Follow.new({
-  followee_id: profile_jacob_saved.id, 
-  follower_id: profile_guest_saved.id
+  followee_id: profile_guest_saved.id,
+  follower_id: profile_jacob_saved.id
 })
 follow_2 = Follow.new({
-  followee_id: profile_abstract_saved.id,
-  follower_id: profile_guest_saved.id
+  followee_id: profile_guest_saved.id,
+  follower_id: profile_abstract_saved.id
 })
 follow_3 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_guest_saved.id
+  followee_id: profile_guest_saved.id,
+  follower_id: profile_music_saved.id
 })
 follow_4 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_guest_saved.id
+  followee_id: profile_guest_saved.id,
+  follower_id: profile_13_saved.id
 })
 follow_5 = Follow.new({
-  followee_id: profile_6_saved.id, 
-  follower_id: profile_guest_saved.id
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_8_saved.id
 })
 
 ### profile_jacob_saved
 follow_6 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_jacob_saved.id
+  followee_id: profile_jacob_saved.id,
+  follower_id: profile_guest_saved.id
 })
 follow_7 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_jacob_saved.id
+  followee_id: profile_jacob_saved.id,
+  follower_id: profile_13_saved.id,
 })
 follow_8 = Follow.new({
-  followee_id: profile_animals_saved.id, 
-  follower_id: profile_jacob_saved.id
+  followee_id: profile_jacob_saved.id,
+  follower_id: profile_animals_saved.id, 
 })
 follow_9 = Follow.new({
-  followee_id: profile_14_saved.id, 
-  follower_id: profile_jacob_saved.id
+  followee_id: profile_jacob_saved.id,
+  follower_id: profile_14_saved.id, 
 })
 follow_10 = Follow.new({
-  followee_id: profile_9_saved.id, 
-  follower_id: profile_jacob_saved.id
+  followee_id: profile_jacob_saved.id,
+  follower_id: profile_9_saved.id, 
 })
 
 ### profile_abstract_saved
 follow_11 = Follow.new({
-  followee_id: profile_15_saved.id, 
-  follower_id: profile_abstract_saved.id
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_15_saved.id
 })
 follow_12 = Follow.new({
-  followee_id: profile_12_saved.id, 
-  follower_id: profile_abstract_saved.id
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_12_saved.id
 })
 follow_13 = Follow.new({
-  followee_id: profile_11_saved.id, 
-  follower_id: profile_abstract_saved.id
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_11_saved.id
 })
 follow_14 = Follow.new({
-  followee_id: profile_chocolate_saved.id, 
-  follower_id: profile_abstract_saved.id
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_chocolate_saved.id
 })
 follow_15 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_abstract_saved.id
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_16 = Follow.new({
-  followee_id: profile_jacob_saved.id, 
-  follower_id: profile_abstract_saved.id
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_jacob_saved.id
 })
 
 ### profile_animals_saved
 follow_17 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_18 = Follow.new({
-  followee_id: profile_abstract_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id,
+  follower_id: profile_abstract_saved.id
 })
 follow_19 = Follow.new({
-  followee_id: profile_10_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id,
+  follower_id: profile_10_saved.id
 })
 follow_20 = Follow.new({
-  followee_id: profile_11_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id,
+  follower_id: profile_11_saved.id
 })
 follow_21 = Follow.new({
-  followee_id: profile_8_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id,
+  follower_id: profile_8_saved.id
 })
 follow_22 = Follow.new({
-  followee_id: profile_12_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_12_saved.id
 })
 follow_23 = Follow.new({
-  followee_id: profile_14_saved.id, 
-  follower_id: profile_animals_saved.id
+  followee_id: profile_animals_saved.id,
+  follower_id: profile_14_saved.id
 })
 
 ### profile_chocolate_saved
 follow_24 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_chocolate_saved.id
+  followee_id: profile_chocolate_saved.id,
+  follower_id: profile_guest_saved.id
 })
 follow_25 = Follow.new({
-  followee_id: profile_abstract_saved.id, 
-  follower_id: profile_chocolate_saved.id
+  followee_id: profile_chocolate_saved.id,
+  follower_id: profile_abstract_saved.id
 })
 follow_26 = Follow.new({
-  followee_id: profile_animals_saved.id, 
-  follower_id: profile_chocolate_saved.id
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_animals_saved.id
 })
 follow_27 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_chocolate_saved.id
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_music_saved.id
 })
 follow_28 = Follow.new({
-  followee_id: profile_sports_saved.id, 
-  follower_id: profile_chocolate_saved.id
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_sports_saved.id
+})
+follow_29 = Follow.new({
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_jacob_saved.id
 })
 
 ### profile_music_saved
 follow_30 = Follow.new({
-  followee_id: profile_8_saved.id, 
-  follower_id: profile_music_saved.id
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_8_saved.id
 })
 follow_31 = Follow.new({
-  followee_id:profile_9_saved.id, 
-  follower_id: profile_music_saved.id
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_9_saved.id
 })
 follow_32 = Follow.new({
-  followee_id: profile_15_saved.id, 
-  follower_id: profile_music_saved.id
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_15_saved.id
 })
 follow_33 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_music_saved.id
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_34 = Follow.new({
-  followee_id: profile_abstract_saved.id, 
-  follower_id: profile_music_saved.id
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_abstract_saved.id
 })
 follow_35 = Follow.new({
-  followee_id: profile_animals_saved.id, 
-  follower_id: profile_music_saved.id
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_animals_saved.id
 })
 
 ### profile_8_saved
 follow_36 = Follow.new({
-  followee_id: profile_15_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_15_saved.id
 })
 follow_37 = Follow.new({
-  followee_id: profile_14_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_14_saved.id
 })
 follow_38 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_13_saved.id
 })
 follow_39 = Follow.new({
-  followee_id: profile_12_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_12_saved.id
 })
 follow_40 = Follow.new({
-  followee_id: profile_11_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_11_saved.id
 })
 follow_41 = Follow.new({
-  followee_id: profile_10_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_10_saved.id
 })
 follow_42 = Follow.new({
-  followee_id: profile_9_saved.id, 
-  follower_id: profile_8_saved.id
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_9_saved.id
 })
 
 ### profile_9_saved
 follow_43 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_9_saved.id
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_44 = Follow.new({
-  followee_id: profile_jacob_saved.id, 
-  follower_id: profile_9_saved.id
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_jacob_saved.id
 })
 follow_45 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_9_saved.id
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_music_saved.id
 })
 follow_46 = Follow.new({
-  followee_id: profile_chocolate_saved.id, 
-  follower_id: profile_9_saved.id
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_chocolate_saved.id
 })
 follow_47 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_9_saved.id
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_abstract_saved.id
 })
 
 ### profile_10_saved
 follow_48 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_10_saved.id
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_49 = Follow.new({
-  followee_id: profile_animals_saved.id, 
-  follower_id: profile_10_saved.id
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_animals_saved.id
 })
 follow_50 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_10_saved.id
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_music_saved.id
 })
 follow_51 = Follow.new({
-  followee_id: profile_9_saved.id, 
-  follower_id: profile_10_saved.id
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_9_saved.id
 })
 follow_52 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_10_saved.id
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_13_saved.id
 })
 
 ### profile_11_saved
 follow_53 = Follow.new({
-  followee_id: profile_15_saved.id, 
-  follower_id: profile_11_saved.id
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_15_saved.id
 })
 follow_53 = Follow.new({
-  followee_id: profile_14_saved.id, 
-  follower_id: profile_11_saved.id
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_14_saved.id
 })
 follow_53 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_11_saved.id
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_13_saved.id
 })
 follow_53 = Follow.new({
-  followee_id: profile_12_saved.id, 
-  follower_id: profile_11_saved.id
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_12_saved.id
 })
 follow_53 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_11_saved.id
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_53 = Follow.new({
-  followee_id: profile_jacob_saved.id, 
-  follower_id: profile_11_saved.id
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_jacob_saved.id
 })
 
 ### profile_12_saved
 follow_54 = Follow.new({
-  followee_id: profile_15_saved.id, 
-  follower_id: profile_12_saved.id
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_15_saved.id
 })
 follow_55 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_12_saved.id
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_guest_saved.id
 })
 follow_56 = Follow.new({
-  followee_id: profile_10_saved.id, 
-  follower_id: profile_12_saved.id
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_10_saved.id
 })
 follow_57 = Follow.new({
-  followee_id: profile_chocolate_saved.id, 
-  follower_id: profile_12_saved.id
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_chocolate_saved.id
 })
 follow_58 = Follow.new({
-  followee_id: profile_abstract_saved.id, 
-  follower_id: profile_12_saved.id
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_abstract_saved.id
 })
 
 ### profile_13_saved
 follow_59 = Follow.new({
-  followee_id: profile_jacob_saved.id, 
-  follower_id: profile_13_saved.id
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_jacob_saved.id
 })
-follow_59 = Follow.new({
-  followee_id: profile_guest_saved.id, 
-  follower_id: profile_15_saved.id
+follow_60 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_guest_saved.id
 })
-follow_59 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_13_saved.id
+follow_61 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_music_saved.id
 })
-follow_59 = Follow.new({
-  followee_id: profile_animals_saved.id, 
-  follower_id: profile_13_saved.id
+follow_62 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_animals_saved.id
 })
-follow_59 = Follow.new({
-  followee_id: profile_chocolate_saved.id, 
-  follower_id: profile_13_saved.id
+follow_63 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_chocolate_saved.id
 })
 
 ### profile_14_saved
-follow_60 = Follow.new({
-  followee_id: profile_11_saved.id, 
-  follower_id: profile_14_saved.id
+follow_64 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_abstract_saved.id
 })
-follow_60 = Follow.new({
-  followee_id: profile_12_saved.id, 
-  follower_id: profile_14_saved.id
+follow_65 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_12_saved.id
 })
-follow_60 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_14_saved.id
+follow_66 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_chocolate_saved.id
 })
-follow_60 = Follow.new({
-  followee_id: profile_15_saved.id, 
-  follower_id: profile_14_saved.id
-})
-follow_60 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_14_saved.id
-})
-
-### profile_15_saved
-follow_61 = Follow.new({
-  followee_id: profile_music_saved.id, 
-  follower_id: profile_15_saved.id
-})
-follow_61 = Follow.new({
+follow_67 = Follow.new({
   followee_id: profile_14_saved.id, 
   follower_id: profile_15_saved.id
 })
-follow_61 = Follow.new({
-  followee_id: profile_13_saved.id, 
-  follower_id: profile_15_saved.id
+follow_68 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_music_saved.id
 })
-follow_61 = Follow.new({
-  followee_id: profile_12_saved.id, 
-  follower_id: profile_15_saved.id
+
+### profile_15_saved
+follow_69 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_music_saved.id
 })
-follow_61 = Follow.new({
-  followee_id: profile_11_saved.id, 
-  follower_id: profile_15_saved.id
+follow_70 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_14_saved.id
 })
-follow_61 = Follow.new({
-  followee_id: profile_10_saved.id, 
-  follower_id: profile_15_saved.id
+follow_71 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_13_saved.id
 })
-follow_61 = Follow.new({
-  followee_id: profile_9_saved.id, 
-  follower_id: profile_15_saved.id
+follow_72 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_12_saved.id
 })
-follow_61 = Follow.new({
-  followee_id: profile_8_saved.id, 
-  follower_id: profile_15_saved.id
+follow_73 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_11_saved.id
 })
+follow_74 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_10_saved.id
+})
+follow_75 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_9_saved.id
+})
+follow_76 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_8_saved.id
+})
+
 
 ### save follows and comments
 
-i = 0
-while i < 62
-  follow = "follow_" + "#{i}"
-  follow.chomp("").save!
-end
+# def save_follows
+#   i = 0
+#   while i < 62
+#     follow_i.save!
+#     i += 1
+#   end
+# end
 
-i = 0
-while i < 178
-  comment = "comment_" + "#{i}"
-  comment.chomp("").save!
-end
+# def save_comments
+#   i = 0
+#   while i < 178
+#     comment_i.save!
+#   end
+# end
+
+follow_1.save!
+follow_2.save!
+follow_3.save!
+follow_4.save!
+follow_5.save!
+follow_6.save!
+follow_7.save!
+follow_8.save!
+follow_9.save!
+follow_10.save!
+follow_11.save!
+follow_12.save!
+follow_13.save!
+follow_14.save!
+follow_15.save!
+follow_16.save!
+follow_17.save!
+follow_18.save!
+follow_19.save!
+follow_20.save!
+follow_21.save!
+follow_22.save!
+follow_23.save!
+follow_24.save!
+follow_25.save!
+follow_26.save!
+follow_27.save!
+follow_28.save!
+follow_29.save!
+follow_30.save!
+follow_31.save!
+follow_32.save!
+follow_33.save!
+follow_34.save!
+follow_35.save!
+follow_36.save!
+follow_37.save!
+follow_38.save!
+follow_39.save!
+follow_40.save!
+follow_41.save!
+follow_42.save!
+follow_43.save!
+follow_44.save!
+follow_45.save!
+follow_46.save!
+follow_47.save!
+follow_48.save!
+follow_49.save!
+follow_50.save!
+follow_51.save!
+follow_52.save!
+follow_53.save!
+follow_54.save!
+follow_55.save!
+follow_56.save!
+follow_57.save!
+follow_58.save!
+follow_59.save!
+follow_60.save!
+follow_61.save!
+follow_62.save!
+follow_63.save!
+follow_64.save!
+follow_65.save!
+follow_66.save!
+follow_67.save!
+follow_68.save!
+follow_69.save!
+follow_70.save!
+follow_71.save!
+follow_72.save!
+follow_73.save!
+follow_74.save!
+follow_75.save!
+follow_76.save!
+
+
+comment_1.save!
+comment_2.save!
+comment_3.save!
+comment_4.save!
+comment_5.save!
+comment_6.save!
+comment_7.save!
+comment_8.save!
+comment_9.save!
+comment_10.save!
+comment_11.save!
+comment_12.save!
+comment_13.save!
+comment_14.save!
+comment_15.save!
+comment_16.save!
+comment_17.save!
+comment_18.save!
+comment_19.save!
+comment_20.save!
+comment_21.save!
+comment_22.save!
+comment_23.save!
+comment_24.save!
+comment_25.save!
+comment_26.save!
+comment_27.save!
+comment_28.save!
+comment_29.save!
+comment_30.save!
+comment_31.save!
+comment_32.save!
+comment_33.save!
+comment_34.save!
+comment_35.save!
+comment_36.save!
+comment_37.save!
+comment_38.save!
+comment_39.save!
+comment_40.save!
+comment_41.save!
+comment_42.save!
+comment_43.save!
+comment_44.save!
+comment_45.save!
+comment_46.save!
+comment_47.save!
+comment_48.save!
+comment_49.save!
+comment_50.save!
+comment_51.save!
+comment_52.save!
+comment_53.save!
+comment_54.save!
+comment_55.save!
+comment_56.save!
+comment_57.save!
+comment_58.save!
+comment_59.save!
+comment_60.save!
+comment_61.save!
+comment_62.save!
+comment_63.save!
+comment_64.save!
+comment_65.save!
+comment_66.save!
+comment_67.save!
+comment_68.save!
+comment_69.save!
+comment_70.save!
+comment_71.save!
+comment_72.save!
+comment_73.save!
+comment_74.save!
+comment_75.save!
+comment_76.save!
+comment_77.save!
+comment_78.save!
+comment_79.save!
+comment_80.save!
+comment_81.save!
+comment_82.save!
+comment_83.save!
+comment_84.save!
+comment_85.save!
+comment_86.save!
+comment_87.save!
+comment_88.save!
+comment_89.save!
+comment_90.save!
+comment_91.save!
+comment_92.save!
+comment_93.save!
+comment_94.save!
+comment_95.save!
+comment_96.save!
+comment_97.save!
+comment_98.save!
+comment_99.save!
+comment_100.save!
+comment_101.save!
+comment_102.save!
+comment_103.save!
+comment_104.save!
+comment_105.save!
+comment_106.save!
+comment_107.save!
+comment_108.save!
+comment_109.save!
+comment_110.save!
+comment_111.save!
+comment_112.save!
+comment_113.save!
+comment_114.save!
+comment_115.save!
+comment_116.save!
+comment_117.save!
+comment_118.save!
+comment_119.save!
+comment_120.save!
+comment_121.save!
+comment_122.save!
+comment_123.save!
+comment_124.save!
+comment_125.save!
+comment_126.save!
+comment_127.save!
+comment_128.save!
+comment_129.save!
+comment_130.save!
+comment_131.save!
+comment_132.save!
+comment_133.save!
+comment_134.save!
+comment_135.save!
+comment_136.save!
+comment_137.save!
+comment_138.save!
+comment_139.save!
+comment_140.save!
+comment_141.save!
+comment_142.save!
+comment_143.save!
+comment_144.save!
+comment_145.save!
+comment_146.save!
+comment_147.save!
+comment_148.save!
+comment_149.save!
+comment_150.save!
+comment_151.save!
+comment_152.save!
+comment_153.save!
+comment_154.save!
+comment_155.save!
+comment_156.save!
+comment_157.save!
+comment_158.save!
+comment_159.save!
+comment_160.save!
+comment_161.save!
+comment_162.save!
+comment_163.save!
+comment_164.save!
+comment_165.save!
+comment_166.save!
+comment_167.save!
+comment_168.save!
+comment_169.save!
+comment_170.save!
+comment_171.save!
+comment_172.save!
+comment_173.save!
+comment_174.save!
+comment_175.save!
+comment_176.save!
+comment_177.save!
+
+
+### save likes
 
 def like_photo(photo_id, liker_id)
   like = Like.new({
@@ -4176,9 +4464,16 @@ saved_profiles = Profile.all
 
 saved_photos.each do |photo| 
   num_likes = rand(0..10)
-
+  prev_profile_ids = []
   num_likes.times do 
     profile = saved_profiles[rand(0...saved_profiles.length)]
-    like_photo(photo.id, profile.id)
+    if prev_profile_ids.exclude?(profile.id)
+      prev_profile_ids.push(profile.id)
+      like_photo(photo.id, profile.id)
+    else
+      next
+    end
   end
 end
+
+### end

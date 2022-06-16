@@ -54,9 +54,9 @@ export default class HomeFeed extends React.Component {
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
-    
-    this.lazyScrollListener()
+    this.mounted = true;
     window.scrollTo(0, 0)
+    this.lazyScrollListener()
 
     this.setState({
       status: BUSY
@@ -70,6 +70,7 @@ export default class HomeFeed extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleLazyLoad)
+    this.mounted = false;
     this.setState({
       status: IDLE,
       featuredStatus: IDLE,
