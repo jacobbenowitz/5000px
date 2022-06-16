@@ -19,6 +19,49 @@ User.destroy_all
 Profile.destroy_all
 Photo.destroy_all
 Like.destroy_all
+Follow.destroy_all
+Comment.destroy_all
+
+################################################################################
+## comments
+
+comments = [
+  'Excellent work ❤️', 'Amazing shot 😍',
+  'Very beautiful, love the contrast ⚪️⚫️', '👍👍👍',
+  'Wow, just stunning!', 'Nice shot my friend! ✌️', 
+  'So cool!! 💯', 'yaaaassssss 🔥🔥', 'Magnificent',
+  'Do you always shoot with that camera?', 
+  'Excellent light and hues! 🌈', '🙏🔟💟',
+  'Beautiful work. Wonderful light, color and detail/clarity, best regards!',
+  'Lovely series, keep it up!', 'Lovely🌹', 'Beautiful capture 👏📸',
+  'This is beutiful!! 😍 good job!!', 'How amazing!', 
+  'Unreal, great job my friend 👍', 'Love it 📝 taking notes',
+  "I'm located nearby, can we meet up and shoot together?",
+  "Let's collaborate! Big fan 🙏", 'Love your content 🔥', '🙏 AMAZING!!!',
+  'Werk it! 💪', 'Second that ^', "Couldn't have shot it better myself",
+  "Great editing 🫶", "Do you use Photoshop or Lightroom?", 'Great edit 10/10',
+  'Shocking, thank you for this 👏', 'Sublime', 'Again!? 😇 wonderful.',
+  "Can't wait to see what you 📸 next", "Great crop ✌️", 
+  "No surprise, but wonderful job on the composition ✅", "Best photographer on here!", "Emotional and captures my attention 🥹", '10/10', "👏👏",
+  "😱", "🤩🤯", "Nice one!", "👋 hey there! Big fan.", "love ❤️❤️❤️", "❤️❤️",
+  "🤩👏", "Thank you for sharing this!! 💙", "Fantastic work as always 🤩", 
+  "Wow...🤯 stunning!", "Perfectly executed 🙏", "🔥🔥", "✌️🙏", "Keep it up 👏"
+]
+
+prev_comments = []
+
+def get_comment
+  if comments.length > 1 
+    comment = comments.pop(rand(0...comments.length))
+    prev_comments.push(comment)
+    return comment
+  else 
+    comment = comments.first
+    comments = comments.concat(prev_comments)
+    prev_comments = []
+    return comment
+  end
+end
 
 ################################################################################
 
@@ -925,6 +968,163 @@ guest_photo_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:
 guest_photo_22_saved.save!
 
 
+comment_1 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_1_saved.id,
+  body: get_comment
+})
+comment_2 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_1_saved.id,
+  body: get_comment
+})
+comment_3 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_2_saved.id,
+  body: get_comment
+})
+comment_4 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_3_saved.id,
+  body: get_comment
+})
+comment_5 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_4_saved.id,
+  body: get_comment
+})
+comment_6 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_4_saved.id,
+  body: get_comment
+})
+comment_7 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: photo_5_saved.id,
+  body: get_comment
+})
+comment_8 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: photo_5_saved.id,
+  body: get_comment
+})
+comment_9 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: photo_6_saved.id,
+  body: get_comment
+})
+comment_10 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_6_saved.id,
+  body: get_comment
+})
+comment_11 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_7_saved.id,
+  body: get_comment
+})
+comment_12 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: photo_7_saved.id,
+  body: get_comment
+})
+comment_13 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: photo_7_saved.id,
+  body: get_comment
+})
+comment_14 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_8_saved.id,
+  body: get_comment
+})
+comment_15 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_8_saved.id,
+  body: get_comment
+})
+comment_16 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_9_saved.id,
+  body: get_comment
+})
+comment_17 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_10_saved.id,
+  body: get_comment
+})
+comment_18 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_11_saved.id,
+  body: get_comment
+})
+comment_19 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_12_saved.id,
+  body: get_comment
+})
+comment_20 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: photo_13_saved.id,
+  body: get_comment
+})
+comment_21 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: photo_14_saved.id,
+  body: get_comment
+})
+comment_22 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: photo_15_saved.id,
+  body: get_comment
+})
+comment_23 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: guest_photo_16_saved.id,
+  body: get_comment
+})
+comment_24 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: guest_photo_17_saved.id,
+  body: get_comment
+})
+comment_25 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: guest_photo_18_saved.id,
+  body: get_comment
+})
+comment_26 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: guest_photo_19_saved.id,
+  body: get_comment
+})
+comment_27 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: guest_photo_19_saved.id,
+  body: get_comment
+})
+comment_28 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: guest_photo_20_saved.id,
+  body: get_comment
+})
+comment_29 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: guest_photo_20_saved.id,
+  body: get_comment
+})
+comment_30 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: guest_photo_21_saved.id,
+  body: get_comment
+})
+comment_31 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: guest_photo_22_saved.id,
+  body: get_comment
+})
+
+
 ## jacob
 
 photo_16 = {
@@ -942,6 +1142,17 @@ photo_16_saved = Photo.new(photo_16)
 photo_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Benowitz Jacob - Eyes.jpg'), filename: 'jacob_16.jpg')
 photo_16_saved.save!
 
+comment_32 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_16_saved.id,
+  body: get_comment
+})
+comment_33 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_16_saved.id,
+  body: get_comment
+})
+
 photo_17 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -956,6 +1167,17 @@ photo_17 = {
 photo_17_saved = Photo.new(photo_17)
 photo_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Benowitz Jacob - LampSkyColor.jpg'), filename: 'jacob_17.jpg')
 photo_17_saved.save!
+
+comment_34 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_17_saved.id,
+  body: get_comment
+})
+comment_35 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: photo_17_saved.id,
+  body: get_comment
+})
 
 photo_18 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -972,6 +1194,17 @@ photo_18_saved = Photo.new(photo_18)
 photo_18_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/DSC_Creative_0214.jpg'), filename: 'jacob_18.jpg')
 photo_18_saved.save!
 
+comment_36 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: photo_18_saved.id,
+  body: get_comment
+})
+comment_37 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: photo_18_saved.id,
+  body: get_comment
+})
+
 photo_18_1 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -987,6 +1220,17 @@ photo_18_1_saved = Photo.new(photo_18_1)
 photo_18_1_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/DSC_Creative_0232.jpg'), filename: 'jacob_18_1.jpg')
 photo_18_1_saved.save!
 
+comment_38 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_18_1_saved.id,
+  body: get_comment
+})
+comment_39 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_18_1_saved.id,
+  body: get_comment
+})
+
 photo_19 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1001,6 +1245,18 @@ photo_19 = {
 photo_19_saved = Photo.new(photo_19)
 photo_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_1453.jpg'), filename: 'jacob_19.jpg')
 photo_19_saved.save!
+
+comment_40 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_19_saved.id,
+  body: get_comment
+})
+comment_41 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_19_saved.id,
+  body: get_comment
+})
+
 
 photo_20 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1032,6 +1288,17 @@ photo_21_saved = Photo.new(photo_21)
 photo_21_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0443.jpg'), filename: 'jacob_21.jpg')
 photo_21_saved.save!
 
+comment_42 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_20_saved.id,
+  body: get_comment
+})
+comment_43 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_21_saved.id,
+  body: get_comment
+})
+
 photo_22 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1061,6 +1328,27 @@ photo_23 = {
 photo_23_saved = Photo.new(photo_23)
 photo_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_0885.jpg'), filename: 'jacob_23.jpg')
 photo_23_saved.save!
+
+comment_44 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_22_saved.id,
+  body: get_comment
+})
+comment_45 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_22_saved.id,
+  body: get_comment
+})
+comment_46 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: photo_22_saved.id,
+  body: get_comment
+})
+comment_47 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: photo_23_saved.id,
+  body: get_comment
+})
 
 photo_24 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1107,6 +1395,17 @@ photo_26_saved = Photo.new(photo_26)
 photo_26_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/Upside.jpg'), filename: 'jacob_26.jpg')
 photo_26_saved.save!
 
+comment_48 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_26_saved.id,
+  body: get_comment
+})
+comment_49 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_26_saved.id,
+  body: get_comment
+})
+
 
 jacob_photo_27 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1137,6 +1436,17 @@ jacob_photo_28 = {
 jacob_photo_28_saved = Photo.new(jacob_photo_28)
 jacob_photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/jacob/IMG_Creative_6565.jpg'), filename: 'jacob_28.jpg')
 jacob_photo_28_saved.save!
+
+comment_50 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: jacob_photo_27_saved.id,
+  body: get_comment
+})
+comment_51 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: jacob_photo_28_saved.id,
+  body: get_comment
+})
 
 jacob_photo_29 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1216,6 +1526,17 @@ photo_27_saved = Photo.new(photo_27)
 photo_27_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/abstract-background_t20_E4387Z.jpg'), filename: 'abstract_27.jpg')
 photo_27_saved.save!
 
+comment_52 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_27_saved.id,
+  body: get_comment
+})
+comment_53 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_27_saved.id,
+  body: get_comment
+})
+
 photo_28 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1231,6 +1552,21 @@ photo_28_saved = Photo.new(photo_28)
 photo_28_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg'), filename: 'abstract_28.jpg')
 photo_28_saved.save!
 
+comment_54 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_28_saved.id,
+  body: get_comment
+})
+comment_55 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_28_saved.id,
+  body: get_comment
+})comment_56 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_28_saved.id,
+  body: get_comment
+})
+
 photo_28_1 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1245,6 +1581,17 @@ photo_28_1 = {
 photo_28_1_saved = Photo.new(photo_28_1)
 photo_28_1_saved.photo.attach(io: File.open('//Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg')
 photo_28_1_saved.save!
+
+comment_57 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_28_1_saved.id,
+  body: get_comment
+})
+comment_58 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_28_1_saved.id,
+  body: get_comment
+})
 
 photo_29 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1275,6 +1622,17 @@ photo_30 = {
 photo_30_saved = Photo.new(photo_30)
 photo_30_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/motions-3-3_t20_BAP4Nv.jpg'), filename: 'abstract_30.jpg')
 photo_30_saved.save!
+
+comment_59 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_30_saved.id,
+  body: get_comment
+})
+comment_60 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: photo_30_saved.id,
+  body: get_comment
+})
 
 photo_31 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1307,6 +1665,17 @@ abs_photo_32_saved = Photo.new(abs_photo_32)
 abs_photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/people-come-and-go-that-s-life_t20_dzRGY9.jpg'), filename: 'abstract_32.jpg')
 abs_photo_32_saved.save!
 
+comment_61 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: abs_photo_32_saved.id,
+  body: get_comment
+})
+comment_62 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: abs_photo_32_saved.id,
+  body: get_comment
+})
+
 abs_photo_33 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1321,6 +1690,12 @@ abs_photo_33 = {
 abs_photo_33_saved = Photo.new(abs_photo_33)
 abs_photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/reflection-pattern-sphere-abstract-bubble-texture-macro-creative-closeup-soap-bubble_t20_OJevlE.jpg'), filename: 'abstract_33.jpg')
 abs_photo_33_saved.save!
+
+comment_63 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: abs_photo_33_saved.id,
+  body: get_comment
+})
 
 abs_photo_34 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1337,6 +1712,12 @@ abs_photo_34_saved = Photo.new(abs_photo_34)
 abs_photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/the-roof-of-the-building-esplanade-theatres-on-the-bay_t20_kzAoRp.jpg'), filename: 'abstract_34.jpg')
 abs_photo_34_saved.save!
 
+comment_64 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: abs_photo_34_saved.id,
+  body: get_comment
+})
+
 abs_photo_35 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1352,6 +1733,17 @@ abs_photo_35_saved = Photo.new(abs_photo_35)
 abs_photo_35_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/through-tiny-lens_t20_loK6db.jpg'), filename: 'abstract_35.jpg')
 abs_photo_35_saved.save!
 
+comment_65 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: abs_photo_35_saved.id,
+  body: get_comment
+})
+comment_65 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: abs_photo_35_saved.id,
+  body: get_comment
+})
+
 abs_photo_36 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1366,6 +1758,17 @@ abs_photo_36 = {
 abs_photo_36_saved = Photo.new(abs_photo_36)
 abs_photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/abstract/urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'abstract_36.jpg')
 abs_photo_36_saved.save!
+
+comment_66 = Comment.new({
+  profile_id: profile__saved.id,
+  photo_id: abs_photo_36_saved.id,
+  body: get_comment
+})
+comment_67 = Comment.new({
+  profile_id: profile__saved.id,
+  photo_id: abs_photo_36_saved.id,
+  body: get_comment
+})
 
 abs_photo_37 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1400,6 +1803,27 @@ photo_32_saved = Photo.new(photo_32)
 photo_32_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/_t20_kLZ3zr.jpg'), filename: 'animals_32.jpg')
 photo_32_saved.save!
 
+comment_68 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_32_saved.id,
+  body: get_comment
+})
+comment_69 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_32_saved.id,
+  body: get_comment
+})
+comment_69 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_32_saved.id,
+  body: get_comment
+})
+comment_70 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: photo_32_saved.id,
+  body: get_comment
+})
+
 photo_33 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1414,6 +1838,17 @@ photo_33 = {
 photo_33_saved = Photo.new(photo_33)
 photo_33_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/_t20_YamEaR.jpg'), filename: 'animals_33.jpg')
 photo_33_saved.save!
+
+comment_71 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_33_saved.id,
+  body: get_comment
+})
+comment_72 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_33_saved.id,
+  body: get_comment
+})
 
 photo_34 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1430,6 +1865,22 @@ photo_34_saved = Photo.new(photo_34)
 photo_34_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/a-monkey-sat-in-a-human-pose-in-loro-park-tenerife_t20_98LvYA.jpg'), filename: 'animals_34.jpg')
 photo_34_saved.save!
 
+comment_73 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: photo_35_saved.id,
+  body: get_comment
+})
+comment_74 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_35_saved.id,
+  body: get_comment
+})
+comment_75 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_35_saved.id,
+  body: get_comment
+})
+
 photo_36 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1444,6 +1895,12 @@ photo_36 = {
 photo_36_saved = Photo.new(photo_36)
 photo_36_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-animal-nature-animals-green-wild-exotic-fox-wild-nature-foxy_t20_rL13QJ.jpg'), filename: 'animals_36.jpg')
 photo_36_saved.save!
+
+comment_76 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_36_saved.id,
+  body: get_comment
+})
 
 photo_37 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1460,6 +1917,17 @@ photo_37_saved = Photo.new(photo_37)
 photo_37_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg'), filename: 'animals_37.jpg')
 photo_37_saved.save!
 
+comment_77 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: photo_37_saved.id,
+  body: get_comment
+})
+comment_78 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: photo_37_saved.id,
+  body: get_comment
+})
+
 photo_38 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1475,6 +1943,12 @@ photo_38_saved = Photo.new(photo_38)
 photo_38_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/happy-elephant_t20_kLWQ24.jpg'), filename: 'animals_38.jpg')
 photo_38_saved.save!
 
+comment_79 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_38_saved.id,
+  body: get_comment
+})
+
 photo_39 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1489,6 +1963,17 @@ photo_39 = {
 photo_39_saved = Photo.new(photo_39)
 photo_39_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/humans-in-monkeys-body-everyone-is-a-human-kind-just-living-in-different-dimension-and-different-life_t20_yne8zp.jpg'), filename: 'animals_39.jpg')
 photo_39_saved.save!
+
+comment_80 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_39_saved.id,
+  body: get_comment
+})
+comment_81 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_39_saved.id,
+  body: get_comment
+})
 
 photo_40 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1534,6 +2019,17 @@ animal_photo_42 = {
 animal_photo_42_saved = Photo.new(animal_photo_42)
 animal_photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/animals/the-baby-monkey-sits-on-a-stone-and-eats-tropical-animals-in-their-natural-habitat_t20_0X38rw.jpg'), filename: 'animals_42.jpg')
 animal_photo_42_saved.save!
+
+comment_82 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: animal_photo_42_saved.id,
+  body: get_comment
+})
+comment_83 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: animal_photo_42_saved.id,
+  body: get_comment
+})
 
 animal_photo_43 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1599,6 +2095,17 @@ photo_40_choc_saved = Photo.new(photo_40_choc)
 photo_40_choc_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-brownie-batter-on-beaters_t20_yvjYVx.jpg'), filename: 'chocolate_40_choc.jpg')
 photo_40_choc_saved.save!
 
+comment_84 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_40_choc_saved.id,
+  body: get_comment
+})
+comment_85 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_40_choc_saved.id,
+  body: get_comment
+})
+
 photo_41 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1614,6 +2121,27 @@ photo_41_saved = Photo.new(photo_41)
 photo_41_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-cake_t20_yvZNpx.jpg'), filename: 'chocolate_41.jpg')
 photo_41_saved.save!
 
+comment_86 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_41_saved.id,
+  body: get_comment
+})
+comment_87 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_41_saved.id,
+  body: get_comment
+})
+comment_86 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: photo_41_saved.id,
+  body: get_comment
+})
+comment_86 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_41_saved.id,
+  body: get_comment
+})
+
 photo_42 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1628,6 +2156,12 @@ photo_42 = {
 photo_42_saved = Photo.new(photo_42)
 photo_42_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-chia-seed-pudding_t20_PoPbdR.jpg'), filename: 'chocolate_42.jpg')
 photo_42_saved.save!
+
+comment_87 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_42_saved.id,
+  body: get_comment
+})
 
 
 photo_43 = {
@@ -1660,6 +2194,17 @@ photo_44_saved = Photo.new(photo_44)
 photo_44_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg'), filename: 'chocolate_44.jpg')
 photo_44_saved.save!
 
+comment_88 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: photo_44_saved.id,
+  body: get_comment
+})
+comment_89 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: photo_44_saved.id,
+  body: get_comment
+})
+
 photo_45 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1689,6 +2234,17 @@ photo_46 = {
 photo_46_saved = Photo.new(photo_46)
 photo_46_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/chocolates_t20_1Je2dx.jpg'), filename: 'chocolate_46.jpg')
 photo_46_saved.save!
+
+comment_90 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_46_saved.id,
+  body: get_comment
+})
+comment_91 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_46_saved.id,
+  body: get_comment
+})
 
 photo_47 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1736,6 +2292,17 @@ chocolate_photo_49_saved = Photo.new(chocolate_photo_49)
 chocolate_photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/my-idea-of-heaven_t20_pld4n8.jpg'), filename: 'chocolate_49.jpg')
 chocolate_photo_49_saved.save!
 
+comment_92 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: chocolate_photo_49_saved.id,
+  body: get_comment
+})
+comment_93 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: chocolate_photo_49_saved.id,
+  body: get_comment
+})
+
 chocolate_photo_50 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1765,6 +2332,12 @@ chocolate_photo_51 = {
 chocolate_photo_51_saved = Photo.new(chocolate_photo_51)
 chocolate_photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/chocolate/raw-dessert_t20_YXx6VW.jpg'), filename: 'chocolate_51.jpg')
 chocolate_photo_51_saved.save!
+
+comment_94 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: chocolate_photo_51_saved.id,
+  body: get_comment
+})
 
 chocolate_photo_52 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1843,6 +2416,22 @@ photo_48_saved = Photo.new(photo_48)
 photo_48_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/a-guitarist-with-long-hair-performing-at-a-concert-with-pyro_t20_vLVAaG.jpg'), filename: 'music_48.jpg')
 photo_48_saved.save!
 
+comment_95 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_48_saved.id,
+  body: get_comment
+})
+comment_96 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_48_saved.id,
+  body: get_comment
+})
+comment_97 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_48_saved.id,
+  body: get_comment
+})
+
 photo_49 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1857,6 +2446,12 @@ photo_49 = {
 photo_49_saved = Photo.new(photo_49)
 photo_49_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/behind-the-djs_t20_pY9gdO.jpg'), filename: 'music_49.jpg')
 photo_49_saved.save!
+
+comment_98 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: photo_49_saved.id,
+  body: get_comment
+})
 
 photo_50 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1873,6 +2468,17 @@ photo_50_saved = Photo.new(photo_50)
 photo_50_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/close-up-drum-sticks-drumming-hit-beat-rhythm-on-drum-surface-with-splash-water-drops_t20_QJQ99y.jpg'), filename: 'music_50.jpg')
 photo_50_saved.save!
 
+comment_99 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo__saved.id,
+  body: get_comment
+})
+comment_100 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo__saved.id,
+  body: get_comment
+})
+
 photo_51 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1887,6 +2493,22 @@ photo_51 = {
 photo_51_saved = Photo.new(photo_51)
 photo_51_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/defocus-young-woman-playing-guitar-on-sunset-in-autumn-field-candid-silhouette-woman-in-hat-chill_t20_NlWYyQ.jpg'), filename: 'music_51.jpg')
 photo_51_saved.save!
+
+comment_101 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_51_saved.id,
+  body: get_comment
+})
+comment_102 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_51_saved.id,
+  body: get_comment
+})
+comment_103 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_51_saved.id,
+  body: get_comment
+})
 
 photo_52 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1918,6 +2540,17 @@ photo_53_saved = Photo.new(photo_53)
 photo_53_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/happy-accordion-player_t20_rorAaJ.jpg'), filename: 'music_53.jpg')
 photo_53_saved.save!
 
+comment_104 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_53_saved.id,
+  body: get_comment
+})
+comment_105 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_53_saved.id,
+  body: get_comment
+})
+
 photo_54 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1948,6 +2581,12 @@ photo_55_saved = Photo.new(photo_55)
 photo_55_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music_t20_mxbEml.jpg'), filename: 'music_55.jpg')
 photo_55_saved.save!
 
+comment_106 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: photo_55_saved.id,
+  body: get_comment
+})
+
 photo_56 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1962,6 +2601,17 @@ photo_56 = {
 photo_56_saved = Photo.new(photo_56)
 photo_56_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-concert-musician-drummer-drums-live-drummer_t20_4dmEEl.jpg'), filename: 'music_56.jpg')
 photo_56_saved.save!
+
+comment_107 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: photo_56_saved.id,
+  body: get_comment
+})
+comment_108 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_56_saved.id,
+  body: get_comment
+})
 
 music_photo_57 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -1978,6 +2628,12 @@ music_photo_57_saved = Photo.new(music_photo_57)
 music_photo_57_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-music-musical-instrument-classic-playing-music-saksophone_t20_K8Lrk9.jpg'), filename: 'music_57.jpg')
 music_photo_57_saved.save!
 
+comment_109 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: music_photo_57_saved.id,
+  body: get_comment
+})
+
 music_photo_58 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -1992,6 +2648,17 @@ music_photo_58 = {
 music_photo_58_saved = Photo.new(music_photo_58)
 music_photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/music-musical-instrument-musician-music-festival-woman-play-sound-musical-instruments-harp_t20_pW9lvk.jpg'), filename: 'music_58.jpg')
 music_photo_58_saved.save!
+
+comment_110 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: music_photo_58_saved.id,
+  body: get_comment
+})
+comment_111 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: music_photo_58_saved.id,
+  body: get_comment
+})
 
 music_photo_59 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2023,6 +2690,17 @@ music_photo_60_saved = Photo.new(music_photo_60)
 music_photo_60_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/piano-hands-woman-piano-keys-pianist-playing-piano-playing-the-piano-vintage-piano_t20_LX7Jxo.jpg'), filename: 'music_60.jpg')
 music_photo_60_saved.save!
 
+comment_112 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: music_photo_60_saved.id,
+  body: get_comment
+})
+comment_113 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: music_photo_60_saved.id,
+  body: get_comment
+})
+
 music_photo_61 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2052,6 +2730,13 @@ music_photo_62 = {
 music_photo_62_saved = Photo.new(music_photo_62)
 music_photo_62_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/selective-focus-music-acoustic-guitar-guitar-musical-instrument-musician-acoustic-musicians_t20_vOvpXE.jpg'), filename: 'music_62.jpg')
 music_photo_62_saved.save!
+
+comment_114 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: music_photo_62_saved.id,
+  body: get_comment
+})
+
 
 music_photo_62 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2098,6 +2783,17 @@ music_photo_64_saved = Photo.new(music_photo_64)
 music_photo_64_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/music/window-guitar-natural-light-morning-light_t20_PJnaJJ.jpg'), filename: 'music_64.jpg')
 music_photo_64_saved.save!
 
+comment_115 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: music_photo_63_saved.id,
+  body: get_comment
+})
+comment_116 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: music_photo_64_saved.id,
+  body: get_comment
+})
+
 
 ## sports 
 
@@ -2131,6 +2827,17 @@ photo_58_saved = Photo.new(photo_58)
 photo_58_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adventure-sports-sports-extreme-sports-action-adrenaline-adventurous-watersports-flyboard_t20_g1bEzz.jpg'), filename: 'sports_58.jpg')
 photo_58_saved.save!
 
+comment_117 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_57_saved.id,
+  body: get_comment
+})
+comment_118 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_58_saved.id,
+  body: get_comment
+})
+
 photo_59 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2145,6 +2852,17 @@ photo_59 = {
 photo_59_saved = Photo.new(photo_59)
 photo_59_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/adventure-surfing-sports-extreme-sports-extreme-sports-water-sports-life-surf-adrenaline-adventurous_t20_JokERk.jpg'), filename: 'sports_59.jpg')
 photo_59_saved.save!
+
+comment_119 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_59_saved.id,
+  body: get_comment
+})
+comment_120 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: photo_59_saved.id,
+  body: get_comment
+})
 
 photo_60 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2176,6 +2894,37 @@ photo_61_saved = Photo.new(photo_61)
 photo_61_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/bmx-freestyle_t20_GREW1R.jpg'), filename: 'sports_61.jpg')
 photo_61_saved.save!
 
+comment_121 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_60_saved.id,
+  body: get_comment
+})
+comment_122 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_60_saved.id,
+  body: get_comment
+})
+comment_123 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: photo_60_saved.id,
+  body: get_comment
+})
+comment_124 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: photo_61_saved.id,
+  body: get_comment
+})
+comment_125 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_61_saved.id,
+  body: get_comment
+})
+comment_126 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: photo_61_saved.id,
+  body: get_comment
+})
+
 photo_62 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2205,6 +2954,12 @@ photo_63 = {
 photo_63_saved = Photo.new(photo_63)
 photo_63_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/going-down_t20_Noelrp.jpg'), filename: 'sports_63.jpg')
 photo_63_saved.save!
+
+comment_127 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: photo_63_saved.id,
+  body: get_comment
+})
 
 photo_64 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2236,6 +2991,17 @@ photo_65_saved = Photo.new(photo_65)
 photo_65_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/jerrod-skorupski-pontiac-14_t20_VodWQ8.jpg'), filename: 'sports_65.jpg')
 photo_65_saved.save!
 
+comment_128 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: photo_65_saved.id,
+  body: get_comment
+})
+comment_129 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: photo_64_saved.id,
+  body: get_comment
+})
+
 photo_66 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2250,6 +3016,17 @@ photo_66 = {
 photo_66_saved = Photo.new(photo_66)
 photo_66_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/KokOOx_t20_KokOOx.jpg'), filename: 'sports_66.jpg')
 photo_66_saved.save!
+
+comment_130 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_66_saved.id,
+  body: get_comment
+})
+comment_131 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_66_saved.id,
+  body: get_comment
+})
 
 photo_67 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2281,6 +3058,17 @@ photo_68_saved = Photo.new(photo_68)
 photo_68_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/nominated-austria-kaprun_t20_VWNpQk.jpg'), filename: 'sports_68.jpg')
 photo_68_saved.save!
 
+comment_132 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_68_saved.id,
+  body: get_comment
+})
+comment_133 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_67_saved.id,
+  body: get_comment
+})
+
 photo_69 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2310,6 +3098,37 @@ photo_70 = {
 photo_70_saved = Photo.new(photo_70)
 photo_70_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/outdoors-winter-cold-snow-adventure-adventure-mountain-sport-recreation-action-outdoor-skier_t20_3Q7P3y.jpg'), filename: 'sports_70.jpg')
 photo_70_saved.save!
+
+comment_134 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_69_saved.id,
+  body: get_comment
+})
+comment_135 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: photo_70_saved.id,
+  body: get_comment
+})
+comment_136 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_69_saved.id,
+  body: get_comment
+})
+comment_137 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: photo_70_saved.id,
+  body: get_comment
+})
+comment_138 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: photo_69_saved.id,
+  body: get_comment
+})
+comment_139 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: photo_70_saved.id,
+  body: get_comment
+})
 
 photo_71 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2341,6 +3160,17 @@ photo_72_saved = Photo.new(photo_72)
 photo_72_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/sport-freedom-fly-blue-sky-paragliders-tandem-bucket-list-sunrise-sunset-skydiving-parachuting_t20_XNRPX3.jpg'), filename: 'sports_72.jpg')
 photo_72_saved.save!
 
+comment_140 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: photo_71_saved.id,
+  body: get_comment
+})
+comment_141 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: photo_72_saved.id,
+  body: get_comment
+})
+
 photo_73 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2371,6 +3201,12 @@ photo_74_saved = Photo.new(photo_74)
 photo_74_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg'), filename: 'sports_74.jpg')
 photo_74_saved.save!
 
+comment_142 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: photo_74_saved.id,
+  body: get_comment
+})
+
 photo_75 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2386,6 +3222,17 @@ photo_75_saved = Photo.new(photo_75)
 photo_75_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/view-from-above-flying-happiness-girl-above-blue-sky-paradise-happy-paragliding-happy-girl_t20_e9Z9ko.jpg'), filename: 'sports_75.jpg')
 photo_75_saved.save!
 
+comment_143 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: photo_75_saved.id,
+  body: get_comment
+})
+comment_144 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: photo_75_saved.id,
+  body: get_comment
+})
+
 photo_76 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2400,6 +3247,12 @@ photo_76 = {
 photo_76_saved = Photo.new(photo_76)
 photo_76_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/sports/wave-ocean-surf-caribbean-surfer-extreme-sport-ocean-waves-seaspray-sunnyseasand-bvi-apple-bay_t20_rLvzlX.jpg'), filename: 'sports_76.jpg')
 photo_76_saved.save!
+
+comment_145 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: photo_76_saved.id,
+  body: get_comment
+})
 
 
 ## general seeds (no category)
@@ -2436,6 +3289,22 @@ general_02_saved = Photo.new(general_02)
 general_02_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/bike-in-urban-area_t20_ZV18zj.jpg'), filename: 'general_02.jpg')
 general_02_saved.save!
 
+comment_146 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: general_01_saved.id,
+  body: get_comment
+})
+comment_147 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: general_01_saved.id,
+  body: get_comment
+})
+comment_148 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: general_02_saved.id,
+  body: get_comment
+})
+
 # profile_9_saved
 
 general_03 = {
@@ -2468,6 +3337,17 @@ general_04_saved = Photo.new(general_04)
 general_04_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/chifogo_t20_dxRlJA.jpg'), filename: 'general_04.jpg')
 general_04_saved.save!
 
+comment_149 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: general_03_saved.id,
+  body: get_comment
+})
+comment_150 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: general_04_saved.id,
+  body: get_comment
+})
+
 # profile_10_saved
 
 general_05 = {
@@ -2499,6 +3379,23 @@ general_06 = {
 general_06_saved = Photo.new(general_06)
 general_06_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg'), filename: 'general_06.jpg')
 general_06_saved.save!
+
+comment_151 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: general_05_saved.id,
+  body: get_comment
+})
+comment_152 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: general_05_saved.id,
+  body: get_comment
+})
+comment_153 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: general_06_saved.id,
+  body: get_comment
+})
+
 
 general_07 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2547,6 +3444,22 @@ general_09_saved = Photo.new(general_09)
 general_09_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/jumping-for-joy-in-canada_t20_0AEgkV.jpg'), filename: 'general_09.jpg')
 general_09_saved.save!
 
+comment_154 = Comment.new({
+  profile_id: profile_guest_saved.id,
+  photo_id: general_08_saved.id,
+  body: get_comment
+})
+comment_155 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: general_08_saved.id,
+  body: get_comment
+})
+comment_156 = Comment.new({
+  profile_id: profile_jacob_saved.id,
+  photo_id: general_09_saved.id,
+  body: get_comment
+})
+
 # profile_12_saved
 
 general_10 = {
@@ -2563,6 +3476,17 @@ general_10 = {
 general_10_saved = Photo.new(general_10)
 general_10_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg'), filename: 'general_10.jpg')
 general_10_saved.save!
+
+comment_157 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: general_10_saved.id,
+  body: get_comment
+})
+comment_158 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: general_10_saved.id,
+  body: get_comment
+})
 
 general_11 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2593,6 +3517,17 @@ general_12 = {
 general_12_saved = Photo.new(general_12)
 general_12_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/palm-leave-from-real-close-abstract-texture-with-pastel-colors_t20_2JPnKK.jpg'), filename: 'general_12.jpg')
 general_12_saved.save!
+
+comment_159 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: general_11_saved.id,
+  body: get_comment
+})
+comment_160 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: general_12_saved.id,
+  body: get_comment
+})
 
 general_13 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2626,6 +3561,17 @@ general_14_saved = Photo.new(general_14)
 general_14_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/reflections_t20_XQ84wV.jpg'), filename: 'general_14.jpg')
 general_14_saved.save!
 
+comment_161 = Comment.new({
+  profile_id: profile_abstract_saved.id,
+  photo_id: general_14_saved.id,
+  body: get_comment
+})
+comment_162 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: general_14_saved.id,
+  body: get_comment
+})
+
 general_15 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2656,6 +3602,17 @@ general_16_saved = Photo.new(general_16)
 general_16_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg'), filename: 'general_16.jpg')
 general_16_saved.save!
 
+comment_163 = Comment.new({
+  profile_id: profile_14_saved.id,
+  photo_id: general_15_saved.id,
+  body: get_comment
+})
+comment_164 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: general_16_saved.id,
+  body: get_comment
+})
+
 # profile_14_saved
 
 general_17 = {
@@ -2672,6 +3629,17 @@ general_17 = {
 general_17_saved = Photo.new(general_17)
 general_17_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/toronto-city_t20_6lAdEo.jpg'), filename: 'general_17.jpg')
 general_17_saved.save!
+
+comment_165 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: general_17_saved.id,
+  body: get_comment
+})
+comment_166 = Comment.new({
+  profile_id: profile_9_saved.id,
+  photo_id: general_17_saved.id,
+  body: get_comment
+})
 
 general_18 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2703,6 +3671,28 @@ general_19_saved = Photo.new(general_19)
 general_19_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'general_19.jpg')
 general_19_saved.save!
 
+comment_167 = Comment.new({
+  profile_id: profile_15_saved.id,
+  photo_id: general_18_saved.id,
+  body: get_comment
+})
+comment_168 = Comment.new({
+  profile_id: profile_11_saved.id,
+  photo_id: general_18_saved.id,
+  body: get_comment
+})
+
+comment_169 = Comment.new({
+  profile_id: profile_music_saved.id,
+  photo_id: general_19_saved.id,
+  body: get_comment
+})
+comment_170 = Comment.new({
+  profile_id: profile_minimalism_saved.id,
+  photo_id: general_19_saved.id,
+  body: get_comment
+})
+
 
 # profile_15_saved
 
@@ -2720,6 +3710,22 @@ general_20 = {
 general_20_saved = Photo.new(general_20)
 general_20_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/waterfall_t20_wLLyyV.jpg'), filename: 'general_20.jpg')
 general_20_saved.save!
+
+comment_171 = Comment.new({
+  profile_id: profile_8_saved.id,
+  photo_id: general_20_saved.id,
+  body: get_comment
+})
+comment_172 = Comment.new({
+  profile_id: profile_animals_saved.id,
+  photo_id: general_20_saved.id,
+  body: get_comment
+})
+comment_173 = Comment.new({
+  profile_id: profile_sports_saved.id,
+  photo_id: general_20_saved.id,
+  body: get_comment
+})
 
 general_21 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
@@ -2751,6 +3757,17 @@ general_22_saved = Photo.new(general_22)
 general_22_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg'), filename: 'general_22.jpg')
 general_22_saved.save!
 
+comment_174 = Comment.new({
+  profile_id: profile_10_saved.id,
+  photo_id: general_21_saved.id,
+  body: get_comment
+})
+comment_175 = Comment.new({
+  profile_id: profile_chocolate_saved.id,
+  photo_id: general_22_saved.id,
+  body: get_comment
+})
+
 general_23 = {
   title: Faker::Hipster.sentence(word_count: 2, random_words_to_add: 0),
   description: Faker::Hipster.sentences(number: 1).first,
@@ -2766,6 +3783,16 @@ general_23_saved = Photo.new(general_23)
 general_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg'), filename: 'general_23.jpg')
 general_23_saved.save!
 
+comment_176 = Comment.new({
+  profile_id: profile_13_saved.id,
+  photo_id: general_23_saved.id,
+  body: get_comment
+})
+comment_177 = Comment.new({
+  profile_id: profile_12_saved.id,
+  photo_id: general_23_saved.id,
+  body: get_comment
+})
 
 
 ############################################################################
@@ -2773,20 +3800,6 @@ general_23_saved.save!
 # Follows
 
 ### profile_guest_saved
-### profile_jacob_saved
-### profile_abstract_saved
-### profile_animals_saved
-### profile_chocolate_saved
-### profile_music_saved
-### profile_8_saved
-### profile_9_saved
-### profile_10_saved
-### profile_11_saved
-### profile_12_saved
-### profile_13_saved
-### profile_14_saved
- # profile_15_saved
-
 follow_1 = Follow.new({
   followee_id: profile_jacob_saved.id, 
   follower_id: profile_guest_saved.id
@@ -2808,6 +3821,7 @@ follow_5 = Follow.new({
   follower_id: profile_guest_saved.id
 })
 
+### profile_jacob_saved
 follow_6 = Follow.new({
   followee_id: profile_guest_saved.id, 
   follower_id: profile_jacob_saved.id
@@ -2829,6 +3843,7 @@ follow_10 = Follow.new({
   follower_id: profile_jacob_saved.id
 })
 
+### profile_abstract_saved
 follow_11 = Follow.new({
   followee_id: profile_15_saved.id, 
   follower_id: profile_abstract_saved.id
@@ -2854,6 +3869,7 @@ follow_16 = Follow.new({
   follower_id: profile_abstract_saved.id
 })
 
+### profile_animals_saved
 follow_17 = Follow.new({
   followee_id: profile_guest_saved.id, 
   follower_id: profile_animals_saved.id
@@ -2883,6 +3899,7 @@ follow_23 = Follow.new({
   follower_id: profile_animals_saved.id
 })
 
+### profile_chocolate_saved
 follow_24 = Follow.new({
   followee_id: profile_guest_saved.id, 
   follower_id: profile_chocolate_saved.id
@@ -2904,6 +3921,7 @@ follow_28 = Follow.new({
   follower_id: profile_chocolate_saved.id
 })
 
+### profile_music_saved
 follow_30 = Follow.new({
   followee_id: profile_8_saved.id, 
   follower_id: profile_music_saved.id
@@ -2929,6 +3947,7 @@ follow_35 = Follow.new({
   follower_id: profile_music_saved.id
 })
 
+### profile_8_saved
 follow_36 = Follow.new({
   followee_id: profile_15_saved.id, 
   follower_id: profile_8_saved.id
@@ -2958,6 +3977,7 @@ follow_42 = Follow.new({
   follower_id: profile_8_saved.id
 })
 
+### profile_9_saved
 follow_43 = Follow.new({
   followee_id: profile_guest_saved.id, 
   follower_id: profile_9_saved.id
@@ -2979,6 +3999,7 @@ follow_47 = Follow.new({
   follower_id: profile_9_saved.id
 })
 
+### profile_10_saved
 follow_48 = Follow.new({
   followee_id: profile_guest_saved.id, 
   follower_id: profile_10_saved.id
@@ -3000,6 +4021,7 @@ follow_52 = Follow.new({
   follower_id: profile_10_saved.id
 })
 
+### profile_11_saved
 follow_53 = Follow.new({
   followee_id: profile_15_saved.id, 
   follower_id: profile_11_saved.id
@@ -3025,6 +4047,7 @@ follow_53 = Follow.new({
   follower_id: profile_11_saved.id
 })
 
+### profile_12_saved
 follow_54 = Follow.new({
   followee_id: profile_15_saved.id, 
   follower_id: profile_12_saved.id
@@ -3046,6 +4069,7 @@ follow_58 = Follow.new({
   follower_id: profile_12_saved.id
 })
 
+### profile_13_saved
 follow_59 = Follow.new({
   followee_id: profile_jacob_saved.id, 
   follower_id: profile_13_saved.id
@@ -3067,6 +4091,7 @@ follow_59 = Follow.new({
   follower_id: profile_13_saved.id
 })
 
+### profile_14_saved
 follow_60 = Follow.new({
   followee_id: profile_11_saved.id, 
   follower_id: profile_14_saved.id
@@ -3088,6 +4113,7 @@ follow_60 = Follow.new({
   follower_id: profile_14_saved.id
 })
 
+### profile_15_saved
 follow_61 = Follow.new({
   followee_id: profile_music_saved.id, 
   follower_id: profile_15_saved.id
@@ -3127,14 +4153,8 @@ while i < 62
   follow.chomp("").save!
 end
 
-############################################################################
-
-# Likes
-
-# photo_1 - photo_15,  guest_photo_16 - guest_photo_22_saved
-# photo_16
-
-############################################################################
-
-# Comments
-
+i = 0
+while i < 178
+  comment = "comment_" + "#{i}"
+  comment.chomp("").save!
+end
