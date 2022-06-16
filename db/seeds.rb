@@ -557,8 +557,6 @@ profile_animals_saved = Profile.create(profile_animals)
 profile_chocolate_saved = Profile.create(profile_chocolate)
 profile_music_saved = Profile.create(profile_music)
 profile_sports_saved = Profile.create(profile_sports)
-
-
 profile_8_saved = Profile.create(profile_8)
 profile_9_saved = Profile.create(profile_9)
 profile_10_saved = Profile.create(profile_10)
@@ -632,7 +630,6 @@ profile_animals_saved.save!
 profile_chocolate_saved.save!
 profile_music_saved.save!
 profile_sports_saved.save!
-
 profile_8_saved.save!
 profile_9_saved.save!
 profile_10_saved.save!
