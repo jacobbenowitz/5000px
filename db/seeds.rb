@@ -3795,6 +3795,8 @@ comment_177 = Comment.new({
 })
 
 
+
+
 ############################################################################
 
 # Follows
@@ -4147,6 +4149,8 @@ follow_61 = Follow.new({
   follower_id: profile_15_saved.id
 })
 
+### save follows and comments
+
 i = 0
 while i < 62
   follow = "follow_" + "#{i}"
@@ -4157,4 +4161,24 @@ i = 0
 while i < 178
   comment = "comment_" + "#{i}"
   comment.chomp("").save!
+end
+
+def like_photo(photo_id, liker_id)
+  like = Like.new({
+    liker_id: liker_id,
+    photo_id: photo_id
+  })
+  like.save!
+end
+
+saved_photos = Photo.all
+saved_profiles = Profile.all
+
+saved_photos.each do |photo| 
+  num_likes = rand(0..10)
+
+  num_likes.times do 
+    profile = saved_profiles[rand(0...saved_profiles.length)]
+    like_photo(photo.id, profile.id)
+  end
 end
