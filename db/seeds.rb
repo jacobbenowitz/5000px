@@ -2766,15 +2766,373 @@ general_23_saved = Photo.new(general_23)
 general_23_saved.photo.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/seeds/general/young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg'), filename: 'general_23.jpg')
 general_23_saved.save!
 
-############################################################################
-
-# Likes
 
 
 ############################################################################
 
 # Follows
 
+### profile_guest_saved
+### profile_jacob_saved
+### profile_abstract_saved
+### profile_animals_saved
+### profile_chocolate_saved
+### profile_music_saved
+### profile_8_saved
+### profile_9_saved
+### profile_10_saved
+### profile_11_saved
+### profile_12_saved
+### profile_13_saved
+### profile_14_saved
+ # profile_15_saved
+
+follow_1 = Follow.new({
+  followee_id: profile_jacob_saved.id, 
+  follower_id: profile_guest_saved.id
+})
+follow_2 = Follow.new({
+  followee_id: profile_abstract_saved.id,
+  follower_id: profile_guest_saved.id
+})
+follow_3 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_guest_saved.id
+})
+follow_4 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_guest_saved.id
+})
+follow_5 = Follow.new({
+  followee_id: profile_6_saved.id, 
+  follower_id: profile_guest_saved.id
+})
+
+follow_6 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_jacob_saved.id
+})
+follow_7 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_jacob_saved.id
+})
+follow_8 = Follow.new({
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_jacob_saved.id
+})
+follow_9 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_jacob_saved.id
+})
+follow_10 = Follow.new({
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_jacob_saved.id
+})
+
+follow_11 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_abstract_saved.id
+})
+follow_12 = Follow.new({
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_abstract_saved.id
+})
+follow_13 = Follow.new({
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_abstract_saved.id
+})
+follow_14 = Follow.new({
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_abstract_saved.id
+})
+follow_15 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_abstract_saved.id
+})
+follow_16 = Follow.new({
+  followee_id: profile_jacob_saved.id, 
+  follower_id: profile_abstract_saved.id
+})
+
+follow_17 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+follow_18 = Follow.new({
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+follow_19 = Follow.new({
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+follow_20 = Follow.new({
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+follow_21 = Follow.new({
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+follow_22 = Follow.new({
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+follow_23 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_animals_saved.id
+})
+
+follow_24 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_chocolate_saved.id
+})
+follow_25 = Follow.new({
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_chocolate_saved.id
+})
+follow_26 = Follow.new({
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_chocolate_saved.id
+})
+follow_27 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_chocolate_saved.id
+})
+follow_28 = Follow.new({
+  followee_id: profile_sports_saved.id, 
+  follower_id: profile_chocolate_saved.id
+})
+
+follow_30 = Follow.new({
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_music_saved.id
+})
+follow_31 = Follow.new({
+  followee_id:profile_9_saved.id, 
+  follower_id: profile_music_saved.id
+})
+follow_32 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_music_saved.id
+})
+follow_33 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_music_saved.id
+})
+follow_34 = Follow.new({
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_music_saved.id
+})
+follow_35 = Follow.new({
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_music_saved.id
+})
+
+follow_36 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_8_saved.id
+})
+follow_37 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_8_saved.id
+})
+follow_38 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_8_saved.id
+})
+follow_39 = Follow.new({
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_8_saved.id
+})
+follow_40 = Follow.new({
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_8_saved.id
+})
+follow_41 = Follow.new({
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_8_saved.id
+})
+follow_42 = Follow.new({
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_8_saved.id
+})
+
+follow_43 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_9_saved.id
+})
+follow_44 = Follow.new({
+  followee_id: profile_jacob_saved.id, 
+  follower_id: profile_9_saved.id
+})
+follow_45 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_9_saved.id
+})
+follow_46 = Follow.new({
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_9_saved.id
+})
+follow_47 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_9_saved.id
+})
+
+follow_48 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_10_saved.id
+})
+follow_49 = Follow.new({
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_10_saved.id
+})
+follow_50 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_10_saved.id
+})
+follow_51 = Follow.new({
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_10_saved.id
+})
+follow_52 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_10_saved.id
+})
+
+follow_53 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_11_saved.id
+})
+follow_53 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_11_saved.id
+})
+follow_53 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_11_saved.id
+})
+follow_53 = Follow.new({
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_11_saved.id
+})
+follow_53 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_11_saved.id
+})
+follow_53 = Follow.new({
+  followee_id: profile_jacob_saved.id, 
+  follower_id: profile_11_saved.id
+})
+
+follow_54 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_12_saved.id
+})
+follow_55 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_12_saved.id
+})
+follow_56 = Follow.new({
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_12_saved.id
+})
+follow_57 = Follow.new({
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_12_saved.id
+})
+follow_58 = Follow.new({
+  followee_id: profile_abstract_saved.id, 
+  follower_id: profile_12_saved.id
+})
+
+follow_59 = Follow.new({
+  followee_id: profile_jacob_saved.id, 
+  follower_id: profile_13_saved.id
+})
+follow_59 = Follow.new({
+  followee_id: profile_guest_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_59 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_13_saved.id
+})
+follow_59 = Follow.new({
+  followee_id: profile_animals_saved.id, 
+  follower_id: profile_13_saved.id
+})
+follow_59 = Follow.new({
+  followee_id: profile_chocolate_saved.id, 
+  follower_id: profile_13_saved.id
+})
+
+follow_60 = Follow.new({
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_14_saved.id
+})
+follow_60 = Follow.new({
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_14_saved.id
+})
+follow_60 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_14_saved.id
+})
+follow_60 = Follow.new({
+  followee_id: profile_15_saved.id, 
+  follower_id: profile_14_saved.id
+})
+follow_60 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_14_saved.id
+})
+
+follow_61 = Follow.new({
+  followee_id: profile_music_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_14_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_13_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_12_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_11_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_10_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_9_saved.id, 
+  follower_id: profile_15_saved.id
+})
+follow_61 = Follow.new({
+  followee_id: profile_8_saved.id, 
+  follower_id: profile_15_saved.id
+})
+
+i = 0
+while i < 62
+  follow = "follow_" + "#{i}"
+  follow.chomp("").save!
+end
+
+############################################################################
+
+# Likes
+
+# photo_1 - photo_15,  guest_photo_16 - guest_photo_22_saved
+# photo_16
 
 ############################################################################
 
