@@ -17,6 +17,7 @@ export default class SinglePhotoShow extends React.Component {
       fullScreen: false
     }
     this.toggleFullScreen = this.toggleFullScreen.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -53,6 +54,13 @@ export default class SinglePhotoShow extends React.Component {
     }
   }
 
+  handleDelete(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.props.deletePhoto(this.props.photoId)
+    this.props.history.goBack()
+  } 
+
   toggleFullScreen(e) {
     e.preventDefault()
     this.setState({ fullScreen: !this.state.fullScreen })
@@ -83,6 +91,7 @@ export default class SinglePhotoShow extends React.Component {
             allFollows={allFollows}
             createFollow={createFollow}
             removeFollow={removeFollow}
+            handleDelete={this.handleDelete}
           />
           <PhotoComments
             currentProfile={currentProfile}

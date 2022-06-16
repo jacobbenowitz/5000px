@@ -2,7 +2,8 @@ import React from "react";
 import {
   selectCollectionPhotos,
   selectFeaturedPhotographers,
-  selectFollowersPhotoIds
+  selectFollowersPhotoIds,
+  sortByRecent
 } from "../../reducers/selectors";
 import GridLoader from "../galleries/gallery_grid_loader";
 import DiscoverRows from "./discover_photo_gallery"
@@ -154,16 +155,22 @@ export default class HomeFeed extends React.Component {
   }
 
   fetchTenMorePhotos() {
-    const { allPhotos, photoIds, fetchPhoto } = this.props;
+    const { allPhotos, photoIds, fetchPhoto, currentProfile } = this.props;
     const { fetchedPhotos, status, followingPhotoIds } = this.state;
-    let shuffledIds;
+    let shuffledIds, userPhotoIds;
     let unfetchedPhotos = photoIds.filter(id => !fetchedPhotos.includes(id))
-    // !! if we have followingPhotoIds, fetch those photos first
+    // if the currentUser has posted photos, show < 3 of them 
+    if (currentProfile.photoIds) {
+      userPhotoIds = currentProfile.photoIds
+        .sort((a, b) => a - b)
+        .slice(0, 3)
+    }
+    // if we have followingPhotoIds, fetch those photos first
     if (!!followingPhotoIds.length) {
-      shuffledIds = followingPhotoIds.sort(() => Math.random() - 0.5).slice(0, 10)
+      shuffledIds = userPhotoIds.concat(followingPhotoIds.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
     } else {
-      // !! else, fetch shuffled photos from all photos [photoIds]
-      shuffledIds = photoIds.sort(() => Math.random() - 0.5).slice(0, 10)
+      // else, fetch shuffled photos from all photos [photoIds]
+      shuffledIds = userPhotoIds.concat(photoIds.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
     }
     
     let fetches = [];

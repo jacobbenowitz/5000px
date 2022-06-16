@@ -6,7 +6,7 @@ import { ProfileDetails } from "./profile_details";
 import ProfileRows from "./profile_photo_gallery";
 import ProfileAvatarInput from "./profile_avatar_input";
 import ProfileCoverInput from "./profile_cover_input";
-import { sortPhotosByRecent } from "../../../reducers/selectors";
+import { sortByRecent, sortPhotosByRecent } from "../../../reducers/selectors";
 import GridLoader from "../../galleries/gallery_grid_loader";
 
 const IDLE = 'IDLE'
@@ -62,6 +62,7 @@ export default class ProfileShow extends React.Component {
       && profile.photoIds.length !== profilePhotos.length) {
       // debugger
       this.setState({ status: BUSY })
+      let ordered;
       let photos = [];
       let fetches = [];
 
@@ -70,9 +71,10 @@ export default class ProfileShow extends React.Component {
 
       Promise.all(fetches).then(res => {
         photos = res.map(action => action.photo.photo)
+        ordered = sortByRecent(photos)
         this.setState({
           status: DONE,
-          profilePhotos: sortPhotosByRecent(photos)
+          profilePhotos: ordered
         })
       });
     }

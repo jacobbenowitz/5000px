@@ -109,7 +109,7 @@ export default class PhotoProfileDetails extends React.Component {
   render() {
     const { photo, photoId, photoProfile, isCurrentProfile,
       currentProfile, createLike, removeLike, likes, allLikes,
-      createFollow, removeFollow, allFollows } = this.props;
+      createFollow, removeFollow, allFollows, handleDelete} = this.props;
     const { isFollowing, openLikeModal } = this.state;
 
     let likesDetails, likesModal, likeCopy, followLink, photoGear;
@@ -220,6 +220,7 @@ export default class PhotoProfileDetails extends React.Component {
                 removeLike={removeLike}
                 likes={likes}
                 allLikes={allLikes}
+                handleDelete={handleDelete}
               />
               <div className="profile-info">
                 <Link to={`/profiles/${photo.profile_id}`}>

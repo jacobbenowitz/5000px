@@ -127,6 +127,14 @@
   background-color: rgba(34, 34, 34, 0.1);
 }
 
+.icon-box.delete {
+  cursor: pointer;
+}
+
+.icon-box.delete:hover {
+  color: rgb(139, 7, 7);
+}
+
 
 .profile-info {
   max-width: 100%;

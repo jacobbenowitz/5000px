@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchPhoto } from "../../actions/photos/photos_actions";
+import { deletePhoto, fetchPhoto } from "../../actions/photos/photos_actions";
 import SinglePhotoShow from "./single_photo_show";
 import { fetchUser } from "../../actions/session/session_actions";
 import { fetchProfile } from "../../actions/profile/profile_actions";
@@ -34,6 +34,7 @@ const mapStateToProps = ({entities, session}, { match }) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
+    deletePhoto: photoId => dispatch(deletePhoto(photoId)),
     fetchUser: userId => dispatch(fetchUser(userId)),
     fetchProfile: profileId => dispatch(fetchProfile(profileId)),
     getLikes: () => dispatch(getLikes()),

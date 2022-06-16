@@ -17,7 +17,7 @@ const CollectionNavModal = ({ klass, toggleModal }) => {
       className={"nav-modal-container" + klass}
       onClick={toggleModal}
     >
-      <ul>
+      <ul className="modal-links">
         {collectionLinks.map((link, index) => {
           return (
             <NavListItem link={ link } key={index} />

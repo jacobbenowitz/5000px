@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LikeIcon from "../action_components/like_icon";
 
-const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, createLike, removeLike, likes, allLikes }) => {
+const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, createLike, removeLike, likes, allLikes, handleDelete }) => {
   return (
     <div className="photo-action-icons">
       <div className="icon-box like-box">
@@ -26,12 +26,19 @@ const PhotoActions = ({ photo, photoId, isCurrentProfile, currentProfile, create
       </div> */}
       {/* EDIT */}
       {isCurrentProfile ? (
-        <div className="icon-box">
-          <Link to={`/photos/${photo.id}/edit`}
-            className="icon-link edit">
-            <i className="fa-regular fa-pen-to-square fa-xl"></i>
-          </Link>
-        </div> ) : ( null )}
+      <div className="icon-box">
+        <Link to={`/photos/${photo.id}/edit`}
+          className="icon-link edit">
+          <i className="fa-regular fa-pen-to-square fa-xl"></i>
+        </Link>
+      </div>) : (null)}
+      <div
+        onClick={handleDelete}
+        className="icon-box delete"
+        title="delete photo"
+      >
+        <i className="fa-solid fa-trash fa-xl" />
+      </div>
     </div>
   )
 }
