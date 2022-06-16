@@ -20,6 +20,9 @@ amazon_pro:
   access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
   secret_access_key:
     <%= Rails.application.credentials.aws[:secret_access_key] %>
+  # ArgumentError: Missing `secret_key_base` for 'production' environment, set this string with `rails credentials:edit`
+  # but the secret_key_base is in the rails credentials... ? do I need to add the below?
+  # secret_key_base: Rails.application.credentials.secret_key_base 
   region: <%= Rails.application.credentials.aws[:region] %>
   bucket: <%= Rails.application.credentials.aws[:prod][:bucket] %>
 

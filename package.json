@@ -2,7 +2,7 @@
   "name": "my5000px",
   "version": "1.0.0",
   "description": "A full-stack clone of 500px by Jacob Benowitz",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
