@@ -157,7 +157,8 @@
   padding-bottom: 20px;
   padding-top: 20px;
   position: relative;
-  width: 33%;
+  min-width: 33%;
+  max-width: 100%;
 }
 
 .upload-form-container, .edit-form-container {
@@ -208,7 +209,8 @@
   width: 100%;
   background-color: #ffffff;
   box-sizing: border-box;
-  /* padding: 0 64px 12px 64px; */
+  font-size: 21px;
+  font-weight: 700;
   padding: 24px 64px;
   display: flex;
   align-items: flex-start;

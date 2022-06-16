@@ -60,9 +60,8 @@ export const fetchPhotos = () => dispatch => {
 
 export const uploadPhoto = formData => dispatch => {
   return PhotoApiUtil.uploadPhoto(formData)
-    .then(response => {
-      return dispatch(receivePhotoErrors(response.message))
-    }, error => {
+    .then(photo => dispatch(receivePhoto(photo))
+    , error => {
       return dispatch(receivePhotoErrors(error.responseJSON))
     })
 };

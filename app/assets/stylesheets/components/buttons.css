@@ -248,6 +248,12 @@ input:focus {
   color: rgb(34, 34, 34);
 }
 
+.upload-button:active {
+  background-color: rgb(34, 34, 34);
+  border-color: rgb(69, 69, 69);
+  color: rgb(255, 255, 255);
+}
+
 #upload-button-content {
   display: flex;
   flex-basis: auto;

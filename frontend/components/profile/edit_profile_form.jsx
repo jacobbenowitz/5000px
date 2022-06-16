@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TextareaAutosize from "react-textarea-autosize";
 import ProfilePhotoFormContainer from "../photos/profile_photo_form_container";
 import ProfileAvatar from "./profile_avatar"
 
@@ -173,7 +174,7 @@ export default class EditProfileForm extends React.Component {
 
             <div className="form-input">
               <label htmlFor="about">About</label>
-              <textarea
+              <TextareaAutosize
                 id="about"
                 value={about}
                 onChange={this.update('about')}

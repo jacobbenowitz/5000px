@@ -145,11 +145,9 @@ export default class NewProfileForm extends React.Component {
             </span>
             <span className="profile-form-instructions">
               Create your profile
-            </span>
-            <span className="skip-profile-form"
-              onClick={this.handleSubmit}
-            >
-              or skip for now
+              <span className="skip-profile-form"
+                onClick={this.handleSubmit}
+              >or skip for now</span>
             </span>
           </div>
 

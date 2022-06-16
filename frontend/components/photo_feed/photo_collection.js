@@ -4,6 +4,7 @@ import GridLoader from '../galleries/gallery_grid_loader'
 import collectionTitles from '../../util/collection_titles'
 import CollectionHeaderPlaceholder from './content_loaders/collection_header_placeholder'
 import CoverPhotoLoader from '../profile/content_loaders/cover_photo_loader'
+import { sortByRecent } from '../../reducers/selectors'
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -52,9 +53,10 @@ export default class PhotoCollection extends React.Component {
       
       Promise.all(fetches).then(res => {
         photos = res.map(action => action.photo.photo)
+        let ordered = sortByRecent(photos)
         this.setState({
           status: DONE,
-          photos: photos,
+          photos: ordered,
           pageTitle: pageCopy.title,
           pageDescription: pageCopy.description,
           collection: category,

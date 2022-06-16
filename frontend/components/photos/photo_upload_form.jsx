@@ -1,7 +1,7 @@
 import React from "react";
 import SuccessModal from "../modal/success_modal";
 import { getImgSize } from "../../util/get_img_size";
-
+import TextareaAutosize from "react-textarea-autosize";
 
 export default class PhotoUploadForm extends React.Component {
   constructor(props) {
@@ -12,6 +12,8 @@ export default class PhotoUploadForm extends React.Component {
       location: "",
       camera: "",
       lens: "",
+      taken: "",
+      category: "",
       photoFile: null,
       photoUrl: null,
     };
@@ -32,11 +34,13 @@ export default class PhotoUploadForm extends React.Component {
       formData.append('photo[camera]', this.state.camera);
       formData.append('photo[lens]', this.state.lens);
       formData.append('photo[location]', this.state.location);
+      formData.append('photo[taken]', this.state.taken);
+      formData.append('photo[category]', this.state.category);
       formData.append('photo[photo]', this.state.photoFile);
       formData.append('photo[profile_id]', this.props.profileId);
     }
     await this.props.uploadPhoto(formData);
-    this.props.openModal("success");
+    this.props.openModal(["success", "Successfully uploaded!"]);
     this.props.history.push(`/profiles/${this.props.profileId}`)
   }
 
@@ -146,7 +150,18 @@ export default class PhotoUploadForm extends React.Component {
     }
   }
 
+  
   render() {
+    const CATEGORIES = [
+      { label: "Select a category", value: '' },
+      { label: "Abstract", value: 'abstract' },
+      { label: "Animals", value: 'animals' },
+      { label: "Chocolate", value: 'chocolate' },
+      { label: "Music", value: 'music' },
+      { label: "Minimalism", value: 'minimalism' },
+      { label: "Sports", value: 'sports' }
+    ]
+
     const preview = this.state.photoUrl ?
       <img className='image-preview-img' src={this.state.photoUrl}
       /> : null;
@@ -204,27 +219,58 @@ export default class PhotoUploadForm extends React.Component {
             
             <div className="right-col-edit">
               <div className="upload-form-container">
-                <form className="photo-upload-form" onSubmit={this.handleSubmit}>
+                <form className="photo-upload-form"
+                  onSubmit={this.handleSubmit}>
 
                   <div className="form-input">
                     <label htmlFor="photo-title">Title</label>
                     <input type="text" name="photo-title"
                       value={ this.state.title }
-                      className="text-input" onChange={this.handleInput('title')}
+                      className="text-input"
+                      onChange={this.handleInput('title')}
                     />
                   </div>
 
                   <div className="form-input">
                     <label htmlFor="photo-description">Description</label>
-                    <textarea name="photo-description"
-                      className="description-input" onChange={this.handleInput('description')} />
+                    <TextareaAutosize
+                      value={this.state.description}
+                      onChange={this.handleInput('description')}
+                      name="photo-description"
+                      className="description-input" 
+                    />
+                  </div>
+
+                  <div className="form-input">
+                    <label htmlFor="photo-category">Category</label>
+                    <select name={'photo-category'}
+                      onChange={this.handleInput('category')}
+                      defaultValue='Select a category'
+                      className="text-input select">
+                      {
+                        CATEGORIES.map((category, i) =>
+                          <option key={`category-${i}`}
+                            value={category.value}
+                          >{category.label}</option>
+                      )}
+                    </select>
+                  </div>
+
+                  <div className="form-input">
+                    <label htmlFor="photo-date-taken">Date Taken</label>
+                    <input type='date' name='photo-date-taken'
+                      onChange={this.handleInput('taken')}
+                      className="date-input">
+                    </input>
                   </div>
 
                   <div className="form-input">
                     <label htmlFor="photo-lens">Lens</label>
-                    <input type="text" name="photo-lens"
+                    <input type="text"
+                      name="photo-lens"
                       value={ this.state.lens }
-                      className="text-input" onChange={this.handleInput('lens')}
+                      className="text-input"
+                      onChange={this.handleInput('lens')}
                     />
                   </div>
 
@@ -244,7 +290,6 @@ export default class PhotoUploadForm extends React.Component {
                     />
                   </div>
                   <div className="form-bot-buttons">
-
                     <span onClick={this.deletePhoto}
                       className="cancel-upload"
                     >Cancel</span>

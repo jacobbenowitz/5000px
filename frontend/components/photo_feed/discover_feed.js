@@ -5,6 +5,7 @@ import discoverTitles from '../../util/discover_titles'
 import DiscoverRows from './discover_photo_gallery'
 import GridLoader from '../galleries/gallery_grid_loader'
 import DiscoverHeaderLoader from './content_loaders/discover_header_placeholder'
+import { sortByRecent } from '../../reducers/selectors'
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -44,20 +45,21 @@ export default class DiscoverFeed extends React.Component {
       this.setState({status: BUSY})
       let pageCopy = this.getTitleAndDescription(page)
       let photoIds = this.getPagePhotoIds(page)
+      let ordered;
       let photos = [];
       let fetches = [];
-
       photoIds.forEach(photoId =>
         fetches.push(fetchPhoto(photoId)));
 
       Promise.all(fetches).then(res => {
         photos = res.map(action => action.photo.photo)
+        ordered = sortByRecent(photos)
         this.setState({
           status: DONE,
           pageTitle: pageCopy.title,
           pageDescription: pageCopy.description,
           page: page,
-          pagePhotos: photos
+          pagePhotos: ordered
         })
       });
     }

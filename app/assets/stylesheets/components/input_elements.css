@@ -11,6 +11,17 @@
   margin: 4px 0px;
 }
 
+.text-input.select {
+  height: 50px;
+
+}
+
+.text-input.select, .date-input {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  color: #222222;
+}
+
 .form-input {
   display: flex;
   flex-direction: column;

@@ -233,7 +233,8 @@ export default class PhotoProfileDetails extends React.Component {
                     <span className="photo-user-name">
                       by&nbsp;•&nbsp;
                       <Link to={`/profiles/${photo.profile_id}`}>
-                        {photo.profileName}
+                          {photo.profileName.length > 1 ? 
+                            photo.profileName : photo.username}
                       </Link>
                     </span>
                     {followLink}
@@ -289,7 +290,7 @@ export default class PhotoProfileDetails extends React.Component {
                 {likesDetails}
                 {photoGear}
                   
-                { photo.category === null ? null : (
+                { photo.category === null || photo.category === '' ? null : (
                 <div className="detail-box">
                   <div className="flex-row">
                     <span className="category-detail-title">

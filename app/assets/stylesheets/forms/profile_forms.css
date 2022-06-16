@@ -94,6 +94,7 @@
 
 .skip-profile-form {
   color: #2B5FA8;
+  cursor: pointer;
 }
 
 .skip-profile-form:hover {

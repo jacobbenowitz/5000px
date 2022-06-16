@@ -2,11 +2,12 @@ class Api::PhotosController < ApplicationController
 
 
   def create 
-    photo = Photo.new(photo_params)
-    if photo.save
-      render json: {message: ["Successfully uploaded!"]}
+    @photo = Photo.new(photo_params)
+    if @photo.save
+      render :show
+      # render json: {message: ["Successfully uploaded!"]}
     else
-      render json: photo.errors.full_messages, status: 422
+      render json: @photo.errors.full_messages, status: 422
     end
   end
 

@@ -31,6 +31,7 @@ export default class ProfileShow extends React.Component {
     this.setState({
       status: IDLE,
       id: null,
+      profilePhotos: [],
     })
   }
 
@@ -43,7 +44,7 @@ export default class ProfileShow extends React.Component {
   }
 
   componentDidUpdate() {
-    const { status, id  } = this.state;
+    const { status, id, profilePhotos  } = this.state;
     const { profile, profileId, fetchPhoto,
       fetchProfile, fetchProfiles, getFollows } = this.props;
 
@@ -57,7 +58,8 @@ export default class ProfileShow extends React.Component {
       fetchProfiles()
       getFollows()
     }
-    if (status === IDLE && profile && profileId == profile.id) {
+    if (status === IDLE && profile && profileId == profile.id
+      && profile.photoIds.length !== profilePhotos.length) {
       // debugger
       this.setState({ status: BUSY })
       let photos = [];

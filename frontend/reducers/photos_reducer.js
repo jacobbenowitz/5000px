@@ -56,6 +56,7 @@ const photosReducer = (prevState = initialState, action) => {
       nextState.status = BUSY
       return nextState;
     case RECEIVE_PHOTO:
+      debugger
       nextState.all[action.photo.photo.id] = action.photo.photo
       return nextState;
     case REMOVE_PHOTO:
