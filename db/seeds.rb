@@ -1562,7 +1562,7 @@ photo_28 = {
   featured: assignFeaturedPage()
 }
 photo_28_saved = Photo.new(photo_28)
-photo_28_saved.photo.attach(io: File.open(image_url('abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg'), filename: 'abstract_28.jpg')))
+photo_28_saved.photo.attach(io: File.open(image_url('abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg'), filename: 'abstract_28.jpg'))
 photo_28_saved.save!
 
 comment_54 = Comment.new({
@@ -1593,7 +1593,7 @@ photo_28_1 = {
   featured: assignFeaturedPage()
 }
 photo_28_1_saved = Photo.new(photo_28_1)
-photo_28_1_saved.photo.attach(io: File.open('image_url(/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg')))
+photo_28_1_saved.photo.attach(io: File.open('image_url(/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg'))
 photo_28_1_saved.save!
 
 comment_57 = Comment.new({
@@ -3488,7 +3488,8 @@ general_10 = {
   featured: assignFeaturedPage()
 }
 general_10_saved = Photo.new(general_10)
-general_10_saved.photo.attach(io: File.open(image_url('monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg'), filename: 'general_10.)jpg')
+general_10_saved.photo.attach(io: File.open(image_url('monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg'), 
+filename: 'general_10.jpg'))
 general_10_saved.save!
 
 comment_157 = Comment.new({
