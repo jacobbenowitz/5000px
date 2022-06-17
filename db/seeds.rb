@@ -601,7 +601,7 @@ minimalist_cover = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/mi
 profile_guest.cover.attach(io: minimalist_cover, filename: 'guest_cover.jpg')
 
 jacob_cover = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/jacob_cover.jpg')
-profile_jacob.cover.attach(io: jacob_cover), filename: 'malibu.jpg')
+profile_jacob.cover.attach(io: jacob_cover, filename: 'malibu.jpg')
 
 abstract_cover = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/abstract_cover.jpg')
 profile_abstract.cover.attach(io: abstract_cover, filename: 'abstract_cover')
