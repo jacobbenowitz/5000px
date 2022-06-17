@@ -85,88 +85,87 @@ faker_user_13 = Faker::Twitter.user(include_email: true)
 faker_user_14 = Faker::Twitter.user(include_email: true)
 faker_user_15 = Faker::Twitter.user(include_email: true)
 
-generated_user_3 = {
+generated_user_3 = User.new({
   username: faker_user_3[:screen_name],
   email: faker_user_3[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_4 = {
+})
+generated_user_4 = User.new({
   username: faker_user_4[:screen_name],
   email: faker_user_4[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_5 = {
+})
+generated_user_5 = User.new({
   username: faker_user_5[:screen_name],
   email: faker_user_5[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_6 = {
+})
+generated_user_6 = User.new({
   username: faker_user_6[:screen_name],
   email: faker_user_6[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_7 = {
+})
+generated_user_7 = User.new({
   username: faker_user_7[:screen_name],
   email: faker_user_7[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_8 = {
+})
+generated_user_8 = User.new({
   username: faker_user_8[:screen_name],
   email: faker_user_8[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_9 = {
+})
+generated_user_9 = User.new({
   username: faker_user_9[:screen_name],
   email: faker_user_9[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_10 = {
+})
+generated_user_10 = User.new({
   username: faker_user_10[:screen_name],
   email: faker_user_10[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_11 = {
+})
+generated_user_11 = User.new({
   username: faker_user_11[:screen_name],
   email: faker_user_11[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_12 = {
+})
+generated_user_12 = User.new({
   username: faker_user_12[:screen_name],
   email: faker_user_12[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_13 = {
+})
+generated_user_13 = User.new({
   username: faker_user_13[:screen_name],
   email: faker_user_13[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_14 = {
+})
+generated_user_14 = User.new({
   username: faker_user_14[:screen_name],
   email: faker_user_14[:email],
   password: 'Lmd15cCX!aDk63b',
-}
-generated_user_15 = {
+})
+generated_user_15 = User.new({
   username: faker_user_15[:screen_name],
   email: faker_user_15[:email],
   password: 'Lmd15cCX!aDk63b',
-}
+})
 
-guest_saved = User.create(guest)
-jacob_saved = User.create(jacob)
-
-user_3_saved = User.create(generated_user_3)
-user_4_saved = User.create(generated_user_4)
-user_5_saved = User.create(generated_user_5)
-user_6_saved = User.create(generated_user_6)
-user_7_saved = User.create(generated_user_7)
-user_8_saved = User.create(generated_user_8)
-user_9_saved = User.create(generated_user_9)
-user_10_saved = User.create(generated_user_10)
-user_11_saved = User.create(generated_user_11)
-user_12_saved = User.create(generated_user_12)
-user_13_saved = User.create(generated_user_13)
-user_14_saved = User.create(generated_user_14)
-user_15_saved = User.create(generated_user_15)
+guest_saved.save!
+jacob_saved.save!
+user_3_saved.save!
+user_4_saved.save!
+user_5_saved.save!
+user_6_saved.save!
+user_7_saved.save!
+user_8_saved.save!
+user_9_saved.save!
+user_10_saved.save!
+user_11_saved.save!
+user_12_saved.save!
+user_13_saved.save!
+user_14_saved.save!
+user_15_saved.save!
 
 ################################################################################
 
@@ -281,8 +280,8 @@ profile_jacob = Profile.new({
   about: 'Full-stack engineer & previously a technical marketer with a passion for photography and video.',
   gender: 'Male',
   user_id: jacob_saved.id,
- ) featured: true
-}
+  featured: true
+})
 
 profile_guest = Profile.new({
   first_name: 'Jane',
@@ -297,9 +296,9 @@ profile_guest = Profile.new({
   about: 'Minimalist. I live by the motto: less is more, and do my best to caputure that in my photography.',
   gender: 'Female',
   user_id: guest_saved.id,
- ) featured: true,
+  featured: true,
   category: 'minimalism'
-}
+})
 
 camera_3 = Faker::Camera.brand_with_model
 lenses_3 = get_lenses(camera_3.split.first)
@@ -317,8 +316,8 @@ profile_abstract = Profile.new({
   gender: 'Male',
   user_id: user_3_saved.id,
   featured: true,
- ) category: 'abstract'
-}
+  category: 'abstract'
+})
 
 camera_4 = Faker::Camera.brand_with_model
 lenses_4 = get_lenses(camera_4.split.first)
@@ -336,8 +335,8 @@ profile_animals = Profile.new({
   gender: 'Male',
   user_id: user_4_saved.id,
   featured: true,
- ) category: 'animals'
-}
+  category: 'animals'
+})
 
 camera_5 = Faker::Camera.brand_with_model
 lenses_5 = get_lenses(camera_5.split.first)
@@ -355,8 +354,8 @@ profile_chocolate = Profile.new({
   gender: 'Male',
   user_id: user_5_saved.id,
   featured: true,
- ) category: 'chocolate'
-}
+  category: 'chocolate'
+})
 
 camera_8 = Faker::Camera.brand_with_model
 lenses_8 = get_lenses(camera_8.split.first)
@@ -374,8 +373,8 @@ profile_music = Profile.new({
   gender: 'Male',
   user_id: user_8_saved.id,
   featured: true,
- ) category: 'music'
-}
+  category: 'music'
+})
 
 camera_9 = Faker::Camera.brand_with_model
 lenses_9 = get_lenses(camera_9.split.first)
@@ -393,8 +392,8 @@ profile_sports = Profile.new({
   gender: 'Male',
   user_id: user_9_saved.id,
   featured: true,
- ) category: 'sports'
-}
+  category: 'sports'
+})
 
 camera_6 = Faker::Camera.brand_with_model
 lenses_6 = get_lenses(camera_6.split.first)
