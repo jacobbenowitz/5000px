@@ -314,7 +314,7 @@ profile_abstract = Profile.create({
   country: 'United States',
   about: 'The unknown is known...to me. Abstract photographer.',
   gender: 'Male',
-  user_id: user_3.id,
+  user_id: generated_user_3.id,
   featured: true,
   category: 'abstract'
 })
@@ -333,7 +333,7 @@ profile_animals = Profile.create({
   country: 'United States',
   about: 'Vegan, animal lover. Nature photography is my life!',
   gender: 'Male',
-  user_id: user_4.id,
+  user_id: generated_user_4.id,
   featured: true,
   category: 'animals'
 })
@@ -352,7 +352,7 @@ profile_chocolate = Profile.create({
   country: 'United States',
   about: "Who doesn't like chocolate? ME... I LOVE CHOCOLATE",
   gender: 'Male',
-  user_id: user_5.id,
+  user_id: generated_user_5.id,
   featured: true,
   category: 'chocolate'
 })
@@ -371,7 +371,7 @@ profile_music = Profile.create({
   country: 'United States',
   about: "Professional photographer for musicians around the world",
   gender: 'Male',
-  user_id: user_8.id,
+  user_id: generated_user_8.id,
   featured: true,
   category: 'music'
 })
@@ -390,7 +390,7 @@ profile_sports = Profile.create({
   country: 'United States',
   about: "Sports is life.",
   gender: 'Male',
-  user_id: user_9.id,
+  user_id: generated_user_9.id,
   featured: true,
   category: 'sports'
 })
@@ -409,7 +409,7 @@ profile_8 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_6.id,
+  user_id: generated_user_6.id,
   featured: false
 })
 
@@ -427,7 +427,7 @@ profile_9 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_10.id,
+  user_id: generated_user_10.id,
   featured: false
 })
 
@@ -445,7 +445,7 @@ profile_10 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_11.id,
+  user_id: generated_user_11.id,
   featured: false
 })
 
@@ -463,7 +463,7 @@ profile_11 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_12.id,
+  user_id: generated_user_12.id,
   featured: false
 })
 
@@ -481,7 +481,7 @@ profile_12 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_13.id,
+  user_id: generated_user_13.id,
   featured: false
 })
 
@@ -499,7 +499,7 @@ profile_13 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_14.id,
+  user_id: generated_user_14.id,
   featured: false
 })
 
@@ -517,7 +517,7 @@ profile_14 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_15.id,
+  user_id: generated_user_15.id,
   featured: false
 })
 
@@ -535,7 +535,7 @@ profile_15 = Profile.create({
   country: 'United States',
   about: Faker::TvShows::BigBangTheory.quote,
   gender: 'Male',
-  user_id: user_7.id,
+  user_id: generated_user_7.id,
   featured: false
 })
 
