@@ -58,17 +58,17 @@ end
 ## users
 
 # hard-coded users
-guest = {
+guest = User.new({
   username: 'Guest',
   email: 'guest@gmail.com',
   password: 'demo#User!806'
-}
+})
 
-jacob = {
+jacob = User.new({
   username: 'jacobbenowitz',
   email: 'jacob.benowitz@gmail.com',
   password: 'iZDhBJ6QrkvYKkXDn3Uz'
-}
+})
 
 # generated users
 faker_user_3 = Faker::Twitter.user(include_email: true)
@@ -151,21 +151,21 @@ generated_user_15 = User.new({
   password: 'Lmd15cCX!aDk63b',
 })
 
-guest_saved.save!
-jacob_saved.save!
-user_3_saved.save!
-user_4_saved.save!
-user_5_saved.save!
-user_6_saved.save!
-user_7_saved.save!
-user_8_saved.save!
-user_9_saved.save!
-user_10_saved.save!
-user_11_saved.save!
-user_12_saved.save!
-user_13_saved.save!
-user_14_saved.save!
-user_15_saved.save!
+guest_saved = guest.save!
+jacob_saved = jacob.save!
+user_3_saved = generated_user_3.save!
+user_4_saved = generated_user_4.save!
+user_5_saved = generated_user_5.save!
+user_6_saved = generated_user_6.save!
+user_7_saved = generated_user_7.save!
+user_8_saved = generated_user_8.save!
+user_9_saved = generated_user_9.save!
+user_10_saved = generated_user_10.save!
+user_11_saved = generated_user_11.save!
+user_12_saved = generated_user_12.save!
+user_13_saved = generated_user_13.save!
+user_14_saved = generated_user_14.save!
+user_15_saved = generated_user_15.save!
 
 ################################################################################
 
@@ -539,21 +539,21 @@ profile_15 = Profile.new({
   featured: false
 })
 
-profile_guest_saved = Profile.save!
-profile_jacob_saved = Profile.save!
-profile_abstract_saved = Profile.save!
-profile_animals_saved = Profile.save!
-profile_chocolate_saved = Profile.save!
-profile_music_saved = Profile.save!
-profile_sports_saved = Profile.save!
-profile_8_saved = Profile.save!
-profile_9_saved = Profile.save!
-profile_10_saved = Profile.save!
-profile_11_saved = Profile.save!
-profile_12_saved = Profile.save!
-profile_13_saved = Profile.save!
-profile_14_saved = Profile.save!
-profile_15_saved = Profile.save!
+profile_guest_saved = profile_guest.save!
+profile_jacob_saved = profile_jacob.save!
+profile_abstract_saved = profile_abstract.save!
+profile_animals_saved = profile_animals.save!
+profile_chocolate_saved = profile_chocolate.save!
+profile_music_saved = profile_music.save!
+profile_sports_saved = profile_sports.save!
+profile_8_saved = profile_8.save!
+profile_9_saved = profile_9.save!
+profile_10_saved = profile_10.save!
+profile_11_saved = profile_11.save!
+profile_12_saved = profile_12.save!
+profile_13_saved = profile_13.save!
+profile_14_saved = profile_14.save!
+profile_15_saved = profile_15.save!
 
 ################################################################################
 
