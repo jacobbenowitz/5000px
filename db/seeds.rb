@@ -556,7 +556,7 @@ avatar_3 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_1.png')
 profile_abstract.avatar.attach(io: avatar_3, filename: 'abstract_avatar.png')
 
 avatar_4 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_2.png')
-profile_animals.avatar.attach(io: avatar_3,filename: 'animal_avatar.png')
+profile_animals.avatar.attach(io: avatar_3, filename: 'animal_avatar.png')
 
 avatar_5 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_3.png')
 profile_chocolate.avatar.attach(io: avatar_5, filename: 'chocolate_avatar.png')
@@ -568,28 +568,28 @@ avatar_7 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_5.png')
 profile_sports.avatar.attach(io: avatar_7, filename: 'sport_avatar.png')
 
 avatar_8 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_6.png')
-profile_8.avatar.attach(io: avatar_8, filename: '8_avatar.png')
+profile_8.avatar.attach(io: avatar_8, filename: 'avatar_8.png')
 
 avatar_9 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_7.png')
-profile_9.avatar.attach(io: avatar_9, filename: '9_avatar.png')
+profile_9.avatar.attach(io: avatar_9, filename: 'avatar_9.png')
 
 avatar_10 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_8.png')
-profile_10.avatar.attach(io: avatar_10, filename: '10_avatar.png')
+profile_10.avatar.attach(io: avatar_10, filename: 'avatar_10.png')
 
 avatar_11 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_9.png')
-profile_11.avatar.attach(io: avatar_11, filename: '11_avatar.png')
+profile_11.avatar.attach(io: avatar_11, filename: 'avatar_11.png')
 
 avatar_12 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_10.png')
-profile_12.avatar.attach(io: avatar_12, filename: '12_avatar.png')
+profile_12.avatar.attach(io: avatar_12, filename: 'avatar_12.png')
 
 avatar_13 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_11.png')
-profile_13.avatar.attach(io: avatar_13, filename: '13_avatar.png')
+profile_13.avatar.attach(io: avatar_13, filename: 'avatar_13.png')
 
 avatar_14 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_12.png')
-profile_14.avatar.attach(io: avatar_14, filename: '14_avatar.png')
+profile_14.avatar.attach(io: avatar_14, filename: 'avatar_14.png')
 
 avatar_15 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_13.png')
-profile_15.avatar.attach(io: avatar_15, filename: '15_avatar.png')
+profile_15.avatar.attach(io: avatar_15, filename: 'avatar_15.png')
 
 
 
@@ -619,28 +619,28 @@ sports_cover = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/sports
 profile_sports.cover.attach(io: sports_cover, filename: 'sports_cover.jpg')
 
 cover_8 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/8_cover.jpg')
-profile_8.cover.attach(io: cover_8, filename: '8_cover.jpg')
+profile_8.cover.attach(io: cover_8, filename: 'cover_8.jpg')
 
 cover_9 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/9_cover.jpg')
-profile_9.cover.attach(io: cover_9, filename: '9_cover.jpg')
+profile_9.cover.attach(io: cover_9, filename: 'cover_9.jpg')
 
 cover_10 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/10_cover.jpg')
-profile_10.cover.attach(io: cover_10, filename: '10_cover.jpg')
+profile_10.cover.attach(io: cover_10, filename: 'cover_10.jpg')
 
 cover_11 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/11_cover.jpg')
-profile_11.cover.attach(io: cover_11, filename: '11_cover.jpg')
+profile_11.cover.attach(io: cover_11, filename: 'cover_11.jpg')
 
 cover_12 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/12_cover.jpg')
-profile_12.cover.attach(io: cover_12, filename: '12_cover.jpg')
+profile_12.cover.attach(io: cover_12, filename: 'cover_12.jpg')
 
 cover_13 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/13_cover.jpg')
-profile_13.cover.attach(io: cover_13, filename: '13_cover.jpg')
+profile_13.cover.attach(io: cover_13, filename: 'cover_13.jpg')
 
 cover_14 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/14_cover.jpg')
-profile_14.cover.attach(io: cover_14, filename: '14_cover.jpg')
+profile_14.cover.attach(io: cover_14, filename: 'cover_14.jpg')
 
 cover_15 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/covers/15_cover.jpg')
-profile_15.cover.attach(io: cover_15, filename: '15_cover.jpg')
+profile_15.cover.attach(io: cover_15, filename: 'cover_15.jpg')
 
 
 # save profiles after attaching avatar and cover photos
