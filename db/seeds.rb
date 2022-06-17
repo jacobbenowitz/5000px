@@ -570,7 +570,7 @@ profile_15_saved = Profile.create(profile_15)
 
 ## avatars
 
-profile_guest_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/guest_avatar.webp'), filename: 'guest_avatar.jpg')
+profile_guest_saved.avatar.attach(io: File.open(image_url('guest_avatar.webp'), filename: 'guest_avatar.jpg')
 
 profile_jacob_saved.avatar.attach(io: File.open('/Users/jacobbenowitz/Desktop/a:A/my5000px/app/assets/images/avatars/jacob_avatar.jpg'), filename: 'jacob_avatar.jpg')
 
@@ -4177,7 +4177,7 @@ follow_76 = Follow.new({
 # def save_follows
 #   i = 0
 #   while i < 62
-#     follow_i.save!
+#     follow_$i.save!
 #     i += 1
 #   end
 # end
