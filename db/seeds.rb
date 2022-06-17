@@ -556,7 +556,7 @@ avatar_3 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_1.png')
 profile_abstract.avatar.attach(io: avatar_3, filename: 'abstract_avatar.png')
 
 avatar_4 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_2.png')
-profile_animals.avatar.attach(io: avatar_3, filename: 'animal_avatar.png')
+profile_animals.avatar.attach(io: avatar_4, filename: 'animal_avatar.png')
 
 avatar_5 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/avatar_3.png')
 profile_chocolate.avatar.attach(io: avatar_5, filename: 'chocolate_avatar.png')
