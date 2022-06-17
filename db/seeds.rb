@@ -546,8 +546,8 @@ profile_15 = Profile.create({
 
 # file = open('https://my5000px-seeds.s3.amazonaws.com/<folder_name>/<some_file>.<extension>')
 
-avatar_1 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/guest_avatar.webp')
-profile_guest.avatar.attach(io: avatar_1, filename: 'guest_avatar.webp')
+avatar_1 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/guest_avatar.png')
+profile_guest.avatar.attach(io: avatar_1, filename: 'guest_avatar.png')
 
 avatar_2 = open('https://my5000px-seeds.s3.amazonaws.com/avatars/jacob_avatar.jpg')
 profile_jacob.avatar.attach(io: avatar_2, filename: 'jacob_avatar.jpg')
