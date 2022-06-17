@@ -9,7 +9,7 @@ const DiscoverHeaderLoader = (props) => (
     viewBox="0 0 830 100"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
-    style={{ width: '100%'}}
+    // style={{ width: '100%', left: '0'}}
     // preserveAspectRatio="none"
   >
     <rect x="1" y="24" rx="20" ry="20" width="468" height="40" />
