@@ -1,15 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
-
-default_avatar = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp"
-default_banner = "https://my5000px-static.s3.amazonaws.com/nature-cover-guest.jpg"
 
 ################################################################################
 
@@ -23,6 +12,7 @@ Follow.destroy_all
 Comment.destroy_all
 
 ################################################################################
+
 ## comments
 
 $comments = [
@@ -278,7 +268,7 @@ def select_other_lenses(num)
 end
 
 
-profile_jacob = {
+profile_jacob = Profile.new({
   first_name: 'Jacob',
   last_name: 'Benowitz',
   website_url: 'https://www.jacobbenowitz.com',
@@ -291,10 +281,10 @@ profile_jacob = {
   about: 'Full-stack engineer & previously a technical marketer with a passion for photography and video.',
   gender: 'Male',
   user_id: jacob_saved.id,
-  featured: true
+ ) featured: true
 }
 
-profile_guest = {
+profile_guest = Profile.new({
   first_name: 'Jane',
   last_name: 'Smith',
   website_url: 'https://www.jacobbenowitz.com',
@@ -307,13 +297,13 @@ profile_guest = {
   about: 'Minimalist. I live by the motto: less is more, and do my best to caputure that in my photography.',
   gender: 'Female',
   user_id: guest_saved.id,
-  featured: true,
+ ) featured: true,
   category: 'minimalism'
 }
 
 camera_3 = Faker::Camera.brand_with_model
 lenses_3 = get_lenses(camera_3.split.first)
-profile_abstract = {
+profile_abstract = Profile.new({
   first_name: faker_user_3[:name].split.first,
   last_name: faker_user_3[:name].split.last,
   website_url: faker_user_3[:url],
@@ -327,12 +317,12 @@ profile_abstract = {
   gender: 'Male',
   user_id: user_3_saved.id,
   featured: true,
-  category: 'abstract'
+ ) category: 'abstract'
 }
 
 camera_4 = Faker::Camera.brand_with_model
 lenses_4 = get_lenses(camera_4.split.first)
-profile_animals = {
+profile_animals = Profile.new({
   first_name: faker_user_4[:name].split.first,
   last_name: faker_user_4[:name].split.last,
   website_url: faker_user_4[:url],
@@ -346,12 +336,12 @@ profile_animals = {
   gender: 'Male',
   user_id: user_4_saved.id,
   featured: true,
-  category: 'animals'
+ ) category: 'animals'
 }
 
 camera_5 = Faker::Camera.brand_with_model
 lenses_5 = get_lenses(camera_5.split.first)
-profile_chocolate = {
+profile_chocolate = Profile.new({
   first_name: faker_user_5[:name].split.first,
   last_name: faker_user_5[:name].split.last,
   website_url: faker_user_5[:url],
@@ -365,12 +355,12 @@ profile_chocolate = {
   gender: 'Male',
   user_id: user_5_saved.id,
   featured: true,
-  category: 'chocolate'
+ ) category: 'chocolate'
 }
 
 camera_8 = Faker::Camera.brand_with_model
 lenses_8 = get_lenses(camera_8.split.first)
-profile_music = {
+profile_music = Profile.new({
   first_name: faker_user_8[:name].split.first,
   last_name: faker_user_8[:name].split.last,
   website_url: faker_user_8[:url],
@@ -384,12 +374,12 @@ profile_music = {
   gender: 'Male',
   user_id: user_8_saved.id,
   featured: true,
-  category: 'music'
+ ) category: 'music'
 }
 
 camera_9 = Faker::Camera.brand_with_model
 lenses_9 = get_lenses(camera_9.split.first)
-profile_sports = {
+profile_sports = Profile.new({
   first_name: faker_user_9[:name].split.first,
   last_name: faker_user_9[:name].split.last,
   website_url: faker_user_9[:url],
@@ -403,12 +393,12 @@ profile_sports = {
   gender: 'Male',
   user_id: user_9_saved.id,
   featured: true,
-  category: 'sports'
+ ) category: 'sports'
 }
 
 camera_6 = Faker::Camera.brand_with_model
 lenses_6 = get_lenses(camera_6.split.first)
-profile_8 = {
+profile_8 = Profile.new({
   first_name: faker_user_6[:name].split.first,
   last_name: faker_user_6[:name].split.last,
   website_url: faker_user_6[:url],
@@ -422,11 +412,11 @@ profile_8 = {
   gender: 'Male',
   user_id: user_6_saved.id,
   featured: false
-}
+})
 
 camera_10 = Faker::Camera.brand_with_model
 lenses_10 = get_lenses(camera_10.split.first)
-profile_9 = {
+profile_9 = Profile.new({
   first_name: faker_user_10[:name].split.first,
   last_name: faker_user_10[:name].split.last,
   website_url: faker_user_10[:url],
@@ -440,11 +430,11 @@ profile_9 = {
   gender: 'Male',
   user_id: user_10_saved.id,
   featured: false
-}
+})
 
 camera_11 = Faker::Camera.brand_with_model
 lenses_11 = get_lenses(camera_11.split.first)
-profile_10 = {
+profile_10 = Profile.new({
   first_name: faker_user_11[:name].split.first,
   last_name: faker_user_11[:name].split.last,
   website_url: faker_user_11[:url],
@@ -458,11 +448,11 @@ profile_10 = {
   gender: 'Male',
   user_id: user_11_saved.id,
   featured: false
-}
+})
 
 camera_12 = Faker::Camera.brand_with_model
 lenses_12 = get_lenses(camera_12.split.first)
-profile_11 = {
+profile_11 = Profile.new({
   first_name: faker_user_12[:name].split.first,
   last_name: faker_user_12[:name].split.last,
   website_url: faker_user_12[:url],
@@ -476,11 +466,11 @@ profile_11 = {
   gender: 'Male',
   user_id: user_12_saved.id,
   featured: false
-}
+})
 
 camera_13 = Faker::Camera.brand_with_model
 lenses_13 = get_lenses(camera_13.split.first)
-profile_12 = {
+profile_12 = Profile.new({
   first_name: faker_user_13[:name].split.first,
   last_name: faker_user_13[:name].split.last,
   website_url: faker_user_13[:url],
@@ -494,11 +484,11 @@ profile_12 = {
   gender: 'Male',
   user_id: user_13_saved.id,
   featured: false
-}
+})
 
 camera_14 = Faker::Camera.brand_with_model
 lenses_14 = get_lenses(camera_14.split.first)
-profile_13 = {
+profile_13 = Profile.new({
   first_name: faker_user_14[:name].split.first,
   last_name: faker_user_14[:name].split.last,
   website_url: faker_user_14[:url],
@@ -512,11 +502,11 @@ profile_13 = {
   gender: 'Male',
   user_id: user_14_saved.id,
   featured: false
-}
+})
 
 camera_15 = Faker::Camera.brand_with_model
 lenses_15 = get_lenses(camera_15.split.first)
-profile_14 = {
+profile_14 = Profile.new({
   first_name: faker_user_15[:name].split.first,
   last_name: faker_user_15[:name].split.last,
   website_url: faker_user_15[:url],
@@ -530,11 +520,11 @@ profile_14 = {
   gender: 'Male',
   user_id: user_15_saved.id,
   featured: false
-}
+})
 
 camera_16 = Faker::Camera.brand_with_model
 lenses_16 = get_lenses(camera_16.split.first)
-profile_15 = {
+profile_15 = Profile.new({
   first_name: faker_user_7[:name].split.first,
   last_name: faker_user_7[:name].split.last,
   website_url: faker_user_7[:url],
@@ -548,23 +538,23 @@ profile_15 = {
   gender: 'Male',
   user_id: user_7_saved.id,
   featured: false
-}
+})
 
-profile_guest_saved = Profile.create(profile_guest)
-profile_jacob_saved = Profile.create(profile_jacob)
-profile_abstract_saved = Profile.create(profile_abstract)
-profile_animals_saved = Profile.create(profile_animals)
-profile_chocolate_saved = Profile.create(profile_chocolate)
-profile_music_saved = Profile.create(profile_music)
-profile_sports_saved = Profile.create(profile_sports)
-profile_8_saved = Profile.create(profile_8)
-profile_9_saved = Profile.create(profile_9)
-profile_10_saved = Profile.create(profile_10)
-profile_11_saved = Profile.create(profile_11)
-profile_12_saved = Profile.create(profile_12)
-profile_13_saved = Profile.create(profile_13)
-profile_14_saved = Profile.create(profile_14)
-profile_15_saved = Profile.create(profile_15)
+profile_guest_saved = Profile.save!
+profile_jacob_saved = Profile.save!
+profile_abstract_saved = Profile.save!
+profile_animals_saved = Profile.save!
+profile_chocolate_saved = Profile.save!
+profile_music_saved = Profile.save!
+profile_sports_saved = Profile.save!
+profile_8_saved = Profile.save!
+profile_9_saved = Profile.save!
+profile_10_saved = Profile.save!
+profile_11_saved = Profile.save!
+profile_12_saved = Profile.save!
+profile_13_saved = Profile.save!
+profile_14_saved = Profile.save!
+profile_15_saved = Profile.save!
 
 ################################################################################
 
@@ -574,31 +564,31 @@ profile_guest_saved.avatar.attach(io: File.open(image_url('guest_avatar.webp'), 
 
 profile_jacob_saved.avatar.attach(io: File.open(image_url('jacob_avatar.jpg'), filename: 'jacob_avatar.jpg'))
 
-profile_abstract_saved.avatar.attach(io: File.open(image_url('avatar_1.png'), filename: 'abstract_avatar.jpg'))
+profile_abstract_saved.avatar.attach(io: File.open(image_url('avatar_1.png'), filename: 'abstract_avatar.png'))
 
-profile_animals_saved.avatar.attach(io: File.open(image_url('avatar_2.png'), filename: 'animal_avatar.jpg'))
+profile_animals_saved.avatar.attach(io: File.open(image_url('avatar_2.png'), filename: 'animal_avatar.png'))
 
-profile_chocolate_saved.avatar.attach(io: File.open(image_url('avatar_3.png'), filename: 'choco_avatar.jpg'))
+profile_chocolate_saved.avatar.attach(io: File.open(image_url('avatar_3.png'), filename: 'choco_avatar.png'))
 
-profile_music_saved.avatar.attach(io: File.open(image_url('avatar_4.png'), filename: 'music_avatar.jpg'))
+profile_music_saved.avatar.attach(io: File.open(image_url('avatar_4.png'), filename: 'music_avatar.png'))
 
-profile_sports_saved.avatar.attach(io: File.open(image_url('avatar_5.png'), filename: 'sport_avatar.jpg'))
+profile_sports_saved.avatar.attach(io: File.open(image_url('avatar_5.png'), filename: 'sport_avatar.png'))
 
-profile_8_saved.avatar.attach(io: File.open(image_url('avatar_6.png'), filename: '8_avatar.jpg'))
+profile_8_saved.avatar.attach(io: File.open(image_url('avatar_6.png'), filename: '8_avatar.png'))
 
-profile_9_saved.avatar.attach(io: File.open(image_url('avatar_7.png'), filename: '9_avatar.jpg'))
+profile_9_saved.avatar.attach(io: File.open(image_url('avatar_7.png'), filename: '9_avatar.png'))
 
-profile_10_saved.avatar.attach(io: File.open(image_url('avatar_8.png'), filename: '10_avatar.jpg'))
+profile_10_saved.avatar.attach(io: File.open(image_url('avatar_8.png'), filename: '10_avatar.png'))
 
-profile_11_saved.avatar.attach(io: File.open(image_url('avatar_9.png'), filename: '11_avatar.jpg'))
+profile_11_saved.avatar.attach(io: File.open(image_url('avatar_9.png'), filename: '11_avatar.png'))
 
-profile_12_saved.avatar.attach(io: File.open(image_url('avatar_10.png'), filename: '12_avatar.jpg'))
+profile_12_saved.avatar.attach(io: File.open(image_url('avatar_10.png'), filename: '12_avatar.png'))
 
-profile_13_saved.avatar.attach(io: File.open(image_url('avatar_11.png'), filename: '13_avatar.jpg'))
+profile_13_saved.avatar.attach(io: File.open(image_url('avatar_11.png'), filename: '13_avatar.png'))
 
-profile_14_saved.avatar.attach(io: File.open(image_url('avatar_12.png'), filename: '14_avatar.jpg'))
+profile_14_saved.avatar.attach(io: File.open(image_url('avatar_12.png'), filename: '14_avatar.png'))
 
-profile_15_saved.avatar.attach(io: File.open(image_url('avatar_13.png'), filename: '15_avatar.jpg'))
+profile_15_saved.avatar.attach(io: File.open(image_url('avatar_13.png'), filename: '15_avatar.png'))
 
 
 
@@ -622,6 +612,9 @@ profile_12_saved.cover.attach(io: File.open(image_url('12_cover.jpg'), filename:
 profile_13_saved.cover.attach(io: File.open(image_url('13_cover.jpg'), filename: '13_cover.jpg'))
 profile_14_saved.cover.attach(io: File.open(image_url('14_cover.jpg'), filename: '14_cover.jpg'))
 profile_15_saved.cover.attach(io: File.open(image_url('15_cover.jpg'), filename: '15_cover.jpg'))
+
+
+# save profiles one last time after attaching images
 
 profile_guest_saved.save!
 profile_jacob_saved.save!
