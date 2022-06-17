@@ -572,17 +572,17 @@ profile_15_saved = Profile.create(profile_15)
 
 profile_guest_saved.avatar.attach(io: File.open(image_url('guest_avatar.webp'), filename: 'guest_avatar.webp'))
 
-profile_jacob_saved.avatar.attach(io: File.open(image_url('jacob_avatar.jpg')), filename: 'jacob_avatar.jpg'))
+profile_jacob_saved.avatar.attach(io: File.open(image_url('jacob_avatar.jpg'), filename: 'jacob_avatar.jpg'))
 
-profile_abstract_saved.avatar.attach(io: File.open(image_url('avatar_1.png')), filename: 'abstract_avatar.jpg'))
+profile_abstract_saved.avatar.attach(io: File.open(image_url('avatar_1.png'), filename: 'abstract_avatar.jpg'))
 
-profile_animals_saved.avatar.attach(io: File.open(image_url('avatar_2.png')), filename: 'animal_avatar.jpg'))
+profile_animals_saved.avatar.attach(io: File.open(image_url('avatar_2.png'), filename: 'animal_avatar.jpg'))
 
 profile_chocolate_saved.avatar.attach(io: File.open(image_url('avatar_3.png'), filename: 'choco_avatar.jpg'))
 
-profile_music_saved.avatar.attach(io: File.open(image_url('avatar_4.png')), filename: 'music_avatar.jpg'))
+profile_music_saved.avatar.attach(io: File.open(image_url('avatar_4.png'), filename: 'music_avatar.jpg'))
 
-profile_sports_saved.avatar.attach(io: File.open(image_url('avatar_5.png')), filename: 'sport_avatar.jpg'))
+profile_sports_saved.avatar.attach(io: File.open(image_url('avatar_5.png'), filename: 'sport_avatar.jpg'))
 
 profile_8_saved.avatar.attach(io: File.open(image_url('avatar_6.png'), filename: '8_avatar.jpg'))
 
@@ -606,22 +606,22 @@ profile_15_saved.avatar.attach(io: File.open(image_url('avatar_13.png'), filenam
 
 ## cover photos
 
-profile_guest_saved.cover.attach(io: File.open(image_url('minimalist_cover.jpg')), filename: 'guest_cover.jpg')
-profile_jacob_saved.cover.attach(io: File.open(image_url('jacob_cover.jpg')), filename: 'malibu.jpg')
-profile_abstract_saved.cover.attach(io: File.open(image_url('abstract_cover.jpg')), filename: 'abstract_cover')
+profile_guest_saved.cover.attach(io: File.open(image_url('minimalist_cover.jpg'), filename: 'guest_cover.jpg')
+profile_jacob_saved.cover.attach(io: File.open(image_url('jacob_cover.jpg'), filename: 'malibu.jpg')
+profile_abstract_saved.cover.attach(io: File.open(image_url('abstract_cover.jpg'), filename: 'abstract_cover')
 profile_animals_saved.cover.attach(io: File.open(image_url('animals_cover.jpg'))), filename: 'animals_cover.jpg')
 profile_chocolate_saved.cover.attach(io: File.open(image_url('chocolate_cover.jpg'))), filename: 'chocolate_cover.jpg')
 profile_music_saved.cover.attach(io: File.open(image_url('music_cover.jpg'))), filename: 'music_cover.jpg')
 profile_sports_saved.cover.attach(io: File.open(image_url('sports_cover.jpg'))), filename: 'sports_cover.jpg')
 
-profile_8_saved.cover.attach(io: File.open(image_url('8_cover.jpg')), filename: '8_cover.jpg')
-profile_9_saved.cover.attach(io: File.open(image_url('9_cover.jpg')), filename: '9_cover.jpg')
-profile_10_saved.cover.attach(io: File.open(image_url('10_cover.jpg')), filename: '10_cover.jpg')
-profile_11_saved.cover.attach(io: File.open(image_url('11_cover.jpg')), filename: '11_cover.jpg')
-profile_12_saved.cover.attach(io: File.open(image_url('12_cover.jpg')), filename: '12_cover.jpg')
-profile_13_saved.cover.attach(io: File.open(image_url('13_cover.jpg')), filename: '13_cover.jpg')
-profile_14_saved.cover.attach(io: File.open(image_url('14_cover.jpg')), filename: '14_cover.jpg')
-profile_15_saved.cover.attach(io: File.open(image_url('15_cover.jpg')), filename: '15_cover.jpg')
+profile_8_saved.cover.attach(io: File.open(image_url('8_cover.jpg'), filename: '8_cover.jpg')
+profile_9_saved.cover.attach(io: File.open(image_url('9_cover.jpg'), filename: '9_cover.jpg')
+profile_10_saved.cover.attach(io: File.open(image_url('10_cover.jpg'), filename: '10_cover.jpg')
+profile_11_saved.cover.attach(io: File.open(image_url('11_cover.jpg'), filename: '11_cover.jpg')
+profile_12_saved.cover.attach(io: File.open(image_url('12_cover.jpg'), filename: '12_cover.jpg')
+profile_13_saved.cover.attach(io: File.open(image_url('13_cover.jpg'), filename: '13_cover.jpg')
+profile_14_saved.cover.attach(io: File.open(image_url('14_cover.jpg'), filename: '14_cover.jpg')
+profile_15_saved.cover.attach(io: File.open(image_url('15_cover.jpg'), filename: '15_cover.jpg')
 
 profile_guest_saved.save!
 profile_jacob_saved.save!
@@ -662,7 +662,7 @@ photo_1 = {
   featured: assignFeaturedPage()
 }
 photo_1_saved = Photo.new(photo_1)
-photo_1_saved.photo.attach(io: File.open(image_url('architecture-building-black-and-white-staircase-staircase-steps-spiral-london-spiral-staircase_t20_Amw31y.jpg')), filename: 'minimal_1.jpg')
+photo_1_saved.photo.attach(io: File.open(image_url('architecture-building-black-and-white-staircase-staircase-steps-spiral-london-spiral-staircase_t20_Amw31y.jpg'), filename: 'minimal_1.jpg')
 photo_1_saved.save!
 
 photo_2 = {
@@ -677,7 +677,7 @@ photo_2 = {
   featured: assignFeaturedPage()
 }
 photo_2_saved = Photo.new(photo_2)
-photo_2_saved.photo.attach(io: File.open(image_url('big-surf-off-the-coast-of-southern-africa_t20_K6EEyE.jpg')), filename: 'minimal_2.jpg')
+photo_2_saved.photo.attach(io: File.open(image_url('big-surf-off-the-coast-of-southern-africa_t20_K6EEyE.jpg'), filename: 'minimal_2.jpg')
 photo_2_saved.save!
 
 photo_3 = {
@@ -692,7 +692,7 @@ photo_3 = {
   featured: assignFeaturedPage()
 }
 photo_3_saved = Photo.new(photo_3)
-photo_3_saved.photo.attach(io: File.open(image_url('cabalgata-en-el-mar_t20_gLlABx.jpg')), filename: 'minimal_3.jpg')
+photo_3_saved.photo.attach(io: File.open(image_url('cabalgata-en-el-mar_t20_gLlABx.jpg'), filename: 'minimal_3.jpg')
 photo_3_saved.save!
 
 photo_4 = {
@@ -707,7 +707,7 @@ photo_4 = {
   featured: assignFeaturedPage()
 }
 photo_4_saved = Photo.new(photo_4)
-photo_4_saved.photo.attach(io: File.open(image_url('capture-light_t20_ZnBxYY.jpg')), filename: 'minimal_4.jpg')
+photo_4_saved.photo.attach(io: File.open(image_url('capture-light_t20_ZnBxYY.jpg'), filename: 'minimal_4.jpg')
 photo_4_saved.save!
 
 photo_5 = {
@@ -722,7 +722,7 @@ photo_5 = {
   featured: assignFeaturedPage()
 }
 photo_5_saved = Photo.new(photo_5)
-photo_5_saved.photo.attach(io: File.open(image_url('cat-cat-s-eye-minimal-minimalist-minimalistic-minimalism_t20_7yN4Kk.jpg')), filename: 'minimal_5.jpg')
+photo_5_saved.photo.attach(io: File.open(image_url('cat-cat-s-eye-minimal-minimalist-minimalistic-minimalism_t20_7yN4Kk.jpg'), filename: 'minimal_5.jpg')
 photo_5_saved.save!
 
 photo_6 = {
@@ -737,7 +737,7 @@ photo_6 = {
   featured: assignFeaturedPage()
 }
 photo_6_saved = Photo.new(photo_6)
-photo_6_saved.photo.attach(io: File.open(image_url('city-architecture-bridge-uk-landmark-london-fog-monochrome-mist-millennium-bridge_t20_A321Py.jpg')), filename: 'minimal_6.jpg')
+photo_6_saved.photo.attach(io: File.open(image_url('city-architecture-bridge-uk-landmark-london-fog-monochrome-mist-millennium-bridge_t20_A321Py.jpg'), filename: 'minimal_6.jpg')
 photo_6_saved.save!
 
 photo_7 = {
@@ -752,7 +752,7 @@ photo_7 = {
   featured: assignFeaturedPage()
 }
 photo_7_saved = Photo.new(photo_7)
-photo_7_saved.photo.attach(io: File.open(image_url('city-architecture-people-business-adult-sign-hand-iron-minimal-desktop_t20_kRRmzE.jpg')), filename: 'minimal_7.jpg')
+photo_7_saved.photo.attach(io: File.open(image_url('city-architecture-people-business-adult-sign-hand-iron-minimal-desktop_t20_kRRmzE.jpg'), filename: 'minimal_7.jpg')
 photo_7_saved.save!
 
 photo_8 = {
@@ -767,7 +767,7 @@ photo_8 = {
   featured: assignFeaturedPage()
 }
 photo_8_saved = Photo.new(photo_8)
-photo_8_saved.photo.attach(io: File.open(image_url('door-outside-that-leads-to-the-ocean_t20_ZJJRn0.jpg')), filename: 'minimal_8.jpg')
+photo_8_saved.photo.attach(io: File.open(image_url('door-outside-that-leads-to-the-ocean_t20_ZJJRn0.jpg'), filename: 'minimal_8.jpg')
 photo_8_saved.save!
 
 photo_9 = {
@@ -782,7 +782,7 @@ photo_9 = {
   featured: assignFeaturedPage()
 }
 photo_9_saved = Photo.new(photo_9)
-photo_9_saved.photo.attach(io: File.open(image_url('frame-mock-up-canvas-white-poster-blank-template-background-wall-design-mock-up-mockup-empty-copy_t20_nLZw6P.jpg')), filename: 'minimal_9.jpg')
+photo_9_saved.photo.attach(io: File.open(image_url('frame-mock-up-canvas-white-poster-blank-template-background-wall-design-mock-up-mockup-empty-copy_t20_nLZw6P.jpg'), filename: 'minimal_9.jpg')
 photo_9_saved.save!
 
 photo_10 = {
@@ -797,7 +797,7 @@ photo_10 = {
   featured: assignFeaturedPage()
 }
 photo_10_saved = Photo.new(photo_10)
-photo_10_saved.photo.attach(io: File.open(image_url('green-spiral-vine-macro-curly-spirals-minimal-green-plants-natural-spirals-plant-spirals_t20_kz3kkX.jpg')), filename: 'minimal_10.jpg')
+photo_10_saved.photo.attach(io: File.open(image_url('green-spiral-vine-macro-curly-spirals-minimal-green-plants-natural-spirals-plant-spirals_t20_kz3kkX.jpg'), filename: 'minimal_10.jpg')
 photo_10_saved.save!
 
 photo_11 = {
@@ -812,7 +812,7 @@ photo_11 = {
   featured: assignFeaturedPage()
 }
 photo_11_saved = Photo.new(photo_11)
-photo_11_saved.photo.attach(io: File.open(image_url('minimal_t20_PJjN97.jpg')), filename: 'minimal_11.jpg')
+photo_11_saved.photo.attach(io: File.open(image_url('minimal_t20_PJjN97.jpg'), filename: 'minimal_11.jpg')
 photo_11_saved.save!
 
 photo_12 = {
@@ -827,7 +827,7 @@ photo_12 = {
   featured: assignFeaturedPage()
 }
 photo_12_saved = Photo.new(photo_12)
-photo_12_saved.photo.attach(io: File.open(image_url('minimalistic-orange-corridor-with-arched-ceiling-in-egyptian-architecture_t20_4230d2.jpg')), filename: 'minimal_12.jpg')
+photo_12_saved.photo.attach(io: File.open(image_url('minimalistic-orange-corridor-with-arched-ceiling-in-egyptian-architecture_t20_4230d2.jpg'), filename: 'minimal_12.jpg')
 photo_12_saved.save!
 
 photo_13 = {
@@ -842,7 +842,7 @@ photo_13 = {
   featured: assignFeaturedPage()
 }
 photo_13_saved = Photo.new(photo_13)
-photo_13_saved.photo.attach(io: File.open(image_url('minimalistic-vibe_t20_VW10N1.jpg')), filename: 'minimal_13.jpg')
+photo_13_saved.photo.attach(io: File.open(image_url('minimalistic-vibe_t20_VW10N1.jpg'), filename: 'minimal_13.jpg')
 photo_13_saved.save!
 
 photo_14 = {
@@ -857,7 +857,7 @@ photo_14 = {
   featured: assignFeaturedPage()
 }
 photo_14_saved = Photo.new(photo_14)
-photo_14_saved.photo.attach(io: File.open(image_url('nature-fog-bench-dock-minimalism-neutrals_t20_onn1E8.jpg')), filename: 'minimal_14.jpg')
+photo_14_saved.photo.attach(io: File.open(image_url('nature-fog-bench-dock-minimalism-neutrals_t20_onn1E8.jpg'), filename: 'minimal_14.jpg')
 photo_14_saved.save!
 
 photo_15 = {
@@ -872,7 +872,7 @@ photo_15 = {
   featured: assignFeaturedPage()
 }
 photo_15_saved = Photo.new(photo_15)
-photo_15_saved.photo.attach(io: File.open(image_url('nature-outdoors-sky-night-adventure-male-landscape-star-impact-earth-milky-way-minimalism-epic_t20_nR7L9A.jpg')), filename: 'minimal_15.jpg')
+photo_15_saved.photo.attach(io: File.open(image_url('nature-outdoors-sky-night-adventure-male-landscape-star-impact-earth-milky-way-minimalism-epic_t20_nR7L9A.jpg'), filename: 'minimal_15.jpg')
 photo_15_saved.save!
 
 guest_photo_16 = {
@@ -887,7 +887,7 @@ guest_photo_16 = {
   featured: assignFeaturedPage()
 }
 guest_photo_16_saved = Photo.new(guest_photo_16)
-guest_photo_16_saved.photo.attach(io: File.open(image_url('nature-sky-sunset-mountain-mountain-landscape-extreme-sports-mountains-paragliding-neutral-airy_t20_nRk8Kn.jpg')), filename: 'minimal_16.jpg')
+guest_photo_16_saved.photo.attach(io: File.open(image_url('nature-sky-sunset-mountain-mountain-landscape-extreme-sports-mountains-paragliding-neutral-airy_t20_nRk8Kn.jpg'), filename: 'minimal_16.jpg')
 guest_photo_16_saved.save!
 
 guest_photo_17 = {
@@ -902,7 +902,7 @@ guest_photo_17 = {
   featured: assignFeaturedPage()
 }
 guest_photo_17_saved = Photo.new(guest_photo_17)
-guest_photo_17_saved.photo.attach(io: File.open(image_url('scandinavian-modern-white-cozy-eco-interior-white-table-and-mirror-in-bed-room-minimalism-cactus_t20_Jzvvp4.jpg')), filename: 'minimal_17.jpg')
+guest_photo_17_saved.photo.attach(io: File.open(image_url('scandinavian-modern-white-cozy-eco-interior-white-table-and-mirror-in-bed-room-minimalism-cactus_t20_Jzvvp4.jpg'), filename: 'minimal_17.jpg')
 guest_photo_17_saved.save!
 
 guest_photo_18 = {
@@ -917,7 +917,7 @@ guest_photo_18 = {
   featured: assignFeaturedPage()
 }
 guest_photo_18_saved = Photo.new(guest_photo_18)
-guest_photo_18_saved.photo.attach(io: File.open(image_url('silhouettes-of-mountains-in-the-mist-and-bird-flying-light-blue-color-minimal-landscape-adventure_t20_lLlXvQ.jpg')), filename: 'minimal_18.jpg')
+guest_photo_18_saved.photo.attach(io: File.open(image_url('silhouettes-of-mountains-in-the-mist-and-bird-flying-light-blue-color-minimal-landscape-adventure_t20_lLlXvQ.jpg'), filename: 'minimal_18.jpg')
 guest_photo_18_saved.save!
 
 guest_photo_19 = {
@@ -932,7 +932,7 @@ guest_photo_19 = {
   featured: assignFeaturedPage()
 }
 guest_photo_19_saved = Photo.new(guest_photo_19)
-guest_photo_19_saved.photo.attach(io: File.open(image_url('sky-architecture-sunset-yellow-window-love-edifice-apartment_t20_8gZPwj.jpg')), filename: 'minimal_19.jpg')
+guest_photo_19_saved.photo.attach(io: File.open(image_url('sky-architecture-sunset-yellow-window-love-edifice-apartment_t20_8gZPwj.jpg'), filename: 'minimal_19.jpg')
 guest_photo_19_saved.save!
 
 guest_photo_20 = {
@@ -947,7 +947,7 @@ guest_photo_20 = {
   featured: assignFeaturedPage()
 }
 guest_photo_20_saved = Photo.new(guest_photo_20)
-guest_photo_20_saved.photo.attach(io: File.open(image_url('summer-purple-lavender-running-freedom-girl-flowers-lavender-farm_t20_jjlOVd.jpg')), filename: 'minimal_20.jpg')
+guest_photo_20_saved.photo.attach(io: File.open(image_url('summer-purple-lavender-running-freedom-girl-flowers-lavender-farm_t20_jjlOVd.jpg'), filename: 'minimal_20.jpg')
 guest_photo_20_saved.save!
 
 guest_photo_21 = {
@@ -962,7 +962,7 @@ guest_photo_21 = {
   featured: assignFeaturedPage()
 }
 guest_photo_21_saved = Photo.new(guest_photo_21)
-guest_photo_21_saved.photo.attach(io: File.open(image_url('travel-landscape-desert-dunes-orange-color-sand-dunes-minimalism-neutral-colors-tiny-human_t20_E0GePJ.jpg')), filename: 'minimal_21.jpg')
+guest_photo_21_saved.photo.attach(io: File.open(image_url('travel-landscape-desert-dunes-orange-color-sand-dunes-minimalism-neutral-colors-tiny-human_t20_E0GePJ.jpg'), filename: 'minimal_21.jpg')
 guest_photo_21_saved.save!
 
 guest_photo_22 = {
@@ -977,7 +977,7 @@ guest_photo_22 = {
   featured: assignFeaturedPage()
 }
 guest_photo_22_saved = Photo.new(guest_photo_22)
-guest_photo_22_saved.photo.attach(io: File.open(image_url('windows-on-windows_t20_knrmR4.jpg')), filename: 'minimal_22.jpg')
+guest_photo_22_saved.photo.attach(io: File.open(image_url('windows-on-windows_t20_knrmR4.jpg'), filename: 'minimal_22.jpg')
 guest_photo_22_saved.save!
 
 
@@ -1152,7 +1152,7 @@ photo_16 = {
   featured: assignFeaturedPage()
 }
 photo_16_saved = Photo.new(photo_16)
-photo_16_saved.photo.attach(io: File.open(image_url('Benowitz Jacob - Eyes.jpg')), filename: 'jacob_16.jpg')
+photo_16_saved.photo.attach(io: File.open(image_url('Benowitz Jacob - Eyes.jpg'), filename: 'jacob_16.jpg')
 photo_16_saved.save!
 
 comment_32 = Comment.new({
@@ -1178,7 +1178,7 @@ photo_17 = {
   featured: assignFeaturedPage()
 }
 photo_17_saved = Photo.new(photo_17)
-photo_17_saved.photo.attach(io: File.open(image_url('Benowitz Jacob - LampSkyColor.jpg')), filename: 'jacob_17.jpg')
+photo_17_saved.photo.attach(io: File.open(image_url('Benowitz Jacob - LampSkyColor.jpg'), filename: 'jacob_17.jpg')
 photo_17_saved.save!
 
 comment_34 = Comment.new({
@@ -1204,7 +1204,7 @@ photo_18 = {
   featured: assignFeaturedPage()
 }
 photo_18_saved = Photo.new(photo_18)
-photo_18_saved.photo.attach(io: File.open(image_url('DSC_Creative_0214.jpg')), filename: 'jacob_18.jpg')
+photo_18_saved.photo.attach(io: File.open(image_url('DSC_Creative_0214.jpg'), filename: 'jacob_18.jpg')
 photo_18_saved.save!
 
 comment_36 = Comment.new({
@@ -1230,7 +1230,7 @@ photo_18_1 = {
   featured: assignFeaturedPage()
 }
 photo_18_1_saved = Photo.new(photo_18_1)
-photo_18_1_saved.photo.attach(io: File.open(image_url('DSC_Creative_0232.jpg')), filename: 'jacob_18_1.jpg')
+photo_18_1_saved.photo.attach(io: File.open(image_url('DSC_Creative_0232.jpg'), filename: 'jacob_18_1.jpg')
 photo_18_1_saved.save!
 
 comment_38 = Comment.new({
@@ -1256,7 +1256,7 @@ photo_19 = {
   featured: assignFeaturedPage()
 }
 photo_19_saved = Photo.new(photo_19)
-photo_19_saved.photo.attach(io: File.open(image_url('IMG_1453.jpg')), filename: 'jacob_19.jpg')
+photo_19_saved.photo.attach(io: File.open(image_url('IMG_1453.jpg'), filename: 'jacob_19.jpg')
 photo_19_saved.save!
 
 comment_40 = Comment.new({
@@ -1283,7 +1283,7 @@ photo_20 = {
   featured: assignFeaturedPage()
 }
 photo_20_saved = Photo.new(photo_20)
-photo_20_saved.photo.attach(io: File.open(image_url('IMG_9052.jpg')), filename: 'jacob_20.jpg')
+photo_20_saved.photo.attach(io: File.open(image_url('IMG_9052.jpg'), filename: 'jacob_20.jpg')
 photo_20_saved.save!
 
 photo_21 = {
@@ -1298,7 +1298,7 @@ photo_21 = {
   featured: assignFeaturedPage()
 }
 photo_21_saved = Photo.new(photo_21)
-photo_21_saved.photo.attach(io: File.open(image_url('IMG_Creative_0443.jpg')), filename: 'jacob_21.jpg')
+photo_21_saved.photo.attach(io: File.open(image_url('IMG_Creative_0443.jpg'), filename: 'jacob_21.jpg')
 photo_21_saved.save!
 
 comment_42 = Comment.new({
@@ -1324,7 +1324,7 @@ photo_22 = {
   featured: assignFeaturedPage()
 }
 photo_22_saved = Photo.new(photo_22)
-photo_22_saved.photo.attach(io: File.open(image_url('IMG_Creative_0794.jpg')), filename: 'jacob_22.jpg')
+photo_22_saved.photo.attach(io: File.open(image_url('IMG_Creative_0794.jpg'), filename: 'jacob_22.jpg')
 photo_22_saved.save!
 
 photo_23 = {
@@ -1339,7 +1339,7 @@ photo_23 = {
   featured: assignFeaturedPage()
 }
 photo_23_saved = Photo.new(photo_23)
-photo_23_saved.photo.attach(io: File.open(image_url('IMG_Creative_0885.jpg')), filename: 'jacob_23.jpg')
+photo_23_saved.photo.attach(io: File.open(image_url('IMG_Creative_0885.jpg'), filename: 'jacob_23.jpg')
 photo_23_saved.save!
 
 comment_44 = Comment.new({
@@ -1375,7 +1375,7 @@ photo_24 = {
   featured: assignFeaturedPage()
 }
 photo_24_saved = Photo.new(photo_24)
-photo_24_saved.photo.attach(io: File.open(image_url('IMG_Creative_2774.jpg')), filename: 'jacob_24.jpg')
+photo_24_saved.photo.attach(io: File.open(image_url('IMG_Creative_2774.jpg'), filename: 'jacob_24.jpg')
 photo_24_saved.save!
 
 photo_25 = {
@@ -1390,7 +1390,7 @@ photo_25 = {
   featured: assignFeaturedPage()
 }
 photo_25_saved = Photo.new(photo_25)
-photo_25_saved.photo.attach(io: File.open(image_url('Sunset.jpg')), filename: 'jacob_25.jpg')
+photo_25_saved.photo.attach(io: File.open(image_url('Sunset.jpg'), filename: 'jacob_25.jpg')
 photo_25_saved.save!
 
 photo_26 = {
@@ -1405,7 +1405,7 @@ photo_26 = {
   featured: assignFeaturedPage()
 }
 photo_26_saved = Photo.new(photo_26)
-photo_26_saved.photo.attach(io: File.open(image_url('Upside.jpg')), filename: 'jacob_26.jpg')
+photo_26_saved.photo.attach(io: File.open(image_url('Upside.jpg'), filename: 'jacob_26.jpg')
 photo_26_saved.save!
 
 comment_48 = Comment.new({
@@ -1432,7 +1432,7 @@ jacob_photo_27 = {
   featured: assignFeaturedPage()
 }
 jacob_photo_27_saved = Photo.new(jacob_photo_27)
-jacob_photo_27_saved.photo.attach(io: File.open(image_url('IMG_Creative_2789.jpg')), filename: 'jacob_27.jpg')
+jacob_photo_27_saved.photo.attach(io: File.open(image_url('IMG_Creative_2789.jpg'), filename: 'jacob_27.jpg')
 jacob_photo_27_saved.save!
 
 jacob_photo_28 = {
@@ -1447,7 +1447,7 @@ jacob_photo_28 = {
   featured: assignFeaturedPage()
 }
 jacob_photo_28_saved = Photo.new(jacob_photo_28)
-jacob_photo_28_saved.photo.attach(io: File.open(image_url('IMG_Creative_6565.jpg')), filename: 'jacob_28.jpg')
+jacob_photo_28_saved.photo.attach(io: File.open(image_url('IMG_Creative_6565.jpg'), filename: 'jacob_28.jpg')
 jacob_photo_28_saved.save!
 
 comment_50 = Comment.new({
@@ -1473,7 +1473,7 @@ jacob_photo_29 = {
   featured: assignFeaturedPage()
 }
 jacob_photo_29_saved = Photo.new(jacob_photo_29)
-jacob_photo_29_saved.photo.attach(io: File.open(image_url('IMG_Creative_6576.jpg')), filename: 'jacob_29.jpg')
+jacob_photo_29_saved.photo.attach(io: File.open(image_url('IMG_Creative_6576.jpg'), filename: 'jacob_29.jpg')
 jacob_photo_29_saved.save!
 
 jacob_photo_30 = {
@@ -1488,7 +1488,7 @@ jacob_photo_30 = {
   featured: assignFeaturedPage()
 }
 jacob_photo_30_saved = Photo.new(jacob_photo_30)
-jacob_photo_30_saved.photo.attach(io: File.open(image_url('JacobBenowitz_Contact_Fallback.jpg')), filename: 'jacob_30.jpg')
+jacob_photo_30_saved.photo.attach(io: File.open(image_url('JacobBenowitz_Contact_Fallback.jpg'), filename: 'jacob_30.jpg')
 jacob_photo_30_saved.save!
 
 jacob_photo_31 = {
@@ -1503,7 +1503,7 @@ jacob_photo_31 = {
   featured: assignFeaturedPage()
 }
 jacob_photo_31_saved = Photo.new(jacob_photo_31)
-jacob_photo_31_saved.photo.attach(io: File.open(image_url('JacobBenowitz_Cove_Fallback.jpg')), filename: 'jacob_31.jpg')
+jacob_photo_31_saved.photo.attach(io: File.open(image_url('JacobBenowitz_Cove_Fallback.jpg'), filename: 'jacob_31.jpg')
 jacob_photo_31_saved.save!
 
 jacob_photo_32 = {
@@ -1518,7 +1518,7 @@ jacob_photo_32 = {
   featured: assignFeaturedPage()
 }
 jacob_photo_32_saved = Photo.new(jacob_photo_32)
-jacob_photo_32_saved.photo.attach(io: File.open(image_url('JacobBenowitz_Home_Fallback.jpg')), filename: 'jacob_32.jpg')
+jacob_photo_32_saved.photo.attach(io: File.open(image_url('JacobBenowitz_Home_Fallback.jpg'), filename: 'jacob_32.jpg')
 jacob_photo_32_saved.save!
 
 
@@ -1536,7 +1536,7 @@ photo_27 = {
   featured: assignFeaturedPage()
 }
 photo_27_saved = Photo.new(photo_27)
-photo_27_saved.photo.attach(io: File.open(image_url('abstract-background_t20_E4387Z.jpg')), filename: 'abstract_27.jpg')
+photo_27_saved.photo.attach(io: File.open(image_url('abstract-background_t20_E4387Z.jpg'), filename: 'abstract_27.jpg')
 photo_27_saved.save!
 
 comment_52 = Comment.new({
@@ -1562,7 +1562,7 @@ photo_28 = {
   featured: assignFeaturedPage()
 }
 photo_28_saved = Photo.new(photo_28)
-photo_28_saved.photo.attach(io: File.open(image_url('abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg')), filename: 'abstract_28.jpg')
+photo_28_saved.photo.attach(io: File.open(image_url('abstract-net-museum-lines-threads-polygon-cobweb-contemporary-art-pentagon-geometries_t20_JJVOvl.jpg'), filename: 'abstract_28.jpg')
 photo_28_saved.save!
 
 comment_54 = Comment.new({
@@ -1593,7 +1593,7 @@ photo_28_1 = {
   featured: assignFeaturedPage()
 }
 photo_28_1_saved = Photo.new(photo_28_1)
-photo_28_1_saved.photo.attach(io: File.open('image_url(/acrylic-abstract-art_t20_RJokzv.jpg')), filename: 'abstract_28_1.jpg')
+photo_28_1_saved.photo.attach(io: File.open('image_url(/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg')
 photo_28_1_saved.save!
 
 comment_57 = Comment.new({
@@ -1619,7 +1619,7 @@ photo_29 = {
   featured: assignFeaturedPage()
 }
 photo_29_saved = Photo.new(photo_29)
-photo_29_saved.photo.attach(io: File.open(image_url('ferris-wheel-upside-down-evening-neon-colors-attraction-carousel-crystal-ball_t20_rB8vBo.jpg')), filename: 'abstract_29.jpg')
+photo_29_saved.photo.attach(io: File.open(image_url('ferris-wheel-upside-down-evening-neon-colors-attraction-carousel-crystal-ball_t20_rB8vBo.jpg'), filename: 'abstract_29.jpg')
 photo_29_saved.save!
 
 photo_30 = {
@@ -1634,7 +1634,7 @@ photo_30 = {
   featured: assignFeaturedPage()
 }
 photo_30_saved = Photo.new(photo_30)
-photo_30_saved.photo.attach(io: File.open(image_url('motions-3-3_t20_BAP4Nv.jpg')), filename: 'abstract_30.jpg')
+photo_30_saved.photo.attach(io: File.open(image_url('motions-3-3_t20_BAP4Nv.jpg'), filename: 'abstract_30.jpg')
 photo_30_saved.save!
 
 comment_59 = Comment.new({
@@ -1660,7 +1660,7 @@ photo_31 = {
   featured: assignFeaturedPage()
 }
 photo_31_saved = Photo.new(photo_31)
-photo_31_saved.photo.attach(io: File.open(image_url('nominated-digital-experiment_t20_XQNjXR.jpg')), filename: 'abstract_31.jpg')
+photo_31_saved.photo.attach(io: File.open(image_url('nominated-digital-experiment_t20_XQNjXR.jpg'), filename: 'abstract_31.jpg')
 photo_31_saved.save!
 
 
@@ -1676,7 +1676,7 @@ abs_photo_32 = {
   featured: assignFeaturedPage()
 }
 abs_photo_32_saved = Photo.new(abs_photo_32)
-abs_photo_32_saved.photo.attach(io: File.open(image_url('people-come-and-go-that-s-life_t20_dzRGY9.jpg')), filename: 'abstract_32.jpg')
+abs_photo_32_saved.photo.attach(io: File.open(image_url('people-come-and-go-that-s-life_t20_dzRGY9.jpg'), filename: 'abstract_32.jpg')
 abs_photo_32_saved.save!
 
 comment_61 = Comment.new({
@@ -1702,7 +1702,7 @@ abs_photo_33 = {
   featured: assignFeaturedPage()
 }
 abs_photo_33_saved = Photo.new(abs_photo_33)
-abs_photo_33_saved.photo.attach(io: File.open(image_url('reflection-pattern-sphere-abstract-bubble-texture-macro-creative-closeup-soap-bubble_t20_OJevlE.jpg')), filename: 'abstract_33.jpg')
+abs_photo_33_saved.photo.attach(io: File.open(image_url('reflection-pattern-sphere-abstract-bubble-texture-macro-creative-closeup-soap-bubble_t20_OJevlE.jpg'), filename: 'abstract_33.jpg')
 abs_photo_33_saved.save!
 
 comment_63 = Comment.new({
@@ -1723,7 +1723,7 @@ abs_photo_34 = {
   featured: assignFeaturedPage()
 }
 abs_photo_34_saved = Photo.new(abs_photo_34)
-abs_photo_34_saved.photo.attach(io: File.open(image_url('the-roof-of-the-building-esplanade-theatres-on-the-bay_t20_kzAoRp.jpg')), filename: 'abstract_34.jpg')
+abs_photo_34_saved.photo.attach(io: File.open(image_url('the-roof-of-the-building-esplanade-theatres-on-the-bay_t20_kzAoRp.jpg'), filename: 'abstract_34.jpg')
 abs_photo_34_saved.save!
 
 comment_64 = Comment.new({
@@ -1744,7 +1744,7 @@ abs_photo_35 = {
   featured: assignFeaturedPage()
 }
 abs_photo_35_saved = Photo.new(abs_photo_35)
-abs_photo_35_saved.photo.attach(io: File.open(image_url('through-tiny-lens_t20_loK6db.jpg')), filename: 'abstract_35.jpg')
+abs_photo_35_saved.photo.attach(io: File.open(image_url('through-tiny-lens_t20_loK6db.jpg'), filename: 'abstract_35.jpg')
 abs_photo_35_saved.save!
 
 comment_65 = Comment.new({
@@ -1770,7 +1770,7 @@ abs_photo_36 = {
   featured: assignFeaturedPage()
 }
 abs_photo_36_saved = Photo.new(abs_photo_36)
-abs_photo_36_saved.photo.attach(io: File.open(image_url('urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg')), filename: 'abstract_36.jpg')
+abs_photo_36_saved.photo.attach(io: File.open(image_url('urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'abstract_36.jpg')
 abs_photo_36_saved.save!
 
 comment_66 = Comment.new({
@@ -1796,7 +1796,7 @@ abs_photo_37 = {
   featured: assignFeaturedPage()
 }
 abs_photo_37_saved = Photo.new(abs_photo_37)
-abs_photo_37_saved.photo.attach(io: File.open(image_url('warm-city-1-3_t20_aO1a6Q.jpg')), filename: 'abstract_37.jpg')
+abs_photo_37_saved.photo.attach(io: File.open(image_url('warm-city-1-3_t20_aO1a6Q.jpg'), filename: 'abstract_37.jpg')
 abs_photo_37_saved.save!
 
 
@@ -1814,7 +1814,7 @@ photo_32 = {
   featured: assignFeaturedPage()
 }
 photo_32_saved = Photo.new(photo_32)
-photo_32_saved.photo.attach(io: File.open(image_url('_t20_kLZ3zr.jpg')), filename: 'animals_32.jpg')
+photo_32_saved.photo.attach(io: File.open(image_url('_t20_kLZ3zr.jpg'), filename: 'animals_32.jpg')
 photo_32_saved.save!
 
 comment_68 = Comment.new({
@@ -1850,7 +1850,7 @@ photo_33 = {
   featured: assignFeaturedPage()
 }
 photo_33_saved = Photo.new(photo_33)
-photo_33_saved.photo.attach(io: File.open(image_url('_t20_YamEaR.jpg')), filename: 'animals_33.jpg')
+photo_33_saved.photo.attach(io: File.open(image_url('_t20_YamEaR.jpg'), filename: 'animals_33.jpg')
 photo_33_saved.save!
 
 comment_71 = Comment.new({
@@ -1876,7 +1876,7 @@ photo_34 = {
   featured: assignFeaturedPage()
 }
 photo_34_saved = Photo.new(photo_34)
-photo_34_saved.photo.attach(io: File.open(image_url('a-monkey-sat-in-a-human-pose-in-loro-park-tenerife_t20_98LvYA.jpg')), filename: 'animals_34.jpg')
+photo_34_saved.photo.attach(io: File.open(image_url('a-monkey-sat-in-a-human-pose-in-loro-park-tenerife_t20_98LvYA.jpg'), filename: 'animals_34.jpg')
 photo_34_saved.save!
 
 comment_73 = Comment.new({
@@ -1907,7 +1907,7 @@ photo_36 = {
   featured: assignFeaturedPage()
 }
 photo_36_saved = Photo.new(photo_36)
-photo_36_saved.photo.attach(io: File.open(image_url('animal-animal-nature-animals-green-wild-exotic-fox-wild-nature-foxy_t20_rL13QJ.jpg')), filename: 'animals_36.jpg')
+photo_36_saved.photo.attach(io: File.open(image_url('animal-animal-nature-animals-green-wild-exotic-fox-wild-nature-foxy_t20_rL13QJ.jpg'), filename: 'animals_36.jpg')
 photo_36_saved.save!
 
 comment_76 = Comment.new({
@@ -1928,7 +1928,7 @@ photo_37 = {
   featured: assignFeaturedPage()
 }
 photo_37_saved = Photo.new(photo_37)
-photo_37_saved.photo.attach(io: File.open(image_url('animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg')), filename: 'animals_37.jpg')
+photo_37_saved.photo.attach(io: File.open(image_url('animal-nature-nature-animals-animals-wild-exotic-owls_t20_XNVzor.jpg'), filename: 'animals_37.jpg')
 photo_37_saved.save!
 
 comment_77 = Comment.new({
@@ -1954,7 +1954,7 @@ photo_38 = {
   featured: assignFeaturedPage()
 }
 photo_38_saved = Photo.new(photo_38)
-photo_38_saved.photo.attach(io: File.open(image_url('happy-elephant_t20_kLWQ24.jpg')), filename: 'animals_38.jpg')
+photo_38_saved.photo.attach(io: File.open(image_url('happy-elephant_t20_kLWQ24.jpg'), filename: 'animals_38.jpg')
 photo_38_saved.save!
 
 comment_79 = Comment.new({
@@ -1975,7 +1975,7 @@ photo_39 = {
   featured: assignFeaturedPage()
 }
 photo_39_saved = Photo.new(photo_39)
-photo_39_saved.photo.attach(io: File.open(image_url('humans-in-monkeys-body-everyone-is-a-human-kind-just-living-in-different-dimension-and-different-life_t20_yne8zp.jpg')), filename: 'animals_39.jpg')
+photo_39_saved.photo.attach(io: File.open(image_url('humans-in-monkeys-body-everyone-is-a-human-kind-just-living-in-different-dimension-and-different-life_t20_yne8zp.jpg'), filename: 'animals_39.jpg')
 photo_39_saved.save!
 
 comment_80 = Comment.new({
@@ -2001,7 +2001,7 @@ photo_40 = {
   featured: assignFeaturedPage()
 }
 photo_40_saved = Photo.new(photo_40)
-photo_40_saved.photo.attach(io: File.open(image_url('red-fox-having-a-good-stretch-in-the-dunes-around-kijkduin-in-the-hague-netherlands-details-of-fur_t20_mLZJx3.jpg')), filename: 'animals_40.jpg')
+photo_40_saved.photo.attach(io: File.open(image_url('red-fox-having-a-good-stretch-in-the-dunes-around-kijkduin-in-the-hague-netherlands-details-of-fur_t20_mLZJx3.jpg'), filename: 'animals_40.jpg')
 photo_40_saved.save!
 
 animal_photo_41 = {
@@ -2016,7 +2016,7 @@ animal_photo_41 = {
   featured: assignFeaturedPage()
 }
 animal_photo_41_saved = Photo.new(animal_photo_41)
-animal_photo_41_saved.photo.attach(io: File.open(image_url('reindeers-in-a-winter-landscape-with-a-glow-on-snowy-mountains-the-reindeer-looks-directly-into-the_t20_3d2j4o.jpg')), filename: 'animals_41.jpg')
+animal_photo_41_saved.photo.attach(io: File.open(image_url('reindeers-in-a-winter-landscape-with-a-glow-on-snowy-mountains-the-reindeer-looks-directly-into-the_t20_3d2j4o.jpg'), filename: 'animals_41.jpg')
 animal_photo_41_saved.save!
 
 animal_photo_42 = {
@@ -2031,7 +2031,7 @@ animal_photo_42 = {
   featured: assignFeaturedPage()
 }
 animal_photo_42_saved = Photo.new(animal_photo_42)
-animal_photo_42_saved.photo.attach(io: File.open(image_url('the-baby-monkey-sits-on-a-stone-and-eats-tropical-animals-in-their-natural-habitat_t20_0X38rw.jpg')), filename: 'animals_42.jpg')
+animal_photo_42_saved.photo.attach(io: File.open(image_url('the-baby-monkey-sits-on-a-stone-and-eats-tropical-animals-in-their-natural-habitat_t20_0X38rw.jpg'), filename: 'animals_42.jpg')
 animal_photo_42_saved.save!
 
 comment_82 = Comment.new({
@@ -2057,7 +2057,7 @@ animal_photo_43 = {
   featured: assignFeaturedPage()
 }
 animal_photo_43_saved = Photo.new(animal_photo_43)
-animal_photo_43_saved.photo.attach(io: File.open(image_url('together-forever_t20_1J8k41.jpg')), filename: 'animals_43.jpg')
+animal_photo_43_saved.photo.attach(io: File.open(image_url('together-forever_t20_1J8k41.jpg'), filename: 'animals_43.jpg')
 animal_photo_43_saved.save!
 
 animal_photo_44 = {
@@ -2072,7 +2072,7 @@ animal_photo_44 = {
   featured: assignFeaturedPage()
 }
 animal_photo_44_saved = Photo.new(animal_photo_44)
-animal_photo_44_saved.photo.attach(io: File.open(image_url('twenty20_600e29d6-776e-479a-b0e6-7dce00962a7c.jpg')), filename: 'animals_44.jpg')
+animal_photo_44_saved.photo.attach(io: File.open(image_url('twenty20_600e29d6-776e-479a-b0e6-7dce00962a7c.jpg'), filename: 'animals_44.jpg')
 animal_photo_44_saved.save!
 
 animal_photo_45 = {
@@ -2087,7 +2087,7 @@ animal_photo_45 = {
   featured: assignFeaturedPage()
 }
 animal_photo_45_saved = Photo.new(animal_photo_45)
-animal_photo_45_saved.photo.attach(io: File.open(image_url('wild-beautiful-giant-iguana-reminding-prehistoric-reptiles-close-up-portrait_t20_kL86B4.jpg')), filename: 'animals_45.jpg')
+animal_photo_45_saved.photo.attach(io: File.open(image_url('wild-beautiful-giant-iguana-reminding-prehistoric-reptiles-close-up-portrait_t20_kL86B4.jpg'), filename: 'animals_45.jpg')
 animal_photo_45_saved.save!
 
 
@@ -2106,7 +2106,7 @@ photo_40_choc = {
   featured: assignFeaturedPage()
 }
 photo_40_choc_saved = Photo.new(photo_40_choc)
-photo_40_choc_saved.photo.attach(io: File.open(image_url('chocolate-brownie-batter-on-beaters_t20_yvjYVx.jpg')), filename: 'chocolate_40_choc.jpg')
+photo_40_choc_saved.photo.attach(io: File.open(image_url('chocolate-brownie-batter-on-beaters_t20_yvjYVx.jpg'), filename: 'chocolate_40_choc.jpg')
 photo_40_choc_saved.save!
 
 comment_84 = Comment.new({
@@ -2132,7 +2132,7 @@ photo_41 = {
   featured: assignFeaturedPage()
 }
 photo_41_saved = Photo.new(photo_41)
-photo_41_saved.photo.attach(io: File.open(image_url('chocolate-cake_t20_yvZNpx.jpg')), filename: 'chocolate_41.jpg')
+photo_41_saved.photo.attach(io: File.open(image_url('chocolate-cake_t20_yvZNpx.jpg'), filename: 'chocolate_41.jpg')
 photo_41_saved.save!
 
 comment_86 = Comment.new({
@@ -2168,7 +2168,7 @@ photo_42 = {
   featured: assignFeaturedPage()
 }
 photo_42_saved = Photo.new(photo_42)
-photo_42_saved.photo.attach(io: File.open(image_url('chocolate-chia-seed-pudding_t20_PoPbdR.jpg')), filename: 'chocolate_42.jpg')
+photo_42_saved.photo.attach(io: File.open(image_url('chocolate-chia-seed-pudding_t20_PoPbdR.jpg'), filename: 'chocolate_42.jpg')
 photo_42_saved.save!
 
 comment_87 = Comment.new({
@@ -2190,7 +2190,7 @@ photo_43 = {
   featured: assignFeaturedPage()
 }
 photo_43_saved = Photo.new(photo_43)
-photo_43_saved.photo.attach(io: File.open(image_url('chocolate-curls_t20_4ENQOy.jpg')), filename: 'chocolate_43.jpg')
+photo_43_saved.photo.attach(io: File.open(image_url('chocolate-curls_t20_4ENQOy.jpg'), filename: 'chocolate_43.jpg')
 photo_43_saved.save!
 
 photo_44 = {
@@ -2205,7 +2205,7 @@ photo_44 = {
   featured: assignFeaturedPage()
 }
 photo_44_saved = Photo.new(photo_44)
-photo_44_saved.photo.attach(io: File.open(image_url('chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg')), filename: 'chocolate_44.jpg')
+photo_44_saved.photo.attach(io: File.open(image_url('chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg'), filename: 'chocolate_44.jpg')
 photo_44_saved.save!
 
 comment_88 = Comment.new({
@@ -2231,7 +2231,7 @@ photo_45 = {
   featured: assignFeaturedPage()
 }
 photo_45_saved = Photo.new(photo_45)
-photo_45_saved.photo.attach(io: File.open(image_url('chocolate-truffles_t20_JlPK14.jpg')), filename: 'chocolate_45.jpg')
+photo_45_saved.photo.attach(io: File.open(image_url('chocolate-truffles_t20_JlPK14.jpg'), filename: 'chocolate_45.jpg')
 photo_45_saved.save!
 
 photo_46 = {
@@ -2246,7 +2246,7 @@ photo_46 = {
   featured: assignFeaturedPage()
 }
 photo_46_saved = Photo.new(photo_46)
-photo_46_saved.photo.attach(io: File.open(image_url('chocolates_t20_1Je2dx.jpg')), filename: 'chocolate_46.jpg')
+photo_46_saved.photo.attach(io: File.open(image_url('chocolates_t20_1Je2dx.jpg'), filename: 'chocolate_46.jpg')
 photo_46_saved.save!
 
 comment_90 = Comment.new({
@@ -2272,7 +2272,7 @@ photo_47 = {
   featured: assignFeaturedPage()
 }
 photo_47_saved = Photo.new(photo_47)
-photo_47_saved.photo.attach(io: File.open(image_url('cocoa-powder-spilled-out-on-a-white-table_t20_kjEgYE.jpg')), filename: 'chocolate_47.jpg')
+photo_47_saved.photo.attach(io: File.open(image_url('cocoa-powder-spilled-out-on-a-white-table_t20_kjEgYE.jpg'), filename: 'chocolate_47.jpg')
 photo_47_saved.save!
 
 
@@ -2288,7 +2288,7 @@ chocolate_photo_48 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_48_saved = Photo.new(chocolate_photo_48)
-chocolate_photo_48_saved.photo.attach(io: File.open(image_url('marzipan-balls_t20_rKv67g.jpg')), filename: 'chocolate_48.jpg')
+chocolate_photo_48_saved.photo.attach(io: File.open(image_url('marzipan-balls_t20_rKv67g.jpg'), filename: 'chocolate_48.jpg')
 chocolate_photo_48_saved.save!
 
 chocolate_photo_49 = {
@@ -2303,7 +2303,7 @@ chocolate_photo_49 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_49_saved = Photo.new(chocolate_photo_49)
-chocolate_photo_49_saved.photo.attach(io: File.open(image_url('my-idea-of-heaven_t20_pld4n8.jpg')), filename: 'chocolate_49.jpg')
+chocolate_photo_49_saved.photo.attach(io: File.open(image_url('my-idea-of-heaven_t20_pld4n8.jpg'), filename: 'chocolate_49.jpg')
 chocolate_photo_49_saved.save!
 
 comment_92 = Comment.new({
@@ -2329,7 +2329,7 @@ chocolate_photo_50 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_50_saved = Photo.new(chocolate_photo_50)
-chocolate_photo_50_saved.photo.attach(io: File.open(image_url('photography-flower-sun-travel-sea-yellow-beach-light-vacations-pattern-sphere-still-life-business-my_t20_dpe4XR.jpg')), filename: 'chocolate_50.jpg')
+chocolate_photo_50_saved.photo.attach(io: File.open(image_url('photography-flower-sun-travel-sea-yellow-beach-light-vacations-pattern-sphere-still-life-business-my_t20_dpe4XR.jpg'), filename: 'chocolate_50.jpg')
 chocolate_photo_50_saved.save!
 
 chocolate_photo_51 = {
@@ -2344,7 +2344,7 @@ chocolate_photo_51 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_51_saved = Photo.new(chocolate_photo_51)
-chocolate_photo_51_saved.photo.attach(io: File.open(image_url('raw-dessert_t20_YXx6VW.jpg')), filename: 'chocolate_51.jpg')
+chocolate_photo_51_saved.photo.attach(io: File.open(image_url('raw-dessert_t20_YXx6VW.jpg'), filename: 'chocolate_51.jpg')
 chocolate_photo_51_saved.save!
 
 comment_94 = Comment.new({
@@ -2365,7 +2365,7 @@ chocolate_photo_52 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_52_saved = Photo.new(chocolate_photo_52)
-chocolate_photo_52_saved.photo.attach(io: File.open(image_url('the-right-cake_t20_EPgrWJ.jpg')), filename: 'chocolate_52.jpg')
+chocolate_photo_52_saved.photo.attach(io: File.open(image_url('the-right-cake_t20_EPgrWJ.jpg'), filename: 'chocolate_52.jpg')
 chocolate_photo_52_saved.save!
 
 chocolate_photo_53 = {
@@ -2380,7 +2380,7 @@ chocolate_photo_53 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_53_saved = Photo.new(chocolate_photo_53)
-chocolate_photo_53_saved.photo.attach(io: File.open(image_url('tiramis_t20_yvAYoO.jpg')), filename: 'chocolate_53.jpg')
+chocolate_photo_53_saved.photo.attach(io: File.open(image_url('tiramis_t20_yvAYoO.jpg'), filename: 'chocolate_53.jpg')
 chocolate_photo_53_saved.save!
 
 chocolate_photo_54 = {
@@ -2395,7 +2395,7 @@ chocolate_photo_54 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_54_saved = Photo.new(chocolate_photo_54)
-chocolate_photo_54_saved.photo.attach(io: File.open(image_url('white-chocolate-with-hazelnuts_t20_bkjGzg.jpg')), filename: 'chocolate_54.jpg')
+chocolate_photo_54_saved.photo.attach(io: File.open(image_url('white-chocolate-with-hazelnuts_t20_bkjGzg.jpg'), filename: 'chocolate_54.jpg')
 chocolate_photo_54_saved.save!
 
 chocolate_photo_55 = {
@@ -2410,7 +2410,7 @@ chocolate_photo_55 = {
   featured: assignFeaturedPage()
 }
 chocolate_photo_55_saved = Photo.new(chocolate_photo_55)
-chocolate_photo_55_saved.photo.attach(io: File.open(image_url('white-rose_t20_7OYOKN.jpg')), filename: 'chocolate_55.jpg')
+chocolate_photo_55_saved.photo.attach(io: File.open(image_url('white-rose_t20_7OYOKN.jpg'), filename: 'chocolate_55.jpg')
 chocolate_photo_55_saved.save!
 
 ## music
@@ -2427,7 +2427,7 @@ photo_48 = {
   featured: assignFeaturedPage()
 }
 photo_48_saved = Photo.new(photo_48)
-photo_48_saved.photo.attach(io: File.open(image_url('a-guitarist-with-long-hair-performing-at-a-concert-with-pyro_t20_vLVAaG.jpg')), filename: 'music_48.jpg')
+photo_48_saved.photo.attach(io: File.open(image_url('a-guitarist-with-long-hair-performing-at-a-concert-with-pyro_t20_vLVAaG.jpg'), filename: 'music_48.jpg')
 photo_48_saved.save!
 
 comment_95 = Comment.new({
@@ -2458,7 +2458,7 @@ photo_49 = {
   featured: assignFeaturedPage()
 }
 photo_49_saved = Photo.new(photo_49)
-photo_49_saved.photo.attach(io: File.open(image_url('behind-the-djs_t20_pY9gdO.jpg')), filename: 'music_49.jpg')
+photo_49_saved.photo.attach(io: File.open(image_url('behind-the-djs_t20_pY9gdO.jpg'), filename: 'music_49.jpg')
 photo_49_saved.save!
 
 comment_98 = Comment.new({
@@ -2479,7 +2479,7 @@ photo_50 = {
   featured: assignFeaturedPage()
 }
 photo_50_saved = Photo.new(photo_50)
-photo_50_saved.photo.attach(io: File.open(image_url('close-up-drum-sticks-drumming-hit-beat-rhythm-on-drum-surface-with-splash-water-drops_t20_QJQ99y.jpg')), filename: 'music_50.jpg')
+photo_50_saved.photo.attach(io: File.open(image_url('close-up-drum-sticks-drumming-hit-beat-rhythm-on-drum-surface-with-splash-water-drops_t20_QJQ99y.jpg'), filename: 'music_50.jpg')
 photo_50_saved.save!
 
 comment_99 = Comment.new({
@@ -2505,7 +2505,7 @@ photo_51 = {
   featured: assignFeaturedPage()
 }
 photo_51_saved = Photo.new(photo_51)
-photo_51_saved.photo.attach(io: File.open(image_url('defocus-young-woman-playing-guitar-on-sunset-in-autumn-field-candid-silhouette-woman-in-hat-chill_t20_NlWYyQ.jpg')), filename: 'music_51.jpg')
+photo_51_saved.photo.attach(io: File.open(image_url('defocus-young-woman-playing-guitar-on-sunset-in-autumn-field-candid-silhouette-woman-in-hat-chill_t20_NlWYyQ.jpg'), filename: 'music_51.jpg')
 photo_51_saved.save!
 
 comment_101 = Comment.new({
@@ -2536,7 +2536,7 @@ photo_52 = {
   featured: assignFeaturedPage()
 }
 photo_52_saved = Photo.new(photo_52)
-photo_52_saved.photo.attach(io: File.open(image_url('dnepropetrovsk-ukraine-04-05-2017-a-musician-on-a-city-street-after-a-successful-concert_t20_WJEmmz.jpg')), filename: 'music_52.jpg')
+photo_52_saved.photo.attach(io: File.open(image_url('dnepropetrovsk-ukraine-04-05-2017-a-musician-on-a-city-street-after-a-successful-concert_t20_WJEmmz.jpg'), filename: 'music_52.jpg')
 photo_52_saved.save!
 
 photo_53 = {
@@ -2551,7 +2551,7 @@ photo_53 = {
   featured: assignFeaturedPage()
 }
 photo_53_saved = Photo.new(photo_53)
-photo_53_saved.photo.attach(io: File.open(image_url('happy-accordion-player_t20_rorAaJ.jpg')), filename: 'music_53.jpg')
+photo_53_saved.photo.attach(io: File.open(image_url('happy-accordion-player_t20_rorAaJ.jpg'), filename: 'music_53.jpg')
 photo_53_saved.save!
 
 comment_104 = Comment.new({
@@ -2577,7 +2577,7 @@ photo_54 = {
   featured: assignFeaturedPage()
 }
 photo_54_saved = Photo.new(photo_54)
-photo_54_saved.photo.attach(io: File.open(image_url('illuminated-neon-words-on-the-wall_t20_yRbZAL.jpg')), filename: 'music_54.jpg')
+photo_54_saved.photo.attach(io: File.open(image_url('illuminated-neon-words-on-the-wall_t20_yRbZAL.jpg'), filename: 'music_54.jpg')
 photo_54_saved.save!
 
 photo_55 = {
@@ -2592,7 +2592,7 @@ photo_55 = {
   featured: assignFeaturedPage()
 }
 photo_55_saved = Photo.new(photo_55)
-photo_55_saved.photo.attach(io: File.open(image_url('music_t20_mxbEml.jpg')), filename: 'music_55.jpg')
+photo_55_saved.photo.attach(io: File.open(image_url('music_t20_mxbEml.jpg'), filename: 'music_55.jpg')
 photo_55_saved.save!
 
 comment_106 = Comment.new({
@@ -2613,7 +2613,7 @@ photo_56 = {
   featured: assignFeaturedPage()
 }
 photo_56_saved = Photo.new(photo_56)
-photo_56_saved.photo.attach(io: File.open(image_url('music-concert-musician-drummer-drums-live-drummer_t20_4dmEEl.jpg')), filename: 'music_56.jpg')
+photo_56_saved.photo.attach(io: File.open(image_url('music-concert-musician-drummer-drums-live-drummer_t20_4dmEEl.jpg'), filename: 'music_56.jpg')
 photo_56_saved.save!
 
 comment_107 = Comment.new({
@@ -2639,7 +2639,7 @@ music_photo_57 = {
   featured: assignFeaturedPage()
 }
 music_photo_57_saved = Photo.new(music_photo_57)
-music_photo_57_saved.photo.attach(io: File.open(image_url('music-music-musical-instrument-classic-playing-music-saksophone_t20_K8Lrk9.jpg')), filename: 'music_57.jpg')
+music_photo_57_saved.photo.attach(io: File.open(image_url('music-music-musical-instrument-classic-playing-music-saksophone_t20_K8Lrk9.jpg'), filename: 'music_57.jpg')
 music_photo_57_saved.save!
 
 comment_109 = Comment.new({
@@ -2660,7 +2660,7 @@ music_photo_58 = {
   featured: assignFeaturedPage()
 }
 music_photo_58_saved = Photo.new(music_photo_58)
-music_photo_58_saved.photo.attach(io: File.open(image_url('music-musical-instrument-musician-music-festival-woman-play-sound-musical-instruments-harp_t20_pW9lvk.jpg')), filename: 'music_58.jpg')
+music_photo_58_saved.photo.attach(io: File.open(image_url('music-musical-instrument-musician-music-festival-woman-play-sound-musical-instruments-harp_t20_pW9lvk.jpg'), filename: 'music_58.jpg')
 music_photo_58_saved.save!
 
 comment_110 = Comment.new({
@@ -2686,7 +2686,7 @@ music_photo_59 = {
   featured: assignFeaturedPage()
 }
 music_photo_59_saved = Photo.new(music_photo_59)
-music_photo_59_saved.photo.attach(io: File.open(image_url('outdoors-sunset-beach-beach-decoration-celebration-music-concert-party-party-craft-chill-vibes_t20_9JAlwB.jpg')), filename: 'music_59.jpg')
+music_photo_59_saved.photo.attach(io: File.open(image_url('outdoors-sunset-beach-beach-decoration-celebration-music-concert-party-party-craft-chill-vibes_t20_9JAlwB.jpg'), filename: 'music_59.jpg')
 music_photo_59_saved.save!
 
 music_photo_60 = {
@@ -2701,7 +2701,7 @@ music_photo_60 = {
   featured: assignFeaturedPage()
 }
 music_photo_60_saved = Photo.new(music_photo_60)
-music_photo_60_saved.photo.attach(io: File.open(image_url('piano-hands-woman-piano-keys-pianist-playing-piano-playing-the-piano-vintage-piano_t20_LX7Jxo.jpg')), filename: 'music_60.jpg')
+music_photo_60_saved.photo.attach(io: File.open(image_url('piano-hands-woman-piano-keys-pianist-playing-piano-playing-the-piano-vintage-piano_t20_LX7Jxo.jpg'), filename: 'music_60.jpg')
 music_photo_60_saved.save!
 
 comment_112 = Comment.new({
@@ -2727,7 +2727,7 @@ music_photo_61 = {
   featured: assignFeaturedPage()
 }
 music_photo_61_saved = Photo.new(music_photo_61)
-music_photo_61_saved.photo.attach(io: File.open(image_url('playing-the-mandolin_t20_P3WEmR.jpg')), filename: 'music_61.jpg')
+music_photo_61_saved.photo.attach(io: File.open(image_url('playing-the-mandolin_t20_P3WEmR.jpg'), filename: 'music_61.jpg')
 music_photo_61_saved.save!
 
 music_photo_62 = {
@@ -2742,7 +2742,7 @@ music_photo_62 = {
   featured: assignFeaturedPage()
 }
 music_photo_62_saved = Photo.new(music_photo_62)
-music_photo_62_saved.photo.attach(io: File.open(image_url('selective-focus-music-acoustic-guitar-guitar-musical-instrument-musician-acoustic-musicians_t20_vOvpXE.jpg')), filename: 'music_62.jpg')
+music_photo_62_saved.photo.attach(io: File.open(image_url('selective-focus-music-acoustic-guitar-guitar-musical-instrument-musician-acoustic-musicians_t20_vOvpXE.jpg'), filename: 'music_62.jpg')
 music_photo_62_saved.save!
 
 comment_114 = Comment.new({
@@ -2764,7 +2764,7 @@ music_photo_62 = {
   featured: assignFeaturedPage()
 }
 music_photo_62_saved = Photo.new(music_photo_62)
-music_photo_62_saved.photo.attach(io: File.open(image_url('summer-hand-music-music-antique-vintage-hands-hands-retro-closeup-vinyl-dj-old-school-putting_t20_yp6aa2.jpg')), filename: 'music_62.jpg')
+music_photo_62_saved.photo.attach(io: File.open(image_url('summer-hand-music-music-antique-vintage-hands-hands-retro-closeup-vinyl-dj-old-school-putting_t20_yp6aa2.jpg'), filename: 'music_62.jpg')
 music_photo_62_saved.save!
 
 music_photo_63 = {
@@ -2779,7 +2779,7 @@ music_photo_63 = {
   featured: assignFeaturedPage()
 }
 music_photo_63_saved = Photo.new(music_photo_63)
-music_photo_63_saved.photo.attach(io: File.open(image_url('two-young-musicians-playing-classic-digital-piano-at-home-during-online-concert-at-home_t20_om9AkW.jpg')), filename: 'music_63.jpg')
+music_photo_63_saved.photo.attach(io: File.open(image_url('two-young-musicians-playing-classic-digital-piano-at-home-during-online-concert-at-home_t20_om9AkW.jpg'), filename: 'music_63.jpg')
 music_photo_63_saved.save!
 
 music_photo_64 = {
@@ -2794,7 +2794,7 @@ music_photo_64 = {
   featured: assignFeaturedPage()
 }
 music_photo_64_saved = Photo.new(music_photo_64)
-music_photo_64_saved.photo.attach(io: File.open(image_url('window-guitar-natural-light-morning-light_t20_PJnaJJ.jpg')), filename: 'music_64.jpg')
+music_photo_64_saved.photo.attach(io: File.open(image_url('window-guitar-natural-light-morning-light_t20_PJnaJJ.jpg'), filename: 'music_64.jpg')
 music_photo_64_saved.save!
 
 comment_115 = Comment.new({
@@ -2823,7 +2823,7 @@ photo_57 = {
   featured: assignFeaturedPage()
 }
 photo_57_saved = Photo.new(photo_57)
-photo_57_saved.photo.attach(io: File.open(image_url('adrenaline-trail-dirt-man-leg-boot-biker-racer-moto-active-cross-enduro-motorcyclist-boots_t20_KArpK1.jpg')), filename: 'sports_57.jpg')
+photo_57_saved.photo.attach(io: File.open(image_url('adrenaline-trail-dirt-man-leg-boot-biker-racer-moto-active-cross-enduro-motorcyclist-boots_t20_KArpK1.jpg'), filename: 'sports_57.jpg')
 photo_57_saved.save!
 
 photo_58 = {
@@ -2838,7 +2838,7 @@ photo_58 = {
   featured: assignFeaturedPage()
 }
 photo_58_saved = Photo.new(photo_58)
-photo_58_saved.photo.attach(io: File.open(image_url('adventure-sports-sports-extreme-sports-action-adrenaline-adventurous-watersports-flyboard_t20_g1bEzz.jpg')), filename: 'sports_58.jpg')
+photo_58_saved.photo.attach(io: File.open(image_url('adventure-sports-sports-extreme-sports-action-adrenaline-adventurous-watersports-flyboard_t20_g1bEzz.jpg'), filename: 'sports_58.jpg')
 photo_58_saved.save!
 
 comment_117 = Comment.new({
@@ -2864,7 +2864,7 @@ photo_59 = {
   featured: assignFeaturedPage()
 }
 photo_59_saved = Photo.new(photo_59)
-photo_59_saved.photo.attach(io: File.open(image_url('adventure-surfing-sports-extreme-sports-extreme-sports-water-sports-life-surf-adrenaline-adventurous_t20_JokERk.jpg')), filename: 'sports_59.jpg')
+photo_59_saved.photo.attach(io: File.open(image_url('adventure-surfing-sports-extreme-sports-extreme-sports-water-sports-life-surf-adrenaline-adventurous_t20_JokERk.jpg'), filename: 'sports_59.jpg')
 photo_59_saved.save!
 
 comment_119 = Comment.new({
@@ -2890,7 +2890,7 @@ photo_60 = {
   featured: assignFeaturedPage()
 }
 photo_60_saved = Photo.new(photo_60)
-photo_60_saved.photo.attach(io: File.open(image_url('backflip-off-motorbike_t20_eVnelb.jpg')), filename: 'sports_60.jpg')
+photo_60_saved.photo.attach(io: File.open(image_url('backflip-off-motorbike_t20_eVnelb.jpg'), filename: 'sports_60.jpg')
 photo_60_saved.save!
 
 photo_61 = {
@@ -2905,7 +2905,7 @@ photo_61 = {
   featured: assignFeaturedPage()
 }
 photo_61_saved = Photo.new(photo_61)
-photo_61_saved.photo.attach(io: File.open(image_url('bmx-freestyle_t20_GREW1R.jpg')), filename: 'sports_61.jpg')
+photo_61_saved.photo.attach(io: File.open(image_url('bmx-freestyle_t20_GREW1R.jpg'), filename: 'sports_61.jpg')
 photo_61_saved.save!
 
 comment_121 = Comment.new({
@@ -2951,7 +2951,7 @@ photo_62 = {
   featured: assignFeaturedPage()
 }
 photo_62_saved = Photo.new(photo_62)
-photo_62_saved.photo.attach(io: File.open(image_url('dune-rider_t20_1WPPev.jpg')), filename: 'sports_62.jpg')
+photo_62_saved.photo.attach(io: File.open(image_url('dune-rider_t20_1WPPev.jpg'), filename: 'sports_62.jpg')
 photo_62_saved.save!
 
 photo_63 = {
@@ -2966,7 +2966,7 @@ photo_63 = {
   featured: assignFeaturedPage()
 }
 photo_63_saved = Photo.new(photo_63)
-photo_63_saved.photo.attach(io: File.open(image_url('going-down_t20_Noelrp.jpg')), filename: 'sports_63.jpg')
+photo_63_saved.photo.attach(io: File.open(image_url('going-down_t20_Noelrp.jpg'), filename: 'sports_63.jpg')
 photo_63_saved.save!
 
 comment_127 = Comment.new({
@@ -2987,7 +2987,7 @@ photo_64 = {
   featured: assignFeaturedPage()
 }
 photo_64_saved = Photo.new(photo_64)
-photo_64_saved.photo.attach(io: File.open(image_url('hot-summer-days-are-just-perfect-for-a-river-cool-down_t20_8ORbGa.jpg')), filename: 'sports_64.jpg')
+photo_64_saved.photo.attach(io: File.open(image_url('hot-summer-days-are-just-perfect-for-a-river-cool-down_t20_8ORbGa.jpg'), filename: 'sports_64.jpg')
 photo_64_saved.save!
 
 photo_65 = {
@@ -3002,7 +3002,7 @@ photo_65 = {
   featured: assignFeaturedPage()
 }
 photo_65_saved = Photo.new(photo_65)
-photo_65_saved.photo.attach(io: File.open(image_url('jerrod-skorupski-pontiac-14_t20_VodWQ8.jpg')), filename: 'sports_65.jpg')
+photo_65_saved.photo.attach(io: File.open(image_url('jerrod-skorupski-pontiac-14_t20_VodWQ8.jpg'), filename: 'sports_65.jpg')
 photo_65_saved.save!
 
 comment_128 = Comment.new({
@@ -3028,7 +3028,7 @@ photo_66 = {
   featured: assignFeaturedPage()
 }
 photo_66_saved = Photo.new(photo_66)
-photo_66_saved.photo.attach(io: File.open(image_url('KokOOx_t20_KokOOx.jpg')), filename: 'sports_66.jpg')
+photo_66_saved.photo.attach(io: File.open(image_url('KokOOx_t20_KokOOx.jpg'), filename: 'sports_66.jpg')
 photo_66_saved.save!
 
 comment_130 = Comment.new({
@@ -3054,7 +3054,7 @@ photo_67 = {
   featured: assignFeaturedPage()
 }
 photo_67_saved = Photo.new(photo_67)
-photo_67_saved.photo.attach(io: File.open(image_url('MQmDKe_t20_d12GoB.jpg')), filename: 'sports_67.jpg')
+photo_67_saved.photo.attach(io: File.open(image_url('MQmDKe_t20_d12GoB.jpg'), filename: 'sports_67.jpg')
 photo_67_saved.save!
 
 photo_68 = {
@@ -3069,7 +3069,7 @@ photo_68 = {
   featured: assignFeaturedPage()
 }
 photo_68_saved = Photo.new(photo_68)
-photo_68_saved.photo.attach(io: File.open(image_url('nominated-austria-kaprun_t20_VWNpQk.jpg')), filename: 'sports_68.jpg')
+photo_68_saved.photo.attach(io: File.open(image_url('nominated-austria-kaprun_t20_VWNpQk.jpg'), filename: 'sports_68.jpg')
 photo_68_saved.save!
 
 comment_132 = Comment.new({
@@ -3095,7 +3095,7 @@ photo_69 = {
   featured: assignFeaturedPage()
 }
 photo_69_saved = Photo.new(photo_69)
-photo_69_saved.photo.attach(io: File.open(image_url('outdoors-people-sport-sports-extreme-sports-motorcycle-racing-race-motorbike-outdoor-activity_t20_QKZobb.jpg')), filename: 'sports_69.jpg')
+photo_69_saved.photo.attach(io: File.open(image_url('outdoors-people-sport-sports-extreme-sports-motorcycle-racing-race-motorbike-outdoor-activity_t20_QKZobb.jpg'), filename: 'sports_69.jpg')
 photo_69_saved.save!
 
 photo_70 = {
@@ -3110,7 +3110,7 @@ photo_70 = {
   featured: assignFeaturedPage()
 }
 photo_70_saved = Photo.new(photo_70)
-photo_70_saved.photo.attach(io: File.open(image_url('outdoors-winter-cold-snow-adventure-adventure-mountain-sport-recreation-action-outdoor-skier_t20_3Q7P3y.jpg')), filename: 'sports_70.jpg')
+photo_70_saved.photo.attach(io: File.open(image_url('outdoors-winter-cold-snow-adventure-adventure-mountain-sport-recreation-action-outdoor-skier_t20_3Q7P3y.jpg'), filename: 'sports_70.jpg')
 photo_70_saved.save!
 
 comment_134 = Comment.new({
@@ -3156,7 +3156,7 @@ photo_71 = {
   featured: assignFeaturedPage()
 }
 photo_71_saved = Photo.new(photo_71)
-photo_71_saved.photo.attach(io: File.open(image_url('paragliding-in-the-mountains-extreme-sports-hang-glider-paragliding-sport-extreme-glider-hang-flight_t20_YE62a4.jpg')), filename: 'sports_71.jpg')
+photo_71_saved.photo.attach(io: File.open(image_url('paragliding-in-the-mountains-extreme-sports-hang-glider-paragliding-sport-extreme-glider-hang-flight_t20_YE62a4.jpg'), filename: 'sports_71.jpg')
 photo_71_saved.save!
 
 photo_72 = {
@@ -3171,7 +3171,7 @@ photo_72 = {
   featured: assignFeaturedPage()
 }
 photo_72_saved = Photo.new(photo_72)
-photo_72_saved.photo.attach(io: File.open(image_url('sport-freedom-fly-blue-sky-paragliders-tandem-bucket-list-sunrise-sunset-skydiving-parachuting_t20_XNRPX3.jpg')), filename: 'sports_72.jpg')
+photo_72_saved.photo.attach(io: File.open(image_url('sport-freedom-fly-blue-sky-paragliders-tandem-bucket-list-sunrise-sunset-skydiving-parachuting_t20_XNRPX3.jpg'), filename: 'sports_72.jpg')
 photo_72_saved.save!
 
 comment_140 = Comment.new({
@@ -3197,7 +3197,7 @@ photo_73 = {
   featured: assignFeaturedPage()
 }
 photo_73_saved = Photo.new(photo_73)
-photo_73_saved.photo.attach(io: File.open(image_url('sport-surfing-waves-surf-extreme_t20_8OJe9g.jpg')), filename: 'sports_73.jpg')
+photo_73_saved.photo.attach(io: File.open(image_url('sport-surfing-waves-surf-extreme_t20_8OJe9g.jpg'), filename: 'sports_73.jpg')
 photo_73_saved.save!
 
 photo_74 = {
@@ -3212,7 +3212,7 @@ photo_74 = {
   featured: assignFeaturedPage()
 }
 photo_74_saved = Photo.new(photo_74)
-photo_74_saved.photo.attach(io: File.open(image_url('twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg')), filename: 'sports_74.jpg')
+photo_74_saved.photo.attach(io: File.open(image_url('twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg'), filename: 'sports_74.jpg')
 photo_74_saved.save!
 
 comment_142 = Comment.new({
@@ -3233,7 +3233,7 @@ photo_75 = {
   featured: assignFeaturedPage()
 }
 photo_75_saved = Photo.new(photo_75)
-photo_75_saved.photo.attach(io: File.open(image_url('view-from-above-flying-happiness-girl-above-blue-sky-paradise-happy-paragliding-happy-girl_t20_e9Z9ko.jpg')), filename: 'sports_75.jpg')
+photo_75_saved.photo.attach(io: File.open(image_url('view-from-above-flying-happiness-girl-above-blue-sky-paradise-happy-paragliding-happy-girl_t20_e9Z9ko.jpg'), filename: 'sports_75.jpg')
 photo_75_saved.save!
 
 comment_143 = Comment.new({
@@ -3259,7 +3259,7 @@ photo_76 = {
   featured: assignFeaturedPage()
 }
 photo_76_saved = Photo.new(photo_76)
-photo_76_saved.photo.attach(io: File.open(image_url('wave-ocean-surf-caribbean-surfer-extreme-sport-ocean-waves-seaspray-sunnyseasand-bvi-apple-bay_t20_rLvzlX.jpg')), filename: 'sports_76.jpg')
+photo_76_saved.photo.attach(io: File.open(image_url('wave-ocean-surf-caribbean-surfer-extreme-sport-ocean-waves-seaspray-sunnyseasand-bvi-apple-bay_t20_rLvzlX.jpg'), filename: 'sports_76.jpg')
 photo_76_saved.save!
 
 comment_145 = Comment.new({
@@ -3285,7 +3285,7 @@ general_01 = {
   featured: assignFeaturedPage()
 }
 general_01_saved = Photo.new(general_01)
-general_01_saved.photo.attach(io: File.open(image_url('beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg')), filename: 'general_01.jpg')
+general_01_saved.photo.attach(io: File.open(image_url('beautiful-jellyfish-or-medusa-in-the-neon-light-in-aquarium-in-new-opened-prague-medusarium-czech_t20_GJEL7E.jpg'), filename: 'general_01.jpg')
 general_01_saved.save!
 
 general_02 = {
@@ -3300,7 +3300,7 @@ general_02 = {
   featured: assignFeaturedPage()
 }
 general_02_saved = Photo.new(general_02)
-general_02_saved.photo.attach(io: File.open(image_url('bike-in-urban-area_t20_ZV18zj.jpg')), filename: 'general_02.jpg')
+general_02_saved.photo.attach(io: File.open(image_url('bike-in-urban-area_t20_ZV18zj.jpg'), filename: 'general_02.jpg')
 general_02_saved.save!
 
 comment_146 = Comment.new({
@@ -3333,7 +3333,7 @@ general_03 = {
   featured: assignFeaturedPage()
 }
 general_03_saved = Photo.new(general_03)
-general_03_saved.photo.attach(io: File.open(image_url('bright-and-colorful-jump_t20_B80RmO.jpg')), filename: 'general_03.jpg')
+general_03_saved.photo.attach(io: File.open(image_url('bright-and-colorful-jump_t20_B80RmO.jpg'), filename: 'general_03.jpg')
 general_03_saved.save!
 
 general_04 = {
@@ -3348,7 +3348,7 @@ general_04 = {
   featured: assignFeaturedPage()
 }
 general_04_saved = Photo.new(general_04)
-general_04_saved.photo.attach(io: File.open(image_url('chifogo_t20_dxRlJA.jpg')), filename: 'general_04.jpg')
+general_04_saved.photo.attach(io: File.open(image_url('chifogo_t20_dxRlJA.jpg'), filename: 'general_04.jpg')
 general_04_saved.save!
 
 comment_149 = Comment.new({
@@ -3376,7 +3376,7 @@ general_05 = {
   featured: assignFeaturedPage()
 }
 general_05_saved = Photo.new(general_05)
-general_05_saved.photo.attach(io: File.open(image_url('city-bridge-woman-at-the-bridge-winter-snow-glasses-weather-eyes-hands-scarf-gloves-city-life-style_t20_Kvn8n9.jpg')), filename: 'general_05.jpg')
+general_05_saved.photo.attach(io: File.open(image_url('city-bridge-woman-at-the-bridge-winter-snow-glasses-weather-eyes-hands-scarf-gloves-city-life-style_t20_Kvn8n9.jpg'), filename: 'general_05.jpg')
 general_05_saved.save!
 
 general_06 = {
@@ -3391,7 +3391,7 @@ general_06 = {
   featured: assignFeaturedPage()
 }
 general_06_saved = Photo.new(general_06)
-general_06_saved.photo.attach(io: File.open(image_url('city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg')), filename: 'general_06.jpg')
+general_06_saved.photo.attach(io: File.open(image_url('city-street-vietnam-street-photography-hanoi-vietnam_t20_lxmznZ.jpg'), filename: 'general_06.jpg')
 general_06_saved.save!
 
 comment_151 = Comment.new({
@@ -3423,7 +3423,7 @@ general_07 = {
   featured: assignFeaturedPage()
 }
 general_07_saved = Photo.new(general_07)
-general_07_saved.photo.attach(io: File.open(image_url('female-hand-with-palm-leaves-on-a-black-dark-background-dark-light-stylish-beauty-composition_t20_rRBBgw.jpg')), filename: 'general_07.jpg')
+general_07_saved.photo.attach(io: File.open(image_url('female-hand-with-palm-leaves-on-a-black-dark-background-dark-light-stylish-beauty-composition_t20_rRBBgw.jpg'), filename: 'general_07.jpg')
 general_07_saved.save!
 
 # profile_11_saved
@@ -3440,7 +3440,7 @@ general_08 = {
   featured: assignFeaturedPage()
 }
 general_08_saved = Photo.new(general_08)
-general_08_saved.photo.attach(io: File.open(image_url('fresh-plant-minimal-background_t20_x27K1Q.jpg')), filename: 'general_08.jpg')
+general_08_saved.photo.attach(io: File.open(image_url('fresh-plant-minimal-background_t20_x27K1Q.jpg'), filename: 'general_08.jpg')
 general_08_saved.save!
 
 general_09 = {
@@ -3455,7 +3455,7 @@ general_09 = {
   featured: assignFeaturedPage()
 }
 general_09_saved = Photo.new(general_09)
-general_09_saved.photo.attach(io: File.open(image_url('jumping-for-joy-in-canada_t20_0AEgkV.jpg')), filename: 'general_09.jpg')
+general_09_saved.photo.attach(io: File.open(image_url('jumping-for-joy-in-canada_t20_0AEgkV.jpg'), filename: 'general_09.jpg')
 general_09_saved.save!
 
 comment_154 = Comment.new({
@@ -3488,7 +3488,7 @@ general_10 = {
   featured: assignFeaturedPage()
 }
 general_10_saved = Photo.new(general_10)
-general_10_saved.photo.attach(io: File.open(image_url('monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg')), filename: 'general_10.jpg')
+general_10_saved.photo.attach(io: File.open(image_url('monkeys-in-ubud-monkey-forest-bali_t20_kRzb3R.jpg'), filename: 'general_10.jpg')
 general_10_saved.save!
 
 comment_157 = Comment.new({
@@ -3514,7 +3514,7 @@ general_11 = {
   featured: assignFeaturedPage()
 }
 general_11_saved = Photo.new(general_11)
-general_11_saved.photo.attach(io: File.open(image_url('outdoors-adventure-summer-surfboard-surfing-recreation-extreme-sports-water-sports-outdoor-surf_t20_GJGOQo.jpg')), filename: 'general_11.jpg')
+general_11_saved.photo.attach(io: File.open(image_url('outdoors-adventure-summer-surfboard-surfing-recreation-extreme-sports-water-sports-outdoor-surf_t20_GJGOQo.jpg'), filename: 'general_11.jpg')
 general_11_saved.save!
 
 general_12 = {
@@ -3529,7 +3529,7 @@ general_12 = {
   featured: assignFeaturedPage()
 }
 general_12_saved = Photo.new(general_12)
-general_12_saved.photo.attach(io: File.open(image_url('palm-leave-from-real-close-abstract-texture-with-pastel-colors_t20_2JPnKK.jpg')), filename: 'general_12.jpg')
+general_12_saved.photo.attach(io: File.open(image_url('palm-leave-from-real-close-abstract-texture-with-pastel-colors_t20_2JPnKK.jpg'), filename: 'general_12.jpg')
 general_12_saved.save!
 
 comment_159 = Comment.new({
@@ -3555,7 +3555,7 @@ general_13 = {
   featured: assignFeaturedPage()
 }
 general_13_saved = Photo.new(general_13)
-general_13_saved.photo.attach(io: File.open(image_url('QQgekN_t20_mvLBQn.jpg')), filename: 'general_13.jpg')
+general_13_saved.photo.attach(io: File.open(image_url('QQgekN_t20_mvLBQn.jpg'), filename: 'general_13.jpg')
 general_13_saved.save!
 
 # profile_13_saved
@@ -3572,7 +3572,7 @@ general_14 = {
   featured: assignFeaturedPage()
 }
 general_14_saved = Photo.new(general_14)
-general_14_saved.photo.attach(io: File.open(image_url('reflections_t20_XQ84wV.jpg')), filename: 'general_14.jpg')
+general_14_saved.photo.attach(io: File.open(image_url('reflections_t20_XQ84wV.jpg'), filename: 'general_14.jpg')
 general_14_saved.save!
 
 comment_161 = Comment.new({
@@ -3598,7 +3598,7 @@ general_15 = {
   featured: assignFeaturedPage()
 }
 general_15_saved = Photo.new(general_15)
-general_15_saved.photo.attach(io: File.open(image_url('sea-turtles_t20_98OYYY.jpg')), filename: 'general_15.jpg')
+general_15_saved.photo.attach(io: File.open(image_url('sea-turtles_t20_98OYYY.jpg'), filename: 'general_15.jpg')
 general_15_saved.save!
 
 general_16 = {
@@ -3613,7 +3613,7 @@ general_16 = {
   featured: assignFeaturedPage()
 }
 general_16_saved = Photo.new(general_16)
-general_16_saved.photo.attach(io: File.open(image_url('skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg')), filename: 'general_16.jpg')
+general_16_saved.photo.attach(io: File.open(image_url('skateboard-urban-landscape-street-photography-big-city-city-background-people-using-mobile_t20_wLPeOm.jpg'), filename: 'general_16.jpg')
 general_16_saved.save!
 
 comment_163 = Comment.new({
@@ -3641,7 +3641,7 @@ general_17 = {
   featured: assignFeaturedPage()
 }
 general_17_saved = Photo.new(general_17)
-general_17_saved.photo.attach(io: File.open(image_url('toronto-city_t20_6lAdEo.jpg')), filename: 'general_17.jpg')
+general_17_saved.photo.attach(io: File.open(image_url('toronto-city_t20_6lAdEo.jpg'), filename: 'general_17.jpg')
 general_17_saved.save!
 
 comment_165 = Comment.new({
@@ -3667,7 +3667,7 @@ general_18 = {
   featured: assignFeaturedPage()
 }
 general_18_saved = Photo.new(general_18)
-general_18_saved.photo.attach(io: File.open(image_url('under-cave_t20_AV6wgr.jpg')), filename: 'general_18.jpg')
+general_18_saved.photo.attach(io: File.open(image_url('under-cave_t20_AV6wgr.jpg'), filename: 'general_18.jpg')
 general_18_saved.save!
 
 general_19 = {
@@ -3682,7 +3682,7 @@ general_19 = {
   featured: assignFeaturedPage()
 }
 general_19_saved = Photo.new(general_19)
-general_19_saved.photo.attach(io: File.open(image_url('urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg')), filename: 'general_19.jpg')
+general_19_saved.photo.attach(io: File.open(image_url('urban-scene-silhouette-jumping-street-abstract-jump-darkness-street-photography-lights-and-shadows_t20_wgmr2m.jpg'), filename: 'general_19.jpg')
 general_19_saved.save!
 
 comment_167 = Comment.new({
@@ -3722,7 +3722,7 @@ general_20 = {
   featured: assignFeaturedPage()
 }
 general_20_saved = Photo.new(general_20)
-general_20_saved.photo.attach(io: File.open(image_url('waterfall_t20_wLLyyV.jpg')), filename: 'general_20.jpg')
+general_20_saved.photo.attach(io: File.open(image_url('waterfall_t20_wLLyyV.jpg'), filename: 'general_20.jpg')
 general_20_saved.save!
 
 comment_171 = Comment.new({
@@ -3753,7 +3753,7 @@ general_21 = {
   featured: assignFeaturedPage()
 }
 general_21_saved = Photo.new(general_21)
-general_21_saved.photo.attach(io: File.open(image_url('winter-wanderlust_t20_x6rlNX.jpg')), filename: 'general_21.jpg')
+general_21_saved.photo.attach(io: File.open(image_url('winter-wanderlust_t20_x6rlNX.jpg'), filename: 'general_21.jpg')
 general_21_saved.save!
 
 general_22 = {
@@ -3768,7 +3768,7 @@ general_22 = {
   featured: assignFeaturedPage()
 }
 general_22_saved = Photo.new(general_22)
-general_22_saved.photo.attach(io: File.open(image_url('yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg')), filename: 'general_22.jpg')
+general_22_saved.photo.attach(io: File.open(image_url('yellow-tramway-in-busy-streets-of-lisbon_t20_xXgY0Q.jpg'), filename: 'general_22.jpg')
 general_22_saved.save!
 
 comment_174 = Comment.new({
@@ -3794,7 +3794,7 @@ general_23 = {
   featured: assignFeaturedPage()
 }
 general_23_saved = Photo.new(general_23)
-general_23_saved.photo.attach(io: File.open(image_url('young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg')), filename: 'general_23.jpg')
+general_23_saved.photo.attach(io: File.open(image_url('young-hipster-smiling-girl-listen-music-walking-on-the-streets-of-the-city-using-mobile-phone_t20_eAj36v.jpg'), filename: 'general_23.jpg')
 general_23_saved.save!
 
 comment_176 = Comment.new({
