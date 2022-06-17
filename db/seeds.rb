@@ -1225,7 +1225,7 @@ photo_17 = {
 }
 photo_17_saved = Photo.create(photo_17)
 jacob_photo_file_17 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/jacob/Benowitz Jacob - LampSkyColor.jpg')
-photo_17_saved.photo.attach(io: jacob_photo_file_17, filename: 'jacob_17.jpg'))
+photo_17_saved.photo.attach(io: jacob_photo_file_17, filename: 'jacob_17.jpg')
 photo_17_saved.save!
 
 comment_34 = Comment.new({
