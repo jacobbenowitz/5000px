@@ -1197,7 +1197,7 @@ photo_16 = {
   featured: assignFeaturedPage()
 }
 photo_16_saved = Photo.create(photo_16)
-jacob_photo_file_16 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/jacob/Benowitz Jacob - Eyes.jpg')
+jacob_photo_file_16 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/jacob/Benowitz+Jacob+-+Eyes.jpg')
 photo_16_saved.photo.attach(io: jacob_photo_file_16, filename: 'jacob_16.jpg')
 photo_16_saved.save!
 
@@ -1224,7 +1224,7 @@ photo_17 = {
   featured: assignFeaturedPage()
 }
 photo_17_saved = Photo.create(photo_17)
-jacob_photo_file_17 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/jacob/Benowitz Jacob - LampSkyColor.jpg')
+jacob_photo_file_17 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/jacob/Benowitz+Jacob+-+LampSkyColor.jpg')
 photo_17_saved.photo.attach(io: jacob_photo_file_17, filename: 'jacob_17.jpg')
 photo_17_saved.save!
 
