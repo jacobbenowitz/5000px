@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
   context: __dirname,
   entry: './frontend/5000px.jsx',
-  // entry: ['babel-polyfill', './frontend/5000px.jsx'],
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
@@ -29,9 +28,5 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"],
-    // fallback: {
-    //   "path": require.resolve('path-browserify'),
-    //   "url": false
-    // },
   }
 };
