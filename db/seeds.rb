@@ -767,7 +767,7 @@ photo_8 = {
   featured: assignFeaturedPage()
 }
 photo_8_saved = Photo.new(photo_8)
-photo_8_saved.photo.attach(io: File.open(image_url('door-outside-that-leads-to-the-ocean_t20_ZJJRn0.jpg'), filename: 'minimal_8.)jpg')
+photo_8_saved.photo.attach(io: File.open(image_url('door-outside-that-leads-to-the-ocean_t20_ZJJRn0.jpg'), filename: 'minimal_8.jpg')
 photo_8_saved.save!
 
 photo_9 = {
@@ -1593,7 +1593,7 @@ photo_28_1 = {
   featured: assignFeaturedPage()
 }
 photo_28_1_saved = Photo.new(photo_28_1)
-photo_28_1_saved.photo.attach(io: File.open('image_url(/acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg'))
+photo_28_1_saved.photo.attach(io: File.open(image_url('acrylic-abstract-art_t20_RJokzv.jpg'), filename: 'abstract_28_1.jpg'))
 photo_28_1_saved.save!
 
 comment_57 = Comment.new({
@@ -2072,7 +2072,7 @@ animal_photo_44 = {
   featured: assignFeaturedPage()
 }
 animal_photo_44_saved = Photo.new(animal_photo_44)
-animal_photo_44_saved.photo.attach(io: File.open(image_url('twenty20_600e29d6-776e-479a-b0e6-7dce00962a7c.jpg'), filename: 'animals_44.)jpg')
+animal_photo_44_saved.photo.attach(io: File.open(image_url('twenty20_600e29d6-776e-479a-b0e6-7dce00962a7c.jpg'), filename: 'animals_44.jpg')
 animal_photo_44_saved.save!
 
 animal_photo_45 = {
@@ -2205,7 +2205,7 @@ photo_44 = {
   featured: assignFeaturedPage()
 }
 photo_44_saved = Photo.new(photo_44)
-photo_44_saved.photo.attach(io: File.open(image_url('chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg'), filename: 'chocolate_44.)jpg')
+photo_44_saved.photo.attach(io: File.open(image_url('chocolate-donuts-with-sprinkles_t20_e3nJQW.jpg'), filename: 'chocolate_44.jpg')
 photo_44_saved.save!
 
 comment_88 = Comment.new({
@@ -3212,7 +3212,7 @@ photo_74 = {
   featured: assignFeaturedPage()
 }
 photo_74_saved = Photo.new(photo_74)
-photo_74_saved.photo.attach(io: File.open(image_url('twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg'), filename: 'sports_74.)jpg')
+photo_74_saved.photo.attach(io: File.open(image_url('twenty20_f345d99e-cfaa-4ce5-99aa-3329c8ee332a.jpg'), filename: 'sports_74.jpg')
 photo_74_saved.save!
 
 comment_142 = Comment.new({
