@@ -19,7 +19,7 @@
   height: auto;
 }
 
-.photo-index-item > img{
+.photo-index-item > img {
   width: 400px;
   height: auto;
 }
@@ -74,7 +74,7 @@
 .disc-link.active, .disc-link:hover {
   color: rgb(8, 112, 209);
   font-weight: bold;
-  box-shadow: rgb(8 112 209) 0px -2px inset;
+  box-shadow: rgb(8, 112, 209) 0px -2px inset;
 }
 
 .liked-photos-empty-container {

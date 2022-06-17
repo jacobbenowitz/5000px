@@ -1,13 +1,12 @@
 # 5000px
 
-
 <img src="app/assets/images/5000px-logo-blue-web.svg" width="220">
 
 <br>
 
 **Live link:** [**5000px**](https://my5000px.herokuapp.com/)
 
- A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
+A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
 
 <br>
 

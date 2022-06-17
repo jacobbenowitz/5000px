@@ -42,17 +42,6 @@
   margin-bottom: 0;
 }
 
-/* .image-gallery-2-row {
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  justify-content: center;
-  max-width: 1330px;
-  width: 100%;
-  margin: 0px auto
-} */
-
 .gallery-4-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
