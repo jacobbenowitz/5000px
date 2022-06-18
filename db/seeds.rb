@@ -2862,7 +2862,7 @@ music_photo_62_1 = {
   category: 'music',
   featured: assignFeaturedPage()
 }
-music_photo_62_1_saved = Photo.create(music_photo_62)
+music_photo_62_1_saved = Photo.create(music_photo_62_1)
 music_photo_file_62_1 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/music/selective-focus-music-acoustic-guitar-guitar-musical-instrument-musician-acoustic-musicians_t20_vOvpXE.jpg')
 music_photo_62_1_saved.photo.attach(io: music_photo_file_62_1, filename: 'music_62.jpg')
 music_photo_62_1_saved.save!
