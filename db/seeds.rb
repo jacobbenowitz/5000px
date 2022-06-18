@@ -1954,7 +1954,7 @@ photo_34 = {
 }
 photo_34_saved = Photo.create(photo_34)
 animals_photo_file_34 = open('https://my5000px-seeds.s3.amazonaws.com/seeds/animals/a-monkey-sat-in-a-human-pose-in-loro-park-tenerife_t20_98LvYA.jpg')
-photo_34_saved.photo.attach(io: Fanimals_photo_file_34, filename: 'animals_34.jpg')
+photo_34_saved.photo.attach(io: animals_photo_file_34, filename: 'animals_34.jpg')
 photo_34_saved.save!
 
 comment_73 = Comment.new({
