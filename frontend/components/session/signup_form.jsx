@@ -21,6 +21,8 @@ export default class SignupForm extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
+    this.props.clearErrors()
+    debugger
   }
 
   bindHandlers() {
@@ -83,9 +85,9 @@ export default class SignupForm extends React.Component {
   checkAllFields() {
     const { username, email, password, password2 } = this.state;
     // check all fields, if all valid return true, else return false
-    if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) && 
+    if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) &&
       username.length > 4 && password.length > 5 && password === password2
-    ) { return true } else return false 
+    ) { return true } else return false
   }
 
   render() {
@@ -128,9 +130,9 @@ export default class SignupForm extends React.Component {
     emailError = (
       <div className="session-error">
         {
-          (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) ? 
+          (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) ?
             <i className="fa-solid fa-circle-check"></i>
-          :
+            :
             <i className="fa-solid fa-circle-xmark"></i>
         }
         <span>Email must be a valid address</span>
@@ -176,84 +178,87 @@ export default class SignupForm extends React.Component {
     }
 
     return (
-      <div className="session center-simple">
-        <div id="session-form">
-          <h3>Create an account</h3>
-          <form onSubmit={this.handleSubmit}>
-            {this.renderErrors()}
-            <div className="form-input">
-              <label htmlFor="username-signup">Username</label>
-              <input
-                type="text"
-                id="username-signup"
-                className="text-input"
-                value={username}
-                onChange={this.update('username')}
-              />
-            </div>
-            <div className="form-input">
-              <label htmlFor="email-signup">Email</label>
-              <input
-                type="email"
-                id="email-signup"
-                className="text-input"
-                value={email}
-                onChange={this.update('email')}
-              />
-            </div>
-            <div className="form-input">
-              <label htmlFor="password-signup">Password</label>
-              <input
-                type="password"
-                id="password-signup"
-                className="text-input"
-                onChange={this.update('password')}
-                value={password}
-              />
-            </div>
-
-            <div className="form-input">
-              <label htmlFor="password2-signup">Confirm password</label>
-              <input
-                type="password"
-                id="password2-signup"
-                className="text-input"
-                onChange={this.update('password2')}
-                value={password2}
-              />
-            </div>
-
-            {frontendErrors}
-
-            <button className={this.checkAllFields() ? "signup" :
-              "signup disabled"}
-              id="submit-signup"
-              type="submit"
-            >
-              Create account
-            </button>
-
-            <button className="demo_button"
-              id="demo-signup"
-              onClick={this.demoScript}
-            >
-              Demo signup
-            </button>
-
-            <span className="alt-session-link">
-              <p>Already got an account?</p>
-              <Link to={'/login'}>Log in</Link>
-            </span>
-
-          </form>
-
-          <button
-            onClick={this.demoSignup}
-            id="hidden-demo">Demo only
-          </button>
-
-        </div>
+      <div>
+        <h1>TESTING</h1>
       </div>
+      // <div className="session center-simple">
+      //   <div id="session-form">
+      //     <h3>Create an account</h3>
+      //     <form onSubmit={this.handleSubmit}>
+      //       {this.renderErrors()}
+      //       <div className="form-input">
+      //         <label htmlFor="username-signup">Username</label>
+      //         <input
+      //           type="text"
+      //           id="username-signup"
+      //           className="text-input"
+      //           value={username}
+      //           onChange={this.update('username')}
+      //         />
+      //       </div>
+      //       <div className="form-input">
+      //         <label htmlFor="email-signup">Email</label>
+      //         <input
+      //           type="email"
+      //           id="email-signup"
+      //           className="text-input"
+      //           value={email}
+      //           onChange={this.update('email')}
+      //         />
+      //       </div>
+      //       <div className="form-input">
+      //         <label htmlFor="password-signup">Password</label>
+      //         <input
+      //           type="password"
+      //           id="password-signup"
+      //           className="text-input"
+      //           onChange={this.update('password')}
+      //           value={password}
+      //         />
+      //       </div>
+
+      //       <div className="form-input">
+      //         <label htmlFor="password2-signup">Confirm password</label>
+      //         <input
+      //           type="password"
+      //           id="password2-signup"
+      //           className="text-input"
+      //           onChange={this.update('password2')}
+      //           value={password2}
+      //         />
+      //       </div>
+
+      //       {frontendErrors}
+
+      //       <button className={this.checkAllFields() ? "signup" :
+      //         "signup disabled"}
+      //         id="submit-signup"
+      //         type="submit"
+      //       >
+      //         Create account
+      //       </button>
+
+      //       <button className="demo_button"
+      //         id="demo-signup"
+      //         onClick={this.demoScript}
+      //       >
+      //         Demo signup
+      //       </button>
+
+      //       <span className="alt-session-link">
+      //         <p>Already got an account?</p>
+      //         <Link to={'/login'}>Log in</Link>
+      //       </span>
+
+      //     </form>
+
+      //     <button
+      //       onClick={this.demoSignup}
+      //       id="hidden-demo">Demo only
+      //     </button>
+
+      //   </div>
+      // </div>
     )
   }
 }

@@ -12,6 +12,7 @@ const sessionErrorsReducer = (initialState = [], action) => {
     case RECEIVE_CURRENT_USER:
       return [];
     case RECEIVE_SESSION_ERRORS:
+      debugger
       return Object.values(action.errors);
     case CLOSE_MODAL:
       return []

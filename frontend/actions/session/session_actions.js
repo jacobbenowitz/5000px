@@ -84,3 +84,7 @@ export const fetchCurrentUser = userId => dispatch => {
   return SessionApiUtil.fetchUser(userId)
     .then(user => dispatch(receiveCurrentUser(user)))
 }
+
+export const clearErrors = () => dispatch => {
+  dispatch(receiveSessionErrors())
+}

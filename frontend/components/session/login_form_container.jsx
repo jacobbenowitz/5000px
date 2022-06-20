@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { login } from "../../actions/session/session_actions";
+import { clearErrors, login } from "../../actions/session/session_actions";
 import LoginForm from "./login_form";
 
 const mapStateToProps = ({ errors, entities, session }) => ({
@@ -7,9 +7,10 @@ const mapStateToProps = ({ errors, entities, session }) => ({
   currentUser:  entities.users[session.id]
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   processForm: user => dispatch(login(user)),
-  loginGuest: user => dispatch(login(user))
+  loginGuest: user => dispatch(login(user)),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

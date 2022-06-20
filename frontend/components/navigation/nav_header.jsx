@@ -15,12 +15,16 @@ export default class NavHeader extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCurrentProfile(this.props.currentProfileId)
+    const { currentProfileId, fetchCurrentProfile } = this.props;
+    if (currentProfileId) {
+      fetchCurrentProfile(currentProfileId)
+    }
   }
 
   componentDidUpdate() {
-    if (!this.props.currentProfile) {
-      this.props.fetchCurrentProfile(this.props.currentProfileId)
+    const { currentProfile, currentProfileId, fetchCurrentProfile } = this.props;
+    if (currentProfile === null) {
+      fetchCurrentProfile(currentProfileId)
     }
   }
 

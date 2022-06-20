@@ -58,7 +58,7 @@ export default class NavFooter extends React.Component {
                 <i className="fa-solid fa-link" />
                 <a href={'https://www.jacobbenowitz.com/'}
                   target="_blank" rel="noreferrer"
-                >Porfolio</a>
+                >Portfolio</a>
               </div>
             </div>
           </div>
