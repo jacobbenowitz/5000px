@@ -1,9 +1,8 @@
-require 'open-uri'
 class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    
+
     if @profile.save
       render :show
     else
