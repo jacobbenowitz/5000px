@@ -66,11 +66,16 @@ export default class ProfileCoverInput extends React.Component {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
         rgba(0, 0, 0, 0)), url(${this.state.photoUrl})`
       })
-    } else {
+    } else if (currentCover !== undefined) {
       coverStyle = ({
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
         rgba(0, 0, 0, 0)), url(${currentCover})`
       })
+    } else {
+        coverStyle = ({
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), 
+          rgba(0, 0, 0, 0)), url(https://my5000px-static.s3.amazonaws.com/placeholder-image.png)`
+        })
     }
     
     return (

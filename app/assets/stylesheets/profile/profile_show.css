@@ -253,3 +253,11 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+.no-photos-uploaded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  background-color: #F7F8FA;
+}

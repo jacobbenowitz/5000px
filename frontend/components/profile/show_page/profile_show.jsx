@@ -59,11 +59,11 @@ export default class ProfileShow extends React.Component {
       fetchProfiles()
       getFollows()
     }
-    debugger
+
     if (status === BUSY && profile && profile.photoIds.length === 0) {
       this.setState({
         noPhotos: true,
-        status: IDLE
+        status: DONE
       })
     }
     
@@ -106,7 +106,7 @@ export default class ProfileShow extends React.Component {
     const { profile, user, isCurrentProfile, updateProfilePhoto, currentProfile, allFollows, createFollow, removeFollow, getFollows, fetchProfile } = this.props;
     const { status, profilePhotos, showFollowsModal, showFollowingModal, noPhotos } = this.state;
 
-    let avatar, cover, coverStyle, photoGallery, noPhotosContainer;
+    let avatar, cover, coverStyle, photoGallery;
 
     if (profile?.cover) {
       coverStyle = (
@@ -121,14 +121,6 @@ export default class ProfileShow extends React.Component {
           backgroundImage: 'url(https://my5000px-static.s3.amazonaws.com/placeholder-image.png)',
           backgroundColor: '#485461'
         }
-      )
-    }
-
-    if (noPhotos) {
-      noPhotosContainer = (
-        <div className="no-photos-uploaded">
-          <h2>No photos uploaded yet 😢</h2>
-        </div>
       )
     }
 
@@ -166,10 +158,22 @@ export default class ProfileShow extends React.Component {
       )
     }
 
-    if (status === DONE && noPhotos === false) {
-      photoGallery = <ProfileRows photos={profilePhotos} />
+    if (status === DONE) {
+      if (noPhotos === false) {
+        photoGallery = <ProfileRows photos={profilePhotos} />
+      } else {
+        photoGallery = (
+          <div className="no-photos-uploaded">
+            <h4>No photos uploaded yet 😢</h4>
+          </div>
+        )
+      }
     } else {
-      photoGallery = <GridLoader />
+      photoGallery = (
+        <div className="home-feed-gallery">
+          <GridLoader />
+        </div>
+      )
     }
     return (
       <div className="profile-show-container" >
