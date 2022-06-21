@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -38,7 +39,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem "aws-sdk-s3"
-# gem "open-uri"
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 

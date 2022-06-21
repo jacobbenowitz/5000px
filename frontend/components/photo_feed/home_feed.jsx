@@ -82,7 +82,7 @@ export default class HomeFeed extends React.Component {
     const { photoIds, allFollows, allPhotos, allProfiles, users, profiles, fetchPhoto, photosStatus, profilesStatus, currentProfile } = this.props;
     const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
-    if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && currentProfile && !!Object.values(allFollows).length) {
+    if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length) {
       // setState to BUSY in order to prevent multiple calls while updating
       this.setState({
         featuredStatus: BUSY,

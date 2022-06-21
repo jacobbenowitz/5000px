@@ -177,7 +177,7 @@ export default class SignupForm extends React.Component {
         </div>
       )
     }
-`
+
     return (
       <div className="session center-simple">
         <div id="session-form">

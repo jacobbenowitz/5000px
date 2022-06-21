@@ -3,11 +3,7 @@ class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    demoAvatar = open('https://my5000px-seeds.s3.amazonaws.com/avatars/person-placeholder-300x300.jpg')
-    demoCover = open('https://my5000px-seeds.s3.amazonaws.com/avatars/placeholder-image.png')
-    @profile.avatar.attach(io: demoAvatar, filename: 'placeholder-avatar.jpeg')
-    @profile.cover.attach(io: demoCover, filename: 'vietnam-street.jpg')
-
+    
     if @profile.save
       render :show
     else
