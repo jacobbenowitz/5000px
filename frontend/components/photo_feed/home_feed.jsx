@@ -13,6 +13,7 @@ import CollectionGridCard from "./cards/collection_grid_card";
 import SinglePhotoLarge from "./cards/single_photo_large";
 import FeedHeader from "./headers/feed_header";
 import FeaturedCardsLoader from '../galleries/featured_cards_loader'
+import { throttle } from "../../util/throttle_util";
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -54,10 +55,10 @@ export default class HomeFeed extends React.Component {
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
-    this.mounted = true;
     window.scrollTo(0, 0)
     this.lazyScrollListener()
-
+    
+    this.mounted = true;
     this.setState({
       status: BUSY
     }, () => {
@@ -137,15 +138,30 @@ export default class HomeFeed extends React.Component {
   }
 
   lazyScrollListener() {
-    window.addEventListener('scroll', this.handleLazyLoad)
+    window.addEventListener('scroll', e => {
+      const lazyLoadEle = this.lazyLoadBox.current
+      this.handleLazyLoad(e, lazyLoadEle)
+    })
   }
 
-  handleLazyLoad(e) {
+  // handleLazyLoad(e, lazyLoadEle) {
+  //   e.preventDefault()
+  //   e.stopPropagation()
+  //   console.log("inside handleLazyLoad")
+    
+  //   // do not fetch more photos if already fetching photos
+  //   if (this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
+  //     this.setState({ status: BUSY }, () => {
+  //       // window.removeEventListener('scroll', (e) => this.handleLazyLoad(e))
+  //       this.fetchTenMorePhotos()
+  //     })
+  //   }
+  // }
+  handleLazyLoad = throttle((e, lazyLoadEle) => {
     e.preventDefault()
     e.stopPropagation()
-    // use ref to get actual DOM Element
-    const lazyLoadEle = this.lazyLoadBox.current
-
+    console.log("inside handleLazyLoad")
+    
     // do not fetch more photos if already fetching photos
     if (this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
       this.setState({ status: BUSY }, () => {
@@ -153,12 +169,14 @@ export default class HomeFeed extends React.Component {
         this.fetchTenMorePhotos()
       })
     }
-  }
+  })
 
   fetchTenMorePhotos() {
     const { allPhotos, photoIds, fetchPhoto, currentProfile } = this.props;
     const { fetchedPhotos, status, followingPhotoIds } = this.state;
     let shuffledIds, userPhotoIds;
+    
+    // filter out previously fetched photos
     let unfetchedPhotos = photoIds.filter(id => !fetchedPhotos.includes(id))
     // if the currentUser has posted photos, show < 3 of them 
     if (currentProfile.photoIds) {
@@ -171,7 +189,7 @@ export default class HomeFeed extends React.Component {
       shuffledIds = userPhotoIds.concat(followingPhotoIds.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
     } else {
       // else, fetch shuffled photos from all photos [photoIds]
-      shuffledIds = userPhotoIds.concat(photoIds.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
+      shuffledIds = userPhotoIds.concat(unfetchedPhotos.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
     }
     
     let fetches = [];
@@ -201,7 +219,7 @@ export default class HomeFeed extends React.Component {
 
     let featuredCards, homeGallery, loadingGrid, followedGallery;
 
-    if (fetchedPhotos.length && collectionStatus === DONE) {
+    if (collectionStatus === DONE) {
       homeGallery = fetchedPhotos.map((photos, i) => 
         <React.Fragment key={`fragment-wrapper-${i}`}>
           {i < 7 ? i % 2 === 0 ? (

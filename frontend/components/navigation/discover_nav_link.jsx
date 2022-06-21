@@ -1,3 +1,4 @@
+import { relativeTimeThreshold } from "moment";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import CollectionNavModal from "./collection_nav_modal";
@@ -15,6 +16,26 @@ export default class DiscoverNavLinkItem extends React.Component {
 
     this.handleDiscoverClick = this.handleDiscoverClick.bind(this);
     this.handleCollectionClick = this.handleCollectionClick.bind(this);
+    this.handleBodyClick = this.handleBodyClick.bind(relativeTimeThreshold)
+  }
+
+  componentDidMount() {
+    window.addEventListener("click", this.handleBodyClick)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("click", this.handleBodyClick)
+  }
+
+  handleBodyClick = e => {
+    e.stopPropagation()
+    const { collectionModal, discoverModal } = this.state;
+    if (collectionModal || discoverModal) {
+      this.setState({
+        discoverModal: false,
+        collectionModal: false,
+      })
+    }
   }
 
   handleDiscoverClick(e) {
