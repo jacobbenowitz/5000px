@@ -68,7 +68,7 @@
   cursor: pointer;
 }
 
-.nav-pseduo:hover {
+.dropdown-nav:hover {
   color: #316ECA;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .fa-angle-down {
-  color: #909091;
+  color: inherit;
 }
 
 .dropdown-nav {
@@ -152,3 +152,4 @@
     top: 30px;
   }
 }
+

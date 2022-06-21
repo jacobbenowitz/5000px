@@ -49,14 +49,15 @@ export default class HomeFeed extends React.Component {
     this.closeInfoCallout = this.closeInfoCallout.bind(this)
     this.eleIsInViewport = this.eleIsInViewport.bind(this)
     this.fetchTenMorePhotos = this.fetchTenMorePhotos.bind(this)
-    this.lazyScrollListener = this.lazyScrollListener.bind(this)
+    this.addLazyScrollListener = this.addLazyScrollListener.bind(this)
+    this.removeLazyScrollListener = this.removeLazyScrollListener.bind(this)
     this.handleLazyLoad = this.handleLazyLoad.bind(this)
   }
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
     window.scrollTo(0, 0)
-    this.lazyScrollListener()
+    this.addLazyScrollListener()
     
     this.mounted = true;
     this.setState({
@@ -137,8 +138,15 @@ export default class HomeFeed extends React.Component {
     );
   }
 
-  lazyScrollListener() {
+  addLazyScrollListener() {
     window.addEventListener('scroll', e => {
+      const lazyLoadEle = this.lazyLoadBox.current
+      this.handleLazyLoad(e, lazyLoadEle)
+    })
+  }
+
+  removeLazyScrollListener() {
+    window.removeEventListener('scroll', e => {
       const lazyLoadEle = this.lazyLoadBox.current
       this.handleLazyLoad(e, lazyLoadEle)
     })
