@@ -104,7 +104,7 @@ button:focus, .link-button:focus {
   height: 48px;
   left: calc(50% - 342px/2);
   top: 166px;
-
+  font-weight: 800;
   background: #316ECA;
   border-radius: 30px;
   color: white;

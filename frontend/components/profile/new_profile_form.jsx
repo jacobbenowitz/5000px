@@ -9,8 +9,6 @@ export default class NewProfileForm extends React.Component {
     this.state = {
       first_name: '',
       last_name: '',
-      profile_avatar: '',
-      profile_banner: '',
       website_url: '',
       instagram_url: '',
       lenses: '',
@@ -26,21 +24,18 @@ export default class NewProfileForm extends React.Component {
   }
 
   componentWillUnmount() {
-    const profile = Object.assign({}, this.state,
-      { user_id: this.props.userId })
-    this.props.submitForm(profile)
+    this.props.submitForm(this.state)
   }
   
   bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.redirectHome = this.redirectHome.bind(this);
   }
 
   componentDidMount() {
     const { userId } = this.props;
 
     if (userId === null) {
-      <Redirect to={'/signup'} />
+      this.props.history.push('/signup')
     } else if (this.state.user_id !== userId) {
       this.setState({
         user_id: userId
@@ -87,16 +82,12 @@ export default class NewProfileForm extends React.Component {
 
     window.removeEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
 
-    const profile = Object.assign({}, this.state,
-      { user_id: this.props.userId} )
-    if (this.props.userId !== null) {
-      this.props.submitForm(profile)
-      this.redirectHome();
+    // const profile = Object.assign({}, this.state,
+    //   { user_id: this.props.userId} )
+    if (this.state.user_id !== null) {
+      this.props.submitForm(this.state)
+      this.props.history.push('/')
     }
-  }
-
-  redirectHome() {
-    this.props.history.push('/')
   }
   
   update = field => {
@@ -147,7 +138,7 @@ export default class NewProfileForm extends React.Component {
               Create your profile
               <span className="skip-profile-form"
                 onClick={this.handleSubmit}
-              >or skip for now</span>
+              >&nbsp;or skip for now</span>
             </span>
           </div>
 

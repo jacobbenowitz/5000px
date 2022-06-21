@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { fetchCurrentUser, logout } from "../../actions/session/session_actions";
 import { fetchCurrentProfile, fetchProfiles } from "../../actions/profile/profile_actions";
 import NavHeader from "./nav_header";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = ({entities, session}) => {
 
@@ -19,4 +20,4 @@ const mapDispatchToProps = dispatch => ({
   // fetchProfiles: () => dispatch(fetchProfiles())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavHeader));

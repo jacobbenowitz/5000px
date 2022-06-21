@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Hero from "./hero";
 import DemoInfo from "./demo_info";
 import SimpleCTA from "./simple_cta_section";

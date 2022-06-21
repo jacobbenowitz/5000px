@@ -28,6 +28,5 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"],
-    fallback: { "crypto": false }
   }
 };

@@ -1,10 +1,12 @@
+require 'open-uri'
 class Api::ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.avatar.attach(io: File.open('app/assets/images/person-placeholder-300x300.webp'), filename: 'placeholder-avatar.webp')
-    @profile.cover.attach(io: File.open('app/assets/images/placeholder-image.png'), filename: 'vietnam-street.jpg')
-
+    demoAvatar = open('https://my5000px-seeds.s3.amazonaws.com/avatars/person-placeholder-300x300.jpg')
+    demoCover = open('https://my5000px-seeds.s3.amazonaws.com/avatars/placeholder-image.png')
+    @profile.avatar.attach(io: demoAvatar, filename: 'placeholder-avatar.jpeg')
+    @profile.cover.attach(io: demoCover, filename: 'vietnam-street.jpg')
 
     if @profile.save
       render :show

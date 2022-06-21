@@ -1,5 +1,6 @@
 import { CLOSE_MODAL } from '../actions/modal/modal_actions';
 import {
+  CLEAR_SESSION_ERRORS,
   LOGOUT_CURRENT_USER,
   RECEIVE_CURRENT_USER,
   RECEIVE_SESSION_ERRORS
@@ -15,9 +16,11 @@ const sessionErrorsReducer = (initialState = [], action) => {
       debugger
       return Object.values(action.errors);
     case CLOSE_MODAL:
-      return []
+      return [];
     case LOGOUT_CURRENT_USER:
-      return []
+      return [];
+    case CLEAR_SESSION_ERRORS:
+      return [];
     default:
       return initialState;
   }

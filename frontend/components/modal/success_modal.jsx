@@ -17,9 +17,9 @@ export default class SuccessModal extends React.Component {
             <i className="fa-solid fa-circle-check"></i>
           </div>
           <div>
-            {messages.map(error => {
+            {messages.map((error, i) => {
               return (
-                <span>{error}</span>
+                <span key={`modal-item-${i}`}>{error}</span>
               )})
             }
           </div>

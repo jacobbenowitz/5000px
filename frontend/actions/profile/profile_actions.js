@@ -62,6 +62,7 @@ export const fetchCurrentProfile = profileId => dispatch => {
 }
 
 export const createProfile = profile => dispatch => {
+  debugger
   ProfileApiUtil.createProfile(profile).then(profile => {
     dispatch(receiveProfile(profile))
     dispatch(receiveCurrentProfile(profile))
