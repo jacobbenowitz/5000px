@@ -19,6 +19,15 @@ const IDLE = 'IDLE'
 const BUSY = 'BUSY'
 const DONE = 'DONE'
 
+const COLLECTIONS = [
+  'abstract',
+  'chocolate',
+  'minimalism',
+  'music',
+  'animals',
+  'sports'
+]
+
 export default class HomeFeed extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +43,7 @@ export default class HomeFeed extends React.Component {
     }
     this.bindHandlers()
   }
-  
+
   bindHandlers() {
     this.lazyLoadBox = React.createRef()
     this.homeSpacer = React.createRef()
@@ -48,10 +57,10 @@ export default class HomeFeed extends React.Component {
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
+    this.mounted = true;
     window.scrollTo(0, 0)
     this.addLazyScrollListener()
-    
-    this.mounted = true;
+
     this.setState({
       status: BUSY
     }, () => {
@@ -64,12 +73,12 @@ export default class HomeFeed extends React.Component {
 
   componentWillUnmount() {
     this.removeLazyScrollListener()
-    this.mounted = false;
     this.setState({
       status: IDLE,
       featuredStatus: IDLE,
       collectionStatus: IDLE,
     })
+    this.mounted = false;
   }
 
   componentDidUpdate() {
@@ -83,18 +92,9 @@ export default class HomeFeed extends React.Component {
         collectionStatus: BUSY
       })
 
-      const COLLECTIONS = [
-        'abstract',
-        'chocolate',
-        'minimalism',
-        'music',
-        'animals',
-        'sports'
-      ]
-
       // current user's following photo ids
       let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
-      
+
       // featured Collections
       let finalCollections = {};
 
@@ -158,26 +158,12 @@ export default class HomeFeed extends React.Component {
     })
   }
 
-  // handleLazyLoad(e, lazyLoadEle) {
-  //   e.preventDefault()
-  //   e.stopPropagation()
-  //   console.log("inside handleLazyLoad")
-    
-  //   // do not fetch more photos if already fetching photos
-  //   if (this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
-  //     this.setState({ status: BUSY }, () => {
-  //       // window.removeEventListener('scroll', (e) => this.handleLazyLoad(e))
-  //       this.fetchTenMorePhotos()
-  //     })
-  //   }
-  // }
   handleLazyLoad = throttle((e, lazyLoadEle) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log("inside handleLazyLoad")
-    
+
     // do not fetch more photos if already fetching photos
-    if (this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
+    if (lazyLoadEle !== null && this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
       this.setState({ status: BUSY }, () => {
         // window.removeEventListener('scroll', (e) => this.handleLazyLoad(e))
         this.fetchTenMorePhotos()
@@ -189,7 +175,7 @@ export default class HomeFeed extends React.Component {
     const { allPhotos, photoIds, fetchPhoto, currentProfile } = this.props;
     const { fetchedPhotos, status, followingPhotoIds } = this.state;
     let shuffledIds, userPhotoIds;
-    
+
     // filter out previously fetched photos
     let unfetchedPhotos = photoIds.filter(id => !fetchedPhotos.includes(id))
     // if the currentUser has posted photos, show < 3 of them 
@@ -205,7 +191,7 @@ export default class HomeFeed extends React.Component {
       // else, fetch shuffled photos from all photos [photoIds]
       shuffledIds = userPhotoIds.concat(unfetchedPhotos.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
     }
-    
+
     let fetches = [];
     shuffledIds.forEach(id => fetches.push(fetchPhoto(id)))
 
@@ -221,7 +207,7 @@ export default class HomeFeed extends React.Component {
 
   closeInfoCallout(e) {
     e.preventDefault()
-    this.setState({infoCallout: false})
+    this.setState({ infoCallout: false })
   }
 
   render() {
@@ -234,7 +220,7 @@ export default class HomeFeed extends React.Component {
     let featuredCards, homeGallery, loadingGrid, followedGallery;
 
     if (collectionStatus === DONE) {
-      homeGallery = fetchedPhotos.map((photos, i) => 
+      homeGallery = fetchedPhotos.map((photos, i) =>
         <React.Fragment key={`fragment-wrapper-${i}`}>
           {i < 7 ? i % 2 === 0 ? (
             <div className="grid-gallery-wrapper"
@@ -307,7 +293,7 @@ export default class HomeFeed extends React.Component {
           description={'See photos and published Galleries from people you follow.'}
         />
 
-        <InfoCallout 
+        <InfoCallout
           infoCallout={infoCallout}
           closeInfoCallout={this.closeInfoCallout}
         />

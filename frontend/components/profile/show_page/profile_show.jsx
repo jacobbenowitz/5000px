@@ -67,7 +67,7 @@ export default class ProfileShow extends React.Component {
       })
     }
     
-    if (status === IDLE && profile && profileId == profile.id
+    if (status !== BUSY && profile && profileId == profile.id
       && profile.photoIds.length !== profilePhotos.length) {
       this.setState({ status: BUSY })
       let ordered;

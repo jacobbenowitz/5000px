@@ -5,6 +5,7 @@ import FollowModalButton from "../action_components/follow_modal_button";
 const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
   createFollow, removeFollow, allFollows }) => {
   let likesModal;
+  const placehodlerSrc = "https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.jpg"
   
   if (openLikeModal) {
     likesModal = (
@@ -25,13 +26,15 @@ const LikesModal = ({ openLikeModal, toggleLikeModal, photo, currentProfile,
                 <div className="profile-summary-wrapper">
                   <Link to={`/profiles/${like.liker_id}`}>
                     <div className="avatar-wrapper-sm"
-                      style={{ 'backgroundImage': `url(${like.avatar})` }
+                      style={{ 'backgroundImage': `url(${like.avatar || placehodlerSrc})` }
                       }
                     />
                   </Link>
                   <div className="liker-profile-summary">
                     <Link to={`/profiles/${like.liker_id}`}>
-                      {like.first_name}&nbsp;{like.last_name}
+                      {like.first_name.length > 0 ? (
+                        like.first_name + " " + like.last_name
+                      ): like.username}
                     </Link>
                     <span className="liker-followers-count">
                       {like.followers.length}&nbsp;Followers

@@ -42,8 +42,10 @@ $comments = [
 $prev_comments = []
 
 def get_comment
+  $comments = $comments.shuffle()
+  
   if $comments.length > 1 
-    comment = $comments.pop(rand(0...$comments.length))
+    comment = $comments.pop()
     $prev_comments.push(comment)
     return comment
   else 
