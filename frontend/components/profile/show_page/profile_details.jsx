@@ -9,7 +9,7 @@ export const ProfileDetails = ({ profile, user, currentProfile,
   toggleFollowsModal, showFollowsModal, showFollowingModal, toggleFollowingModal, fetchProfile }) => {
   
   let location, name, profileStats, profileLinks, websiteLink, instagramLink, followProfileButton;
-
+  
   profileStats = (
     <div className="profile-stats-wrapper flex-row">
       <div className="profile-stats-section flex-row following"

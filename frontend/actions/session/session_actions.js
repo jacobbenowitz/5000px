@@ -1,7 +1,4 @@
 import * as SessionApiUtil from '../../util/session_api_util'
-import { fetchPhotos } from '../photos/photos_actions';
-import { receiveProfile, fetchCurrentProfile, receiveCurrentProfile, fetchProfiles, createProfile } from '../profile/profile_actions';
-import { getLikes } from '../likes/like_actions';
 
 // action type constants
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'; // user

@@ -27,6 +27,7 @@ export default class NavHeader extends React.Component {
 
   componentDidMount() {
     const { currentProfileId, fetchCurrentProfile } = this.props;
+    this.mounted = true;
     if (currentProfileId !== null) {
       fetchCurrentProfile(currentProfileId)
     }
@@ -35,19 +36,19 @@ export default class NavHeader extends React.Component {
   componentDidUpdate() {
     const { currentProfile, currentProfileId,
       fetchCurrentProfile } = this.props;
-    if (currentProfile !== null && currentProfileId !== null) {
+    if (currentProfile === null && currentProfileId !== null) {
       fetchCurrentProfile(currentProfileId)
     }
   }
 
   componentWillUnmount() {
     window.removeEventListener("click", this.handleWindowClick)
+    this.mounted = false;
   }
 
   handleWindowClick = e => {
     e.stopPropagation()
     const { collectionModal, discoverModal, userModal } = this.state;
-    debugger
     if (collectionModal || discoverModal || userModal) {
       this.setState({
         discoverModal: false,

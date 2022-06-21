@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         id: window.currentUser.id,
         user: window.currentUser,
         profile: window.currentProfile,
-        profileId: window.currentUser.profileId
+        profileId: window.currentProfile.id
       }
     };
     store = configureStore(preloadedState);

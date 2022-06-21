@@ -160,7 +160,7 @@ export const selectThreeRandomPhotos = (photos) => {
 }
 
 export const selectFourRandomPhotos = (photos) => {
-  let maxPhotos = photos.length;
+  let maxPhotos = photos?.length || 0;
   let randomPhotos = [];
   let prevInts = [];
 

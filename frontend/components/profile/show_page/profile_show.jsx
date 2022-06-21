@@ -22,6 +22,7 @@ export default class ProfileShow extends React.Component {
       profilePhotos: [],
       showFollowsModal: false,
       showFollowingModal: false,
+      noPhotos: false,
     }
     this.toggleFollowsModal = this.toggleFollowsModal.bind(this)
     this.toggleFollowingModal = this.toggleFollowingModal.bind(this)
@@ -32,6 +33,7 @@ export default class ProfileShow extends React.Component {
       status: IDLE,
       id: null,
       profilePhotos: [],
+      noPhotos: false
     })
   }
 
@@ -51,12 +53,20 @@ export default class ProfileShow extends React.Component {
     if (profileId != id && status !== BUSY) {
       this.setState({
         id: profileId,
-        status: IDLE,
+        status: BUSY,
       })
       fetchProfile(profileId)
       fetchProfiles()
       getFollows()
     }
+    debugger
+    if (status === BUSY && profile && profile.photoIds.length === 0) {
+      this.setState({
+        noPhotos: true,
+        status: IDLE
+      })
+    }
+    
     if (status === IDLE && profile && profileId == profile.id
       && profile.photoIds.length !== profilePhotos.length) {
       this.setState({ status: BUSY })
@@ -72,6 +82,7 @@ export default class ProfileShow extends React.Component {
         ordered = sortByRecent(photos)
         this.setState({
           status: DONE,
+          noPhotos: false,
           profilePhotos: ordered
         })
       });
@@ -93,9 +104,9 @@ export default class ProfileShow extends React.Component {
 
   render() {
     const { profile, user, isCurrentProfile, updateProfilePhoto, currentProfile, allFollows, createFollow, removeFollow, getFollows, fetchProfile } = this.props;
-    const { status, profilePhotos, showFollowsModal, showFollowingModal } = this.state;
+    const { status, profilePhotos, showFollowsModal, showFollowingModal, noPhotos } = this.state;
 
-    let avatar, cover, coverStyle, photoGallery;
+    let avatar, cover, coverStyle, photoGallery, noPhotosContainer;
 
     if (profile?.cover) {
       coverStyle = (
@@ -107,12 +118,19 @@ export default class ProfileShow extends React.Component {
     } else {
       coverStyle = (
         {
-          backgroundImage: 'linear-gradient(315deg, #485461 0 %, #28313b 74 %)',
+          backgroundImage: 'url(https://my5000px-static.s3.amazonaws.com/placeholder-image.png)',
           backgroundColor: '#485461'
         }
       )
     }
 
+    if (noPhotos) {
+      noPhotosContainer = (
+        <div className="no-photos-uploaded">
+          <h2>No photos uploaded yet 😢</h2>
+        </div>
+      )
+    }
 
     if (isCurrentProfile && profile) {
       avatar = (
@@ -148,7 +166,7 @@ export default class ProfileShow extends React.Component {
       )
     }
 
-    if (status === DONE) {
+    if (status === DONE && noPhotos === false) {
       photoGallery = <ProfileRows photos={profilePhotos} />
     } else {
       photoGallery = <GridLoader />

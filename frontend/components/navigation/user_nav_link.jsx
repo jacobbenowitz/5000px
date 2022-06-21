@@ -4,22 +4,28 @@ import AvatarLgLoader from "../avatar/avatar-loaders/avatar_lg_loader";
 
 const UserNavLink = (
   { currentProfile, logout, userModal, handleUserClick }) => {
-
+  
   const modalClass = userModal ? "modal-on" : " modal-off";
-  const styles = {
-    'backgroundImage': `url(${currentProfile?.avatar})`
+  let style
+
+  if (!!currentProfile.avatar) {
+    style = {
+      'backgroundImage': `url(${currentProfile.avatar})`
+    }
+  } else {
+    style = {
+      'backgroundImage': `url(https://my5000px-static.s3.amazonaws.com/person-placeholder-300x300.webp)`
+    }
   }
+  
   return (
     <>
-      {
-        currentProfile?.avatar ? 
-        <div
-          id="user-avatar"
-          style={styles}
-          onClick={handleUserClick}
-          className="nav-header avatar-container-sm"
-        /> : <AvatarLgLoader />
-      }
+      <div
+        id="user-avatar"
+        style={style}
+        onClick={handleUserClick}
+        className="nav-header avatar-container-sm"
+      />
       <UserNavModal
         klass={modalClass}
         className={modalClass}

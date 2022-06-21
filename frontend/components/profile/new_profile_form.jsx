@@ -18,27 +18,24 @@ export default class NewProfileForm extends React.Component {
       country: '',
       about: '',
       gender: 'Not specified',
-      user_id: null
+      profile_id: undefined,
     };
     this.bindHandlers();
   }
 
-  componentWillUnmount() {
-    this.props.submitForm(this.state)
-  }
-  
   bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const { userId } = this.props;
+    const { profileId } = this.props;
 
-    if (userId === null) {
-      this.props.history.push('/signup')
-    } else if (this.state.user_id !== userId) {
+    // if (userId === null) {
+    //   this.props.history.push('/signup')
+    // } else if (this.state.user_id !== userId) {
+    if (this.state.profile_id !== profileId) {
       this.setState({
-        user_id: userId
+        profile_id: profileId
       })
     }
     window.addEventListener('beforeunload',
@@ -69,6 +66,7 @@ export default class NewProfileForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    e.stopPropagation();
 
     const skip = document.querySelector('.skip-profile-form');
     const submit = document.querySelector('.save-profile');
@@ -81,12 +79,10 @@ export default class NewProfileForm extends React.Component {
     });
 
     window.removeEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
-
-    // const profile = Object.assign({}, this.state,
-    //   { user_id: this.props.userId} )
-    if (this.state.user_id !== null) {
-      this.props.submitForm(this.state)
-      this.props.history.push('/')
+    if (this.state.profile_id !== undefined) {
+      this.props.updateProfile(this.state)
+      // this.props.submitForm(this.state)
+      this.props.redirectHome()
     }
   }
   
@@ -123,7 +119,7 @@ export default class NewProfileForm extends React.Component {
   render() {
 
     return (
-      <div className="profile-settings center-simple">
+      // <div className="profile-settings center-simple">
         <div id="profile-form">
           <div id="profile-photo-form">
             {/* <ProfileAvatarContainer />
@@ -137,7 +133,7 @@ export default class NewProfileForm extends React.Component {
             <span className="profile-form-instructions">
               Create your profile
               <span className="skip-profile-form"
-                onClick={this.handleSubmit}
+                onClick={this.props.redirectHome}
               >&nbsp;or skip for now</span>
             </span>
           </div>
@@ -309,7 +305,7 @@ export default class NewProfileForm extends React.Component {
             </button>
           </form>
         </div>
-      </div>
+      // </div>
     )
   }
 }

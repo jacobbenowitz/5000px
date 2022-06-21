@@ -26,16 +26,15 @@ const sessionReducer = (prevState = _nullSession, action) => {
       if (typeof action.currentUser.id === 'undefined') {
         nextState.id = action.currentUser.user.id
         nextState.user = action.currentUser.user
-        nextState.profileId = action.currentUser.user.profileId
         return nextState;
       } else {
         nextState.id = action.currentUser.id
         nextState.user = action.currentUser
-        nextState.profileId = action.currentUser.profileId
         return nextState;
       };
     case RECEIVE_CURRENT_PROFILE:
       nextState.profile = action.profile
+      nextState.profileId = action.profile.id
       return nextState;
     case LOGOUT_CURRENT_USER:
       return _nullSession;

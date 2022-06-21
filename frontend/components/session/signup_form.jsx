@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Demo from "../../demo/demo_user_signup";
-
-const submitPromise = (milliseconds) => {
-  return new Promise(resolve =>
-    setTimeout(resolve, milliseconds))
-}
+import NewProfileForm from "../profile/new_profile_form";
 
 export default class SignupForm extends React.Component {
   constructor(props) {
@@ -15,6 +11,10 @@ export default class SignupForm extends React.Component {
       email: "",
       password: "",
       password2: "",
+      userId: undefined,
+      profileId: undefined,
+      showProfileForm: false,
+      profileCreated: false,
     };
     this.bindHandlers()
   }
@@ -24,26 +24,60 @@ export default class SignupForm extends React.Component {
     this.props.clearSessionErrors()
   }
 
-  bindHandlers() {
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoSignup = this.demoSignup.bind(this);
-    this.checkAllFields = this.checkAllFields.bind(this)
+  componentDidUpdate() {
+    const { currentUserId, currentProfileId, createProfile } = this.props;
+
+    if (currentUserId !== null && currentUserId !== this.state.userId &&
+      this.state.profileCreated === false) {
+      let profile = {
+        first_name: '',
+        last_name: '',
+        website_url: '',
+        instagram_url: '',
+        lenses: '',
+        cameras: '',
+        birthday: '',
+        city: '',
+        country: '',
+        about: '',
+        gender: 'Not specified',
+        user_id: currentUserId,
+      }
+      createProfile(profile)
+      this.setState({
+        userId: currentUserId,
+        profileCreated: true
+      })
+    } else if (this.state.profileCreated && currentProfileId !== null &&
+      this.state.profileId !== currentProfileId) {
+        this.setState({profileId: currentProfileId})
+      }
   }
 
-  handleSubmit(e) {
+  bindHandlers() {
+    this.handleSignup = this.handleSignup.bind(this);
+    this.demoSignup = this.demoSignup.bind(this);
+    this.checkAllFields = this.checkAllFields.bind(this)
+    this.redirectHome = this.redirectHome.bind(this)
+  }
+
+  handleSignup(e) {
     e.preventDefault();
-    const { receiveErrors, currentUserId, signup } = this.props;
-    const user = Object.assign({}, this.state);
-    if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
-      // use openModal instead
-      // console.log(['must fill in all fields'])
-    } else {
-      signup(user).then(user => {
-        this.props.history.push('/profile/new')
-        // let blankProfile = { user_id: user.id }
-        // this.props.createProfile(blankProfile)
-        this.props.sessionMessage(['Account created successfully'])
-        this.props.openModal("success");
+    const { currentUserId, signup } = this.props;
+    const { username, email, password, password2 } = this.state;
+
+    const user = {
+      username: username,
+      email: email,
+      password: password
+    }
+
+    if (username.length !== 0 && email.length !== 0 && password2.length !== 0) {
+      signup(user)
+      this.props.sessionMessage(['Account created successfully'])
+      this.props.openModal("success");
+      this.setState({
+        showProfileForm: true
       })
     }
 
@@ -53,6 +87,10 @@ export default class SignupForm extends React.Component {
     return e => {
       this.setState({ [type]: e.target.value });
     }
+  }
+
+  redirectHome() {
+    this.props.history.push('/home')
   }
 
   demoScript(e) {
@@ -92,8 +130,10 @@ export default class SignupForm extends React.Component {
   }
 
   render() {
-    const { username, email, password, password2 } = this.state;
-    let frontendErrors, passwordError, password2Error, emailError, usernameError;
+    const { updateProfile, errors, history } = this.props;
+    const { username, email, password, password2, showProfileForm, profileId } = this.state;
+
+    let frontendErrors, passwordError, password2Error, emailError, usernameError, newProfileFrom, newUserForm;
 
     usernameError = (
       <div className='session-error'>
@@ -106,14 +146,15 @@ export default class SignupForm extends React.Component {
       </div>
     )
 
-    password2Error = (
-      <div className='session-error'>
-        {(password !== password2 || password === '') ?
-          <i className="fa-solid fa-circle-xmark"></i>
+    emailError = (
+      <div className="session-error">
+        {
+          (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) ? 
+            <i className="fa-solid fa-circle-check"></i>
           :
-          <i className="fa-solid fa-circle-check"></i>
+            <i className="fa-solid fa-circle-xmark"></i>
         }
-        <span>Passwords must match</span>
+        <span>Email must be a valid address</span>
       </div>
     )
 
@@ -128,15 +169,14 @@ export default class SignupForm extends React.Component {
       </div>
     )
 
-    emailError = (
-      <div className="session-error">
-        {
-          (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email) ? 
-            <i className="fa-solid fa-circle-check"></i>
+    password2Error = (
+      <div className='session-error'>
+        {(password !== password2 || password === '') ?
+          <i className="fa-solid fa-circle-xmark"></i>
           :
-            <i className="fa-solid fa-circle-xmark"></i>
+          <i className="fa-solid fa-circle-check"></i>
         }
-        <span>Email must be a valid address</span>
+        <span>Passwords must match</span>
       </div>
     )
 
@@ -178,11 +218,23 @@ export default class SignupForm extends React.Component {
       )
     }
 
-    return (
-      <div className="session center-simple">
+    if (showProfileForm) {
+      newProfileFrom = (
+        <NewProfileForm 
+          updateProfile={updateProfile}
+          profileId={profileId}
+          history={history}
+          errors={errors}
+          redirectHome={this.redirectHome}
+        />
+      )
+    }
+
+    if (!showProfileForm) {
+      newUserForm = (
         <div id="session-form">
           <h3>Join 5000px</h3>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSignup}>
             {this.renderErrors()}
             <div className="form-input">
               <label htmlFor="username-signup">Username</label>
@@ -256,6 +308,13 @@ export default class SignupForm extends React.Component {
           </button>
 
         </div>
+      )
+    }
+
+    return (
+      <div className="session center-simple">
+        {newProfileFrom}
+        {newUserForm}
       </div>
     )
   }

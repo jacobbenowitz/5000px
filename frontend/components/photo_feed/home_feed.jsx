@@ -18,14 +18,6 @@ import { throttle } from "../../util/throttle_util";
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
 const DONE = 'DONE'
-const COLLECTIONS = [
-  'abstract',
-  'chocolate',
-  'minimalism',
-  'music',
-  'animals',
-  'sports'
-]
 
 export default class HomeFeed extends React.Component {
   constructor(props) {
@@ -71,7 +63,7 @@ export default class HomeFeed extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleLazyLoad)
+    this.removeLazyScrollListener()
     this.mounted = false;
     this.setState({
       status: IDLE,
@@ -84,18 +76,28 @@ export default class HomeFeed extends React.Component {
     const { photoIds, allFollows, allPhotos, allProfiles, users, profiles, fetchPhoto, photosStatus, profilesStatus, currentProfile } = this.props;
     const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
-    if (featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length) {
+    if (currentProfile !== null && featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length) {
       // setState to BUSY in order to prevent multiple calls while updating
       this.setState({
         featuredStatus: BUSY,
         collectionStatus: BUSY
       })
 
+      const COLLECTIONS = [
+        'abstract',
+        'chocolate',
+        'minimalism',
+        'music',
+        'animals',
+        'sports'
+      ]
+
       // current user's following photo ids
       let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
       
       // featured Collections
       let finalCollections = {};
+
       COLLECTIONS.forEach(collection => {
         let collectionFetches = [];
         let formattedCollection = selectCollectionPhotos(profiles, collection)
@@ -113,7 +115,11 @@ export default class HomeFeed extends React.Component {
       let featured = selectFeaturedPhotographers(profiles, users)
       let fetches = []
       // build array of promises (each fetching one photo)
-      featured.photoIds.forEach(id => fetches.push(fetchPhoto(id)))
+      featured.photoIds.forEach(id => {
+        console.log(id)
+        fetches.push(fetchPhoto(id))
+      }
+      )
       Promise.all(fetches).then(() => {
         this.setState({
           status: DONE,
@@ -193,7 +199,7 @@ export default class HomeFeed extends React.Component {
         .slice(0, 3)
     }
     // if we have followingPhotoIds, fetch those photos first
-    if (!!followingPhotoIds.length) {
+    if (followingPhotoIds?.length > 0) {
       shuffledIds = userPhotoIds.concat(followingPhotoIds.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
     } else {
       // else, fetch shuffled photos from all photos [photoIds]
