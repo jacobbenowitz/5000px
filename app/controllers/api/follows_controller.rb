@@ -26,10 +26,6 @@ class Api::FollowsController < ApplicationController
 
     if @follow.destroy
       render :show
-      # render json: {
-      #   message: ["Successfully unfollowed"],
-      #   followId: @follow.id
-      # }
     else
       render json: @follow.errors.full_messages
     end

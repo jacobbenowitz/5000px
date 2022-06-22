@@ -1,4 +1,5 @@
 import React from 'react'
+import { selectFollowsById } from '../../reducers/selectors'
 
 // Props needed //
 // followee {} @profile obj
@@ -19,13 +20,12 @@ export default class FollowButton extends React.Component {
   }
 
   componentDidMount() {
-    const { followee, currentProfile } = this.props;
+    const { followee, currentProfile, allFollows } = this.props;
+    const followers = selectFollowsById(followee.followers, allFollows)
     this.setState({
-      isFollowing: Object.values(followee.followers).filter(follow =>
-        follow.followee_id !== currentProfile.id).length === 1,
-      // isFollowing: Object.values(followee.followers).filter(follower =>
-      //   follower.id !== currentProfile.id).length === 1,
-      isCurrentProfile: currentProfile.id === followee.followeeId
+      sFollowing: followers.filter(follow =>
+        follow.follower_id === currentProfile.id).length === 1,
+      isCurrentProfile: currentProfile.id === followee.followerId
     })
   }
 
@@ -47,13 +47,14 @@ export default class FollowButton extends React.Component {
     e.stopPropagation()
     const { allFollows, followee, removeFollow, currentProfile } = this.props;
     let followId;
+
     Object.values(allFollows).forEach(follow => {
       if (follow.followee_id === followee.id &&
         follow.follower_id === currentProfile.id) {
         followId = follow.id
       }
     })
-
+    debugger
     this.setState({
       isFollowing: false
     }, () => removeFollow(followId))

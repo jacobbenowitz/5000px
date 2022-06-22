@@ -66,8 +66,8 @@ export default class HomeFeed extends React.Component {
     }, () => {
       fetchUsers()
       fetchProfiles()
-      fetchPhotos()
       getFollows()
+      fetchPhotos()
     })
   }
 

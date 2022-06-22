@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FollowButton from "../../action_components/follow_button";
+import FollowPhotographerButton from "../../action_components/follow_photographer_button";
 import FollowProfileButton from "../../action_components/follow_profile_button";
 import FeaturedCardRows from "../featured_card_gallery";
 
@@ -44,7 +46,7 @@ const FeaturedPhotographerCard = ({ allPhotos, featuredPhotographer,
           </div>
         </div>
         <div className="ft-card-follow">
-          <FollowProfileButton
+          <FollowPhotographerButton
             followee={featuredPhotographer.profile}
             allFollows={allFollows}
             createFollow={createFollow}

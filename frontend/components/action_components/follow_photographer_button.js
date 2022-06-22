@@ -1,19 +1,12 @@
 import React from 'react'
 import { selectFollowsById } from '../../reducers/selectors'
 
-// Props needed //
-// followee {} @profile obj
-// allFollows [] 
-// createFollow thunk
-// removeFollow thunk
-// currentProfile {} @profile obj
-
-export default class FollowFollowersModalButton extends React.Component {
+export default class FollowPhotographerButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       isFollowing: false,
-      isCurrentProfile: false
+      isCurrentProfile: false,
     }
     this.handleFollow = this.handleFollow.bind(this)
     this.handleUnfollow = this.handleUnfollow.bind(this)
@@ -25,28 +18,29 @@ export default class FollowFollowersModalButton extends React.Component {
     this.setState({
       isFollowing: followers.filter(follow =>
         follow.follower_id === currentProfile.id).length === 1,
-      isCurrentProfile: currentProfile.id === followee.followerId
+      isCurrentProfile: currentProfile.id === followee.followeeId
     })
   }
 
-  componentDidUpdate() {
-    const { followee, currentProfile } = this.props;
-    const isCurrentProfile = currentProfile.id === followee.followerId
-    if (isCurrentProfile !== this.state.isCurrentProfile) {
-      this.setState({
-        isCurrentProfile: isCurrentProfile
-      })
-    }
-  }
+  // componentDidUpdate() {
+  //   const { followee, currentProfile, allFollows } = this.props;
+  //   const followers = selectFollowsById(followee.followers, allFollows)
+  //   const isFollowing = followers.filter(follow =>
+  //     follow.follower_id === currentProfile.id).length === 1
+  //   if (isFollowing !== this.state.isFollowing) { 
+  //     this.setState({
+  //       isFollowing: isFollowing,
+  //     })
+  //   }
+  // }
 
   handleFollow(e) {
     e.preventDefault()
     e.stopPropagation()
     const { followee, createFollow, currentProfile } = this.props;
-    
     let follow = {
       follower_id: currentProfile.id,
-      followee_id: followee.followerId
+      followee_id: followee.id
     }
     this.setState({
       isFollowing: true
@@ -56,15 +50,15 @@ export default class FollowFollowersModalButton extends React.Component {
   handleUnfollow(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { allFollows, followee, removeFollow, currentProfile, visable } = this.props;
+    const { allFollows, followee, removeFollow, currentProfile } = this.props;
     let followId;
-
     Object.values(allFollows).forEach(follow => {
-      if (follow.followee_id === followee.followerId &&
+      if (follow.followee_id === followee.id &&
         follow.follower_id === currentProfile.id) {
-          followId = follow.id
+        followId = follow.id
       }
     })
+
     this.setState({
       isFollowing: false
     }, () => removeFollow(followId))
@@ -72,25 +66,23 @@ export default class FollowFollowersModalButton extends React.Component {
 
   render() {
     const { isFollowing, isCurrentProfile } = this.state;
-    const { visable } = this.props;
+
     let followButton;
 
     if (isCurrentProfile) {
       followButton = null
-    } else if (isFollowing && visable) {
+    } else if (isFollowing) {
       followButton = (
         <button className="unfollow-button"
           onClick={this.handleUnfollow}
         >Unfollow</button>
       )
-    } else if (visable) {
+    } else {
       followButton = (
         <button className="follow-liker-button"
           onClick={this.handleFollow}
         >Follow</button>
       )
-    } else {
-      followButton = null
     }
     return (
       <>
