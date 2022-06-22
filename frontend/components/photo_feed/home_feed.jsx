@@ -116,8 +116,7 @@ export default class HomeFeed extends React.Component {
       // build array of promises (each fetching one photo)
       featured.photoIds.forEach(id => {
         fetches.push(fetchPhoto(id))
-      }
-      )
+      })
       Promise.all(fetches).then(() => {
         this.setState({
           status: DONE,

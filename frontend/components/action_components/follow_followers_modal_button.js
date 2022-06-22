@@ -29,20 +29,17 @@ export default class FollowFollowersModalButton extends React.Component {
     })
   }
 
-  // componentDidUpdate() {
-  //   const { followee, currentProfile, allFollows } = this.props;
+  componentDidUpdate() {
+    const { followee, currentProfile } = this.props;
 
-  //   const followers = selectFollowsById(followee.followers, allFollows)
-  //   let isFollowing = followers.filter(follow =>
-  //     follow.follower_id === currentProfile.id).length === 1
+    const isCurrentProfile = currentProfile.id === followee.followerId
 
-  //   if (isFollowing !== this.state.isFollowing) {
-  //     this.setState({
-  //       isFollowing: isFollowing,
-  //       isCurrentProfile: currentProfile.id === followee.followerId
-  //     })
-  //   }
-  // }
+    if (isCurrentProfile !== this.state.isCurrentProfile) {
+      this.setState({
+        isCurrentProfile: isCurrentProfile
+      })
+    }
+  }
 
   handleFollow(e) {
     e.preventDefault()

@@ -19,14 +19,14 @@ const UserNavModal = ({ profile, klass, handleClick, logout }) => {
       <ul className="modal-links">
         {userLinks.map((link, index) => {
           return (
-            <NavListItem link={ link } key={index} />
+            <NavListItem link={ link } key={`user-link-${index}`} />
           )
         })}
-        <li className="modal-list-item">
-          <Link
-            to={'/'}
-            onClick={logout}>Logout</Link>
-        </li>
+        <Link to={'/'} onClick={logout}>
+          <li className="modal-list-item">
+              Logout
+          </li>
+      </Link>
       </ul>
     </div>
   )

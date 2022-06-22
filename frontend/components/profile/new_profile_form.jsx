@@ -25,6 +25,8 @@ export default class NewProfileForm extends React.Component {
 
   bindHandlers() {
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.beforeUnloadListener = this.beforeUnloadListener.bind(this)
+    this.clickPreventListener = this.clickPreventListener.bind(this)
   }
 
   componentDidMount() {
@@ -38,27 +40,37 @@ export default class NewProfileForm extends React.Component {
         profile_id: profileId
       })
     }
-    window.addEventListener('beforeunload',
-      this.beforeUnloadListener, { capture: true });
+    window.addEventListener('beforeunload', this.beforeUnloadListener, { capture: true });
+    
     const skip = document.querySelector('.skip-profile-form');
     const submit = document.querySelector('.save-profile');
-    
     const links = document.querySelectorAll('a');
 
-    [...links].forEach((link) => {
+    [...links].forEach(link => {
       if (link !== skip && link !== submit) {
         link.addEventListener('click', this.clickPreventListener)
       }
     });
   }
 
+  componentWillUnmount() {
+    const skip = document.querySelector('.skip-profile-form');
+    const submit = document.querySelector('.save-profile');
+    const links = document.querySelectorAll('a');
+
+    [...links].forEach(link => {
+      link.removeEventListener('click', this.clickPreventListener)
+    });
+
+    window.removeEventListener('beforeunload', this.beforeUnloadListener, { capture: true });
+  }
 
   beforeUnloadListener = event => {
     event.preventDefault();
     event.returnValue = "Don't leave without saving your profile!";
   }
 
-  clickPreventListener(event){
+  clickPreventListener = event => {
     event.preventDefault();
     return confirm("Don't leave without saving your profile!");
   }
@@ -68,20 +80,8 @@ export default class NewProfileForm extends React.Component {
     e.preventDefault();
     e.stopPropagation();
 
-    const skip = document.querySelector('.skip-profile-form');
-    const submit = document.querySelector('.save-profile');
-    const links = document.querySelectorAll('a');
-
-    [...links].forEach((link) => {
-      if (link !== skip && link !== submit) {
-        link.removeEventListener('click', this.clickPreventListener)
-      }
-    });
-
-    window.removeEventListener('beforeunload', this.beforeUnloadListener, {capture: true});
     if (this.state.profile_id !== undefined) {
       this.props.updateProfile(this.state)
-      // this.props.submitForm(this.state)
       this.props.redirectHome()
     }
   }

@@ -32,7 +32,7 @@ export default class SinglePhotoShow extends React.Component {
     if (photo && profile) {
       this.setState({status: DONE})
     } else if (photo && !profile) {
-      this.setState({BUSY})
+      this.setState({status: BUSY})
       fetchProfile(photo.profile_id)
     } else fetchPhoto(photoId)
   }
@@ -58,7 +58,8 @@ export default class SinglePhotoShow extends React.Component {
     e.preventDefault()
     e.stopPropagation()
     this.props.deletePhoto(this.props.photoId)
-    this.props.history.goBack()
+    this.props.fetchProfile(this.props.currentProfile.id)
+    this.props.history.push(`/profiles/${this.props.currentProfile.id}`)
   } 
 
   toggleFullScreen(e) {
@@ -115,7 +116,13 @@ export default class SinglePhotoShow extends React.Component {
             />
             {photoDetailsBottom}
           </>
-        ) : ( <SinglePhotoLoader className="profile-loader" /> )}
+        ) : (
+            <div className="lg-single-image-container">
+              <div className="image-container">
+                <SinglePhotoLoader className="profile-loader" />
+              </div>
+            </div>
+            )}
       </div>
     )
   }

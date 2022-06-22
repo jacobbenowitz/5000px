@@ -177,7 +177,7 @@ export default class PhotoProfileDetails extends React.Component {
       }
     }
 
-    if (photo.camera !== null || photo.lens !== null) {
+    if (photo.camera !== null && !!photo.camera.length || photo.lens !== null && !!photo.lens.length) {
       photoGear = (
       <div className="detail-box">
         <span className="photo-detail-title gear">
