@@ -46,7 +46,7 @@ export default class ProfileShow extends React.Component {
   }
 
   componentDidUpdate() {
-    const { status, id, profilePhotos  } = this.state;
+    const { status, id, profilePhotos } = this.state;
     const { profile, profileId, fetchPhoto, profilesStatus,
       fetchProfile, fetchProfiles, getFollows } = this.props;
 
@@ -62,7 +62,7 @@ export default class ProfileShow extends React.Component {
       }
     }
 
-    
+
     if (status === BUSY && profilesStatus === DONE && profileId == id) {
       if (profile.photoIds.length === 0) {
         this.setState({
@@ -77,6 +77,7 @@ export default class ProfileShow extends React.Component {
         profile.photoIds.forEach(photoId =>
           fetches.push(fetchPhoto(photoId)));
 
+        // todo: find a way to .abort() each fetch in [fetches] inside of componentWillUnmount() to prevent memory leaks
         Promise.all(fetches).then(res => {
           photos = res.map(action => action.photo.photo)
           ordered = sortByRecent(photos)

@@ -103,6 +103,7 @@ export default class HomeFeed extends React.Component {
         formattedCollection.photos.forEach(photoId =>
           collectionFetches.push(fetchPhoto(photoId))
         )
+        // todo: find a way to .abort() each fetch in [fetches] inside of componentWillUnmount() to prevent memory leaks
         Promise.all(collectionFetches).then((res) => {
           let collectionPhotos = res.map(action => action.photo.photo)
           formattedCollection.photos = collectionPhotos
@@ -117,6 +118,7 @@ export default class HomeFeed extends React.Component {
       featured.photoIds.forEach(id => {
         fetches.push(fetchPhoto(id))
       })
+      // todo: find a way to .abort() each fetch in [fetches] inside of componentWillUnmount() to prevent memory leaks
       Promise.all(fetches).then(() => {
         this.setState({
           status: DONE,
