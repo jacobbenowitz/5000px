@@ -18,7 +18,7 @@ export default class FollowPhotographerButton extends React.Component {
     this.setState({
       isFollowing: followers.filter(follow =>
         follow.follower_id === currentProfile.id).length === 1,
-      isCurrentProfile: currentProfile.id === followee.followeeId
+      isCurrentProfile: currentProfile.id === followee.id
     })
   }
 

@@ -40,7 +40,9 @@ export default class HomeFeed extends React.Component {
       featuredPhotographers: [],
       featuredCollections: {},
       infoCallout: true,
+      noMorePhotos: false,
     }
+    this.mounted = false
     this.bindHandlers()
   }
 
@@ -57,12 +59,13 @@ export default class HomeFeed extends React.Component {
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
-    this.mounted = true;
+
     window.scrollTo(0, 0)
     this.addLazyScrollListener()
 
+    this.mounted = true;
     this.setState({
-      status: BUSY
+      status: BUSY,
     }, () => {
       fetchUsers()
       fetchProfiles()
@@ -73,11 +76,6 @@ export default class HomeFeed extends React.Component {
 
   componentWillUnmount() {
     this.removeLazyScrollListener()
-    this.setState({
-      status: IDLE,
-      featuredStatus: IDLE,
-      collectionStatus: IDLE,
-    })
     this.mounted = false;
   }
 
@@ -85,7 +83,8 @@ export default class HomeFeed extends React.Component {
     const { photoIds, allFollows, allPhotos, allProfiles, users, profiles, fetchPhoto, photosStatus, profilesStatus, currentProfile } = this.props;
     const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
-    if (!!currentProfile && featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length) {
+
+    if (!!currentProfile && featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length && this.mounted) {
       // setState to BUSY in order to prevent multiple calls while updating
       this.setState({
         featuredStatus: BUSY,
@@ -103,8 +102,9 @@ export default class HomeFeed extends React.Component {
         formattedCollection.photos.forEach(photoId =>
           collectionFetches.push(fetchPhoto(photoId))
         )
-        // todo: find a way to .abort() each fetch in [fetches] inside of componentWillUnmount() to prevent memory leaks
         Promise.all(collectionFetches).then((res) => {
+          if (!this.mounted) return
+
           let collectionPhotos = res.map(action => action.photo.photo)
           formattedCollection.photos = collectionPhotos
         })
@@ -118,8 +118,10 @@ export default class HomeFeed extends React.Component {
       featured.photoIds.forEach(id => {
         fetches.push(fetchPhoto(id))
       })
-      // todo: find a way to .abort() each fetch in [fetches] inside of componentWillUnmount() to prevent memory leaks
+
       Promise.all(fetches).then(() => {
+        if (!this.mounted) return
+
         this.setState({
           status: DONE,
           featuredStatus: DONE,
@@ -173,35 +175,66 @@ export default class HomeFeed extends React.Component {
   fetchTenMorePhotos() {
     const { allPhotos, photoIds, fetchPhoto, currentProfile } = this.props;
     const { fetchedPhotos, status, followingPhotoIds } = this.state;
-    let shuffledIds, userPhotoIds;
+    let shuffledIds, userPhotoIds, filteredFollowingIds, tenShuffledPhotos;
+
+    // map fetched photos into flattened array of ids
+    let fetchedIds = fetchedPhotos.map(array => array.map(photo =>
+      parseInt(photo.id))).flat()
 
     // filter out previously fetched photos
-    let unfetchedPhotos = photoIds.filter(id => !fetchedPhotos.includes(id))
+    let unfetchedPhotos = photoIds.filter(id =>
+      !fetchedIds.includes(id)
+    )
     // if the currentUser has posted photos, show < 3 of them 
     if (currentProfile.photoIds) {
       userPhotoIds = currentProfile.photoIds
         .sort((a, b) => a - b)
+        .filter(id => unfetchedPhotos.includes(id))
         .slice(0, 3)
     }
-    // if we have followingPhotoIds, fetch those photos first
+    // if we have followingPhotoIds, fetch 10 of those + user's photos
     if (followingPhotoIds?.length > 0) {
-      shuffledIds = userPhotoIds.concat(followingPhotoIds.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
-    } else {
-      // else, fetch shuffled photos from all photos [photoIds]
-      shuffledIds = userPhotoIds.concat(unfetchedPhotos.sort(() => Math.random() - 0.5).slice(0, 10)).flat()
+      filteredFollowingIds = followingPhotoIds
+        .filter(id => unfetchedPhotos.includes(id))
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10)
     }
+    // check if we've fetched all follower's photos and/or all of our photos
+    if (filteredFollowingIds.length === 0 || userPhotoIds.length === 0) {
+      tenShuffledPhotos = unfetchedPhotos
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10)
 
-    let fetches = [];
-    shuffledIds.forEach(id => fetches.push(fetchPhoto(id)))
+      shuffledIds = [
+        ...userPhotoIds,
+        ...filteredFollowingIds,
+        ...tenShuffledPhotos
+      ]
+    } else {
+      shuffledIds = [
+        ...userPhotoIds,
+        ...filteredFollowingIds
+      ]
+    }
+    if (shuffledIds.length === 0) {
+      this.setState({ noMorePhotos: true })
+      this.removeLazyScrollListener()
+      return
+    } else {
+      // store all photoIds to fetch
+      let fetches = [];
+      shuffledIds.forEach(id => fetches.push(fetchPhoto(id)))
+      Promise.all(fetches).then((res) => {
+        if (!this.mounted) return
 
-    Promise.all(fetches).then((res) => {
-      let newPhotos = res.map(action => action.photo.photo)
-      let updatedFetchedPhotos = fetchedPhotos.concat([newPhotos])
-      this.setState({
-        status: DONE,
-        fetchedPhotos: updatedFetchedPhotos
+        let newPhotos = res.map(action => action.photo.photo)
+        let updatedFetchedPhotos = fetchedPhotos.concat([newPhotos])
+        this.setState({
+          status: DONE,
+          fetchedPhotos: updatedFetchedPhotos
+        })
       })
-    })
+    }
   }
 
   closeInfoCallout(e) {
@@ -212,26 +245,27 @@ export default class HomeFeed extends React.Component {
   render() {
     const { allPhotos, currentProfile, allFollows,
       createFollow, removeFollow } = this.props;
+
     const { featuredPhotographers, collections, featuredStatus,
       status, collectionStatus, infoCallout, fetchedPhotos, newPhotos,
-      featuredCollections } = this.state;
+      featuredCollections, noMorePhotos } = this.state;
 
-    let featuredCards, homeGallery, loadingGrid, followedGallery;
+    let featuredCards, homeGallery, loadingGrid, followedGallery, lazyLoadBox;
 
     if (collectionStatus === DONE) {
       homeGallery = fetchedPhotos.map((photos, i) =>
         <React.Fragment key={`fragment-wrapper-${i}`}>
-          {i < 7 ? i % 2 === 0 ? (
+          {i < 6 ? i % 2 === 0 ? (
             <div className="grid-gallery-wrapper"
               key={`collection-wrapper-${i}`}>
               <CollectionGridCard
                 key={`collection-card-${i}`}
-                photos={Object.values(featuredCollections)[i]['photos'].slice(0, 3)}
+                photos={Object.values(featuredCollections)[i].photos.slice(0, 3)}
                 collection={Object.keys(featuredCollections)[i]}
                 history={this.props.history}
               />
               <SinglePhotoLarge
-                photo={Object.values(featuredCollections)[i]['photos'][3]}
+                photo={Object.values(featuredCollections)[i].photos[3]}
                 profile={Object.values(featuredCollections)[i].profile}
               />
             </div>
@@ -239,12 +273,12 @@ export default class HomeFeed extends React.Component {
             <div className="grid-gallery-wrapper"
               key={`collection-wrapper-${i}`}>
               <SinglePhotoLarge
-                photo={Object.values(featuredCollections)[i]['photos'][3]}
+                photo={Object.values(featuredCollections)[i].photos[3]}
                 profile={Object.values(featuredCollections)[i].profile}
               />
               <CollectionGridCard
                 key={`collection-card-${i}`}
-                photos={Object.values(featuredCollections)[i]['photos'].slice(0, 3)}
+                photos={Object.values(featuredCollections)[i].photos.slice(0, 3)}
                 collection={Object.keys(featuredCollections)[i]}
                 history={this.props.history}
               />
@@ -278,9 +312,24 @@ export default class HomeFeed extends React.Component {
       )
     }
 
-    if (status === BUSY) {
+    if (status === BUSY && !noMorePhotos) {
       loadingGrid = (
         <GridLoader />
+      )
+    }
+
+    if (!noMorePhotos) {
+      lazyLoadBox = (
+        <div
+          id="lazy-load-box"
+          ref={this.lazyLoadBox}
+        />
+      )
+    } else {
+      lazyLoadBox = (
+        <div className="no-photos-uploaded">
+          <h5>No more photos 😞</h5>
+        </div>
       )
     }
 
@@ -318,8 +367,7 @@ export default class HomeFeed extends React.Component {
         <div className="home-feed-gallery">
           {homeGallery}
           {loadingGrid}
-          <div id="lazy-load-box" ref={this.lazyLoadBox}>
-          </div>
+          {lazyLoadBox}
         </div>
       </div>
     )

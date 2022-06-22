@@ -54,7 +54,6 @@ export default class FollowButton extends React.Component {
         followId = follow.id
       }
     })
-    debugger
     this.setState({
       isFollowing: false
     }, () => removeFollow(followId))
