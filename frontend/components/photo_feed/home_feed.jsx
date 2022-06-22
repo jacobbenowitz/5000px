@@ -91,7 +91,6 @@ export default class HomeFeed extends React.Component {
         featuredStatus: BUSY,
         collectionStatus: BUSY
       })
-      debugger
       // current user's following photo ids
       let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
 
