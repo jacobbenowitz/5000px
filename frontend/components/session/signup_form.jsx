@@ -12,7 +12,6 @@ export default class SignupForm extends React.Component {
       password: "",
       password2: "",
       userId: undefined,
-      profileId: undefined,
       showProfileForm: false,
       profileCreated: false,
     };
@@ -48,10 +47,12 @@ export default class SignupForm extends React.Component {
         userId: currentUserId,
         profileCreated: true
       })
-    } else if (this.state.profileCreated && currentProfileId !== null &&
-      this.state.profileId !== currentProfileId) {
-        this.setState({profileId: currentProfileId})
-      }
+    }
+    // not needed in state
+    // else if (this.state.profileCreated && currentProfileId !== null &&
+    //   this.state.profileId !== currentProfileId) {
+    //     this.setState({profileId: currentProfileId})
+    //   }
   }
 
   bindHandlers() {
@@ -129,7 +130,7 @@ export default class SignupForm extends React.Component {
   }
 
   render() {
-    const { updateProfile, errors, history } = this.props;
+    const { updateProfile, errors, history, currentProfileId } = this.props;
     const { username, email, password, password2, showProfileForm, profileId } = this.state;
 
     let frontendErrors, passwordError, password2Error, emailError, usernameError, newProfileFrom, newUserForm;
@@ -221,7 +222,7 @@ export default class SignupForm extends React.Component {
       newProfileFrom = (
         <NewProfileForm 
           updateProfile={updateProfile}
-          profileId={profileId}
+          currentProfileId={currentProfileId}
           history={history}
           errors={errors}
           redirectHome={this.redirectHome}

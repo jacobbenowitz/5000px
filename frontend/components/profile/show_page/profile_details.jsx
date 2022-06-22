@@ -61,13 +61,19 @@ export const ProfileDetails = ({ profile, user, currentProfile,
     </div>
   )
 
-  if (profile.city.length || profile.country.length) {
+  if (profile.city.length) {
     location = (
       <div className="flex-row gap-10">
         <i className="fa-solid fa-map-pin fa-sm" />
         <span className="profile-location">
           <p className="profile-city">
-            {profile.city + ", " + profile.country}</p>
+            {
+              profile.country.length && profile.city.length ? (
+                profile.city + ", " + profile.country
+              ) : profile.city.length ? profile.city : 
+                  profile.country
+            }
+          </p>
         </span>
       </div>
     )

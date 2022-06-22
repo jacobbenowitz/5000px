@@ -57,3 +57,8 @@ footer {
   align-content: center;
   gap: 6px;
 }
+
+.icon-wrapper.footer {
+  width: 20px;
+  height: 20px;
+}

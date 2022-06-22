@@ -18,7 +18,7 @@ export default class NewProfileForm extends React.Component {
       country: '',
       about: '',
       gender: 'Not specified',
-      profile_id: undefined,
+      id: undefined,
     };
     this.bindHandlers();
   }
@@ -30,14 +30,11 @@ export default class NewProfileForm extends React.Component {
   }
 
   componentDidMount() {
-    const { profileId } = this.props;
+    const { currentProfileId } = this.props;
 
-    // if (userId === null) {
-    //   this.props.history.push('/signup')
-    // } else if (this.state.user_id !== userId) {
-    if (this.state.profile_id !== profileId) {
+    if (this.state.id !== currentProfileId) {
       this.setState({
-        profile_id: profileId
+        id: currentProfileId
       })
     }
     window.addEventListener('beforeunload', this.beforeUnloadListener, { capture: true });
@@ -51,6 +48,14 @@ export default class NewProfileForm extends React.Component {
         link.addEventListener('click', this.clickPreventListener)
       }
     });
+  }
+
+  componentDidUpdate() {
+    const { currentProfileId } = this.props;
+
+    if (currentProfileId !== this.state.id) {
+      this.setState({ id: currentProfileId })
+    }
   }
 
   componentWillUnmount() {
@@ -79,8 +84,7 @@ export default class NewProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-
-    if (this.state.profile_id !== undefined) {
+    if (this.state.id !== undefined) {
       this.props.updateProfile(this.state)
       this.props.redirectHome()
     }

@@ -68,7 +68,7 @@ export default class SinglePhotoShow extends React.Component {
   }
 
   render() {
-    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows, createComment, deleteComment, history } = this.props;
+    const { photo, profile, user, isCurrentProfile, currentProfile, createLike, removeLike, likes, photoId, getLikes, allLikes, createFollow, removeFollow, getFollows, allFollows, createComment, deleteComment, history, fetchProfile } = this.props;
     const { status, fullScreen } = this.state;
     let photoDetailsBottom;
 
@@ -93,6 +93,7 @@ export default class SinglePhotoShow extends React.Component {
             createFollow={createFollow}
             removeFollow={removeFollow}
             handleDelete={this.handleDelete}
+            fetchProfile={fetchProfile}
           />
           <PhotoComments
             currentProfile={currentProfile}

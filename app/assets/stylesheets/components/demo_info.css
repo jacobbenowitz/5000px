@@ -18,6 +18,7 @@
 .info-box-text {
   display: grid;
   grid-template-rows: auto 1fr;
+  padding-right: 1rem;
 }
 .info-box-text span {
   display: flex;

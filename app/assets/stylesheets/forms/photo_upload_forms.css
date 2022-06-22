@@ -28,6 +28,10 @@
   z-index: 200;
 }
 
+.upload-input.dragging {
+  z-index: 5;
+}
+
 .hidden {
   display: none;
 }

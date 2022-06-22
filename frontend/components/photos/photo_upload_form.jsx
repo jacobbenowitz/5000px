@@ -24,6 +24,10 @@ export default class PhotoUploadForm extends React.Component {
     this.handleDrop = this.handleDrop.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   async handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -115,12 +119,16 @@ export default class PhotoUploadForm extends React.Component {
   dragOverHandler(e) {
     e.preventDefault();
     const dropZone = document.querySelector('#main-drop-zone');
+    const selectButton = document.querySelector('.upload-input')
+    selectButton.classList.add('dragging')
     dropZone.classList.add('drag-on')
   }
   
   dragExitHandler(e) {
     e.preventDefault();
     const dropZone = document.querySelector('#main-drop-zone');
+    const selectButton = document.querySelector('.upload-input')
+    selectButton.classList.remove('dragging')
     dropZone.classList.remove('drag-on')
   }
   

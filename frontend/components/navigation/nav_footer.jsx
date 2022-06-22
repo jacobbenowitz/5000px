@@ -43,19 +43,25 @@ export default class NavFooter extends React.Component {
             </div>
             <div className="footer-link-list">
               <div className="footer-icon-link">
-                <i className="fa-brands fa-github" />
+                <div className="icon-wrapper footer">
+                  <i className="fa-brands fa-github" />
+                </div>
                 <a href={'https://github.com/jacobbenowitz/'}
                   target="_blank" rel="noreferrer"
                 >Github</a>
               </div>
               <div className="footer-icon-link">
-                <i className="fa-brands fa-linkedin-in" />
+                <div className="icon-wrapper footer">
+                  <i className="fa-brands fa-linkedin-in" />
+                </div>
                 <a href={'https://www.linkedin.com/in/jacobbenowitz/'}
                   target="_blank" rel="noreferrer"
                 >LinkedIn</a>
               </div>
               <div className="footer-icon-link">
-                <i className="fa-solid fa-link" />
+                <div className="icon-wrapper footer">
+                  <i className="fa-solid fa-link" />
+                </div>
                 <a href={'https://www.jacobbenowitz.com/'}
                   target="_blank" rel="noreferrer"
                 >Portfolio</a>
@@ -69,13 +75,17 @@ export default class NavFooter extends React.Component {
             </div>
             <div className="footer-link-list">
               <div className="footer-icon-link">
-                <i className="fa-brands fa-github" />
+                <div className="icon-wrapper footer">
+                  <i className="fa-brands fa-github" />
+                </div>
                 <a href={'https://github.com/jacobbenowitz/5000px'}
                   target="_blank" rel="noreferrer"
                 >Github Repo</a>
               </div>
               <div className="footer-icon-link">
-                <i className="fa-solid fa-book" />
+                <div className="icon-wrapper footer">
+                  <i className="fa-solid fa-book" />
+                </div>
                 <a href={'https://github.com/jacobbenowitz/5000px/wiki'}
                   target="_blank" rel="noreferrer"
                 >GitHub Wiki</a>

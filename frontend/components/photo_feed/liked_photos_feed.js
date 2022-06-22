@@ -4,6 +4,7 @@ import DiscoverRows from './discover_photo_gallery'
 import GridLoader from '../galleries/gallery_grid_loader'
 import { Link } from 'react-router-dom';
 import likeIconLarge from '../../util/like_icon_lg';
+import { fetchPhotos } from '../../util/photo_api_util';
 
 const IDLE = 'IDLE'
 const BUSY = 'BUSY'
@@ -16,6 +17,7 @@ export default class LikedPhotosFeed extends React.Component {
       status: IDLE,
       pagePhotos: [],
     }
+    this.fetchLikedPhotos = this.fetchLikedPhotos.bind(this)
   }
 
   componentWillUnmount() {
@@ -23,8 +25,12 @@ export default class LikedPhotosFeed extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchPhotos, fetchProfiles, getLikes } = this.props;
+    const { currentProfile, fetchPhotos, fetchProfiles, fetchProfile,
+      getLikes } = this.props;
+    
     window.scrollTo(0, 0)
+
+    fetchProfile(currentProfile.id)
     fetchProfiles()
     fetchPhotos()
     getLikes()
@@ -36,19 +42,29 @@ export default class LikedPhotosFeed extends React.Component {
 
     if (status === IDLE && pagePhotos.length === 0 && photosStatus === DONE && profilesStatus === DONE) {
       this.setState({ status: BUSY })
-      let photoIds = currentProfile.likedPhotos
-      let photos = [];
-      let fetches = [];
-      photoIds.forEach(photoId =>
-        fetches.push(fetchPhoto(photoId)));
-      Promise.all(fetches).then(res => {
-        photos = res.map(action => action.photo.photo)
-        this.setState({
-          status: DONE,
-          pagePhotos: photos
-        })
-      });
+      this.fetchLikedPhotos()
+    } else if (status === DONE &&
+      pagePhotos.length !== currentProfile.likedPhotos.length) {
+        this.fetchLikedPhotos()
     }
+
+  }
+
+  fetchLikedPhotos() {
+    const { currentProfile, fetchPhoto } = this.props;
+
+    let photoIds = currentProfile.likedPhotos
+    let photos = [];
+    let fetches = [];
+    photoIds.forEach(photoId =>
+      fetches.push(fetchPhoto(photoId)));
+    Promise.all(fetches).then(res => {
+      photos = res.map(action => action.photo.photo)
+      this.setState({
+        status: DONE,
+        pagePhotos: photos
+      })
+    });
   }
 
   render() {

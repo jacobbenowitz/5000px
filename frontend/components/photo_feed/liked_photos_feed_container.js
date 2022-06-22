@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import { fetchPhoto, fetchPhotos } from "../../actions/photos/photos_actions"
-import { fetchProfiles } from "../../actions/profile/profile_actions"
+import { fetchProfile, fetchProfiles } from "../../actions/profile/profile_actions"
 import { getLikes } from "../../actions/likes/like_actions"
 import LikedPhotosFeed from "./liked_photos_feed"
 
@@ -21,7 +21,8 @@ const mapDispatchToProps = dispatch => {
     fetchPhotos: () => dispatch(fetchPhotos()),
     fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
     fetchProfiles: () => dispatch(fetchProfiles()),
-    getLikes: () => dispatch(getLikes())
+    getLikes: () => dispatch(getLikes()),
+    fetchProfile: (profileId) => dispatch(fetchProfile(profileId))
   }
 }
 
