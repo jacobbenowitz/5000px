@@ -85,13 +85,13 @@ export default class HomeFeed extends React.Component {
     const { photoIds, allFollows, allPhotos, allProfiles, users, profiles, fetchPhoto, photosStatus, profilesStatus, currentProfile } = this.props;
     const { featuredStatus, collectionStatus, featuredPhotographers, status, fetchedPhotos, featuredCollections } = this.state;
 
-    if (currentProfile !== null && featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length) {
+    if (!!currentProfile && featuredStatus === IDLE && collectionStatus === IDLE && photosStatus === DONE && profilesStatus === DONE && !!Object.values(allFollows).length) {
       // setState to BUSY in order to prevent multiple calls while updating
       this.setState({
         featuredStatus: BUSY,
         collectionStatus: BUSY
       })
-
+      debugger
       // current user's following photo ids
       let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
 
@@ -116,7 +116,6 @@ export default class HomeFeed extends React.Component {
       let fetches = []
       // build array of promises (each fetching one photo)
       featured.photoIds.forEach(id => {
-        console.log(id)
         fetches.push(fetchPhoto(id))
       }
       )

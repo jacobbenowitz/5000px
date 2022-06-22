@@ -23,9 +23,7 @@ export const fetchProfilePhoto = profilePhotoId => dispatch => {
 export const uploadProfilePhoto = formData => dispatch => {
   return (
     ProfilePhotoActions.uploadProfilePhoto(formData).then(
-      // TODO: render success
-      response => dispatch(receiveNewProfilePhoto(response)) // send id to reducer
-      // response => console.log(response.message),  // success callback
+      response => dispatch(receiveNewProfilePhoto(response))
     )
   )
 
