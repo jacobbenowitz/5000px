@@ -14,6 +14,7 @@ const profilesErrorReducer = (initialState = [], action) => {
     case RECEIVE_PROFILE:
       return [];
     case RECEIVE_PROFILE_ERRORS:
+      debugger
       return Object.values(action.errors);
     case CLOSE_MODAL:
       return [];

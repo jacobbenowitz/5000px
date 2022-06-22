@@ -7,9 +7,9 @@ import FollowingModal from "../../modal/following_modal"
 export const ProfileDetails = ({ profile, user, currentProfile,
   isCurrentProfile, allFollows, createFollow, removeFollow,
   toggleFollowsModal, showFollowsModal, showFollowingModal, toggleFollowingModal, fetchProfile }) => {
-  
+
   let location, name, profileStats, profileLinks, websiteLink, instagramLink, followProfileButton;
-  
+
   profileStats = (
     <div className="profile-stats-wrapper flex-row">
       <div className="profile-stats-section flex-row following"
@@ -86,18 +86,18 @@ export const ProfileDetails = ({ profile, user, currentProfile,
       </h3>
     )
   }
-  // if (!!Object.values(allFollows).length && !isCurrentProfile) {
-  //   followProfileButton = (
-  //     <FollowProfileButton
-  //       followee={profile}
-  //       allFollows={allFollows}
-  //       createFollow={createFollow}
-  //       removeFollow={removeFollow}
-  //       currentProfile={currentProfile}
-  //     />
-  //   )
-  // }
-  
+  if (!isCurrentProfile) {
+    followProfileButton = (
+      <FollowProfileButton
+        followee={profile}
+        allFollows={allFollows}
+        createFollow={createFollow}
+        removeFollow={removeFollow}
+        currentProfile={currentProfile}
+      />
+    )
+  }
+
   return (
     <>
       <FollowersModal
@@ -135,25 +135,18 @@ export const ProfileDetails = ({ profile, user, currentProfile,
                 className="icon-link edit">
                 <i className="fa-regular fa-pen-to-square fa-xl"></i>
               </Link>
-            </div> ) : ( null )}
+            </div>) : (null)}
         </div>
         <div className="profile-header-container">
           {name}
           {location}
-          {/* {followProfileButton} */}
-          <FollowProfileButton
-            followee={profile}
-            allFollows={allFollows}
-            createFollow={createFollow}
-            removeFollow={removeFollow}
-            currentProfile={currentProfile}
-          />
-        <div className="profile-bio-and-stats-container">
-          <p className="profile-about">
-            {profile.about}
-          </p>
-          {profileStats}
-          {profileLinks}
+          {followProfileButton}
+          <div className="profile-bio-and-stats-container">
+            <p className="profile-about">
+              {profile.about}
+            </p>
+            {profileStats}
+            {profileLinks}
           </div>
         </div>
       </div>

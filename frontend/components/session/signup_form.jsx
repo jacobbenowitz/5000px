@@ -74,8 +74,7 @@ export default class SignupForm extends React.Component {
 
     if (username.length !== 0 && email.length !== 0 && password2.length !== 0) {
       signup(user)
-      this.props.sessionMessage(['Account created successfully'])
-      this.props.openModal("success");
+      this.props.openModal(["success", "Welcome to 5000px"]);
       this.setState({
         showProfileForm: true
       })

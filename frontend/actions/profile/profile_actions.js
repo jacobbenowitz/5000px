@@ -73,12 +73,12 @@ export const createProfile = profile => dispatch => {
 export const updateProfile = profile => dispatch => {
   return ProfileApiUtil.updateProfile(profile)
     .then(profile => dispatch(receiveProfile(profile))
-  ), error => (
-    dispatch(receiveProfileErrors(error.responseJSON))
-  )
+    ), error => (
+      dispatch(receiveProfileErrors(error.responseJSON))
+    )
 }
 
-export const updateProfilePhoto = (formData, profileId) => {
+export const updateProfilePhoto = (formData, profileId) => dispatch => {
   return ProfileApiUtil.updateProfilePhoto(formData, profileId)
     .then(profile => dispatch(receiveProfile(profile))
     ), error => (
