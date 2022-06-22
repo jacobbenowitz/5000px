@@ -23,8 +23,8 @@ export default class Modal extends React.Component {
   }
 
   hideModal = () => {
+    const modalContainer = document.getElementById('modal-container');
     setTimeout(() => {
-      const modalContainer = document.getElementById('modal-container');
       modalContainer.className = 'modal-out';
     }, 5000)
     setTimeout(() => {
@@ -38,16 +38,17 @@ export default class Modal extends React.Component {
     const { modal, closeModal, errors } = this.props;
     if (!modal) {
       return null;
-    } else {
+    } else if (Object.values(errors).some(error => error[0] === 'success')) {
       this.hideModal();
       return (
         <div id="modal-container" className="modal-in" onClick={closeModal}>
           <div id="modal-content" onClick={e => e.stopPropagation}>
-            {/* <p>{Object.values(errors)}</p> */}
             {this.renderErrors()}
           </div>
         </div>
       )
+    } else {
+      return null
     }
   }
 }

@@ -4,8 +4,6 @@ export default class SuccessModal extends React.Component {
   constructor(props) {
     super(props);
   }
-  
-
   render() {
     
     const { photos, profiles, session } = this.props.errors;
