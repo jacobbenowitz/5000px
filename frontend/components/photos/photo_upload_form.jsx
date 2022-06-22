@@ -41,7 +41,8 @@ export default class PhotoUploadForm extends React.Component {
     }
     await this.props.uploadPhoto(formData);
     this.props.openModal(["success", "Successfully uploaded!"]);
-    this.props.history.push(`/profiles/${this.props.profileId}`)
+    // this.props.history.push(`/profiles/${this.props.profileId}`)
+    this.props.history.push("/home")
   }
 
   async handleFile(e) {

@@ -61,13 +61,15 @@ export default class ProfileShow extends React.Component {
         getFollows()
       }
     }
-    if (status === BUSY && profilesStatus === DONE && profileId == id && profileId == profile.id && profile.photoIds.length !== profilePhotos.length) {
+
+    
+    if (status === BUSY && profilesStatus === DONE && profileId == id) {
       if (profile.photoIds.length === 0) {
         this.setState({
           noPhotos: true,
           status: DONE
         })
-      } else {
+      } else if (profile.photoIds.length !== profilePhotos.length) {
         let ordered;
         let photos = [];
         let fetches = [];
