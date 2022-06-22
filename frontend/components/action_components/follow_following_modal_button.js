@@ -22,6 +22,7 @@ export default class FollowFollowingModalButton extends React.Component {
   componentDidMount() {
     const { followee, currentProfile, allFollows } = this.props;
     let following = selectFollowsById(followee.followers, allFollows)
+    debugger
     this.setState({
       isFollowing: following.filter(follow =>
         follow.follower_id === currentProfile.id).length === 1,
@@ -76,23 +77,26 @@ export default class FollowFollowingModalButton extends React.Component {
 
   render() {
     const { isFollowing, isCurrentProfile } = this.state;
+    const { visable } = this.props;
 
     let followButton;
 
     if (isCurrentProfile) {
       followButton = null
-    } else if (isFollowing) {
+    } else if (isFollowing && visable) {
       followButton = (
         <button className="unfollow-button"
           onClick={this.handleUnfollow}
         >Unfollow</button>
       )
-    } else {
+    } else if (visable) {
       followButton = (
         <button className="follow-liker-button"
           onClick={this.handleFollow}
         >Follow</button>
       )
+    } else {
+      followButton = null
     }
     return (
       <>

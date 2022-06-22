@@ -86,18 +86,17 @@ export const ProfileDetails = ({ profile, user, currentProfile,
       </h3>
     )
   }
-
-  if (!!Object.values(allFollows).length && !isCurrentProfile) {
-    followProfileButton = (
-      <FollowProfileButton
-        followee={profile}
-        allFollows={allFollows}
-        createFollow={createFollow}
-        removeFollow={removeFollow}
-        currentProfile={currentProfile}
-      />
-    )
-  }
+  // if (!!Object.values(allFollows).length && !isCurrentProfile) {
+  //   followProfileButton = (
+  //     <FollowProfileButton
+  //       followee={profile}
+  //       allFollows={allFollows}
+  //       createFollow={createFollow}
+  //       removeFollow={removeFollow}
+  //       currentProfile={currentProfile}
+  //     />
+  //   )
+  // }
   
   return (
     <>
@@ -141,7 +140,14 @@ export const ProfileDetails = ({ profile, user, currentProfile,
         <div className="profile-header-container">
           {name}
           {location}
-          {followProfileButton}
+          {/* {followProfileButton} */}
+          <FollowProfileButton
+            followee={profile}
+            allFollows={allFollows}
+            createFollow={createFollow}
+            removeFollow={removeFollow}
+            currentProfile={currentProfile}
+          />
         <div className="profile-bio-and-stats-container">
           <p className="profile-about">
             {profile.about}

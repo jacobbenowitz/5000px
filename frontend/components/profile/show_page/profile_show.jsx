@@ -47,45 +47,45 @@ export default class ProfileShow extends React.Component {
 
   componentDidUpdate() {
     const { status, id, profilePhotos  } = this.state;
-    const { profile, profileId, fetchPhoto,
+    const { profile, profileId, fetchPhoto, profilesStatus,
       fetchProfile, fetchProfiles, getFollows } = this.props;
 
-    if (profileId != id && status !== BUSY) {
-      this.setState({
-        id: profileId,
-        status: BUSY,
-      })
-      fetchProfile(profileId)
-      fetchProfiles()
-      getFollows()
-    }
-
-    if (status === BUSY && profile && profile.photoIds.length === 0) {
-      this.setState({
-        noPhotos: true,
-        status: DONE
-      })
-    }
-    
-    if (status !== BUSY && profile && profileId == profile.id
-      && profile.photoIds.length !== profilePhotos.length) {
-      this.setState({ status: BUSY })
-      let ordered;
-      let photos = [];
-      let fetches = [];
-
-      profile.photoIds.forEach(photoId =>
-        fetches.push(fetchPhoto(photoId)));
-
-      Promise.all(fetches).then(res => {
-        photos = res.map(action => action.photo.photo)
-        ordered = sortByRecent(photos)
+    if (status !== BUSY) {
+      if (profileId != id) {
         this.setState({
-          status: DONE,
-          noPhotos: false,
-          profilePhotos: ordered
+          id: profileId,
+          status: BUSY,
         })
-      });
+        fetchProfile(profileId)
+        fetchProfiles()
+        getFollows()
+      }
+    }
+    if (status === BUSY && profilesStatus === DONE && profileId == id && profileId == profile.id && profile.photoIds.length !== profilePhotos.length) {
+      if (profile.photoIds.length === 0) {
+        this.setState({
+          noPhotos: true,
+          status: DONE
+        })
+      } else {
+        let ordered;
+        let photos = [];
+        let fetches = [];
+
+        profile.photoIds.forEach(photoId =>
+          fetches.push(fetchPhoto(photoId)));
+
+        Promise.all(fetches).then(res => {
+          photos = res.map(action => action.photo.photo)
+          ordered = sortByRecent(photos)
+          this.setState({
+            id: profileId,
+            status: DONE,
+            noPhotos: false,
+            profilePhotos: ordered
+          })
+        });
+      }
     }
   }
 
@@ -151,10 +151,6 @@ export default class ProfileShow extends React.Component {
       )
       cover = (
         <div className="cover-img-box profile" style={coverStyle} />
-      )
-    } else {
-      cover = (
-        <CoverPhotoLoader />
       )
     }
 

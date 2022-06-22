@@ -36,12 +36,12 @@ export default class FollowFollowersModalButton extends React.Component {
   //   let isFollowing = followers.filter(follow =>
   //     follow.follower_id === currentProfile.id).length === 1
 
-    // if (isFollowing !== this.state.isFollowing) {
-    //   this.setState({
-    //     isFollowing: isFollowing,
-    //     isCurrentProfile: currentProfile.id === followee.followerId
-    //   })
-    // }
+  //   if (isFollowing !== this.state.isFollowing) {
+  //     this.setState({
+  //       isFollowing: isFollowing,
+  //       isCurrentProfile: currentProfile.id === followee.followerId
+  //     })
+  //   }
   // }
 
   handleFollow(e) {
@@ -60,7 +60,7 @@ export default class FollowFollowersModalButton extends React.Component {
   handleUnfollow(e) {
     e.preventDefault()
     e.stopPropagation()
-    const { allFollows, followee, removeFollow, currentProfile } = this.props;
+    const { allFollows, followee, removeFollow, currentProfile, visable } = this.props;
     let followId;
 
     Object.values(allFollows).forEach(follow => {
@@ -76,22 +76,25 @@ export default class FollowFollowersModalButton extends React.Component {
 
   render() {
     const { isFollowing, isCurrentProfile } = this.state;
+    const { visable } = this.props;
     let followButton;
 
     if (isCurrentProfile) {
       followButton = null
-    } else if (isFollowing) {
+    } else if (isFollowing && visable) {
       followButton = (
         <button className="unfollow-button"
           onClick={this.handleUnfollow}
         >Unfollow</button>
       )
-    } else {
+    } else if (visable) {
       followButton = (
         <button className="follow-liker-button"
           onClick={this.handleFollow}
         >Follow</button>
       )
+    } else {
+      followButton = null
     }
     return (
       <>

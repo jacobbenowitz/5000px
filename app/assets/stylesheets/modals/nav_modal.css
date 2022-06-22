@@ -112,12 +112,12 @@
 }
 
 .modal-off {
-  /* animation: shrinkOut 200ms ease-in-out ; */
   visibility: hidden;
+  /* animation: shrinkOut 200ms ease-in-out ; */
 }
 
 .mask-off {
-  display: none;
+  visibility: hidden;
 }
 
 #collection-modal.modal-out,
@@ -145,7 +145,7 @@
     transform: scaleY(1);
     top: 65px;
   }
-
+  
   100% {
     opacity: 0%;
     transform: scaleY(0.75);

@@ -3,7 +3,6 @@ import CoverPhotoLoader from "../content_loaders/cover_photo_loader";
 
 export const CoverPhoto = ({ profile, isCurrentProfile }) => {
   let cover
-  debugger
   if (profile && profile.cover.length > 0) {
     cover = <img src={profile.cover} />
   } else if (profile && !profile.cover) {

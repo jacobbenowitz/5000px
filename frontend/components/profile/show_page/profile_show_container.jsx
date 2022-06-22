@@ -26,6 +26,7 @@ const mapStateToProps = ({entities, session}, { match }) => {
     profile: profile,
     user: user,
     currentProfile: entities.profiles.all[session.profile.id],
+    profilesStatus: entities.profiles.status,
     allFollows: entities.follows
   }
 }
