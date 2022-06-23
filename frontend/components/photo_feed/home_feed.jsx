@@ -57,6 +57,11 @@ export default class HomeFeed extends React.Component {
     this.handleLazyLoad = this.handleLazyLoad.bind(this)
   }
 
+  componentWillUnmount() {
+    this.removeLazyScrollListener()
+    this.mounted = false;
+  }
+
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, getFollows } = this.props;
 
@@ -72,11 +77,6 @@ export default class HomeFeed extends React.Component {
       getFollows()
       fetchPhotos()
     })
-  }
-
-  componentWillUnmount() {
-    this.removeLazyScrollListener()
-    this.mounted = false;
   }
 
   componentDidUpdate() {
@@ -103,7 +103,7 @@ export default class HomeFeed extends React.Component {
           collectionFetches.push(fetchPhoto(photoId))
         )
         Promise.all(collectionFetches).then((res) => {
-          if (!this.mounted) return
+          if (!this.mounted) return;
 
           let collectionPhotos = res.map(action => action.photo.photo)
           formattedCollection.photos = collectionPhotos
@@ -120,7 +120,7 @@ export default class HomeFeed extends React.Component {
       })
 
       Promise.all(fetches).then(() => {
-        if (!this.mounted) return
+        if (!this.mounted) return;
 
         this.setState({
           status: DONE,

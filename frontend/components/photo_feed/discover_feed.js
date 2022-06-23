@@ -22,15 +22,17 @@ export default class DiscoverFeed extends React.Component {
       pageDescription: '',
       page: '',
     }
+    this.mounted = false;
     this.getTitleAndDescription = this.getTitleAndDescription.bind(this)
   }
 
   componentWillUnmount() {
-    this.setState({status: IDLE})
+    this.mounted = false;
   }
 
   componentDidMount() {
     const { fetchUsers, fetchPhotos, fetchProfiles, page } = this.props;
+    this.mounted = true;
     window.scrollTo(0, 0)
     fetchProfiles()
     fetchPhotos()
@@ -52,6 +54,8 @@ export default class DiscoverFeed extends React.Component {
         fetches.push(fetchPhoto(photoId)));
 
       Promise.all(fetches).then(res => {
+        if (!this.mounted) return;
+        
         photos = res.map(action => action.photo.photo)
         ordered = sortByRecent(photos)
         this.setState({

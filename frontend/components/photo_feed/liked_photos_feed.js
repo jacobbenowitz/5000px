@@ -17,11 +17,12 @@ export default class LikedPhotosFeed extends React.Component {
       status: IDLE,
       pagePhotos: [],
     }
+    this.mounted = false;
     this.fetchLikedPhotos = this.fetchLikedPhotos.bind(this)
   }
 
   componentWillUnmount() {
-    this.setState({ status: IDLE })
+    this.mounted = false;
   }
 
   componentDidMount() {
@@ -29,6 +30,7 @@ export default class LikedPhotosFeed extends React.Component {
       getLikes } = this.props;
     
     window.scrollTo(0, 0)
+    this.mounted = true;
 
     fetchProfile(currentProfile.id)
     fetchProfiles()
@@ -43,7 +45,7 @@ export default class LikedPhotosFeed extends React.Component {
     if (status === IDLE && pagePhotos.length === 0 && photosStatus === DONE && profilesStatus === DONE) {
       this.setState({ status: BUSY })
       this.fetchLikedPhotos()
-    } else if (status === DONE &&
+    } else if (status === DONE && this.mounted &&
       pagePhotos.length !== currentProfile.likedPhotos.length) {
         this.fetchLikedPhotos()
     }
@@ -59,6 +61,8 @@ export default class LikedPhotosFeed extends React.Component {
     photoIds.forEach(photoId =>
       fetches.push(fetchPhoto(photoId)));
     Promise.all(fetches).then(res => {
+      if (!this.mounted) return;
+      
       photos = res.map(action => action.photo.photo)
       this.setState({
         status: DONE,

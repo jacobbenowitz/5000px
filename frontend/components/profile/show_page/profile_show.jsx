@@ -24,22 +24,25 @@ export default class ProfileShow extends React.Component {
       showFollowingModal: false,
       noPhotos: false,
     }
+    this.mounted = false;
+    this.bindHandlers()
+  }
+
+  bindHandlers() {
     this.toggleFollowsModal = this.toggleFollowsModal.bind(this)
     this.toggleFollowingModal = this.toggleFollowingModal.bind(this)
   }
 
   componentWillUnmount() {
-    this.setState({
-      status: IDLE,
-      id: null,
-      profilePhotos: [],
-      noPhotos: false
-    })
+    this.mounted = false;
   }
 
   componentDidMount() {
     const { profileId, fetchProfile, fetchProfiles, getFollows } = this.props;
+    
     window.scrollTo(0, 0)
+    this.mounted = true;
+
     fetchProfile(profileId)
     fetchProfiles()
     getFollows()
@@ -50,7 +53,7 @@ export default class ProfileShow extends React.Component {
     const { profile, profileId, fetchPhoto, profilesStatus,
       fetchProfile, fetchProfiles, getFollows } = this.props;
 
-    if (status !== BUSY) {
+    if (status !== BUSY && this.mounted) {
       if (profileId != id) {
         this.setState({
           id: profileId,
@@ -77,8 +80,10 @@ export default class ProfileShow extends React.Component {
         profile.photoIds.forEach(photoId =>
           fetches.push(fetchPhoto(photoId)));
 
-        // todo: find a way to .abort() each fetch in [fetches] inside of componentWillUnmount() to prevent memory leaks
+        // use this.mounted to return out of fetches before unmounting
         Promise.all(fetches).then(res => {
+          if (!this.mounted) return;
+
           photos = res.map(action => action.photo.photo)
           ordered = sortByRecent(photos)
           this.setState({

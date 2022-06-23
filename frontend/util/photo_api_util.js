@@ -29,12 +29,10 @@ export const uploadPhoto = formData => {
   })
 }
 
-export const updatePhoto = formData => {
+export const updatePhoto = photo => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/photos/${formData.id}`,
-    data: formData,
-    contentType: false,
-    processData: false
+    url: `/api/photos/${photo.id}`,
+    data: {photo}
   })
 }

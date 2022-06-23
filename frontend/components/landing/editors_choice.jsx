@@ -13,14 +13,17 @@ export default class EditorsChoiceLanding extends React.Component {
       status: IDLE,
       photos: []
     }
+    this.mounted = false;
   }
+
   componentDidMount() {
-    const {fetchPhotos} = this.props;
+    const { fetchPhotos } = this.props;
+    this.mounted = true;
     fetchPhotos()
   }
 
   componentWillUnmount() {
-    this.setState({ status: IDLE })
+    this.mounted = false;
   }
 
   componentDidUpdate() {
@@ -39,11 +42,13 @@ export default class EditorsChoiceLanding extends React.Component {
       photoIds.forEach(photoId =>
         fetches.push(fetchPhoto(photoId)));
         
-        Promise.all(fetches).then(res => {
-          photos = res.map(action => action.photo.photo)
-          this.setState({
-            status: DONE,
-            photos: photos
+      Promise.all(fetches).then(res => {
+        if (!this.mounted) return;
+        
+        photos = res.map(action => action.photo.photo)
+        this.setState({
+          status: DONE,
+          photos: photos
         })
       });
     }

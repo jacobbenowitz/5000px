@@ -21,18 +21,18 @@ export default class PhotoCollection extends React.Component {
       pageDescription: '',
       collection: '',
     }
+    this.mounted = false;
     this.randomPhoto = this.randomPhoto.bind(this)
   }
 
   componentWillUnmount() {
-    this.setState({
-      status: IDLE
-    })
+    this.mounted = false;
   }
 
   componentDidMount() {
     const { fetchPhotos, category } = this.props;
     window.scrollTo(0, 0)
+    this.mounted = true;
     fetchPhotos()
   }
 
@@ -40,7 +40,9 @@ export default class PhotoCollection extends React.Component {
     const { collection, status } = this.state;
     const { category, photosStatus, profilesStatus, allProfiles, minimalismPhotos, musicPhotos, abstractPhotos, animalsPhotos, chocolatePhotos, sportsPhotos, fetchPhoto } = this.props;
 
-    if (collection !== category && status !== BUSY && photosStatus === DONE) {
+    if (this.mounted && collection !== category &&
+      status !== BUSY && photosStatus === DONE) {
+      
       this.setState({ status: BUSY })
       
       let pageCopy = this.getTitleAndDescription(category)
@@ -52,6 +54,8 @@ export default class PhotoCollection extends React.Component {
         fetches.push(fetchPhoto(photoId)));
       
       Promise.all(fetches).then(res => {
+        if (!this.mounted) return;
+        
         photos = res.map(action => action.photo.photo)
         let ordered = sortByRecent(photos)
         this.setState({
