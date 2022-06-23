@@ -1,13 +1,25 @@
-# 5000px
+# 5000px 
 
 <img src="app/assets/images/5000px-logo-blue-web.svg" width="220">
 
 <br>
 
-**Live link:** [**5000px**](https://my5000px.herokuapp.com/)
-
 A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
+<br>
 
+### **Live link:** [**5000px**](https://my5000px.herokuapp.com/)
+
+<br>
+
+### Table of Contents
+  - [Technologies Used](#technologies-used)
+  - [Key Features](#key-features)
+  - [Lazy Loading Challanges](#lazy-loading-challanges)
+  - [Code Snippets](#code-snippets)
+    - [`addLazyScrollListener & handleLazyLoad`](#addlazyscrolllistener--handlelazyload)
+    - [`fetchTenMorePhotos`](#fetchtenmorephotos)
+    - [`throttle` util function](#throttle-util-function)
+  
 <br>
 
 ## Technologies Used
