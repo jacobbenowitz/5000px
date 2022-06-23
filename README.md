@@ -12,7 +12,7 @@ A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
 
 ## Technologies Used
 
-- **`React`** 
+- **`React & Redux`** 
   - **`react-redux:`** centralized application state
   - **`redux-thunk:`** async action creators
 - **`Ruby on Rails`**
@@ -60,7 +60,7 @@ A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
 <br>
 
 ## Lazy Loading
-Delve deep into ~2 features that show off your technical abilities. Discuss both the challenges faced and your brilliant solutions.
+
 ### Challenges
 1. Memory Leaks
 
@@ -76,23 +76,111 @@ Delve deep into ~2 features that show off your technical abilities. Discuss both
 
    Solution:
 
-   Trottle the the `handleLazyLoad` method by 1 second, severely reducing the frequency 
-
-
+   Trottle the the `handleLazyLoad` method by 1 second, severely reducing the frequency of the callback function being called. This leads to smoother fetching performance and prevents structural issues on the page.
 
 <br>
-
-## Content Placeholders
-
-### Challenges
-- 
-### Solutions
-- 
-
-<br>
-
 
 ## Code Snippets
-```javascript
 
+### `addLazyScrollListener & handleLazyLoad`
+This is callback invoked by the `scroll` event listener 
+```javascript
+  // this function is invoked on componentDidMount
+  addLazyScrollListener() {
+    // this event listener is removed on componentWillUnmount
+    window.addEventListener('scroll', e => {
+      // use .current to get the actual element on the DOM
+      const lazyLoadEle = this.lazyLoadBox.current
+      this.handleLazyLoad(e, lazyLoadEle)
+    })
+  }
+
+  // throttle used to delay invokation by 1 second
+  handleLazyLoad = throttle((e, lazyLoadEle) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const { status } = this.state;
+
+    // do not fetch more photos if already fetching photos
+    if (lazyLoadEle !== null &&
+      status !== BUSY && this.eleIsInViewport(lazyLoadEle)) {
+      this.setState({ status: BUSY }, () => {
+        this.fetchTenMorePhotos()
+      })
+    }
+  })
+```
+
+### `fetchTenMorePhotos`
+This is the `HomeFeed` method that dynamically builds the gallery props
+
+```javascript
+  fetchTenMorePhotos() {
+    const { allPhotos, photoIds, fetchPhoto, currentProfile } = this.props;
+    const { fetchedPhotos, status, followingPhotoIds } = this.state;
+    let shuffledIds, userPhotoIds, filteredFollowingIds, tenShuffledPhotos;
+
+    // map fetched photos into flattened array of ids
+    let fetchedIds = fetchedPhotos.map(array => 
+        array.map(photo => parseInt(photo.id))
+      ).flat()
+
+    // filter out previously fetched photos
+    let unfetchedPhotos = photoIds.filter(id =>
+      !fetchedIds.includes(id)
+    )
+    // if the currentUser has posted photos, show < 3 of them 
+    if (currentProfile.photoIds) {
+      userPhotoIds = currentProfile.photoIds
+        .sort((a, b) => a - b)
+        .filter(id => unfetchedPhotos.includes(id))
+        .slice(0, 3)
+    }
+    // if we have followingPhotoIds, fetch 10 of those + user's photos
+    if (followingPhotoIds?.length > 0) {
+      filteredFollowingIds = followingPhotoIds
+        .filter(id => unfetchedPhotos.includes(id))
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10)
+    }
+    // check if we've fetched all follower's photos and/or all of our photos
+    if (filteredFollowingIds.length === 0 || userPhotoIds.length === 0) {
+      tenShuffledPhotos = unfetchedPhotos
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10)
+      // include tenShuffledPhotos (from all photos in database)
+      shuffledIds = [
+        ...userPhotoIds,
+        ...filteredFollowingIds,
+        ...tenShuffledPhotos
+      ]
+    } else {
+      // prioritize follower's photos, no need to include tenShuffledPhotos
+      shuffledIds = [
+        ...userPhotoIds,
+        ...filteredFollowingIds
+      ]
+    }
+    // handle edge case of no more photos to fetch
+    if (shuffledIds.length === 0) {
+      this.setState({ noMorePhotos: true })
+      this.removeLazyScrollListener()
+      return;
+    } else {
+      // store all photoIds to fetch
+      let fetches = [];
+      shuffledIds.forEach(id => fetches.push(fetchPhoto(id)))
+      Promise.all(fetches).then((res) => {
+        // ensure component is mounted
+        if (!this.mounted) return;
+
+        let newPhotos = res.map(action => action.photo.photo)
+        let updatedFetchedPhotos = fetchedPhotos.concat([newPhotos])
+        this.setState({
+          status: DONE,
+          fetchedPhotos: updatedFetchedPhotos
+        })
+      })
+    }
+  };
 ```

@@ -162,11 +162,12 @@ export default class HomeFeed extends React.Component {
   handleLazyLoad = throttle((e, lazyLoadEle) => {
     e.preventDefault()
     e.stopPropagation()
+    const { status } = this.state;
 
     // do not fetch more photos if already fetching photos
-    if (lazyLoadEle !== null && this.eleIsInViewport(lazyLoadEle) && this.state.status !== BUSY) {
+    if (lazyLoadEle !== null &&
+      status !== BUSY && this.eleIsInViewport(lazyLoadEle)) {
       this.setState({ status: BUSY }, () => {
-        // window.removeEventListener('scroll', (e) => this.handleLazyLoad(e))
         this.fetchTenMorePhotos()
       })
     }
