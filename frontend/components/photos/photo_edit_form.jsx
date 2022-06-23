@@ -32,7 +32,7 @@ export default class PhotoEditForm extends React.Component {
 
   componentDidUpdate() {
     const { photo } = this.props;
-    debugger
+    
     if (photo && this.state.id !== photo.id) {
       this.setState({
         id: photo.id,
