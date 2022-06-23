@@ -90,11 +90,11 @@ export default class HomeFeed extends React.Component {
         featuredStatus: BUSY,
         collectionStatus: BUSY
       })
-      debugger
+
       // current user's following photo ids
       let followingPhotoIds = selectFollowersPhotoIds(currentProfile.following, allFollows, allProfiles)
       
-      debugger
+
       // featured Collections
       let finalCollections = {};
 
@@ -199,7 +199,6 @@ export default class HomeFeed extends React.Component {
         .filter(id => unfetchedPhotos.includes(id))
         .slice(0, 3)
     }
-    debugger
     // if we have followingPhotoIds, fetch 10 of those + user's photos
     if (followingPhotoIds?.length > 0) {
       filteredFollowingIds = followingPhotoIds
@@ -207,13 +206,12 @@ export default class HomeFeed extends React.Component {
         .sort(() => Math.random() - 0.5)
         .slice(0, 10)
     }
-    debugger
     // check if we've fetched all follower's photos and/or all of our photos
     if (filteredFollowingIds.length === 0 || userPhotoIds.length === 0) {
       tenShuffledPhotos = unfetchedPhotos
         .sort(() => Math.random() - 0.5)
         .slice(0, 10)
-      debugger
+
       shuffledIds = [
         ...userPhotoIds,
         ...filteredFollowingIds,
@@ -225,7 +223,6 @@ export default class HomeFeed extends React.Component {
         ...filteredFollowingIds
       ]
     }
-    debugger
     if (shuffledIds.length === 0) {
       this.setState({ noMorePhotos: true })
       this.removeLazyScrollListener()
