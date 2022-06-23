@@ -14,8 +14,8 @@ import {
 const mapStateToProps = ({ entities, session }) => {
 
   return {
-    photoIds: entities.photos?.photoIds,
-    allPhotos: entities.photos?.all,
+    photoIds: entities.photos.photoIds,
+    allPhotos: entities.photos.all,
     users: entities.users,
     likes: entities.likes,
     profiles: entities.profiles.all,
