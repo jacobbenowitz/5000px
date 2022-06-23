@@ -46,10 +46,10 @@ A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
   - Leveraged `scroll` event listener that will fetch next batch of photos if user scrolls to bottom of feed
   - Each user's `Home Feed` is unique with:
     - Featured Photographer cards
-    - Photos from their followers
+    - Photos from followers
     - Collection cards (based on the category assigned to the image)
-    - Disover photos (photos from user's not yet followed)
     - Current user's most recent photos
+    - Disover photos (photos from unfollowed users)
 - **Likes, Follows, and Comments**
   - Provides a rich social experience for users
   - Each `photo` has a `liked by` modal with all users who liked the photo
@@ -59,9 +59,8 @@ A full-stack clone of the popular photo sharing site [500px](https://500px.com/)
 
 <br>
 
-## Lazy Loading
+## Lazy Loading Challanges
 
-### Challenges
 1. Memory Leaks
 
     Instead of fetching all photos in the database at once, an array of photoIds are fetched one by one. Then I used `Promise.all` set state with the new photos after they have all been fetched. However, if a user navigates off the current page before the `Promise.all` has resolved, the component will attempt to `setState` after it has unmounted.
@@ -183,4 +182,37 @@ This is the `HomeFeed` method that dynamically builds the gallery props
       })
     }
   };
+```
+
+### `throttle` util function
+
+```javascript
+export const throttle = (callback, delay = 1000) => {
+  let isWaiting = false
+  // save new args when waiting, invoke w/ callback once done waiting
+  let waitingArgs
+
+  const timeoutFunc = () => {
+    if (waitingArgs == null) {
+      // start wait until trottle is called again
+      isWaiting = false
+    } else {
+      // if there are waitingArgs, invoke callback & restart timer
+      callback(...waitingArgs)
+      waitingArgs = null
+      // reset waitingArgs, execute as soon as delay is done
+      setTimeout(timeoutFunc, delay)
+    }
+  }
+  return (...args) => {
+    if (isWaiting) {
+      waitingArgs = args
+      return
+    }
+    callback(...args)
+    isWaiting = true
+    
+    setTimeout(timeoutFunc, delay)
+  }
+}
 ```
