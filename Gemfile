@@ -31,7 +31,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -43,7 +42,6 @@ gem "aws-sdk-s3"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'image_processing'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
