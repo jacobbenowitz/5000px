@@ -11,6 +11,8 @@
   place-items: center;
   width: 100vw;
   max-width: 100%;
+  min-height: 92vh;
+  max-height: fit-content;
   box-sizing: border-box;
   background-color: #F7F8FA;
 }
@@ -106,7 +108,8 @@
 }
 
 #image-upload-step-2 ,.image-edit{
-  height: calc(100% - 56px);
+  min-height: calc(100% - 56px);
+  max-height: fit-content;
   box-sizing: border-box;
   padding: 24px 36px;
   display: flex;
@@ -235,7 +238,7 @@
 	top: 0;
 	left: 0;
   z-index: 100;
-  background-color: #0870d1;
+  background-color: #0870d1ab;
   opacity: 0%;
 }
 

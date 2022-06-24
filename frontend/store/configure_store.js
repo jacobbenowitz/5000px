@@ -27,12 +27,12 @@ import thunk from 'redux-thunk';
 
 
 // export default (preloadedState) => {
-  //   let store = configureStore(preloadedState);
-  //   let persistor = persistStore(store);
-  //   return { store, persistor };
-  // }
-  
-  
+//   let store = configureStore(preloadedState);
+//   let persistor = persistStore(store);
+//   return { store, persistor };
+// }
+
+
 const configureStore = (preloadedState = {}) => (
   createStore(rootReducer, preloadedState,
     applyMiddleware(thunk))
