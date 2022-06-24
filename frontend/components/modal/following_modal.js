@@ -39,7 +39,7 @@ const FollowingModal = ({ showFollowingModal, toggleFollowingModal, followee, cu
                     <div className="liker-profile-summary">
                       <Link to={`/profiles/${follow?.followee_id}`}>
                         {follow.followee.first_name.length ? (
-                          follow.followee.last_name + " " + follow.followee.last_name) : follow.followee.username}
+                          follow.followee.first_name + " " + follow.followee.last_name) : follow.followee.username}
                       </Link>
                       <span className="liker-followers-count">
                         {follow?.followee.followers.length}&nbsp;Followers
