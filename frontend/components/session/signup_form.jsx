@@ -95,7 +95,7 @@ export default class SignupForm extends React.Component {
 
   demoScript(e) {
     e.preventDefault();
-    Demo.demoSignupForm();
+    Demo.demoSignupForm()
   }
 
   demoSignup = (e) => {
@@ -104,7 +104,9 @@ export default class SignupForm extends React.Component {
       username: 'Guest',
       password: 'demo#User!806'
     }
-    this.props.loginGuest(user);
+    this.props.loginGuest(user).then(() =>
+      this.redirectHome()
+    )
   }
 
   renderErrors() {
